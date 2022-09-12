@@ -4,7 +4,7 @@ list simetricDifference(L1, L2) {
 	index elementL2 = 0
 	index elementL3 = 0
 	bool condition = true
-	Iniciar(L3);
+	Iniciar(L3)
 	
 	while ( elementL1 <= NumElemt(L1) ) {
 		while ( (condition == true) && ( elementL2 <= NumElemt(L2) ) ) {
