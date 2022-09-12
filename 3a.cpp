@@ -1,5 +1,5 @@
 // function return a list
-list 3a_mergeLists(L1, L2) {
+list 3a_mergeUnion(L1, L2) {
 	Iniciar(L3)
 	position element = Primera(L1)
 	bool exist = true
