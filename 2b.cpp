@@ -36,7 +36,18 @@ list simetricDifference(L1, L2) {
 		++elementL2
 	}
 	
-	// bubble sort L3
+	// bubble sort L3 list
+	for ( index index1 = 0; index1 <= NumElemt(L3); ++index1) {
+		for ( index index2 = 0; index2 <= NumElemt(L3); ++index2) {
+			if ( Recuperar(index2, L3) > Recuperar(Siguiente(index2, L3)) {
+				element temporal = Recuperar(index2, L3)
+				Modificar( index2, Recuperar(index2+1, L3), L3)
+				Modificar( index2+1, temporal, L3)				
+			}		
+		}
+	}
+	
+	
 	
 	return L3
 }
