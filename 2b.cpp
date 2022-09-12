@@ -7,7 +7,7 @@ list simetricDifference(L1, L2) {
 	Iniciar(L3)
 	
 	while ( elementL1 <= NumElemt(L1) ) {
-		while ( (condition == true) && ( elementL2 <= NumElemt(L2) ) ) {
+		while ( (condition == true) and ( elementL2 <= NumElemt(L2) ) ) {
 			if ( Recuperar(elementL1, L1) !=  Recuperar(elementL2++, L2) ) {
 				condition = false
 			}
@@ -21,10 +21,9 @@ list simetricDifference(L1, L2) {
 		elementL2 = 0
 	}
 	
-	elementL1 = 0
-	
 	while ( elementL2 <= NumElemt(L2) ) {
-		while ( (condition == true) && ( elementL1 <= NumElemt(L1) ) ) {
+		elementL1 = 0
+		while ( (condition == true) and ( elementL1 <= NumElemt(L1) ) ) {
 			if ( Recuperar(elementL2, L2) !=  Recuperar(elementL1++, L1) ) {
 				condition = false
 			}
@@ -35,8 +34,9 @@ list simetricDifference(L1, L2) {
 			condition = true
 		}
 		++elementL2
-		elementL1 = 0
 	}
+	
+	// bubble sort L3
 	
 	return L3
 }
