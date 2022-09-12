@@ -1,0 +1,17 @@
+// function return a list
+list 3a_Intersection(L1, L2) {
+	Iniciar(L3)
+	position elementL1 = Primera(L1)
+	position elementL2 = Primera(L2)
+	
+	while ( elementL1 != NULL ) {
+		while ( elementL2 != NULL ) {
+			if ( Recuperar(elementL1, L1) == Recuperar(elementL2, L2) {
+				AgregarAlFinal(Recuperar(element, L1), L3)
+			}
+			elementL2 = Siguiente(elementL2, L2)
+		}
+		elementL1 = Siguiente(elementL1, L1)
+	}
+	return L3
+}
