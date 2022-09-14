@@ -3,7 +3,7 @@
  * Crear una lista L3, ordenada, que contenga los elementos que pertenecen a C1 ∪ C2
  */
 
-Lista 1B_Union(L1, L2){
+List 1B_Union(L1, L2){
 	position p1 = Primera(L1)
 	position p2 = Primera(L2)
 
