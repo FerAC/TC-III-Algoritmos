@@ -7,10 +7,10 @@
  * Entonces L deberá ser igual a 1, 6, 7, 8, 9, 9, 10, 11
  */
 
-void Sorted_Insertion(Lista i, Elemento e)
+void Sorted_Insertion(Lista i, Element e)
 {
     // Get the list size for edge partitioning
-    int size = NumElem(i);
+    int size = NumElem(i)
 
     // Base case of no elements
     if(size == 0)
@@ -33,7 +33,7 @@ void Sorted_Insertion(Lista i, Elemento e)
 
     // Set up search index (middle) and comparison element
     int index_mid = (index_end + index_start) / 2
-    Elemento f = Recuperar(index_mid, i)
+    Element f = Recuperar(index_mid, i)
 
     // Iterative binary search
     // Space complexity of O(1) yet time complexity of O(log(n))
@@ -53,7 +53,7 @@ void Sorted_Insertion(Lista i, Elemento e)
     }
 
     // Get upper-edge element
-    Elemento g = Recuperar(index_end, i)
+    Element g = Recuperar(index_end, i)
 
     // Problem has been reduced to a comparison of two elements
     if (e < g) // Goes behind last element
