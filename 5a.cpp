@@ -4,7 +4,7 @@
  * Ejemplo: si L = 7, 1, 7, 9, 1, 7, 3 entonces L deberá ser igual a 7, 1, 9, 3
  */
 
-void Remove_Duplicates(Lista i, Elemento e)
+void 5A_Remove_Duplicates(Lista i, Elemento e)
 {
     // Get the list size for list end
     int size = NumElem(i);

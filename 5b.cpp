@@ -3,7 +3,7 @@
  * Insertar en una lista ordenada un nuevo elemento de tal manera que la lista resultado quede ordenada.
  */
 
-void Sorted_Insertion(Lista i, Element e)
+void 5B_Sorted_Insertion(Lista i, Element e)
 {
     // Get the list size for edge partitioning
     int size = NumElem(i)
@@ -42,7 +42,7 @@ void Sorted_Insertion(Lista i, Element e)
             index_start = index_mid
 
         // Update middle
-        index_mid = (index_end + index_start) / 2}
+        index_mid = (index_end + index_start) / 2
 
         // Update comparison element
         f = Recuperar(index_mid, i)
@@ -63,5 +63,6 @@ void Sorted_Insertion(Lista i, Element e)
         Insertar(index_end + 1, e, i)
 
     // We're done :)
+
     return
 }
