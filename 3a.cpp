@@ -1,3 +1,8 @@
+/* Ejercio #3A - Lista Posicionada
+ * 
+ * Crear una lista L3, no ordenada, que contenga los elementos que pertenecen a C1 ∪ C2
+ */
+
 // function return a list
 list 3a_mergeUnion(L1, L2) {
 	Iniciar(L3)

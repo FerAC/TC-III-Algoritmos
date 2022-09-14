@@ -1,3 +1,8 @@
+/* Ejercio #4B - Lista Posicionada
+ * 
+ * Averiguar si la lista es simétrica
+ */
+
 bool serSimetrica(L1){
 	int tamano = numElem(L1)
 	posicion p1 = Primera(L1)

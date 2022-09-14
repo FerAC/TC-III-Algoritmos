@@ -1,9 +1,7 @@
-/* ENUNCIADO
- * Eliminar los elementos repetidos de una lista.
+/* Ejercio #5A - Lista Indexada
  * 
- * Lista Indexada
- * Ejemplo: si L = 7, 1, 7, 9, 1, 7, 3
- * Entonces L deberá ser igual a 7, 1, 9, 3
+ * Eliminar los elementos repetidos de una lista. 
+ * Ejemplo: si L = 7, 1, 7, 9, 1, 7, 3 entonces L deberá ser igual a 7, 1, 9, 3
  */
 
 void Remove_Duplicates(Lista i, Elemento e)

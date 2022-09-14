@@ -1,3 +1,8 @@
+/* Ejercio #2A - Lista Indexada
+ * 
+ * Crear una lista L3, ordenada, que contenga los elementos que pertenecen a C1 – C2
+ */
+
 // function return a list
 list 2a_C1minusC2(L1, L2) {
 	bool condition = true

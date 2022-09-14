@@ -1,3 +1,8 @@
+/* Ejercio #1A - Lista Posicionada
+ * 
+ * Crear una lista L3, ordenada, que contenga los elementos que pertenecen a C1 ∪ C2
+ */
+
 Lista union(L1, L2){
 	position p1 = Primera(L1)
 	position p2 = Primera(L2)

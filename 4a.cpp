@@ -1,3 +1,8 @@
+/* Ejercio #4A - Lista Posicionada
+ * 
+ * Ordenar una lista usando el algoritmo Burbuja
+ */
+
 void 3a_Intersection(L) {
 	
 	for ( position element1 = Primera(L); element1 != NULL; element1 = Siguiente(element1, L) ) {

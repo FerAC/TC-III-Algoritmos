@@ -1,3 +1,8 @@
+/* Ejercio #1B - Lista Posicionada
+ * 
+ * Averiguar si C1 es subconjunto de C2, es decir si todos los elementos de C1 están en C2
+ */
+
 bool serSubconjunto(L1, L2){
 	position p2 = Primera(L2)
 	position p1 = Primera(L1)

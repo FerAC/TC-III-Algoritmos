@@ -1,3 +1,8 @@
+/* Ejercio #2B - Lista Indexada
+ * 
+ * Crear una lista L3, ordenada, que contenga los elementos que pertenecen a C1 Δ C2
+ */
+
 // function return a list
 list 2b_simetricDifference(L1, L2) {
 	bool condition = true
