@@ -6,7 +6,7 @@
 void 5B_Sorted_Insertion(Lista i, Element e)
 {
     // Get the list size for edge partitioning
-    int size = NumElem(i)
+    Index size = NumElem(i)
 
     // Base case of no elements
     if(size == 0)
@@ -24,11 +24,11 @@ void 5B_Sorted_Insertion(Lista i, Element e)
     }
 
     // Set-up edges for binary search
-    int index_start = 0
-    int index_end = size - 1
+    Index index_start = 0
+    Index index_end = size - 1
 
     // Set up search index (middle) and comparison element
-    int index_mid = (index_end + index_start) / 2
+    Index index_mid = (index_end + index_start) / 2
     Element f = Recuperar(index_mid, i)
 
     // Iterative binary search

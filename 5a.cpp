@@ -11,14 +11,14 @@ void 5A_Remove_Duplicates(Lista i, Elemento e)
 
     // Iterative linear, nested search
     // Space complexity of O(1) yet time complexity of O(n^2)
-    for(int iter_a = 0, iter_a < size, iter_a = iter_a + 1)
+    for(Index iter_a = 0, iter_a < size, iter_a = iter_a + 1)
     {
         // Element to find matches for
         Elemento a = Recuperar(iter_a, i)
 
         // Linear search to find duplicates
         // Problem has been reduced to a compariso of n-k elements
-        for(int iter_b = a + 1, iter_b < size, iter_b = iter_a + 1)
+        for(Index iter_b = a + 1, iter_b < size, iter_b = iter_a + 1)
         {
             Elemento b = Recuperar(iter_b, i)
 
