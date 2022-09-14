@@ -4,8 +4,8 @@ list 3a_Intersection(L1, L2) {
 	position elementL1 = Primera(L1)
 	position elementL2 = Primera(L2)
 	
-	while ( elementL1 != NULL ) {
-		while ( elementL2 != NULL ) {
+	while ( elementL1 != nullPos ) {
+		while ( elementL2 != nullPos ) {
 			if ( Recuperar(elementL1, L1) == Recuperar(elementL2, L2) {
 				AgregarAlFinal(Recuperar(element, L1), L3)
 			}
