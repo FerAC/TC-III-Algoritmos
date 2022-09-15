@@ -1,4 +1,4 @@
-/* Ejercio #1A - Lista Posicionada
+/* Ejercicio #1A - Lista Posicionada
  * 
  * Crear una lista L3, ordenada, que contenga los elementos que pertenecen a C1 ∪ C2
  */
@@ -24,7 +24,7 @@ List 1B_Union(L1, L2)
 		} 
 
 		// Otherwise, if the second sets has been fully explored, we'll explore and add from the first sets
-		else if(p2 = nullpos)
+		else if(p2 == nullpos)
 		{
 			AgregarAlFinal(Recuperar(p1, L1) , L3)
 			p1 = Siguiente(p1, L1);
