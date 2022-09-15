@@ -1,4 +1,4 @@
-/* Ejercio #1A - Lista Posicionada
+/* Ejercicio #1A - Lista Posicionada
  * 
  * Crear una lista L3, ordenada, que contenga los elementos que pertenecen a C1 ∪ C2
  */
