@@ -16,7 +16,7 @@ List 2A_C1_Minus_C2(L1, L2)
 	Index elementL2 = 0
 	Index elementL3 = 0
 
-	// first while to compare each element and store in L3 each element that is a in a list and not in the other
+	// First while to compare each element and store in L3 each element that is a in a list and not in the other
 	while (elementL1 < sizeL1 and elementL2 < sizeL2) 
 	{
 		if(Recuperar(elementL1, L1) < Recuperar(elementL2, L2) )
