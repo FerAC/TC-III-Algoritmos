@@ -33,7 +33,7 @@ List 1B_Union(L1, L2)
 		// Otherwise, both sets haven't been fully explored yet, so we'll need to explore both
 		else 
 		{
-			// There comparisons assume the sets are ordered
+			// These comparisons assume the sets are ordered
 
 			// If the first set's element is lesser than the second's, then we'll add it and explore the next element on the first set
 			if (Recuperar(p1, L1)  < Recuperar(p2, L2))
