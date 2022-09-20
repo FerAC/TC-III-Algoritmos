@@ -4,7 +4,7 @@ por niveles. Se sugiere que en lugar de usar un modelo Cola, use un modelo Lista
 Indexada. Recuerde que el operador básico de borrado requiere que el nodo sea una hoja.
 */
 
-void deleteSubTree(node N) {
+void deleteSubTree(node N) {	// using binary tree level order traversal 
 		
 	
 	
