@@ -48,7 +48,7 @@ void deleteSubTree(Arbol tree, Nodo subroot) {	// using binary tree level order 
     // We no longer need the travel queue. Let's free its memory
     Destruir(travelQueue)
 
-    // The whole subtree has been visited, and its' nodes placed on the stack on the inverse order they have been visited
+    // The whole subtree has been visited, and its' nodes placed on the stack in the inverse order they have been visited
     // We can now delete the visited nodes on the order they've been placed on within the stack
     while(NumElemn(deletionStack) > 0) {
         
@@ -56,7 +56,7 @@ void deleteSubTree(Arbol tree, Nodo subroot) {	// using binary tree level order 
         Nodo currentLeaf = Recuperar(0, deletionStack)
 
         // It is guaranteed that we'll first delete the last child, and then its siblings
-        // After deleting all  siblings, it is guaranteed that its corresponding parent becomes a leaf
+        // After deleting all siblings, it is guaranteed that its corresponding parent becomes a leaf
         // Therefore, deletion is in this reverse order is always face
         EliminarHoja(currentLeaf, tree)
 
