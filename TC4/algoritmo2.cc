@@ -1,6 +1,6 @@
 /*
-2. Averiguar cuántas hojas tiene un árbol. Debe hacer un recorrido en pre orden. Se
-sugiere que el contador de hojas sea una variable global.
+2. Averiguar cuántas hojas tiene un árbol. Debe hacer un recorrido en pre orden. 
+Se sugiere que el contador de hojas sea una variable global.
 */
 
 int cantityLeaves = 0	// will be used as a counter to keep track of the cantity of leaves in the tree
@@ -15,6 +15,7 @@ void cantityLeavesInTree(Node N) {
 			cantityLeavesInTree(child)
 			child = child.hermanoDer()
 		}
+		return
 	}
 }
 
