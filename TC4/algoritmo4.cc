@@ -4,7 +4,7 @@ contiene una Lista Indexada L, tal que L contiene las (k^i – 1) / (k-1) etique
 etiquetas están acomodadas en L de acuerdo al orden de un recorrido por niveles de A.
 */
 
-Tree createTree(i , k , L){
+Tree createTree(int i, int  k, ListaIndexada L){
 	int counter = 0
 	int numChilds = 0
 	int numElements =  (k^i – 1) / (k-1) 
@@ -17,8 +17,8 @@ Tree createTree(i , k , L){
 	
 	while(counter< numElements){
 		while(numChilds < k){
-		AgregarHijo(nodeTemp, Recuperar(counter++, L), myTree )
-		numChilds++
+			AgregarHijo(nodeTemp, Recuperar(counter++, L), myTree )
+			numChilds++
 		}
 		numChilds = 0
 		if(HermanoDer(nodeTemp,myTree) != null){
@@ -28,4 +28,5 @@ Tree createTree(i , k , L){
 			nodeTemp = nodeLeft
 		}
 	}
+	return myTree
 }

@@ -5,7 +5,7 @@ Se sugiere que el contador de hojas sea una variable global.
 
 int quantityLeaves = 0	// will be used as a counter to keep track of the cantity of leaves in the tree
 
-void quantityLeavesInTree(Node N) {
+void quantityLeavesInTree(Arbol tree, Node N) {
 	if(N.HijoMásIzq() == null) {
 		++quantityLeaves
 		return

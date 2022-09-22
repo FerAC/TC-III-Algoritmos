@@ -4,7 +4,7 @@
 
 // when we first call the function, quantityNodes must be in 0
 
-int quantityNodesInLevel(node N, int level, quantityNodes) {
+int quantityNodesInLevel(Arbol tree, node N, int level, quantityNodes) {
 	int quantityNodes = 0
 	if(level == 0) {
 		node child = N.HijoMásIzq()
