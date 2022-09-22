@@ -27,7 +27,10 @@ void deleteSubTree(Arbol tree, Nodo subroot) {	// using binary tree level order 
     Encolar(subroot, travelQueue)
 
     // We can now begin traversion
-    for(Nodo visitedNode = Desencolar(travelQueue), visitedNode != NULL, visitedNode = HermandoDer(visitedNode, arbol)) {
+    while(NumElem(travelQueue) > 0) {
+
+        // Let's extract the last node on the travel queue
+        Nodo visitedNode = Desencolar(travelQueue)
 
         // The element has been visited, let's add it to the top of the stack
         // We'll always take 0 as the top of the stack
