@@ -4,7 +4,7 @@
 
 // when we first call the function, cantityNodes must be in 0
 
-void cantityNodesInLevel(node N, int level, cantityNodes) {
+int cantityNodesInLevel(node N, int level, cantityNodes) {
 	int cantityNodes = 0
 	if(level == 0) {
 		node child = N.HijoMásIzq()
