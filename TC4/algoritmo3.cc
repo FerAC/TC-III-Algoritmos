@@ -1,8 +1,7 @@
-/*
-3. Averiguar cuántos nodos hay en el i-ésimo nivel. Debe hacer un recorrido en pre orden.
-*/
-
-// when we first call the function, quantityNodes must be in 0
+/* EJERCICIO 3
+ * Averiguar cuántos nodos hay en el i-ésimo nivel. 
+ * Debe hacer un recorrido en pre orden.
+ */
 
 int quantityNodesInLevel(Arbol tree, Node subroot, int level) {
 	
