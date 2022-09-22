@@ -4,31 +4,31 @@ contiene una Lista Indexada L, tal que L contiene las (k^i – 1) / (k-1) etique
 etiquetas están acomodadas en L de acuerdo al orden de un recorrido por niveles de A.
 */
 
-Tree createTree(int i, int  k, ListaIndexada L){
+Tree createTree(i , k , L){
 	int counter = 0
 	int numChilds = 0
 	int numElements =  (k^i – 1) / (k-1) 
 	
+	Cola queue
+	Iniciar(queue)
 	Tree myTree
 	Iniciar(myTree)
 	PonerRaiz(Recuperar(counter, L))
 	counter++
 	node nodeTemp = Raiz(myTree)
-	node nodeLeft = Raiz(myTree) 
 	
 	while(counter< numElements){
 		while(numChilds < k){
 			AgregarHijo(nodeTemp, Recuperar(counter, L), myTree )
 			counter++
 			numChilds++
+			Encolar(nodeTemp, queue)
 		}
 		numChilds = 0
-		if(HermanoDer(nodeTemp,myTree) != null){
-			nodeTemp = HermanoDer(nodeTemp, myTree)
-		} else{ //Bajo un nivel
-			nodeLeft = HijoMásIzq(nodeLeft, myTree)
-			nodeTemp = nodeLeft
-		}
+		nodeTemp = Desencolar(queue) 
 	}
-	return myTree
+	
+	Destruir(queue)
+	
+	return myTree 
 }
