@@ -2,24 +2,24 @@
 3. Averiguar cuántos nodos hay en el i-ésimo nivel. Debe hacer un recorrido en pre orden.
 */
 
-// when we first call the function, cantityNodes must be in 0
+// when we first call the function, quantityNodes must be in 0
 
-int cantityNodesInLevel(node N, int level, cantityNodes) {
-	int cantityNodes = 0
+int quantityNodesInLevel(node N, int level, quantityNodes) {
+	int quantityNodes = 0
 	if(level == 0) {
 		node child = N.HijoMásIzq()
 		while(child != null) {
-			++ cantityNodes
+			++ quantityNodes
 			child = child.hermanoDer()
 		}
-		return cantityNodes
+		return quantityNodes
 	} else {
 		
 		node child = N.HijoMásIzq()
 		while(child != null) {
-			cantityNodes = cantityNodesInLevel(child, level-1, cantityNodes)
+			quantityNodes = quantityNodesInLevel(child, level-1, quantityNodes)
 			child = child.hermanoDer()
 		}
-		return cantityNodes
+		return quantityNodes
 	}
 }
