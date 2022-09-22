@@ -1,13 +1,11 @@
 /* EJERCICIO 1
  * Eliminar todo el subárbol que se genera a partir de un nodo n. Debe hacer un recorrido
    por niveles. 
-
  * Se sugiere que en lugar de usar un modelo Cola, use un modelo Lista Indexada. 
-    
  * Recuerde que el operador básico de borrado requiere que el nodo sea una hoja.
-*/
+ */
 
-void deleteSubTree(Arbol tree, Nodo subroot) {	// using binary tree level order traversal 
+void deleteSubTree(Arbol tree, Nodo subroot) {
 
     // We'll traverse the nodes each level using a queue
     // Each time we visit a node, we'll add its' children to the queue
@@ -20,14 +18,17 @@ void deleteSubTree(Arbol tree, Nodo subroot) {	// using binary tree level order 
     // Each time we visit a node, we'll add it onto the stack
     // The stack is filled on the inverse order we added the nodes
     // Then, after all nodes were added, we delete them in the inverse order we visited them
-    Lista deletionStack
+    ListaIndexada deletionStack
     Iniciar(deletionStack)
 
     // The tree traversion begins on the first node of the subtree: its' root
     Encolar(subroot, travelQueue)
 
     // We can now begin traversion
-    for(Nodo visitedNode = Desencolar(travelQueue), visitedNode != NULL, visitedNode = HermandoDer(visitedNode, arbol)) {
+    while(NumElem(travelQueue) > 0) {
+
+        // Let's extract the last node on the travel queue
+        Nodo visitedNode = Desencolar(travelQueue)
 
         // The element has been visited, let's add it to the top of the stack
         // We'll always take 0 as the top of the stack
