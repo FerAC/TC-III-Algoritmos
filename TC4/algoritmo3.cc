@@ -7,18 +7,18 @@
 int quantityNodesInLevel(Arbol tree, node N, int level, quantityNodes) {
 	int quantityNodes = 0
 	if(level == 0) {
-		node child = N.HijoMásIzq()
+		node child = HijoMásIzq(N, tree)
 		while(child != null) {
 			++ quantityNodes
-			child = child.hermanoDer()
+			child = hermanoDer(child, tree)
 		}
 		return quantityNodes
 	} else {
 		
-		node child = N.HijoMásIzq()
+		node child = HijoMásIzq(N, tree)
 		while(child != null) {
 			quantityNodes = quantityNodesInLevel(child, level-1, quantityNodes)
-			child = child.hermanoDer()
+			child = hermanoDer(child, tree)
 		}
 		return quantityNodes
 	}
