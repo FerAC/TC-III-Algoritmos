@@ -18,7 +18,7 @@ void deleteSubTree(Arbol tree, Nodo subroot) {
     // Each time we visit a node, we'll add it onto the stack
     // The stack is filled on the inverse order we added the nodes
     // Then, after all nodes were added, we delete them in the inverse order we visited them
-    Lista deletionStack
+    ListaIndexada deletionStack
     Iniciar(deletionStack)
 
     // The tree traversion begins on the first node of the subtree: its' root
