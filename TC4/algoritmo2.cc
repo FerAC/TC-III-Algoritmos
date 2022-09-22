@@ -3,16 +3,16 @@
 Se sugiere que el contador de hojas sea una variable global.
 */
 
-int cantityLeaves = 0	// will be used as a counter to keep track of the cantity of leaves in the tree
+int quantityLeaves = 0	// will be used as a counter to keep track of the cantity of leaves in the tree
 
-void cantityLeavesInTree(Node N) {
+void quantityLeavesInTree(Node N) {
 	if(N.HijoMásIzq() == null) {
-		++cantityLeaves
+		++quantityLeaves
 		return
 	} else {
 		Node child = N.HijoMásIzq()
 		while(child != null) {
-			cantityLeavesInTree(child)
+			quantityLeavesInTree(child)
 			child = child.hermanoDer()
 		}
 		return
