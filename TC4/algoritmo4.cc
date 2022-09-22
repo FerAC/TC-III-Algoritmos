@@ -11,13 +11,15 @@ Tree createTree(int i, int  k, ListaIndexada L){
 	
 	Tree myTree
 	Iniciar(myTree)
-	PonerRaiz(Recuperar(counter++, L))
+	PonerRaiz(Recuperar(counter, L))
+	counter++
 	node nodeTemp = Raiz(myTree)
 	node nodeLeft = Raiz(myTree) 
 	
 	while(counter< numElements){
 		while(numChilds < k){
-			AgregarHijo(nodeTemp, Recuperar(counter++, L), myTree )
+			AgregarHijo(nodeTemp, Recuperar(counter, L), myTree )
+			counter++
 			numChilds++
 		}
 		numChilds = 0
