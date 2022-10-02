@@ -18,6 +18,9 @@ int main(){
    }
    lista. borrar(0);
    lista.imprimir();
-	
+   cout <<"Hola" <<endl;
+	Celda *d = lista.buscar(66); 
+	cout<< "X" <<endl;
+	//cout<< "Soy d " << d->getEtiqueta() << endl;
 	return 0;
 }

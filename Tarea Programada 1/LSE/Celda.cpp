@@ -5,7 +5,6 @@ using namespace std;
 Celda:: Celda(int valor){
 	this->etiqueta = valor; 
 	this->siguiente = 0;
-	
 }
 
 int Celda::getEtiqueta(){
@@ -21,14 +20,12 @@ void Celda::setSiguiente(Celda* nuevaCelda){
 }
 
 int Celda::operator ==(Celda* celda){
-	if(etiqueta == celda->etiqueta && celda->siguiente == siguiente){
-		return 1;
-	} 
-	return 0; 
+	return (etiqueta == celda->etiqueta && celda->siguiente == siguiente);
+		
 }
 
 Celda::Celda(){
-	
+	this->siguiente = 0;
 	
 }
 
@@ -41,5 +38,7 @@ void Celda::imprimir(){
 	cout<< etiqueta << endl;
 	if(siguiente){
 		siguiente->imprimir();
-	}
+	} else{
+		cout << "termine" << endl;
+	} 
 }

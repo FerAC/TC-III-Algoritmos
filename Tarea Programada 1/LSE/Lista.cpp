@@ -62,17 +62,26 @@ void Lista::borrar(int elemento){
 Celda * Lista::buscar(int elemento){
 	int encontrado = 0;
 	int i = 0;
+	cout<< "LLegue 65 " << endl;
 	Celda * temp = new Celda();
 	temp = primera; 
+	cout<< "68 " << endl;
+	cout<< "Soy contador " << contador << endl;
 	while(i<contador && !encontrado){
+		//cout<< "entre " << endl;
 		if(temp->getEtiqueta() == elemento){
 			encontrado = 1;
+		} else if(i+1< contador) {
+			cout<< "avanzo " << i << endl;
+			temp = temp->getSiguiente();
 		}
-		temp = temp->getSiguiente();
+		++i;
 	}
 	
 	if(!encontrado){
+		cout<< "Voy a borrar" <<endl;
 		delete temp;
+		cout<< "Borre " << endl;
 		return 0;
 	} else{
 		return temp; 
