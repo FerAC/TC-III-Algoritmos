@@ -8,7 +8,7 @@ Celda:: Celda(int valor){
 	
 }
 
-Celda::getEtiqueta(){
+int Celda::getEtiqueta(){
 	return etiqueta;
 }
 
