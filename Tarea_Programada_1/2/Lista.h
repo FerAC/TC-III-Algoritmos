@@ -18,17 +18,21 @@ class Lista {
 		}
 
 		~Lista() {
+			
 			Celda<T> ** temp = &primera;
 			Celda<T> * tempSiguiente;
 			for (size_t i=0; i<contador; ++i) {
 				if ((**temp).getSiguiente()) {
 					tempSiguiente = (**temp).getSiguiente();
 				}
+				
 				delete *temp;
 				if (i+1 < contador) {
+					
 					*temp = tempSiguiente; 
 				}
 			}
+			
 		}
 
 		void insertar(const T& elemento) {
@@ -41,6 +45,12 @@ class Lista {
 				ultima = celdaNueva; 
 			}
 			++contador; 
+		}
+		
+		void insertarAlPrincipio(const T& elemento){
+			Celda<T> * celdaNueva = new Celda<T> (elemento);  
+			celdaNueva->setSiguiente(primera); 
+			primera = celdaNueva;
 		}
 
 		void borrar(const T& elemento) {
@@ -106,14 +116,17 @@ class Lista {
 		
 		void modificarEnlaces(int indice, int etiqueta){
 			Celda<T> * nuevaCelda= new Celda<T>(etiqueta);
+			++contador;
 			Celda<T> * anterior = primera;
-			for(int i=0; i<indice ; ++i){
+			for(int i=0; i<indice-1 ; ++i){  //Lego al indice donde quiero insertar
 				anterior = anterior->getSiguiente();
 			}
-			Celda<T> * enlace = anterior->getSiguiente(); 
-			nuevaCelda->setSiguiente(enlace);
+			nuevaCelda->setSiguiente(anterior->getSiguiente());
 			anterior->setSiguiente(nuevaCelda);
-			
+		}
+		
+		Celda<T>* getPrimera(){
+			return primera;
 			
 		}
 };

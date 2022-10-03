@@ -13,12 +13,13 @@ class Celda {
 			this->etiqueta = elemento;
 			this->siguiente = 0;
 		}
-		
-		void setEtiqueta(T valorNuevo){
-			etiqueta = valorNuevo;
-		}
+
 		Celda() {
 			this->siguiente = nullptr;
+		}
+		
+		void setEtiqueta(T valorNuevo){
+			this->etiqueta = valorNuevo;
 		}
 
 		~Celda() {
