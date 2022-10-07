@@ -8,6 +8,7 @@ class Cola{
         int end;
         int *arrayCircular;
 
+	eijijijijdeuhuhuhuhuhdeeesadadfasfd
     public:
         Cola(int);                 // Crear
         ~Cola();                // Destruir
