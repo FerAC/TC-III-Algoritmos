@@ -28,10 +28,12 @@ void Cola::Encolar(int newElement)
     }
 }
 
+// TODO: COMPLETAR
 int Cola::Desencolar()
 {
 }
 
+// TODO: COMPLETAR
 int Cola::NumElem()
 {
 }

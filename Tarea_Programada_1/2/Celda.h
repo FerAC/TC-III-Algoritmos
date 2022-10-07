@@ -42,6 +42,7 @@ class Celda {
 			siguiente = celdaSiguiente;
 		}
 
+		// TODO: UTILIZAR OPERATOR<< PARA SER MAS VERSATIL
 		void imprimir() {
 			std::cout << etiqueta << std::endl;
 		}

@@ -35,6 +35,8 @@ class Lista {
 			
 		}
 
+		// TODO: INSERTAR DEBERIA SER POR INDICE Y VALOR, NO SOLO POR VALOR
+		// TODO: INSERTAR ES POCO SIGNIFICATIVO (¿DONDE SE INSERTA?). NOMBRE ESTA RESERVADO EN OP. BASICAS
 		void insertar(const T& elemento) {
 			Celda<T>* celdaNueva =  new Celda<T> (elemento);
 			if (!primera) {
@@ -51,8 +53,10 @@ class Lista {
 			Celda<T> * celdaNueva = new Celda<T> (elemento);  
 			celdaNueva->setSiguiente(primera); 
 			primera = celdaNueva;
+			// TODO: FALTA ACTUALIZAR CONTADOR
 		}
 
+		// TODO: BORRADO DEBERIA SER POR INDICE, NO POR VALOR
 		void borrar(const T& elemento) {
 			Celda<T>* match = this->buscar(elemento);
 
@@ -92,6 +96,7 @@ class Lista {
 			int encontrado = 0;
 			size_t i = 0;
 			Celda<T>* temp = primera;
+			// TODO: MAS FACIL MODULARIZAR EN FOR
 			while (i < contador && !encontrado) {
 				if (temp->getEtiqueta() == elemento) {
 					encontrado = 1;
@@ -114,6 +119,7 @@ class Lista {
 			}
 		}
 		
+		// TODO: INDICE DEBERIA SER SIZE_T,
 		void modificarEnlaces(int indice, int etiqueta){
 			Celda<T> * nuevaCelda= new Celda<T>(etiqueta);
 			++contador;
@@ -125,6 +131,7 @@ class Lista {
 			anterior->setSiguiente(nuevaCelda);
 		}
 		
+		// TODO: USAR OPERATOR<< PARA SER MAS VERSATIL
 		Celda<T>* getPrimera(){
 			return primera;
 			
