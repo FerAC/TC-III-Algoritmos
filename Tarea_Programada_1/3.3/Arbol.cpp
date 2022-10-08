@@ -243,7 +243,8 @@ class Arbol
 
         /// @brief Cambia la etiqueta de un nodo de un árbol por otra nueva
         /// @param nodo Nodo al cual sustituirle la etiqueta
-        /// @remarks Requiere que el nodo no sea nulo
+        /// @param nuevoValor Elemento con el cual basarse para construir una copia y así reemplazar a la etiqueta
+        /// @remarks Requiere que el nodo no sea nulo, y que el elemento tenga un constructor por copia válido
         inline void ModificaEtiqueta(const Nodo& nodo, const Elemento& nuevoValor) const
         {
             if (nodo.nodoConcreto == nullptr)
