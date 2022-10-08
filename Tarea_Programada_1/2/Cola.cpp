@@ -15,6 +15,10 @@ Cola::~Cola()
 
 void Cola::Encolar(int newElement)
 { 
+    if(head!=end){
+        
+    }
+    /*
     if(end<size){
         ++end;
     } else{
@@ -25,7 +29,7 @@ void Cola::Encolar(int newElement)
         arrayCircular[end] = newElement;
     } else{
         // array already full, cannot add any more elements
-    }
+    }*/
 }
 
 // TODO: COMPLETAR

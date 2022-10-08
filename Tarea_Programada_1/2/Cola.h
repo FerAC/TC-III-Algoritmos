@@ -6,8 +6,8 @@ class Cola{
     private:
         // TODO: HACER SIZE DE TIPO SIZE_T
         int size;
-        int start;
-        int end;
+        int head;   // first out
+        int end;    // last in
         int *arrayCircular;
 
     public:
