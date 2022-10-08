@@ -4,7 +4,7 @@ Cola::Cola(int maxSize)
 {
     size = maxSize;
     arrayCircular = new int[size];
-    head = 0
+    head = 0;
     end = 0;	
 }
 
@@ -45,7 +45,7 @@ int Cola::Desencolar()
 		if(head==0){
 			head = size-1;
 		}else{
-			--head;
+			++head;
 		}
 		return bufferPop;
 	} else{
