@@ -5,7 +5,7 @@ Cola::Cola(int maxSize)
     size = maxSize;
     arrayCircular = new int[size];
     head = 0;
-    end = 0;	
+    end = size-1;	
 }
 
 Cola::~Cola()
@@ -19,14 +19,15 @@ Cola::~Cola()
 void Cola::Encolar(int newElement)
 { 
     // check if the queue is not full
-    if(end!=head-1 && !(end==size-1 && head==0)){
-	arrayCircular[end] = newElement;
+    if(this->NumElem() != size){ 
 
 	if(end==size-1){
 		end =0;
 	}else{
 		++end;
 	}
+
+	arrayCircular[end] = newElement;
     }else{
 	// cannot insert element, queue already full
     }
@@ -38,28 +39,26 @@ void Cola::Encolar(int newElement)
  */
 int Cola::Desencolar()
 {
-//	if(end!=head){	//else queue is empty
-		int bufferPop = arrayCircular[head];	// there is no need to "clean" the current value of the poped element
+		int bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
 		
-		//ifelse to change head value
 		if(head==size-1){
 			head = 0;
 		}else{
 			++head;
 		}
 		return bufferPop;
-//	} //else{
-	//	return 0;
-	//}
 }
 
 /*
  * @brief El metodo NumElem devuelve la cantidad de elemento en el array circular
  */
 int Cola::NumElem()
-{
+{	
+	if(head==end){
+		return 0;
+	}
 	if(end>head){
-		return (end-head);
+		return (end-head); 
 	} else{
 		return (size-(size-head)+end);
 	}
