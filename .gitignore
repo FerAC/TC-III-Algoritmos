@@ -1,0 +1,8 @@
+# VIM files
+*.un~
+*.cpp~
+*.h~
+*.py~
+
+# G++ compilation files
+*.o
