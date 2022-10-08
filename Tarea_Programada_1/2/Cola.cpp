@@ -18,19 +18,8 @@ Cola::~Cola()
  */
 void Cola::Encolar(int newElement)
 { 
-        
+    // check if the queue is not full
     if(end!=head-1 && !(end==size-1 && head==0)){
-	/*if(end == size-1){
-		end = 0;
-	} else {
-		++end;
-	}*/
-	/*
-	if(head==size-1){
-		head = 0;	
-	}else{
-		++head;
-	}*/
 	arrayCircular[end] = newElement;
 
 	if(end==size-1){
@@ -41,20 +30,6 @@ void Cola::Encolar(int newElement)
     }else{
 	// cannot insert element, queue already full
     }
-
-
-    /*
-    if(end<size){
-        ++end;
-    } else{
-        end = 0;
-    }
-
-    if(end!=start){
-        arrayCircular[end] = newElement;
-    } else{
-        // array already full, cannot add any more elements
-    }*/
 }
 
 // TODO: COMPLETAR
