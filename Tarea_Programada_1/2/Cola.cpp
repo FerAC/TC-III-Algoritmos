@@ -53,7 +53,16 @@ int Cola::Desencolar()
 	}
 }
 
-// TODO: COMPLETAR
+/*
+ * @brief El metodo NumElem devuelve la cantidad de elemento en el array circular
+ */
 int Cola::NumElem()
 {
+	if(end>head){
+		return (end-head);
+	} else{
+		return (size-(size-head)+end);
+	}
+	// if end es mayor a head, entonces end-head elementos
+	// else es size-(size-head) + end 
 }
