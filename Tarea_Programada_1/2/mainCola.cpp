@@ -6,9 +6,11 @@ int main(){
 	int colaSize = 10;
      	Cola cola(colaSize);
 
-     	//cola.Encolar(0);
+    	cola.Encolar(0);
 	cola.Encolar(1);
 	cola.Encolar(2);	
+	cola.Desencolar();
+	cola.Encolar(0);
 
 	int quantityElement = cola.NumElem();
 	std::cout << "Inicial quantity of elements in the queue: " << cola.NumElem() << std::endl;

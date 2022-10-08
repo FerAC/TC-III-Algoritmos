@@ -38,19 +38,19 @@ void Cola::Encolar(int newElement)
  */
 int Cola::Desencolar()
 {
-	if(end!=head){	//else queue is empty
+//	if(end!=head){	//else queue is empty
 		int bufferPop = arrayCircular[head];	// there is no need to "clean" the current value of the poped element
 		
 		//ifelse to change head value
-		if(head==0){
-			head = size-1;
+		if(head==size-1){
+			head = 0;
 		}else{
 			++head;
 		}
 		return bufferPop;
-	} else{
-		return 0;
-	}
+//	} //else{
+	//	return 0;
+	//}
 }
 
 /*
