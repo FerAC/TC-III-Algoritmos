@@ -3,17 +3,16 @@
 
 class ArbolSenalador
 {
-private:
-    class Node
-    {
-        friend ArbolSenalador;
-    };
 
 public:
+
     class Etiqueta
     {
         friend ArbolSenalador;
+        Etiqueta();
+        ~Etiqueta();
     };
+
     ArbolSenalador();
     ~ArbolSenalador();
     void PonerRaiz(Etiqueta);
@@ -26,5 +25,13 @@ public:
     Etiqueta getHermanoDerecho();
     void ModificaEtiqueta();
     int NumNodos();
+
+private:
+    class Node
+    {
+        friend ArbolSenalador;
+        Node(Etiqueta);
+        ~Node();
+    };
 };
 #endif
