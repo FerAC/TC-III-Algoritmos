@@ -11,7 +11,7 @@ Cola::Cola(int maxSize)
 
 Cola::~Cola()
 {
-	delete arrayCircular;
+	delete[] arrayCircular;
 }
 
 /**
@@ -85,7 +85,7 @@ int Cola::Desencolar()
 	return bufferPop;
 }
 
-/*
+/**
  * @brief El metodo NumElem devuelve la cantidad de elemento en el array circular
  */
 int Cola::NumElem()
