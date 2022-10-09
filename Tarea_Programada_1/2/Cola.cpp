@@ -3,10 +3,10 @@
 Cola::Cola(int maxSize)
 {
 	size = maxSize;
-	arrayCircular = new int[size];
+	arrayCircular = new int[size + 1];
 	// head = 0;
 	// end = size - 1;
-	isEmpty = 1;
+	isEmpty = true;
 }
 
 Cola::~Cola()
@@ -19,18 +19,30 @@ Cola::~Cola()
  */
 void Cola::Encolar(int newElement)
 {
-	if (isEmpty == 0)
+
+	if (isEmpty == false) // normal add
 	{
-		// normal add
+		if (this->NumElem() != size)
+		{
+			if (end == size - 1)
+			{
+				end = 0;
+			}
+			else
+			{
+				++end;
+			}
+			arrayCircular[end] = newElement;
+		}
 	}
-	else
+	else // add first elem
 	{
-		// add first elem
 		end = 0;
 		head = 0;
 		arrayCircular[0] = newElement;
 		isEmpty = 0;
 	}
+
 	// check if the queue is not full
 	// if (this->NumElem() != size)
 	//{
@@ -60,15 +72,16 @@ int Cola::Desencolar()
 {
 
 	int bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
-										 /*
-											 if (head == size - 1)
-											 {
-												 head = 0;
-											 }
-											 else
-											 {
-												 ++head;
-											 }*/
+
+	if (head == size - 1)
+	{
+		head = 0;
+	}
+	else
+	{
+		++head;
+	}
+	//++head;
 	return bufferPop;
 }
 
@@ -77,22 +90,26 @@ int Cola::Desencolar()
  */
 int Cola::NumElem()
 {
-	if (isEmpty)
+	if (isEmpty == true)
 	{
 		return 0;
 	}
-	if (head == end)
-	{
-		return 1;
-	}
-	if (end > head)
-	{
-		return (end - head);
-	}
 	else
 	{
-		return (size - (size - head) + end);
+		if (end == head)
+		{
+			return 1;
+		}
+		else
+		{
+			if (end > head)
+			{
+				return (end - head) + 1;
+			}
+			else
+			{
+				return (size - head) + end +1;
+			}
+		}
 	}
-	// if end es mayor a head, entonces end-head elementos
-	// else es size-(size-head) + end
 }
