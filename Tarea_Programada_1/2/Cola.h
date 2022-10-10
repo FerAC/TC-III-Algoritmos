@@ -9,6 +9,7 @@ class Cola{
         int head;   // first out
         int end;    // last in
         int *arrayCircular;
+        bool isEmpty;
 
     public:
         // TODO: FALTA VACIAR Y VACIA

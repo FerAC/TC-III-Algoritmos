@@ -2,34 +2,66 @@
 
 Cola::Cola(int maxSize)
 {
-    size = maxSize;
-    arrayCircular = new int[size];
-    head = 0
-    end = 0;	
+	size = maxSize;
+	arrayCircular = new int[size + 1];
+	// head = 0;
+	// end = size - 1;
+	isEmpty = true;
 }
 
 Cola::~Cola()
 {
-    delete arrayCircular;
+	delete[] arrayCircular;
 }
 
 /**
  * @brief El metodo Encolar permite hacer un push a la cola, agrega un element al final de la cola
  */
 void Cola::Encolar(int newElement)
-{ 
-    // check if the queue is not full
-    if(end!=head-1 && !(end==size-1 && head==0)){
-	arrayCircular[end] = newElement;
+{
 
-	if(end==size-1){
-		end =0;
-	}else{
-		++end;
+	if (isEmpty == false) // normal add
+	{
+		if (this->NumElem() != size)
+		{
+			if (end == size - 1)
+			{
+				end = 0;
+			}
+			else
+			{
+				++end;
+			}
+			arrayCircular[end] = newElement;
+		}
 	}
-    }else{
+	else // add first elem
+	{
+		end = 0;
+		head = 0;
+		arrayCircular[0] = newElement;
+		isEmpty = 0;
+	}
+
+	// check if the queue is not full
+	// if (this->NumElem() != size)
+	//{
+
+	//	if (end == size - 1)
+	//	{
+	//		end = 0;
+	//	}
+	//	else
+	//	{
+	//		++end;
+	//	}
+
+	//	arrayCircular[end] = newElement;
+	//}
+	// else
+	//{
 	// cannot insert element, queue already full
-    }
+	//}
 }
 
 /**
@@ -38,22 +70,46 @@ void Cola::Encolar(int newElement)
  */
 int Cola::Desencolar()
 {
-	if(end!=head){	//else queue is empty
-		int bufferPop = arrayCircular[head];	// there is no need to "clean" the current value of the poped element
-		
-		//ifelse to change head value
-		if(head==0){
-			head = size-1;
-		}else{
-			--head;
-		}
-		return bufferPop;
-	} else{
-		return 0;
+
+	int bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
+
+	if (head == size - 1)
+	{
+		head = 0;
 	}
+	else
+	{
+		++head;
+	}
+	//++head;
+	return bufferPop;
 }
 
-// TODO: COMPLETAR
+/**
+ * @brief El metodo NumElem devuelve la cantidad de elemento en el array circular
+ */
 int Cola::NumElem()
 {
+	if (isEmpty == true)
+	{
+		return 0;
+	}
+	else
+	{
+		if (end == head)
+		{
+			return 1;
+		}
+		else
+		{
+			if (end > head)
+			{
+				return (end - head) + 1;
+			}
+			else
+			{
+				return (size - head) + end +1;
+			}
+		}
+	}
 }
