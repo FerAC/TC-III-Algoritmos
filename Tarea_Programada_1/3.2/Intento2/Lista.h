@@ -146,7 +146,7 @@ class Lista {
 				//std::cout<< "SOY ITER " << i++ << std::endl;
 				iter->imprimirPunteros();
 			}
-			std::cout << "";
+			// std::cout << "";
 		}
 		// TODO: INDICE DEBERIA SER SIZE_T,
 		void modificarEnlaces(size_t indice, int etiqueta){

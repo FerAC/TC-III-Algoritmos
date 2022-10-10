@@ -1,3 +1,11 @@
+/*
+
+g++ main.cpp Nodo.cpp ArbolLH.cpp -o code.out
+g++ main.cpp Nodo.cpp ArbolLH.cpp -o code.out -fsanitize=leak
+g++ main.cpp Nodo.cpp ArbolLH.cpp -o code.out -fsanitize=undefined
+
+*/
+
 #include "ArbolLH.h"
 
 int main(){
