@@ -26,7 +26,7 @@ class Celda {
 
 		~Celda() {
 			this->siguiente = nullptr;
-			delete &etiqueta;
+			//delete &etiqueta;
 		}
 
 		int operator==(Celda* celda) {

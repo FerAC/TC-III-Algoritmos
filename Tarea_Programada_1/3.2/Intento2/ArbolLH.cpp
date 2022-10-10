@@ -38,7 +38,7 @@ void ArbolLH::imprimirLP(){
 }
 
 void ArbolLH::ponerRaiz(Nodo * nuevoNodo){
-	listaPrincipal->insertar(*nuevoNodo);
+	listaPrincipal->insertarAlPrincipio(*nuevoNodo);
 }
 	
 void ArbolLH::agregarHijo(Nodo nodoPadre, int etiqueta){

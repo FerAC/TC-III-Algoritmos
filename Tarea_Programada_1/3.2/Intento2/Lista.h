@@ -69,6 +69,7 @@ class Lista {
 				ultima = celdaNueva;
 			}
 			contador++;
+			// delete celdaNueva;
 			// TODO: FALTA ACTUALIZAR CONTADOR
 		}
 
@@ -135,7 +136,7 @@ class Lista {
 			}
 		}
 		void imprimirPunteros(){
-			////std::cout<<"Llegue a imprimir punteros " << std::endl;
+			//std::cout<<"Llegue a imprimir punteros " << std::endl;
 			if(primera){
 				//std::cout << "Hay primera " << std::endl;
 			} else{
@@ -146,7 +147,7 @@ class Lista {
 				//std::cout<< "SOY ITER " << i++ << std::endl;
 				iter->imprimirPunteros();
 			}
-			// std::cout << "";
+			//std::cout << "";
 		}
 		// TODO: INDICE DEBERIA SER SIZE_T,
 		void modificarEnlaces(size_t indice, int etiqueta){

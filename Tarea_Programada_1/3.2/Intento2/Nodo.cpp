@@ -7,8 +7,7 @@ Nodo::Nodo(){
 }
 
 Nodo::~Nodo(){
-	
-	
+	///delete listaHijos;
 }
 
 Nodo::Nodo(int et){
@@ -50,4 +49,5 @@ ostream& Nodo::imprimir(ostream& output){
 	output<< "Etiqueta : " << etiqueta << std::endl;
 	output<< "Mis hijos son : " << std::endl;
 	listaHijos->imprimirPunteros();
+	return output;
 }
