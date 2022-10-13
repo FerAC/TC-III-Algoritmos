@@ -17,7 +17,7 @@ public:
     ArbolSenalador(int);
     ~ArbolSenalador();
     void PonerRaiz(int);
-    void AgregarHijo(int);
+    void AgregarHijo(int, int);
     //void AgregarHijoMasDerecho(int);
     void BorrarHoja();
     int getRaiz();

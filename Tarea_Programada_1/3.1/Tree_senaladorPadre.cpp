@@ -1,5 +1,8 @@
 #include "Tree_senaladorPadre.h"
 
+/**
+ * @brief ArbolSenalador is the constructor method of the class
+ */
 ArbolSenalador::ArbolSenalador(int const quantityElements)
 {
     doubleEntryArray = new int *[2];
@@ -8,6 +11,9 @@ ArbolSenalador::ArbolSenalador(int const quantityElements)
     sizeM = quantityElements;
 }
 
+/**
+ * @brief ~ArbolSenalador is the destructor method of the class
+ */
 ArbolSenalador::~ArbolSenalador()
 {
     delete[] doubleEntryArray[0];
@@ -21,8 +27,25 @@ void ArbolSenalador::PonerRaiz(int root)
     doubleEntryArray[0][1] = 0;
 }
 
-void ArbolSenalador::AgregarHijo(int)
+void ArbolSenalador::AgregarHijo(int padre, int hijo) // agrega al padre un hijo
 {
+    if (sizeN < sizeM)
+    { // while to find the father and it's index, and then ad at the end of the array the son
+        ++sizeN;
+        int counter = 0;
+        int buffer = doubleEntryArray[counter][0];
+        while (buffer != padre)
+        {
+            ++counter;
+            buffer = doubleEntryArray[counter][0];
+        }
+        doubleEntryArray[sizeN][0] = hijo;
+        doubleEntryArray[sizeN][1] = counter; // counter is index of father
+    }
+    else
+    {
+        // array is already full, cannot put any more elements
+    }
 }
 
 int ArbolSenalador::getRaiz()
@@ -32,8 +55,9 @@ int ArbolSenalador::getRaiz()
 
 int ArbolSenalador::getPadre(int value)
 {
-    int i =0;
-    while(doubleEntryArray[i][0]!=value){
+    int i = 0;
+    while (doubleEntryArray[i][0] != value)
+    {
         ++i;
     }
     int valueFather = doubleEntryArray[doubleEntryArray[i][1]][0];
@@ -47,20 +71,10 @@ void ArbolSenalador::BorrarHoja()
 
 void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
 {
+    // find in array the cell with etiqueta, and
 }
 
 int ArbolSenalador::NumNodos()
 {
     return 0;
 }
-
-
-    /*
-    ArbolSenalador::Node::Node(int newEtiqueta)
-    {
-        etiqueta = newEtiqueta;
-    }
-
-    ArbolSenalador::Node::~Node()
-    {
-    }*/
