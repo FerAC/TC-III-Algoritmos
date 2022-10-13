@@ -91,3 +91,21 @@ int ArbolSenalador::NumNodos()
 {
     return 0;
 }
+
+int ArbolSenalador::buscar(int target)
+{
+    int counter = 0;
+    int buffer = doubleEntryArray[counter][0];
+    int doesExist = 0;
+    while ((buffer != target) && (counter != sizeN - 1) && (doesExist == 0))
+    {
+        ++counter;
+        buffer = doubleEntryArray[counter][0];
+        if (buffer == target)
+        {
+            doesExist = 1;
+        }
+    }
+
+    return doesExist;
+}
