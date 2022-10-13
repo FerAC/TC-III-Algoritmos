@@ -1,6 +1,6 @@
 #include "Tree_senaladorPadre.h"
 
-ArbolSenalador::Etiqueta::Etiqueta()
+ArbolSenalador::Etiqueta::Etiqueta(int value)
 {
 }
 

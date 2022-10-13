@@ -9,7 +9,7 @@ public:
     class Etiqueta
     {
         friend ArbolSenalador;
-        Etiqueta();
+        Etiqueta(int);
         ~Etiqueta();
     };
 
