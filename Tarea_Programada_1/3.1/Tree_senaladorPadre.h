@@ -6,31 +6,34 @@ class ArbolSenalador
 
 public:
 
+    /*
     class Etiqueta
     {
         friend ArbolSenalador;
         Etiqueta(int);
         ~Etiqueta();
     };
+    */
 
-    ArbolSenalador();
+    ArbolSenalador(int);
     ~ArbolSenalador();
-    void PonerRaiz(Etiqueta);
-    void AgregarHijo(Etiqueta);
-    void AgregarHijoMasDerecho(Etiqueta);
+    void PonerRaiz(int);
+    void AgregarHijo(int);
+    void AgregarHijoMasDerecho(int);
     void BorrarHoja();
-    Etiqueta getRaiz();
-    Etiqueta getPadre();
-    Etiqueta getHijoMasIzquierdo();
-    Etiqueta getHermanoDerecho();
+    int getRaiz();
+    int getPadre();
+    int getHijoMasIzquierdo();
+    int getHermanoDerecho();
     void ModificaEtiqueta();
     int NumNodos();
 
 private:
+    int *doubleEntryArray[2];
     class Node
     {
         friend ArbolSenalador;
-        Node(Etiqueta);
+        Node(int);
         ~Node();
     };
 };

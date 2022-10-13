@@ -1,48 +1,27 @@
 #include "Tree_senaladorPadre.h"
 
-ArbolSenalador::Etiqueta::Etiqueta(int value)
-{
-}
 
-ArbolSenalador::Etiqueta::~Etiqueta()
+ArbolSenalador::ArbolSenalador(int const quantityElements)
 {
-}
-
-ArbolSenalador::ArbolSenalador()
-{
+    *doubleEntryArray = new int[quantityElements];
 }
 
 ArbolSenalador::~ArbolSenalador()
 {
 }
 
-void ArbolSenalador::PonerRaiz(Etiqueta)
+void ArbolSenalador::PonerRaiz(int)
 {
 }
 
-void ArbolSenalador::AgregarHijo(Etiqueta)
+void ArbolSenalador::AgregarHijo(int)
 {
 }
 
-void ArbolSenalador::AgregarHijoMasDerecho(Etiqueta)
+void ArbolSenalador::AgregarHijoMasDerecho(int)
 {
 }
 void ArbolSenalador::BorrarHoja()
-{
-}
-
-ArbolSenalador::Etiqueta ArbolSenalador::getRaiz()
-{
-}
-
-ArbolSenalador::Etiqueta ArbolSenalador::getPadre()
-{
-}
-ArbolSenalador::Etiqueta ArbolSenalador::getHijoMasIzquierdo()
-{
-}
-
-ArbolSenalador::Etiqueta ArbolSenalador::getHermanoDerecho()
 {
 }
 
@@ -54,7 +33,7 @@ int ArbolSenalador::NumNodos()
 {
 }
 
-ArbolSenalador::Node::Node(Etiqueta)
+ArbolSenalador::Node::Node(int)
 {
 }
 
