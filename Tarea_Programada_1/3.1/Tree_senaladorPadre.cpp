@@ -71,7 +71,14 @@ void ArbolSenalador::BorrarHoja()
 
 void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
 {
-    // find in array the cell with etiqueta, and
+    int counter = 0;
+    int buffer = doubleEntryArray[counter][0];
+    while (buffer != value)                                 // find in array the cell with etiqueta
+    {
+        ++counter;
+        buffer = doubleEntryArray[counter][0];
+    }
+    doubleEntryArray[counter][0] = newValue;                // change the actual value to newValue
 }
 
 int ArbolSenalador::NumNodos()
