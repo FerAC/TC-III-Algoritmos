@@ -73,13 +73,20 @@ int Cola::Desencolar()
 
 	int bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
 
-	if (head == size - 1)
+	if (isEmpty == 0 && head == end)
 	{
-		head = 0;
+		isEmpty = 1;
 	}
 	else
 	{
-		++head;
+		if (head == size - 1)
+		{
+			head = 0;
+		}
+		else
+		{
+			++head;
+		}
 	}
 	//++head;
 	return bufferPop;
@@ -108,7 +115,7 @@ int Cola::NumElem()
 			}
 			else
 			{
-				return (size - head) + end +1;
+				return (size - head) + end + 1;
 			}
 		}
 	}
