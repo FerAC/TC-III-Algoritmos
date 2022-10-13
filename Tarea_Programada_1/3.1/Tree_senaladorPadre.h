@@ -5,7 +5,6 @@ class ArbolSenalador
 {
 
 public:
-
     /*
     class Etiqueta
     {
@@ -19,22 +18,28 @@ public:
     ~ArbolSenalador();
     void PonerRaiz(int);
     void AgregarHijo(int);
-    void AgregarHijoMasDerecho(int);
+    //void AgregarHijoMasDerecho(int);
     void BorrarHoja();
     int getRaiz();
-    int getPadre();
-    int getHijoMasIzquierdo();
-    int getHermanoDerecho();
-    void ModificaEtiqueta();
+    int getPadre(int);
+    //int getHijoMasIzquierdo();
+    //int getHermanoDerecho();
+    void ModificaEtiqueta(int, int);
     int NumNodos();
 
-private:
-    int **doubleEntryArray;
+/*
     class Node
     {
+        int etiqueta;
         friend ArbolSenalador;
         Node(int);
         ~Node();
     };
+    */
+
+private:
+    int **doubleEntryArray;
+    int sizeM;
+    int sizeN;
 };
 #endif
