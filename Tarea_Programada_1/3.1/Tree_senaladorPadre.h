@@ -29,7 +29,7 @@ public:
     int NumNodos();
 
 private:
-    int *doubleEntryArray[2];
+    int **doubleEntryArray;
     class Node
     {
         friend ArbolSenalador;

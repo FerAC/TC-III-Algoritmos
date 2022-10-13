@@ -3,11 +3,16 @@
 
 ArbolSenalador::ArbolSenalador(int const quantityElements)
 {
-    *doubleEntryArray = new int[quantityElements];
+    doubleEntryArray = new int*[2];
+    doubleEntryArray[0] = new int[quantityElements];
+    doubleEntryArray[1] = new int[quantityElements];
 }
 
 ArbolSenalador::~ArbolSenalador()
 {
+    delete[] doubleEntryArray[0];
+    delete[] doubleEntryArray[1];
+    delete[] doubleEntryArray;
 }
 
 void ArbolSenalador::PonerRaiz(int)
