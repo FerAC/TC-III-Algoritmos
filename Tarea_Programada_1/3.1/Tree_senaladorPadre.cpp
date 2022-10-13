@@ -9,6 +9,8 @@ ArbolSenalador::ArbolSenalador(int const quantityElements)
     doubleEntryArray[0] = new int[quantityElements];
     doubleEntryArray[1] = new int[quantityElements];
     sizeM = quantityElements;
+    sizeN = 0;
+    isEmpty = 0;
 }
 
 /**
@@ -25,13 +27,17 @@ void ArbolSenalador::PonerRaiz(int root)
 {
     doubleEntryArray[0][0] = root;
     doubleEntryArray[0][1] = 0;
+    if (isEmpty == 0)
+    {
+        isEmpty = 1;
+        ++sizeN;
+    }
 }
 
 void ArbolSenalador::AgregarHijo(int padre, int hijo) // agrega al padre un hijo
 {
-    if (sizeN < sizeM)
-    { // while to find the father and it's index, and then ad at the end of the array the son
-        ++sizeN;
+    if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
+    {
         int counter = 0;
         int buffer = doubleEntryArray[counter][0];
         while (buffer != padre)
@@ -41,10 +47,7 @@ void ArbolSenalador::AgregarHijo(int padre, int hijo) // agrega al padre un hijo
         }
         doubleEntryArray[sizeN][0] = hijo;
         doubleEntryArray[sizeN][1] = counter; // counter is index of father
-    }
-    else
-    {
-        // array is already full, cannot put any more elements
+        ++sizeN;                              // once inserted we add 1 to the size
     }
 }
 
@@ -64,21 +67,24 @@ int ArbolSenalador::getPadre(int value)
     return valueFather;
 }
 
-void ArbolSenalador::BorrarHoja()
+void ArbolSenalador::BorrarHoja(int deletedIndex)
 {
-    // borrar nodo, hacer shift para que no haya un hueco
+    --sizeN;
+    doubleEntryArray[deletedIndex][0] = doubleEntryArray[sizeN][0];
+    doubleEntryArray[deletedIndex][1] = doubleEntryArray[sizeN][1];
+    // deleted the element, replace it by the last leaf inserted (last element in the array) and decrement sizeN
 }
 
 void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
 {
     int counter = 0;
     int buffer = doubleEntryArray[counter][0];
-    while (buffer != value)                                 // find in array the cell with etiqueta
+    while (buffer != value) // find in array the cell with etiqueta
     {
         ++counter;
         buffer = doubleEntryArray[counter][0];
     }
-    doubleEntryArray[counter][0] = newValue;                // change the actual value to newValue
+    doubleEntryArray[counter][0] = newValue; // change the actual value to newValue
 }
 
 int ArbolSenalador::NumNodos()

@@ -19,7 +19,7 @@ public:
     void PonerRaiz(int);
     void AgregarHijo(int, int);
     //void AgregarHijoMasDerecho(int);
-    void BorrarHoja();
+    void BorrarHoja(int);
     int getRaiz();
     int getPadre(int);
     //int getHijoMasIzquierdo();
@@ -41,5 +41,6 @@ private:
     int **doubleEntryArray;
     int sizeM;
     int sizeN;
+    int isEmpty;
 };
 #endif
