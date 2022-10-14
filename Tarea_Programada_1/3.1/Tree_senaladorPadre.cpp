@@ -98,11 +98,17 @@ void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the nod
     doubleEntryArray[counter][0] = newValue; // change the actual value to newValue
 }
 
+/**
+ * @brief 
+ */
 int ArbolSenalador::NumNodos()
 {
     return 0;
 }
 
+/**
+ * @brief 
+ */
 void ArbolSenalador::printTree()
 {
     std::cout << "_______________________\n"
