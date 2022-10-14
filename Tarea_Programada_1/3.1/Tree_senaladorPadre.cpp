@@ -32,9 +32,8 @@ void ArbolSenalador::PonerRaiz(int root)
     {
         isEmpty = 1;
         ++sizeN;
-        
     }
-    //std::cout << "Root: " << doubleEntryArray[0][0] << std::endl;
+    // std::cout << "Root: " << doubleEntryArray[0][0] << std::endl;
 }
 
 void ArbolSenalador::AgregarHijo(int indexPadre, int hijo) // agrega al padre un hijo
@@ -53,10 +52,9 @@ void ArbolSenalador::AgregarHijo(int indexPadre, int hijo) // agrega al padre un
         ++sizeN;                              // once inserted we add 1 to the size
         */
 
-       doubleEntryArray[0][sizeN] = hijo;
+        doubleEntryArray[0][sizeN] = hijo;
         doubleEntryArray[1][sizeN] = indexPadre;
         ++sizeN;
-
     }
 }
 
@@ -78,10 +76,17 @@ int ArbolSenalador::getPadre(int value)
 
 void ArbolSenalador::BorrarHoja(int deletedIndex)
 {
-    --sizeN;
-    doubleEntryArray[0][deletedIndex] = doubleEntryArray[0][sizeN];
-    doubleEntryArray[1][deletedIndex] = doubleEntryArray[1][sizeN];
-    // deleted the element, replace it by the last leaf inserted (last element in the array) and decrement sizeN
+    // if it's not the last element in array
+    if (deletedIndex != sizeN - 1)
+    {
+        --sizeN;
+        doubleEntryArray[0][deletedIndex] = doubleEntryArray[0][sizeN];
+        doubleEntryArray[1][deletedIndex] = doubleEntryArray[1][sizeN];
+    }
+    else
+    { // if it's the last element in array
+        --sizeN;
+    }
 }
 
 void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
@@ -120,14 +125,15 @@ int ArbolSenalador::buscar(int target)
     return doesExist;
 } */
 
-void ArbolSenalador::printTree(){
-    std::cout<<"_______________________\n" << std::endl;
+void ArbolSenalador::printTree()
+{
+    std::cout << "_______________________\n"
+              << std::endl;
     int counter = 1;
-    std::cout << "Root: " << doubleEntryArray[0][0] << " index: 0"<<  std::endl;
+    std::cout << "Root: " << doubleEntryArray[0][0] << " index: 0" << std::endl;
     while (counter != sizeN)
     {
-        std::cout << "value: " << doubleEntryArray[0][counter] << ", index: " <<
-        counter << ", father's index: " << doubleEntryArray[1][counter] << std::endl;
+        std::cout << "value: " << doubleEntryArray[0][counter] << ", index: " << counter << ", father's index: " << doubleEntryArray[1][counter] << std::endl;
         ++counter;
     }
 }

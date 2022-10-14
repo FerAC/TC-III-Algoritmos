@@ -1,16 +1,32 @@
 #include "Tree_senaladorPadre.h"
 #include <iostream>
 
-int main(){
+int main()
+{
 
     ArbolSenalador tree(10);
     tree.PonerRaiz(5);
     tree.printTree();
-    tree.AgregarHijo(0,2);
+    tree.AgregarHijo(0, 2);
     tree.printTree();
-    
-    tree.AgregarHijo(0,10);
+
+    tree.AgregarHijo(0, 10);
     tree.printTree();
-    
-    return 0;
+
+    tree.BorrarHoja(1);
+    tree.printTree();
+
+
+    tree.AgregarHijo(0, 1);
+    tree.printTree();
+    // tree.BorrarHoja(2);
+    tree.printTree();
+    tree.AgregarHijo(1, 3);
+    tree.AgregarHijo(1, 125);
+    tree.PonerRaiz(1000);
+    tree.printTree();
+
+    std::cout << "_______________________\n"<< std::endl;
+
+        return 0;
 }
