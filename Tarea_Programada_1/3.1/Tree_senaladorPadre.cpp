@@ -27,7 +27,7 @@ ArbolSenalador::~ArbolSenalador()
 void ArbolSenalador::PonerRaiz(int root)
 {
     doubleEntryArray[0][0] = root;
-    doubleEntryArray[0][1] = 0;
+    doubleEntryArray[1][0] = 0;
     if (isEmpty == 0)
     {
         isEmpty = 1;
@@ -37,12 +37,11 @@ void ArbolSenalador::PonerRaiz(int root)
     //std::cout << "Root: " << doubleEntryArray[0][0] << std::endl;
 }
 
-void ArbolSenalador::AgregarHijo(int padre, int hijo) // agrega al padre un hijo
+void ArbolSenalador::AgregarHijo(int indexPadre, int hijo) // agrega al padre un hijo
 {
-    int counter = 0;
     if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
     {
-        
+        /*int counter = 0;
         int buffer = doubleEntryArray[counter][0];
         while (buffer != padre)
         {
@@ -52,6 +51,12 @@ void ArbolSenalador::AgregarHijo(int padre, int hijo) // agrega al padre un hijo
         doubleEntryArray[sizeN][0] = hijo;
         doubleEntryArray[sizeN][1] = counter; // counter is index of father
         ++sizeN;                              // once inserted we add 1 to the size
+        */
+
+       doubleEntryArray[0][sizeN] = hijo;
+        doubleEntryArray[1][sizeN] = indexPadre;
+        ++sizeN;
+
     }
 }
 
@@ -74,8 +79,8 @@ int ArbolSenalador::getPadre(int value)
 void ArbolSenalador::BorrarHoja(int deletedIndex)
 {
     --sizeN;
-    doubleEntryArray[deletedIndex][0] = doubleEntryArray[sizeN][0];
-    doubleEntryArray[deletedIndex][1] = doubleEntryArray[sizeN][1];
+    doubleEntryArray[0][deletedIndex] = doubleEntryArray[0][sizeN];
+    doubleEntryArray[1][deletedIndex] = doubleEntryArray[1][sizeN];
     // deleted the element, replace it by the last leaf inserted (last element in the array) and decrement sizeN
 }
 
@@ -96,6 +101,7 @@ int ArbolSenalador::NumNodos()
     return 0;
 }
 
+/*
 int ArbolSenalador::buscar(int target)
 {
     int counter = 0;
@@ -112,7 +118,7 @@ int ArbolSenalador::buscar(int target)
     }
 
     return doesExist;
-}
+} */
 
 void ArbolSenalador::printTree(){
     std::cout<<"_______________________\n" << std::endl;
@@ -120,8 +126,8 @@ void ArbolSenalador::printTree(){
     std::cout << "Root: " << doubleEntryArray[0][0] << " index: 0"<<  std::endl;
     while (counter != sizeN)
     {
-        std::cout << "value: " << doubleEntryArray[counter][0] << ", index: " <<
-        counter << ", father's index: " << doubleEntryArray[counter][1] << std::endl;
+        std::cout << "value: " << doubleEntryArray[0][counter] << ", index: " <<
+        counter << ", father's index: " << doubleEntryArray[1][counter] << std::endl;
         ++counter;
     }
 }
