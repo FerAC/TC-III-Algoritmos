@@ -14,7 +14,6 @@ public:
     int getPadre(int);
     void ModificaEtiqueta(int, int);
     int NumNodos();
-    //int buscar(int);
     void printTree();
 
 private:
