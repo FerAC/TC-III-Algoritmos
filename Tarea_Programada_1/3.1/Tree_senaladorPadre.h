@@ -15,6 +15,7 @@ public:
     void ModificaEtiqueta(int, int);
     int NumNodos();
     int buscar(int);
+    void printTree();
 
 private:
     int **doubleEntryArray;

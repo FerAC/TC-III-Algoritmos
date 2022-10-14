@@ -1,4 +1,5 @@
 #include "Tree_senaladorPadre.h"
+#include <iostream>
 
 /**
  * @brief ArbolSenalador is the constructor method of the class
@@ -31,14 +32,17 @@ void ArbolSenalador::PonerRaiz(int root)
     {
         isEmpty = 1;
         ++sizeN;
+        
     }
+    //std::cout << "Root: " << doubleEntryArray[0][0] << std::endl;
 }
 
 void ArbolSenalador::AgregarHijo(int padre, int hijo) // agrega al padre un hijo
 {
+    int counter = 0;
     if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
     {
-        int counter = 0;
+        
         int buffer = doubleEntryArray[counter][0];
         while (buffer != padre)
         {
@@ -108,4 +112,16 @@ int ArbolSenalador::buscar(int target)
     }
 
     return doesExist;
+}
+
+void ArbolSenalador::printTree(){
+    std::cout<<"_______________________\n" << std::endl;
+    int counter = 1;
+    std::cout << "Root: " << doubleEntryArray[0][0] << " index: 0"<<  std::endl;
+    while (counter != sizeN)
+    {
+        std::cout << "value: " << doubleEntryArray[counter][0] << ", index: " <<
+        counter << ", father's index: " << doubleEntryArray[counter][1] << std::endl;
+        ++counter;
+    }
 }
