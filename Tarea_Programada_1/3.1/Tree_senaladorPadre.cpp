@@ -60,6 +60,10 @@ int ArbolSenalador::getRaiz()
     return (doubleEntryArray[0][0]);
 }
 
+/**
+ * @brief 
+ * @param
+ */
 int ArbolSenalador::getPadre(int value)
 {
     int i = 0;
@@ -71,6 +75,10 @@ int ArbolSenalador::getPadre(int value)
     return valueFather;
 }
 
+/**
+ * @brief 
+ * @param
+ */
 void ArbolSenalador::BorrarHoja(int deletedIndex)
 {
     // if it's not the last element in array
@@ -86,6 +94,11 @@ void ArbolSenalador::BorrarHoja(int deletedIndex)
     }
 }
 
+/**
+ * @brief 
+ * @param
+ * @param
+ */
 void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
 {
     int counter = 0;
