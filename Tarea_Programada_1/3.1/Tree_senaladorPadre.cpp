@@ -3,6 +3,7 @@
 
 /**
  * @brief ArbolSenalador is the constructor method of the class
+ * @param quantityElements quantityElements is a const int, it's the max size of the array
  */
 ArbolSenalador::ArbolSenalador(int const quantityElements)
 {
