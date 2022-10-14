@@ -25,6 +25,10 @@ ArbolSenalador::~ArbolSenalador()
     delete[] doubleEntryArray;
 }
 
+/**
+ * @brief PonerRaiz is a function that change the actual value of the root, or add the first value to the tree
+ * @param root root is the new value  of the root
+ */
 void ArbolSenalador::PonerRaiz(int root)
 {
     doubleEntryArray[0][0] = root;
@@ -36,6 +40,11 @@ void ArbolSenalador::PonerRaiz(int root)
     }
 }
 
+/**
+ * @brief AgregarHijo add a new element to the tree
+ * @param indexPadre indexPadre is the index of the father of the new node
+ * @param hijo hijo is the value of the new element inserted in the tree
+ */
 void ArbolSenalador::AgregarHijo(int indexPadre, int hijo) // agrega al padre un hijo
 {
     if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
