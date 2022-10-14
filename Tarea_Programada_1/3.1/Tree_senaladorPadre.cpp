@@ -56,7 +56,7 @@ void ArbolSenalador::AgregarHijo(int indexPadre, int hijo) // agrega al padre un
 }
 
 /**
- * @brief 
+ * @brief
  * @return
  */
 int ArbolSenalador::getRaiz()
@@ -65,7 +65,7 @@ int ArbolSenalador::getRaiz()
 }
 
 /**
- * @brief 
+ * @brief
  * @param
  * @return
  */
@@ -81,7 +81,7 @@ int ArbolSenalador::getPadre(int value)
 }
 
 /**
- * @brief 
+ * @brief
  * @param
  */
 void ArbolSenalador::BorrarHoja(int deletedIndex)
@@ -100,7 +100,7 @@ void ArbolSenalador::BorrarHoja(int deletedIndex)
 }
 
 /**
- * @brief 
+ * @brief
  * @param
  * @param
  */
@@ -117,7 +117,7 @@ void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the nod
 }
 
 /**
- * @brief 
+ * @brief
  * @return
  */
 int ArbolSenalador::NumNodos()
@@ -126,7 +126,7 @@ int ArbolSenalador::NumNodos()
 }
 
 /**
- * @brief 
+ * @brief
  */
 void ArbolSenalador::printTree()
 {
