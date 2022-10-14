@@ -55,6 +55,10 @@ void ArbolSenalador::AgregarHijo(int indexPadre, int hijo) // agrega al padre un
     }
 }
 
+/**
+ * @brief 
+ * @return
+ */
 int ArbolSenalador::getRaiz()
 {
     return (doubleEntryArray[0][0]);
@@ -63,6 +67,7 @@ int ArbolSenalador::getRaiz()
 /**
  * @brief 
  * @param
+ * @return
  */
 int ArbolSenalador::getPadre(int value)
 {
@@ -113,6 +118,7 @@ void ArbolSenalador::ModificaEtiqueta(int value, int newValue) // change the nod
 
 /**
  * @brief 
+ * @return
  */
 int ArbolSenalador::NumNodos()
 {
