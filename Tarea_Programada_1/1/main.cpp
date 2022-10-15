@@ -2,8 +2,8 @@
 // asan: g++ mainCola.cpp Cola.cpp -g -fsanitize=address -o code0.out
 // ubsan: g++ mainCola.cpp Cola.cpp -g -fsanitize=undefined -o code1.out
 // leaksan: g++ mainCola.cpp Cola.cpp -g -fsanitize=leak -o code2.out
-#include <iostream>
-#include "Cola.h"
+
+#include "Cola.hpp"
 
 int main()
 {
