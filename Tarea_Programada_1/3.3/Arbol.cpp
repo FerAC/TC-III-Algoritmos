@@ -317,26 +317,10 @@ class Arbol
             return Nodo(nodo.nodoConcreto->hermanoDerecho);
         }
 
-        /// @brief Recupera la cantidad de nodos existentes en este arbol, a partir de cierto nodo
-        /// @param nodoInicial Nodo del cual partir para contar los nodos existentes en el árbol
-        /// @return Cantidad de nodos existentes en todo el sub-árbol (incluyendo al nodo inicial)
-        /// @remarks Requiere que el nodo inicial no sea nulo
+        /// @brief Recupera la cantidad de nodos existentes en este arbol
+        /// @return Cantidad de nodos existentes en todo el árbol
         inline const size_t NumNodos(const Nodo& nodoInicial) const
-        {
-            if (nodoInicial.nodoConcreto == nullptr)
-                throw NodoConcretoInvalido();
-            
-            if (this->raiz == nullptr)
-                throw RaizNula();
-            
-            NodoConcreto* it = nodoInicial.nodoConcreto;
-
-            if (this->raiz == it)
-                return this->cantidadNodos;
-
-            // TODO: Usar cola para recorrido por niveles
-            return 0;
-        }
+        {return this->cantidadNodos;}
 };
 
 /// @brief Mini demo, incompleta hasta terminar de implementar el árbol
