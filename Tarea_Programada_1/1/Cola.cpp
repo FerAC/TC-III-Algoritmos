@@ -1,5 +1,9 @@
 #include "Cola.h"
 
+/**
+ * @brief Cola es el metodo constructor de la clase Cola
+ * @param maxSize maxSize esel unico parametro del constructor, es el valor "M", el tamaño maximo al cual puede llegar la cola
+*/
 Cola::Cola(int maxSize)
 {
 	size = maxSize;
@@ -9,6 +13,9 @@ Cola::Cola(int maxSize)
 	isEmpty = true;
 }
 
+/**
+ * @brief ~Cola es el destructor de la clase Cola, permite destruir la estrucutra de datos y liberar la memoria
+*/
 Cola::~Cola()
 {
 	delete[] arrayCircular;
@@ -16,6 +23,8 @@ Cola::~Cola()
 
 /**
  * @brief El metodo Encolar permite hacer un push a la cola, agrega un element al final de la cola
+ * @param newElement newElement es el unico parametro del metodo encolar, es el valor que se tiene que agregar a la cola
+ * @remarks se requiere que la cola este inicializada
  */
 void Cola::Encolar(int newElement)
 {
@@ -67,6 +76,7 @@ void Cola::Encolar(int newElement)
 /**
  * @brief El metodo Desencolar permite hacer un pop a la cola, quita el elemento del inicio de la cola
  * @return El metodo devuelve un int que contiene el valor eliminado de la cola
+ * @remarks Solo se puede desencolar de una cola inicializada no vacia
  */
 int Cola::Desencolar()
 {
@@ -94,6 +104,8 @@ int Cola::Desencolar()
 
 /**
  * @brief El metodo NumElem devuelve la cantidad de elemento en el array circular
+ * @return El metodo devuelve un entero que contiene la cantidad de elementos en la cola
+ * @remarks el metodo requiere tener una cola inicializada, que sea vacia o no
  */
 int Cola::NumElem()
 {
