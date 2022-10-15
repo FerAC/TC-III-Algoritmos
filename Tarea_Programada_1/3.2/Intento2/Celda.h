@@ -36,6 +36,10 @@ class Celda {
 		T * getEtiqueta() {
 			return &etiqueta;
 		}
+		
+		T getEtiqueta(int noSeUsa){
+			return etiqueta;
+		}
 
 		Celda* getSiguiente() {
 			return siguiente;

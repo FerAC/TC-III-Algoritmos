@@ -129,6 +129,51 @@ class Lista {
 				return temp; 
 			}
 		}
+		
+		/*
+		Celda<T>  buscarPuntero(const T& elemento) {
+			int encontrado = 0;
+			size_t i = 0;
+			Celda<T> temp = primera;
+			// TODO: MAS FACIL MODULARIZAR EN FOR
+			while (i < contador && !encontrado) {
+				if (temp->getEtiqueta() == elemento) {
+					encontrado = 1;
+				} else if (i + 1 < contador) {
+					temp = temp.getSiguiente();
+				}
+				++i;
+			}
+			
+			if (!encontrado) {
+				return nullptr;
+			} else {
+				return temp; 
+			}
+		}
+		*/
+		
+		Celda<T> * buscar(int elemento){
+			int encontrado = 0;
+			size_t i = 0;
+			Celda<T>* temp = primera;
+			// TODO: MAS FACIL MODULARIZAR EN FOR
+			while (i < contador && !encontrado) {
+				if (temp->getEtiqueta()->getEtiqueta() == elemento) {
+					encontrado = 1;
+				} else if (i + 1 < contador) {
+					temp = temp->getSiguiente();
+				}
+				++i;
+			}
+			
+			if (!encontrado) {
+				return nullptr;
+			} else {
+				return temp; 
+			}
+		}
+			
 
 		void imprimir() {
 			for (Celda<T>* iter = this->primera; iter != nullptr; iter = iter->getSiguiente()) {

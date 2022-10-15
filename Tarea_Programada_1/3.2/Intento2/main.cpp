@@ -34,6 +34,25 @@ int main(){
 	
 	std::cout<< "////////////////////LISTA COMPLETA////////////////////////////////" << std::endl;
 	arbol.imprimir();
+	
+	std::cout<< "Padre de " << arbol.getLP()->getPrimera()->getSiguiente()->getSiguiente()->getEtiqueta()->getEtiqueta() << ": " ;
+	Nodo * nodoP = arbol.padre(arbol.getLP()->getPrimera()->getSiguiente()->getSiguiente()->getEtiqueta());
+	if(nodoP!=nullptr){
+		//std::cout<< "Existe nodoP " << std::endl;
+	} else{
+		std::cout<< "NO existe nodoP " << std::endl;
+	}
+	std::cout<< nodoP->getEtiqueta() << std::endl; 
+	std::cout<< "Num Nodos " << arbol.numNodos() << std::endl;
+	
+	Nodo * hermano = arbol.hermanoDerecho(arbol.getLP()->buscar(6));
+	Celda<Nodo> * a = arbol.getLP()->buscar(6);
+	
+	std::cout<< "El hermano der de "<<  a->getEtiqueta()->getEtiqueta() <<" es : ";
+	if(hermano!=nullptr){
+		std::cout<< hermano->getEtiqueta() << std::endl;
+	}
+	//std::cout<< "x" << std::endl;
 	/*
 	arbol.agregarHijo(*(arbol.getLP()->getPrimera()->getSiguiente()->getSiguiente()->getEtiqueta()), 5);
 	arbol.agregarHijo(*(arbol.getLP()->getPrimera()->getSiguiente()->getSiguiente()), 6);

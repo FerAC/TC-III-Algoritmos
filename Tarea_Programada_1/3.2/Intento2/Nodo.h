@@ -23,6 +23,7 @@ class Nodo{
 		void setEtiqueta(int);
 		ostream & imprimir(ostream&); 
 		void imprimirValor();
+		int operator==(Nodo); 
 		 
 	
 };

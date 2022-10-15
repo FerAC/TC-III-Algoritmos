@@ -37,6 +37,13 @@ void Nodo::imprimirValor(){
 	std::cout<< etiqueta << std::endl;
 }
 
+int Nodo::operator==(Nodo nodo2){
+	if(this->etiqueta == nodo2.getEtiqueta()){
+		return 1;
+	}
+	return 0;
+}
+
 int Nodo::getEtiqueta(){
 	return etiqueta;
 }
