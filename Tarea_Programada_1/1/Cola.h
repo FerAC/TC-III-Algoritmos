@@ -18,6 +18,6 @@ class Cola{
         int Desencolar();       // Desencolar
         int NumElem();          // Size
         void vaciar();          // free the memory
-        int vacia();            // isEmpty
+        bool vacia();            // isEmpty
 };
 #endif

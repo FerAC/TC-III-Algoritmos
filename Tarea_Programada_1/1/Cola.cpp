@@ -120,9 +120,9 @@ void Cola::vaciar(){
 }
 
 /**
- * @brief 
- * @return
+ * @brief vacia permite saber si la Cola esta vacia o no
+ * @return	vacia devuelve un booleano, devuelve 1 si la Cola esta vacia, sino devuelve un 0
 */
-int Cola::vacia(){
-
+bool Cola::vacia(){
+	return this->NumElem()?0:1;
 }
