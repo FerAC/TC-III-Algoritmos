@@ -7,7 +7,7 @@
 Cola::Cola(std::size_t maxSize)
 {
 	size = maxSize;
-	arrayCircular = new int[size + 1];
+	arrayCircular = new Cola::elemento[size + 1];
 	isEmpty = true;
 }
 
@@ -24,7 +24,7 @@ Cola::~Cola()
  * @param newElement newElement es el unico parametro del metodo encolar, es el valor que se tiene que agregar a la cola
  * @remarks se requiere que la cola este inicializada
  */
-void Cola::Encolar(int newElement)
+void Cola::Encolar(Cola::elemento newElement)
 {
 
 	if (isEmpty == false) // normal add
@@ -56,10 +56,10 @@ void Cola::Encolar(int newElement)
  * @return El metodo devuelve un int que contiene el valor eliminado de la cola
  * @remarks Solo se puede desencolar de una cola inicializada no vacia
  */
-int Cola::Desencolar()
+Cola::elemento Cola::Desencolar()
 {
 
-	int bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
+	Cola::elemento bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
 
 	if (isEmpty == 0 && head == end)	// en el caso que se retira el ultimo elemento de la cola
 	{
