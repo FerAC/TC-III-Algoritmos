@@ -8,8 +8,6 @@ Cola::Cola(int maxSize)
 {
 	size = maxSize;
 	arrayCircular = new int[size + 1];
-	// head = 0;
-	// end = size - 1;
 	isEmpty = true;
 }
 
@@ -51,26 +49,6 @@ void Cola::Encolar(int newElement)
 		arrayCircular[0] = newElement;
 		isEmpty = 0;
 	}
-
-	// check if the queue is not full
-	// if (this->NumElem() != size)
-	//{
-
-	//	if (end == size - 1)
-	//	{
-	//		end = 0;
-	//	}
-	//	else
-	//	{
-	//		++end;
-	//	}
-
-	//	arrayCircular[end] = newElement;
-	//}
-	// else
-	//{
-	// cannot insert element, queue already full
-	//}
 }
 
 /**
@@ -98,7 +76,6 @@ int Cola::Desencolar()
 			++head;
 		}
 	}
-	//++head;
 	return bufferPop;
 }
 
