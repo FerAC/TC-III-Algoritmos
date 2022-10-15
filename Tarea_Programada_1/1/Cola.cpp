@@ -2,9 +2,9 @@
 
 /**
  * @brief Cola es el metodo constructor de la clase Cola
- * @param maxSize maxSize esel unico parametro del constructor, es el valor "M", el tamaño maximo al cual puede llegar la cola
+ * @param maxSize maxSize es de tipo size_t, es el unico parametro del constructor, es el valor "M", el tamaño maximo al cual puede llegar la cola
 */
-Cola::Cola(int maxSize)
+Cola::Cola(std::size_t maxSize)
 {
 	size = maxSize;
 	arrayCircular = new int[size + 1];
@@ -61,7 +61,7 @@ int Cola::Desencolar()
 
 	int bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
 
-	if (isEmpty == 0 && head == end)
+	if (isEmpty == 0 && head == end)	// en el caso que se retira el ultimo elemento de la cola
 	{
 		isEmpty = 1;
 	}
@@ -108,4 +108,21 @@ int Cola::NumElem()
 			}
 		}
 	}
+}
+
+/**
+ * @brief vaciar vacia el contenido de la Cola, para isEmpty a 1 y re-inicializa los valores de head y end
+ */
+void Cola::vaciar(){
+	isEmpty = true;
+	head = 0;
+	end = 0;
+}
+
+/**
+ * @brief 
+ * @return
+*/
+int Cola::vacia(){
+
 }
