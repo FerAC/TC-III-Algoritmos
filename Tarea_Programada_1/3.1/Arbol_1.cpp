@@ -134,17 +134,20 @@ public:
      * @brief
      * @param
      */
-    void BorrarHoja(int deletedIndex)
+    void BorrarHoja(int indiceBorrado)
     {
-        // if it's not the last element in array
-        if (deletedIndex != sizeN - 1)
-        {
+
+        // si el elemento borrado es el ultimo
+        if(indiceBorrado == sizeN-1){
             --sizeN;
-            doubleEntryArray[0][deletedIndex] = doubleEntryArray[0][sizeN];
-            doubleEntryArray[1][deletedIndex] = doubleEntryArray[1][sizeN];
-        }
-        else
-        { // if it's the last element in array
+        }else{
+            // shift todos los elementos a la izquierda, y si el padre es mayor al indiceBorrado entonces dec. indice del padre
+            int i = indiceBorrado;
+            // sizeN-2 es el "nuevo" ultimo elemento del array
+            while(i!=sizeN-2){
+                doubleEntryArray[i][0] = doubleEntryArray[i+1][0];
+                doubleEntryArray[i][1] = doubleEntryArray[i+1][1];
+            }
             --sizeN;
         }
     }
