@@ -153,27 +153,39 @@ public:
      * @brief
      * @param
      */
-    void BorrarHoja(int indiceBorrado)
+    void BorrarHoja(Nodo nodoBorrado)
     {
 
         // si el elemento borrado es el ultimo
-        if (indiceBorrado == sizeN - 1)
+        if (nodoBorrado.getValor() != arregloArbol[actual-1])
         {
-            --sizeN;
-        }
-        else
-        {
+        //    --actual;
+       // }
+       // else
+       // {
             // shift todos los elementos a la izquierda, y si el padre es mayor al indiceBorrado entonces dec. indice del padre
-            int i = indiceBorrado;
-            // sizeN-2 es el "nuevo" ultimo elemento del array
-            while (i != sizeN - 2)
-            {
-                doubleEntryArray[0][i] = doubleEntryArray[0][i + 1];
-                doubleEntryArray[1][i] = doubleEntryArray[1][i + 1];
-                ++i;
+            int indiceBorrado = 0; 
+            while(arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor){
+                ++indiceBorrado;
             }
-            --sizeN;
+
+            int indice = indiceBorrado;
+            // sizeN-2 es el "nuevo" ultimo elemento del array
+            while (indice != actual - 2)
+            {
+                if(arregloArbol[indice + 1].getIndicePadre()>indiceBorrado){
+                    arregloArbol[indice] = arregloArbol[indice + 1];
+                    arregloArbol[indice].setPadre(arregloArbol[indice + 1].getIndicePadre() - 1);
+                    //hay que decrementarlo de 1
+                } else{// solo hacer shift, no se occupa decrementar el indice del padre
+                    arregloArbol[indice] = arregloArbol[indice + 1];
+                }
+                //doubleEntryArray[0][i] = doubleEntryArray[0][i + 1];
+                //doubleEntryArray[1][i] = doubleEntryArray[1][i + 1];
+                ++indice;
+            }  
         }
+        --actual;
     }
 
     /**
