@@ -1,6 +1,44 @@
 //#include "Tree_senaladorPadre.h"
 #include <iostream>
 
+class Nodo
+{
+    friend class ArbolSenalador;
+
+private:
+    int indicePadre;
+    int valor;
+
+    void setValor(int nuevoValor)
+    {
+        valor = nuevoValor;
+    }
+
+    int getValor()
+    {
+        return valor;
+    }
+
+    void setPadre(int nuevoIndice)
+    {
+        indicePadre = nuevoIndice;
+    }
+
+    int getIndicePadre()
+    {
+        return indicePadre;
+    }
+
+    //  void
+
+    Nodo(int indice, int valor)
+    {
+        indicePadre = indice;
+    }
+
+    ~Nodo() {}
+};
+
 class ArbolSenalador
 {
 
@@ -12,8 +50,8 @@ public:
     ArbolSenalador(int const cantidad)
     {
         arregloArbol = new Nodo[cantidad];
-        //doubleEntryArray[0] = new int[quantityElements];
-        //doubleEntryArray[1] = new int[quantityElements];
+        // doubleEntryArray[0] = new int[quantityElements];
+        // doubleEntryArray[1] = new int[quantityElements];
         maximo = cantidad;
         actual = 0;
         esVacio = 0;
@@ -24,10 +62,10 @@ public:
      */
     ~ArbolSenalador()
     {
-        //delete[] doubleEntryArray[0];
-        //delete[] doubleEntryArray[1];
-       // delete[] doubleEntryArray;    
-       delete[] arregloArbol;
+        // delete[] doubleEntryArray[0];
+        // delete[] doubleEntryArray[1];
+        // delete[] doubleEntryArray;
+        delete[] arregloArbol;
     }
 
     /**
@@ -36,8 +74,8 @@ public:
      */
     void PonerRaiz(int root)
     {
-       // doubleEntryArray[0]. = root;
-        //doubleEntryArray[1][0] = 0;
+        // doubleEntryArray[0]. = root;
+        // doubleEntryArray[1][0] = 0;
         arregloArbol[0].setValor(root);
         if (esVacio == 0)
         {
@@ -53,16 +91,17 @@ public:
      */
     void AgregarHijo(int indicePadre, int valorHijo) // agrega al padre un hijo
     {
-        if(actual < maximo){
+        if (actual < maximo)
+        {
             arregloArbol[actual].setValor(valorHijo);
             arregloArbol[actual].setPadre(indicePadre);
             ++actual;
         }
-       // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
+        // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
         //{
-          //  doubleEntryArray[0][sizeN] = hijo;
-           // doubleEntryArray[1][sizeN] = indexPadre;
-           // ++sizeN;
+        //  doubleEntryArray[0][sizeN] = hijo;
+        // doubleEntryArray[1][sizeN] = indexPadre;
+        // ++sizeN;
         //}
     }
 
@@ -73,13 +112,14 @@ public:
      */
     void AgregarHijoMasDerecho(int indexPadre, int hijo) // agrega al padre un hijo
     {
-        //if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
+        // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
         //{
-          //  doubleEntryArray[0][sizeN] = hijo;
-            //doubleEntryArray[1][sizeN] = indexPadre;
-            //++sizeN;
+        //   doubleEntryArray[0][sizeN] = hijo;
+        // doubleEntryArray[1][sizeN] = indexPadre;
+        //++sizeN;
         //}
-        if(actual < maximo){
+        if (actual < maximo)
+        {
             arregloArbol[actual].setValor(valorHijo);
             arregloArbol[actual].setPadre(indicePadre);
             ++actual;
@@ -103,12 +143,12 @@ public:
     Nodo Padre(Nodo hijo)
     {
         // int i = 0;
-        //while (i != hijo.getIndicePadre())
+        // while (i != hijo.getIndicePadre())
         //{
-          ///  ++i;
+        ///  ++i;
         //}
         return arregloArbol[hijo.getIndicePadre()];
-       // return valueFather;
+        // return valueFather;
     }
 
     /**
@@ -135,8 +175,9 @@ public:
     {
         int indixePadre = hermano.getIndicePadre();
         int indice = 0;
-        
-        while(arregloArbol[indice].getValor() != hermano.getValor()){
+
+        while (arregloArbol[indice].getValor() != hermano.getValor())
+        {
             ++indice;
         }
 
@@ -157,15 +198,16 @@ public:
     {
 
         // si el elemento borrado es el ultimo
-        if (nodoBorrado.getValor() != arregloArbol[actual-1])
+        if (nodoBorrado.getValor() != arregloArbol[actual - 1])
         {
-        //    --actual;
-       // }
-       // else
-       // {
+            //    --actual;
+            // }
+            // else
+            // {
             // shift todos los elementos a la izquierda, y si el padre es mayor al indiceBorrado entonces dec. indice del padre
-            int indiceBorrado = 0; 
-            while(arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor){
+            int indiceBorrado = 0;
+            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor)
+            {
                 ++indiceBorrado;
             }
 
@@ -173,17 +215,20 @@ public:
             // sizeN-2 es el "nuevo" ultimo elemento del array
             while (indice != actual - 2)
             {
-                if(arregloArbol[indice + 1].getIndicePadre()>indiceBorrado){
+                if (arregloArbol[indice + 1].getIndicePadre() > indiceBorrado)
+                {
                     arregloArbol[indice] = arregloArbol[indice + 1];
                     arregloArbol[indice].setPadre(arregloArbol[indice + 1].getIndicePadre() - 1);
-                    //hay que decrementarlo de 1
-                } else{// solo hacer shift, no se occupa decrementar el indice del padre
+                    // hay que decrementarlo de 1
+                }
+                else
+                { // solo hacer shift, no se occupa decrementar el indice del padre
                     arregloArbol[indice] = arregloArbol[indice + 1];
                 }
-                //doubleEntryArray[0][i] = doubleEntryArray[0][i + 1];
-                //doubleEntryArray[1][i] = doubleEntryArray[1][i + 1];
+                // doubleEntryArray[0][i] = doubleEntryArray[0][i + 1];
+                // doubleEntryArray[1][i] = doubleEntryArray[1][i + 1];
                 ++indice;
-            }  
+            }
         }
         --actual;
     }
@@ -204,16 +249,17 @@ public:
      */
     void ModificaEtiqueta(Nodo nodo, int nuevoValor) // change the node with value, to newValue
     {
-        //int counter = 0;
-        //int buffer = doubleEntryArray[0][counter];
-        //while (buffer != value) // find in array the cell with etiqueta
+        // int counter = 0;
+        // int buffer = doubleEntryArray[0][counter];
+        // while (buffer != value) // find in array the cell with etiqueta
         //{
-          //  ++counter;
-            //buffer = doubleEntryArray[0][counter];
+        //   ++counter;
+        // buffer = doubleEntryArray[0][counter];
         //}
-        //doubleEntryArray[0][counter] = newValue; // change the actual value to newValue
+        // doubleEntryArray[0][counter] = newValue; // change the actual value to newValue
         int indice = 0;
-        while(arregloArbol[indice].getValor() != nodo.getValor()){
+        while (arregloArbol[indice].getValor() != nodo.getValor())
+        {
             ++indice;
         }
         arregloArbol[indice].setValor(nuevoValor);
@@ -227,7 +273,6 @@ public:
     {
         return actual;
     }
-
 
     /*
     void printTree()
@@ -250,75 +295,33 @@ private:
     int esVacio;
 };
 
-class Nodo
-{
-    friend ArbolSenalador 
-
-private: 
-    int indicePadre;
-    int valor;
-
-    void setValor(int nuevoValor){
-        valor = nuevoValor;
-    }
-
-    int getValor(){
-        return valor;
-    }
-
-    void setPadre(int nuevoIndice){
-        indicePadre = nuevoIndice;
-    }
-
-    int getIndicePadre(){
-        return indicePadre;
-    }
-
-  //  void 
-
-    Nodo(int indice, int valor)
-    {
-        indicePadre = indice;
-    }
-
-    ~Nodo() {}
-};
-
-//Nodo::Nodo(/* args */)
-//{
-//}
-
-//Nodo::~Nodo()
-//{
-//}
-
 int main()
 {
 
-/*
-    ArbolSenalador tree(10);
-    tree.PonerRaiz(5);
-    tree.AgregarHijo(0, 2);
-    tree.AgregarHijo(1, 3);
-    tree.AgregarHijo(1, 125);
-    // tree.PonerRaiz(1000);
+    /*
+        ArbolSenalador tree(10);
+        tree.PonerRaiz(5);
+        tree.AgregarHijo(0, 2);
+        tree.AgregarHijo(1, 3);
+        tree.AgregarHijo(1, 125);
+        // tree.PonerRaiz(1000);
 
-    tree.AgregarHijo(0, 25);
-    tree.AgregarHijo(4, 12);
-    tree.AgregarHijo(3, 7);
-    tree.AgregarHijo(1, 76);
-    tree.AgregarHijo(2, 0);
-    tree.AgregarHijo(3, 65);
-    tree.BorrarHoja(7);
-    tree.BorrarHoja(8);
-    tree.AgregarHijo(0, 12343); // extra element
-    tree.ModificaEtiqueta(12343, 999);
-    
-    std::cout << tree.Etiqueta(2) << std::endl;
-    std::cout << tree.Padre(2) << std::endl;
-    
-    */
-    //tree.printTree();
+        tree.AgregarHijo(0, 25);
+        tree.AgregarHijo(4, 12);
+        tree.AgregarHijo(3, 7);
+        tree.AgregarHijo(1, 76);
+        tree.AgregarHijo(2, 0);
+        tree.AgregarHijo(3, 65);
+        tree.BorrarHoja(7);
+        tree.BorrarHoja(8);
+        tree.AgregarHijo(0, 12343); // extra element
+        tree.ModificaEtiqueta(12343, 999);
+
+        std::cout << tree.Etiqueta(2) << std::endl;
+        std::cout << tree.Padre(2) << std::endl;
+
+        */
+    // tree.printTree();
 
     std::cout << "_______________________\n"
               << std::endl;
