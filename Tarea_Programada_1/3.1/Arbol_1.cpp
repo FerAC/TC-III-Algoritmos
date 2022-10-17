@@ -102,12 +102,12 @@ public:
      */
     Nodo Padre(Nodo hijo)
     {
-        int i = 0;
-        while (arregloArbol[i] != hijo)
-        {
-            ++i;
-        }
-        return arregloArbol[i];
+        // int i = 0;
+        //while (i != hijo.getIndicePadre())
+        //{
+          ///  ++i;
+        //}
+        return arregloArbol[hijo.getIndicePadre()];
        // return valueFather;
     }
 
@@ -116,14 +116,14 @@ public:
      * @param
      * @return
      */
-    int HijoMasIzquierdo(int indexPadre)
+    Nodo HijoMasIzquierdo(Nodo padre)
     {
         int i = 0;
-        while (doubleEntryArray[1][i] != indexPadre)
+        while (arregloArbol[arregloArbol[i].getIndicePadre()].getValor() != padre.getValor())
         {
             ++i;
         }
-        return doubleEntryArray[0][i];
+        return arregloArbol[i];
     }
 
     /**
@@ -131,15 +131,22 @@ public:
      * @param
      * @return
      */
-    int HermanoDerecho(int indexHermanoIzquierdo)
+    Nodo HermanoDerecho(Nodo hermano)
     {
-        int indexPadre = doubleEntryArray[1][indexHermanoIzquierdo];
-        int i = indexHermanoIzquierdo + 1;
-        while (doubleEntryArray[1][i] != indexPadre)
-        {
-            ++i;
+        int indixePadre = hermano.getIndicePadre();
+        int indice = 0;
+        
+        while(arregloArbol[indice].getValor() != hermano.getValor()){
+            ++indice;
         }
-        return doubleEntryArray[0][i];
+
+        ++indice;
+
+        while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre())
+        {
+            ++indice;
+        }
+        return arregloArbol[indice];
     }
 
     /**
@@ -204,9 +211,8 @@ public:
         return 0;
     }
 
-    /**
-     * @brief
-     */
+
+    /*
     void printTree()
     {
         std::cout << "_______________________\n"
@@ -218,7 +224,7 @@ public:
             std::cout << "value: " << doubleEntryArray[0][counter] << ", index: " << counter << ", father's index: " << doubleEntryArray[1][counter] << std::endl;
             ++counter;
         }
-    }
+    }*/
 
 private:
     Nodo *arregloArbol;
@@ -245,6 +251,10 @@ private:
 
     void setPadre(int nuevoIndice){
         indicePadre = nuevoIndice;
+    }
+
+    int getIndicePadre(){
+        return indicePadre;
     }
 
   //  void 
