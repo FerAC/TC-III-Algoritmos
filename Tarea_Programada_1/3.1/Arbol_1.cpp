@@ -7,6 +7,17 @@ class Nodo
 private:
     int indicePadre;
     int valor;
+    int indice;
+
+    void setIndice(int nuevoIndice)
+    {
+        indice = nuevoIndice;
+    }
+
+    int getIndice()
+    {
+        return indice;
+    }
 
     void setValor(int nuevoValor)
     {
@@ -28,10 +39,13 @@ private:
         return indicePadre;
     }
 
-    Nodo(int indice, int valor)
+public:
+    Nodo(Nodo padre, int elValor)
     {
-        indicePadre = indice;
+        valor = elValor;
+        indicePadre = padre.getIndice();
     }
+
     Nodo() {}
 
     ~Nodo() {}
@@ -68,6 +82,7 @@ public:
     void PonerRaiz(int root)
     {
         arregloArbol[0].setValor(root);
+        arregloArbol[0].setIndice(0);
         if (esVacio == 0)
         {
             esVacio = 1;
@@ -93,6 +108,7 @@ public:
         {
             arregloArbol[actual].setValor(valorHijo);
             arregloArbol[actual].setPadre(indice);
+            arregloArbol[actual].setIndice(actual);
             ++actual;
         }
     }
@@ -115,6 +131,7 @@ public:
         {
             arregloArbol[actual].setValor(valorHijo);
             arregloArbol[actual].setPadre(indice);
+            arregloArbol[actual].setIndice(actual);
             ++actual;
         }
     }
@@ -201,11 +218,13 @@ public:
                 {
                     arregloArbol[indice] = arregloArbol[indice + 1];
                     arregloArbol[indice].setPadre(arregloArbol[indice + 1].getIndicePadre() - 1);
+                    arregloArbol[indice].setIndice(indice);
                     // hay que decrementarlo de 1
                 }
                 else
                 { // solo hacer shift, no se occupa decrementar el indice del padre
                     arregloArbol[indice] = arregloArbol[indice + 1];
+                    arregloArbol[indice].setIndice(indice);
                 }
                 ++indice;
             }
@@ -255,7 +274,7 @@ private:
 
 int main()
 {
-
+    
     /*
         ArbolSenalador tree(10);
         tree.PonerRaiz(5);
@@ -280,6 +299,16 @@ int main()
 
         */
     // tree.printTree();
+
+    ArbolSenalador arbol(10);
+    arbol.PonerRaiz(100);
+    std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
+
+    arbol.AgregarHijo(123, arbol.Raiz());
+    arbol.AgregarHijo(22, arbol.Raiz());
+
+
+
 
     std::cout << "_______________________\n"
               << std::endl;
