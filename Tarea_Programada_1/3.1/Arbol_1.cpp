@@ -73,21 +73,26 @@ public:
      */
     void AgregarHijoMasDerecho(int indexPadre, int hijo) // agrega al padre un hijo
     {
-        if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
-        {
-            doubleEntryArray[0][sizeN] = hijo;
-            doubleEntryArray[1][sizeN] = indexPadre;
-            ++sizeN;
+        //if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
+        //{
+          //  doubleEntryArray[0][sizeN] = hijo;
+            //doubleEntryArray[1][sizeN] = indexPadre;
+            //++sizeN;
+        //}
+        if(actual < maximo){
+            arregloArbol[actual].setValor(valorHijo);
+            arregloArbol[actual].setPadre(indicePadre);
+            ++actual;
         }
     }
 
     /**
-     * @brief
-     * @return
+     * @brief Raiz permite acceder a la Raiz del arbol
+     * @return el metodo Raiz devuelve el Nodo raiz del arbol
      */
-    int Raiz()
+    Nodo Raiz()
     {
-        return (doubleEntryArray[0][0]);
+        return arregloArbol[0];
     }
 
     /**
@@ -95,15 +100,15 @@ public:
      * @param
      * @return
      */
-    int Padre(int value)
+    Nodo Padre(Nodo hijo)
     {
         int i = 0;
-        while (doubleEntryArray[0][i] != value)
+        while (arregloArbol[i] != hijo)
         {
             ++i;
         }
-        int valueFather = doubleEntryArray[doubleEntryArray[1][i]][0];
-        return valueFather;
+        return arregloArbol[i];
+       // return valueFather;
     }
 
     /**
