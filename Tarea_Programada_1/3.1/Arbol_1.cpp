@@ -111,7 +111,7 @@ public:
         {
             ++i;
         }
-        return i;
+        return doubleEntryArray[0][i];
     }
 
     /**
@@ -127,7 +127,7 @@ public:
         {
             ++i;
         }
-        return i;
+        return doubleEntryArray[0][i];
     }
 
     /**
@@ -229,6 +229,9 @@ int main()
     tree.BorrarHoja(7);
     tree.BorrarHoja(8);
     tree.AgregarHijo(0, 12343); // extra element
+    tree.ModificaEtiqueta(12343, 999);
+    std::cout<<tree.Etiqueta(2)<<std::endl;
+    std::cout<<tree.Padre(2)<<std::endl;
     tree.printTree();
     /*
     tree.printTree();
