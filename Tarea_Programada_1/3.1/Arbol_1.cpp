@@ -91,11 +91,11 @@ public:
     int Padre(int value)
     {
         int i = 0;
-        while (doubleEntryArray[i][0] != value)
+        while (doubleEntryArray[0][i] != value)
         {
             ++i;
         }
-        int valueFather = doubleEntryArray[doubleEntryArray[i][1]][0];
+        int valueFather = doubleEntryArray[doubleEntryArray[1][i]][0];
         return valueFather;
     }
 
@@ -107,7 +107,7 @@ public:
     int HijoMasIzquierdo(int indexPadre)
     {
         int i = 0;
-        while (doubleEntryArray[i][1] != indexPadre)
+        while (doubleEntryArray[1][i] != indexPadre)
         {
             ++i;
         }
@@ -121,9 +121,9 @@ public:
      */
     int HermanoDerecho(int indexHermanoIzquierdo)
     {
-        int indexPadre = doubleEntryArray[indexHermanoIzquierdo][1];
+        int indexPadre = doubleEntryArray[1][indexHermanoIzquierdo];
         int i = indexHermanoIzquierdo + 1;
-        while (doubleEntryArray[i][1] != indexPadre)
+        while (doubleEntryArray[1][i] != indexPadre)
         {
             ++i;
         }
@@ -145,8 +145,9 @@ public:
             int i = indiceBorrado;
             // sizeN-2 es el "nuevo" ultimo elemento del array
             while(i!=sizeN-2){
-                doubleEntryArray[i][0] = doubleEntryArray[i+1][0];
-                doubleEntryArray[i][1] = doubleEntryArray[i+1][1];
+                doubleEntryArray[0][i] = doubleEntryArray[0][i+1];
+                doubleEntryArray[1][i] = doubleEntryArray[1][i+1];
+                ++i;
             }
             --sizeN;
         }
@@ -156,8 +157,8 @@ public:
      * @brief
      * @param
      */
-    int Etiqueta(int index){
-        return (doubleEntryArray[index][0]);
+    int Etiqueta(int indice){
+        return (doubleEntryArray[0][indice]);
     }
 
     /**
@@ -168,13 +169,13 @@ public:
     void ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
     {
         int counter = 0;
-        int buffer = doubleEntryArray[counter][0];
+        int buffer = doubleEntryArray[0][counter];
         while (buffer != value) // find in array the cell with etiqueta
         {
             ++counter;
-            buffer = doubleEntryArray[counter][0];
+            buffer = doubleEntryArray[0][counter];
         }
-        doubleEntryArray[counter][0] = newValue; // change the actual value to newValue
+        doubleEntryArray[0][counter] = newValue; // change the actual value to newValue
     }
 
     /**
@@ -225,7 +226,8 @@ int main()
     tree.AgregarHijo(1, 76);
     tree.AgregarHijo(2, 0);
     tree.AgregarHijo(3, 65);
-    tree.BorrarHoja(9);
+    tree.BorrarHoja(7);
+    tree.BorrarHoja(8);
     tree.AgregarHijo(0, 12343); // extra element
     tree.printTree();
     /*
