@@ -35,6 +35,7 @@ private:
     {
         indicePadre = indice;
     }
+    Nodo(){}
 
     ~Nodo() {}
 };
@@ -110,7 +111,7 @@ public:
      * @param indexPadre indexPadre is the index of the father of the new node
      * @param hijo hijo is the value of the new element inserted in the tree
      */
-    void AgregarHijoMasDerecho(int indexPadre, int hijo) // agrega al padre un hijo
+    void AgregarHijoMasDerecho(int indicePadre, int valorHijo) // agrega al padre un hijo
     {
         // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
         //{
@@ -198,7 +199,7 @@ public:
     {
 
         // si el elemento borrado es el ultimo
-        if (nodoBorrado.getValor() != arregloArbol[actual - 1])
+        if (nodoBorrado.getValor() != arregloArbol[actual - 1].getValor())
         {
             //    --actual;
             // }
@@ -206,7 +207,7 @@ public:
             // {
             // shift todos los elementos a la izquierda, y si el padre es mayor al indiceBorrado entonces dec. indice del padre
             int indiceBorrado = 0;
-            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor)
+            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
             {
                 ++indiceBorrado;
             }
