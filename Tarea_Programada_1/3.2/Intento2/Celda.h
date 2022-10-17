@@ -57,9 +57,9 @@ class Celda {
 		
 		
 		void imprimirPunteros(){
-			//std::cout<< "Imprimendo lista hijos" << std::endl;
+			
 			if(existe){
-				//std::cout <<"EXISTO " << std::endl;
+				
 				etiqueta->imprimirValor();
 			} else{
 				std::cout<< "Nodo Vacio" << std::endl;

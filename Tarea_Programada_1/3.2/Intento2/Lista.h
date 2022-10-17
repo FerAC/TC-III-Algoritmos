@@ -40,23 +40,18 @@ class Lista {
 		void insertar(const T& elemento) {
 			Celda<T>* celdaNueva =  new Celda<T> (elemento);
 			if (!primera) {
-				//std::cout<< "*******************LISTA*****************" << std::endl;
-				//std::cout<< "PRIMER H" << std::endl;
+				
 				primera = celdaNueva;
 				ultima = celdaNueva;
 			} else {
-				/*
-				//std::cout<< "*******************LISTA*****************" << std::endl;
-				//std::cout<< "NO PRIMER H" << std::endl;
-				*/
-				//std::cout<< "Estoy insertando un hijo no primero" << std::endl;
+				
 				if(!ultima){
-					//std::cout << "NO HAY ULTIMA " << std::endl;
+					
 				}
 				ultima->setSiguiente(celdaNueva);
-				//std::cout<< "NICE" << std::endl;
+				
 				ultima = celdaNueva; 
-				//std::cout<< "SE LOGRO " <<std::endl;
+				
 			}
 			++contador; 
 		}
@@ -74,12 +69,14 @@ class Lista {
 		}
 
 		// TODO: BORRADO DEBERIA SER POR INDICE, NO POR VALOR
-		void borrar(const T& elemento) {
+		int borrar(const T& elemento) {
 			Celda<T>* match = this->buscar(elemento);
-
+			int validez = 0;
 			// Caso trivial: No se encontró
-			if (match == nullptr) 
-				return;
+			if (match == nullptr) {
+				
+				return validez;
+			}
 
 			// Caso A: Es el primer elemento
 			if (match == this->primera) {
@@ -112,10 +109,14 @@ class Lista {
 		Celda<T> * buscar(const T& elemento) {
 			int encontrado = 0;
 			size_t i = 0;
+			if(this->primera == nullptr)
+				return nullptr;
+			
 			Celda<T>* temp = primera;
 			// TODO: MAS FACIL MODULARIZAR EN FOR
+			
 			while (i < contador && !encontrado) {
-				if (temp->getEtiqueta() == elemento) {
+				if (temp->getEtiqueta(4) == elemento) {
 					encontrado = 1;
 				} else if (i + 1 < contador) {
 					temp = temp->getSiguiente();
@@ -181,18 +182,18 @@ class Lista {
 			}
 		}
 		void imprimirPunteros(){
-			//std::cout<<"Llegue a imprimir punteros " << std::endl;
+			
 			if(primera){
-				//std::cout << "Hay primera " << std::endl;
+				
 			} else{
-				//std::cout << "No hay primera " << std::endl;
+				
 			}
 			int i =0;
 			for (Celda<T>* iter = this->primera; iter != nullptr; iter = iter->getSiguiente()) {
-				//std::cout<< "SOY ITER " << i++ << std::endl;
+				
 				iter->imprimirPunteros();
 			}
-			//std::cout << "";
+			
 		}
 		// TODO: INDICE DEBERIA SER SIZE_T,
 		void modificarEnlaces(size_t indice, int etiqueta){

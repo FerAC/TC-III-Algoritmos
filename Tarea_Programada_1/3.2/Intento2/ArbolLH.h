@@ -15,9 +15,9 @@ class ArbolLH{
 		void agregarHijo(Nodo, int);
 		void agregarHijoMasDerecho(Nodo, int);
 		void borrarHoja(Nodo*);
-		Celda<Nodo>* raiz();
+		Nodo* raiz();
 		Nodo* padre(Nodo*);
-		Celda<Nodo*>* hijoMasIzquierdo(Nodo*);
+		Nodo* hijoMasIzquierdo(Nodo*);
 		Nodo* hermanoDerecho(Celda<Nodo>*);
 		int etiqueta(Nodo*);
 		void modificaEtiqueta(Nodo*);

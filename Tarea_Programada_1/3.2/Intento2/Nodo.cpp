@@ -17,15 +17,14 @@ Nodo::Nodo(int et){
 
 void Nodo::insertarEnLista(Nodo* nodoNuevo){
 	
-	//std::cout<< "INSERTO A " << "EN LISTA HIJOS " << std::endl;
 	if(listaHijos->getPrimera()!=nullptr){
-		//std::cout<< "Voy a insertar un hijo NO primero" << std::endl;
+		
 		listaHijos->insertar(nodoNuevo);
-		//std::cout<< "Inserte un hijo NO primero" << std::endl;
+		
 	} else{
-		//std::cout<< "Estoy insertando primer hijo " << std::endl;
+		
 		listaHijos->insertarAlPrincipio(nodoNuevo);
-		//std::cout<< "Inserte primer hijo " << std::endl;
+		
 	}
 	
 }

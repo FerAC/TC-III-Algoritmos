@@ -10,17 +10,7 @@ ArbolLH::~ArbolLH(){
 } 
 
 void ArbolLH::imprimir(){
-	//std::cout<< "Raiz: " << listaPrincipal->getPrimera()->getEtiqueta()->getEtiqueta() << std::endl;
-	//Celda<Nodo> * actual = listaPrincipal->getPrimera();
-	/*
-	while(actual!=nullptr){
-		//std::cout<< "ELEMENTO : " << actual->getEtiqueta()->getEtiqueta() << std::endl;
-		//std::cout<< "Hijos a";
-		//actual->getEtiqueta()->getListaHijos()->imprimir();
-		actual = actual->getSiguiente();
-		//std::cout<< "ELEMENTO : " << actual->getEtiqueta()->getEtiqueta() << std::endl;
-	}
-	*/
+	
 	listaPrincipal->imprimir();
 	
 }
@@ -29,10 +19,9 @@ void ArbolLH::imprimirLP(){
 	Celda<Nodo> * actual = listaPrincipal->getPrimera();
 	while(actual!=nullptr){
 		std::cout<< "ELEMENTO : " << actual->getEtiqueta()->getEtiqueta() << std::endl;
-		//std::cout<< "Hijos a";
-		//actual->getEtiqueta()->getListaHijos()->imprimir();
+		
 		actual = actual->getSiguiente();
-		//std::cout<< "ELEMENTO : " << actual->getEtiqueta()->getEtiqueta() << std::endl;
+		
 	}
 	
 }
@@ -54,16 +43,22 @@ void ArbolLH::agregarHijoMasDerecho(Nodo nodoPadre, int etiqueta){
 }
 
 void ArbolLH::borrarHoja(Nodo* borrado){
-	
-	
-	
+	for(Celda<Nodo> * buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
+		int validez = buffer1->getEtiqueta()->getListaHijos()->borrar(borrado); 
+		if(validez!=0){
+			int valorBorrado = borrado->getEtiqueta(); 
+			Nodo nodoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta(4); 
+			listaPrincipal->borrar(listaPrincipal->buscar(borrado->getEtiqueta())->getEtiqueta(4)); 
+			imprimir();
+			return; 
+		}
+	}
 }	
 Lista<Nodo>* ArbolLH::getLP(){
 	return listaPrincipal;
 }
-Celda<Nodo>* ArbolLH::raiz()
-{
-	return (listaPrincipal->getPrimera()); 
+Nodo* ArbolLH::raiz() {
+	return (listaPrincipal->getPrimera()->getEtiqueta()); 
 }
 	
 Nodo* ArbolLH::padre(Nodo * hijo){
@@ -77,9 +72,8 @@ Nodo* ArbolLH::padre(Nodo * hijo){
 			Celda<Nodo*> * celdaHijos = actual->getEtiqueta()->getListaHijos()->getPrimera();  //Apunta al primer indice de la lista de hijos si es que existe
 			a = *(celdaHijos->getEtiqueta());
 			while(a!=nullptr){
-				//std::cout<<"ENTRE WHILE 78 ArbolLH / comparando " << a->getEtiqueta()<<  std::endl;
 				if(a->getEtiqueta() == hijo->getEtiqueta()){ //Significa que encontre a mi padre
-					//std::cout<< "Encontre tata " << std::endl;
+					
 					return actual->getEtiqueta();
 				} else{ //Sigo avanzando
 					celdaHijos = celdaHijos->getSiguiente();
@@ -93,8 +87,8 @@ Nodo* ArbolLH::padre(Nodo * hijo){
 	
 }
 
-Celda<Nodo*>* hijoMasIzquierdo(Nodo* padre){
-	return padre->getListaHijos()->getPrimera();
+Nodo* hijoMasIzquierdo(Nodo* padre){
+	return padre->getListaHijos()->getPrimera()->getEtiqueta(4);
 }
 
 int  etiqueta(Nodo* nodo){
@@ -112,17 +106,17 @@ Nodo* ArbolLH::hermanoDerecho(Celda<Nodo>* celdaParam){
 	Nodo * nodoDer = nullptr;
 	int i =0;
 	for(Celda<Nodo> * buffer = listaPrincipal->getPrimera(); buffer!=nullptr; buffer = buffer->getSiguiente()){ //Busca a celdaParam en la lista de hijos
-		std::cout<< i << std::endl;
+		
 		int j =0;
 		for(Celda<Nodo*> * buffer2 = buffer->getEtiqueta()->getListaHijos()->getPrimera(); buffer2!=nullptr; buffer2 = buffer2->getSiguiente()){
-			std::cout<< j++ << std::endl;
+			
 			Nodo* a = (buffer2->getEtiqueta(4));
 			
 			if( a->getEtiqueta() == celdaParam->getEtiqueta()->getEtiqueta()){
 				
 				if(buffer2->getSiguiente() != nullptr){
 					nodoDer = buffer2->getSiguiente()->getEtiqueta(4);
-					std::cout<< "Lo encontre " << std::endl;
+					
 					return nodoDer;
 				} else{
 					return nullptr;
