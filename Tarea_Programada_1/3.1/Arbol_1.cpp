@@ -35,7 +35,7 @@ private:
     {
         indicePadre = indice;
     }
-    Nodo(){}
+    Nodo() {}
 
     ~Nodo() {}
 };
@@ -98,12 +98,6 @@ public:
             arregloArbol[actual].setPadre(indicePadre);
             ++actual;
         }
-        // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
-        //{
-        //  doubleEntryArray[0][sizeN] = hijo;
-        // doubleEntryArray[1][sizeN] = indexPadre;
-        // ++sizeN;
-        //}
     }
 
     /**
@@ -113,12 +107,6 @@ public:
      */
     void AgregarHijoMasDerecho(int indicePadre, int valorHijo) // agrega al padre un hijo
     {
-        // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
-        //{
-        //   doubleEntryArray[0][sizeN] = hijo;
-        // doubleEntryArray[1][sizeN] = indexPadre;
-        //++sizeN;
-        //}
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
@@ -143,13 +131,7 @@ public:
      */
     Nodo Padre(Nodo hijo)
     {
-        // int i = 0;
-        // while (i != hijo.getIndicePadre())
-        //{
-        ///  ++i;
-        //}
         return arregloArbol[hijo.getIndicePadre()];
-        // return valueFather;
     }
 
     /**
@@ -201,11 +183,6 @@ public:
         // si el elemento borrado es el ultimo
         if (nodoBorrado.getValor() != arregloArbol[actual - 1].getValor())
         {
-            //    --actual;
-            // }
-            // else
-            // {
-            // shift todos los elementos a la izquierda, y si el padre es mayor al indiceBorrado entonces dec. indice del padre
             int indiceBorrado = 0;
             while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
             {
@@ -226,8 +203,6 @@ public:
                 { // solo hacer shift, no se occupa decrementar el indice del padre
                     arregloArbol[indice] = arregloArbol[indice + 1];
                 }
-                // doubleEntryArray[0][i] = doubleEntryArray[0][i + 1];
-                // doubleEntryArray[1][i] = doubleEntryArray[1][i + 1];
                 ++indice;
             }
         }
@@ -250,14 +225,6 @@ public:
      */
     void ModificaEtiqueta(Nodo nodo, int nuevoValor) // change the node with value, to newValue
     {
-        // int counter = 0;
-        // int buffer = doubleEntryArray[0][counter];
-        // while (buffer != value) // find in array the cell with etiqueta
-        //{
-        //   ++counter;
-        // buffer = doubleEntryArray[0][counter];
-        //}
-        // doubleEntryArray[0][counter] = newValue; // change the actual value to newValue
         int indice = 0;
         while (arregloArbol[indice].getValor() != nodo.getValor())
         {
@@ -274,20 +241,6 @@ public:
     {
         return actual;
     }
-
-    /*
-    void printTree()
-    {
-        std::cout << "_______________________\n"
-                  << std::endl;
-        int counter = 1;
-        std::cout << "Root: " << doubleEntryArray[0][0] << " index: 0" << std::endl;
-        while (counter != sizeN)
-        {
-            std::cout << "value: " << doubleEntryArray[0][counter] << ", index: " << counter << ", father's index: " << doubleEntryArray[1][counter] << std::endl;
-            ++counter;
-        }
-    }*/
 
 private:
     Nodo *arregloArbol;
