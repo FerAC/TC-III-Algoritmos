@@ -192,9 +192,9 @@ public:
      * @brief
      * @param
      */
-    int Etiqueta(int indice)
+    int Etiqueta(Nodo nodo)
     {
-        return (doubleEntryArray[0][indice]);
+        return nodo.getValor();
     }
 
     /**
@@ -202,16 +202,21 @@ public:
      * @param
      * @param
      */
-    void ModificaEtiqueta(int value, int newValue) // change the node with value, to newValue
+    void ModificaEtiqueta(Nodo nodo, int nuevoValor) // change the node with value, to newValue
     {
-        int counter = 0;
-        int buffer = doubleEntryArray[0][counter];
-        while (buffer != value) // find in array the cell with etiqueta
-        {
-            ++counter;
-            buffer = doubleEntryArray[0][counter];
+        //int counter = 0;
+        //int buffer = doubleEntryArray[0][counter];
+        //while (buffer != value) // find in array the cell with etiqueta
+        //{
+          //  ++counter;
+            //buffer = doubleEntryArray[0][counter];
+        //}
+        //doubleEntryArray[0][counter] = newValue; // change the actual value to newValue
+        int indice = 0;
+        while(arregloArbol[indice].getValor() != nodo.getValor()){
+            ++indice;
         }
-        doubleEntryArray[0][counter] = newValue; // change the actual value to newValue
+        arregloArbol[indice].setValor(nuevoValor);
     }
 
     /**
@@ -220,7 +225,7 @@ public:
      */
     int NumNodos()
     {
-        return 0;
+        return actual;
     }
 
 
@@ -279,17 +284,18 @@ private:
     ~Nodo() {}
 };
 
-Nodo::Nodo(/* args */)
-{
-}
+//Nodo::Nodo(/* args */)
+//{
+//}
 
-Nodo::~Nodo()
-{
-}
+//Nodo::~Nodo()
+//{
+//}
 
 int main()
 {
 
+/*
     ArbolSenalador tree(10);
     tree.PonerRaiz(5);
     tree.AgregarHijo(0, 2);
@@ -307,9 +313,12 @@ int main()
     tree.BorrarHoja(8);
     tree.AgregarHijo(0, 12343); // extra element
     tree.ModificaEtiqueta(12343, 999);
+    
     std::cout << tree.Etiqueta(2) << std::endl;
     std::cout << tree.Padre(2) << std::endl;
-    tree.printTree();
+    
+    */
+    //tree.printTree();
 
     std::cout << "_______________________\n"
               << std::endl;
