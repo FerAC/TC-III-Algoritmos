@@ -1,4 +1,3 @@
-//#include "Tree_senaladorPadre.h"
 #include <iostream>
 
 class Nodo
@@ -29,8 +28,6 @@ private:
         return indicePadre;
     }
 
-    //  void
-
     Nodo(int indice, int valor)
     {
         indicePadre = indice;
@@ -51,8 +48,6 @@ public:
     ArbolSenalador(int const cantidad)
     {
         arregloArbol = new Nodo[cantidad];
-        // doubleEntryArray[0] = new int[quantityElements];
-        // doubleEntryArray[1] = new int[quantityElements];
         maximo = cantidad;
         actual = 0;
         esVacio = 0;
@@ -63,9 +58,6 @@ public:
      */
     ~ArbolSenalador()
     {
-        // delete[] doubleEntryArray[0];
-        // delete[] doubleEntryArray[1];
-        // delete[] doubleEntryArray;
         delete[] arregloArbol;
     }
 
@@ -75,8 +67,6 @@ public:
      */
     void PonerRaiz(int root)
     {
-        // doubleEntryArray[0]. = root;
-        // doubleEntryArray[1][0] = 0;
         arregloArbol[0].setValor(root);
         if (esVacio == 0)
         {
