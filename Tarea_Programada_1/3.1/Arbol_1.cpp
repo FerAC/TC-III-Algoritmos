@@ -162,12 +162,23 @@ public:
      */
     Nodo HijoMasIzquierdo(Nodo padre)
     {
-        int i = 0;
-        while (arregloArbol[arregloArbol[i].getIndicePadre()].getValor() != padre.getValor())
-        {
-            ++i;
+        //int i = 0;
+        //while (arregloArbol[arregloArbol[i].getIndicePadre()].getValor() != padre.getValor())
+        //{
+        //    ++i;
+        //}
+
+        //int indice = 0;
+       // while(arregloArbol[indice].getIndicePadre() != i){
+       //     ++indice;
+        //}
+
+        //return arregloArbol[indice];
+        int indice = padre.getIndice() + 1;
+        while(arregloArbol[indice].getIndicePadre() != padre.getIndice()){
+            ++indice;
         }
-        return arregloArbol[i];
+        return arregloArbol[indice];
     }
 
     /**
@@ -302,14 +313,19 @@ int main()
 
     ArbolSenalador arbol(10);
     arbol.PonerRaiz(100);
-    std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
+    //std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
 
     arbol.AgregarHijo(123, arbol.Raiz());
     arbol.AgregarHijo(22, arbol.Raiz());
+    arbol.AgregarHijoMasDerecho(1, arbol.HijoMasIzquierdo(arbol.Raiz()));
 
 
-
-
+    std::cout<<arbol.Etiqueta(arbol.Raiz())<<std::endl;
+    std::cout<<arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.Raiz()))<<std::endl;
+    std::cout<<arbol.Etiqueta(arbol.HermanoDerecho(arbol.HijoMasIzquierdo(arbol.Raiz())))<<std::endl;
+    std::cout<<arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())))<<std::endl;
+    arbol.BorrarHoja(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())));
+    
     std::cout << "_______________________\n"
               << std::endl;
 
