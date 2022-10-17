@@ -60,10 +60,25 @@ public:
     }
 
     /**
+     * @brief AgregarHijoMasDerecho add a new element to the tree
+     * @param indexPadre indexPadre is the index of the father of the new node
+     * @param hijo hijo is the value of the new element inserted in the tree
+     */
+    void AgregarHijoMasDerecho(int indexPadre, int hijo) // agrega al padre un hijo
+    {
+        if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
+        {
+            doubleEntryArray[0][sizeN] = hijo;
+            doubleEntryArray[1][sizeN] = indexPadre;
+            ++sizeN;
+        }
+    }
+
+    /**
      * @brief
      * @return
      */
-    int getRaiz()
+    int Raiz()
     {
         return (doubleEntryArray[0][0]);
     }
@@ -73,7 +88,7 @@ public:
      * @param
      * @return
      */
-    int getPadre(int value)
+    int Padre(int value)
     {
         int i = 0;
         while (doubleEntryArray[i][0] != value)
@@ -82,6 +97,37 @@ public:
         }
         int valueFather = doubleEntryArray[doubleEntryArray[i][1]][0];
         return valueFather;
+    }
+
+    /**
+     * @brief
+     * @param
+     * @return
+     */
+    int HijoMasIzquierdo(int indexPadre)
+    {
+        int i = 0;
+        while (doubleEntryArray[i][1] != indexPadre)
+        {
+            ++i;
+        }
+        return i;
+    }
+
+    /**
+     * @brief
+     * @param
+     * @return
+     */
+    int HermanoDerecho(int indexHermanoIzquierdo)
+    {
+        int indexPadre = doubleEntryArray[indexHermanoIzquierdo][1];
+        int i = indexHermanoIzquierdo + 1;
+        while (doubleEntryArray[i][1] != indexPadre)
+        {
+            ++i;
+        }
+        return i;
     }
 
     /**
@@ -101,6 +147,14 @@ public:
         { // if it's the last element in array
             --sizeN;
         }
+    }
+
+    /**
+     * @brief
+     * @param
+     */
+    int Etiqueta(int index){
+        return (doubleEntryArray[index][0]);
     }
 
     /**
