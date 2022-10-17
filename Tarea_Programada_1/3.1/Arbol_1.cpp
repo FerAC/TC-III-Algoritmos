@@ -80,12 +80,19 @@ public:
      * @param indexPadre indexPadre is the index of the father of the new node
      * @param hijo hijo is the value of the new element inserted in the tree
      */
-    void AgregarHijo(int indicePadre, int valorHijo) // agrega al padre un hijo
+    void AgregarHijo(int valorHijo, Nodo padre) // agrega al padre un hijo
     {
+        int indice = 0;
+
+        while (arregloArbol[indice].getValor() != padre.getValor())
+        {
+            ++indice;
+        }
+
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
-            arregloArbol[actual].setPadre(indicePadre);
+            arregloArbol[actual].setPadre(indice);
             ++actual;
         }
     }
@@ -95,12 +102,19 @@ public:
      * @param indexPadre indexPadre is the index of the father of the new node
      * @param hijo hijo is the value of the new element inserted in the tree
      */
-    void AgregarHijoMasDerecho(int indicePadre, int valorHijo) // agrega al padre un hijo
+    void AgregarHijoMasDerecho(int valorHijo, Nodo padre) // agrega al padre un hijo
     {
+        int indice = 0;
+
+        while (arregloArbol[indice].getValor() != padre.getValor())
+        {
+            ++indice;
+        }
+
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
-            arregloArbol[actual].setPadre(indicePadre);
+            arregloArbol[actual].setPadre(indice);
             ++actual;
         }
     }
