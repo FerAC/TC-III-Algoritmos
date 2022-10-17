@@ -162,18 +162,6 @@ public:
      */
     Nodo HijoMasIzquierdo(Nodo padre)
     {
-        //int i = 0;
-        //while (arregloArbol[arregloArbol[i].getIndicePadre()].getValor() != padre.getValor())
-        //{
-        //    ++i;
-        //}
-
-        //int indice = 0;
-       // while(arregloArbol[indice].getIndicePadre() != i){
-       //     ++indice;
-        //}
-
-        //return arregloArbol[indice];
         int indice = padre.getIndice() + 1;
         while(arregloArbol[indice].getIndicePadre() != padre.getIndice()){
             ++indice;
@@ -285,49 +273,16 @@ private:
 
 int main()
 {
-    
-    /*
-        ArbolSenalador tree(10);
-        tree.PonerRaiz(5);
-        tree.AgregarHijo(0, 2);
-        tree.AgregarHijo(1, 3);
-        tree.AgregarHijo(1, 125);
-        // tree.PonerRaiz(1000);
-
-        tree.AgregarHijo(0, 25);
-        tree.AgregarHijo(4, 12);
-        tree.AgregarHijo(3, 7);
-        tree.AgregarHijo(1, 76);
-        tree.AgregarHijo(2, 0);
-        tree.AgregarHijo(3, 65);
-        tree.BorrarHoja(7);
-        tree.BorrarHoja(8);
-        tree.AgregarHijo(0, 12343); // extra element
-        tree.ModificaEtiqueta(12343, 999);
-
-        std::cout << tree.Etiqueta(2) << std::endl;
-        std::cout << tree.Padre(2) << std::endl;
-
-        */
-    // tree.printTree();
-
     ArbolSenalador arbol(10);
     arbol.PonerRaiz(100);
-    //std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
-
     arbol.AgregarHijo(123, arbol.Raiz());
     arbol.AgregarHijo(22, arbol.Raiz());
     arbol.AgregarHijoMasDerecho(1, arbol.HijoMasIzquierdo(arbol.Raiz()));
-
-
     std::cout<<arbol.Etiqueta(arbol.Raiz())<<std::endl;
     std::cout<<arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.Raiz()))<<std::endl;
     std::cout<<arbol.Etiqueta(arbol.HermanoDerecho(arbol.HijoMasIzquierdo(arbol.Raiz())))<<std::endl;
     std::cout<<arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())))<<std::endl;
     arbol.BorrarHoja(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())));
-    
-    std::cout << "_______________________\n"
-              << std::endl;
 
     return 0;
 }
