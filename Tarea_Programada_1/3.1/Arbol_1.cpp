@@ -9,14 +9,14 @@ public:
      * @brief ArbolSenalador is the constructor method of the class
      * @param quantityElements quantityElements is a const int, it's the max size of the array
      */
-    ArbolSenalador(int const quantityElements)
+    ArbolSenalador(int const cantidad)
     {
-        doubleEntryArray = new int *[2];
-        doubleEntryArray[0] = new int[quantityElements];
-        doubleEntryArray[1] = new int[quantityElements];
-        sizeM = quantityElements;
-        sizeN = 0;
-        isEmpty = 0;
+        arregloArbol = new Nodo[cantidad];
+        //doubleEntryArray[0] = new int[quantityElements];
+        //doubleEntryArray[1] = new int[quantityElements];
+        maximo = cantidad;
+        actual = 0;
+        esVacio = 0;
     }
 
     /**
@@ -24,9 +24,10 @@ public:
      */
     ~ArbolSenalador()
     {
-        delete[] doubleEntryArray[0];
-        delete[] doubleEntryArray[1];
-        delete[] doubleEntryArray;
+        //delete[] doubleEntryArray[0];
+        //delete[] doubleEntryArray[1];
+       // delete[] doubleEntryArray;    
+       delete[] arregloArbol;
     }
 
     /**
@@ -35,12 +36,13 @@ public:
      */
     void PonerRaiz(int root)
     {
-        doubleEntryArray[0][0] = root;
-        doubleEntryArray[1][0] = 0;
-        if (isEmpty == 0)
+       // doubleEntryArray[0]. = root;
+        //doubleEntryArray[1][0] = 0;
+        arregloArbol[0].setValor(root);
+        if (esVacio == 0)
         {
-            isEmpty = 1;
-            ++sizeN;
+            esVacio = 1;
+            ++actual;
         }
     }
 
@@ -49,14 +51,19 @@ public:
      * @param indexPadre indexPadre is the index of the father of the new node
      * @param hijo hijo is the value of the new element inserted in the tree
      */
-    void AgregarHijo(int indexPadre, int hijo) // agrega al padre un hijo
+    void AgregarHijo(int indicePadre, int valorHijo) // agrega al padre un hijo
     {
-        if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
-        {
-            doubleEntryArray[0][sizeN] = hijo;
-            doubleEntryArray[1][sizeN] = indexPadre;
-            ++sizeN;
+        if(actual < maximo){
+            arregloArbol[actual].setValor(valorHijo);
+            arregloArbol[actual].setPadre(indicePadre);
+            ++actual;
         }
+       // if (sizeN < sizeM) // while to find the father and it's index, and then ad at the end of the array the son
+        //{
+          //  doubleEntryArray[0][sizeN] = hijo;
+           // doubleEntryArray[1][sizeN] = indexPadre;
+           // ++sizeN;
+        //}
     }
 
     /**
@@ -138,15 +145,19 @@ public:
     {
 
         // si el elemento borrado es el ultimo
-        if(indiceBorrado == sizeN-1){
+        if (indiceBorrado == sizeN - 1)
+        {
             --sizeN;
-        }else{
+        }
+        else
+        {
             // shift todos los elementos a la izquierda, y si el padre es mayor al indiceBorrado entonces dec. indice del padre
             int i = indiceBorrado;
             // sizeN-2 es el "nuevo" ultimo elemento del array
-            while(i!=sizeN-2){
-                doubleEntryArray[0][i] = doubleEntryArray[0][i+1];
-                doubleEntryArray[1][i] = doubleEntryArray[1][i+1];
+            while (i != sizeN - 2)
+            {
+                doubleEntryArray[0][i] = doubleEntryArray[0][i + 1];
+                doubleEntryArray[1][i] = doubleEntryArray[1][i + 1];
                 ++i;
             }
             --sizeN;
@@ -157,7 +168,8 @@ public:
      * @brief
      * @param
      */
-    int Etiqueta(int indice){
+    int Etiqueta(int indice)
+    {
         return (doubleEntryArray[0][indice]);
     }
 
@@ -204,11 +216,49 @@ public:
     }
 
 private:
-    int **doubleEntryArray;
-    int sizeM;
-    int sizeN;
-    int isEmpty;
+    Nodo *arregloArbol;
+    int maximo;
+    int actual;
+    int esVacio;
 };
+
+class Nodo
+{
+    friend ArbolSenalador 
+
+private: 
+    int indicePadre;
+    int valor;
+
+    void setValor(int nuevoValor){
+        valor = nuevoValor;
+    }
+
+    int getValor(){
+        return valor;
+    }
+
+    void setPadre(int nuevoIndice){
+        indicePadre = nuevoIndice;
+    }
+
+  //  void 
+
+    Nodo(int indice, int valor)
+    {
+        indicePadre = indice;
+    }
+
+    ~Nodo() {}
+};
+
+Nodo::Nodo(/* args */)
+{
+}
+
+Nodo::~Nodo()
+{
+}
 
 int main()
 {
@@ -230,8 +280,8 @@ int main()
     tree.BorrarHoja(8);
     tree.AgregarHijo(0, 12343); // extra element
     tree.ModificaEtiqueta(12343, 999);
-    std::cout<<tree.Etiqueta(2)<<std::endl;
-    std::cout<<tree.Padre(2)<<std::endl;
+    std::cout << tree.Etiqueta(2) << std::endl;
+    std::cout << tree.Padre(2) << std::endl;
     tree.printTree();
 
     std::cout << "_______________________\n"
