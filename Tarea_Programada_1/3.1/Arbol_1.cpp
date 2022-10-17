@@ -233,23 +233,6 @@ int main()
     std::cout<<tree.Etiqueta(2)<<std::endl;
     std::cout<<tree.Padre(2)<<std::endl;
     tree.printTree();
-    /*
-    tree.printTree();
-
-    tree.printTree();
-
-    tree.AgregarHijo(0, 10);
-    tree.printTree();
-
-    tree.BorrarHoja(1);
-    tree.printTree();
-
-
-    tree.AgregarHijo(0, 1);
-    tree.printTree();
-    // tree.BorrarHoja(2);
-    tree.printTree();
-    */
 
     std::cout << "_______________________\n"
               << std::endl;
