@@ -2,7 +2,7 @@
 #include <cstddef> // Para poder usar size_t
 
 #include <iostream> // Para impresiones en la salida estándar
-#include "../CSE/Cola.hpp" // Para realizar recorridos por niveles
+#include "../CDE/Cola.hpp" // Para realizar recorridos por niveles
 
 /// @brief Excepción para cuando se intenta desreferenciar un puntero a elemento nulo (a nivel de nodo concreto)
 class ElementoInvalidoArbol : public std::exception
