@@ -5,7 +5,7 @@
 #include "../CDE/Cola.hpp" // Para realizar recorridos por niveles
 
 /// @brief Excepción para cuando se intenta desreferenciar un puntero a elemento nulo (a nivel de nodo concreto)
-class ElementoInvalidoArbol : public std::exception 
+class ElementoInvalidoArbol : public std::exception
 {
     public:
         ElementoInvalidoArbol() {}
@@ -121,12 +121,10 @@ class Arbol
                 Elemento* elemento = nullptr;
                 /// @brief Apuntador al nodo concreto correspondiente al hermano derecho de este nodo concreto
                 NodoConcreto* hermanoDerecho = nullptr;
-                /// @brief Apuntador al nodo concreto correspondiente al hermano izquierdo de este nodo concreto
-                NodoConcreto* hermanoIzquierdo = nullptr;
-                /// @brief Apuntador al nodo concreto correspondiente al padre de este nodo concreto
-                NodoConcreto* padre = nullptr;
                 /// @brief Apuntador al nodo concreto correspondiente al hijo más izquierdo de este nodo concreto
                 NodoConcreto* hijoMasIzquierdo = nullptr;
+                /// @brief Bandera para indicar si el hermano derecho al que apunta este nodo es su padre
+                bool apuntaAlPadre = false;
 
                 /// @brief Inicializa a un nodo concreto apuntando a un nuevo elemento creado por copia
                 /// @param valorElemento Elemento el cual será usado como base para construir una copia
@@ -237,7 +235,7 @@ class Arbol
                 // Únicamente podemos citar a los hijos de este nodo si es que tiene hijos
                 if (padreConcreto->hijoMasIzquierdo != nullptr)
                 {
-                    for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+                    for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != padreConcreto; it = it->hermanoDerecho)
                         colaNodos.Encolar(Nodo(it));
                 }
 
@@ -271,16 +269,18 @@ class Arbol
             NodoConcreto* previoPrimerHijo = nodoPadre.nodoConcreto->hijoMasIzquierdo;
             NodoConcreto* nuevoPrimerHijo = new NodoConcreto(valorHijo);
 
-            // Primero hay que establecer los señaladores entre padre e hijo
             nodoPadre.nodoConcreto->hijoMasIzquierdo = nuevoPrimerHijo;
-            nuevoPrimerHijo->padre = nodoPadre.nodoConcreto;
 
-            // Segundo, hay que establecer los señaladores entre hermanos
-            nuevoPrimerHijo->hermanoDerecho = previoPrimerHijo;
-
-            // Si existía un previo primer hijo (no es nulo), entonces su hermano izquierdo será el nuevo primer hijo
-            if (previoPrimerHijo != nullptr)
-                previoPrimerHijo->hermanoIzquierdo = nuevoPrimerHijo;
+            // Si no existía primer hijo previamente (es nulo), entonces este nuevo primer hijo debe
+            // de tener como hermano derecho a su padre (y así cerrar el camino entre él y su padre)
+            if (previoPrimerHijo == nullptr)
+            {
+                nuevoPrimerHijo->hermanoDerecho = nodoPadre.nodoConcreto;
+                nuevoPrimerHijo->apuntaAlPadre = true;
+            }
+            // Sino, entonces su hermano derecho es el previo primer hijo (ahora el segundo hijo)
+            else
+                nuevoPrimerHijo->hermanoDerecho = previoPrimerHijo;
 
             return Nodo(nuevoPrimerHijo);
         }
@@ -295,27 +295,35 @@ class Arbol
             if (nodoPadre.nodoConcreto == nullptr)
                 throw NodoConcretoInvalido();
 
-            // Obtengamos al nodo padre e hijo, concretos, para realizar señaladores
             NodoConcreto* it = nodoPadre.nodoConcreto->hijoMasIzquierdo;
             NodoConcreto* nuevoUltimoHijo = new NodoConcreto(valorHijo);
 
-            // Primero hay que establecer los señaladores entre padre e hijo
-            nuevoUltimoHijo->padre = nodoPadre.nodoConcreto;
-
             // Caso 1: No hay hijos todavía
             if (it == nullptr)
+            {
                 nodoPadre.nodoConcreto->hijoMasIzquierdo = nuevoUltimoHijo;
 
+                // Es necesario que el primer hijo tenga de hermano derecho a su padre, para cerrar el camino
+                // entre él y su padre
+                nuevoUltimoHijo->hermanoDerecho = nodoPadre.nodoConcreto;
+                nuevoUltimoHijo->apuntaAlPadre = true;
+            }
+                
             // Caso 2: Sí hay hijos
             else
             {
-                // Naveguemos al hermano más derecho entre los hijos
-                while (it->hermanoDerecho != nullptr)
+                while (!it->apuntaAlPadre)
                     it = it->hermanoDerecho;
 
-                // Segundo, establezcamos los señaladores entre hermanos
+                // El previo último hijo ahora debe tener de hermano derercho al nuevo último hijo, en vez de
+                // tener de hermano derecho a su padre
                 it->hermanoDerecho = nuevoUltimoHijo;
-                nuevoUltimoHijo->hermanoIzquierdo = it;
+                it->apuntaAlPadre = false;
+
+                // Es necesario que el nuevo último hijo tenga de hermano derecho a su padre, para cerrar el camino
+                // entre todos los hermanos y su padre, y tomar el rol que tenía el previo último hijo
+                nuevoUltimoHijo->hermanoDerecho = nodoPadre.nodoConcreto;
+                nuevoUltimoHijo->apuntaAlPadre = true;
             }
 
             return Nodo(nuevoUltimoHijo);
@@ -336,40 +344,64 @@ class Arbol
             if (nodoHoja.nodoConcreto->hijoMasIzquierdo != nullptr)
                 throw NodoNoEsHoja();
 
-            // Obtengamos al padre
-            NodoConcreto* padreConcreto = nodoHoja.nodoConcreto->padre;
+            // Naveguemos hasta llegar al último hijo, y luego al padre
+            NodoConcreto* padreConcreto = nodoHoja.nodoConcreto;
+            while (!padreConcreto->apuntaAlPadre) padreConcreto = padreConcreto->hermanoDerecho; 
+            padreConcreto = padreConcreto->hermanoDerecho;
 
-            // Ya que conocemos al padre, podemos borrar al hijo, considerando si ya borramos
+            // Ya que conocemos al padre, podemos borrar al hijo, llevando cuenta de su hermano izquierdo, y si ya borramos
             // a la hoja (para escapar el recorrido)
+            NodoConcreto* hermanoIzquierdo = nullptr;
             bool hojaBorrada = false;
-            for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+            for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != padreConcreto; it = it->hermanoDerecho)
             {
-                // Si encontramos al hijo, entonces cambiaremos los enlaces entre sus hermanos adyacentes
+                // De encontrar a la hoja, debemos eliminarla y cambiar enlaces
                 if (it == nodoHoja.nodoConcreto)
                 {
-                    NodoConcreto* hermanoIzquierdo = it->hermanoIzquierdo;
-                    NodoConcreto* hermanoDerecho = it->hermanoDerecho;
+                    // Caso 1: La hoja es el hijo más izquierdo (no hay hermano izquierdo)
+                    if (hermanoIzquierdo == nullptr)
+                    {
+                        // Caso 1.1: La hoja es el hijo más derecho del árbol (el hermano derecho es el padre)
+                        // Como la hoja es simultáneamente el primer y último hijo, debe ser el único hijo, y
+                        //  el padre tendrá hijo nulo tras destruir su único hijo
+                        if (it->apuntaAlPadre)
+                            padreConcreto->hijoMasIzquierdo = nullptr;
 
-                    if (hermanoIzquierdo != nullptr)
-                        it->hermanoIzquierdo->hermanoDerecho = hermanoDerecho;
+                        // Caso 1.2: La hoja no es el hijo más derecho del árbol (el hermano derecho no es el padre)
+                        // Como la hoja no es el último hermano, pero sí el primero, entonces el nuevo primer hijo será su hermano
+                        else
+                            padreConcreto->hijoMasIzquierdo = it->hermanoDerecho;
+                    }
+                    // Caso 2: La hoja no es el hijo más izquierdo del árbol (sí hay hermano izquierdo)
+                    else
+                    {
+                        // Caso 2.1: La hoja es el hijo más derecho del árbol (el hermano derecho es el padre)
+                        // Como la hoja no es el primer hijo, pero sí el último, entonces el hijo anterior debe
+                        // apuntar al padre derecho como su hermano derecho
+                        if (it->apuntaAlPadre)
+                        {
+                            hermanoIzquierdo->hermanoDerecho = padreConcreto;
+                            hermanoIzquierdo->apuntaAlPadre = true;
+                        }
 
-                    if (hermanoDerecho != nullptr)
-                        it->hermanoDerecho->hermanoIzquierdo = hermanoIzquierdo;
+                        // Caso 2.2: La hoja no es el hijo más derecho del árbol (el hermano derecho no es el padre)
+                        // Como la hoja no es el primer ni último hijo, entonces el hermano derecho de este nodo será
+                        // el nuevo hermano derecho de hermano izquierdo de este nodo
+                        else
+                            hermanoIzquierdo->hermanoDerecho = it->hermanoDerecho;
+                    }
 
-                    // Adicionalmente, si la hoja que estamos borrando es el hijo más izquierdo del padre, entonces
-                    // el nuevo hijo más izquierdo del padre será el hermano derecho del viejo hijo más izquierdo
-                    if (it == padreConcreto->hijoMasIzquierdo) // it->hermanoIzquierdo == nullptr
-                        padreConcreto->hijoMasIzquierdo = hermanoDerecho;
+                    // Tras este punto, ya se cambiaron los enlaces de los nodos, y ahora se puede borrar a este nodo
+                    delete it;
+                    hojaBorrada = true;
+                    break;
                 }
 
-                // Tras este punto, ya se cambiaron los enlaces de los nodos, y ahora se puede borrar a este nodo
-                delete it;
-                hojaBorrada = true;
-                break;
+                // Sino, tras esta iteración, el hermano izquierdo pasará a ser el hijo actual presente
+                hermanoIzquierdo = it;
             }
 
-            // Si la hoja no fue borrada tras aquel recorrido, entonces eso significa que la hoja no está correctamente
-            // enlazada etre sus hermanos
+            // Si la hoja no fue borrada tras aquel recorrido, entonces eso significa que la hoja no existía en el árbol en el primer lugar
             if (!hojaBorrada)
                 throw NodoEsForaneo();
         }
@@ -407,13 +439,29 @@ class Arbol
         /// @brief Recupera el nodo correspondiente al padre de otro nodo
         /// @param nodoHijo Nodo del cual recuperar el nodo padre
         /// @return Presunto padre del nodo. Nodo nulo si resulta no tener padre (caso de la raiz)
-        /// @remarks Requiere que el nodo no sea nulo
+        /// @remarks Requiere que el nodo no sea nulo, y que exista una raiz previamente en el arbol
         inline Nodo Padre(const Nodo& nodoHijo) const
         {
             if (nodoHijo.nodoConcreto == nullptr)
                 throw NodoConcretoInvalido();
 
-            return Nodo(nodoHijo.nodoConcreto->padre);
+            if (this->raiz == nullptr)
+                throw RaizNula();
+
+            NodoConcreto* hijoConcreto = nodoHijo.nodoConcreto;
+
+            // Caso 1: El nodo es la raiz (No tiene padre / Tiene padre nulo)
+            if (hijoConcreto == this->raiz)
+                return Nodo();
+
+            // Caso 2: El nodo no es la raiz (Debe de tener padre) 
+            // Naveguemos hasta llegar al último hijo, y luego al padre
+            NodoConcreto* padreConcreto = nodoHijo.nodoConcreto;
+
+            while (!padreConcreto->apuntaAlPadre) padreConcreto = padreConcreto->hermanoDerecho; 
+            padreConcreto = padreConcreto->hermanoDerecho;
+
+            return Nodo(padreConcreto);
         }
 
         /// @brief Recupera el nodo correspondiente al hijo mas izquierdo de otro nodo
@@ -436,7 +484,12 @@ class Arbol
         {
             if (nodo.nodoConcreto == nullptr)
                 throw NodoConcretoInvalido();
-
+            
+            // Si el nodo actual apunta al padre, se considera que no tiene hermano derecho
+            if (nodo.nodoConcreto->apuntaAlPadre)
+                return Nodo();
+            
+            // Sino, entonces es trivial obtener su hermano derecho
             return Nodo(nodo.nodoConcreto->hermanoDerecho);
         }
 
@@ -475,7 +528,7 @@ class Arbol
                 // Únicamente podemos citar a los hijos de este nodo si es que tiene hijos
                 if (padreConcreto->hijoMasIzquierdo != nullptr)
                 {
-                    for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+                    for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != padreConcreto; it = it->hermanoDerecho)
                         colaNodos.Encolar(Nodo(it));
                 }
             }
@@ -488,7 +541,7 @@ template <typename Elemento>
 std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
 {
     // Imprimamos la cantidad de nodos presentes en el árbol
-    salida << "N = " << arbol.NumNodos() << std::endl;
+    std::cout << "N = " << arbol.NumNodos() << std::endl;
 
     // Caso 1: El árbol tiene raíz nula (no tiene nodos)
     if (arbol.raiz == nullptr)
@@ -502,7 +555,7 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
     colaNodos.Encolar(arbol.Raiz());
 
     // Adicionalmente, imprimiremos sus contenidos de primero
-    salida << '[' << arbol.raiz->getElemento() << ']' << std::endl;
+    std::cout << '[' << arbol.raiz->getElemento() << ']' << std::endl;
 
     // Adicionalmente, llevaremos cuenta de cuántos nodos corresponden al nivel actual y su correspondiente siguiente
     size_t nodosPendientesNivelActual = 1;
@@ -526,13 +579,13 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
         // Únicamente citaremos a sus hijos si es que existen en el primer lugar
         if (padreConcreto->hijoMasIzquierdo != nullptr)
         {
-            for (auto it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+            for (auto it = padreConcreto->hijoMasIzquierdo; it != padreConcreto; it = it->hermanoDerecho)
             {
                 // Tras obtener un hijo, imprimiremos sus contenidos
                 salida << it->getElemento();
 
                 // Si el hijo tiene un hermano derecho, entonces los separeremos a ambos mediante un espacio
-                if (it->hermanoDerecho != nullptr)
+                if (!it->apuntaAlPadre)
                     salida << ' ';
 
                 // Luego, tras imprimir sus contenidos, lo encolaremos
@@ -559,82 +612,4 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
     }
     
     return salida;
-}
-
-/// @brief Mini demo, incompleta hasta terminar de implementar el árbol
-int main()
-{
-    // Creación
-    Arbol<int> a;
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras crearlo ^^^" << std::endl;
-
-    // Colocar Raíz
-    a.PonerRaiz(1);
-    Arbol<int>::Nodo raiz = a.Raiz();
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras insertar 1 como raíz ^^^" << std::endl;
-
-    // Agregar hijos
-    Arbol<int>::Nodo nodo_2 = a.AgregarHijo(2, raiz);
-    Arbol<int>::Nodo nodo_3 = a.AgregarHijoMasDerecho(3, raiz);
-    a.AgregarHijoMasDerecho(4, raiz);
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras insertar 2, 3 y 4 ^^^" << std::endl;
-
-    Arbol<int>::Nodo nodo_5 = a.AgregarHijo(5, nodo_2);
-    Arbol<int>::Nodo nodo_6 = a.AgregarHijoMasDerecho(6, nodo_2);
-    a.AgregarHijoMasDerecho(7, nodo_2);
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras insertar 5, 6 y 7 ^^^" << std::endl;
-
-    Arbol<int>::Nodo nodo_8 = a.AgregarHijo(8, nodo_3);
-    Arbol<int>::Nodo nodo_9 = a.AgregarHijoMasDerecho(9, nodo_3);
-    a.AgregarHijoMasDerecho(10, nodo_3);
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras insertar 8, 9 y 10 ^^^" << std::endl;
-
-    // Borrar hojas
-    a.BorrarHoja(nodo_8);
-    a.BorrarHoja(nodo_9);
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras borrar hojas 8 y 9 ^^^" << std::endl;
-
-    // Recuperar etiquetas
-    std::cout << "Etiqueta del nodo raiz = " << a.Etiqueta(a.Raiz()) << std::endl;
-    std::cout << "Etiqueta del nodo 5 = " << a.Etiqueta(nodo_5) << std::endl;
-    std::cout << "Etiqueta del nodo 6 = " << a.Etiqueta(nodo_6) << std::endl;
-
-    // Modificar etiquetas
-    a.ModificaEtiqueta(raiz, 111);
-    a.ModificaEtiqueta(nodo_5, 555);
-    std::cout << a << std::endl;
-    std::cout << "^^^ Arbol tras modificar etiquetas 1 -> 111, 5 -> 555 ^^^" << std::endl;
-
-    // Obtener cantidad de nodos
-    std::cout << "Cantidad de nodos en el arbol = " << a.NumNodos() << std::endl;
-
-    // Obtener el nodo padre
-    std::cout << "Etiqueta del nodo padre del nodo 2 = " << a.Etiqueta(a.Padre(nodo_2)) << std::endl;
-    std::cout << "Etiqueta del nodo padre del nodo 3 = " << a.Etiqueta(a.Padre(nodo_3)) << std::endl;
-    std::cout << "Etiqueta del nodo padre del nodo 5 = " << a.Etiqueta(a.Padre(nodo_5)) << std::endl;
-
-    // Obtener el nodo padre de la raiz
-    Arbol<int>::Nodo padre_raiz = a.Padre(a.Raiz());
-    std::cout << "¿Es el nodo padre de la raiz nulo?" << std::endl;
-    try
-    {
-        a.Etiqueta(padre_raiz);
-        std::cout << "No, es nulo." << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << "Sí, es nulo. La excepción es:" << std::endl;
-        std::cout << "[ERROR] = " << e.what() << std::endl;
-    }
-
-    // TODO: Realizar pruebas de casos mas específicos
-    // TODO: Probar el manejo de excepciones
-
-    return 0;
 }
