@@ -2,14 +2,14 @@
 #include <cstddef> // Para poder usar size_t
 
 #include <iostream> // Para impresiones en la salida estándar
-#include <queue> // Para probar recorrido por niveles usando la cola STL de placeholder
+#include "../CSE/Cola.hpp" // Para realizar recorridos por niveles
 
 /// @brief Excepción para cuando se intenta desreferenciar un puntero a elemento nulo (a nivel de nodo concreto)
-class ElementoInvalido : public std::exception 
+class ElementoInvalidoArbol : public std::exception 
 {
     public:
-        ElementoInvalido() {}
-        ~ElementoInvalido() {}
+        ElementoInvalidoArbol() {}
+        ~ElementoInvalidoArbol() {}
 
         virtual const char* what() const noexcept
         {return "Imposible acceder a elemento. Es nulo";}
@@ -144,7 +144,7 @@ class Arbol
                 const Elemento& getElemento() const
                 {
                     if (this->elemento == nullptr)
-                        throw ElementoInvalido();
+                        throw ElementoInvalidoArbol();
                     
                     return *(this->elemento);
                 }
@@ -215,17 +215,16 @@ class Arbol
         ~Arbol() noexcept(false)
         {
             // Utilicemos una cola de nodos para realizar un recorrido por niveles
-            std::queue<Nodo> colaNodos;
+            Cola<Nodo> colaNodos;
 
             // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-            colaNodos.push(this->Raiz());
+            colaNodos.Encolar(this->Raiz());
 
             // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
-            while (!colaNodos.empty())
+            while (!colaNodos.Vacio())
             {
                 // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-                Nodo nodoActual = colaNodos.front();
-                colaNodos.pop();
+                Nodo nodoActual = colaNodos.Desencolar();
 
                 // Tras obtener un nodo, encolaremos todos sus hijos
                 // Para ello tenemos que lidiar con el nodo concreto subyacente
@@ -234,7 +233,7 @@ class Arbol
                     throw NodoConcretoInvalido();
 
                 for (NodoConcreto* it = nodoConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
-                    colaNodos.push(Nodo(it));
+                    colaNodos.Encolar(Nodo(it));
 
                 // Luego, destruiremos al nodo concreto subyacente del nodo que desencolamos
                 // Esto libera los recursos manejados por el nodo concreto
@@ -320,18 +319,17 @@ class Arbol
 
             // Es necesario buscar en todo el árbol al padre de este nodo hoja
             // Por eso, realizaremos un recorrido por niveles utilizando una cola de nodos
-            std::queue<Nodo> colaNodos;
+            Cola<Nodo> colaNodos;
 
             // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-            colaNodos.push(this->Raiz());
+            colaNodos.Encolar(this->Raiz());
 
             // Mientras tengamos nodos en la cola, o no hayamos borrado la hoja todavía, no hemos terminado el recorrido
             bool hojaBorrada = false;
-            while (!colaNodos.empty() && !hojaBorrada)
+            while (!colaNodos.Vacio() && !hojaBorrada)
             {
                 // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-                Nodo nodoActual = colaNodos.front();
-                colaNodos.pop();
+                Nodo nodoActual = colaNodos.Desencolar();
 
                 // Tras obtener un nodo, analizaremos cada hijo y su hermano izquierdo
                 // Para ello tenemos que lidiar con el nodo concreto subyacente
@@ -344,7 +342,7 @@ class Arbol
                 {
                     // Si resulta ser distinto que la hoja buscada, lo encolaremos
                     if (it != nodoHoja.nodoConcreto)
-                        colaNodos.push(Nodo(it));
+                        colaNodos.Encolar(Nodo(it));
 
                     // Sino, entonces lo borraremos de entre sus hermanos y terminaremos el recorrido
                     else 
@@ -428,18 +426,17 @@ class Arbol
             // Caso 2: El nodo no es la raiz (Debe de tener padre) 
             // Es necesario buscar en todo el árbol al padre de este nodo hoja
             // Por eso, realizaremos un recorrido por niveles utilizando una cola de nodos
-            std::queue<Nodo> colaNodos;
+            Cola<Nodo> colaNodos;
 
             // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-            colaNodos.push(this->Raiz());
+            colaNodos.Encolar(this->Raiz());
 
             // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
             // Si resulta que encontramos al padre, escaparemos el recorrido mediante un retorno prematuro
-            while (!colaNodos.empty())
+            while (!colaNodos.Vacio())
             {
                 // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-                Nodo nodoActual = colaNodos.front();
-                colaNodos.pop();
+                Nodo nodoActual = colaNodos.Desencolar();
 
                 // Tras obtener un nodo, analizaremos cada hijo
                 // Para ello tenemos que lidiar con el nodo concreto subyacente
@@ -451,7 +448,7 @@ class Arbol
                 {
                     // Si resulta ser distinto que el hijo alimentado, lo encolaremos
                     if (it != hijoConcreto)
-                        colaNodos.push(Nodo(it));
+                        colaNodos.Encolar(Nodo(it));
 
                     // Sino, entonces significa que encontramos al padre
                     else 
@@ -505,10 +502,10 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
 
     // Caso 2: El árbol tiene nodos
     // Realizaremos un recorrido por niveles utilizando una cola de nodos
-    std::queue<typename Arbol<Elemento>::Nodo> colaNodos;
+    Cola<typename Arbol<Elemento>::Nodo> colaNodos;
 
     // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-    colaNodos.push(arbol.Raiz());
+    colaNodos.Encolar(arbol.Raiz());
 
     // Adicionalmente, imprimiremos sus contenidos de primero
     std::cout << '[' << arbol.raiz->getElemento() << ']' << std::endl;
@@ -519,11 +516,10 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
 
     // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
     // Si resulta que encontramos al padre, escaparemos el recorrido mediante un retorno prematuro
-    while (!colaNodos.empty())
+    while (!colaNodos.Vacio())
     {
         // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-        auto nodoActual = colaNodos.front();
-        colaNodos.pop();
+        auto nodoActual = colaNodos.Desencolar();
 
         // Tras obtener ese nodo, la cantidad de nodos pendientes en el nivel actual disminuye en 1
         --nodosPendientesNivelActual;
@@ -542,7 +538,7 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
                 salida << ' ';
 
             // Luego, tras imprimir sus contenidos, lo encolaremos
-            colaNodos.push(typename Arbol<Elemento>::Nodo(it));
+            colaNodos.Encolar(typename Arbol<Elemento>::Nodo(it));
 
             // Tras encolar un hijo, la cantidad de nodos pendientes en el nivel siguiente aumenta
             ++nodosPendientesNivelSiguiente;
