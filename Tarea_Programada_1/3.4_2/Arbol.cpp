@@ -490,7 +490,7 @@ template <typename Elemento>
 std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
 {
     // Imprimamos la cantidad de nodos presentes en el árbol
-    std::cout << "N = " << arbol.NumNodos() << std::endl;
+    salida << "N = " << arbol.NumNodos() << std::endl;
 
     // Caso 1: El árbol tiene raíz nula (no tiene nodos)
     if (arbol.raiz == nullptr)
@@ -504,7 +504,7 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
     colaNodos.push(arbol.Raiz());
 
     // Adicionalmente, imprimiremos sus contenidos de primero
-    std::cout << '[' << arbol.raiz->getElemento() << ']' << std::endl;
+    salida << '[' << arbol.raiz->getElemento() << ']' << std::endl;
 
     // Adicionalmente, llevaremos cuenta de cuántos nodos corresponden al nivel actual y su correspondiente siguiente
     size_t nodosPendientesNivelActual = 1;
