@@ -2,6 +2,7 @@
 #include <cstddef> // Para poder usar size_t
 
 #include <iostream> // Para impresiones en la salida estándar
+#include <queue> // Para probar recorrido por niveles usando la cola STL de placeholder
 
 /// @brief Excepción para cuando se intenta desreferenciar un puntero a elemento nulo (a nivel de nodo concreto)
 class ElementoInvalido : public std::exception 
@@ -36,6 +37,28 @@ class DereferenciaNodoInvalida : public std::exception
         {return "Imposible desreferenciar nodo, su elemento es nulo";}
 };
 
+/// @brief Excepción para cuando se maneja un nodo que debería existir en el árbol, pero no se encontró en él
+class NodoEsForaneo : public std::exception 
+{
+    public:
+        NodoEsForaneo() {}
+        ~NodoEsForaneo() {}
+
+        virtual const char* what() const noexcept
+        {return "Nodo deberia existir en el arbol, pero no se encontro";}
+};
+
+/// @brief Excepción para cuando se maneja un nodo que requiere ser una hoja, pero no lo es
+class NodoNoEsHoja : public std::exception 
+{
+    public:
+        NodoNoEsHoja() {}
+        ~NodoNoEsHoja() {}
+
+        virtual const char* what() const noexcept
+        {return "Hoja invalida. Nodo no es hoja";}
+};
+
 /// @brief Excepción para cuando se intenta inicializar una raíz ya existente
 class RaizPreexistente : public std::exception 
 {
@@ -58,16 +81,40 @@ class RaizNula : public std::exception
         {return "Imposible acceder a raiz. Es nula";}
 };
 
+// Declaraciones adelantadas para resolver dependencias circulares en impresión
+
 /// @brief Árbol N-Ario implementado con Hijo-Más-Izquierdo, Hermano Derecho y contador
 template <typename Elemento>
-class Arbol 
+class Arbol;
+
+/// @brief Imprime los contenidos de un árbol de forma vertical a un flujo de salida
+/// @param salida Flujo de salida para imprimir los contenidos del árbol
+/// @param arbol Arbol N-ario del cual imprimir los contenidos
+/// @return Referencia al flujo de salida utilizado (para encadenar impresiones)
+template <typename Elemento>
+std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol);
+
+/// @brief Árbol N-Ario implementado con Hijo-Más-Izquierdo, Hermano Derecho y contador
+template <typename Elemento>
+class Arbol
 {
+    // TODO: Migrar de la cola STL a la cola de Archi
+
+    // La función de impresión puede ver las entrañas de un Árbol
+    template <typename T>
+    friend std::ostream& operator<<(std::ostream&, const Arbol<T>&);
+
     protected: 
         /// @brief Nodo concreto, poseedor de elementos y poseído por el árbol
         class NodoConcreto
         {
+            // Un Árbol pueden manipular las entrañas de un Nodo Concreto, y un Nodo verlas
             friend class Nodo;
             friend class Arbol;
+
+            // La función de impresión puede ver las entrañas de un Nodo Concreto
+            template <typename T>
+            friend std::ostream& operator<<(std::ostream&, const Arbol<T>&);
 
             private:
                 /// @brief Elemento en la memoria dinámica apuntado (y poseído) por este nodo concreto
@@ -116,7 +163,12 @@ class Arbol
         /// @brief Nodo lógico, interfaz entre nodo concreto y usuario del árbol
         class Nodo 
         {
+            // Un Árbol puede ver y manipular las entrañas de un Nodo (lógico)
             friend class Arbol;
+
+            // La función de impresión puede ver las entrañas de un Nodo (lógico)
+            template <typename T>
+            friend std::ostream& operator<<(std::ostream&, const Arbol<T>&);
 
             private:
                 /// @brief Nodo concreto apuntado (pero no poseído) por este nodo
@@ -160,9 +212,34 @@ class Arbol
         Arbol() {}
 
         /// @brief Elimina los nodos de un árbol
-        ~Arbol()
+        ~Arbol() noexcept(false)
         {
-            // TODO: Usar cola para recorrido por niveles
+            // Utilicemos una cola de nodos para realizar un recorrido por niveles
+            std::queue<Nodo> colaNodos;
+
+            // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+            colaNodos.push(this->Raiz());
+
+            // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
+            while (!colaNodos.empty())
+            {
+                // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+                Nodo nodoActual = colaNodos.front();
+                colaNodos.pop();
+
+                // Tras obtener un nodo, encolaremos todos sus hijos
+                // Para ello tenemos que lidiar con el nodo concreto subyacente
+                NodoConcreto* nodoConcreto = nodoActual.nodoConcreto;
+                if (nodoConcreto == nullptr)
+                    throw NodoConcretoInvalido();
+
+                for (NodoConcreto* it = nodoConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+                    colaNodos.push(Nodo(it));
+
+                // Luego, destruiremos al nodo concreto subyacente del nodo que desencolamos
+                // Esto libera los recursos manejados por el nodo concreto
+                delete nodoConcreto;
+            }
         }
 
         /// @brief Coloca un elemento en la raíz del arbol como un nodo
@@ -213,10 +290,10 @@ class Arbol
             // Caso 1: No hay hijos todavía
             if (it == nullptr)
                 nodoPadre.nodoConcreto->hijoMasIzquierdo = nuevoUltimoHijo;
-            // Caso 2: Si hay hijos
+            // Caso 2: Sí hay hijos
             else
             {
-                while(it->hermanoDerecho != nullptr)
+                while (it->hermanoDerecho != nullptr)
                     it = it->hermanoDerecho;
 
                 it->hermanoDerecho = nuevoUltimoHijo;
@@ -237,7 +314,66 @@ class Arbol
             if (nodoHoja.nodoConcreto == nullptr)
                 throw NodoConcretoInvalido();
 
-            // TODO: Usar cola para recorrido por niveles
+            // Para mantener la integridad del árbol, es requerimiento que el nodo parámetro sea una hoja
+            if (nodoHoja.nodoConcreto->hijoMasIzquierdo != nullptr)
+                throw NodoNoEsHoja();
+
+            // Es necesario buscar en todo el árbol al padre de este nodo hoja
+            // Por eso, realizaremos un recorrido por niveles utilizando una cola de nodos
+            std::queue<Nodo> colaNodos;
+
+            // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+            colaNodos.push(this->Raiz());
+
+            // Mientras tengamos nodos en la cola, o no hayamos borrado la hoja todavía, no hemos terminado el recorrido
+            bool hojaBorrada = false;
+            while (!colaNodos.empty() && !hojaBorrada)
+            {
+                // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+                Nodo nodoActual = colaNodos.front();
+                colaNodos.pop();
+
+                // Tras obtener un nodo, analizaremos cada hijo y su hermano izquierdo
+                // Para ello tenemos que lidiar con el nodo concreto subyacente
+                NodoConcreto* padreConcreto = nodoActual.nodoConcreto;
+                if (padreConcreto == nullptr)
+                    throw NodoConcretoInvalido();
+
+                NodoConcreto* hermanoIzquierdo = nullptr;
+                for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+                {
+                    // Si resulta ser distinto que la hoja buscada, lo encolaremos
+                    if (it != nodoHoja.nodoConcreto)
+                        colaNodos.push(Nodo(it));
+
+                    // Sino, entonces lo borraremos de entre sus hermanos y terminaremos el recorrido
+                    else 
+                    {
+                        // Consideraremos a un hermano derecho hipotético. No se distingue si es nulo o no
+                        NodoConcreto* hermanoDerecho = it->hermanoDerecho;
+
+                        // Caso 1: No hay hermano izquierdo (la hoja está es el hijo más izquierdo)
+                        if (hermanoIzquierdo == nullptr)
+                            padreConcreto->hijoMasIzquierdo = hermanoDerecho;
+
+                        // Caso 2: Sí hay hermano izquierdo
+                        else 
+                            hermanoIzquierdo->hermanoDerecho = hermanoDerecho;
+
+                        // Ya cambiamos los enlaces del árbol. Borremos a la hoja
+                        delete it;
+
+                        // Ya borramos la hoja. Dejaremos de encolar hijos y escaparemos el recorrido
+                        hojaBorrada = true;
+                        break;
+                    }
+
+                    // De continuar el ciclo, el hermano izquierdo de la siguiente iteración sería el hijo de ésta
+                    hermanoIzquierdo = it;
+                }
+            }
+
+            // Para este punto, la hoja ya fue borrada
             --this->cantidadNodos;
         }
 
@@ -272,25 +408,59 @@ class Arbol
         {return Nodo(this->raiz);}
 
         /// @brief Recupera el nodo correspondiente al padre de otro nodo
-        /// @param nodo Nodo del cual recuperar el nodo padre
+        /// @param nodoHijo Nodo del cual recuperar el nodo padre
         /// @return Presunto padre del nodo. Nodo nulo si resulta no tener padre (caso de la raiz)
         /// @remarks Requiere que el nodo no sea nulo, y que exista una raiz previamente en el arbol
-        inline Nodo Padre(const Nodo& nodo) const
+        inline Nodo Padre(const Nodo& nodoHijo) const
         {
-            if (nodo.nodoConcreto == nullptr)
+            if (nodoHijo.nodoConcreto == nullptr)
                 throw NodoConcretoInvalido();
 
             if (this->raiz == nullptr)
                 throw RaizNula();
 
-            NodoConcreto* it = nodo.nodoConcreto;
+            NodoConcreto* hijoConcreto = nodoHijo.nodoConcreto;
 
-            // Caso 1: El nodo es la raiz
-            if (it == this->raiz)
+            // Caso 1: El nodo es la raiz (No tiene padre / Tiene padre nulo)
+            if (hijoConcreto == this->raiz)
                 return Nodo();
 
-            // TODO: Usar cola para recorrido por niveles
-            return Nodo();
+            // Caso 2: El nodo no es la raiz (Debe de tener padre) 
+            // Es necesario buscar en todo el árbol al padre de este nodo hoja
+            // Por eso, realizaremos un recorrido por niveles utilizando una cola de nodos
+            std::queue<Nodo> colaNodos;
+
+            // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+            colaNodos.push(this->Raiz());
+
+            // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
+            // Si resulta que encontramos al padre, escaparemos el recorrido mediante un retorno prematuro
+            while (!colaNodos.empty())
+            {
+                // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+                Nodo nodoActual = colaNodos.front();
+                colaNodos.pop();
+
+                // Tras obtener un nodo, analizaremos cada hijo
+                // Para ello tenemos que lidiar con el nodo concreto subyacente
+                NodoConcreto* padreConcreto = nodoActual.nodoConcreto;
+                if (padreConcreto == nullptr)
+                    throw NodoConcretoInvalido();
+
+                for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+                {
+                    // Si resulta ser distinto que el hijo alimentado, lo encolaremos
+                    if (it != hijoConcreto)
+                        colaNodos.push(Nodo(it));
+
+                    // Sino, entonces significa que encontramos al padre
+                    else 
+                        return Nodo(padreConcreto);
+                }
+            }
+
+            // Si resulta que no hemos encontrado al padre, entonces este nodo debe ser foráneo a este árbol
+            throw NodoEsForaneo();
         }
 
         /// @brief Recupera el nodo correspondiente al hijo mas izquierdo de otro nodo
@@ -319,21 +489,138 @@ class Arbol
 
         /// @brief Recupera la cantidad de nodos existentes en este arbol
         /// @return Cantidad de nodos existentes en todo el árbol
-        inline const size_t NumNodos(const Nodo& nodoInicial) const
+        inline const size_t NumNodos() const
         {return this->cantidadNodos;}
 };
+
+template <typename Elemento>
+std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
+{
+    // Imprimamos la cantidad de nodos presentes en el árbol
+    std::cout << "N = " << arbol.cantidadNodos << std::endl;
+
+    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
+    if (arbol.raiz == nullptr)
+        return salida;
+
+    // Caso 2: El árbol tiene nodos
+    // Realizaremos un recorrido por niveles utilizando una cola de nodos
+    std::queue<typename Arbol<Elemento>::Nodo> colaNodos;
+
+    // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+    colaNodos.push(arbol.Raiz());
+
+    // Adicionalmente, imprimiremos sus contenidos de primero
+    std::cout << '[' << arbol.raiz->getElemento() << ']' << std::endl;
+
+    // Adicionalmente, llevaremos cuenta de cuántos nodos corresponden al nivel actual y su correspondiente siguiente
+    size_t nodosPendientesNivelActual = 1;
+    size_t nodosPendientesNivelSiguiente = 0;
+
+    // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
+    // Si resulta que encontramos al padre, escaparemos el recorrido mediante un retorno prematuro
+    while (!colaNodos.empty())
+    {
+        // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+        auto nodoActual = colaNodos.front();
+        colaNodos.pop();
+
+        // Tras obtener ese nodo, la cantidad de nodos pendientes en el nivel actual disminuye en 1
+        --nodosPendientesNivelActual;
+
+        // Tras obtener un nodo, encolaremos cada hijo
+        // Para distinguir a cada grupo de hijos, encerraremos la impresión de cada grupo entre llaves
+        salida << "[";
+        auto padreConcreto = nodoActual.nodoConcreto;
+        for (auto it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+        {
+            // Tras obtener un hijo, imprimiremos sus contenidos
+            salida << it->getElemento();
+
+            // Si el hijo tiene un hermano derecho, entonces los separeremos a ambos mediante un espacio
+            if (it->hermanoDerecho != nullptr)
+                salida << ' ';
+
+            // Luego, tras imprimir sus contenidos, lo encolaremos
+            colaNodos.push(typename Arbol<Elemento>::Nodo(it));
+
+            // Tras encolar un hijo, la cantidad de nodos pendientes en el nivel siguiente aumenta
+            ++nodosPendientesNivelSiguiente;
+        }
+        salida << "] ";
+        
+        // Si ya no hay nodos pendientes en este nivel, entonces hemos cambiado de nivel
+        if (nodosPendientesNivelActual == 0)
+        {
+            // La cantidad de nodos pendientes en este nivel corresponden a la cantidad de nodos pendientes para el siguiente
+            nodosPendientesNivelActual = nodosPendientesNivelSiguiente;
+
+            // Luego, como cambiamos de nivel, la cantidad de nodos pendientes para el siguiente nivel se asume como 0 de nuevo
+            nodosPendientesNivelSiguiente = 0;
+
+            // Adicionalmente podemos realizar un salto de nivel en la impresión
+            salida << std::endl;
+        }
+    }
+    
+    return salida;
+}
 
 /// @brief Mini demo, incompleta hasta terminar de implementar el árbol
 int main()
 {
+    // Creación
     Arbol<int> a;
-    a.PonerRaiz(100);
-    std::cout << a.Etiqueta(a.Raiz()) << std::endl;
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras crearlo ^^^" << std::endl;
 
-    a.ModificaEtiqueta(a.Raiz(), 999);
-    std::cout << a.Etiqueta(a.Raiz()) << std::endl;
+    // Colocar Raíz
+    a.PonerRaiz(1);
+    Arbol<int>::Nodo raiz = a.Raiz();
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras insertar 1 como raíz ^^^" << std::endl;
 
-    a.Padre(a.Raiz());
+    // Agregar hijos
+    Arbol<int>::Nodo nodo_2 = a.AgregarHijo(2, raiz);
+    Arbol<int>::Nodo nodo_3 = a.AgregarHijoMasDerecho(3, raiz);
+    a.AgregarHijoMasDerecho(4, raiz);
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras insertar 2, 3 y 4 ^^^" << std::endl;
+
+    Arbol<int>::Nodo nodo_5 = a.AgregarHijo(5, nodo_2);
+    Arbol<int>::Nodo nodo_6 = a.AgregarHijoMasDerecho(6, nodo_2);
+    a.AgregarHijoMasDerecho(7, nodo_2);
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras insertar 5, 6 y 7 ^^^" << std::endl;
+
+    Arbol<int>::Nodo nodo_8 = a.AgregarHijo(8, nodo_3);
+    Arbol<int>::Nodo nodo_9 = a.AgregarHijoMasDerecho(9, nodo_3);
+    a.AgregarHijoMasDerecho(10, nodo_3);
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras insertar 8, 9 y 10 ^^^" << std::endl;
+
+    // Borrar hojas
+    a.BorrarHoja(nodo_8);
+    a.BorrarHoja(nodo_9);
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras borrar hojas 8 y 9 ^^^" << std::endl;
+
+    // Recuperar etiquetas
+    std::cout << "Etiqueta del nodo raiz = " << a.Etiqueta(a.Raiz()) << std::endl;
+    std::cout << "Etiqueta del nodo 5 = " << a.Etiqueta(nodo_5) << std::endl;
+    std::cout << "Etiqueta del nodo 6 = " << a.Etiqueta(nodo_6) << std::endl;
+
+    // Modificar etiquetas
+    a.ModificaEtiqueta(raiz, 111);
+    a.ModificaEtiqueta(nodo_5, 555);
+    std::cout << a << std::endl;
+    std::cout << "^^^ Arbol tras modificar etiquetas 1 -> 111, 5 -> 555 ^^^" << std::endl;
+
+    // Obtener cantidad de nodos
+    std::cout << "Cantidad de nodos en el arbol = " << a.NumNodos() << std::endl;
+
+    // TODO: Realizar pruebas de casos mas específicos
+    // TODO: Probar el manejo de excepciones
 
     return 0;
 }
