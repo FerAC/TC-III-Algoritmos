@@ -325,8 +325,9 @@ public:
     }
 
     /**
-     * @brief
-     * @param
+     * @brief BorrarHoja es un metodo del arbol que permite eliminar una hoja del arbol
+     * @param nodoBorrado bodoBorrado es el unico parametro del metodo, es el metodo del arbol que se quiere borrar
+     * @remark El metodo occupa que el arbol sea inicializado y el Nodo nodoBorrado exista en el arbol y sea una hoja
      */
     void BorrarHoja(Nodo nodoBorrado)
     {
@@ -363,8 +364,9 @@ public:
     }
 
     /**
-     * @brief
-     * @param
+     * @brief Etiqueta es un metodo del arbol que devuelve la etiqueta, en ese caso un entero, de un Nodo dado
+     * @param nodo nodo es de tipo Nodo, es el Nodo del cual queremos extraer le etiqueta
+     * @remark El metodo requiere que el arbol sea inicializado, y que el Nodo nodo exista en el arbol
      */
     int Etiqueta(Nodo nodo)
     {
@@ -372,11 +374,12 @@ public:
     }
 
     /**
-     * @brief
-     * @param
-     * @param
+     * @brief ModificarEtiqueta permite modificar el valor (etiqueta) de un nodo dado
+     * @param nodo nodo es de tipo Nodo, es el Nodo del cual queremos cambiar la etiqueta
+     * @param nuevoValor nuevoValor es un entero, una etiqueta, es el nuevo valor de la etiqueta del Nodo nodo
+     * @remark El metodo requiere que el arbol sea inicializado, y que el Nodo nodo existe en el arbol
      */
-    void ModificaEtiqueta(Nodo nodo, int nuevoValor) // change the node with value, to newValue
+    void ModificaEtiqueta(Nodo nodo, int nuevoValor)
     {
         int indice = 0;
         while (arregloArbol[indice].getValor() != nodo.getValor())
@@ -387,8 +390,9 @@ public:
     }
 
     /**
-     * @brief
-     * @return
+     * @brief NumNodos permite al usuario conocer la cantidad actual de elementos en el arbol
+     * @return El metodo devuelve el parametro "actual" que representa la cantidad actual de elementos en el arbol
+     * @remark El metodo requiere que el arbol este inicializado
      */
     int NumNodos()
     {
