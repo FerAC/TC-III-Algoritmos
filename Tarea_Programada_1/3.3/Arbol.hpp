@@ -1,3 +1,6 @@
+#ifndef ARBOL_HPP
+#define ARBOL_HPP
+
 #include <exception> // Para las excepciones
 #include <cstddef> // Para poder usar size_t
 
@@ -559,3 +562,5 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
     
     return salida;
 }
+
+#endif
