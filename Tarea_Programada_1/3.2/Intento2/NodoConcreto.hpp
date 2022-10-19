@@ -16,22 +16,22 @@ class NodoConcreto{
 	public:
 		
 
-Nodo::Nodo(){
+NodoConcreto::NodoConcreto(){
 	
 	
 	
 }
 
-Nodo::~Nodo(){
+NodoConcreto::~NodoConcreto(){
 	///delete listaHijos;
 }
 
-Nodo::Nodo(int et){
+NodoConcreto::NodoConcreto(int et){
 	etiqueta = et;
-	listaHijos = new Lista<Nodo*>();
+	listaHijos = new Lista<NodoConcreto*>();
 }
 
-void Nodo::insertarEnLista(Nodo* nodoNuevo){
+void NodoConcreto::insertarEnLista(NodoConcreto* nodoNuevo){
 	
 	if(listaHijos->getPrimera()!=nullptr){
 		
@@ -45,29 +45,29 @@ void Nodo::insertarEnLista(Nodo* nodoNuevo){
 	
 }
 
-Lista<Nodo*>* Nodo::getListaHijos(){
+Lista<NodoConcreto*>* NodoConcreto::getListaHijos(){
 	return listaHijos; 
 }
-void Nodo::imprimirValor(){
+void NodoConcreto::imprimirValor(){
 	std::cout<< etiqueta << std::endl;
 }
 
-int Nodo::operator==(Nodo nodo2){
+int NodoConcreto::operator==(NodoConcreto nodo2){
 	if(this->etiqueta == nodo2.getEtiqueta()){
 		return 1;
 	}
 	return 0;
 }
 
-int Nodo::getEtiqueta(){
+int NodoConcreto::getEtiqueta(){
 	return etiqueta;
 }
 
-void Nodo::setEtiqueta(int valorNuevo){
+void NodoConcreto::setEtiqueta(int valorNuevo){
 	this->etiqueta = valorNuevo;
 }
 
-ostream& Nodo::imprimir(ostream& output){
+ostream& NodoConcreto::imprimir(ostream& output){
 	output<< "Etiqueta : " << etiqueta << std::endl;
 	output<< "Mis hijos son : " << std::endl;
 	listaHijos->imprimirPunteros();
