@@ -170,23 +170,25 @@ public:
     }
 
     /**
-     * @brief AgregarHijo permite agrgar un hijo al Nodo dado
+     * @brief AgregarHijo permite agregar un hijo al Nodo dado
      * @param padre padre es de tipo Nodo, es el Nodo al cual se agrega un hijo
-     * @param hijo hijo is the value of the new element inserted in the tree
+     * @param valorHijo valorHijo es el valor del nuevo Nodo agregado al arbol
+     * @remark El metodo necesita que el arbol sea inicializado, que tengo por lo menos una raiz incializada, y que el Nodo padre exista en el arbol
      */
-    void AgregarHijo(int valorHijo, Nodo padre) // agrega al padre un hijo
+    void AgregarHijo(int valorHijo, Nodo padre)
     {
-        int indice = 0;
+        //int indice = 0;
 
-        while (arregloArbol[indice].getValor() != padre.getValor())
-        {
-            ++indice;
-        }
+        //while (arregloArbol[indice].getValor() != padre.getValor())
+        //{
+          //  ++indice;
+        //}
 
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
-            arregloArbol[actual].setPadre(indice);
+            //arregloArbol[actual].setPadre(indice);
+            arregloArbol[actual].setPadre(padre.getIndice());
             arregloArbol[actual].setIndice(actual);
             ++actual;
         }
