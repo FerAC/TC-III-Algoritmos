@@ -12,13 +12,13 @@ ArbolLH::~ArbolLH(){
 	delete listaPrincipal;									//listaPrincipal->										//listaPrincipal
 } 
 
-void ArbolLH::imprimir(){
+void ArbolLH::Imprimir(){
 	
 	listaPrincipal->imprimir();
 	
 }
 
-void ArbolLH::imprimirLP(){
+void ArbolLH::ImprimirLP(){
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
 	while(actual!=nullptr){
 		std::cout<< "ELEMENTO : " << actual->getEtiqueta()->getEtiqueta() << std::endl;
@@ -31,7 +31,7 @@ void ArbolLH::imprimirLP(){
 
 /// @brief Inserta un NodoConcreto en el arbol como raiz del mismo
 /// @remarks Requiere que el arbol sea vacia  
-void ArbolLH::ponerRaiz(NodoConcreto * nuevoNodoConcreto){
+void ArbolLH::PonerRaiz(NodoConcreto * nuevoNodoConcreto){
 	listaPrincipal->insertarAlPrincipio(*nuevoNodoConcreto);
 }
 
@@ -39,7 +39,7 @@ void ArbolLH::ponerRaiz(NodoConcreto * nuevoNodoConcreto){
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 
 /// @return El NodoConcreto agregado	
-NodoConcreto* ArbolLH::agregarHijo(NodoConcreto NodoConcretoPadre, int etiqueta){
+NodoConcreto* ArbolLH::AgregarHijo(NodoConcreto NodoConcretoPadre, int etiqueta){
 	NodoConcreto * NodoConcretoNuevo = new NodoConcreto(etiqueta); 
 	listaPrincipal->insertar(*NodoConcretoNuevo);
 	NodoConcretoPadre.insertarEnLista(NodoConcretoNuevo); 
@@ -49,14 +49,14 @@ NodoConcreto* ArbolLH::agregarHijo(NodoConcreto NodoConcretoPadre, int etiqueta)
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @return El NodoConcreto agregado 
-NodoConcreto* ArbolLH::agregarHijoMasDerecho(NodoConcreto NodoConcretoPadre, int etiqueta){
+NodoConcreto* ArbolLH::AgregarHijoMasDerecho(NodoConcreto NodoConcretoPadre, int etiqueta){
 	return agregarHijo(NodoConcretoPadre, etiqueta);
 }
 
 /// @brief Borra una hoja del arbol  
 /// @param  Un NodoConcreto hoja
 /// @remarks Requiere que el arbol este inicializado y que el NodoConcreto alimentado como paramtero sea una hoja	
-void ArbolLH::borrarHoja(NodoConcreto* borrado){
+void ArbolLH::BorrarHoja(NodoConcreto* borrado){
 	for(Celda<NodoConcreto> * buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
 		int validez = buffer1->getEtiqueta()->getListaHijos()->borrar(borrado); 
 		if(validez!=0){
@@ -70,20 +70,20 @@ void ArbolLH::borrarHoja(NodoConcreto* borrado){
 }
 
  		
-Lista<NodoConcreto>* ArbolLH::getLP(){
+Lista<NodoConcreto>* ArbolLH::GetLP(){
 	return listaPrincipal;
 }
 
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 	
-NodoConcreto* ArbolLH::raiz() {
+NodoConcreto* ArbolLH::Raiz() {
 	return (listaPrincipal->getPrimera()->getEtiqueta()); 
 }
 
 /// @brief Devuelve el padre de un NodoConcreto alimentado como parametro 
 /// @param  un NodoConcreto que sera agregado como hijo  
 /// @remarks Requiere un arbol inicializado y que el NodoConcreto alimentado como parametro pertenezca al arbol 	
-NodoConcreto* ArbolLH::padre(NodoConcreto * hijo){
+NodoConcreto* ArbolLH::Padre(NodoConcreto * hijo){
 	NodoConcreto * a;
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
 	
@@ -112,21 +112,21 @@ NodoConcreto* ArbolLH::padre(NodoConcreto * hijo){
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 	
-NodoConcreto* hijoMasIzquierdo(NodoConcreto* padre){
+NodoConcreto* HijoMasIzquierdo(NodoConcreto* padre){
 	return padre->getListaHijos()->getPrimera()->getEtiqueta(4);
 }
 
 /// @brief Devuelve la etiqueta de un NodoConcreto
 /// @param  Un NodoConcreto con la etiqueta   
 /// @remarks Requiere que el NodoConcreto tenga una etiqueta	
-int  etiqueta(NodoConcreto* NodoConcreto){
+int  Etiqueta(NodoConcreto* NodoConcreto){
 	return NodoConcreto->getEtiqueta();
 }
 
 /// @brief modifica el valor de la etiqueta de un NodoConcreto
 /// @param  Un NodoConcreto y un entero que sera etiqueta
 /// @remarks Requiere que el NodoConcreto tenga un valor y que el valor nuevo no este en el arbol  	
-void modificaEtiqueta(NodoConcreto* NodoConcreto, int valorNuevo){
+void ModificaEtiqueta(NodoConcreto* NodoConcreto, int valorNuevo){
 	NodoConcreto->setEtiqueta(valorNuevo);
 }
 
@@ -134,7 +134,7 @@ void modificaEtiqueta(NodoConcreto* NodoConcreto, int valorNuevo){
 /// @param  Un NodoConcreto del cual queremos saber el hermano   
 /// @remarks Requiere que el arbol este inicializado y que el NodoConcreto sea parte del arbol	
 /// @return Devuelve un puntero a NodoConcreto
-NodoConcreto* ArbolLH::hermanoDerecho(NodoConcreto* celdaParam){
+NodoConcreto* ArbolLH::HermanoDerecho(NodoConcreto* celdaParam){
 	int contador = 0;
 	Celda<NodoConcreto*> hermanoDerecho; 
 	int terminado = 0;
@@ -163,7 +163,7 @@ NodoConcreto* ArbolLH::hermanoDerecho(NodoConcreto* celdaParam){
 
 /// @brief Devuelve la cantidad de NodoConcretos del arbol
 /// @remarks Requiere que el arbol este inicializado 	
-int ArbolLH::numNodoConcretos(){
+int ArbolLH::NumNodoConcretos(){
 	//Celda<NodoConcreto> * buffer = listaPrincipal->getPrimera();
 	int contador = 0;
 	for(Celda<NodoConcreto> * buffer = listaPrincipal->getPrimera(); buffer!=nullptr; buffer = buffer->getSiguiente()){

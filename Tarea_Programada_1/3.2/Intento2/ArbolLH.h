@@ -11,20 +11,20 @@ class ArbolLH{
 	public:
 		ArbolLH();
 		~ArbolLH();
-		void ponerRaiz(NodoConcreto*);
-		NodoConcreto* agregarHijo(NodoConcreto, int);
-		NodoConcreto* agregarHijoMasDerecho(NodoConcreto, int);
-		void borrarHoja(NodoConcreto*);
-		NodoConcreto* raiz();
-		NodoConcreto* padre(NodoConcreto*);
-		NodoConcreto* hijoMasIzquierdo(NodoConcreto*);
-		NodoConcreto* hermanoDerecho(NodoConcreto*);
-		int etiqueta(NodoConcreto*);
-		void modificaEtiqueta(NodoConcreto*);
-		int numNodoConcretos();
-		void imprimir();
-		Lista<NodoConcreto>* getLP();
-		void imprimirLP();
+		void PonerRaiz(NodoConcreto*);
+		NodoConcreto* AgregarHijo(NodoConcreto, int);
+		NodoConcreto* AgregarHijoMasDerecho(NodoConcreto, int);
+		void BorrarHoja(NodoConcreto*);
+		NodoConcreto* Raiz();
+		NodoConcreto* Padre(NodoConcreto*);
+		NodoConcreto* HijoMasIzquierdo(NodoConcreto*);
+		NodoConcreto* HermanoDerecho(NodoConcreto*);
+		int Etiqueta(NodoConcreto*);
+		void ModificaEtiqueta(NodoConcreto*);
+		int NumNodoConcretos();
+		void Imprimir();
+		Lista<NodoConcreto>* GetLP();
+		void ImprimirLP();
 	
 };
 #endif
