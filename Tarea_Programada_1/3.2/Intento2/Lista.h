@@ -196,6 +196,7 @@ class Lista {
 			
 		}
 		// TODO: INDICE DEBERIA SER SIZE_T,
+		
 		void modificarEnlaces(size_t indice, int etiqueta){
 			Celda<T> * nuevaCelda= new Celda<T>(etiqueta);
 			++contador;

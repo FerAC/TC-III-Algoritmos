@@ -12,13 +12,13 @@ class ArbolLH{
 		ArbolLH();
 		~ArbolLH();
 		void ponerRaiz(Nodo*);
-		void agregarHijo(Nodo, int);
-		void agregarHijoMasDerecho(Nodo, int);
+		Nodo* agregarHijo(Nodo, int);
+		Nodo* agregarHijoMasDerecho(Nodo, int);
 		void borrarHoja(Nodo*);
 		Nodo* raiz();
 		Nodo* padre(Nodo*);
 		Nodo* hijoMasIzquierdo(Nodo*);
-		Nodo* hermanoDerecho(Celda<Nodo>*);
+		Nodo* hermanoDerecho(Nodo*);
 		int etiqueta(Nodo*);
 		void modificaEtiqueta(Nodo*);
 		int numNodos();

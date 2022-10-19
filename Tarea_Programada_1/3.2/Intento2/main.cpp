@@ -45,7 +45,7 @@ int main(){
 	std::cout<< nodoP->getEtiqueta() << std::endl; 
 	std::cout<< "Num Nodos " << arbol.numNodos() << std::endl;
 	
-	Nodo * hermano = arbol.hermanoDerecho(arbol.getLP()->buscar(4));
+	Nodo * hermano = arbol.hermanoDerecho(arbol.getLP()->buscar(4)->getEtiqueta());
 	Celda<Nodo> * a = arbol.getLP()->buscar(4);
 	
 	std::cout<< "El hermano der de "<<  a->getEtiqueta()->getEtiqueta() <<" es : ";
@@ -56,7 +56,7 @@ int main(){
 	arbol.borrarHoja(hermano);
 	std::cout << "Acabo de borrar al 5 " << std::endl;
 	
-	Nodo * hermano2 = arbol.hermanoDerecho(arbol.getLP()->buscar(4));
+	Nodo * hermano2 = arbol.hermanoDerecho(arbol.getLP()->buscar(4)->getEtiqueta());
 	Celda<Nodo> * a2 = arbol.getLP()->buscar(4);
 	
 	std::cout<< "El hermano der de "<<  a2->getEtiqueta()->getEtiqueta() <<" es : ";
