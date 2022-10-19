@@ -1,4 +1,8 @@
-#include "3.5.hpp"
+// #include "3.1/3.1.hpp"
+// #include "3.2/3.2.hpp"
+// #include "3.3/3.3.hpp"
+// #include "3.4/3.4.hpp"
+#include "3.5/3.5.hpp"
 
 /// @brief Mini demo, incompleta hasta terminar de implementar el árbol
 int main()
@@ -52,25 +56,6 @@ int main()
 
     // Obtener cantidad de nodos
     std::cout << "Cantidad de nodos en el arbol = " << arbol.NumNodos() << std::endl;
-
-    // Obtener el nodo padre
-    std::cout << "Etiqueta del nodo padre del nodo 2 = " << arbol.Etiqueta(arbol.Padre(nodo_2)) << std::endl;
-    std::cout << "Etiqueta del nodo padre del nodo 3 = " << arbol.Etiqueta(arbol.Padre(nodo_3)) << std::endl;
-    std::cout << "Etiqueta del nodo padre del nodo 5 = " << arbol.Etiqueta(arbol.Padre(nodo_5)) << std::endl;
-
-    // Obtener el nodo padre de la raiz
-    Nodo padre_raiz = arbol.Padre(arbol.Raiz());
-    std::cout << "¿Es el nodo padre de la raiz nulo?" << std::endl;
-    try
-    {
-        arbol.Etiqueta(padre_raiz);
-        std::cout << "No, es nulo." << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << "Sí, es nulo. La excepción es:" << std::endl;
-        std::cout << "[ERROR] = " << e.what() << std::endl;
-    }
 
     // TODO: Realizar pruebas de casos mas específicos
     // TODO: Probar el manejo de excepciones
