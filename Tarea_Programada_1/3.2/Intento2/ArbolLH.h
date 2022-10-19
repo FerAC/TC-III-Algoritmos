@@ -2,28 +2,28 @@
 #define ARBOLLH
 #include "Lista.h"
 #include "Celda.h"
-#include "Nodo.h"
+#include "NodoConcreto.h"
 
 class ArbolLH{
 	private:
-		Lista<Nodo> * listaPrincipal; 
+		Lista<NodoConcreto> * listaPrincipal; 
 		
 	public:
 		ArbolLH();
 		~ArbolLH();
-		void ponerRaiz(Nodo*);
-		Nodo* agregarHijo(Nodo, int);
-		Nodo* agregarHijoMasDerecho(Nodo, int);
-		void borrarHoja(Nodo*);
-		Nodo* raiz();
-		Nodo* padre(Nodo*);
-		Nodo* hijoMasIzquierdo(Nodo*);
-		Nodo* hermanoDerecho(Nodo*);
-		int etiqueta(Nodo*);
-		void modificaEtiqueta(Nodo*);
-		int numNodos();
+		void ponerRaiz(NodoConcreto*);
+		NodoConcreto* agregarHijo(NodoConcreto, int);
+		NodoConcreto* agregarHijoMasDerecho(NodoConcreto, int);
+		void borrarHoja(NodoConcreto*);
+		NodoConcreto* raiz();
+		NodoConcreto* padre(NodoConcreto*);
+		NodoConcreto* hijoMasIzquierdo(NodoConcreto*);
+		NodoConcreto* hermanoDerecho(NodoConcreto*);
+		int etiqueta(NodoConcreto*);
+		void modificaEtiqueta(NodoConcreto*);
+		int numNodoConcretos();
 		void imprimir();
-		Lista<Nodo>* getLP();
+		Lista<NodoConcreto>* getLP();
 		void imprimirLP();
 	
 };
