@@ -9,45 +9,88 @@ private:
     int valor;
     int indice;
 
+    /**
+     * @brief el metodo setIndice permite cambiar el indice del Nodo
+     * @param nuevoIndice nuevoIndice es el unico parametro del metodo setIndice, es un entero, es el nuevo valor del indice
+     * @remark el metodo requiere que el Nodo sea inicializado y que el nuevoIndice sea un indice valido
+     */
     void setIndice(int nuevoIndice)
     {
         indice = nuevoIndice;
     }
 
+    /**
+     * @brief getIndice es un metodo que permite recuperar el indice del Nodo
+     * @return El metodo devuelve un entero, el indice del nodo
+     * @remark El metodo requiere que el Nodo sea inicializado y indice tenga un valor
+     */
     int getIndice()
     {
         return indice;
     }
 
+    /**
+     * @brief el metodo setValor permite cambiar el valor del Nodo
+     * @param nuevoValor nuevoValor es el unico parametro del metodo setValor, es un entero
+     * @remark el metodo requiere que el Nodo sea inicializado
+     */
     void setValor(int nuevoValor)
     {
         valor = nuevoValor;
     }
 
+    /**
+     * @brief getValor es un metodo que permite recuperar el valor del Nodo
+     * @return El metodo devuelve un entero, el valor del nodo
+     * @remark El metodo requiere que el Nodo sea inicializado y valor tenga un valor
+     */
     int getValor()
     {
         return valor;
     }
 
+    /**
+     * @brief el metodo setPadre permite cambiar el indicePadre del Nodo
+     * @param nuevoValor nuevoIndice es el unico parametro del metodo setPadre, es un entero
+     * @remark el metodo requiere que el Nodo sea inicializado
+     */
     void setPadre(int nuevoIndice)
     {
         indicePadre = nuevoIndice;
     }
 
+    /**
+     * @brief getIndicePadre es un metodo que permite recuperar el indicePadre del Nodo
+     * @return El metodo devuelve un entero, el indicePadre del nodo
+     * @remark El metodo requiere que el Nodo sea inicializado y indicePadre tenga un valor
+     */
     int getIndicePadre()
     {
         return indicePadre;
     }
 
 public:
+    /**
+     * @brief Nodo es el metodo constructor de Nodo, permite inicializar un Nodo recibiendo un Padre y un valor
+     * @param padre padre es un parametro de tipo Nodo, es el Nodo al cual el Nodo "apunta" por medio del indicePadre
+     * @param elValor elValor es un parametro de tipo entero, es el valor del Nodo
+     * @remark El metodo requiere que ambos el padre y elValor sean validos y inicializados
+     */
     Nodo(Nodo padre, int elValor)
     {
         valor = elValor;
         indicePadre = padre.getIndice();
     }
 
+    /**
+     * @brief Nodo es el metodo constructor por omision de la clase Nodo, no recibe parametros
+     */
     Nodo() {}
 
+    /**
+     * @brief ~Nodo es el metodo destructor de la clase Nodo, no recibe parametros
+     * @remark El metodo ~Nodo requiere que el Nodo esta inicializado
+     */
     ~Nodo() {}
 };
 
@@ -163,10 +206,13 @@ public:
     Nodo HijoMasIzquierdo(Nodo padre)
     {
         int indice = padre.getIndice() + 1;
-        while(arregloArbol[indice].getIndicePadre() != padre.getIndice()){
+        while (arregloArbol[indice].getIndicePadre() != padre.getIndice())
+        {
             ++indice;
         }
         return arregloArbol[indice];
+
+        /// HAY QUE AGREGAR EL CASO QUE SEA UNA HOJA
     }
 
     /**
@@ -191,6 +237,8 @@ public:
             ++indice;
         }
         return arregloArbol[indice];
+
+        //// HAY QUE AGREGAR CASO DONDE HOJA ES ULTIMO HERMANO DERECHO
     }
 
     /**
@@ -278,10 +326,10 @@ int main()
     arbol.AgregarHijo(123, arbol.Raiz());
     arbol.AgregarHijo(22, arbol.Raiz());
     arbol.AgregarHijoMasDerecho(1, arbol.HijoMasIzquierdo(arbol.Raiz()));
-    std::cout<<arbol.Etiqueta(arbol.Raiz())<<std::endl;
-    std::cout<<arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.Raiz()))<<std::endl;
-    std::cout<<arbol.Etiqueta(arbol.HermanoDerecho(arbol.HijoMasIzquierdo(arbol.Raiz())))<<std::endl;
-    std::cout<<arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())))<<std::endl;
+    std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
+    std::cout << arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.Raiz())) << std::endl;
+    std::cout << arbol.Etiqueta(arbol.HermanoDerecho(arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
+    std::cout << arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
     arbol.BorrarHoja(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())));
 
     return 0;
