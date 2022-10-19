@@ -98,8 +98,6 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol);
 template <typename Elemento>
 class Arbol
 {
-    // TODO: Migrar de la cola STL a la cola de Archi
-
     // La función de impresión puede ver las entrañas de un Árbol
     template <typename T>
     friend std::ostream& operator<<(std::ostream&, const Arbol<T>&);
