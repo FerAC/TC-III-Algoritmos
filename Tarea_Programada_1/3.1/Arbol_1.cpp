@@ -386,7 +386,6 @@ private:
     int maximo;
     int actual;
     int esVacio;
-    // Nodo nodoNulo();
 };
 
 int main()
