@@ -31,7 +31,8 @@ void ArbolLH::ImprimirLP(){
 
 /// @brief Inserta un NodoConcreto en el arbol como raiz del mismo
 /// @remarks Requiere que el arbol sea vacia  
-void ArbolLH::PonerRaiz(NodoConcreto * nuevoNodoConcreto){
+void ArbolLH::PonerRaiz(int etiqueta){
+	NodoConcreto* nuevoNodoConcreto = new NodoConcreto(etiqueta); 
 	listaPrincipal->insertarAlPrincipio(*nuevoNodoConcreto);
 }
 
@@ -39,18 +40,18 @@ void ArbolLH::PonerRaiz(NodoConcreto * nuevoNodoConcreto){
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 
 /// @return El NodoConcreto agregado	
-NodoConcreto* ArbolLH::AgregarHijo(NodoConcreto NodoConcretoPadre, int etiqueta){
+NodoConcreto* ArbolLH::AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre){
 	NodoConcreto * NodoConcretoNuevo = new NodoConcreto(etiqueta); 
 	listaPrincipal->insertar(*NodoConcretoNuevo);
-	NodoConcretoPadre.insertarEnLista(NodoConcretoNuevo); 
+	NodoConcretoPadre->insertarEnLista(NodoConcretoNuevo); 
 	return NodoConcretoNuevo;
 }
 
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @return El NodoConcreto agregado 
-NodoConcreto* ArbolLH::AgregarHijoMasDerecho(NodoConcreto NodoConcretoPadre, int etiqueta){
-	return agregarHijo(NodoConcretoPadre, etiqueta);
+NodoConcreto* ArbolLH::AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPadre){
+	return agregarHijo(etiqueta, NodoConcretoPadre);
 }
 
 /// @brief Borra una hoja del arbol  
@@ -126,7 +127,7 @@ int  Etiqueta(NodoConcreto* NodoConcreto){
 /// @brief modifica el valor de la etiqueta de un NodoConcreto
 /// @param  Un NodoConcreto y un entero que sera etiqueta
 /// @remarks Requiere que el NodoConcreto tenga un valor y que el valor nuevo no este en el arbol  	
-void ModificaEtiqueta(NodoConcreto* NodoConcreto, int valorNuevo){
+void ModificaEtiqueta(int valorNuevo, NodoConcreto* NodoConcretoPadre){
 	NodoConcreto->setEtiqueta(valorNuevo);
 }
 
