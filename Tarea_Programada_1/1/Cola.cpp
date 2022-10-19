@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <iostream>
+//breaf modifica remark requiere    return retorna param
 
 template <class elemento>
 class Cola
@@ -13,8 +14,9 @@ private:
 
 public:
     /**
-     * @brief Cola es el metodo constructor de la clase Cola
+     * @brief Cola es el metodo constructor de la clase Cola, inicializa una Cola vacia
      * @param maxSize maxSize es de tipo size_t, es el unico parametro del constructor, es el valor "M", el tamaño maximo al cual puede llegar la cola
+     * @remark El metodo requiere un maxSize valido
      */
     Cola(std::size_t maxSize)
     {
@@ -25,6 +27,7 @@ public:
 
     /**
      * @brief ~Cola es el destructor de la clase Cola, permite destruir la estrucutra de datos y liberar la memoria
+     * @remark El metodo requiere que la cola este inicializada
      */
     ~Cola()
     {
@@ -33,10 +36,10 @@ public:
 
     /**
      * @brief El metodo Encolar permite hacer un push a la cola, agrega un element al final de la cola
-     * @param newElement newElement es el unico parametro del metodo encolar, es el valor que se tiene que agregar a la cola
-     * @remarks se requiere que la cola este inicializada
+     * @param nuevoElemento newElement es el unico parametro del metodo encolar, es el valor que se tiene que agregar a la cola
+     * @remarks se requiere que la cola este inicializada y que el nuevoElemento este valido
      */
-    void Encolar(elemento newElement)
+    void Encolar(elemento nuevoElemento)
     {
 
         if (isEmpty == false) // normal add
@@ -51,14 +54,14 @@ public:
                 {
                     ++end;
                 }
-                arrayCircular[end] = newElement;
+                arrayCircular[end] = nuevoElemento;
             }
         }
         else // add first elem
         {
             end = 0;
             head = 0;
-            arrayCircular[0] = newElement;
+            arrayCircular[0] = nuevoElemento;
             isEmpty = 0;
         }
     }
@@ -124,6 +127,7 @@ public:
 
     /**
      * @brief vaciar vacia el contenido de la Cola, para isEmpty a 1 y re-inicializa los valores de head y end
+     * @remark el metodo requiere que la cola este inicializada
      */
     void vaciar()
     {
@@ -135,6 +139,7 @@ public:
     /**
      * @brief vacia permite saber si la Cola esta vacia o no
      * @return	vacia devuelve un booleano, devuelve 1 si la Cola esta vacia, sino devuelve un 0
+     * @remark el metodo requiere que la cola este inicializada
      */
     bool vacia()
     {
