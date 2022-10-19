@@ -45,8 +45,8 @@ int main()
     std::cout << "Etiqueta del nodo 6 = " << arbol.Etiqueta(nodo_6) << std::endl;
 
     // Modificar etiquetas
-    arbol.ModificaEtiqueta(raiz, 111);
-    arbol.ModificaEtiqueta(nodo_5, 555);
+    arbol.ModificaEtiqueta(111, raiz);
+    arbol.ModificaEtiqueta(555, nodo_5);
     std::cout << arbol << std::endl;
     std::cout << "^^^ Arbol tras modificar etiquetas 1 -> 111, 5 -> 555 ^^^" << std::endl;
 

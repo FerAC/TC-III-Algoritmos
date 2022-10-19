@@ -1,5 +1,5 @@
-#include "3.1/3.1.hpp"
-// #include "3.2/3.2.hpp"
+// #include "3.1/3.1.hpp"
+#include "3.2/Intento2/3.2.hpp"
 // #include "3.3/3.3.hpp"
 // #include "3.4/3.4.hpp"
 // #include "3.5/3.5.hpp"
@@ -51,8 +51,8 @@ int main()
     */
 
     // Modificar etiquetas
-    arbol.ModificaEtiqueta(raiz, 111);
-    arbol.ModificaEtiqueta(nodo_5, 555);
+    arbol.ModificaEtiqueta(111, raiz);
+    arbol.ModificaEtiqueta(555, nodo_5);
     //std::cout << arbol << std::endl;
    // std::cout << "^^^ Arbol tras modificar etiquetas 1 -> 111, 5 -> 555 ^^^" << std::endl;
 

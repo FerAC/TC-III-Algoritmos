@@ -382,7 +382,7 @@ namespace Arbol_N_Ario
             /// @param nuevoValor Elemento con el cual basarse para construir una copia y así reemplazar a la etiqueta
             /// @remarks Requiere que el nodo no sea nulo, exista en el árbol, y que el elemento tenga un constructor 
             // por copia válido
-            inline void ModificaEtiqueta(const Nodo& nodo, const Elemento& nuevoValor) const
+            inline void ModificaEtiqueta(const Elemento& nuevoValor, const Nodo& nodo) const
             {
                 if (nodo.nodoConcreto == nullptr)
                     throw NodoConcretoInvalido();
