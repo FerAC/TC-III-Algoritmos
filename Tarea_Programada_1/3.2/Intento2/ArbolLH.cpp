@@ -51,7 +51,7 @@ NodoConcreto* ArbolLH::AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadr
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @return El NodoConcreto agregado 
 NodoConcreto* ArbolLH::AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPadre){
-	return agregarHijo(etiqueta, NodoConcretoPadre);
+	return AgregarHijo(etiqueta, NodoConcretoPadre);
 }
 
 /// @brief Borra una hoja del arbol  
