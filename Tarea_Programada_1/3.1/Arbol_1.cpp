@@ -207,11 +207,25 @@ public:
     Nodo HijoMasIzquierdo(Nodo padre)
     {
         int indice = padre.getIndice() + 1;
+
+        int encontrado = 0;
         while (arregloArbol[indice].getIndicePadre() != padre.getIndice())
         {
             ++indice;
+             if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
+            {
+                encontrado = 1;
+            }
         }
-        return arregloArbol[indice];
+    
+        if (encontrado == 0)    // caso donde el Nodo no es una hoja
+        {
+            return arregloArbol[indice];
+        }
+        else    // caso donde el Nodo es una hoja
+        {
+            return 0;
+        }
 
         /// HAY QUE AGREGAR EL CASO QUE SEA UNA HOJA
     }
