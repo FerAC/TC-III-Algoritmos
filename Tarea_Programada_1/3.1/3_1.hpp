@@ -2,8 +2,9 @@
 #define ARBOL_1_HPP
 
 // #include <iostream>
+typedef *NodoArbol Nodo;
 
-class Nodo
+class NodoArbol
 {
     friend class ArbolSenalador;
 
@@ -13,9 +14,9 @@ private:
     int indice;
 
     /**
-     * @brief el metodo setIndice permite cambiar el indice del Nodo
+     * @brief el metodo setIndice permite cambiar el indice del NodoArbol
      * @param nuevoIndice nuevoIndice es el unico parametro del metodo setIndice, es un entero, es el nuevo valor del indice
-     * @remark el metodo requiere que el Nodo sea inicializado y que el nuevoIndice sea un indice valido
+     * @remark el metodo requiere que el NodoArbol sea inicializado y que el nuevoIndice sea un indice valido
      */
     void setIndice(int nuevoIndice)
     {
@@ -23,9 +24,9 @@ private:
     }
 
     /**
-     * @brief getIndice es un metodo que permite recuperar el indice del Nodo
-     * @return El metodo devuelve un entero, el indice del nodo
-     * @remark El metodo requiere que el Nodo sea inicializado y indice tenga un valor
+     * @brief getIndice es un metodo que permite recuperar el indice del NodoArbol
+     * @return El metodo devuelve un entero, el indice del NodoArbol
+     * @remark El metodo requiere que el NodoArbol sea inicializado y indice tenga un valor
      */
     int getIndice()
     {
@@ -33,9 +34,9 @@ private:
     }
 
     /**
-     * @brief el metodo setValor permite cambiar el valor del Nodo
+     * @brief el metodo setValor permite cambiar el valor del NodoArbol
      * @param nuevoValor nuevoValor es el unico parametro del metodo setValor, es un entero
-     * @remark el metodo requiere que el Nodo sea inicializado
+     * @remark el metodo requiere que el NodoArbol sea inicializado
      */
     void setValor(int nuevoValor)
     {
@@ -43,9 +44,9 @@ private:
     }
 
     /**
-     * @brief getValor es un metodo que permite recuperar el valor del Nodo
-     * @return El metodo devuelve un entero, el valor del nodo
-     * @remark El metodo requiere que el Nodo sea inicializado y valor tenga un valor
+     * @brief getValor es un metodo que permite recuperar el valor del NodoArbol
+     * @return El metodo devuelve un entero, el valor del NodoArbol
+     * @remark El metodo requiere que el NodoArbol sea inicializado y valor tenga un valor
      */
     int getValor()
     {
@@ -53,9 +54,9 @@ private:
     }
 
     /**
-     * @brief el metodo setPadre permite cambiar el indicePadre del Nodo
+     * @brief el metodo setPadre permite cambiar el indicePadre del NodoArbol
      * @param nuevoValor nuevoIndice es el unico parametro del metodo setPadre, es un entero
-     * @remark el metodo requiere que el Nodo sea inicializado
+     * @remark el metodo requiere que el NodoArbol sea inicializado
      */
     void setPadre(int nuevoIndice)
     {
@@ -63,9 +64,9 @@ private:
     }
 
     /**
-     * @brief getIndicePadre es un metodo que permite recuperar el indicePadre del Nodo
-     * @return El metodo devuelve un entero, el indicePadre del nodo
-     * @remark El metodo requiere que el Nodo sea inicializado y indicePadre tenga un valor
+     * @brief getIndicePadre es un metodo que permite recuperar el indicePadre del NodoArbol
+     * @return El metodo devuelve un entero, el indicePadre del NodoArbol
+     * @remark El metodo requiere que el NodoArbol sea inicializado y indicePadre tenga un valor
      */
     int getIndicePadre()
     {
@@ -74,21 +75,21 @@ private:
 
 public:
     /**
-     * @brief Nodo es el metodo constructor de Nodo, permite inicializar un Nodo recibiendo un Padre y un valor
-     * @param padre padre es un parametro de tipo Nodo, es el Nodo al cual el Nodo "apunta" por medio del indicePadre
-     * @param elValor elValor es un parametro de tipo entero, es el valor del Nodo
+     * @brief NodoArbol es el metodo constructor de NodoArbol, permite inicializar un NodoArbol recibiendo un Padre y un valor
+     * @param padre padre es un parametro de tipo NodoArbol, es el NodoArbol al cual el NodoArbol "apunta" por medio del indicePadre
+     * @param elValor elValor es un parametro de tipo entero, es el valor del NodoArbol
      * @remark El metodo requiere que ambos el padre y elValor sean validos y inicializados
      */
-    Nodo(Nodo padre, int elValor)
+    NodoArbol(NodoArbol padre, int elValor)
     {
         valor = elValor;
         indicePadre = padre.getIndice();
     }
 
     /**
-     * @brief Nodo es el metodo constructor por omision de la clase Nodo, no recibe parametros
+     * @brief NodoArbol es el metodo constructor por omision de la clase NodoArbol, no recibe parametros
      */
-    Nodo()
+    NodoArbol()
     {
         indicePadre = 0;
         valor = 0;
@@ -96,16 +97,16 @@ public:
     }
 
     /**
-     * @brief ~Nodo es el metodo destructor de la clase Nodo, no recibe parametros
-     * @remark El metodo ~Nodo requiere que el Nodo esta inicializado
+     * @brief ~NodoArbol es el metodo destructor de la clase NodoArbol, no recibe parametros
+     * @remark El metodo ~NodoArbol requiere que el NodoArbol esta inicializado
      */
-    ~Nodo() {}
+    ~NodoArbol() {}
 
     /**
-     * @brief operator == es la sobrecarga del operador basico == ese metodo permite comparar un Nodo a un entero
-     * @param comparador comparador es el unico parametro del metodo, es el elemento al cual se compara el Nodo
-     * @return El metodo devuelve un booleano, dependiendo si el Nodo es nulo o no
-     * @remark El metodo requiere que el Nodo este inicializado
+     * @brief operator == es la sobrecarga del operador basico == ese metodo permite comparar un NodoArbol a un entero
+     * @param comparador comparador es el unico parametro del metodo, es el elemento al cual se compara el NodoArbol
+     * @return El metodo devuelve un booleano, dependiendo si el NodoArbol es nulo o no
+     * @remark El metodo requiere que el NodoArbol este inicializado
      */
     bool operator==(const int comparador)
     {
@@ -147,7 +148,7 @@ public:
      */
     ArbolSenalador(int const cantidad)
     {
-        arregloArbol = new Nodo[cantidad];
+        arregloArbol = new NodoArbol[cantidad];
         maximo = cantidad;
         actual = 0;
         esVacio = 0;
@@ -179,12 +180,12 @@ public:
     }
 
     /**
-     * @brief AgregarHijo permite agregar un elemento al arbol, y por lo tanto un hijo al Nodo dado
-     * @param padre padre es de tipo Nodo, es el Nodo al cual se agrega un hijo
-     * @param valorHijo valorHijo es el valor del nuevo Nodo agregado al arbol
-     * @remark El metodo necesita que el arbol sea inicializado, que tengo por lo menos una raiz incializada, y que el Nodo padre exista en el arbol
+     * @brief AgregarHijo permite agregar un elemento al arbol, y por lo tanto un hijo al NodoArbol dado
+     * @param padre padre es de tipo NodoArbol, es el NodoArbol al cual se agrega un hijo
+     * @param valorHijo valorHijo es el valor del nuevo NodoArbol agregado al arbol
+     * @remark El metodo necesita que el arbol sea inicializado, que tengo por lo menos una raiz incializada, y que el NodoArbol padre exista en el arbol
      */
-    void AgregarHijo(int valorHijo, Nodo padre)
+    void AgregarHijo(int valorHijo, NodoArbol *padre)
     {
         // int indice = 0;
 
@@ -197,19 +198,19 @@ public:
         {
             arregloArbol[actual].setValor(valorHijo);
             // arregloArbol[actual].setPadre(indice);
-            arregloArbol[actual].setPadre(padre.getIndice());
+            arregloArbol[actual].setPadre(padre->getIndice());
             arregloArbol[actual].setIndice(actual);
             ++actual;
         }
     }
 
     /**
-     * @brief AgregarHijoMasDerecho permite agregar un nuevo elemento al Arbol, por medio de un hijo al Nodo dado, se agrega el hijo en la posicion mas derecha en comparacion a sus hermanos
-     * @param padre padre es de tipo Nodo, es el Nodo al cual se agrega un hijo
-     * @param valorHijo valorHijo es el valor del nuevo Nodo agregado al arbol
-     * @remark El metodo necesita que el arbol sea inicializado, que tenga por lo menos una raiz incializada, y que el Nodo padre exista en el arbol
+     * @brief AgregarHijoMasDerecho permite agregar un nuevo elemento al Arbol, por medio de un hijo al NodoArbol dado, se agrega el hijo en la posicion mas derecha en comparacion a sus hermanos
+     * @param padre padre es de tipo NodoArbol, es el NodoArbol al cual se agrega un hijo
+     * @param valorHijo valorHijo es el valor del nuevo NodoArbol agregado al arbol
+     * @remark El metodo necesita que el arbol sea inicializado, que tenga por lo menos una raiz incializada, y que el NodoArbol padre exista en el arbol
      */
-    void AgregarHijoMasDerecho(int valorHijo, Nodo padre) // agrega al padre un hijo
+    void AgregarHijoMasDerecho(int valorHijo, NodoArbol *padre) // agrega al padre un hijo
     {
         // int indice = 0;
 
@@ -222,7 +223,7 @@ public:
         {
             arregloArbol[actual].setValor(valorHijo);
             // arregloArbol[actual].setPadre(indice);
-            arregloArbol[actual].setPadre(padre.getIndice());
+            arregloArbol[actual].setPadre(padre->getIndice());
             arregloArbol[actual].setIndice(actual);
             ++actual;
         }
@@ -230,72 +231,72 @@ public:
 
     /**
      * @brief Raiz permite acceder a la Raiz del arbol, no recibe parametros
-     * @return El metodo Raiz devuelve el Nodo raiz del arbol
+     * @return El metodo Raiz devuelve el NodoArbol raiz del arbol
      * @remark El metodo requiere que sea incializado, y que tenga una raiz con valores inicializada
      */
-    Nodo Raiz()
+    NodoArbol *Raiz()
     {
-        return arregloArbol[0];
+        return &arregloArbol[0];
     }
 
     /**
-     * @brief El metodo Padre permite encontrar el Padre de un nodo dado que pertenece al arbol
-     * @param hijo hijo es de tipo Nodo, es el Nodo del cual se quiere encontrar el padre
-     * @return El metodo devuelve un Nodo, el nodo del arbol que tiene como hijo el nodo Nodo hijo
-     * @remark El metodo requiere que el arbol este inicializado, el nodo dado por parametro exista en el arbol, sea inicializado y no sea la raiz del arbol
+     * @brief El metodo Padre permite encontrar el Padre de un NodoArbol dado que pertenece al arbol
+     * @param hijo hijo es de tipo NodoArbol, es el NodoArbol del cual se quiere encontrar el padre
+     * @return El metodo devuelve un NodoArbol, el NodoArbol del arbol que tiene como hijo el NodoArbol NodoArbol hijo
+     * @remark El metodo requiere que el arbol este inicializado, el NodoArbol dado por parametro exista en el arbol, sea inicializado y no sea la raiz del arbol
      */
-    Nodo Padre(Nodo hijo)
+    NodoArbol *Padre(NodoArbol hijo)
     {
-        return arregloArbol[hijo.getIndicePadre()];
+        return &arregloArbol[hijo.getIndicePadre()];
     }
 
     /**
-     * @brief El metodo HijoMasIzquierdo permite encontrar el Hijo mas a la izquierda de un Nodo dado
-     * @param padre padre es el unico parametro del metodo, es de tipo Nodo, es el nodo del cual hay que encontrar el hijo mas izquierdo, si no existe entonces significa que es una hoja
-     * @return El metodo devuelve un puntero hacia el nodo hijo, o un nullptr en el caso que no tenga hijos
-     * @remark El metodo requiere que el arbol este inicializado, y que el Nodo padre dado exista en el arbol
+     * @brief El metodo HijoMasIzquierdo permite encontrar el Hijo mas a la izquierda de un NodoArbol dado
+     * @param padre padre es el unico parametro del metodo, es de tipo NodoArbol, es el NodoArbol del cual hay que encontrar el hijo mas izquierdo, si no existe entonces significa que es una hoja
+     * @return El metodo devuelve un puntero hacia el NodoArbol hijo, o un nullptr en el caso que no tenga hijos
+     * @remark El metodo requiere que el arbol este inicializado, y que el NodoArbol padre dado exista en el arbol
      */
-    Nodo *HijoMasIzquierdo(Nodo padre)
+    NodoArbol *HijoMasIzquierdo(NodoArbol *padre)
     {
-        int indice = padre.getIndice() + 1;
+        int indice = padre->getIndice() + 1;
 
         int encontrado = 0;
-        while (arregloArbol[indice].getIndicePadre() != padre.getIndice())
+        while (arregloArbol[indice].getIndicePadre() != padre->getIndice())
         {
             ++indice;
-            if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
+            if (arregloArbol[indice].getIndicePadre() == padre->getIndice())
             {
                 encontrado = 1;
             }
         }
 
-        if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
+        if (arregloArbol[indice].getIndicePadre() == padre->getIndice())
         {
             encontrado = 1;
         }
 
-        if (encontrado == 1) // caso donde el Nodo no es una hoja
+        if (encontrado == 1) // caso donde el NodoArbol no es una hoja
         {
             return &arregloArbol[indice];
         }
-        else // caso donde el Nodo es una hoja
+        else // caso donde el NodoArbol es una hoja
         {
             return nullptr;
         }
     }
 
     /**
-     * @brief El metodo HermanoDerecho permite encontrar el nodo mas cercano a la derecha del nodo dado que tengo el mismo padre, si no existe entonces significa que el nodo dado ya es el nodo mas a la derecha
-     * @param hermano hermano es el unico parametro del metodo, es el nodo del cual tenemos que buscar el hermano derecho
+     * @brief El metodo HermanoDerecho permite encontrar el NodoArbol mas cercano a la derecha del NodoArbol dado que tengo el mismo padre, si no existe entonces significa que el NodoArbol dado ya es el NodoArbol mas a la derecha
+     * @param hermano hermano es el unico parametro del metodo, es el NodoArbol del cual tenemos que buscar el hermano derecho
      * @return El metodo devuelve un puntero hacia el hermano derecho, o un nullptr en el caso que no tengo hermano derecho
-     * @remark El metodo requiere que el arbol este inicializado, que el Nodo hermano exista en el arbol, y que no sea la raiz
+     * @remark El metodo requiere que el arbol este inicializado, que el NodoArbol hermano exista en el arbol, y que no sea la raiz
      */
-    Nodo *HermanoDerecho(Nodo hermano)
+    NodoArbol *HermanoDerecho(NodoArbol *hermano)
     {
-        int indixePadre = hermano.getIndicePadre();
+        int indixePadre = hermano->getIndicePadre();
         int indice = 0;
 
-        while (arregloArbol[indice].getValor() != hermano.getValor())
+        while (arregloArbol[indice].getValor() != hermano->getValor())
         {
             ++indice;
         }
@@ -303,25 +304,25 @@ public:
         ++indice;
         int encontrado = 0;
 
-        while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre())
+        while (arregloArbol[indice].getIndicePadre() != hermano->getIndicePadre())
         {
             ++indice;
-            if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
+            if (arregloArbol[indice].getIndicePadre() == hermano->getIndicePadre())
             {
                 encontrado = 1;
             }
         }
 
-        if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
+        if (arregloArbol[indice].getIndicePadre() == hermano->getIndicePadre())
         {
             encontrado = 1;
         }
 
-        if (encontrado == 1) // caso donde el Nodo no es el hermano mas derecho
+        if (encontrado == 1) // caso donde el NodoArbol no es el hermano mas derecho
         {
             return &arregloArbol[indice];
         }
-        else // caso donde el Nodo es el hermano mas derecho
+        else // caso donde el NodoArbol es el hermano mas derecho
         {
             return nullptr;
         }
@@ -330,16 +331,16 @@ public:
     /**
      * @brief BorrarHoja es un metodo del arbol que permite eliminar una hoja del arbol
      * @param nodoBorrado bodoBorrado es el unico parametro del metodo, es el metodo del arbol que se quiere borrar
-     * @remark El metodo occupa que el arbol sea inicializado y el Nodo nodoBorrado exista en el arbol y sea una hoja
+     * @remark El metodo occupa que el arbol sea inicializado y el NodoArbol nodoBorrado exista en el arbol y sea una hoja
      */
-    void BorrarHoja(Nodo nodoBorrado)
+    void BorrarHoja(NodoArbol *nodoBorrado)
     {
 
         // si el elemento borrado es el ultimo
-        if (nodoBorrado.getValor() != arregloArbol[actual - 1].getValor())
+        if (nodoBorrado->getValor() != arregloArbol[actual - 1].getValor())
         {
             int indiceBorrado = 0;
-            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
+            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado->getValor())
             {
                 ++indiceBorrado;
             }
@@ -367,25 +368,25 @@ public:
     }
 
     /**
-     * @brief Etiqueta es un metodo del arbol que devuelve la etiqueta, en ese caso un entero, de un Nodo dado
-     * @param nodo nodo es de tipo Nodo, es el Nodo del cual queremos extraer le etiqueta
-     * @remark El metodo requiere que el arbol sea inicializado, y que el Nodo nodo exista en el arbol
+     * @brief Etiqueta es un metodo del arbol que devuelve la etiqueta, en ese caso un entero, de un NodoArbol dado
+     * @param nodo nodo es de tipo NodoArbol, es el NodoArbol del cual queremos extraer le etiqueta
+     * @remark El metodo requiere que el arbol sea inicializado, y que el NodoArbol nodo exista en el arbol
      */
-    int Etiqueta(Nodo nodo)
+    int Etiqueta(NodoArbol *nodo)
     {
-        return nodo.getValor();
+        return nodo->getValor();
     }
 
     /**
-     * @brief ModificarEtiqueta permite modificar el valor (etiqueta) de un nodo dado
-     * @param nodo nodo es de tipo Nodo, es el Nodo del cual queremos cambiar la etiqueta
-     * @param nuevoValor nuevoValor es un entero, una etiqueta, es el nuevo valor de la etiqueta del Nodo nodo
-     * @remark El metodo requiere que el arbol sea inicializado, y que el Nodo nodo existe en el arbol
+     * @brief ModificarEtiqueta permite modificar el valor (etiqueta) de un NodoArbol dado
+     * @param nodo nodo es de tipo NodoArbol, es el NodoArbol del cual queremos cambiar la etiqueta
+     * @param nuevoValor nuevoValor es un entero, una etiqueta, es el nuevo valor de la etiqueta del NodoArbol nodo
+     * @remark El metodo requiere que el arbol sea inicializado, y que el NodoArbol nodo existe en el arbol
      */
-    void ModificaEtiqueta(Nodo nodo, int nuevoValor)
+    void ModificaEtiqueta(NodoArbol *nodo, int nuevoValor)
     {
         int indice = 0;
-        while (arregloArbol[indice].getValor() != nodo.getValor())
+        while (arregloArbol[indice].getValor() != nodo->getValor())
         {
             ++indice;
         }
@@ -403,7 +404,7 @@ public:
     }
 
 private:
-    Nodo *arregloArbol;
+    NodoArbol *arregloArbol;
     int maximo;
     int actual;
     int esVacio;
