@@ -85,13 +85,46 @@ public:
     /**
      * @brief Nodo es el metodo constructor por omision de la clase Nodo, no recibe parametros
      */
-    Nodo() {}
+    Nodo()
+    {
+        indicePadre = 0;
+        valor = 0;
+        indice = 0;
+    }
 
     /**
      * @brief ~Nodo es el metodo destructor de la clase Nodo, no recibe parametros
      * @remark El metodo ~Nodo requiere que el Nodo esta inicializado
      */
     ~Nodo() {}
+
+    bool operator==(const int comparador)
+    {
+        if (comparador == 0 && indice == 0 && valor == 0 && indicePadre == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            if (comparador == 0)
+            {
+                return 0;
+            }
+        }
+
+        if (comparador != 0 && indice != 0 && valor != 0 && indicePadre != 0)
+        {
+            return 1;
+        }
+        else
+        {
+            if (comparador != 0)
+            {
+                return 0;
+            }
+        }
+        return 0;
+    }
 };
 
 class ArbolSenalador
@@ -204,7 +237,7 @@ public:
      * @param
      * @return
      */
-    Nodo HijoMasIzquierdo(Nodo padre)
+    Nodo *HijoMasIzquierdo(Nodo padre)
     {
         int indice = padre.getIndice() + 1;
 
@@ -212,22 +245,27 @@ public:
         while (arregloArbol[indice].getIndicePadre() != padre.getIndice())
         {
             ++indice;
-             if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
+            if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
             {
                 encontrado = 1;
             }
         }
-    
-        if (encontrado == 0)    // caso donde el Nodo no es una hoja
+
+        if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
         {
-            return arregloArbol[indice];
-        }
-        else    // caso donde el Nodo es una hoja
-        {
-            return 0;
+            encontrado = 1;
         }
 
-        /// HAY QUE AGREGAR EL CASO QUE SEA UNA HOJA
+        if (encontrado == 1) // caso donde el Nodo no es una hoja
+        {
+            return &arregloArbol[indice];
+        }
+        else // caso donde el Nodo es una hoja
+        {
+            // Nodo nodoNulo();
+            // return nodoNulo;
+            return nullptr;
+        }
     }
 
     /**
@@ -235,7 +273,7 @@ public:
      * @param
      * @return
      */
-    Nodo HermanoDerecho(Nodo hermano)
+    Nodo *HermanoDerecho(Nodo hermano)
     {
         int indixePadre = hermano.getIndicePadre();
         int indice = 0;
@@ -257,16 +295,21 @@ public:
             }
         }
 
-        if (encontrado == 0)    // caso donde el Nodo no es el hermano mas derecho
+        if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
         {
-            return arregloArbol[indice];
-        }
-        else    // caso donde el Nodo es el hermano mas derecho
-        {
-            return 0;
+            encontrado = 1;
         }
 
-        //// HAY QUE AGREGAR CASO DONDE HOJA ES ULTIMO HERMANO DERECHO
+        if (encontrado == 1) // caso donde el Nodo no es el hermano mas derecho
+        {
+            return &arregloArbol[indice];
+        }
+        else // caso donde el Nodo es el hermano mas derecho
+        {
+            // Nodo nodoNulo;
+            // return nodoNulo;
+            return nullptr;
+        }
     }
 
     /**
@@ -345,6 +388,7 @@ private:
     int maximo;
     int actual;
     int esVacio;
+    // Nodo nodoNulo();
 };
 
 int main()
@@ -353,12 +397,25 @@ int main()
     arbol.PonerRaiz(100);
     arbol.AgregarHijo(123, arbol.Raiz());
     arbol.AgregarHijo(22, arbol.Raiz());
-    arbol.AgregarHijoMasDerecho(1, arbol.HijoMasIzquierdo(arbol.Raiz()));
+    // arbol.AgregarHijoMasDerecho(13, arbol.Raiz());
+    arbol.AgregarHijoMasDerecho(1, *arbol.HijoMasIzquierdo(arbol.Raiz()));
     std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
-    std::cout << arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.Raiz())) << std::endl;
-    std::cout << arbol.Etiqueta(arbol.HermanoDerecho(arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
-    std::cout << arbol.Etiqueta(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
-    arbol.BorrarHoja(arbol.HijoMasIzquierdo(arbol.HijoMasIzquierdo(arbol.Raiz())));
+    std::cout << arbol.Etiqueta(*arbol.HijoMasIzquierdo(arbol.Raiz())) << std::endl;
+    std::cout << arbol.Etiqueta(*arbol.HermanoDerecho(*arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
+
+    try
+    {
+        std::cout << arbol.Etiqueta(*arbol.HijoMasIzquierdo(*arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << "nodo vacio" << std::endl;
+    }
+
+    //}
+
+    // std::cout << arbol.Etiqueta(*arbol.HijoMasIzquierdo(*arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
+    arbol.BorrarHoja(*arbol.HijoMasIzquierdo(*arbol.HijoMasIzquierdo(arbol.Raiz())));
 
     return 0;
 }
