@@ -112,6 +112,7 @@ public:
 
     /**
      * @brief ~ArbolSenalador is the destructor method of the class
+     * @remark El metodo requiere que el Arbol
      */
     ~ArbolSenalador()
     {
@@ -231,12 +232,25 @@ public:
         }
 
         ++indice;
+        int encontrado = 0;
 
         while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre())
         {
             ++indice;
+            if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
+            {
+                encontrado = 1;
+            }
         }
-        return arregloArbol[indice];
+
+        if (encontrado == 0)    // caso donde el Nodo no es el hermano mas derecho
+        {
+            return arregloArbol[indice];
+        }
+        else    // caso donde el Nodo es el hermano mas derecho
+        {
+            return 0;
+        }
 
         //// HAY QUE AGREGAR CASO DONDE HOJA ES ULTIMO HERMANO DERECHO
     }
