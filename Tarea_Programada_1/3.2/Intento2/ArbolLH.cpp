@@ -1,10 +1,13 @@
 #include "ArbolLH.h"
-
+/// @brief Crea un nuevo Arbol e inicializa su lista principal
+/// @remarks Requiere que el arbol no este inicializado 
 ArbolLH::ArbolLH(){
 	listaPrincipal = new Lista<Nodo>;
 	
 }
 
+/// @brief Elimina al arbol y su lista principal
+/// @remarks Requiere que el arbol este inicializado
 ArbolLH::~ArbolLH(){
 	delete listaPrincipal;									//listaPrincipal->										//listaPrincipal
 } 
@@ -26,22 +29,33 @@ void ArbolLH::imprimirLP(){
 	
 }
 
+/// @brief Inserta un nodo en el arbol como raiz del mismo
+/// @remarks Requiere que el arbol sea vacia  
 void ArbolLH::ponerRaiz(Nodo * nuevoNodo){
 	listaPrincipal->insertarAlPrincipio(*nuevoNodo);
 }
-	
-void ArbolLH::agregarHijo(Nodo nodoPadre, int etiqueta){
+
+/// @brief Agrega un hijo a un nodo alimentado como parametro 
+/// @param  Un nodo padre y una etiqueta (entero)   
+/// @remarks Requiere que el arbol este inicializado y padre no nulo 
+/// @return El nodo agregado	
+Nodo* ArbolLH::agregarHijo(Nodo nodoPadre, int etiqueta){
 	Nodo * nodoNuevo = new Nodo(etiqueta); 
 	listaPrincipal->insertar(*nodoNuevo);
 	nodoPadre.insertarEnLista(nodoNuevo); 
-	
-	
+	return nodoNuevo;
 }
 
-void ArbolLH::agregarHijoMasDerecho(Nodo nodoPadre, int etiqueta){
-	agregarHijo(nodoPadre, etiqueta);
+/// @brief Agrega un hijo a un nodo alimentado como parametro 
+/// @param  Un nodo padre y una etiqueta (entero)   
+/// @return El nodo agregado 
+Nodo* ArbolLH::agregarHijoMasDerecho(Nodo nodoPadre, int etiqueta){
+	return agregarHijo(nodoPadre, etiqueta);
 }
 
+/// @brief Borra una hoja del arbol  
+/// @param  Un nodo hoja
+/// @remarks Requiere que el arbol este inicializado y que el nodo alimentado como paramtero sea una hoja	
 void ArbolLH::borrarHoja(Nodo* borrado){
 	for(Celda<Nodo> * buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
 		int validez = buffer1->getEtiqueta()->getListaHijos()->borrar(borrado); 
@@ -53,14 +67,22 @@ void ArbolLH::borrarHoja(Nodo* borrado){
 			return; 
 		}
 	}
-}	
+}
+
+ 		
 Lista<Nodo>* ArbolLH::getLP(){
 	return listaPrincipal;
 }
+
+/// @brief Agrega un hijo a un nodo alimentado como parametro 
+/// @remarks Requiere que el arbol este inicializado y padre no nulo 	
 Nodo* ArbolLH::raiz() {
 	return (listaPrincipal->getPrimera()->getEtiqueta()); 
 }
-	
+
+/// @brief Devuelve el padre de un nodo alimentado como parametro 
+/// @param  un nodo que sera agregado como hijo  
+/// @remarks Requiere un arbol inicializado y que el nodo alimentado como parametro pertenezca al arbol 	
 Nodo* ArbolLH::padre(Nodo * hijo){
 	Nodo * a;
 	Celda<Nodo> * actual = listaPrincipal->getPrimera();
@@ -87,19 +109,32 @@ Nodo* ArbolLH::padre(Nodo * hijo){
 	
 }
 
+/// @brief Agrega un hijo a un nodo alimentado como parametro 
+/// @param  Un nodo padre y una etiqueta (entero)   
+/// @remarks Requiere que el arbol este inicializado y padre no nulo 	
 Nodo* hijoMasIzquierdo(Nodo* padre){
 	return padre->getListaHijos()->getPrimera()->getEtiqueta(4);
 }
 
+/// @brief Devuelve la etiqueta de un nodo
+/// @param  Un nodo con la etiqueta   
+/// @remarks Requiere que el nodo tenga una etiqueta	
 int  etiqueta(Nodo* nodo){
 	return nodo->getEtiqueta();
 }
 
+/// @brief modifica el valor de la etiqueta de un nodo
+/// @param  Un nodo y un entero que sera etiqueta
+/// @remarks Requiere que el nodo tenga un valor y que el valor nuevo no este en el arbol  	
 void modificaEtiqueta(Nodo* nodo, int valorNuevo){
 	nodo->setEtiqueta(valorNuevo);
 }
 
-Nodo* ArbolLH::hermanoDerecho(Celda<Nodo>* celdaParam){
+/// @brief Devuelve el hermano derecho del nodo alimentado como parametro
+/// @param  Un nodo del cual queremos saber el hermano   
+/// @remarks Requiere que el arbol este inicializado y que el nodo sea parte del arbol	
+/// @return Devuelve un puntero a Nodo
+Nodo* ArbolLH::hermanoDerecho(Nodo* celdaParam){
 	int contador = 0;
 	Celda<Nodo*> hermanoDerecho; 
 	int terminado = 0;
@@ -112,7 +147,7 @@ Nodo* ArbolLH::hermanoDerecho(Celda<Nodo>* celdaParam){
 			
 			Nodo* a = (buffer2->getEtiqueta(4));
 			
-			if( a->getEtiqueta() == celdaParam->getEtiqueta()->getEtiqueta()){
+			if( a->getEtiqueta() == celdaParam->getEtiqueta()){
 				
 				if(buffer2->getSiguiente() != nullptr){
 					nodoDer = buffer2->getSiguiente()->getEtiqueta(4);
@@ -126,6 +161,8 @@ Nodo* ArbolLH::hermanoDerecho(Celda<Nodo>* celdaParam){
 	}
 }
 
+/// @brief Devuelve la cantidad de nodos del arbol
+/// @remarks Requiere que el arbol este inicializado 	
 int ArbolLH::numNodos(){
 	//Celda<Nodo> * buffer = listaPrincipal->getPrimera();
 	int contador = 0;
