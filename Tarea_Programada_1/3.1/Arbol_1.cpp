@@ -132,8 +132,9 @@ class ArbolSenalador
 
 public:
     /**
-     * @brief ArbolSenalador is the constructor method of the class
-     * @param quantityElements quantityElements is a const int, it's the max size of the array
+     * @brief El metodo ArbolSenaladores el metodo constructor de la clase ArbolSenaladores
+     * @param cantidad cantidad es el unico parametro de la función ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
+     * @remark el metodo requiere que cantidad sea un tamaño de array valido 
      */
     ArbolSenalador(int const cantidad)
     {
@@ -144,8 +145,8 @@ public:
     }
 
     /**
-     * @brief ~ArbolSenalador is the destructor method of the class
-     * @remark El metodo requiere que el Arbol
+     * @brief ~ArbolSenalador es el metodo destructor de la clase ArbolSenalador
+     * @remark El metodo requiere que el Arbol sea inicializado
      */
     ~ArbolSenalador()
     {
@@ -153,12 +154,13 @@ public:
     }
 
     /**
-     * @brief PonerRaiz is a function that change the actual value of the root, or add the first value to the tree
-     * @param root root is the new value  of the root
+     * @brief PonerRaiz es un metodo que permite cambiar el valor actual de la raiz del arbol
+     * @param raiz raiz es el nuevo valor de la raiz
+     * @remark el metodo requiere que el arbol este inicializado y la el valor de la raiz valida
      */
-    void PonerRaiz(int root)
+    void PonerRaiz(int raiz)
     {
-        arregloArbol[0].setValor(root);
+        arregloArbol[0].setValor(raiz);
         arregloArbol[0].setIndice(0);
         if (esVacio == 0)
         {
@@ -168,8 +170,8 @@ public:
     }
 
     /**
-     * @brief AgregarHijo add a new element to the tree
-     * @param indexPadre indexPadre is the index of the father of the new node
+     * @brief AgregarHijo permite agrgar un hijo al Nodo dado
+     * @param padre padre es de tipo Nodo, es el Nodo al cual se agrega un hijo
      * @param hijo hijo is the value of the new element inserted in the tree
      */
     void AgregarHijo(int valorHijo, Nodo padre) // agrega al padre un hijo
