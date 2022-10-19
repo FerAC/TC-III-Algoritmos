@@ -7,13 +7,23 @@
 
 int main()
 {
-
+    std::cout<< "Bienvenid@ ! Inserta [i] para inicializar un nuevo arbol vacio, sino inserta [q] para salir del programa" << std::endl;
+    char respuestaUsuario;
+    std::cin >> respuestaUsuario;
+    
     int choice;
-    int seguir = 1;
+    int seguir = 0;
 
+    if (respuestaUsuario == 'i')
+    {
+        seguir = 1;
+    }
+    
+   
     while (seguir)
     {
-        std::cout << "\n\n\t############################# \n" << std::endl;
+
+        std::cout << "\n\n\t ############################# \n" << std::endl;
         std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
         std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
         std::cout << "1 - agregar hijo" << std::endl;
