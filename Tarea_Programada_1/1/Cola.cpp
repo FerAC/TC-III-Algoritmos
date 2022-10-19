@@ -1,16 +1,15 @@
 #include <cstddef>
 #include <iostream>
-//breaf modifica remark requiere    return retorna param
 
 template <class elemento>
 class Cola
 {
 private:
     std::size_t size;
-    int head; // first out
-    int end;  // last in
-    elemento *arrayCircular;
-    bool isEmpty;
+    int cabeza; // first out
+    int fin;  // last in
+    elemento *arregloCircular;
+    bool esVacio;
 
 public:
     /**
@@ -21,8 +20,8 @@ public:
     Cola(std::size_t maxSize)
     {
         size = maxSize;
-        arrayCircular = new elemento[size + 1];
-        isEmpty = true;
+        arregloCircular = new elemento[size + 1];
+        esVacio = true;
     }
 
     /**
@@ -31,7 +30,7 @@ public:
      */
     ~Cola()
     {
-        delete[] arrayCircular;
+        delete[] arregloCircular;
     }
 
     /**
@@ -42,27 +41,27 @@ public:
     void Encolar(elemento nuevoElemento)
     {
 
-        if (isEmpty == false) // normal add
+        if (esVacio == false) // normal add
         {
             if (this->NumElem() != size)
             {
-                if (end == size - 1)
+                if (fin == size - 1)
                 {
-                    end = 0;
+                    fin = 0;
                 }
                 else
                 {
-                    ++end;
+                    ++fin;
                 }
-                arrayCircular[end] = nuevoElemento;
+                arregloCircular[fin] = nuevoElemento;
             }
         }
         else // add first elem
         {
-            end = 0;
-            head = 0;
-            arrayCircular[0] = nuevoElemento;
-            isEmpty = 0;
+            fin = 0;
+            cabeza = 0;
+            arregloCircular[0] = nuevoElemento;
+            esVacio = 0;
         }
     }
 
@@ -74,21 +73,21 @@ public:
     elemento Desencolar()
     {
 
-        elemento bufferPop = arrayCircular[head]; // there is no need to clean the current value of the poped element
+        elemento bufferPop = arregloCircular[cabeza]; // there is no need to clean the current value of the poped element
 
-        if (isEmpty == 0 && head == end) // en el caso que se retira el ultimo elemento de la cola
+        if (esVacio == 0 && cabeza == fin) // en el caso que se retira el ultimo elemento de la cola
         {
-            isEmpty = 1;
+            esVacio = 1;
         }
         else
         {
-            if (head == size - 1)
+            if (cabeza == size - 1)
             {
-                head = 0;
+                cabeza = 0;
             }
             else
             {
-                ++head;
+                ++cabeza;
             }
         }
         return bufferPop;
@@ -101,39 +100,39 @@ public:
      */
     int NumElem()
     {
-        if (isEmpty == true)
+        if (esVacio == true)
         {
             return 0;
         }
         else
         {
-            if (end == head)
+            if (fin == cabeza)
             {
                 return 1;
             }
             else
             {
-                if (end > head)
+                if (fin > cabeza)
                 {
-                    return (end - head) + 1;
+                    return (fin - cabeza) + 1;
                 }
                 else
                 {
-                    return (size - head) + end + 1;
+                    return (size - cabeza) + fin + 1;
                 }
             }
         }
     }
 
     /**
-     * @brief vaciar vacia el contenido de la Cola, para isEmpty a 1 y re-inicializa los valores de head y end
+     * @brief vaciar vacia el contenido de la Cola, para esVacio a 1 y re-inicializa los valores de cabeza y fin
      * @remark el metodo requiere que la cola este inicializada
      */
     void vaciar()
     {
-        isEmpty = true;
-        head = 0;
-        end = 0;
+        esVacio = true;
+        cabeza = 0;
+        fin = 0;
     }
 
     /**
@@ -149,7 +148,7 @@ public:
 
 int main()
 {
-    std::size_t colaSize = 10;
+    std::size_t colaMax = 10;
     /*
         Cola<int> cola(colaSize);
         cola.Encolar(0);
@@ -168,21 +167,21 @@ int main()
         cola.Encolar(8);
         */
 
-    Cola<char> cola(colaSize);
+    Cola<char> cola(colaMax);
     cola.Encolar('A');
     cola.Encolar('B');
     cola.Encolar('C');
     cola.Encolar('D');
 
-    int quantityElement = cola.NumElem();
+    int cantidadElementos = cola.NumElem();
     std::cout << "Inicial quantity of elements in the queue: " << cola.NumElem() << std::endl;
 
-    int counter = 0;
-    while (counter < quantityElement)
+    int contador = 0;
+    while (contador < cantidadElementos)
     {
         // pop and print element
         std::cout << cola.Desencolar() << std::endl;
-        ++counter;
+        ++contador;
     }
 
     return 0;
