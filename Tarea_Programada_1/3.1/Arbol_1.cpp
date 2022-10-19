@@ -134,7 +134,7 @@ public:
     /**
      * @brief El metodo ArbolSenaladores el metodo constructor de la clase ArbolSenaladores
      * @param cantidad cantidad es el unico parametro de la función ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
-     * @remark el metodo requiere que cantidad sea un tamaño de array valido 
+     * @remark el metodo requiere que cantidad sea un tamaño de array valido
      */
     ArbolSenalador(int const cantidad)
     {
@@ -408,10 +408,6 @@ int main()
     {
         std::cout << "nodo vacio" << std::endl;
     }
-
-    //}
-
-    // std::cout << arbol.Etiqueta(*arbol.HijoMasIzquierdo(*arbol.HijoMasIzquierdo(arbol.Raiz()))) << std::endl;
     arbol.BorrarHoja(*arbol.HijoMasIzquierdo(*arbol.HijoMasIzquierdo(arbol.Raiz())));
 
     return 0;
