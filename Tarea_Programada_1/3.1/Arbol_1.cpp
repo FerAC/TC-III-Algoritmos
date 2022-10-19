@@ -98,6 +98,12 @@ public:
      */
     ~Nodo() {}
 
+    /**
+     * @brief operator == es la sobrecarga del operador basico == ese metodo permite comparar un Nodo a un entero
+     * @param comparador comparador es el unico parametro del metodo, es el elemento al cual se compara el Nodo
+     * @return El metodo devuelve un booleano, dependiendo si el Nodo es nulo o no
+     * @remark El metodo requiere que el Nodo este inicializado
+    */
     bool operator==(const int comparador)
     {
         if (comparador == 0 && indice == 0 && valor == 0 && indicePadre == 0)
@@ -220,8 +226,9 @@ public:
     }
 
     /**
-     * @brief Raiz permite acceder a la Raiz del arbol
-     * @return el metodo Raiz devuelve el Nodo raiz del arbol
+     * @brief Raiz permite acceder a la Raiz del arbol, no recibe parametros
+     * @return El metodo Raiz devuelve el Nodo raiz del arbol
+     * @remark El metodo requiere que sea incializado, y que tenga una raiz con valores inicializada
      */
     Nodo Raiz()
     {
@@ -229,9 +236,10 @@ public:
     }
 
     /**
-     * @brief
-     * @param
-     * @return
+     * @brief El metodo Padre permite encontrar el Padre de un nodo dado que pertenece al arbol
+     * @param hijo hijo es de tipo Nodo, es el Nodo del cual se quiere encontrar el padre
+     * @return El metodo devuelve un Nodo, el nodo del arbol que tiene como hijo el nodo Nodo hijo
+     * @remark El metodo requiere que el arbol este inicializado, el nodo dado por parametro exista en el arbol, sea inicializado y no sea la raiz del arbol
      */
     Nodo Padre(Nodo hijo)
     {
@@ -239,9 +247,10 @@ public:
     }
 
     /**
-     * @brief
-     * @param
-     * @return
+     * @brief El metodo HijoMasIzquierdo permite encontrar el Hijo mas a la izquierda de un Nodo dado
+     * @param padre padre es el unico parametro del metodo, es de tipo Nodo, es el nodo del cual hay que encontrar el hijo mas izquierdo, si no existe entonces significa que es una hoja
+     * @return El metodo devuelve un puntero hacia el nodo hijo, o un nullptr en el caso que no tenga hijos
+     * @remark El metodo requiere que el arbol este inicializado, y que el Nodo padre dado exista en el arbol
      */
     Nodo *HijoMasIzquierdo(Nodo padre)
     {
@@ -273,9 +282,10 @@ public:
     }
 
     /**
-     * @brief
-     * @param
-     * @return
+     * @brief El metodo HermanoDerecho permite encontrar el nodo mas cercano a la derecha del nodo dado que tengo el mismo padre, si no existe entonces significa que el nodo dado ya es el nodo mas a la derecha
+     * @param hermano hermano es el unico parametro del metodo, es el nodo del cual tenemos que buscar el hermano derecho
+     * @return El metodo devuelve un puntero hacia el hermano derecho, o un nullptr en el caso que no tengo hermano derecho
+     * @remark El metodo requiere que el arbol este inicializado, que el Nodo hermano exista en el arbol, y que no sea la raiz
      */
     Nodo *HermanoDerecho(Nodo hermano)
     {
