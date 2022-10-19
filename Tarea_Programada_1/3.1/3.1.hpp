@@ -2,7 +2,6 @@
 #define ARBOL_1_HPP
 
 // #include <iostream>
-typedef *NodoArbol Nodo;
 
 class NodoArbol
 {
@@ -150,6 +149,19 @@ public:
     {
         arregloArbol = new NodoArbol[cantidad];
         maximo = cantidad;
+        actual = 0;
+        esVacio = 0;
+    }
+
+    /**
+     * @brief El metodo ArbolSenaladores el metodo constructor de la clase ArbolSenaladores
+     * @param cantidad cantidad es el unico parametro de la función ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
+     * @remark el metodo requiere que cantidad sea un tamaño de array valido
+     */
+    ArbolSenalador()
+    {
+        arregloArbol = new NodoArbol[256];
+        maximo = 256;
         actual = 0;
         esVacio = 0;
     }
@@ -409,5 +421,9 @@ private:
     int actual;
     int esVacio;
 };
+
+
+typedef NodoArbol* Nodo;
+typedef ArbolSenalador Arbol;
 
 #endif
