@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-class Nodo{
+class NodoConcreto{
 	friend ostream& operator<<(ostream& salida, Nodo p){
 			return p.imprimir(salida);  
 		}

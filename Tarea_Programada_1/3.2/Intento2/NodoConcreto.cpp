@@ -1,4 +1,4 @@
-#include "Nodo.h"
+#include "NodoConcreto.h"
 
 Nodo::Nodo(){
 	
