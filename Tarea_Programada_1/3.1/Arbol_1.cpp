@@ -170,24 +170,24 @@ public:
     }
 
     /**
-     * @brief AgregarHijo permite agregar un hijo al Nodo dado
+     * @brief AgregarHijo permite agregar un elemento al arbol, y por lo tanto un hijo al Nodo dado
      * @param padre padre es de tipo Nodo, es el Nodo al cual se agrega un hijo
      * @param valorHijo valorHijo es el valor del nuevo Nodo agregado al arbol
      * @remark El metodo necesita que el arbol sea inicializado, que tengo por lo menos una raiz incializada, y que el Nodo padre exista en el arbol
      */
     void AgregarHijo(int valorHijo, Nodo padre)
     {
-        //int indice = 0;
+        // int indice = 0;
 
-        //while (arregloArbol[indice].getValor() != padre.getValor())
+        // while (arregloArbol[indice].getValor() != padre.getValor())
         //{
-          //  ++indice;
+        //   ++indice;
         //}
 
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
-            //arregloArbol[actual].setPadre(indice);
+            // arregloArbol[actual].setPadre(indice);
             arregloArbol[actual].setPadre(padre.getIndice());
             arregloArbol[actual].setIndice(actual);
             ++actual;
@@ -195,23 +195,25 @@ public:
     }
 
     /**
-     * @brief AgregarHijoMasDerecho add a new element to the tree
-     * @param indexPadre indexPadre is the index of the father of the new node
-     * @param hijo hijo is the value of the new element inserted in the tree
+     * @brief AgregarHijoMasDerecho permite agregar un nuevo elemento al Arbol, por medio de un hijo al Nodo dado, se agrega el hijo en la posicion mas derecha en comparacion a sus hermanos
+     * @param padre padre es de tipo Nodo, es el Nodo al cual se agrega un hijo
+     * @param valorHijo valorHijo es el valor del nuevo Nodo agregado al arbol
+     * @remark El metodo necesita que el arbol sea inicializado, que tenga por lo menos una raiz incializada, y que el Nodo padre exista en el arbol
      */
     void AgregarHijoMasDerecho(int valorHijo, Nodo padre) // agrega al padre un hijo
     {
-        int indice = 0;
+        // int indice = 0;
 
-        while (arregloArbol[indice].getValor() != padre.getValor())
-        {
-            ++indice;
-        }
+        // while (arregloArbol[indice].getValor() != padre.getValor())
+        //{
+        //     ++indice;
+        // }
 
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
-            arregloArbol[actual].setPadre(indice);
+            // arregloArbol[actual].setPadre(indice);
+            arregloArbol[actual].setPadre(padre.getIndice());
             arregloArbol[actual].setIndice(actual);
             ++actual;
         }
