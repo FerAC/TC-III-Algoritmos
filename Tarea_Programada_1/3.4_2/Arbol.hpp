@@ -98,8 +98,6 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol);
 template <typename Elemento>
 class Arbol
 {
-    // TODO: Migrar de la cola STL a la cola de Archi
-
     // La función de impresión puede ver las entrañas de un Árbol
     template <typename T>
     friend std::ostream& operator<<(std::ostream&, const Arbol<T>&);
@@ -377,7 +375,8 @@ class Arbol
         /// @brief Cambia la etiqueta de un nodo de un árbol por otra nueva
         /// @param nodo Nodo al cual sustituirle la etiqueta
         /// @param nuevoValor Elemento con el cual basarse para construir una copia y así reemplazar a la etiqueta
-        /// @remarks Requiere que el nodo no sea nulo, y que el elemento tenga un constructor por copia válido
+        /// @remarks Requiere que el nodo no sea nulo, exista en el árbol, y que el elemento tenga un constructor 
+        // por copia válido
         inline void ModificaEtiqueta(const Nodo& nodo, const Elemento& nuevoValor) const
         {
             if (nodo.nodoConcreto == nullptr)

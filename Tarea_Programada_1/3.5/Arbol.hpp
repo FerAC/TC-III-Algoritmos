@@ -98,8 +98,6 @@ std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol);
 template <typename Elemento>
 class Arbol
 {
-    // TODO: Migrar de la cola STL a la cola de Archi
-
     // La función de impresión puede ver las entrañas de un Árbol
     template <typename T>
     friend std::ostream& operator<<(std::ostream&, const Arbol<T>&);
@@ -192,7 +190,8 @@ class Arbol
 
                 /// @brief Obtiene el elemento apuntado por el nodo concreto apuntado por este nodo
                 /// @return Elemento obtenido al desreferenciar el apuntador de elemento del nodo concreto
-                /// @remarks Requiere que el nodo concreto apuntado no sea nulo, ni que ese apunte a un elemento nulo
+                /// @remarks Requiere que el nodo concreto apuntado no sea nulo (existe), ni que ese apunte a un
+                // elemento nulo
                 const Elemento& operator->() const
                 {
                     if (nodoConcreto == nullptr)
