@@ -387,7 +387,7 @@ public:
      * @param nuevoValor nuevoValor es un entero, una etiqueta, es el nuevo valor de la etiqueta del NodoArbol nodo
      * @remark El metodo requiere que el arbol sea inicializado, y que el NodoArbol nodo existe en el arbol
      */
-    void ModificaEtiqueta(NodoArbol *nodo, int nuevoValor)
+    void ModificaEtiqueta(int nuevoValor, NodoArbol *nodo)
     {
         int indice = 0;
         while (arregloArbol[indice].getValor() != nodo->getValor())
