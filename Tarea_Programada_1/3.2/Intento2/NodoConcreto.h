@@ -14,7 +14,7 @@ class NodoConcreto{
 		Lista<NodoConcreto*> * listaHijos; 
 		
 	public:
-		NodoConcretoConcreto();
+		NodoConcreto();
 		NodoConcreto(int); 
 		~NodoConcreto();
 		void insertarEnLista(NodoConcreto*);
