@@ -195,9 +195,10 @@ public:
      * @brief AgregarHijo permite agregar un elemento al arbol, y por lo tanto un hijo al NodoArbol dado
      * @param padre padre es de tipo NodoArbol, es el NodoArbol al cual se agrega un hijo
      * @param valorHijo valorHijo es el valor del nuevo NodoArbol agregado al arbol
+     * @return El NodoArbol creado como hijo del Padre. Es nulo si no se logró añadir
      * @remark El metodo necesita que el arbol sea inicializado, que tengo por lo menos una raiz incializada, y que el NodoArbol padre exista en el arbol
      */
-    void AgregarHijo(int valorHijo, NodoArbol *padre)
+    NodoArbol *AgregarHijo(int valorHijo, NodoArbol *padre)
     {
         // int indice = 0;
 
@@ -206,40 +207,31 @@ public:
         //   ++indice;
         //}
 
+        NodoArbol* hijoRetornado = nullptr;
+
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
             // arregloArbol[actual].setPadre(indice);
             arregloArbol[actual].setPadre(padre->getIndice());
             arregloArbol[actual].setIndice(actual);
+
+            hijoRetornado = &arregloArbol[actual];
             ++actual;
         }
+
+        return hijoRetornado;
     }
 
     /**
      * @brief AgregarHijoMasDerecho permite agregar un nuevo elemento al Arbol, por medio de un hijo al NodoArbol dado, se agrega el hijo en la posicion mas derecha en comparacion a sus hermanos
      * @param padre padre es de tipo NodoArbol, es el NodoArbol al cual se agrega un hijo
      * @param valorHijo valorHijo es el valor del nuevo NodoArbol agregado al arbol
+     * @return El NodoArbol creado como hijo del Padre. Es nulo si no se logró añadir
      * @remark El metodo necesita que el arbol sea inicializado, que tenga por lo menos una raiz incializada, y que el NodoArbol padre exista en el arbol
      */
-    void AgregarHijoMasDerecho(int valorHijo, NodoArbol *padre) // agrega al padre un hijo
-    {
-        // int indice = 0;
-
-        // while (arregloArbol[indice].getValor() != padre.getValor())
-        //{
-        //     ++indice;
-        // }
-
-        if (actual < maximo)
-        {
-            arregloArbol[actual].setValor(valorHijo);
-            // arregloArbol[actual].setPadre(indice);
-            arregloArbol[actual].setPadre(padre->getIndice());
-            arregloArbol[actual].setIndice(actual);
-            ++actual;
-        }
-    }
+    NodoArbol *AgregarHijoMasDerecho(int valorHijo, NodoArbol *padre) // agrega al padre un hijo
+    {return AgregarHijo(valorHijo, padre);}
 
     /**
      * @brief Raiz permite acceder a la Raiz del arbol, no recibe parametros
