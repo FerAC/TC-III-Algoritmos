@@ -264,8 +264,6 @@ public:
         }
         else // caso donde el Nodo es una hoja
         {
-            // Nodo nodoNulo();
-            // return nodoNulo;
             return nullptr;
         }
     }
@@ -308,8 +306,6 @@ public:
         }
         else // caso donde el Nodo es el hermano mas derecho
         {
-            // Nodo nodoNulo;
-            // return nodoNulo;
             return nullptr;
         }
     }
