@@ -120,14 +120,14 @@ NodoConcreto* HijoMasIzquierdo(NodoConcreto* padre){
 /// @brief Devuelve la etiqueta de un NodoConcreto
 /// @param  Un NodoConcreto con la etiqueta   
 /// @remarks Requiere que el NodoConcreto tenga una etiqueta	
-int  Etiqueta(NodoConcreto* NodoConcreto){
+int  ArbolLH::Etiqueta(NodoConcreto* NodoConcreto){
 	return NodoConcreto->getEtiqueta();
 }
 
 /// @brief modifica el valor de la etiqueta de un NodoConcreto
 /// @param  Un NodoConcreto y un entero que sera etiqueta
 /// @remarks Requiere que el NodoConcreto tenga un valor y que el valor nuevo no este en el arbol  	
-void ModificaEtiqueta(int valorNuevo, NodoConcreto* NodoConcretoPadre){
+void ArbolLH::ModificaEtiqueta(int valorNuevo, NodoConcreto* NodoConcretoPadre){
 	NodoConcreto->setEtiqueta(valorNuevo);
 }
 
