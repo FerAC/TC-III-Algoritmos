@@ -14,16 +14,65 @@ class NodoConcreto{
 		Lista<NodoConcreto*> * listaHijos; 
 		
 	public:
-		NodoConcreto();
-		NodoConcreto(int); 
-		~NodoConcreto();
-		void insertarEnLista(NodoConcreto*);
-		Lista<NodoConcreto*>* getListaHijos(); 
-		int getEtiqueta();
-		void setEtiqueta(int);
-		ostream & imprimir(ostream&); 
-		void imprimirValor();
-		int operator==(NodoConcreto); 
+		
+
+Nodo::Nodo(){
+	
+	
+	
+}
+
+Nodo::~Nodo(){
+	///delete listaHijos;
+}
+
+Nodo::Nodo(int et){
+	etiqueta = et;
+	listaHijos = new Lista<Nodo*>();
+}
+
+void Nodo::insertarEnLista(Nodo* nodoNuevo){
+	
+	if(listaHijos->getPrimera()!=nullptr){
+		
+		listaHijos->insertar(nodoNuevo);
+		
+	} else{
+		
+		listaHijos->insertarAlPrincipio(nodoNuevo);
+		
+	}
+	
+}
+
+Lista<Nodo*>* Nodo::getListaHijos(){
+	return listaHijos; 
+}
+void Nodo::imprimirValor(){
+	std::cout<< etiqueta << std::endl;
+}
+
+int Nodo::operator==(Nodo nodo2){
+	if(this->etiqueta == nodo2.getEtiqueta()){
+		return 1;
+	}
+	return 0;
+}
+
+int Nodo::getEtiqueta(){
+	return etiqueta;
+}
+
+void Nodo::setEtiqueta(int valorNuevo){
+	this->etiqueta = valorNuevo;
+}
+
+ostream& Nodo::imprimir(ostream& output){
+	output<< "Etiqueta : " << etiqueta << std::endl;
+	output<< "Mis hijos son : " << std::endl;
+	listaHijos->imprimirPunteros();
+	return output;
+}
 		 
 	
 };
