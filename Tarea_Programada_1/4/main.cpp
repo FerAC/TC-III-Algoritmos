@@ -69,6 +69,20 @@ void hijoMasIzquierdo(int etiqueta)
     imprimirArbol(arbol.Raiz(), arbol);
 }
 
+void hijoMasIzquierdo(int etiqueta)
+{
+    Nodo nodoPadre = buscarEtiqueta(etiquetaPadre);
+    Nodo mI = arbol.HijoMasIzquierdo(nodoPadre);
+    std::cout << "Hijo mas Izquiedo de " << etiqueta << "es " << arbol.Etiqueta(mI) << std::endl;
+}
+
+void hermanoDerecho(int etiqueta)
+{
+    Nodo nodoPadre = buscarEtiqueta(etiquetaPadre);
+    Nodo mI = arbol.HermanoDerecho(nodoPadre);
+    std::cout << "Hermano Derecho de " << etiqueta << "es " << arbol.Etiqueta(mI) << std::endl;
+}
+
 int main()
 {
     std::cout << "Bienvenid@ ! Inserta [i] para inicializar un modelo vacio, sino inserta [q] para salir del programa" << std::endl;
@@ -100,33 +114,37 @@ int main()
             std::cout << "3 - vaciar " << std::endl;
             std::cout << "4 - vacio " << std::endl;
             std::cout << "5 - salir y destruir la cola" << std::endl;
+            std::cin >> choice;
 
             switch (choice)
             {
-            case 0: // cambiar raiz (vital al inicializar el arbol)
-                std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
-                int valorRaiz;
-                std::cin >> valorRaiz;
-                arbol.PonerRaiz(valorRaiz);
-                break;
-
-            case 1: // agregar hijo
+            case 0: // encolar
 
                 break;
 
-            case 2: // borrar hoja
-                std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
-                int etiquetaBorrada;
-                std::cin >> etiquetaBorrada;
+            case 1: // desencolar
 
                 break;
 
-            case 3: // imprimir el arbol
-                imprimirArbol(arbol.Raiz(), arbol);
+            case 2: // numElem
+                std::cout << cola.NumElem() << std::endl;
                 break;
 
-            case 4: // get raiz
-                /* code */
+            case 3: // vaciar
+                cola.vaciar();
+                std::cout << "se vacio correctamente la cola" << std::endl;
+                break;
+
+            case 4: // vacio (devuelve un bool)
+                int esVacio = cola.vacia();
+                if (esVacio)
+                {
+                    std::cout << "La cola es vacia" << std::endl;
+                }
+                else
+                {
+                    std::cout << "La cola no es vacia" << std::endl;
+                }
                 break;
 
             case 5: // salir
