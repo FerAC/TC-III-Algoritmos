@@ -6,15 +6,12 @@
 //#include "tree5.h"                        // 3.5
 #include <iostream>
 
-
-
-
 /// @brief Metodo imprimirArbol, permite imprimir el contenido de una arbol dado por parametro, recoge el arbol en pre-orden
-/// @param nodo nodo 
+/// @param nodo nodo
 /// @param arbol arbol es el arbol recibido por referencia
 void imprimirArbol(Nodo nodo, Arbol &arbol)
 {
-    const Nodo& NodoNulo = Nodo();
+    const Nodo &NodoNulo = Nodo();
     if (nodo == NodoNulo)
     {
         return;
@@ -26,21 +23,19 @@ void imprimirArbol(Nodo nodo, Arbol &arbol)
     // ciclo para explorar cada
 
     Nodo hijo = arbol.HijoMasIzquierdo(nodo);
-    //std::cout << "aaa" << std::endl;
+    // std::cout << "aaa" << std::endl;
     while (hijo != NodoNulo)
     {
         imprimirArbol(hijo, arbol);
         hijo = arbol.HermanoDerecho(hijo);
     }
 }
-
-
 
 /// @brief Metodo buscarArbol, permite buscar si un valor esta en el arbol, recoge el arbol en pre-orden
 /// @param
 void imprimirArbol(Nodo nodo, Arbol &arbol)
 {
-    const Nodo& NodoNulo = Nodo();
+    const Nodo &NodoNulo = Nodo();
     if (nodo == NodoNulo)
     {
         return;
@@ -52,7 +47,7 @@ void imprimirArbol(Nodo nodo, Arbol &arbol)
     // ciclo para explorar cada
 
     Nodo hijo = arbol.HijoMasIzquierdo(nodo);
-    //std::cout << "aaa" << std::endl;
+    // std::cout << "aaa" << std::endl;
     while (hijo != NodoNulo)
     {
         imprimirArbol(hijo, arbol);
@@ -60,7 +55,19 @@ void imprimirArbol(Nodo nodo, Arbol &arbol)
     }
 }
 
+void borrarHoja(int valorBorrado)
+{
+    Nodo borrado = buscarEtiqueta(etiquetaPadre);
+    arbol.BorrarHoja(borrado);
+    imprimirArbol(arbol.Raiz(), arbol);
+}
 
+void hijoMasIzquierdo(int etiqueta)
+{
+    Nodo nodoPadre = buscarEtiqueta(etiquetaPadre);
+    arbol.HijoMasIzquierdo(nodoPadre);
+    imprimirArbol(arbol.Raiz(), arbol);
+}
 
 int main()
 {
@@ -84,9 +91,51 @@ int main()
         {
             std::cout << "Cuantos elementos maximo quiere tener en la cola ?" << std::endl;
             int maximo;
-            std::
-            Cola cola()
-            // switch de cola
+            std::cin >> maximo;
+            Cola cola(maximo);
+            std::cout << "Que desea hacer con la cola?" << std::endl;
+            std::cout << "0 - encolar elemento" << std::endl;
+            std::cout << "1 - desencolar elemento" << std::endl;
+            std::cout << "2 - numElem " << std::endl;
+            std::cout << "3 - vaciar " << std::endl;
+            std::cout << "4 - vacio " << std::endl;
+            std::cout << "5 - salir y destruir la cola" << std::endl;
+
+            switch (choice)
+            {
+            case 0: // cambiar raiz (vital al inicializar el arbol)
+                std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
+                int valorRaiz;
+                std::cin >> valorRaiz;
+                arbol.PonerRaiz(valorRaiz);
+                break;
+
+            case 1: // agregar hijo
+
+                break;
+
+            case 2: // borrar hoja
+                std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
+                int etiquetaBorrada;
+                std::cin >> etiquetaBorrada;
+
+                break;
+
+            case 3: // imprimir el arbol
+                imprimirArbol(arbol.Raiz(), arbol);
+                break;
+
+            case 4: // get raiz
+                /* code */
+                break;
+
+            case 5: // salir
+                seguir = 0;
+                break;
+
+            default:
+                break;
+            }
         }
 
         if (respuestaUsuario == 'l')
@@ -120,7 +169,7 @@ int main()
                 break;
 
             case 1: // agregar hijo
-                
+
                 break;
 
             case 2: // borrar hoja
