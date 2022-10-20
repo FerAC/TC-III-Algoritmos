@@ -2,6 +2,7 @@
 #define NodoConcretoLH
 #include "Lista.h"
 #include "Celda.h"
+#include "ArbolLH.hpp"
 #include <iostream>
 using namespace std;
 
@@ -9,6 +10,7 @@ class NodoConcreto{
 	friend ostream& operator<<(ostream& salida, NodoConcreto p){
 			return p.imprimir(salida);  
 		}
+	friend class ArbolLH; 
 	private:
 		int etiqueta;
 		Lista<NodoConcreto*> * listaHijos; 
@@ -17,8 +19,6 @@ class NodoConcreto{
 		
 
 NodoConcreto::NodoConcreto(){
-	
-	
 	
 }
 

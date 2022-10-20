@@ -10,9 +10,9 @@ Nodo::~Nodo(){
 	///delete listaHijos;
 }
 
-Nodo::Nodo(int et){
+Nodo::Nodo(int et, &Lista<Nodo*> lista){
 	etiqueta = et;
-	listaHijos = new Lista<Nodo*>();
+	listaHijos = lista;
 }
 
 void Nodo::insertarEnLista(Nodo* nodoNuevo){

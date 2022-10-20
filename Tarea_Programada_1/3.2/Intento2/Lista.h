@@ -11,12 +11,15 @@ class Lista {
 		Celda<T> * ultima; 
 		size_t contador;
 	public:
+/// @brief Constructor por omision de la clase lista
+/// @remarks Requiere que la lista no este inicializada 
 		Lista() {
 			primera = nullptr;
 			ultima = nullptr;
 			contador = 0;
 		}
-
+/// @brief Destructor de la clase lista
+/// @remarks Requiere que la celda este inicializada
 		~Lista() {
 			
 			Celda<T> ** temp = &primera;
@@ -34,9 +37,8 @@ class Lista {
 			}
 			
 		}
-
-		// TODO: INSERTAR DEBERIA SER POR INDICE Y VALOR, NO SOLO POR VALOR
-		// TODO: INSERTAR ES POCO SIGNIFICATIVO (¿DONDE SE INSERTA?). NOMBRE ESTA RESERVADO EN OP. BASICAS
+/// @brief inserta un elemento en la lista
+/// @remarks Requiere que la lista este inicializada
 		void insertar(const T& elemento) {
 			Celda<T>* celdaNueva =  new Celda<T> (elemento);
 			if (!primera) {
@@ -56,6 +58,8 @@ class Lista {
 			++contador; 
 		}
 		
+/// @brief inserta un elemento al principio de la lista
+/// @remarks Requiere que la lista este inicializada
 		void insertarAlPrincipio(const T& elemento){
 			Celda<T> * celdaNueva = new Celda<T> (elemento);  
 			celdaNueva->setSiguiente(primera); 
@@ -64,11 +68,10 @@ class Lista {
 				ultima = celdaNueva;
 			}
 			contador++;
-			// delete celdaNueva;
-			// TODO: FALTA ACTUALIZAR CONTADOR
 		}
+/// @brief Elimina a un elemento de la lista
+/// @remarks Requiere que la celda este inicializada 
 
-		// TODO: BORRADO DEBERIA SER POR INDICE, NO POR VALOR
 		int borrar(const T& elemento) {
 			Celda<T>* match = this->buscar(elemento);
 			int validez = 0;
@@ -105,7 +108,9 @@ class Lista {
 			delete match;
 			--contador;
 		}
-
+/// @brief Devuelve la celda asociada a una etiqueta en especifico
+/// @remarks Requiere que la lista este inicializada y que posea una etiqueta
+/// @return Celda<T> en caso de no encontralo devuelve un nullptr 
 		Celda<T> * buscar(const T& elemento) {
 			int encontrado = 0;
 			size_t i = 0;
@@ -131,34 +136,11 @@ class Lista {
 			}
 		}
 		
-		/*
-		Celda<T>  buscarPuntero(const T& elemento) {
-			int encontrado = 0;
-			size_t i = 0;
-			Celda<T> temp = primera;
-			// TODO: MAS FACIL MODULARIZAR EN FOR
-			while (i < contador && !encontrado) {
-				if (temp->getEtiqueta() == elemento) {
-					encontrado = 1;
-				} else if (i + 1 < contador) {
-					temp = temp.getSiguiente();
-				}
-				++i;
-			}
-			
-			if (!encontrado) {
-				return nullptr;
-			} else {
-				return temp; 
-			}
-		}
-		*/
-		
 		Celda<T> * buscar(int elemento){
 			int encontrado = 0;
 			size_t i = 0;
 			Celda<T>* temp = primera;
-			// TODO: MAS FACIL MODULARIZAR EN FOR
+			
 			while (i < contador && !encontrado) {
 				if (temp->getEtiqueta()->getEtiqueta() == elemento) {
 					encontrado = 1;
