@@ -247,6 +247,10 @@ int main()
                 seguir = 0;
                 break;
 
+            case 6:
+                lista.imprimir();
+                break;
+
             default:
                 break;
             }
