@@ -168,6 +168,21 @@ public:
         }
         return 0;
     }
+
+    /**
+     * @brief operator == es la sobrecarga del operador basico == ese metodo permite comparar un NodoArbol a un entero
+     * @param comparador comparador es el unico parametro del metodo, es el elemento al cual se compara el NodoArbol
+     * @return El metodo devuelve un booleano, dependiendo si el NodoArbol es nulo o no
+     * @remark El metodo requiere que el NodoArbol este inicializado
+     */
+    bool operator==(const Nodo otroNodo)
+    {
+        if(otroNodo.getIndice() == indice && otroNodo.getIndicePadre()==indicePadre && otroNodo.getValor() == valor){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 };
 
 class ArbolSenalador
