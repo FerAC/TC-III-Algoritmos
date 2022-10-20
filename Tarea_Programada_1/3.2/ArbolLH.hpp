@@ -205,7 +205,12 @@ int NumNodoConcretos(){
 	}
 	return contador;	
 }
-	
+
+/// @brief metood retorna cuantos elementos hay en arbol
+/// @return return cantidad de elementos en arbol
+int NumNodos(){
+	return listaPrincipal->getContador(); 
+}
 	
 };
 #endif
