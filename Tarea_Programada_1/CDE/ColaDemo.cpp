@@ -1,5 +1,7 @@
 #include "Cola.hpp"
 
+using namespace Util;
+
 /// @brief Mini demo, incompleta hasta terminar de implementar el árbol
 int main()
 {

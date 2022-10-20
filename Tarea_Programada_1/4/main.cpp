@@ -1,17 +1,19 @@
-//#include "Tree_senaladorPadre.h"          // 3.1
-#include "3.1.hpp"
-//#include "ArbolLH.h"                      // 3.2
-//#include "Arbol.cpp"                      // 3.3
-//#include "treePunteroPadreNoContador.h"   // 3.4
-//#include "tree5.h"                        // 3.5
+// Incluye utilidades auxiliares
+#include "CDE/Cola.hpp" // Cola dinámica para realizar recorrido por niveles
+
+// Include de los Árboles
+#include "3.1/3.1.hpp"
+// #include "3.2/3.2.hpp"
+// #include "3.3/3.3.hpp"
+// #include "3.4/3.4.hpp"
+// #include "3.5/3.5.hpp"
+
+// Include para I/O estándar
 #include <iostream>
 
-
-
-
-/// @brief Metodo imprimirArbol, permite imprimir el contenido de una arbol dado por parametro, recoge el arbol en pre-orden
-/// @param nodo nodo 
-/// @param arbol arbol es el arbol recibido por referencia
+/// @brief Permite imprimir el contenido de una árbol dado por parámetro. Recore el árbol en pre-orden
+/// @param nodo Nodo Inicial
+/// @param arbol Árbol es el arbol recibido por referencia
 void imprimirArbol(Nodo nodo, Arbol &arbol)
 {
     const Nodo& NodoNulo = Nodo();
@@ -34,30 +36,43 @@ void imprimirArbol(Nodo nodo, Arbol &arbol)
     }
 }
 
-
-
-/// @brief Metodo buscarArbol, permite buscar si un valor esta en el arbol, recoge el arbol en pre-orden
-/// @param
-void imprimirArbol(Nodo nodo, Arbol &arbol)
+/// @brief Devuelve el primer nodo correspondiente a la etiqueta buscada (si existe). Recorre el árbol en pre-orden
+/// @param arbol Arbol donde se busca algún nodo con la etiqueta
+/// @param etiqueta Etiqueta cuyos contenidos se intentan buscar en el árbol (dentro de un nodo)
+/// @return Nodo en el árbol que posee la etiqueta alimentada. Nodo nulo en caso contrario
+Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
 {
     const Nodo& NodoNulo = Nodo();
-    if (nodo == NodoNulo)
+    
+    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
+    if (arbol.Raiz() == NodoNulo)
+        return NodoNulo;
+
+    // Caso 2: El árbol tiene nodos
+    // Realizaremos un recorrido por niveles utilizando una cola de nodos
+    Util::Cola<Nodo> colaNodos;
+
+    // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+    colaNodos.Encolar(arbol.Raiz());
+
+    // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
+    // Si resulta que encontramos al nodo, escaparemos el recorrido mediante un retorno prematuro
+    while (!colaNodos.Vacio())
     {
-        return;
+        // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+        Nodo nodoActual = colaNodos.Desencolar();
+
+        // Si resulta ser un nodo con la etiqueta que buscamos, lo retornaremos
+        if (arbol.Etiqueta(nodoActual) == etiqueta)
+            return nodoActual;
+
+        // Ahora encolaremos todos sus hijos
+        for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
+            colaNodos.Encolar(hijoActual);
     }
 
-    std::cout << arbol.Etiqueta(nodo) << std::endl;
-
-    //
-    // ciclo para explorar cada
-
-    Nodo hijo = arbol.HijoMasIzquierdo(nodo);
-    //std::cout << "aaa" << std::endl;
-    while (hijo != NodoNulo)
-    {
-        imprimirArbol(hijo, arbol);
-        hijo = arbol.HermanoDerecho(hijo);
-    }
+    // Si no se encontró un nodo con la etiqueta correspondiente en el árbol, entonces devolveremos nodo nulo
+    return NodoNulo;
 }
 
 
