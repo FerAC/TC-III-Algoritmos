@@ -20,7 +20,7 @@ class NodoConcreto{
 /// @brief Constructor por omision de la clase nodo
 /// @remarks Requiere que el nodo no este inicializado 
 NodoConcreto(){
-	
+	listaHijos = nullptr;
 }
 /// @brief Destructor por omision de la clase nodo
 /// @remarks Requiere que el nodo este inicializada
@@ -66,7 +66,7 @@ void imprimirValor(){
 /// @param NodoConcreto 
 /// @return 1 si son iguales, 0 si no
 int operator==(NodoConcreto nodo2){
-	if(this->etiqueta == nodo2.getEtiqueta()){
+	if(this->listaHijos == nodo2.listaHijos){
 		return 1;
 	}
 	return 0;
@@ -77,10 +77,10 @@ int operator==(NodoConcreto nodo2){
 /// @param NodoConcreto 
 /// @return 0 si son iguales, 1 si no
 int operator!=(NodoConcreto nodo2){
-	if(this->etiqueta != nodo2.getEtiqueta()){
-		return 1;
+	if(this->listaHijos == nodo2.listaHijos){
+		return 0;
 	}
-	return 0;
+	return 1;
 }
 /// @brief Devuelve la etiqueta de un nodo
 /// @remarks Requiere que el nodo este inicializado
