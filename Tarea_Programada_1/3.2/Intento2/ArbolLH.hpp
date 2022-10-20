@@ -2,7 +2,7 @@
 #define ARBOLLH
 #include "Lista.h"
 #include "Celda.h"
-#include "NodoConcreto.h"
+#include "NodoConcreto.hpp"
 
 class ArbolLH{
 	private:
@@ -44,7 +44,7 @@ void ArbolLH::ImprimirLP(){
 /// @remarks Requiere que el arbol sea vacia  
 void ArbolLH::PonerRaiz(int etiqueta){
 	NodoConcreto* nuevoNodoConcreto = new NodoConcreto(etiqueta); 
-	Lista<NodoConcreto*> lista = new Lista<NodoConcreto*>();
+	Lista<NodoConcreto*> * lista = new Lista<NodoConcreto*>();
 	nuevoNodoConcreto->listaHijos = lista; 
 	listaPrincipal->insertarAlPrincipio(*nuevoNodoConcreto);
 }
@@ -55,7 +55,7 @@ void ArbolLH::PonerRaiz(int etiqueta){
 /// @return El NodoConcreto agregado	
 NodoConcreto* ArbolLH::AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre){
 	NodoConcreto * NodoConcretoNuevo = new NodoConcreto(etiqueta); 
-	Lista<NodoConcreto*> lista = new Lista<NodoConcreto*>();
+	Lista<NodoConcreto*> * lista = new Lista<NodoConcreto*>();
 	NodoConcretoNuevo->listaHijos = lista; 
 	listaPrincipal->insertar(*NodoConcretoNuevo);
 	NodoConcretoPadre->insertarEnLista(NodoConcretoNuevo); 
@@ -77,7 +77,7 @@ void ArbolLH::BorrarHoja(NodoConcreto* borrado){
 	for(Celda<NodoConcreto> * buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
 		int validez = buffer1->getEtiqueta()->getListaHijos()->borrar(borrado); 
 		if(validez!=0){		//Si lo borre de secundarias voy a borrarlo a principal
-			delete listaHijos; 
+			delete *punteroALista; 
 			int valorBorrado = borrado->getEtiqueta(); 
 			NodoConcreto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta(4); 
 			listaPrincipal->borrar(listaPrincipal->buscar(borrado->getEtiqueta())->getEtiqueta(4)); 
