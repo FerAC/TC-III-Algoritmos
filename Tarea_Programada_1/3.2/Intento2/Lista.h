@@ -107,7 +107,10 @@ class Lista {
 			// Elemento ha sido borrado
 			delete match;
 			--contador;
+
+			return 1;
 		}
+
 /// @brief Devuelve la celda asociada a una etiqueta en especifico
 /// @remarks Requiere que la lista este inicializada y que posea una etiqueta
 /// @return Celda<T> en caso de no encontralo devuelve un nullptr 
@@ -190,9 +193,13 @@ class Lista {
 			anterior->setSiguiente(nuevaCelda);
 		}
 		
-		// TODO: USAR OPERATOR<< PARA SER MAS VERSATIL
 		Celda<T>* getPrimera(){
 			return primera;
+			
+		}
+
+		Celda<T>* getUltima(){
+			return ultima;
 			
 		}
 };

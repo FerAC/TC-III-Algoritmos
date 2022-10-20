@@ -1,5 +1,5 @@
-#include "3.1/3.1.hpp"
-// #include "3.2/Intento2/3.2.hpp"
+// #include "3.1/3.1.hpp"
+#include "3.2/Intento2/3.2.hpp"
 // #include "3.4/3.4.hpp"
 // #include "3.5/3.5.hpp"
 
@@ -48,7 +48,7 @@ int main()
     Nodo nodo_2 = arbol.AgregarHijo(2, raiz);
     Nodo nodo_3 = arbol.AgregarHijoMasDerecho(3, raiz);
     arbol.AgregarHijoMasDerecho(4, raiz);
-    imprimirArbol(arbol.Raiz(), arbol);
+    // imprimirArbol(arbol.Raiz(), arbol);
     // std::cout << arbol << std::endl;
     // std::cout << "^^^ Arbol tras insertar 2, 3 y 4 ^^^" << std::endl;
 
