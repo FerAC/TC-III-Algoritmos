@@ -44,7 +44,7 @@ void ArbolLH::ImprimirLP(){
 /// @remarks Requiere que el arbol sea vacia  
 void ArbolLH::PonerRaiz(int etiqueta){
 	NodoConcreto* nuevoNodoConcreto = new NodoConcreto(etiqueta); 
-	Lista<NodoConcreto*> lista = new Lista<NodoConcreto*>();
+	Lista<NodoConcreto*> * lista = new Lista<NodoConcreto*>();
 	nuevoNodoConcreto->listaHijos = lista; 
 	listaPrincipal->insertarAlPrincipio(*nuevoNodoConcreto);
 }
