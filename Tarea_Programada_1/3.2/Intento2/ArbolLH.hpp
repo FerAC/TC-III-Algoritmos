@@ -2,7 +2,7 @@
 #define ARBOLLH
 #include "Lista.h"
 #include "Celda.h"
-#include "NodoConcreto.h"
+#include "NodoConcreto.hpp"
 
 class ArbolLH{
 	private:
