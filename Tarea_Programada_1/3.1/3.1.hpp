@@ -1,7 +1,7 @@
 #ifndef ARBOL_1_HPP
 #define ARBOL_1_HPP
 
-// #include <iostream>
+#include <iostream>
 
 class NodoArbol
 {
@@ -207,7 +207,7 @@ public:
     ~ArbolSenalador()
     {
         delete[] arregloArbol;
-        //delete nodoVacio;
+        // delete nodoVacio;
     }
 
     /**
@@ -302,7 +302,7 @@ public:
         int indice = padre.getIndice() + 1;
 
         int encontrado = 0;
-        while (arregloArbol[indice].getIndicePadre() != padre.getIndice() && indice<maximo)
+        while (arregloArbol[indice].getIndicePadre() != padre.getIndice() && indice < maximo)
         {
             ++indice;
             if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
@@ -322,7 +322,7 @@ public:
         }
         else // caso donde el NodoArbol es una hoja
         {
-            //return nullptr;
+            // return nullptr;
             return nodoVacio;
             // return 0;
         }
@@ -339,37 +339,42 @@ public:
         int indixePadre = hermano.getIndicePadre();
         int indice = 0;
 
-        while (arregloArbol[indice].getValor() != hermano.getValor() && indice<maximo)
+        while (arregloArbol[indice].getValor() != hermano.getValor() && indice < maximo)
         {
             ++indice;
         }
 
-        ++indice;
-        int encontrado = 0;
-
-        while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre() && indice<maximo)
+        if (indice != actual - 1)
         {
             ++indice;
+            int encontrado = 0;
+
+            while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre() && indice < maximo)
+            {
+                ++indice;
+                if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
+                {
+                    encontrado = 1;
+                }
+            }
+
             if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
             {
                 encontrado = 1;
             }
-        }
 
-        if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
-        {
-            encontrado = 1;
-        }
-
-        if (encontrado == 1) // caso donde el NodoArbol no es el hermano mas derecho
-        {
-            return arregloArbol[indice];
-        }
-        else // caso donde el NodoArbol es el hermano mas derecho
-        {
-            //return nullptr;
+            if (encontrado == 1) // caso donde el NodoArbol no es el hermano mas derecho
+            {
+                return arregloArbol[indice];
+            }
+            else // caso donde el NodoArbol es el hermano mas derecho
+            {
+                // return nullptr;
+                return nodoVacio;
+                // return 0;
+            }
+        }else{
             return nodoVacio;
-            // return 0;
         }
     }
 
@@ -384,20 +389,20 @@ public:
         int indiceBorrado = nodoBorrado.getIndice();
 
         // si el elemento borrado es el ultimo
-        if (indiceBorrado != actual - 1)
+        // if (indiceBorrado != actual - 1)
+        if (nodoBorrado.getValor() != arregloArbol[actual - 1].getValor())
         {
-            //int indiceBorrado = 0;
-            //while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
-           // {
-              //  ++indiceBorrado;
-           // }
-
-           
+            int indiceBorrado = 0;
+            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
+            {
+                ++indiceBorrado;
+            }
 
             int indice = indiceBorrado;
             // sizeN-2 es el "nuevo" ultimo elemento del array
             while (indice != actual - 1)
             {
+                std::cout << "aaa" << std::endl;
                 if (arregloArbol[indice + 1].getIndicePadre() > indiceBorrado)
                 {
                     arregloArbol[indice] = arregloArbol[indice + 1];
