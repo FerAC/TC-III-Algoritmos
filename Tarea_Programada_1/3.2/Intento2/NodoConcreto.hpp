@@ -76,7 +76,7 @@ int operator==(NodoConcreto nodo2){
 /// @remarks Requiere que ambos nodos esten inicializados y que posean etiquetas comparables
 /// @param NodoConcreto 
 /// @return 0 si son iguales, 1 si no
-int operator==(NodoConcreto nodo2){
+int operator!=(NodoConcreto nodo2){
 	if(this->etiqueta != nodo2.getEtiqueta()){
 		return 1;
 	}
