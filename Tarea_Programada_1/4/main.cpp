@@ -106,7 +106,7 @@ int main()
             std::cout << "Cuantos elementos maximo quiere tener en la cola ?" << std::endl;
             int maximo;
             std::cin >> maximo;
-            Cola cola(maximo);
+            Cola<int> cola(maximo);
             std::cout << "Que desea hacer con la cola?" << std::endl;
             std::cout << "0 - encolar elemento" << std::endl;
             std::cout << "1 - desencolar elemento" << std::endl;
@@ -119,11 +119,15 @@ int main()
             switch (choice)
             {
             case 0: // encolar
-
+                std::cout << "Cual elemento quiere encolar ?" << std::endl;
+                int elemento;
+                std::cin >> elemento;
+                cola.Encolar(elemento);
                 break;
 
             case 1: // desencolar
-
+                int elem = cola.Desencolar();
+                std::cout << "El elemento desencolado es: " << elem << std::endl;
                 break;
 
             case 2: // numElem
