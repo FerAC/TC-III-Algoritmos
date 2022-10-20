@@ -71,7 +71,7 @@ class Lista {
 		}
 /// @brief Elimina a un elemento de la lista
 /// @remarks Requiere que la celda este inicializada 
-
+/// @return int en caso de lograr el borrado devuelve 1, si no 0
 		int borrar(const T& elemento) {
 			Celda<T>* match = this->buscar(elemento);
 			int validez = 0;
@@ -113,6 +113,7 @@ class Lista {
 
 /// @brief Devuelve la celda asociada a una etiqueta en especifico
 /// @remarks Requiere que la lista este inicializada y que posea una etiqueta
+/// @param T elemento
 /// @return Celda<T> en caso de no encontralo devuelve un nullptr 
 		Celda<T> * buscar(const T& elemento) {
 			int encontrado = 0;
@@ -138,7 +139,10 @@ class Lista {
 				return temp; 
 			}
 		}
-		
+/// @brief Devuelve la celda asociada a un entero en especifico
+/// @remarks Requiere que la lista este inicializada y que posea una etiqueta
+/// @return Celda<T> en caso de no encontralo devuelve un nullptr
+/// @param int elemento 
 		Celda<T> * buscar(int elemento){
 			int encontrado = 0;
 			size_t i = 0;
@@ -181,7 +185,9 @@ class Lista {
 			
 		}
 		// TODO: INDICE DEBERIA SER SIZE_T,
-		
+/// @brief inserta una lista en una posicion en especifico de la lista, por lo que debe modificar los enlaces
+/// @remarks Requiere que la lista este inicializada y que posea una etiqueta
+/// @param size_t indice, int etiqueta 
 		void modificarEnlaces(size_t indice, int etiqueta){
 			Celda<T> * nuevaCelda= new Celda<T>(etiqueta);
 			++contador;
@@ -193,11 +199,16 @@ class Lista {
 			anterior->setSiguiente(nuevaCelda);
 		}
 		
+/// @brief Retorna la primera celda de la lista
+/// @remarks Requiere que la celda este inicializada
+/// @return Celda<T> en caso de no encontralo devuelve un nullptr 
 		Celda<T>* getPrimera(){
 			return primera;
 			
 		}
-
+/// @brief Retorna la ultima celda de la lista
+/// @remarks Requiere que la celda este inicializada
+/// @return Celda<T> en caso de no encontralo devuelve un nullptr 
 		Celda<T>* getUltima(){
 			return ultima;
 			
