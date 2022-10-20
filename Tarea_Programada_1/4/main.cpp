@@ -23,46 +23,57 @@ int main()
 
     while (seguir)
     {
-
-        std::cout << "\n\n\t ############################# \n"
-                  << std::endl;
-        std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
-        std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
-        std::cout << "1 - agregar hijo" << std::endl;
-        std::cout << "2 - borrar hoja" << std::endl;
-        std::cout << "3 - imprimir el arbol" << std::endl;
-        std::cout << "4 - get raiz" << std::endl;
-        std::cout << "5 - salir y destruir el arbol" << std::endl;
-        std::cin >> choice;
-
-        switch (choice)
+        if (respuestaUsuario == 'c')
         {
-        case 0: // cambiar raiz (vital al inicializar el arbol)
-            /* code */
-            break;
+            // switch de cola
+        }
 
-        case 1: // agregar hijo
-            /* code */
-            break;
+        if (respuestaUsuario == 'l')
+        {
+        }
 
-        case 2: // borrar hoja
-            /* code */
-            break;
+        if (respuestaUsuario == 'a')
+        {
+            std::cout << "\n\n\t ############################# \n"
+                      << std::endl;
+            std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
+            std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
+            std::cout << "1 - agregar hijo" << std::endl;
+            std::cout << "2 - borrar hoja" << std::endl;
+            std::cout << "3 - imprimir el arbol" << std::endl;
+            std::cout << "4 - get raiz" << std::endl;
+            std::cout << "5 - salir y destruir el arbol" << std::endl;
+            std::cin >> choice;
 
-        case 3: // imprimir el arbol
-            /* code */
-            break;
+            switch (choice)
+            {
+            case 0: // cambiar raiz (vital al inicializar el arbol)
+                /* code */
+                break;
 
-        case 4: // get raiz
-            /* code */
-            break;
+            case 1: // agregar hijo
+                /* code */
+                break;
 
-        case 5: // salir y destruir arbol
-            seguir = 0;
-            break;
+            case 2: // borrar hoja
+                /* code */
+                break;
 
-        default:
-            break;
+            case 3: // imprimir el arbol
+                /* code */
+                break;
+
+            case 4: // get raiz
+                /* code */
+                break;
+
+            case 5: // salir y destruir arbol
+                seguir = 0;
+                break;
+
+            default:
+                break;
+            }
         }
     }
 
