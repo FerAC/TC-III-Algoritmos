@@ -6,6 +6,62 @@
 //#include "tree5.h"                        // 3.5
 #include <iostream>
 
+
+
+
+/// @brief Metodo imprimirArbol, permite imprimir el contenido de una arbol dado por parametro, recoge el arbol en pre-orden
+/// @param nodo nodo 
+/// @param arbol arbol es el arbol recibido por referencia
+void imprimirArbol(Nodo nodo, Arbol &arbol)
+{
+    const Nodo& NodoNulo = Nodo();
+    if (nodo == NodoNulo)
+    {
+        return;
+    }
+
+    std::cout << arbol.Etiqueta(nodo) << std::endl;
+
+    //
+    // ciclo para explorar cada
+
+    Nodo hijo = arbol.HijoMasIzquierdo(nodo);
+    //std::cout << "aaa" << std::endl;
+    while (hijo != NodoNulo)
+    {
+        imprimirArbol(hijo, arbol);
+        hijo = arbol.HermanoDerecho(hijo);
+    }
+}
+
+
+
+/// @brief Metodo buscarArbol, permite buscar si un valor esta en el arbol, recoge el arbol en pre-orden
+/// @param
+void imprimirArbol(Nodo nodo, Arbol &arbol)
+{
+    const Nodo& NodoNulo = Nodo();
+    if (nodo == NodoNulo)
+    {
+        return;
+    }
+
+    std::cout << arbol.Etiqueta(nodo) << std::endl;
+
+    //
+    // ciclo para explorar cada
+
+    Nodo hijo = arbol.HijoMasIzquierdo(nodo);
+    //std::cout << "aaa" << std::endl;
+    while (hijo != NodoNulo)
+    {
+        imprimirArbol(hijo, arbol);
+        hijo = arbol.HermanoDerecho(hijo);
+    }
+}
+
+
+
 int main()
 {
     std::cout << "Bienvenid@ ! Inserta [i] para inicializar un modelo vacio, sino inserta [q] para salir del programa" << std::endl;
