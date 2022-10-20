@@ -37,6 +37,9 @@ class Lista {
 			}
 			
 		}
+/// @brief Retorna la cantidad de elementos
+		size_t getContador()
+		{return contador;}
 /// @brief inserta un elemento en la lista
 /// @remarks Requiere que la lista este inicializada
 		void insertar(const T& elemento) {

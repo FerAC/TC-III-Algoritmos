@@ -3,17 +3,17 @@
 #include "../CDE/Cola.hpp" // Cola dinámica para realizar recorrido por niveles
 
 // Include de la Cola
-// #include "../1/Cola.hpp"
+#include "../1/Cola.hpp"
 
 // Include de la Lista Indexada
-// #include "2/ListaIndexada.h"
+#include "../2/ListaIndexada.h"
 
 // Include de los Árboles
 // #include "../3.1/3.1.hpp"
 // #include "../3.2/3.2.hpp"
 // #include "../3.3/3.3.hpp"
 // #include "../3.4/3.4.hpp"
-// #include "3.5/3.5.hpp"
+#include "../3.5/3.5.hpp"
 
 // Include para I/O estándar
 #include <iostream>
@@ -169,223 +169,237 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol& arbol)
 
 int main()
 {
-    Arbol arbol;
-    arbol.PonerRaiz(1);
-    Nodo raiz = arbol.Raiz(); 
+    std::cout << "Bienvenid@ ! Inserta [i] para inicializar un modelo vacio, sino inserta [q] para salir del programa" << std::endl;
+    char respuestaUsuario;
+    std::cin >> respuestaUsuario;
 
-    Nodo nodo_2 = arbol.AgregarHijo(2, raiz);
-    Nodo nodo_3 = arbol.AgregarHijo(3, raiz);
-    Nodo nodo_4 = arbol.AgregarHijo(4, raiz);
+    int choice;
+    int seguir = 0;
 
-    Nodo nodo_5 = arbol.AgregarHijo(5, nodo_2);
-    Nodo nodo_6 = arbol.AgregarHijo(6, nodo_3);
-    Nodo nodo_7 = arbol.AgregarHijo(7, nodo_4);
+    if (respuestaUsuario == 'i')
+    {
+        seguir = 1;
+        std::cout << "Si quiere inicializar una Cola vacia, digita [c] \nSi quiere inicializar una Lista indexada vacia, digita [l] \nSi quiere inicializar un arbol n-ario, digita [a]" << std::endl;
+        std::cin >> respuestaUsuario;
+    }
 
-    imprimirArbol(arbol);
+    while (seguir)
+    {
+        if (respuestaUsuario == 'c')
+        {
+            std::cout << "Cuantos elementos maximo quiere tener en la cola ?" << std::endl;
+            int maximo;
+            std::cin >> maximo;
+            Cola<int> cola(maximo);
+            std::cout << "Que desea hacer con la cola?" << std::endl;
+            std::cout << "0 - encolar elemento" << std::endl;
+            std::cout << "1 - desencolar elemento" << std::endl;
+            std::cout << "2 - numElem " << std::endl;
+            std::cout << "3 - vaciar " << std::endl;
+            std::cout << "4 - vacio " << std::endl;
+            std::cout << "5 - salir y destruir la cola" << std::endl;
+            std::cin >> choice;
+
+            switch (choice)
+            {
+            case 0: // encolar
+                {
+                    std::cout << "Cual elemento quiere encolar ?" << std::endl;
+                    int elemento;
+                    std::cin >> elemento;
+                    cola.Encolar(elemento);
+                    break;
+                }
+
+            case 1: // desencolar
+                {
+                    int elem = cola.Desencolar();
+                    std::cout << "El elemento desencolado es: " << elem << std::endl;
+                    break;
+                }
+                
+
+            case 2: // numElem
+                {
+                    std::cout << cola.NumElem() << std::endl;
+                    break;
+                }
+
+            case 3: // vaciar
+                {
+                    cola.vaciar();
+                    std::cout << "se vacio correctamente la cola" << std::endl;
+                    break;
+                }
+                
+
+            case 4: // vacio (devuelve un bool)
+                {
+                    int esVacio = cola.vacia();
+                    if (esVacio)
+                    {
+                        std::cout << "La cola es vacia" << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "La cola no es vacia" << std::endl;
+                    }
+                    break;
+                }
+
+            case 5: // salir
+                {
+                    seguir = 0;
+                    break;
+                }
+                
+
+            default:
+                break;
+            }
+        }
+
+        if (respuestaUsuario == 'l')
+        {
+            std::cout << "\n\n\t ############################# \n"
+                      << std::endl;
+            std::cout << "Que desea hacer con la lista indexada?" << std::endl;
+            std::cout << "0 - insertar etiqueta" << std::endl;
+            std::cout << "1 - borrar elemento" << std::endl;
+            std::cout << "2 - Modificar indice" << std::endl;
+            std::cout << "3 - cantidad de elementos" << std::endl;
+            std::cout << "4 - Recuperar" << std::endl;
+            std::cout << "5 - Destruir" << std::endl;
+            std::cin >> choice;
+
+            ListaIndexada lista;
+            switch (choice)
+            {
+            case 0:
+                {
+                    std::cout << "Cual valor quiere insertar ?" << std::endl;
+                    int valor;
+                    std::cin >> valor;
+                    std::cout << "A que indice ?" << std::endl;
+                    int indice;
+                    std::cin >> indice;
+                    lista.insertar(valor, indice);
+                    break;
+                }
+
+            case 1:
+                {
+                    std::cout << "Cual indice quiere borrar ?" << std::endl;
+                    int valor;
+                    std::cin >> valor;
+                    lista.borrar(valor);
+                    break;
+                }
+
+            case 2:
+                {
+                    std::cout << "Cual valor quiere insertar ?" << std::endl;
+                    int valor;
+                    std::cin >> valor;
+                    std::cout << "A que indice ?" << std::endl;
+                    int indice;
+                    std::cin >> indice;
+                    lista.modificar(valor, indice);
+                    break;
+                }
+                
+
+            case 3:
+                {
+                    std::cout << "Cantidad de elementos" << lista.numElem() << std::endl;
+                    break;
+                }
+               
+
+            case 4:
+                {
+                    std::cout << "Cual indice quiere recuperar?" << std::endl;
+                    int valor;
+                    std::cin >> valor;
+                    lista.recuperar(valor);
+                    break;    
+                }
+
+            case 5: // imprimir
+                {
+                    seguir = 0;
+                    break;
+                }
+
+            case 6:
+                {
+                    lista.imprimir();
+                    break;
+                }
+
+            default:
+                break;
+            }
+        }
+
+        if (respuestaUsuario == 'a')
+        {
+
+            Arbol arbol;
+
+            std::cout << "\n\n\t ############################# \n"
+                      << std::endl;
+            std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
+            std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
+            std::cout << "1 - agregar hijo" << std::endl;
+            std::cout << "2 - borrar hoja" << std::endl;
+            std::cout << "3 - imprimir el arbol" << std::endl;
+            std::cout << "4 - get raiz" << std::endl;
+            std::cout << "5 - imprimir arbol" << std::endl;
+            std::cout << "6 - salir y destruir el arbol" << std::endl;
+            std::cin >> choice;
+
+            switch (choice)
+            {
+            case 0: // cambiar raiz (vital al inicializar el arbol)
+                std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
+                int valorRaiz;
+                std::cin >> valorRaiz;
+                arbol.PonerRaiz(valorRaiz);
+                break;
+
+            case 1: // agregar hijo
+
+                break;
+
+            case 2: // borrar hoja
+                std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
+                int etiquetaBorrada;
+                std::cin >> etiquetaBorrada;
+
+                break;
+
+            case 3: // imprimir el arbol
+                imprimirArbol(arbol);
+                break;
+
+            case 4: // get raiz
+                /* code */
+                break;
+
+            case 5: // imprimir
+                // imprimir
+                break;
+
+            case 6: // salir y destruir arbol
+                seguir = 0;
+                break;
+
+            default:
+                break;
+            }
+        }
+    }
+
     return 0;
-
-    // std::cout << "Bienvenid@ ! Inserta [i] para inicializar un modelo vacio, sino inserta [q] para salir del programa" << std::endl;
-    // char respuestaUsuario;
-    // std::cin >> respuestaUsuario;
-
-    // int choice;
-    // int seguir = 0;
-
-    // if (respuestaUsuario == 'i')
-    // {
-    //     seguir = 1;
-    //     std::cout << "Si quiere inicializar una Cola vacia, digita [c] \nSi quiere inicializar una Lista indexada vacia, digita [l] \nSi quiere inicializar un arbol n-ario, digita [a]" << std::endl;
-    //     std::cin >> respuestaUsuario;
-    // }
-
-    // while (seguir)
-    // {
-    //     if (respuestaUsuario == 'c')
-    //     {
-    //         std::cout << "Cuantos elementos maximo quiere tener en la cola ?" << std::endl;
-    //         int maximo;
-    //         std::cin >> maximo;
-    //         Cola<int> cola(maximo);
-    //         std::cout << "Que desea hacer con la cola?" << std::endl;
-    //         std::cout << "0 - encolar elemento" << std::endl;
-    //         std::cout << "1 - desencolar elemento" << std::endl;
-    //         std::cout << "2 - numElem " << std::endl;
-    //         std::cout << "3 - vaciar " << std::endl;
-    //         std::cout << "4 - vacio " << std::endl;
-    //         std::cout << "5 - salir y destruir la cola" << std::endl;
-    //         std::cin >> choice;
-
-    //         switch (choice)
-    //         {
-    //         case 0: // encolar
-    //             std::cout << "Cual elemento quiere encolar ?" << std::endl;
-    //             int elemento;
-    //             std::cin >> elemento;
-    //             cola.Encolar(elemento);
-    //             break;
-
-    //         case 1: // desencolar
-    //             int elem = cola.Desencolar();
-    //             std::cout << "El elemento desencolado es: " << elem << std::endl;
-    //             break;
-
-    //         case 2: // numElem
-    //             std::cout << cola.NumElem() << std::endl;
-    //             break;
-
-    //         case 3: // vaciar
-    //             cola.vaciar();
-    //             std::cout << "se vacio correctamente la cola" << std::endl;
-    //             break;
-
-    //         case 4: // vacio (devuelve un bool)
-    //             int esVacio = cola.vacia();
-    //             if (esVacio)
-    //             {
-    //                 std::cout << "La cola es vacia" << std::endl;
-    //             }
-    //             else
-    //             {
-    //                 std::cout << "La cola no es vacia" << std::endl;
-    //             }
-    //             break;
-
-    //         case 5: // salir
-    //             seguir = 0;
-    //             break;
-
-    //         default:
-    //             break;
-    //         }
-    //     }
-
-    //     if (respuestaUsuario == 'l')
-    //     {
-    //         std::cout << "\n\n\t ############################# \n"
-    //                   << std::endl;
-    //         std::cout << "Que desea hacer con la lista indexada?" << std::endl;
-    //         std::cout << "0 - insertar etiqueta" << std::endl;
-    //         std::cout << "1 - borrar elemento" << std::endl;
-    //         std::cout << "2 - Modificar indice" << std::endl;
-    //         std::cout << "3 - cantidad de elementos" << std::endl;
-    //         std::cout << "4 - Recuperar" << std::endl;
-    //         std::cout << "5 - Destruir" << std::endl;
-    //         std::cin >> choice;
-
-    //         ListaIndexada lista;
-    //         switch (choice)
-    //         {
-    //         case 0:
-    //             std::cout << "Cual valor quiere insertar ?" << std::endl;
-    //             int valor;
-    //             std::cin >> valor;
-    //             std::cout << "A que indice ?" << std::endl;
-    //             int indice;
-    //             std::cin >> indice;
-    //             lista.insertar(valor, indice);
-    //             break;
-
-    //         case 1:
-    //             std::cout << "Cual indice quiere borrar ?" << std::endl;
-    //             int valor;
-    //             std::cin >> valor;
-    //             lista.borrar(valor);
-    //             break;
-
-    //         case 2:
-    //             std::cout << "Cual valor quiere insertar ?" << std::endl;
-    //             int valor;
-    //             std::cin >> valor;
-    //             std::cout << "A que indice ?" << std::endl;
-    //             int indice;
-    //             std::cin >> indice;
-    //             lista.modificar(valor, indice);
-    //             break;
-
-    //         case 3:
-    //             std::cout << "Cantidad de elementos" << lista.numElem() << std::endl;
-
-    //             break;
-
-    //         case 4:
-    //             std::cout << "Cual indice quiere recuperar?" << std::endl;
-    //             int valor;
-    //             std::cin >> valor;
-    //             lista.recuperar(valor);
-    //             break;
-
-    //         case 5: // imprimir
-    //             // imprimir
-    //             seguir = 0;
-    //             break;
-
-    //         case 6:
-    //             lista.imprimir();
-    //             break;
-
-    //         default:
-    //             break;
-    //         }
-    //     }
-
-    //     if (respuestaUsuario == 'a')
-    //     {
-
-    //         Arbol arbol;
-
-    //         std::cout << "\n\n\t ############################# \n"
-    //                   << std::endl;
-    //         std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
-    //         std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
-    //         std::cout << "1 - agregar hijo" << std::endl;
-    //         std::cout << "2 - borrar hoja" << std::endl;
-    //         std::cout << "3 - imprimir el arbol" << std::endl;
-    //         std::cout << "4 - get raiz" << std::endl;
-    //         std::cout << "5 - imprimir arbol" << std::endl;
-    //         std::cout << "6 - salir y destruir el arbol" << std::endl;
-    //         std::cin >> choice;
-
-    //         switch (choice)
-    //         {
-    //         case 0: // cambiar raiz (vital al inicializar el arbol)
-    //             std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
-    //             int valorRaiz;
-    //             std::cin >> valorRaiz;
-    //             arbol.PonerRaiz(valorRaiz);
-    //             break;
-
-    //         case 1: // agregar hijo
-
-    //             break;
-
-    //         case 2: // borrar hoja
-    //             std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
-    //             int etiquetaBorrada;
-    //             std::cin >> etiquetaBorrada;
-
-    //             break;
-
-    //         case 3: // imprimir el arbol
-    //             imprimirArbol(arbol);
-    //             break;
-
-    //         case 4: // get raiz
-    //             /* code */
-    //             break;
-
-    //         case 5: // imprimir
-    //             // imprimir
-    //             break;
-
-    //         case 6: // salir y destruir arbol
-    //             seguir = 0;
-    //             break;
-
-    //         default:
-    //             break;
-    //         }
-    //     }
-    // }
-
-    // return 0;
 }
