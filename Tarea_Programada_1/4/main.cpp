@@ -169,6 +169,8 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol& arbol)
 
 int main()
 {
+    ListaIndexada lista; Arbol arbol; Cola<int> cola(10000);
+
     std::cout << "Bienvenid@ ! Inserta [i] para inicializar un modelo vacio, sino inserta [q] para salir del programa" << std::endl;
     char respuestaUsuario;
     std::cin >> respuestaUsuario;
@@ -187,10 +189,6 @@ int main()
     {
         if (respuestaUsuario == 'c')
         {
-            std::cout << "Cuantos elementos maximo quiere tener en la cola ?" << std::endl;
-            int maximo;
-            std::cin >> maximo;
-            Cola<int> cola(maximo);
             std::cout << "Que desea hacer con la cola?" << std::endl;
             std::cout << "0 - encolar elemento" << std::endl;
             std::cout << "1 - desencolar elemento" << std::endl;
@@ -272,7 +270,7 @@ int main()
             std::cout << "5 - Destruir" << std::endl;
             std::cin >> choice;
 
-            ListaIndexada lista;
+            
             switch (choice)
             {
             case 0:
@@ -345,7 +343,7 @@ int main()
         if (respuestaUsuario == 'a')
         {
 
-            Arbol arbol;
+            
 
             std::cout << "\n\n\t ############################# \n"
                       << std::endl;
