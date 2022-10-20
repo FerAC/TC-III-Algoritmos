@@ -27,7 +27,7 @@ private:
      * @return El metodo devuelve un entero, el indice del NodoArbol
      * @remark El metodo requiere que el NodoArbol sea inicializado y indice tenga un valor
      */
-    int getIndice()
+    int getIndice() const
     {
         return indice;
     }
@@ -47,7 +47,7 @@ private:
      * @return El metodo devuelve un entero, el valor del NodoArbol
      * @remark El metodo requiere que el NodoArbol sea inicializado y valor tenga un valor
      */
-    int getValor()
+    int getValor() const
     {
         return valor;
     }
@@ -67,7 +67,7 @@ private:
      * @return El metodo devuelve un entero, el indicePadre del NodoArbol
      * @remark El metodo requiere que el NodoArbol sea inicializado y indicePadre tenga un valor
      */
-    int getIndicePadre()
+    int getIndicePadre() const
     {
         return indicePadre;
     }
