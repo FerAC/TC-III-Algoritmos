@@ -347,7 +347,7 @@ public:
         ++indice;
         int encontrado = 0;
 
-        while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre())
+        while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre() && indice<maximo)
         {
             ++indice;
             if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
@@ -381,18 +381,22 @@ public:
     void BorrarHoja(NodoArbol nodoBorrado)
     {
 
+        int indiceBorrado = nodoBorrado.getIndice();
+
         // si el elemento borrado es el ultimo
-        if (nodoBorrado.getValor() != arregloArbol[actual - 1].getValor())
+        if (indiceBorrado != actual - 1)
         {
-            int indiceBorrado = 0;
-            while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
-            {
-                ++indiceBorrado;
-            }
+            //int indiceBorrado = 0;
+            //while (arregloArbol[indiceBorrado].getValor() != nodoBorrado.getValor())
+           // {
+              //  ++indiceBorrado;
+           // }
+
+           
 
             int indice = indiceBorrado;
             // sizeN-2 es el "nuevo" ultimo elemento del array
-            while (indice != actual - 2)
+            while (indice != actual - 1)
             {
                 if (arregloArbol[indice + 1].getIndicePadre() > indiceBorrado)
                 {
