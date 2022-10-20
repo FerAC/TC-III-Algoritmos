@@ -77,7 +77,7 @@ void ArbolLH::BorrarHoja(NodoConcreto* borrado){
 	for(Celda<NodoConcreto> * buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
 		int validez = buffer1->getEtiqueta()->getListaHijos()->borrar(borrado); 
 		if(validez!=0){		//Si lo borre de secundarias voy a borrarlo a principal
-			delete listaHijos; 
+			delete punteroALista; 
 			int valorBorrado = borrado->getEtiqueta(); 
 			NodoConcreto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta(4); 
 			listaPrincipal->borrar(listaPrincipal->buscar(borrado->getEtiqueta())->getEtiqueta(4)); 
