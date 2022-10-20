@@ -82,14 +82,16 @@ int operator!=(NodoConcreto nodo2){
 	}
 	return 0;
 }
-/// @brief operador de desigualdad de la clase nodo
-/// @remarks Requiere que ambos nodos esten inicializados y que posean etiquetas comparables
-/// @param NodoConcreto 
-/// @return 0 si son iguales, 1 si no
+/// @brief Devuelve la etiqueta de un nodo
+/// @remarks Requiere que el nodo este inicializado
+/// @return int etiqueta
 int getEtiqueta(){
 	return etiqueta;
 }
 
+/// @brief modifica la etiqueta de un nodo
+/// @remarks Requiere que el nodo este inicializado
+/// @param int  
 void setEtiqueta(int valorNuevo){
 	this->etiqueta = valorNuevo;
 }
