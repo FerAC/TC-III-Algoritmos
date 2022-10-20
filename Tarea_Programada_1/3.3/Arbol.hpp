@@ -179,10 +179,13 @@ namespace Arbol_N_Ario
 
                     /// @brief Inicializa a un nodo apuntando a un nodo concreto
                     /// @param nodoConcreto Apuntado a un nodo concreto al cual referenciar mediante este nodo
-                    Nodo(NodoConcreto* nodoConcreto = nullptr)
+                    Nodo(NodoConcreto* nodoConcreto)
                     {this->nodoConcreto = nodoConcreto;}
 
                 public:
+                    /// @brief Crea un nodo nulo (no apunta a ningún nodo concreto)
+                    Nodo() {}
+
                     /// @brief Clona el apuntador de un nodo concreto hacia este nodo
                     /// @param otroNodo Nodo del cual clonar el apuntador al nodo concreto
                     Nodo(const Nodo& otroNodo)
@@ -201,6 +204,16 @@ namespace Arbol_N_Ario
 
                         return nodoConcreto->getElemento();
                     }
+
+                    /// @brief Compara si dos nodos apuntan al mismo nodo concreto en el árbol
+                    /// @return Verdadero si apuntan al mismo nodo concreto, falso en caso contrario
+                    bool operator==(const Nodo& otroNodo) const
+                    {return this->nodoConcreto == otroNodo.nodoConcreto;}
+
+                    /// @brief Compara si dos nodos apuntan a distintos nodos concretos en el árbol
+                    /// @return Verdadero si apuntan a distintos concretos, falso en caso contrario
+                    bool operator!=(const Nodo& otroNodo) const
+                    {return this->nodoConcreto != otroNodo.nodoConcreto;}
             };
 
         protected:
