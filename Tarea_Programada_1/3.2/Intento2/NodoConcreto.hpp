@@ -20,7 +20,7 @@ class NodoConcreto{
 /// @brief Constructor por omision de la clase nodo
 /// @remarks Requiere que el nodo no este inicializado 
 NodoConcreto(){
-	
+	listaHijos = nullptr;
 }
 /// @brief Destructor por omision de la clase nodo
 /// @remarks Requiere que el nodo este inicializada
