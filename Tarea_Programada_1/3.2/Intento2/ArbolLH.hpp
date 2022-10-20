@@ -55,7 +55,7 @@ void ArbolLH::PonerRaiz(int etiqueta){
 /// @return El NodoConcreto agregado	
 NodoConcreto* ArbolLH::AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre){
 	NodoConcreto * NodoConcretoNuevo = new NodoConcreto(etiqueta); 
-	Lista<NodoConcreto*> lista = new Lista<NodoConcreto*>();
+	Lista<NodoConcreto*> * lista = new Lista<NodoConcreto*>();
 	NodoConcretoNuevo->listaHijos = lista; 
 	listaPrincipal->insertar(*NodoConcretoNuevo);
 	NodoConcretoPadre->insertarEnLista(NodoConcretoNuevo); 
