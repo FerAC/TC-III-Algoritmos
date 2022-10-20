@@ -82,6 +82,10 @@ int main()
     {
         if (respuestaUsuario == 'c')
         {
+            std::cout << "Cuantos elementos maximo quiere tener en la cola ?" << std::endl;
+            int maximo;
+            std::
+            Cola cola()
             // switch de cola
         }
 
@@ -120,11 +124,14 @@ int main()
                 break;
 
             case 2: // borrar hoja
-                /* code */
+                std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
+                int etiquetaBorrada;
+                std::cin >> etiquetaBorrada;
+
                 break;
 
             case 3: // imprimir el arbol
-                /* code */
+                imprimirArbol(arbol.Raiz(), arbol);
                 break;
 
             case 4: // get raiz
