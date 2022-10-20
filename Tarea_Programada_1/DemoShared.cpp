@@ -48,25 +48,30 @@ int main()
     Nodo nodo_2 = arbol.AgregarHijo(2, raiz);
     Nodo nodo_3 = arbol.AgregarHijoMasDerecho(3, raiz);
     arbol.AgregarHijoMasDerecho(4, raiz);
-    imprimirArbol(arbol.Raiz(), arbol);
+    //imprimirArbol(arbol.Raiz(), arbol);
     // std::cout << arbol << std::endl;
     // std::cout << "^^^ Arbol tras insertar 2, 3 y 4 ^^^" << std::endl;
 
     Nodo nodo_5 = arbol.AgregarHijo(5, nodo_2);
     Nodo nodo_6 = arbol.AgregarHijoMasDerecho(6, nodo_2);
     arbol.AgregarHijoMasDerecho(7, nodo_2);
+    //imprimirArbol(arbol.Raiz(), arbol);
+    //std::cout << "aaa" << std::endl;
     // std::cout << arbol << std::endl;
     // std::cout << "^^^ Arbol tras insertar 5, 6 y 7 ^^^" << std::endl;
 
     Nodo nodo_8 = arbol.AgregarHijo(8, nodo_3);
     Nodo nodo_9 = arbol.AgregarHijoMasDerecho(9, nodo_3);
     arbol.AgregarHijoMasDerecho(10, nodo_3);
-    // std::cout << arbol << std::endl;
+    imprimirArbol(arbol.Raiz(), arbol);
+    
+    std::cout << "##############" << std::endl;
     // std::cout << "^^^ Arbol tras insertar 8, 9 y 10 ^^^" << std::endl;
 
     // Borrar hojas
     arbol.BorrarHoja(nodo_8);
     arbol.BorrarHoja(nodo_9);
+    imprimirArbol(arbol.Raiz(), arbol);
     // std::cout << arbol << std::endl;
     // std::cout << "^^^ Arbol tras borrar hojas 8 y 9 ^^^" << std::endl;
 
