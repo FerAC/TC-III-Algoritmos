@@ -1,9 +1,66 @@
 //#include "Tree_senaladorPadre.h"          // 3.1
+#include "3.1.hpp"
 //#include "ArbolLH.h"                      // 3.2
 //#include "Arbol.cpp"                      // 3.3
 //#include "treePunteroPadreNoContador.h"   // 3.4
 //#include "tree5.h"                        // 3.5
 #include <iostream>
+
+
+
+
+/// @brief Metodo imprimirArbol, permite imprimir el contenido de una arbol dado por parametro, recoge el arbol en pre-orden
+/// @param nodo nodo 
+/// @param arbol arbol es el arbol recibido por referencia
+void imprimirArbol(Nodo nodo, Arbol &arbol)
+{
+    const Nodo& NodoNulo = Nodo();
+    if (nodo == NodoNulo)
+    {
+        return;
+    }
+
+    std::cout << arbol.Etiqueta(nodo) << std::endl;
+
+    //
+    // ciclo para explorar cada
+
+    Nodo hijo = arbol.HijoMasIzquierdo(nodo);
+    //std::cout << "aaa" << std::endl;
+    while (hijo != NodoNulo)
+    {
+        imprimirArbol(hijo, arbol);
+        hijo = arbol.HermanoDerecho(hijo);
+    }
+}
+
+
+
+/// @brief Metodo buscarArbol, permite buscar si un valor esta en el arbol, recoge el arbol en pre-orden
+/// @param
+void imprimirArbol(Nodo nodo, Arbol &arbol)
+{
+    const Nodo& NodoNulo = Nodo();
+    if (nodo == NodoNulo)
+    {
+        return;
+    }
+
+    std::cout << arbol.Etiqueta(nodo) << std::endl;
+
+    //
+    // ciclo para explorar cada
+
+    Nodo hijo = arbol.HijoMasIzquierdo(nodo);
+    //std::cout << "aaa" << std::endl;
+    while (hijo != NodoNulo)
+    {
+        imprimirArbol(hijo, arbol);
+        hijo = arbol.HermanoDerecho(hijo);
+    }
+}
+
+
 
 int main()
 {
@@ -23,46 +80,68 @@ int main()
 
     while (seguir)
     {
-
-        std::cout << "\n\n\t ############################# \n"
-                  << std::endl;
-        std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
-        std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
-        std::cout << "1 - agregar hijo" << std::endl;
-        std::cout << "2 - borrar hoja" << std::endl;
-        std::cout << "3 - imprimir el arbol" << std::endl;
-        std::cout << "4 - get raiz" << std::endl;
-        std::cout << "5 - salir y destruir el arbol" << std::endl;
-        std::cin >> choice;
-
-        switch (choice)
+        if (respuestaUsuario == 'c')
         {
-        case 0: // cambiar raiz (vital al inicializar el arbol)
-            /* code */
-            break;
+            // switch de cola
+        }
 
-        case 1: // agregar hijo
-            /* code */
-            break;
+        if (respuestaUsuario == 'l')
+        {
+        }
 
-        case 2: // borrar hoja
-            /* code */
-            break;
+        if (respuestaUsuario == 'a')
+        {
 
-        case 3: // imprimir el arbol
-            /* code */
-            break;
+            Arbol arbol;
 
-        case 4: // get raiz
-            /* code */
-            break;
+            std::cout << "\n\n\t ############################# \n"
+                      << std::endl;
+            std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
+            std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
+            std::cout << "1 - agregar hijo" << std::endl;
+            std::cout << "2 - borrar hoja" << std::endl;
+            std::cout << "3 - imprimir el arbol" << std::endl;
+            std::cout << "4 - get raiz" << std::endl;
+            std::cout << "5 - imprimir arbol" << std::endl;
+            std::cout << "6 - salir y destruir el arbol" << std::endl;
+            std::cin >> choice;
 
-        case 5: // salir y destruir arbol
-            seguir = 0;
-            break;
+            switch (choice)
+            {
+            case 0: // cambiar raiz (vital al inicializar el arbol)
+                std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
+                int valorRaiz;
+                std::cin >> valorRaiz;
+                arbol.PonerRaiz(valorRaiz);
+                break;
 
-        default:
-            break;
+            case 1: // agregar hijo
+                
+                break;
+
+            case 2: // borrar hoja
+                /* code */
+                break;
+
+            case 3: // imprimir el arbol
+                /* code */
+                break;
+
+            case 4: // get raiz
+                /* code */
+                break;
+
+            case 5: // imprimir
+                // imprimir
+                break;
+
+            case 6: // salir y destruir arbol
+                seguir = 0;
+                break;
+
+            default:
+                break;
+            }
         }
     }
 
