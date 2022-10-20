@@ -233,7 +233,7 @@ namespace Arbol_N_Ario
             ~Arbol() noexcept(false)
             {
                 // Utilicemos una cola de nodos para realizar un recorrido por niveles
-                Cola<Nodo> colaNodos;
+                Util::Cola<Nodo> colaNodos;
 
                 // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
                 colaNodos.Encolar(this->Raiz());
@@ -523,7 +523,7 @@ namespace Arbol_N_Ario
                 size_t cantidadNodos = 0;
 
                 // Utilicemos una cola de nodos para realizar un recorrido por niveles
-                Cola<Nodo> colaNodos;
+                Util::Cola<Nodo> colaNodos;
 
                 // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
                 colaNodos.Encolar(this->Raiz());
@@ -559,7 +559,7 @@ namespace Arbol_N_Ario
     std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol)
     {
         // Imprimamos la cantidad de nodos presentes en el árbol
-        std::cout << "N = " << arbol.NumNodos() << std::endl;
+        salida << "N = " << arbol.NumNodos() << std::endl;
 
         // Caso 1: El árbol tiene raíz nula (no tiene nodos)
         if (arbol.raiz == nullptr)
@@ -567,13 +567,13 @@ namespace Arbol_N_Ario
 
         // Caso 2: El árbol tiene nodos
         // Realizaremos un recorrido por niveles utilizando una cola de nodos
-        Cola<typename Arbol<Elemento>::Nodo> colaNodos;
+        Util::Cola<typename Arbol<Elemento>::Nodo> colaNodos;
 
         // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
         colaNodos.Encolar(arbol.Raiz());
 
         // Adicionalmente, imprimiremos sus contenidos de primero
-        std::cout << '[' << arbol.raiz->getElemento() << ']' << std::endl;
+        salida << '[' << arbol.raiz->getElemento() << ']' << std::endl;
 
         // Adicionalmente, llevaremos cuenta de cuántos nodos corresponden al nivel actual y su correspondiente siguiente
         size_t nodosPendientesNivelActual = 1;

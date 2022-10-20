@@ -1,3 +1,6 @@
+#ifndef COLA_DINAMIC_HPP
+#define COLA_DINAMIC_HPP
+
 #include <exception> // Para las excepciones
 #include <iostream> // Para impresiones en la salida estándar
 
@@ -208,3 +211,5 @@ namespace Util
     }
 
 };
+
+#endif

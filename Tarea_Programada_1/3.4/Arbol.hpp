@@ -234,7 +234,7 @@ namespace Arbol_N_Ario
             ~Arbol() noexcept(false)
             {
                 // Utilicemos una cola de nodos para realizar un recorrido por niveles
-                Cola<Nodo> colaNodos;
+                Util::Cola<Nodo> colaNodos;
 
                 // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
                 colaNodos.Encolar(this->Raiz());
@@ -470,7 +470,7 @@ namespace Arbol_N_Ario
                 size_t cantidadNodos = 0;
 
                 // Utilicemos una cola de nodos para realizar un recorrido por niveles
-                Cola<Nodo> colaNodos;
+                Util::Cola<Nodo> colaNodos;
 
                 // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
                 colaNodos.Encolar(this->Raiz());
@@ -514,7 +514,7 @@ namespace Arbol_N_Ario
 
         // Caso 2: El árbol tiene nodos
         // Realizaremos un recorrido por niveles utilizando una cola de nodos
-        Cola<typename Arbol<Elemento>::Nodo> colaNodos;
+        Util::Cola<typename Arbol<Elemento>::Nodo> colaNodos;
 
         // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
         colaNodos.Encolar(arbol.Raiz());
