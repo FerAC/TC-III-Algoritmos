@@ -133,8 +133,17 @@ NodoConcreto* Padre(NodoConcreto * hijo){
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 	
-NodoConcreto* HijoMasIzquierdo(NodoConcreto* padre){
-	return padre->getListaHijos()->getPrimera()->getEtiqueta(4);
+NodoConcreto* HijoMasIzquierdo(NodoConcreto* padre) {
+	auto listaHijos = padre->getListaHijos();
+	if (listaHijos != nullptr)
+	{
+		auto primerHijo = listaHijos->getPrimera();
+
+		if (primerHijo != nullptr)
+			return primerHijo->getEtiqueta(4);
+	}
+	
+	return nullptr;
 }
 
 /// @brief Devuelve la etiqueta de un NodoConcreto
