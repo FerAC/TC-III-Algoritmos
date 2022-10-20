@@ -332,16 +332,18 @@ public:
         int indice = padre.getIndice() + 1;
 
         int encontrado = 0;
-        while (arregloArbol[indice].getIndicePadre() != padre.getIndice() && indice < maximo)
+        while (indice < maximo && arregloArbol[indice].getIndicePadre() != padre.getIndice())
         {
-            ++indice;
+            
             if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
             {
                 encontrado = 1;
             }
+
+            ++indice;
         }
 
-        if (arregloArbol[indice].getIndicePadre() == padre.getIndice())
+        if (indice < maximo && arregloArbol[indice].getIndicePadre() == padre.getIndice())
         {
             encontrado = 1;
         }
@@ -369,7 +371,7 @@ public:
         int indixePadre = hermano.getIndicePadre();
         int indice = 0;
 
-        while (arregloArbol[indice].getValor() != hermano.getValor() && indice < maximo)
+        while (indice < maximo && arregloArbol[indice].getValor() != hermano.getValor())
         {
             ++indice;
         }
@@ -379,16 +381,18 @@ public:
             ++indice;
             int encontrado = 0;
 
-            while (arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre() && indice < maximo)
+            while (indice < maximo && arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre())
             {
-                ++indice;
+
                 if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
                 {
                     encontrado = 1;
                 }
+
+                ++indice;
             }
 
-            if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
+            if (indice < maximo && arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
             {
                 encontrado = 1;
             }
@@ -432,7 +436,7 @@ public:
             // sizeN-2 es el "nuevo" ultimo elemento del array
             while (indice != actual - 1)
             {
-                std::cout << "aaa" << std::endl;
+
                 if (arregloArbol[indice + 1].getIndicePadre() > indiceBorrado)
                 {
                     arregloArbol[indice] = arregloArbol[indice + 1];
