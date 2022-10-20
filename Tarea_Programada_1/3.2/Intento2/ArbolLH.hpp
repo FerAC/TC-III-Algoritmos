@@ -48,6 +48,7 @@ void ImprimirLP(){
 void PonerRaiz(int etiqueta){
 	NodoConcreto nuevoNodoConcreto = NodoConcreto(etiqueta); 
 	Lista<NodoConcreto*> * lista = new Lista<NodoConcreto*>();
+
 	nuevoNodoConcreto.listaHijos = lista; 
 	listaPrincipal->insertarAlPrincipio(nuevoNodoConcreto);
 }
@@ -56,12 +57,13 @@ void PonerRaiz(int etiqueta){
 /// @param  Un NodoConcreto padre y una etiqueta (entero)   
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 
 /// @return El NodoConcreto agregado	
-NodoConcreto* AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre){
+NodoConcreto* AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre) {
 	NodoConcreto NodoConcretoNuevo(etiqueta); 
 	NodoConcretoNuevo.listaHijos = new Lista<NodoConcreto*>();
-	NodoConcreto* direccionInsertado = listaPrincipal->getUltima()->getEtiqueta();
 
 	listaPrincipal->insertar(NodoConcretoNuevo);
+	NodoConcreto* direccionInsertado = listaPrincipal->getUltima()->getEtiqueta();
+	
 	NodoConcretoPadre->insertarEnLista(direccionInsertado);
 	return direccionInsertado;
 }
