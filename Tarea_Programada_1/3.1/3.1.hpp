@@ -27,7 +27,7 @@ private:
      * @return El metodo devuelve un entero, el indice del NodoArbol
      * @remark El metodo requiere que el NodoArbol sea inicializado y indice tenga un valor
      */
-    int getIndice()
+    int getIndice() const
     {
         return indice;
     }
@@ -47,7 +47,7 @@ private:
      * @return El metodo devuelve un entero, el valor del NodoArbol
      * @remark El metodo requiere que el NodoArbol sea inicializado y valor tenga un valor
      */
-    int getValor()
+    int getValor() const
     {
         return valor;
     }
@@ -67,7 +67,7 @@ private:
      * @return El metodo devuelve un entero, el indicePadre del NodoArbol
      * @remark El metodo requiere que el NodoArbol sea inicializado y indicePadre tenga un valor
      */
-    int getIndicePadre()
+    int getIndicePadre() const
     {
         return indicePadre;
     }
@@ -167,6 +167,21 @@ public:
             }
         }
         return 0;
+    }
+
+    /**
+     * @brief operator == es la sobrecarga del operador basico == ese metodo permite comparar un NodoArbol a un entero
+     * @param comparador comparador es el unico parametro del metodo, es el elemento al cual se compara el NodoArbol
+     * @return El metodo devuelve un booleano, dependiendo si el NodoArbol es nulo o no
+     * @remark El metodo requiere que el NodoArbol este inicializado
+     */
+    bool operator==(const Nodo otroNodo)
+    {
+        if(otroNodo.getIndice() == indice && otroNodo.getIndicePadre()==indicePadre && otroNodo.getValor() == valor){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 };
 
