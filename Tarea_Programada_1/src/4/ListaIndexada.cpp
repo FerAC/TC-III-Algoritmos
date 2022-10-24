@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ListaIndexada.h"
+#include "../2/ListaIndexada.h"
 using namespace std;
 
 /// @brief Inicializa la lista indexada
