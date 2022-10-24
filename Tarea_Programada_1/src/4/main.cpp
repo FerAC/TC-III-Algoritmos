@@ -10,10 +10,10 @@
 
 // Include de los Árboles
 // #include "../3.1/3.1.hpp"
-// #include "../3.2/3.2.hpp"
+ #include "../3.2/3.2.hpp"
 // #include "../3.3/3.3.hpp"
 // #include "../3.4/3.4.hpp"
-#include "../3.5/3.5.hpp"
+//#include "../3.5/3.5.hpp"
 
 // Include para I/O estándar
 #include <iostream>
@@ -165,6 +165,11 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol& arbol)
     Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
     arbol.AgregarHijo(etiquetaHijo, nodoPadre);
     imprimirArbol(arbol);
+}
+
+void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol& arbol) {
+   Nodo modificado =  buscarEtiqueta(etiquetaVieja, arbol);
+   arbol.ModificaEtiqueta(nuevaEtiqueta, modificado);
 }
 
 int main()
@@ -345,8 +350,7 @@ int main()
 
             
 
-            std::cout << "\n\n\t ############################# \n"
-                      << std::endl;
+            std::cout << "\n\n\t ############################# \n" << std::endl;
             std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
             std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
             std::cout << "1 - agregar hijo" << std::endl;
@@ -355,44 +359,106 @@ int main()
             std::cout << "4 - get raiz" << std::endl;
             std::cout << "5 - imprimir arbol" << std::endl;
             std::cout << "6 - salir y destruir el arbol" << std::endl;
+			std::cout << "7 - HijoMasIzquierdo" << std::endl;
+			std::cout << "8 - HermanoDerecho" << std::endl;
+			std::cout << "9 - padre" << std::endl;
+			std::cout << "10 - modificar etiqueta" << std::endl;
+			std::cout << "11 - numNodos" << std::endl;
             std::cin >> choice;
 
             switch (choice)
             {
             case 0: // cambiar raiz (vital al inicializar el arbol)
+            {
                 std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
                 int valorRaiz;
                 std::cin >> valorRaiz;
                 arbol.PonerRaiz(valorRaiz);
                 break;
-
+            }
             case 1: // agregar hijo
-
+            {
+                std::cout << "Valor del padre" << std::endl;
+                int valorP;
+                std::cin >> valorP;
+                std::cout << "Valor a insertar" << std::endl;
+                int valor;
+                std::cin >> valor;
+                agregarHijo(valorP, valor, arbol );
+            }
                 break;
 
             case 2: // borrar hoja
+            {
                 std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
                 int etiquetaBorrada;
                 std::cin >> etiquetaBorrada;
-
+                borrarHoja(etiquetaBorrada, arbol);
                 break;
-
+            }
             case 3: // imprimir el arbol
+            {
                 imprimirArbol(arbol);
                 break;
-
+            }
             case 4: // get raiz
-                /* code */
+            {
+                std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;\
+            }
                 break;
 
             case 5: // imprimir
-                // imprimir
+            {
+                imprimirArbol(arbol);
+            }
                 break;
 
             case 6: // salir y destruir arbol
+            {
                 seguir = 0;
                 break;
-
+            }
+            case 7: // hijo izq
+            {
+                std::cout << "Cual valor del padre ?" << std::endl;
+                int valor;
+                std::cin >> valor;
+                hijoMasIzquierdo(valor, arbol);
+                break;
+            }
+            
+            case 8: // hermano derecho
+            {
+               std::cout << "Cual valor del hermano ?" << std::endl;
+                int valor;
+                std::cin >> valor;
+	        hermanoDerecho(valor, arbol);
+                break;
+            }
+            case 9: //padre
+            {
+                std::cout << "Cual valor del hijo ?" << std::endl;
+                int valor;
+                std::cin >> valor;
+                padre(valor, arbol);
+                break;
+            }
+            case 10:
+            {
+                std::cout << "Cual valor quiere modificar del arbol ?" << std::endl;
+                int etiquetaModificada;
+                std::cin >> etiquetaModificada;
+                std::cout << "Cual es el nuevo valor ?" << std::endl;
+                int etiqueta;
+                std::cin >> etiqueta;
+                modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
+                break;
+            }
+            case 11:// num Nodos
+            {
+                std::cout<< "Num Nodos :" << arbol.NumNodos() << std::endl;
+                break;
+            }
             default:
                 break;
             }
