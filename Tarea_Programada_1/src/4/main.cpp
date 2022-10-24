@@ -10,8 +10,8 @@
 
 // Include de los Árboles
 // #include "../3.1/3.1.hpp"
- #include "../3.2/3.2.hpp"
-// #include "../3.3/3.3.hpp"
+// #include "../3.2/3.2.hpp"
+ #include "../3.3/3.3.hpp"
 // #include "../3.4/3.4.hpp"
 //#include "../3.5/3.5.hpp"
 
@@ -93,6 +93,29 @@ void imprimirArbol(Arbol &arbol)
     }
 }
 
+void listarPorNiveles(Arbol &arbol)
+{
+    const Nodo &NodoNulo = Nodo();
+    
+    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
+        if (arbol.Raiz() == NodoNulo)
+            return;
+    //Caso 2:
+    Util::Cola<Nodo> colaNodos;
+    colaNodos.Encolar(arbol.Raiz()); 
+    while (!colaNodos.Vacio())
+    {
+        Nodo nodoActual = colaNodos.Desencolar();
+        std::cout << arbol.Etiqueta(nodoActual) <<", ";
+        for (Nodo hijo = arbol.HijoMasIzquierdo(nodoActual); hijo != NodoNulo; hijo= arbol.HermanoDerecho(hijo))
+        {
+            colaNodos.Encolar(hijo);
+
+        }
+        
+    }
+    
+}
 /// @brief Devuelve el primer nodo correspondiente a la etiqueta buscada (si existe). Recorre el árbol en pre-orden
 /// @param arbol Arbol donde se busca algún nodo con la etiqueta
 /// @param etiqueta Etiqueta cuyos contenidos se intentan buscar en el árbol (dentro de un nodo)
@@ -132,6 +155,15 @@ Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
     return NodoNulo;
 }
 
+void listarPorPreorden(Arbol &arbol, Nodo nodo){
+std::cout << arbol.Etiqueta(nodo) << ", "; 
+const Nodo &NodoNulo = Nodo();
+for (Nodo nodoTemp = arbol.HijoMasIzquierdo(nodo); nodoTemp != NodoNulo ; nodoTemp = arbol.HermanoDerecho(nodoTemp))
+{
+    listarPorPreorden(arbol, nodoTemp); 
+}
+
+}
 void padre(int elemento, Arbol& arbol)
 {
     Nodo nodoHijo = buscarEtiqueta(elemento, arbol);
@@ -171,6 +203,113 @@ void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol& arbol) {
    Nodo modificado =  buscarEtiqueta(etiquetaVieja, arbol);
    arbol.ModificaEtiqueta(nuevaEtiqueta, modificado);
 }
+
+void quantityNodesInLevel(Arbol arbol, Nodo subroot, int level) {       //Revisar
+	
+	// Base case: Level 0. The subroot. Its the only node with its own level
+	if (level == 0) {
+		std::cout << arbol.Etiqueta(subroot);
+	}
+	// Base case: Level 1. The subroot's children. They're the only one on this level (no cousins)
+	else if(level == 1) {
+
+		int childrenNodes = 0; 
+        const Nodo &NodoNulo = Nodo();
+		Nodo child = arbol.HijoMasIzquierdo(subroot);
+		while(child != NodoNulo) { // The sum of all ocurrences of children
+			std::cout << arbol.Etiqueta(child) << ", "; 
+			child = arbol.HermanoDerecho(child); 
+		}
+
+		//return; 
+	}  // Recursive case: Level > 2. The subroot's descendants. We need to consider the children' subtrees quantiies of nodes
+	else {
+		
+		int quantityNodes = 0;
+        const Nodo &NodoNulo = Nodo();
+		Nodo child = arbol.HijoMasIzquierdo(subroot); 
+		while(child != NodoNulo) { // The sum of all children's subtrees quantities of nodes, with adjusted level (-1)
+			quantityNodesInLevel(arbol, child, level-1); 
+			child = arbol.HermanoDerecho(child);
+		}
+
+		//return; 
+	}
+}
+
+void borrarSubArbol(Arbol tree, Nodo subroot) { //Revisar parece ser que no actualiza numNodos de arbol 
+
+    // We'll traverse the nodes each level using a queue
+    // Each time we visit a node, we'll add its' children to the queue
+    // The queue is filled with a node's children after we visited it
+    // Then, after all of a node's children have been added, we take it out the queue
+    Util::Cola<Nodo> queue; 
+    //Iniciar(travelQueue)
+
+    // We'll delete the nodes using a stack
+    // Each time we visit a node, we'll add it onto the stack
+    // The stack is filled on the inverse order we added the nodes
+    // Then, after all nodes were added, we delete them in the inverse order we visited them
+    ListaIndexada deletionStack;
+
+    // The tree traversion begins on the first node of the subtree: its' root
+    
+    queue.Encolar(subroot);
+
+    // We can now begin traversion
+    while(!queue.Vacio()) {
+
+        // Let's extract the last node on the travel queue
+        Nodo visitedNode = queue.Desencolar();
+
+        // The element has been visited, let's add it to the top of the stack
+        // We'll always take 0 as the top of the stack
+        deletionStack.insertar( tree.Etiqueta(visitedNode), 0);
+
+        // Let's consider it's children for future travel
+        const Nodo &NodoNulo = Nodo();
+        for(Nodo visitedChildren = tree.HijoMasIzquierdo(visitedNode); visitedChildren != NodoNulo; visitedChildren = tree.HermanoDerecho(visitedChildren)) {
+            queue.Encolar(visitedChildren); 
+        }
+
+        // All is done for this iteration:
+        // a) The children will always be visited after their parent => parent -> children
+        // b) The siblings will always be visited after the first child => first child -> sibling
+        // c) The cousins will also always be visited after the children => children -> cousins
+        // d) Due to a, b, and c, the order is as follows: parent -> first child -> siblings -> cousins
+    }
+
+    // We no longer need the travel queue. Let's free its memory
+   // Destruir(travelQueue)
+
+    // The whole subtree has been visited, and its' nodes placed on the stack in the inverse order they have been visited
+    // We can now delete the visited nodes on the order they've been placed on within the stack
+    int i =0;
+    while(i++< deletionStack.numElem()) {
+        // It is guaranteed that the top element of the stack is a leaf
+        int currentLeafValue = deletionStack.recuperar(0);
+        //Nodo currentLeaf = buscarEtiqueta(currentLeafValue, tree ); 
+        std::cout << "Se va a borrar a " << deletionStack.recuperar(0) << std::endl; 
+        deletionStack.borrar(0); 
+        // It is guara nteed that we'll first delete the last child, and then its siblings
+        // After deleting all siblings, it is guaranteed that its corresponding parent becomes a leaf
+        // Therefore, deletion is in this reverse order is always face
+        borrarHoja(currentLeafValue, tree); 
+
+        // The last leaf of the tree on the stack has been dealt (deleted off of the tree)
+        // Let's take it out of the stack and carry on with the next leaf on the following iteration
+    }
+
+    // We no longer need the deletion stack. Let's free its memory
+
+
+    // All is done:
+    // a) The whole tree has been visited
+    // b) Each node was visited only once
+    // c) Each visited node was deleted in inverse order of visit
+    // d) The auxiliary data structures were freed after use
+}
+
 
 int main()
 {
@@ -364,6 +503,10 @@ int main()
 			std::cout << "9 - padre" << std::endl;
 			std::cout << "10 - modificar etiqueta" << std::endl;
 			std::cout << "11 - numNodos" << std::endl;
+            std::cout << "12 - Listar por niveles" << std::endl;
+            std::cout<< "13 - Listar por preorden" << std::endl;
+            std::cout<< "14 - Etiquetas en un nivel" << std::endl; 
+            std::cout<< "15 - Eliminar arbol a partir de un nodo" << std::endl; 
             std::cin >> choice;
 
             switch (choice)
@@ -459,6 +602,33 @@ int main()
                 std::cout<< "Num Nodos :" << arbol.NumNodos() << std::endl;
                 break;
             }
+            case 12:
+            {
+                listarPorNiveles(arbol);
+            }
+            break; 
+            case 13:
+            {
+                listarPorPreorden(arbol, arbol.Raiz()); 
+            }
+            break;
+            case 14:
+            {
+                std::cout<< "Que nivel desea conocer?" << std::endl;
+                int nivel; 
+                std::cin >> nivel; 
+                quantityNodesInLevel(arbol, arbol.Raiz(), nivel-1); 
+            }
+            break; 
+            case 15:
+            {
+                std::cout<< "A partir de que valor desea borrar?" << std::endl;
+                int valor; 
+                std::cin >> valor; 
+                Nodo subroot = buscarEtiqueta(valor, arbol);
+                borrarSubArbol(arbol, subroot);
+            }
+            break; 
             default:
                 break;
             }

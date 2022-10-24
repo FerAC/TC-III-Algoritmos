@@ -25,12 +25,10 @@ void ListaIndexada::insertar(int etiqueta, int indice){
 		listaInterna.insertar(etiqueta); 
 	} else if(indice!= 0){
 		// TODO: QUITAR IMPRESIONES DE METODOS
-		cout<< "caso 2" <<endl;
 		listaInterna.modificarEnlaces(etiqueta, indice);
 		// TODO: PARAMETROS ESTAN AL REVES EN MODIFICAR ENLACES
 		// TODO: MODIFICAR ENLACES ES NOMBRE POCO SIGNIFICATIVO
 	} else{
-		cout<< "caso 0 " << endl;
 		listaInterna.insertarAlPrincipio(etiqueta);
 	}
 	contador++;
@@ -63,8 +61,8 @@ int ListaIndexada::numElem(){
 /// @param un entero asociado a un indice
 /// @remarks Requiere que la lista este inicializada y que el indice sea valido (entre 0 y el tamano maximo de la lista)	
 void ListaIndexada::borrar(int indice){
-	Celda<int>* actual = this->moverse(indice); 
-	listaInterna.borrar(actual->getEtiqueta());
+	
+	listaInterna.borrar(recuperar(indice));
 }
 
 /// @brief Borra la lista 

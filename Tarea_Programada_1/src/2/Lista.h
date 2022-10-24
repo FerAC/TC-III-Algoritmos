@@ -53,19 +53,23 @@ class Lista {
 			Celda<T> * celdaNueva = new Celda<T> (elemento);  
 			celdaNueva->setSiguiente(primera); 
 			primera = celdaNueva;
+			++contador; 
 			// TODO: FALTA ACTUALIZAR CONTADOR
 		}
 
 		// TODO: BORRADO DEBERIA SER POR INDICE, NO POR VALOR
 		void borrar(const T& elemento) {
+			
 			Celda<T>* match = this->buscar(elemento);
 
 			// Caso trivial: No se encontró
-			if (match == nullptr) 
+			if (match == nullptr){
 				return;
-
+				
+			}
 			// Caso A: Es el primer elemento
 			if (match == this->primera) {
+				
 				Celda<T>* despuesMatch = match->getSiguiente();
 				this->primera = despuesMatch;
 			}
@@ -97,6 +101,9 @@ class Lista {
 			size_t i = 0;
 			Celda<T>* temp = primera;
 			// TODO: MAS FACIL MODULARIZAR EN FOR
+			if(primera->getEtiqueta()==elemento)
+				return primera;
+			
 			while (i < contador && !encontrado) {
 				if (temp->getEtiqueta() == elemento) {
 					encontrado = 1;
