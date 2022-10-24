@@ -204,7 +204,7 @@ void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol& arbol) {
    arbol.ModificaEtiqueta(nuevaEtiqueta, modificado);
 }
 
-void quantityNodesInLevel(Arbol arbol, Nodo subroot, int level) {       //Revisar
+void quantityNodesInLevel(Arbol& arbol, Nodo subroot, int level) {       //Revisar
 	
 	// Base case: Level 0. The subroot. Its the only node with its own level
 	if (level == 0) {
@@ -237,7 +237,7 @@ void quantityNodesInLevel(Arbol arbol, Nodo subroot, int level) {       //Revisa
 	}
 }
 
-void borrarSubArbol(Arbol tree, Nodo subroot) { //Revisar parece ser que no actualiza numNodos de arbol 
+void borrarSubArbol(Arbol& tree, Nodo subroot) {  
 
     // We'll traverse the nodes each level using a queue
     // Each time we visit a node, we'll add its' children to the queue
