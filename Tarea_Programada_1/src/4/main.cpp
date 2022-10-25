@@ -1,6 +1,7 @@
 // Incluye utilidades auxiliares
 #include <cstddef> // Para utilizar contadores en recorrido por niveles
 #include "../CDE/Cola.hpp" // Cola dinámica para realizar recorrido por niveles
+#include <cmath> // Formula para cantidad de nodos en un nivel
 
 // Include de la Cola
 #include "../1/Cola.hpp"
@@ -310,6 +311,62 @@ void borrarSubArbol(Arbol& tree, Nodo subroot) {
     // d) The auxiliary data structures were freed after use
 }
 
+Arbol crearArbol(int i, int k , ListaIndexada L) {
+    std::cout<< "314" << std::endl;
+
+	// The tree is assumed to be empty until noted otherwise
+	Arbol myTree; 
+
+	// First condition: At least one level and one child per level
+	if (i > 0 && k > 0) {
+		// Since the tree has at least one level, and at least one child per level, there must be a root
+		myTree.PonerRaiz(L.recuperar(0)); 
+
+		// Second condition: At least two levels
+		if (i > 1) {
+			// On top of the first condition, since the tree has at least two levels, we must consider if it's children are parents as well
+			Util::Cola<Nodo> parentNodesQueue; 
+			parentNodesQueue.Encolar( myTree.Raiz() );
+
+			int numNodesTotal =  (pow(k, i)-1) / (k-1); // The total amount of nodes to add into the tree after it's fully constructed
+			int numNodesLastLevel = pow(k, i-1) ;// The amount of nodes to be expected on the last level of the tree
+			int numNodesAdded = 1; // The current amount of nodes added so far. The root has been added, therefore it's 1
+            std::cout << "Valor de i " << i << std::endl;
+            std::cout << "Valor de k " << k << std::endl;
+            std::cout << "Valor de Total " << numNodesTotal << std::endl;
+            std::cout << "Valor de ultimo nivel " << numNodesLastLevel << std::endl;
+
+			// We'll add children nodes until before the last level. There's no use in adding children on the last level
+			while (numNodesAdded < numNodesTotal) {
+                std::cout << "355" << std::endl;
+				 // The current parent to add children to
+
+				// The amount of children per parent is already known. We can produce as many.
+                Nodo padre = parentNodesQueue.Desencolar();
+                std::cout<< "El desencolado es" << myTree.Etiqueta(padre) << std::endl; 
+				for (int numChildAdded = 0; numChildAdded < k; ++numChildAdded) {
+					// It is a precondition of this function that we're guaranteed a child on the list for every possible node on the tree
+					Nodo newChild = myTree.AgregarHijo( L.recuperar(numNodesAdded), padre);
+					++numNodesAdded;
+
+					// Whenever we produce a new child, it can be considered to be a new parent worth visiting to later on.
+					// However, this consideration may only be made if we haven't reached the last level of the tree
+					if(numNodesTotal- numNodesAdded >= numNodesLastLevel){
+                        std::cout << "Encole a " << myTree.Etiqueta(newChild) << std::endl;
+						parentNodesQueue.Encolar(newChild);
+                    }
+				}
+			}
+			
+			// We're done visting parents. We can free the memory allocated by the travel queue
+		}
+	}
+	
+	// Our tree is done! We can return it safely by this point
+    imprimirArbol(myTree); 
+	return myTree ;
+
+}
 
 int main()
 {
@@ -507,6 +564,7 @@ int main()
             std::cout<< "13 - Listar por preorden" << std::endl;
             std::cout<< "14 - Etiquetas en un nivel" << std::endl; 
             std::cout<< "15 - Eliminar arbol a partir de un nodo" << std::endl; 
+            std::cout<< "16 - Crear un arbol en base a una lista" << std::endl;
             std::cin >> choice;
 
             switch (choice)
@@ -629,9 +687,31 @@ int main()
                 borrarSubArbol(arbol, subroot);
             }
             break; 
+            case 16:
+            {
+                ListaIndexada list;
+                
+                int i;
+                int k;
+                std::cout<<"Niveles" << std::endl;
+                std::cin >> i;
+                std::cout<<"Hijos por nivel" << std::endl;
+                std::cin >> k;
+                int cantidad = (pow(k, i) - 1) / (k-1); 
+                
+                for (int j = 0; j < cantidad; j++)
+                {
+                    list.insertar(j,j); 
+                }
+                crearArbol(i, k, list); 
+                
+                
+            }
+            break;
             default:
                 break;
             }
+            
         }
     }
 
