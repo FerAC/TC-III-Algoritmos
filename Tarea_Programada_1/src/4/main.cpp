@@ -105,6 +105,33 @@ bool averiguarEtiquetasRepetidas(Arbol &arbol)
     return 0;
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @return
+ */
+int averiguarProfundidadNodo(Arbol &arbol, Nodo nodo)
+{
+    int profundidadNodo = 0;
+
+    if(nodo == arbol.Raiz()){
+        return profundidadNodo;
+    }
+
+    ++profundidadNodo;
+
+    Nodo padre = arbol.Padre(nodo);
+
+    while (padre != arbol.Raiz())
+    {
+        padre = arbol.Padre(padre);     
+        ++profundidadNodo;   
+    }
+
+    return profundidadNodo;
+}
+
 /// @brief Permite imprimir el contenido de una árbol dado por parámetro. Recore el árbol en pre-orden
 /// @param nodo Nodo Inicial
 /// @param arbol Árbol es el arbol recibido por referencia
