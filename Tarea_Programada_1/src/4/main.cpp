@@ -23,8 +23,9 @@
  * @brief
  * @param
  * @param
-*/
-Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol){
+ */
+Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol)
+{
     Nodo nodoPadre = arbol.Padre(nodo);
     Nodo hermanoIzquierdo = arbol.HijoMasIzquierdo(nodoPadre);
 
@@ -32,18 +33,77 @@ Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol){
     {
         hermanoIzquierdo = arbol.HermanoDerecho(hermanoIzquierdo);
     }
-    
+
     return hermanoIzquierdo;
 }
 
 /**
  * @brief
  * @param
-*/
-bool averiguarEtiquetasRepetidas(Arbol &arbol){
-    
-}
+ * @return return 1 if there is etiquetas repetidas, else return 0
+ */
+bool averiguarEtiquetasRepetidas(Arbol &arbol)
+{
 
+    const Nodo &NodoNulo = Nodo();
+
+    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
+    if (arbol.Raiz() == NodoNulo)
+        return NodoNulo;
+
+    // Caso 2: El árbol tiene nodos
+    // Realizaremos un recorrido por niveles utilizando una cola de nodos
+    Util::Cola<Nodo> colaNodos;
+    Util::Cola<Nodo> colaNodosComparados;
+
+    // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+    colaNodos.Encolar(arbol.Raiz());
+
+    // Nodo nodoComparador = arbol.Raiz();
+
+    // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
+    // Si resulta que encontramos al nodo, escaparemos el recorrido mediante un retorno prematuro
+    while (!colaNodos.Vacio())
+    {
+        // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+        Nodo nodoActual = colaNodos.Desencolar();
+        colaNodosComparados.Encolar(arbol.Raiz());
+
+        // Si resulta ser un nodo con la etiqueta que buscamos, lo retornaremos
+        // if (arbol.Etiqueta(nodoActual) == etiqueta)
+        while (!colaNodosComparados.Vacio())
+        {
+            // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+            Nodo nodoComparado = colaNodosComparados.Desencolar();
+
+            // si los 2 nodos tienen la misma etiqueta, pero no son el mismo nodo, entonces hay etiqueta(s) repetida(s) en el arbol
+            if (arbol.Etiqueta(nodoActual) == arbol.Etiqueta(nodoComparado))
+            {
+                if (nodoActual != nodoComparado)
+                {
+                    return 1;
+                }
+            }
+
+            // Ahora encolaremos todos sus hijos
+            for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoComparado); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
+            {
+                colaNodosComparados.Encolar(hijoActual);
+            }
+        }
+
+        //  return nodoActual;
+
+        // Ahora encolaremos todos sus hijos
+        for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
+        {
+            colaNodos.Encolar(hijoActual);
+        }
+    }
+
+    // Si no se encontró un nodo con la etiqueta correspondiente en el árbol, entonces devolveremos nodo nulo
+    return 0;
+}
 
 /// @brief Permite imprimir el contenido de una árbol dado por parámetro. Recore el árbol en pre-orden
 /// @param nodo Nodo Inicial
@@ -121,9 +181,9 @@ void imprimirArbol(Arbol &arbol)
 }
 
 /**
- * @brief 
+ * @brief
  * @param
-*/
+ */
 void listarPorNiveles(Arbol &arbol)
 {
     const Nodo &NodoNulo = Nodo();
@@ -144,7 +204,6 @@ void listarPorNiveles(Arbol &arbol)
         }
     }
 }
-
 
 /// @brief Devuelve el primer nodo correspondiente a la etiqueta buscada (si existe). Recorre el árbol en pre-orden
 /// @param arbol Arbol donde se busca algún nodo con la etiqueta
@@ -189,7 +248,7 @@ Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
  * @brief
  * @param
  * @param
-*/
+ */
 void listarPorPreorden(Arbol &arbol, Nodo nodo)
 {
     std::cout << arbol.Etiqueta(nodo) << ", ";
@@ -204,7 +263,7 @@ void listarPorPreorden(Arbol &arbol, Nodo nodo)
  * @brief
  * @param
  * @param
-*/
+ */
 void padre(int elemento, Arbol &arbol)
 {
     Nodo nodoHijo = buscarEtiqueta(elemento, arbol);
@@ -216,7 +275,7 @@ void padre(int elemento, Arbol &arbol)
  * @brief
  * @param
  * @param
-*/
+ */
 void hermanoDerecho(int etiqueta, Arbol &arbol)
 {
     Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
@@ -228,7 +287,7 @@ void hermanoDerecho(int etiqueta, Arbol &arbol)
  * @brief
  * @param
  * @param
-*/
+ */
 void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 {
     Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
