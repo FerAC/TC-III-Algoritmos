@@ -30,7 +30,7 @@ class Celda {
 			return (etiqueta == celda->etiqueta && siguiente == celda->siguiente);
 		}
 
-		const T& getEtiqueta() {
+		T& getEtiqueta() {
 			return etiqueta;
 		}
 
@@ -42,6 +42,9 @@ class Celda {
 			siguiente = celdaSiguiente;
 		}
 
+		T* getEtiqueta(int){
+			return &etiqueta; 
+		}
 		// TODO: UTILIZAR OPERATOR<< PARA SER MAS VERSATIL
 		void imprimir() {
 			std::cout << etiqueta << std::endl;

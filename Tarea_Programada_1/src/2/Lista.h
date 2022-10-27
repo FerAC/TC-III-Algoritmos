@@ -12,8 +12,8 @@ class Lista {
 		size_t contador;
 	public:
 		Lista() {
-			primera = 0;
-			ultima = 0;
+			primera = nullptr;
+			ultima = nullptr;
 			contador = 0;
 		}
 
@@ -39,32 +39,44 @@ class Lista {
 		// TODO: INSERTAR ES POCO SIGNIFICATIVO (¿DONDE SE INSERTA?). NOMBRE ESTA RESERVADO EN OP. BASICAS
 		void insertar(const T& elemento) {
 			Celda<T>* celdaNueva =  new Celda<T> (elemento);
+			std::cout<< "42" << std::endl;
 			if (!primera) {
-				primera = celdaNueva;
-				ultima = celdaNueva;
+				this->ultima = celdaNueva; 
+				this->primera = celdaNueva;
 			} else {
+				if (!ultima)
+				{
+					std::cout<< "No Hay" << std::endl;
+				}
+				
+				std::cout << "47" << std::endl;
 				ultima->setSiguiente(celdaNueva);
+				std::cout<< "49" << std::endl;
 				ultima = celdaNueva; 
+				std::cout<< "50" << std::endl;
+				
 			}
 			++contador; 
+			std::cout<< "51" << std::endl;
 		}
 		
 		void insertarAlPrincipio(const T& elemento){
 			Celda<T> * celdaNueva = new Celda<T> (elemento);  
 			celdaNueva->setSiguiente(primera); 
 			primera = celdaNueva;
+			ultima = celdaNueva;
 			++contador; 
 			// TODO: FALTA ACTUALIZAR CONTADOR
 		}
 
 		// TODO: BORRADO DEBERIA SER POR INDICE, NO POR VALOR
-		void borrar(const T& elemento) {
+		int borrar(const T& elemento) {
 			
 			Celda<T>* match = this->buscar(elemento);
 
 			// Caso trivial: No se encontró
 			if (match == nullptr){
-				return;
+				return 0;
 				
 			}
 			// Caso A: Es el primer elemento
@@ -94,6 +106,7 @@ class Lista {
 			// Elemento ha sido borrado
 			delete match;
 			--contador;
+			return 1;
 		}
 
 		Celda<T> * buscar(const T& elemento) {
@@ -143,5 +156,14 @@ class Lista {
 			return primera;
 			
 		}
+
+		Celda<T>* getUltima(){
+			return ultima;
+		}
+
+		int getContador(){
+			return contador;
+		}
+
 };
 #endif

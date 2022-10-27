@@ -11,8 +11,8 @@
 
 // Include de los Árboles
 // #include "../3.1/3.1.hpp"
-// #include "../3.2/3.2.hpp"
- #include "../3.3/3.3.hpp"
+ #include "../3.2/3.2.hpp"
+ //#include "../3.3/3.3.hpp"
 // #include "../3.4/3.4.hpp"
 //#include "../3.5/3.5.hpp"
 
@@ -311,11 +311,10 @@ void borrarSubArbol(Arbol& tree, Nodo subroot) {
     // d) The auxiliary data structures were freed after use
 }
 
-Arbol crearArbol(int i, int k , ListaIndexada L) {
+void crearArbol(int i, int k , ListaIndexada& L, Arbol& myTree) {
     std::cout<< "314" << std::endl;
 
 	// The tree is assumed to be empty until noted otherwise
-	Arbol myTree; 
 
 	// First condition: At least one level and one child per level
 	if (i > 0 && k > 0) {
@@ -364,8 +363,6 @@ Arbol crearArbol(int i, int k , ListaIndexada L) {
 	
 	// Our tree is done! We can return it safely by this point
     imprimirArbol(myTree); 
-	return myTree ;
-
 }
 
 int main()
@@ -689,23 +686,55 @@ int main()
             break; 
             case 16:
             {
+                int eleccion;
+                std::cout<< "Desea general una lista o que esta sea generada automaticamente? \n 1 - Auto \n 2 - Manual "<< std::endl;
+                std::cin >> eleccion; 
                 ListaIndexada list;
-                
+                int conformidad = 2; 
                 int i;
                 int k;
-                std::cout<<"Niveles" << std::endl;
-                std::cin >> i;
-                std::cout<<"Hijos por nivel" << std::endl;
-                std::cin >> k;
-                int cantidad = (pow(k, i) - 1) / (k-1); 
-                
-                for (int j = 0; j < cantidad; j++)
+                int cantidad;
+                if (eleccion == 1)
                 {
-                    list.insertar(j,j); 
+                   
+                    std::cout<<"Niveles" << std::endl;
+                    std::cin >> i;
+                    std::cout<<"Hijos por nivel" << std::endl;
+                    std::cin >> k;
+                    cantidad = (pow(k, i) - 1) / (k-1); 
+                    
+                    for (int j = 0; j < cantidad; j++)
+                    {
+                        list.insertar(j,j); 
+                    }
+                    crearArbol(i, k, list, arbol); 
+                } else{
+                    
+                    do
+                    {
+                       
+                        std::cout<<"Niveles" << std::endl;
+                        std::cin >> i;
+                        std::cout<<"Hijos por nivel" << std::endl;
+                        std::cin >> k;
+                        cantidad = (pow(k, i) - 1) / (k-1); 
+                        std::cout<< "Para un arbol de " << i << " niveles y " << k << " hijos, debera insertar " << cantidad << " elementos manualmente. \n Esta de acuerdo? \n 1 - Si \n 2 - reingresar valores \n 3 salir del metodo" <<std::endl;
+                        std::cin >> conformidad; 
+
+                    } while (conformidad == 2);
+                }   if(conformidad == 1){
+                    
+                         for (int j = 0; j < cantidad; j++)
+                         {
+                            int elemento;
+                            std::cout<< "Inserte un elemento" << std::endl;
+                            std::cin >> elemento;
+                            list.insertar(elemento,j); 
+                        }
+                        crearArbol(i, k, list, arbol); 
                 }
-                crearArbol(i, k, list); 
-                
-                
+                    
+                    
             }
             break;
             default:

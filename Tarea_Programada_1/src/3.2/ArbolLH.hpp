@@ -20,8 +20,9 @@ ArbolLH(){
 /// @brief Elimina al arbol y su lista principal
 /// @remarks Requiere que el arbol este inicializado
 ~ArbolLH(){
-	for (auto it = listaPrincipal->getPrimera(); it != nullptr; it = it->getSiguiente())
-		delete it->getEtiqueta()->listaHijos;
+	for (Celda<NodoConcreto> * it = listaPrincipal->getPrimera(); it != nullptr; it = it->getSiguiente()){
+		 delete it->getEtiqueta().getListaHijos();
+	}
 
 	delete listaPrincipal;									//listaPrincipal->										//listaPrincipal
 } 
@@ -35,7 +36,7 @@ void Imprimir(){
 void ImprimirLP(){
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
 	while(actual!=nullptr){
-		std::cout<< "ELEMENTO : " << actual->getEtiqueta()->getEtiqueta() << std::endl;
+		std::cout<< "ELEMENTO : " << actual->getEtiqueta().getEtiqueta() << std::endl;
 		
 		actual = actual->getSiguiente();
 		
@@ -58,11 +59,13 @@ void PonerRaiz(int etiqueta){
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 
 /// @return El NodoConcreto agregado	
 NodoConcreto* AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre) {
+	std::cout<< "62" <<std::endl;
 	NodoConcreto NodoConcretoNuevo(etiqueta); 
 	NodoConcretoNuevo.listaHijos = new Lista<NodoConcreto*>();
-
+	std::cout << "65 " << std::endl;
 	listaPrincipal->insertar(NodoConcretoNuevo);
-	NodoConcreto* direccionInsertado = listaPrincipal->getUltima()->getEtiqueta();
+	std::cout << "67 " << std::endl;
+	NodoConcreto* direccionInsertado =  listaPrincipal->getUltima()->getEtiqueta(4);
 	
 	NodoConcretoPadre->insertarEnLista(direccionInsertado);
 	return direccionInsertado;
@@ -80,13 +83,13 @@ NodoConcreto* AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPad
 /// @remarks Requiere que el arbol este inicializado y que el NodoConcreto alimentado como paramtero sea una hoja	
 void BorrarHoja(NodoConcreto* borrado){
 	Lista<NodoConcreto*> *punteroALista = borrado->listaHijos; 
-	for(Celda<NodoConcreto> * buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
-		int validez = buffer1->getEtiqueta()->getListaHijos()->borrar(borrado); 
+	for(auto buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
+		int validez = buffer1->getEtiqueta().getListaHijos()->borrar(borrado); 
 		if(validez!=0){		//Si lo borre de secundarias voy a borrarlo a principal
 			delete punteroALista; 
 			int valorBorrado = borrado->getEtiqueta(); 
-			NodoConcreto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta(4); 
-			listaPrincipal->borrar(listaPrincipal->buscar(borrado->getEtiqueta())->getEtiqueta(4)); 
+			NodoConcreto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta(); 
+			listaPrincipal->borrar(listaPrincipal->buscar(borrado->getEtiqueta())->getEtiqueta()); 
 			return; 
 		}
 	}
@@ -99,8 +102,11 @@ Lista<NodoConcreto>* GetLP(){
 
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 	
-NodoConcreto* Raiz() {
-	return (listaPrincipal->getPrimera()->getEtiqueta()); 
+NodoConcreto* Raiz()
+ {
+	
+	return & listaPrincipal->getPrimera()->getEtiqueta(); 
+
 }
 
 /// @brief Devuelve el padre de un NodoConcreto alimentado como parametro 
@@ -110,20 +116,20 @@ NodoConcreto* Padre(NodoConcreto * hijo){
 	NodoConcreto * a;
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
 	
-	if(actual->getEtiqueta() == hijo){ //Caso trivial, raiz
+	if(actual->getEtiqueta() == *hijo){ //Caso trivial, raiz
 		return nullptr; 
 	} else{
 		while(actual!=nullptr){
-			Celda<NodoConcreto*> * celdaHijos = actual->getEtiqueta()->getListaHijos()->getPrimera();  //Apunta al primer indice de la lista de hijos si es que existe
-			a = *(celdaHijos->getEtiqueta());
+			Celda<NodoConcreto*> * celdaHijos = actual->getEtiqueta().getListaHijos()->getPrimera();  //Apunta al primer indice de la lista de hijos si es que existe
+			a = (celdaHijos->getEtiqueta());
 			while(a!=nullptr){
 				if(a->getEtiqueta() == hijo->getEtiqueta()){ //Significa que encontre a mi padre
 					
-					return actual->getEtiqueta();
+					return & actual->getEtiqueta();
 				} else{ //Sigo avanzando
 					celdaHijos = celdaHijos->getSiguiente();
 				}
-				a = *(celdaHijos->getEtiqueta());
+				a = celdaHijos->getEtiqueta();
 			}
 			actual = actual->getSiguiente(); 	
 		}
@@ -142,7 +148,7 @@ NodoConcreto* HijoMasIzquierdo(NodoConcreto* padre) {
 		auto primerHijo = listaHijos->getPrimera();
 
 		if (primerHijo != nullptr)
-			return primerHijo->getEtiqueta(4);
+			return primerHijo->getEtiqueta();
 	}
 	
 	return nullptr;
@@ -175,14 +181,14 @@ NodoConcreto* HermanoDerecho(NodoConcreto* celdaParam){
 	for(Celda<NodoConcreto> * buffer = listaPrincipal->getPrimera(); buffer!=nullptr; buffer = buffer->getSiguiente()){ //Busca a celdaParam en la lista de hijos
 		
 		int j =0;
-		for(Celda<NodoConcreto*> * buffer2 = buffer->getEtiqueta()->getListaHijos()->getPrimera(); buffer2!=nullptr; buffer2 = buffer2->getSiguiente()){
+		for(Celda<NodoConcreto*> * buffer2 = buffer->getEtiqueta().getListaHijos()->getPrimera(); buffer2!=nullptr; buffer2 = buffer2->getSiguiente()){
 			
-			NodoConcreto* a = (buffer2->getEtiqueta(4));
+			NodoConcreto* a = (buffer2->getEtiqueta());
 			
 			if( a->getEtiqueta() == celdaParam->getEtiqueta()){
 				
 				if(buffer2->getSiguiente() != nullptr){
-					NodoConcretoDer = buffer2->getSiguiente()->getEtiqueta(4);
+					NodoConcretoDer = buffer2->getSiguiente()->getEtiqueta();
 					
 					return NodoConcretoDer;
 				} else{

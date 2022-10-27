@@ -61,6 +61,8 @@ void imprimirValor(){
 	std::cout<< etiqueta << std::endl;
 }
 
+
+
 /// @brief operador de igualdad de la clase nodo
 /// @remarks Requiere que ambos nodos esten inicializados y que posean etiquetas comparables
 /// @param NodoConcreto 
@@ -96,12 +98,14 @@ void setEtiqueta(int valorNuevo){
 	this->etiqueta = valorNuevo;
 }
 
+
 ostream& imprimir(ostream& output){
 	output<< "Etiqueta : " << etiqueta << std::endl;
 	output<< "Mis hijos son : " << std::endl;
-	listaHijos->imprimirPunteros();
+	listaHijos->imprimir();
 	return output;
 }
+
 		 
 	
 };
