@@ -36,6 +36,14 @@ Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol){
     return hermanoIzquierdo;
 }
 
+/**
+ * @brief
+ * @param
+*/
+bool averiguarEtiquetasRepetidas(Arbol &arbol){
+    
+}
+
 
 /// @brief Permite imprimir el contenido de una árbol dado por parámetro. Recore el árbol en pre-orden
 /// @param nodo Nodo Inicial
