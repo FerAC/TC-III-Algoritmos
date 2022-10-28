@@ -82,14 +82,21 @@ NodoConcreto* AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPad
 /// @param  Un NodoConcreto hoja
 /// @remarks Requiere que el arbol este inicializado y que el NodoConcreto alimentado como paramtero sea una hoja	
 void BorrarHoja(NodoConcreto* borrado){
-	Lista<NodoConcreto*> *punteroALista = borrado->listaHijos; 
-	for(auto buffer1= listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
+	//Lista<NodoConcreto*> *punteroALista = borrado->listaHijos; 
+	for(Celda<NodoConcreto> * buffer1 = listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
+		std::cout << "Estoy en for" << std::endl;
 		int validez = buffer1->getEtiqueta().getListaHijos()->borrar(borrado); 
-		if(validez!=0){		//Si lo borre de secundarias voy a borrarlo a principal
-			delete punteroALista; 
+		cout << "soy validez " << validez << endl;
+		if(validez==1){		//Si lo borre de secundarias voy a borrarlo a principal
+			delete borrado->listaHijos;  
+			cout<< "92" << endl;
+			/*
 			int valorBorrado = borrado->getEtiqueta(); 
-			NodoConcreto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta(); 
-			listaPrincipal->borrar(listaPrincipal->buscar(borrado->getEtiqueta())->getEtiqueta()); 
+			cout<< "Valor del borrado " << valorBorrado << endl;
+			auto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta();
+			cout<< "N" <<endl;  
+			*/
+			listaPrincipal->borrar(*borrado); 
 			return; 
 		}
 	}
