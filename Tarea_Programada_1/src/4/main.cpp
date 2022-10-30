@@ -20,15 +20,30 @@
 #include <iostream>
 
 /**
- * @brief
- * @param
- * @param
+ * @brief la función averiguarHermanoIzquierdo permite encontrar el hermano a la izquierda de un nodo dado, la función no modifica nada
+ * @param nodo nodo es de tipo Nodo, es el nodo del cual buscamos el hermano izquierdo, el nodo debe ser inicializado y debe pertenecer al arbol
+ * @param arbol arbol es de tipo Arbol, es dado por referencia para economizar memoria, la función requiere que el arbol este inicializado, y que el nodo haga parte del arbol
+ * @remark la funcion requiere que ambos parametros sean inicializados y validos
+ * @return la función devuelve un Nodo, si existe un hermanoIzquierdo, lo devuelve, sino devuelve NodoNulo
  */
 Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol)
 {
+    const Nodo &NodoNulo = Nodo();
+    // en ese caso el nodo no tiene hermano izquierdo ya que es la raiz y la raiz no tiene hermano
+    if (nodo == arbol.Raiz())
+    {
+        return NodoNulo;
+    }
+    
     Nodo nodoPadre = arbol.Padre(nodo);
     Nodo hermanoIzquierdo = arbol.HijoMasIzquierdo(nodoPadre);
 
+    // en ese caso el nodo no tiene hermano izquierdo ya que el mismo es el hijo mas izquierdo
+    if(hermanoIzquierdo == nodo){
+        return NodoNulo;
+    }
+
+    // en ese caso el nodo no es ni el hijo mas izquierdo ni la raiz, por lo tanto tiene un hermano izquierdo
     while (arbol.HermanoDerecho(hermanoIzquierdo) != nodo)
     {
         hermanoIzquierdo = arbol.HermanoDerecho(hermanoIzquierdo);
@@ -38,9 +53,10 @@ Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @return return 1 if there is etiquetas repetidas, else return 0
+ * @brief la función averiguarEtiquetasRepetidas permite verificar si existe varios nodos con la misma etiqueta en el arbol, la funcion crea y modifica al booleano que se devuelve
+ * @param arbol arbol es de tipo Arbol, es dado por referencia para economizar memoria, la funcion requiere que el arbol este inicializado
+ * @remark la función requiere que el arbol sea inicializado, pero no requiere que el arbol no-este vacio
+ * @return la función devuelve 1 si hay etiquetas repetidas, sino devuelve 0
  */
 bool averiguarEtiquetasRepetidas(Arbol &arbol)
 {
@@ -106,15 +122,17 @@ bool averiguarEtiquetasRepetidas(Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @return
+ * @brief La función averiguarProfundidadNodo permite verificar a cual profundidad se encuentra en el arbol dado un nodo dado, la función cree y modifica un entero que representa esta profundidad
+ * @param arbol arbol es de tipo Arbol, es dado por referencia para economizar memoria, la funcion requiere que el arbol este inicializado y no vacio
+ * @param nodo es de tipo Nodo, es el nodo del cual buscamos la profundidad, el nodo debe ser inicializado y debe pertenecer al arbol
+ * @remark la función requiere que el arbol sea inicializado, no vacio, y que el nodo sea inicializado y pertenezca al arbol 
+ * @return la función devuelve un entero que representa la profundidad a la cual se encuentra el nodo dado en el arbol dado
  */
 int averiguarProfundidadNodo(Arbol &arbol, Nodo nodo)
 {
     int profundidadNodo = 0;
 
+    // si el nodo dado es la raiz del arbol, entonces profundidadNodo es 0
     if(nodo == arbol.Raiz()){
         return profundidadNodo;
     }
@@ -282,6 +300,7 @@ Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
  * @brief
  * @param
  * @param
+ * @remark
  */
 void listarPorPreorden(Arbol &arbol, Nodo nodo)
 {
@@ -297,6 +316,7 @@ void listarPorPreorden(Arbol &arbol, Nodo nodo)
  * @brief
  * @param
  * @param
+ * @remark
  */
 void padre(int elemento, Arbol &arbol)
 {
@@ -309,6 +329,7 @@ void padre(int elemento, Arbol &arbol)
  * @brief
  * @param
  * @param
+ * @remark
  */
 void hermanoDerecho(int etiqueta, Arbol &arbol)
 {
@@ -321,6 +342,7 @@ void hermanoDerecho(int etiqueta, Arbol &arbol)
  * @brief
  * @param
  * @param
+ * @remark
  */
 void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 {
@@ -329,6 +351,12 @@ void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
     std::cout << "Hijo mas Izquiedo de " << etiqueta << "es " << arbol.Etiqueta(mI) << std::endl;
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @remark
+ */
 void borrarHoja(int valorBorrado, Arbol &arbol)
 {
     Nodo borrado = buscarEtiqueta(valorBorrado, arbol);
@@ -336,6 +364,13 @@ void borrarHoja(int valorBorrado, Arbol &arbol)
     imprimirArbol(arbol);
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @param 
+ * @remark
+ */
 void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 {
     Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
@@ -343,12 +378,26 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
     imprimirArbol(arbol);
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @param 
+ * @remark
+ */
 void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol &arbol)
 {
     Nodo modificado = buscarEtiqueta(etiquetaVieja, arbol);
     arbol.ModificaEtiqueta(nuevaEtiqueta, modificado);
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @param 
+ * @remark
+ */
 void quantityNodesInLevel(Arbol &arbol, Nodo subroot, int level)
 { // Revisar
 
@@ -388,6 +437,12 @@ void quantityNodesInLevel(Arbol &arbol, Nodo subroot, int level)
     }
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @remark
+ */
 void borrarSubArbol(Arbol &tree, Nodo subroot)
 {
 
@@ -464,6 +519,14 @@ void borrarSubArbol(Arbol &tree, Nodo subroot)
     // d) The auxiliary data structures were freed after use
 }
 
+/**
+ * @brief
+ * @param
+ * @param
+ * @param
+ * @param
+ * @remark
+ */
 void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
 {
     std::cout << "314" << std::endl;
@@ -526,6 +589,10 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
     imprimirArbol(myTree);
 }
 
+/**
+ * @brief
+ * @return
+ */
 int main()
 {
     ListaIndexada lista;
