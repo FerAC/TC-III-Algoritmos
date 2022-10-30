@@ -313,7 +313,7 @@ void listarPorPreorden(Arbol &arbol, Nodo nodo)
 }
 
 /**
- * @brief la funcion padre permite devolver al usuario la etiqueta del nodo padre del nodo que tiene como etiqueta el entero elemento dado
+ * @brief la funcion padre permite mostrar al usuario la etiqueta del nodo padre del nodo que tiene como etiqueta el entero elemento dado
  * @param elemento es la etiqueta dado del cual queremos encontrar el padre, requiere que exista esta etiqueta en el arbol
  * @param arbol arbol es de tipo Arbol, requiere que sea inicializado
  * @remark la funcion requiere que exista el arbol, y que exista un nodo con la etiqueta "elemento"
@@ -326,10 +326,10 @@ void padre(int elemento, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @remark
+ * @brief la función hermanoDerecho permite mostrar al usuario la etique del hermano derecho del nodo cual etique es "etiqueta", la funcion no modifica nada
+ * @param etique es de tipo entero, el la etique del nodo del cual queremos imprimir la etiqueta del hermano derecho
+ * @param arbol arbol es de tipo Arbol, requiere que sea inicializado
+ * @remark la función requiere que ambos parametros existan, y que exista en el arbol un nodo cual etiqueta es "etiqueta"
  */
 void hermanoDerecho(int etiqueta, Arbol &arbol)
 {
@@ -339,10 +339,10 @@ void hermanoDerecho(int etiqueta, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @remark
+ * @brief la función hijoMasIzquierdo permite mostrar al usuario el hijo mas izquierdo de un nodo cual etiqueta es dada, la función no modifica nada
+ * @param etiqueta es de tipo entero, es la etiqueta del nodo del cual queremos conocer el hijo mas izquierdo, la etique debe existir en el arbol
+ * @param arbol es el Arbol en el cual debemos buscar el hijo mas izquierdo de la etiqueta dada
+ * @remark la función requiere que ambos parametros existan, y que exista un Nodo en el arbol que tenga como etiqueta "etiqueta"
  */
 void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 {
@@ -352,10 +352,10 @@ void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 }
 
 /**
- * @brief la función borrarHoja permite borrar la hoja del arbol que tengo como etiqueta el entero valorBorrado
- * @param
- * @param
- * @remark
+ * @brief la función borrarHoja permite borrar la hoja del arbol que tengo como etiqueta el entero valorBorrado, la funcion modifica el arbol
+ * @param valorBorrado es un entero, es la etiqueta de la hoja que se requiere borrar
+ * @param arbol es el Arbol del cual queremos borrar una hoja
+ * @remark la función requiere que valorBorrado pertenezca al arbol, y que sea una hoja
  */
 void borrarHoja(int valorBorrado, Arbol &arbol)
 {
@@ -365,7 +365,7 @@ void borrarHoja(int valorBorrado, Arbol &arbol)
 }
 
 /**
- * @brief la funcion agregarHijo permite agregar un Nodo al arbol con una etiqueta igual a etiquetaHijo y con un padre con la etiqueta "etiqueta"
+ * @brief la funcion agregarHijo permite agregar un Nodo al arbol con una etiqueta igual a etiquetaHijo y con un padre con la etiqueta "etiqueta", la función modifica el arbol
  * @param etiqueta es un entero, es la etiqueta del Nodo al cual queremos agregar un hijo, la funcion requiere que exista un Nodo en el arbol con esta etiqueta
  * @param etiqueHijo es un entero, es la etique del Nodo que agregamos al arbol
  * @param arbol es de tipo Arbol, se requiere que sea inicializado, y que tenga por lo menos la raiz puesta
@@ -379,7 +379,7 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 }
 
 /**
- * @brief la función modificaEtiqueta permite modificar la etiqueta dada por la nueva etiqueta
+ * @brief la función modificaEtiqueta permite modificar la etiqueta dada por la nueva etiqueta, la función modifica el arbol
  * @param etiquetaVieja es de tipo entero, es la etiqueta del nodo del cual queremos cambiar la etiqueta
  * @param nuevaEtiqueta es detipo entero, es el nuevo valor de la etiqueta del cual queremos cambiar el valor 
  * @param arbol es de tipo Arbol, debe ser inicializado y no vacio
@@ -438,7 +438,7 @@ void quantityNodesInLevel(Arbol &arbol, Nodo subroot, int level)
 }
 
 /**
- * @brief borrarSubArbol permite borrar un subarbol que tiene como raiz el Nodo subroot dado
+ * @brief borrarSubArbol permite borrar un subarbol que tiene como raiz el Nodo subroot dado, la función modifica el arbol
  * @param tree es de tipo Arbol, debe ser inicializado y no vacio, y debe contener al nodo subroot
  * @param subroot es de tipo Nodo, debe existir en el arbol, y ser inicializado
  * @remark la funcion requiere que el Nodo subroot exista en el arbol dado
