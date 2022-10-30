@@ -297,10 +297,10 @@ Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @remark
+ * @brief La función listarPorPreorden permite imprimir el arbol dado en pre-orden, la función no modifica nada, usa la libreria de salida estandar
+ * @param arbol es de tipo Arbol, requiere que sea inicializado
+ * @param nodo es de tipo Nodo, requiere que sea inicializado y pertenezca al arbol
+ * @remark la función requiere que  el arbol y el nodo sean inicializados y que el nodo pertenezca al arbol
  */
 void listarPorPreorden(Arbol &arbol, Nodo nodo)
 {
@@ -313,10 +313,10 @@ void listarPorPreorden(Arbol &arbol, Nodo nodo)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @remark
+ * @brief la funcion padre permite devolver al usuario la etiqueta del nodo padre del nodo que tiene como etiqueta el entero elemento dado
+ * @param elemento es la etiqueta dado del cual queremos encontrar el padre, requiere que exista esta etiqueta en el arbol
+ * @param arbol arbol es de tipo Arbol, requiere que sea inicializado
+ * @remark la funcion requiere que exista el arbol, y que exista un nodo con la etiqueta "elemento"
  */
 void padre(int elemento, Arbol &arbol)
 {
@@ -352,7 +352,7 @@ void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 }
 
 /**
- * @brief
+ * @brief la función borrarHoja permite borrar la hoja del arbol que tengo como etiqueta el entero valorBorrado
  * @param
  * @param
  * @remark
@@ -365,11 +365,11 @@ void borrarHoja(int valorBorrado, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @param 
- * @remark
+ * @brief la funcion agregarHijo permite agregar un Nodo al arbol con una etiqueta igual a etiquetaHijo y con un padre con la etiqueta "etiqueta"
+ * @param etiqueta es un entero, es la etiqueta del Nodo al cual queremos agregar un hijo, la funcion requiere que exista un Nodo en el arbol con esta etiqueta
+ * @param etiqueHijo es un entero, es la etique del Nodo que agregamos al arbol
+ * @param arbol es de tipo Arbol, se requiere que sea inicializado, y que tenga por lo menos la raiz puesta
+ * @remark la función requiere que el arbol tenga una raiz valida (no nula) y que tengo un Nodo con la etiqueta "etiqueta"
  */
 void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 {
@@ -379,11 +379,11 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @param 
- * @remark
+ * @brief la función modificaEtiqueta permite modificar la etiqueta dada por la nueva etiqueta
+ * @param etiquetaVieja es de tipo entero, es la etiqueta del nodo del cual queremos cambiar la etiqueta
+ * @param nuevaEtiqueta es detipo entero, es el nuevo valor de la etiqueta del cual queremos cambiar el valor 
+ * @param arbol es de tipo Arbol, debe ser inicializado y no vacio
+ * @remark la función requiere que exista un Nodo en el arbol con una etiqueta igual a etiquetaVieja
  */
 void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol &arbol)
 {
@@ -392,11 +392,11 @@ void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol &arbol)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @param 
- * @remark
+ * @brief la función quantityNodesInLevel permite saber cuantos nodos existe en un nivel dado del arbol
+ * @param arbol es de tipo arbol, debe contener al nodo subroot
+ * @param subroot subroot es de tipo Nodo, cambia para cada llamado recursivo
+ * @param level es de tipo entero, sirve como caso base para la recursividad
+ * @remark la función requiere que el arbol sea inicializado, y que existe el level dado en el arbol
  */
 void quantityNodesInLevel(Arbol &arbol, Nodo subroot, int level)
 { // Revisar
@@ -438,10 +438,10 @@ void quantityNodesInLevel(Arbol &arbol, Nodo subroot, int level)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @remark
+ * @brief borrarSubArbol permite borrar un subarbol que tiene como raiz el Nodo subroot dado
+ * @param tree es de tipo Arbol, debe ser inicializado y no vacio, y debe contener al nodo subroot
+ * @param subroot es de tipo Nodo, debe existir en el arbol, y ser inicializado
+ * @remark la funcion requiere que el Nodo subroot exista en el arbol dado
  */
 void borrarSubArbol(Arbol &tree, Nodo subroot)
 {
@@ -520,12 +520,12 @@ void borrarSubArbol(Arbol &tree, Nodo subroot)
 }
 
 /**
- * @brief
- * @param
- * @param
- * @param
- * @param
- * @remark
+ * @brief crearArbol permite crear un arbol y despues lo imprime
+ * @param i esde tipo entero, debe contener un valor valido
+ * @param k es de tipo entero, debe contener un valor valido
+ * @param L es de tipo ListaIndexada, debe ser inicializado
+ * @param myTree es de tipo Arbol, debe ser inicializado
+ * @remark la funcion requiere que i y k sean valores validos, y que la lista y el arbol sean inicializados y validos
  */
 void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
 {
@@ -590,8 +590,8 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
 }
 
 /**
- * @brief
- * @return
+ * @brief el metodo main contiene el menu principal que permite comunicar con el usuario
+ * @return el metodo devuelve un 0 al final de se ejecución
  */
 int main()
 {
