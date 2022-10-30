@@ -11,6 +11,7 @@ private:
     int indicePadre;
     int valor;
     int indice;
+    int esNulo = 0;
 
     /**
      * @brief el metodo setIndice permite cambiar el indice del NodoArbol
@@ -93,6 +94,7 @@ public:
         indicePadre = 0;
         valor = 0;
         indice = 0;
+        esNulo = 1;
     }
 
     /**
@@ -177,6 +179,22 @@ public:
      */
     bool operator==(const NodoArbol &otroNodo) const
     {
+        if (esNulo == 1 && otroNodo.esNulo == 1)
+        {
+           
+            return 1;
+        }
+        if (esNulo == 1)
+        {
+            
+            return 0;
+        }
+        if (otroNodo.esNulo == 1)
+        {
+           
+            return 0;
+        }
+
         if(otroNodo.getIndice() == indice && otroNodo.getIndicePadre()==indicePadre && otroNodo.getValor() == valor){
             return 1;
         }else{
@@ -192,6 +210,9 @@ public:
      */
     bool operator!=(const NodoArbol &otroNodo) const
     {
+        if (esNulo == 1 && otroNodo.esNulo == 1)
+            return 0;
+
         if(otroNodo.getIndice() == indice && otroNodo.getIndicePadre()==indicePadre && otroNodo.getValor() == valor){
             return 0;
         }else{
@@ -249,6 +270,7 @@ public:
     {
         arregloArbol[0].setValor(raiz);
         arregloArbol[0].setIndice(0);
+        arregloArbol[0].esNulo = 0;
         if (esVacio == 0)
         {
             esVacio = 1;
@@ -280,6 +302,7 @@ public:
             // arregloArbol[actual].setPadre(indice);
             arregloArbol[actual].setPadre(padre.getIndice());
             arregloArbol[actual].setIndice(actual);
+            arregloArbol[actual].esNulo = 0;
 
             hijoRetornado = arregloArbol[actual];
             ++actual;
@@ -307,6 +330,8 @@ public:
      */
     NodoArbol Raiz()
     {
+        if (arregloArbol[0] == NodoArbol())
+            std::cout << "Raiz desde arbol: NULA" << std::endl;
         return arregloArbol[0];
     }
 
@@ -452,7 +477,12 @@ public:
                 ++indice;
             }
         }
+       arregloArbol[actual-1].esNulo = 1;
+       arregloArbol[actual-1].setValor(0); 
+       arregloArbol[actual-1].setIndice(0); 
+       arregloArbol[actual-1].setPadre(0); 
         --actual;
+        
     }
 
     /**

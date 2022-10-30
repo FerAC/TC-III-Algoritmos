@@ -10,9 +10,9 @@
 #include "../2/ListaIndexada.h"
 
 // Include de los Árboles
-// #include "../3.1/3.1.hpp"
- #include "../3.2/3.2.hpp"
- //#include "../3.3/3.3.hpp"
+#include "../3.1/3.1.hpp"
+//  #include "../3.2/3.2.hpp"
+//  #include "../3.3/3.3.hpp"
 // #include "../3.4/3.4.hpp"
 // #include "../3.5/3.5.hpp"
 
@@ -49,7 +49,7 @@ bool averiguarEtiquetasRepetidas(Arbol &arbol)
 
     // Caso 1: El árbol tiene raíz nula (no tiene nodos)
     if (arbol.Raiz() == NodoNulo)
-        return NodoNulo;
+        return false;
 
     // Caso 2: El árbol tiene nodos
     // Realizaremos un recorrido por niveles utilizando una cola de nodos
@@ -144,7 +144,10 @@ void imprimirArbol(Arbol &arbol)
 
     // Caso 1: El árbol tiene raíz nula (no tiene nodos)
     if (arbol.Raiz() == NodoNulo)
+    {
+        std::cout << "RAIZ NULA" << std::endl;
         return;
+    }
 
     // Caso 2: El árbol tiene nodos
     // Realizaremos un recorrido por niveles utilizando una cola de nodos
@@ -260,7 +263,11 @@ Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
 
         // Si resulta ser un nodo con la etiqueta que buscamos, lo retornaremos
         if (arbol.Etiqueta(nodoActual) == etiqueta)
-            return nodoActual;
+        {
+            std::cout << "ETIQUETA ENCONTRADA = " << etiqueta << std::endl;
+            return nodoActual;   
+        }
+         
 
         // Ahora encolaremos todos sus hijos
         for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
@@ -499,6 +506,8 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
                     Nodo newChild = myTree.AgregarHijo(L.recuperar(numNodesAdded), padre);
                     ++numNodesAdded;
 
+                    std::cout << "\tNEW CH = " << myTree.Etiqueta(newChild) << std::endl;
+
                     // Whenever we produce a new child, it can be considered to be a new parent worth visiting to later on.
                     // However, this consideration may only be made if we haven't reached the last level of the tree
                     if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
@@ -709,6 +718,7 @@ int main()
             std::cout << "14 - Etiquetas en un nivel" << std::endl;
             std::cout << "15 - Eliminar arbol a partir de un nodo" << std::endl;
             std::cout << "16 - Crear un arbol en base a una lista" << std::endl;
+            std::cout << "17 - Veriricar si un nodo existe en el árbol" << std::endl;
             std::cin >> choice;
 
             switch (choice)
@@ -884,6 +894,19 @@ int main()
                     }
                     crearArbol(i, k, list, arbol);
                 }
+            }
+            break;
+            case 17:
+            {
+                int elemento;
+                std::cout << "Inserte un elemento" << std::endl;
+                std::cin >> elemento;
+                Nodo nodoDondeEtiqueta = buscarEtiqueta(elemento, arbol);
+
+                if (nodoDondeEtiqueta == Nodo())
+                    std::cout << "Nodo NO existe en el árbol" << std::endl;
+                else
+                    std::cout << "Nodo SÍ existe en el árbol" << std::endl;
             }
             break;
             default:
