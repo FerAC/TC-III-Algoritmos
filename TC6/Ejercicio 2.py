@@ -66,4 +66,8 @@ void AislarVertice(Grafo grafo, Vertice verticeVictima)
 			}
 		}
 	}
+
+	// Ya podemos borras las E.D auxiliares
+	Destruir(yaRecorridos)
+    Destruir(colaPorRecorrer)
 }
