@@ -65,4 +65,7 @@ void AislarVertice(Grafo grafo, Vertice verticeVictima)
 			}
 		}
 	}
+
+	Destruir(yaRecorridos)
+	Destruir(colaPorRecorrer)
 }
