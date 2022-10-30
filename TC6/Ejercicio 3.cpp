@@ -5,7 +5,7 @@ copiarGrafo(Grafo original){
     if(!original.vacio()){
         copia.Iniciar();
         Dvv.Iniciar(); //Diccionario de vertices visitados
-        int verticesInsertados; 
+        int verticesInsertados = 0; 
         for( verticeActual = original.PrimerVertice(); verticesInsertados<original.numVertices(); verticeActual = original.SiguienteVertice(verticeActual)){ //Me muevo por los vertices del grafo
            if(!Dvv.Pert(verticeActual)){ //Si no lo he agregado lo agrego
                 copia.AgregarVertice(original.getEtiqueta(verticeActual));
@@ -28,23 +28,7 @@ copiarGrafo(Grafo original){
         }
         Dvv.Destruir(); 
 
-       /*
-       int verticesInsertados = 0;
-       int verticesTotales = original.numVertices();
-       while(verticesInsertados<verticesTotales){
-            
-
-       }
-       */
-
-
-
-
-
-
-
-
-
-
     }
+
+    return copia;
 }

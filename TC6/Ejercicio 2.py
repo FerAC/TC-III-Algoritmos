@@ -50,12 +50,13 @@ void AislarVertice(Grafo grafo, Vertice verticeVictima)
 				// el vertice de partida del y este vértice adyacente
 				// Esto se hace inclusive si ya recorrimos el vértice víctima, porque podemos 
 				// visitarle varias veces.
-				If (verticeAdyacente == verticeVictima)
+				If (verticeAdyacente == verticeVictima || verticePartida == verticeVictima)
 				{
 					// No importa si el vértice víctima termina siendo isla, pues visitaremos a todas las
 					// islas
 					BorrarArista(verticePartida, verticeAdyacente, grafo)
-				}
+				
+                }
 
 				// Si este vértice adyacente ya ha sido visitado, no es necesario encolarlo
 				If (Pertence(yaRecorridos, verticeAdyacente))
