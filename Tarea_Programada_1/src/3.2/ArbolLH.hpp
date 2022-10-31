@@ -28,7 +28,6 @@ ArbolLH(){
 } 
 
 void Imprimir(){
-	
 	listaPrincipal->imprimir();
 	
 }
@@ -37,9 +36,7 @@ void ImprimirLP(){
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
 	while(actual!=nullptr){
 		std::cout<< "ELEMENTO : " << actual->getEtiqueta().getEtiqueta() << std::endl;
-		
 		actual = actual->getSiguiente();
-		
 	}
 	
 }
@@ -59,12 +56,12 @@ void PonerRaiz(int etiqueta){
 /// @remarks Requiere que el arbol este inicializado y padre no nulo 
 /// @return El NodoConcreto agregado	
 NodoConcreto* AgregarHijo(int etiqueta, NodoConcreto * NodoConcretoPadre) {
-	std::cout<< "62" <<std::endl;
+	
 	NodoConcreto NodoConcretoNuevo(etiqueta); 
 	NodoConcretoNuevo.listaHijos = new Lista<NodoConcreto*>();
-	std::cout << "65 " << std::endl;
+	
 	listaPrincipal->insertar(NodoConcretoNuevo);
-	std::cout << "67 " << std::endl;
+	
 	NodoConcreto* direccionInsertado =  listaPrincipal->getUltima()->getEtiqueta(4);
 	
 	NodoConcretoPadre->insertarEnLista(direccionInsertado);
@@ -84,18 +81,11 @@ NodoConcreto* AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPad
 void BorrarHoja(NodoConcreto* borrado){
 	//Lista<NodoConcreto*> *punteroALista = borrado->listaHijos; 
 	for(Celda<NodoConcreto> * buffer1 = listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
-		std::cout << "Estoy en for" << std::endl;
+		
 		int validez = buffer1->getEtiqueta().getListaHijos()->borrar(borrado); 
-		cout << "soy validez " << validez << endl;
+		
 		if(validez==1){		//Si lo borre de secundarias voy a borrarlo a principal
 			delete borrado->listaHijos;  
-			cout<< "92" << endl;
-			/*
-			int valorBorrado = borrado->getEtiqueta(); 
-			cout<< "Valor del borrado " << valorBorrado << endl;
-			auto NodoConcretoBorrado = listaPrincipal->buscar(valorBorrado)->getEtiqueta();
-			cout<< "N" <<endl;  
-			*/
 			listaPrincipal->borrar(*borrado); 
 			return; 
 		}
