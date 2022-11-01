@@ -1,345 +1,26 @@
-// Incluye utilidades auxiliares
-#include <cstddef>         // Para utilizar contadores en recorrido por niveles
-#include "../CDE/Cola.hpp" // Cola dinámica para realizar recorrido por niveles
-#include <cmath>           // Formula para cantidad de nodos en un nivel
-
-// Include de la Cola
-#include "../1/Cola.hpp"
-
-// Include de la Lista Indexada
-#include "../2/ListaIndexada.h"
-
-// Include de los Árboles
-#include "../3.1/3.1.hpp"
-//  #include "../3.2/3.2.hpp"
-//  #include "../3.3/3.3.hpp"
-// #include "../3.4/3.4.hpp"
-// #include "../3.5/3.5.hpp"
-
-// Include para I/O estándar
-#include <iostream>
+#include "Controlador.hpp"
 
 /**
- * @brief la función averiguarHermanoIzquierdo permite encontrar el hermano a la izquierda de un nodo dado, la función no modifica nada
- * @param nodo nodo es de tipo Nodo, es el nodo del cual buscamos el hermano izquierdo, el nodo debe ser inicializado y debe pertenecer al arbol
- * @param arbol arbol es de tipo Arbol, es dado por referencia para economizar memoria, la función requiere que el arbol este inicializado, y que el nodo haga parte del arbol
- * @remark la funcion requiere que ambos parametros sean inicializados y validos
- * @return la función devuelve un Nodo, si existe un hermanoIzquierdo, lo devuelve, sino devuelve NodoNulo
- */
-Nodo averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol)
-{
-    const Nodo &NodoNulo = Nodo();
-    // en ese caso el nodo no tiene hermano izquierdo ya que es la raiz y la raiz no tiene hermano
-    if (nodo == arbol.Raiz())
-    {
-        return NodoNulo;
-    }
-    
-    Nodo nodoPadre = arbol.Padre(nodo);
-    Nodo hermanoIzquierdo = arbol.HijoMasIzquierdo(nodoPadre);
-
-    // en ese caso el nodo no tiene hermano izquierdo ya que el mismo es el hijo mas izquierdo
-    if(hermanoIzquierdo == nodo){
-        return NodoNulo;
-    }
-
-    // en ese caso el nodo no es ni el hijo mas izquierdo ni la raiz, por lo tanto tiene un hermano izquierdo
-    while (arbol.HermanoDerecho(hermanoIzquierdo) != nodo)
-    {
-        hermanoIzquierdo = arbol.HermanoDerecho(hermanoIzquierdo);
-    }
-
-    return hermanoIzquierdo;
-}
-
-/**
- * @brief la función averiguarEtiquetasRepetidas permite verificar si existe varios nodos con la misma etiqueta en el arbol, la funcion crea y modifica al booleano que se devuelve
- * @param arbol arbol es de tipo Arbol, es dado por referencia para economizar memoria, la funcion requiere que el arbol este inicializado
- * @remark la función requiere que el arbol sea inicializado, pero no requiere que el arbol no-este vacio
- * @return la función devuelve 1 si hay etiquetas repetidas, sino devuelve 0
- */
-bool averiguarEtiquetasRepetidas(Arbol &arbol)
-{
-
-    const Nodo &NodoNulo = Nodo();
-
-    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
-    if (arbol.Raiz() == NodoNulo)
-        return false;
-
-    // Caso 2: El árbol tiene nodos
-    // Realizaremos un recorrido por niveles utilizando una cola de nodos
-    Util::Cola<Nodo> colaNodos;
-    Util::Cola<Nodo> colaNodosComparados;
-
-    // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-    colaNodos.Encolar(arbol.Raiz());
-
-    // Nodo nodoComparador = arbol.Raiz();
-
-    // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
-    // Si resulta que encontramos al nodo, escaparemos el recorrido mediante un retorno prematuro
-    while (!colaNodos.Vacio())
-    {
-        // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-        Nodo nodoActual = colaNodos.Desencolar();
-        colaNodosComparados.Encolar(arbol.Raiz());
-
-        // Si resulta ser un nodo con la etiqueta que buscamos, lo retornaremos
-        // if (arbol.Etiqueta(nodoActual) == etiqueta)
-        while (!colaNodosComparados.Vacio())
-        {
-            // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-            Nodo nodoComparado = colaNodosComparados.Desencolar();
-
-            // si los 2 nodos tienen la misma etiqueta, pero no son el mismo nodo, entonces hay etiqueta(s) repetida(s) en el arbol
-            if (arbol.Etiqueta(nodoActual) == arbol.Etiqueta(nodoComparado))
-            {
-                if (nodoActual != nodoComparado)
-                {
-                    return 1;
-                }
-            }
-
-            // Ahora encolaremos todos sus hijos
-            for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoComparado); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
-            {
-                colaNodosComparados.Encolar(hijoActual);
-            }
-        }
-
-        //  return nodoActual;
-
-        // Ahora encolaremos todos sus hijos
-        for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
-        {
-            colaNodos.Encolar(hijoActual);
-        }
-    }
-
-    // Si no se encontró un nodo con la etiqueta correspondiente en el árbol, entonces devolveremos nodo nulo
-    return 0;
-}
-
-/**
- * @brief La función averiguarProfundidadNodo permite verificar a cual profundidad se encuentra en el arbol dado un nodo dado, la función cree y modifica un entero que representa esta profundidad
- * @param arbol arbol es de tipo Arbol, es dado por referencia para economizar memoria, la funcion requiere que el arbol este inicializado y no vacio
- * @param nodo es de tipo Nodo, es el nodo del cual buscamos la profundidad, el nodo debe ser inicializado y debe pertenecer al arbol
- * @remark la función requiere que el arbol sea inicializado, no vacio, y que el nodo sea inicializado y pertenezca al arbol 
- * @return la función devuelve un entero que representa la profundidad a la cual se encuentra el nodo dado en el arbol dado
- */
-int averiguarProfundidadNodo(Arbol &arbol, Nodo nodo)
-{
-    int profundidadNodo = 0;
-
-    // si el nodo dado es la raiz del arbol, entonces profundidadNodo es 0
-    if(nodo == arbol.Raiz()){
-        return profundidadNodo;
-    }
-
-    ++profundidadNodo;
-
-    Nodo padre = arbol.Padre(nodo);
-
-    while (padre != arbol.Raiz())
-    {
-        padre = arbol.Padre(padre);     
-        ++profundidadNodo;   
-    }
-
-    return profundidadNodo;
-}
-
-/// @brief Permite imprimir el contenido de una árbol dado por parámetro. Recore el árbol en pre-orden
-/// @param nodo Nodo Inicial
-/// @param arbol Árbol es el arbol recibido por referencia
-void imprimirArbol(Arbol &arbol)
-{
-    const Nodo &NodoNulo = Nodo();
-
-    // Imprimamos la cantidad de nodos presentes en el árbol
-    std::cout << "N = " << arbol.NumNodos() << std::endl;
-
-    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
-    if (arbol.Raiz() == NodoNulo)
-    {
-        std::cout << "RAIZ NULA" << std::endl;
-        return;
-    }
-
-    // Caso 2: El árbol tiene nodos
-    // Realizaremos un recorrido por niveles utilizando una cola de nodos
-    Util::Cola<Nodo> colaNodos;
-
-    // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-    colaNodos.Encolar(arbol.Raiz());
-
-    // Adicionalmente, imprimiremos sus contenidos de primero
-    std::cout << '[' << arbol.Etiqueta(arbol.Raiz()) << ']' << std::endl;
-
-    // Adicionalmente, llevaremos cuenta de cuántos nodos corresponden al nivel actual y su correspondiente siguiente
-    size_t nodosPendientesNivelActual = 1;
-    size_t nodosPendientesNivelSiguiente = 0;
-
-    // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
-    // Si resulta que encontramos al padre, escaparemos el recorrido mediante un retorno prematuro
-    while (!colaNodos.Vacio())
-    {
-        // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-        Nodo nodoActual = colaNodos.Desencolar();
-
-        // Tras obtener ese nodo, la cantidad de nodos pendientes en el nivel actual disminuye en 1
-        --nodosPendientesNivelActual;
-
-        // Tras obtener un nodo, encolaremos cada hijo
-        // Para distinguir a cada grupo de hijos, encerraremos la impresión de cada grupo entre llaves
-        std::cout << "[";
-
-        for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
-        {
-            // Tras obtener un hijo, imprimiremos sus contenidos
-            std::cout << arbol.Etiqueta(hijoActual);
-
-            // Si tiene un hermano derecho, dejaremos un espacio entre ellos
-            if (arbol.HermanoDerecho(hijoActual) != NodoNulo)
-                std::cout << ' ';
-
-            // Luego, tras imprimir sus contenidos, lo encolaremos
-            colaNodos.Encolar(hijoActual);
-
-            // Tras encolar un hijo, la cantidad de nodos pendientes en el nivel siguiente aumenta
-            ++nodosPendientesNivelSiguiente;
-        }
-
-        std::cout << "] ";
-
-        // Si ya no hay nodos pendientes en este nivel, entonces hemos cambiado de nivel
-        if (nodosPendientesNivelActual == 0)
-        {
-            // La cantidad de nodos pendientes en este nivel corresponden a la cantidad de nodos pendientes para el siguiente
-            nodosPendientesNivelActual = nodosPendientesNivelSiguiente;
-
-            // Luego, como cambiamos de nivel, la cantidad de nodos pendientes para el siguiente nivel se asume como 0 de nuevo
-            nodosPendientesNivelSiguiente = 0;
-
-            // Adicionalmente podemos realizar un salto de nivel en la impresión
-            std::cout << std::endl;
-        }
-    }
-}
-
-/**
- * @brief
- * @param
- */
-void listarPorNiveles(Arbol &arbol)
-{
-    const Nodo &NodoNulo = Nodo();
-
-    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
-    if (arbol.Raiz() == NodoNulo)
-        return;
-    // Caso 2:
-    Util::Cola<Nodo> colaNodos;
-    colaNodos.Encolar(arbol.Raiz());
-    while (!colaNodos.Vacio())
-    {
-        Nodo nodoActual = colaNodos.Desencolar();
-        std::cout << arbol.Etiqueta(nodoActual) << ", ";
-        for (Nodo hijo = arbol.HijoMasIzquierdo(nodoActual); hijo != NodoNulo; hijo = arbol.HermanoDerecho(hijo))
-        {
-            colaNodos.Encolar(hijo);
-        }
-    }
-}
-
-/// @brief Devuelve el primer nodo correspondiente a la etiqueta buscada (si existe). Recorre el árbol en pre-orden
-/// @param arbol Arbol donde se busca algún nodo con la etiqueta
-/// @param etiqueta Etiqueta cuyos contenidos se intentan buscar en el árbol (dentro de un nodo)
-/// @return Nodo en el árbol que posee la etiqueta alimentada. Nodo nulo en caso contrario
-Nodo buscarEtiqueta(int etiqueta, Arbol &arbol)
-{
-    const Nodo &NodoNulo = Nodo();
-
-    // Caso 1: El árbol tiene raíz nula (no tiene nodos)
-    if (arbol.Raiz() == NodoNulo)
-        return NodoNulo;
-
-    // Caso 2: El árbol tiene nodos
-    // Realizaremos un recorrido por niveles utilizando una cola de nodos
-    Util::Cola<Nodo> colaNodos;
-
-    // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
-    colaNodos.Encolar(arbol.Raiz());
-
-    // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
-    // Si resulta que encontramos al nodo, escaparemos el recorrido mediante un retorno prematuro
-    while (!colaNodos.Vacio())
-    {
-        // Siempre obtendremos el nodo encolado más antigüamente (de primero)
-        Nodo nodoActual = colaNodos.Desencolar();
-
-        // Si resulta ser un nodo con la etiqueta que buscamos, lo retornaremos
-        if (arbol.Etiqueta(nodoActual) == etiqueta)
-        {
-            std::cout << "ETIQUETA ENCONTRADA = " << etiqueta << std::endl;
-            return nodoActual;   
-        }
-         
-
-        // Ahora encolaremos todos sus hijos
-        for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
-            colaNodos.Encolar(hijoActual);
-    }
-
-    // Si no se encontró un nodo con la etiqueta correspondiente en el árbol, entonces devolveremos nodo nulo
-    return NodoNulo;
-}
-
-/**
- * @brief La función listarPorPreorden permite imprimir el arbol dado en pre-orden, la función no modifica nada, usa la libreria de salida estandar
- * @param arbol es de tipo Arbol, requiere que sea inicializado
- * @param nodo es de tipo Nodo, requiere que sea inicializado y pertenezca al arbol
- * @remark la función requiere que  el arbol y el nodo sean inicializados y que el nodo pertenezca al arbol
- */
-void listarPorPreorden(Arbol &arbol, Nodo nodo)
-{
-    std::cout << arbol.Etiqueta(nodo) << ", ";
-    const Nodo &NodoNulo = Nodo();
-    for (Nodo nodoTemp = arbol.HijoMasIzquierdo(nodo); nodoTemp != NodoNulo; nodoTemp = arbol.HermanoDerecho(nodoTemp))
-    {
-        listarPorPreorden(arbol, nodoTemp);
-    }
-}
-
-/**
- * @brief la funcion padre permite mostrar al usuario la etiqueta del nodo padre del nodo que tiene como etiqueta el entero elemento dado
- * @param elemento es la etiqueta dado del cual queremos encontrar el padre, requiere que exista esta etiqueta en el arbol
- * @param arbol arbol es de tipo Arbol, requiere que sea inicializado
- * @remark la funcion requiere que exista el arbol, y que exista un nodo con la etiqueta "elemento"
- */
-void padre(int elemento, Arbol &arbol)
-{
-    Nodo nodoHijo = buscarEtiqueta(elemento, arbol);
-    Nodo mI = arbol.Padre(nodoHijo);
-    std::cout << "Padre de " << elemento << "es " << arbol.Etiqueta(mI) << std::endl;
-}
-
-/**
- * @brief la función hermanoDerecho permite mostrar al usuario la etique del hermano derecho del nodo cual etique es "etiqueta", la funcion no modifica nada
- * @param etique es de tipo entero, el la etique del nodo del cual queremos imprimir la etiqueta del hermano derecho
- * @param arbol arbol es de tipo Arbol, requiere que sea inicializado
- * @remark la función requiere que ambos parametros existan, y que exista en el arbol un nodo cual etiqueta es "etiqueta"
+ * @brief Muestra la etiqueta del hermano derecho del nodo con cierta etiqueta particular. No modifica nada.
+ * @param etiqueta Etiqueta del nodo al cual se le quiere imprimir la etiqueta del hermano derecho
+ * @param arbol Árbol en el cuál buscar los nodos
+ * @remark Tanto el árbol como la etiqueta deben estar inicializados. Debe existir al menos un nodo con la etiqueta en el árbol.
  */
 void hermanoDerecho(int etiqueta, Arbol &arbol)
 {
+    // Solicitamos al nodo con la etiqueta particular
     Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
     Nodo mI = arbol.HermanoDerecho(nodoPadre);
-    std::cout << "Hermano Derecho de " << etiqueta << "es " << arbol.Etiqueta(mI) << std::endl;
+
+    if(mI!= Nodo()){
+        std::cout << "Hermano Derecho de " << etiqueta << "es " << arbol.Etiqueta(mI) << std::endl;
+    }else{
+        std::cout<< "No tiene hermano derecho" << std::endl;
+    }
 }
 
 /**
- * @brief la función hijoMasIzquierdo permite mostrar al usuario el hijo mas izquierdo de un nodo cual etiqueta es dada, la función no modifica nada
+ * @brief Muestra al usuario el hijo mas izquierdo de un nodo cual etiqueta es dada, la función no modifica nada
  * @param etiqueta es de tipo entero, es la etiqueta del nodo del cual queremos conocer el hijo mas izquierdo, la etique debe existir en el arbol
  * @param arbol es el Arbol en el cual debemos buscar el hijo mas izquierdo de la etiqueta dada
  * @remark la función requiere que ambos parametros existan, y que exista un Nodo en el arbol que tenga como etiqueta "etiqueta"
@@ -352,7 +33,7 @@ void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 }
 
 /**
- * @brief la función borrarHoja permite borrar la hoja del arbol que tengo como etiqueta el entero valorBorrado, la funcion modifica el arbol
+ * @brief Borra la hoja del arbol que tengo como etiqueta el entero valorBorrado, la funcion modifica el arbol
  * @param valorBorrado es un entero, es la etiqueta de la hoja que se requiere borrar
  * @param arbol es el Arbol del cual queremos borrar una hoja
  * @remark la función requiere que valorBorrado pertenezca al arbol, y que sea una hoja
@@ -365,7 +46,7 @@ void borrarHoja(int valorBorrado, Arbol &arbol)
 }
 
 /**
- * @brief la funcion agregarHijo permite agregar un Nodo al arbol con una etiqueta igual a etiquetaHijo y con un padre con la etiqueta "etiqueta", la función modifica el arbol
+ * @brief Agrega un Nodo al arbol con una etiqueta igual a etiquetaHijo y con un padre con la etiqueta "etiqueta", la función modifica el arbol
  * @param etiqueta es un entero, es la etiqueta del Nodo al cual queremos agregar un hijo, la funcion requiere que exista un Nodo en el arbol con esta etiqueta
  * @param etiqueHijo es un entero, es la etique del Nodo que agregamos al arbol
  * @param arbol es de tipo Arbol, se requiere que sea inicializado, y que tenga por lo menos la raiz puesta
@@ -379,7 +60,7 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 }
 
 /**
- * @brief la función modificaEtiqueta permite modificar la etiqueta dada por la nueva etiqueta, la función modifica el arbol
+ * @brief Modifica la etiqueta dada por la nueva etiqueta, la función modifica el arbol
  * @param etiquetaVieja es de tipo entero, es la etiqueta del nodo del cual queremos cambiar la etiqueta
  * @param nuevaEtiqueta es detipo entero, es el nuevo valor de la etiqueta del cual queremos cambiar el valor 
  * @param arbol es de tipo Arbol, debe ser inicializado y no vacio
@@ -392,135 +73,108 @@ void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol &arbol)
 }
 
 /**
- * @brief la función quantityNodesInLevel permite saber cuantos nodos existe en un nivel dado del arbol
- * @param arbol es de tipo arbol, debe contener al nodo subroot
- * @param subroot subroot es de tipo Nodo, cambia para cada llamado recursivo
+ * @brief Muestra cuantos nodos existe en un nivel dado del arbol
+ * @param arbol es de tipo Arbol, debe contener al nodo subraiz
+ * @param subraiz es de tipo Nodo, cambia para cada llamado recursivo
  * @param level es de tipo entero, sirve como caso base para la recursividad
  * @remark la función requiere que el arbol sea inicializado, y que existe el level dado en el arbol
+ * Se indizan a partir de 0 (raíz) a n-1 (con n = altura del árbol)
  */
-void quantityNodesInLevel(Arbol &arbol, Nodo subroot, int level)
-{ // Revisar
-
-    // Base case: Level 0. The subroot. Its the only node with its own level
-    if (level == 0)
+void imprimirNodosEnNivel(Arbol &arbol, Nodo subraiz, int nivel)
+{
+    // Caso base: Nivel 0. La sub-raiz. Es el único nodo con su propio nivel
+    if (nivel == 0)
     {
-        std::cout << arbol.Etiqueta(subroot);
+        std::cout << arbol.Etiqueta(subraiz);
+        return;
     }
-    // Base case: Level 1. The subroot's children. They're the only one on this level (no cousins)
-    else if (level == 1)
-    {
 
-        int childrenNodes = 0;
-        const Nodo &NodoNulo = Nodo();
-        Nodo child = arbol.HijoMasIzquierdo(subroot);
+    Nodo child = arbol.HijoMasIzquierdo(subraiz);
+    const Nodo &NodoNulo = Nodo();
+
+    // Caso base: Nivel 1. La hijos de la sub-raíz. Son los únicos en este nivel (no tienen primos)
+    if (nivel == 1)
+    { 
         while (child != NodoNulo)
-        { // The sum of all ocurrences of children
+        {
             std::cout << arbol.Etiqueta(child) << ", ";
             child = arbol.HermanoDerecho(child);
         }
-
-        // return;
-    } // Recursive case: Level > 2. The subroot's descendants. We need to consider the children' subtrees quantiies of nodes
+    }
+    // Caso base: Nivel > 1. Los descendientes de la sub-raiz. Necesitamos considerar a los sub-árboles de los hijos inmediatos a la sub-raíz
     else
     {
-
-        int quantityNodes = 0;
-        const Nodo &NodoNulo = Nodo();
-        Nodo child = arbol.HijoMasIzquierdo(subroot);
+        // Sí consideraremos a cada sub-árbol de los hijos inmediatos, pero en cada uno consideraremos una profundidad de un nivel menor
         while (child != NodoNulo)
-        { // The sum of all children's subtrees quantities of nodes, with adjusted level (-1)
-            quantityNodesInLevel(arbol, child, level - 1);
+        {
+            imprimirNodosEnNivel(arbol, child, nivel - 1);
             child = arbol.HermanoDerecho(child);
         }
-
-        // return;
     }
 }
 
 /**
- * @brief borrarSubArbol permite borrar un subarbol que tiene como raiz el Nodo subroot dado, la función modifica el arbol
- * @param tree es de tipo Arbol, debe ser inicializado y no vacio, y debe contener al nodo subroot
- * @param subroot es de tipo Nodo, debe existir en el arbol, y ser inicializado
+ * @brief Borra un subarbol que tiene como raiz el Nodo subraiz dado, la función modifica el arbol
+ * @param arbol es de tipo Arbol, debe ser inicializado y no vacio, y debe contener al nodo subraiz
+ * @param subraiz es de tipo Nodo, debe existir en el arbol, y ser inicializado
  * @remark la funcion requiere que el Nodo subroot exista en el arbol dado
  */
-void borrarSubArbol(Arbol &tree, Nodo subroot)
+void borrarSubArbol(Arbol &arbol, Nodo subraiz)
 {
+    // Vamos a desplazarnos por los nodos de cada nivel usando una cola
+    // Cada vez que visitemos un nodo, añadiremos sus hijos a la cola
+    // La cola se llena con los nodos hijos de los que hemos visitado
+    // Finalmente, cuanto todos los nodos han sido visitados, borramos la cola
+    Util::Cola<Nodo> cola;
+    
+    // Vamos a eliminar los nodos usando una lista como si fuera una "pila"
+    // Cada vez que visitamos un nodo, lo añadimos a la "pila"
+    // La "pila" se llena en orden inverso al que añadimos los nodos
+    // Finalmente, cuando todos los nodos fueron añadidos, los borramos en orden inverso al de agregado
+    ListaIndexada pilaBorrado;
 
-    // We'll traverse the nodes each level using a queue
-    // Each time we visit a node, we'll add its' children to the queue
-    // The queue is filled with a node's children after we visited it
-    // Then, after all of a node's children have been added, we take it out the queue
-    Util::Cola<Nodo> queue;
-    // Iniciar(travelQueue)
+    // El desplazamiento del arbol empieza en la raiz
+    cola.Encolar(subraiz);
 
-    // We'll delete the nodes using a stack
-    // Each time we visit a node, we'll add it onto the stack
-    // The stack is filled on the inverse order we added the nodes
-    // Then, after all nodes were added, we delete them in the inverse order we visited them
-    ListaIndexada deletionStack;
-
-    // The tree traversion begins on the first node of the subtree: its' root
-
-    queue.Encolar(subroot);
-
-    // We can now begin traversion
-    while (!queue.Vacio())
+    // Podemos empezar a movernos por el arbol, siempre y cuando haya nodos pendientes por visitar
+    while (!cola.Vacio())
     {
+        // Vamos a extraer el ultimo nodo de la cola
+        Nodo visitedNode = cola.Desencolar();
 
-        // Let's extract the last node on the travel queue
-        Nodo visitedNode = queue.Desencolar();
+        // El elemento ha sido vistado, lo añadimos a la pila
+        // Siempre tomaremos 0 como el inicio de la "pila"
+        pilaBorrado.insertar(arbol.Etiqueta(visitedNode), 0);
 
-        // The element has been visited, let's add it to the top of the stack
-        // We'll always take 0 as the top of the stack
-        deletionStack.insertar(tree.Etiqueta(visitedNode), 0);
-
-        // Let's consider it's children for future travel
+        // Consideremos sus hijos para un viaje futuro
         const Nodo &NodoNulo = Nodo();
-        for (Nodo visitedChildren = tree.HijoMasIzquierdo(visitedNode); visitedChildren != NodoNulo; visitedChildren = tree.HermanoDerecho(visitedChildren))
-        {
-            queue.Encolar(visitedChildren);
-        }
+        for (Nodo visitedChildren = arbol.HijoMasIzquierdo(visitedNode); visitedChildren != NodoNulo; visitedChildren = arbol.HermanoDerecho(visitedChildren))
+            cola.Encolar(visitedChildren);
 
-        // All is done for this iteration:
-        // a) The children will always be visited after their parent => parent -> children
-        // b) The siblings will always be visited after the first child => first child -> sibling
-        // c) The cousins will also always be visited after the children => children -> cousins
-        // d) Due to a, b, and c, the order is as follows: parent -> first child -> siblings -> cousins
+        // Todo esta hecho por esta iteracion 
     }
 
-    // We no longer need the travel queue. Let's free its memory
-    // Destruir(travelQueue)
-
-    // The whole subtree has been visited, and its' nodes placed on the stack in the inverse order they have been visited
-    // We can now delete the visited nodes on the order they've been placed on within the stack
+    // Todo el arbol ha sido visitado y sus nodos puestos en la pila
+    // Ahora podemos borrar los nodos en el orden que los agregamos
     int i = 0;
-    while (i++ < deletionStack.numElem())
+    while (i++ < pilaBorrado.numElem())
     {
-        // It is guaranteed that the top element of the stack is a leaf
-        int currentLeafValue = deletionStack.recuperar(0);
-        // Nodo currentLeaf = buscarEtiqueta(currentLeafValue, tree );
-        std::cout << "Se va a borrar a " << deletionStack.recuperar(0) << std::endl;
-        deletionStack.borrar(0);
-        // It is guara nteed that we'll first delete the last child, and then its siblings
-        // After deleting all siblings, it is guaranteed that its corresponding parent becomes a leaf
-        // Therefore, deletion is in this reverse order is always face
-        borrarHoja(currentLeafValue, tree);
+        //Esta garantizado que el elemento tope del stack es una hoja
+        int valorHojaActual = pilaBorrado.recuperar(0);
+        std::cout << "Se va a borrar a " << pilaBorrado.recuperar(0) << std::endl;
+        pilaBorrado.borrar(0);
+        // Esta garantizado que vamos a borrar el ultimo hijo primero, y luego sus hijos
+        // Despues de borrar todos sus hijos, esta garantizado que el padre se vuelve una hoja
+        borrarHoja(valorHojaActual, arbol);
 
-        // The last leaf of the tree on the stack has been dealt (deleted off of the tree)
-        // Let's take it out of the stack and carry on with the next leaf on the following iteration
+        // La ultima hoja del arbol en la pila ha sido borrado
+        // Vamos a sacarlo de la pila y llevarlo hasta la siguiente hoja en la proxima iteracion
     }
-
-    // We no longer need the deletion stack. Let's free its memory
-
-    // All is done:
-    // a) The whole tree has been visited
-    // b) Each node was visited only once
-    // c) Each visited node was deleted in inverse order of visit
-    // d) The auxiliary data structures were freed after use
+    // Todo esta hecho
 }
 
 /**
- * @brief crearArbol permite crear un arbol y despues lo imprime
+ * @brief crea un arbol y despues lo imprime
  * @param i esde tipo entero, debe contener un valor valido
  * @param k es de tipo entero, debe contener un valor valido
  * @param L es de tipo ListaIndexada, debe ser inicializado
@@ -529,50 +183,45 @@ void borrarSubArbol(Arbol &tree, Nodo subroot)
  */
 void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
 {
-    std::cout << "314" << std::endl;
 
-    // The tree is assumed to be empty until noted otherwise
+    // se asuma que el arbol es vacio salvo si especificado de lo contrario
 
-    // First condition: At least one level and one child per level
+    // Primera condición: por lo menos un nivel y un hijo por nivel
     if (i > 0 && k > 0)
     {
-        // Since the tree has at least one level, and at least one child per level, there must be a root
+        // ya que el arbol tiene por lo menos un nivel, por lo menos un hijo por nivel, entonces hay una raiz
         myTree.PonerRaiz(L.recuperar(0));
 
-        // Second condition: At least two levels
+        // Segunda condición: por lo menos 2 niveles
         if (i > 1)
         {
-            // On top of the first condition, since the tree has at least two levels, we must consider if it's children are parents as well
+            // Ademas de la primeras condicion, ya que el arbol tiene por lo menos 2 niveles, debemos considerar si sus hijos son padres tambien
             Util::Cola<Nodo> parentNodesQueue;
             parentNodesQueue.Encolar(myTree.Raiz());
 
-            int numNodesTotal = (pow(k, i) - 1) / (k - 1); // The total amount of nodes to add into the tree after it's fully constructed
-            int numNodesLastLevel = pow(k, i - 1);         // The amount of nodes to be expected on the last level of the tree
-            int numNodesAdded = 1;                         // The current amount of nodes added so far. The root has been added, therefore it's 1
+            int numNodesTotal = (pow(k, i) - 1) / (k - 1); // La cantidad total de nodos  a agregar en el arbol despues que sea completamente construido
+            int numNodesLastLevel = pow(k, i - 1);         // la cantidad de nodos esperados en el ultimo nivel del arbol
+            int numNodesAdded = 1;                         // La cantidad de nodos añadidos hasta ahora, la raiz es un nodo asi que llevamos uno 
             std::cout << "Valor de i " << i << std::endl;
             std::cout << "Valor de k " << k << std::endl;
             std::cout << "Valor de Total " << numNodesTotal << std::endl;
             std::cout << "Valor de ultimo nivel " << numNodesLastLevel << std::endl;
 
-            // We'll add children nodes until before the last level. There's no use in adding children on the last level
-            while (numNodesAdded < numNodesTotal)
+            //Vamos a añadir nodos hijos a todos los niveles menos el ultimo. No hay necesidad de añadirselo al ultimo 
             {
-                std::cout << "355" << std::endl;
-                // The current parent to add children to
-
-                // The amount of children per parent is already known. We can produce as many.
+                // El padre al que agregarle un hijo 
+                // La cantidad de hijos po padre ya se conoce. Podemos producirla 
                 Nodo padre = parentNodesQueue.Desencolar();
                 std::cout << "El desencolado es" << myTree.Etiqueta(padre) << std::endl;
                 for (int numChildAdded = 0; numChildAdded < k; ++numChildAdded)
                 {
-                    // It is a precondition of this function that we're guaranteed a child on the list for every possible node on the tree
+                    // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol 
                     Nodo newChild = myTree.AgregarHijo(L.recuperar(numNodesAdded), padre);
                     ++numNodesAdded;
 
                     std::cout << "\tNEW CH = " << myTree.Etiqueta(newChild) << std::endl;
-
-                    // Whenever we produce a new child, it can be considered to be a new parent worth visiting to later on.
-                    // However, this consideration may only be made if we haven't reached the last level of the tree
+                    // Cada vez que poduzcamos un nuevo hijo, se puede considerar como un padre que valdria la pena visitar despues
+                    // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol 
                     if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
                     {
                         std::cout << "Encole a " << myTree.Etiqueta(newChild) << std::endl;
@@ -580,26 +229,26 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
                     }
                 }
             }
-
-            // We're done visting parents. We can free the memory allocated by the travel queue
+            // Terminamos de visitar los padres. Ahora podemos liberar la memoria
         }
     }
 
-    // Our tree is done! We can return it safely by this point
+    // El arbol esta lista, lo podemos imprimir a este punto
     imprimirArbol(myTree);
 }
 
 /**
- * @brief el metodo main contiene el menu principal que permite comunicar con el usuario
+ * @brief Contiene el menu principal que permite comunicar con el usuario
  * @return el metodo devuelve un 0 al final de se ejecución
  */
 int main()
 {
-    ListaIndexada lista;
+    //ListaIndexada lista;
     Arbol arbol;
-    Cola<int> cola(10000);
+    Controlador controlador; 
+    //Cola<int> cola(10000);
 
-    std::cout << "Bienvenid@ ! Inserta [i] para inicializar un modelo vacio, sino inserta [q] para salir del programa" << std::endl;
+    std::cout << "Bienvenid@ ! Inserta [i] para inicializar un arbol vacio, sino inserta [q] para salir del programa" << std::endl;
     char respuestaUsuario;
     std::cin >> respuestaUsuario;
 
@@ -609,163 +258,13 @@ int main()
     if (respuestaUsuario == 'i')
     {
         seguir = 1;
-        std::cout << "Si quiere inicializar una Cola vacia, digita [c] \nSi quiere inicializar una Lista indexada vacia, digita [l] \nSi quiere inicializar un arbol n-ario, digita [a]" << std::endl;
-        std::cin >> respuestaUsuario;
+        //std::cout << "Si quiere inicializar una Cola vacia, digita [c] \nSi quiere inicializar una Lista indexada vacia, digita [l] \nSi quiere inicializar un arbol n-ario, digita [a]" << std::endl;
+        //std::cin >> respuestaUsuario;
     }
 
     while (seguir)
     {
-        if (respuestaUsuario == 'c')
-        {
-            std::cout << "Que desea hacer con la cola?" << std::endl;
-            std::cout << "0 - encolar elemento" << std::endl;
-            std::cout << "1 - desencolar elemento" << std::endl;
-            std::cout << "2 - numElem " << std::endl;
-            std::cout << "3 - vaciar " << std::endl;
-            std::cout << "4 - vacio " << std::endl;
-            std::cout << "5 - salir y destruir la cola" << std::endl;
-            std::cin >> choice;
-
-            switch (choice)
-            {
-            case 0: // encolar
-            {
-                std::cout << "Cual elemento quiere encolar ?" << std::endl;
-                int elemento;
-                std::cin >> elemento;
-                cola.Encolar(elemento);
-                break;
-            }
-
-            case 1: // desencolar
-            {
-                int elem = cola.Desencolar();
-                std::cout << "El elemento desencolado es: " << elem << std::endl;
-                break;
-            }
-
-            case 2: // numElem
-            {
-                std::cout << cola.NumElem() << std::endl;
-                break;
-            }
-
-            case 3: // vaciar
-            {
-                cola.vaciar();
-                std::cout << "se vacio correctamente la cola" << std::endl;
-                break;
-            }
-
-            case 4: // vacio (devuelve un bool)
-            {
-                int esVacio = cola.vacia();
-                if (esVacio)
-                {
-                    std::cout << "La cola es vacia" << std::endl;
-                }
-                else
-                {
-                    std::cout << "La cola no es vacia" << std::endl;
-                }
-                break;
-            }
-
-            case 5: // salir
-            {
-                seguir = 0;
-                break;
-            }
-
-            default:
-                break;
-            }
-        }
-
-        if (respuestaUsuario == 'l')
-        {
-            std::cout << "\n\n\t ############################# \n"
-                      << std::endl;
-            std::cout << "Que desea hacer con la lista indexada?" << std::endl;
-            std::cout << "0 - insertar etiqueta" << std::endl;
-            std::cout << "1 - borrar elemento" << std::endl;
-            std::cout << "2 - Modificar indice" << std::endl;
-            std::cout << "3 - cantidad de elementos" << std::endl;
-            std::cout << "4 - Recuperar" << std::endl;
-            std::cout << "5 - Destruir" << std::endl;
-            std::cin >> choice;
-
-            switch (choice)
-            {
-            case 0:
-            {
-                std::cout << "Cual valor quiere insertar ?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                std::cout << "A que indice ?" << std::endl;
-                int indice;
-                std::cin >> indice;
-                lista.insertar(valor, indice);
-                break;
-            }
-
-            case 1:
-            {
-                std::cout << "Cual indice quiere borrar ?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                lista.borrar(valor);
-                break;
-            }
-
-            case 2:
-            {
-                std::cout << "Cual valor quiere insertar ?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                std::cout << "A que indice ?" << std::endl;
-                int indice;
-                std::cin >> indice;
-                lista.modificar(valor, indice);
-                break;
-            }
-
-            case 3:
-            {
-                std::cout << "Cantidad de elementos" << lista.numElem() << std::endl;
-                break;
-            }
-
-            case 4:
-            {
-                std::cout << "Cual indice quiere recuperar?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                lista.recuperar(valor);
-                break;
-            }
-
-            case 5: // imprimir
-            {
-                seguir = 0;
-                break;
-            }
-
-            case 6:
-            {
-                lista.imprimir();
-                break;
-            }
-
-            default:
-                break;
-            }
-        }
-
-        if (respuestaUsuario == 'a')
-        {
-
-            std::cout << "\n\n\t ############################# \n"
+        std::cout << "\n\n\t ############################# \n"
                       << std::endl;
             std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
             std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
@@ -773,19 +272,24 @@ int main()
             std::cout << "2 - borrar hoja" << std::endl;
             std::cout << "3 - imprimir el arbol" << std::endl;
             std::cout << "4 - get raiz" << std::endl;
-            std::cout << "5 - imprimir arbol" << std::endl;
-            std::cout << "6 - salir y destruir el arbol" << std::endl;
-            std::cout << "7 - HijoMasIzquierdo" << std::endl;
-            std::cout << "8 - HermanoDerecho" << std::endl;
-            std::cout << "9 - padre" << std::endl;
-            std::cout << "10 - modificar etiqueta" << std::endl;
-            std::cout << "11 - numNodos" << std::endl;
-            std::cout << "12 - Listar por niveles" << std::endl;
-            std::cout << "13 - Listar por preorden" << std::endl;
-            std::cout << "14 - Etiquetas en un nivel" << std::endl;
-            std::cout << "15 - Eliminar arbol a partir de un nodo" << std::endl;
-            std::cout << "16 - Crear un arbol en base a una lista" << std::endl;
-            std::cout << "17 - Veriricar si un nodo existe en el árbol" << std::endl;
+            std::cout << "5 - salir y destruir el arbol" << std::endl;
+            std::cout << "6 - HijoMasIzquierdo" << std::endl;
+            std::cout << "7 - HermanoDerecho" << std::endl;
+            std::cout << "8 - padre" << std::endl;
+            std::cout << "9 - modificar etiqueta" << std::endl;
+            std::cout << "10 - numNodos" << std::endl;
+            std::cout << "11 - Listar por niveles" << std::endl;
+            std::cout << "12 - Listar por preorden" << std::endl;
+            std::cout << "13 - Etiquetas en un nivel" << std::endl;
+            std::cout << "14 - Eliminar arbol a partir de un nodo" << std::endl;
+            std::cout << "15 - Crear un arbol en base a una lista" << std::endl;
+            std::cout << "16 - Veriricar si un nodo existe en el árbol" << std::endl;
+            std::cout << "17 - Averiguar profundidad de un nodo " << std::endl;
+            std::cout << "18 - Averiguar etiquetas repetidas" << std::endl;
+            std::cout << "19 - Hermano Izquierdo de un nodo" << std::endl;
+            std::cout << "20 - Cantidad de niveles (preorden)" << std::endl;
+            std::cout << "21 - Cantidad de niveles (por niveles)" << std::endl;
+            
             std::cin >> choice;
 
             switch (choice)
@@ -806,7 +310,7 @@ int main()
                 std::cout << "Valor a insertar" << std::endl;
                 int valor;
                 std::cin >> valor;
-                agregarHijo(valorP, valor, arbol);
+                controlador.agregarHijo(valorP, valor, arbol);
             }
             break;
 
@@ -815,12 +319,12 @@ int main()
                 std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
                 int etiquetaBorrada;
                 std::cin >> etiquetaBorrada;
-                borrarHoja(etiquetaBorrada, arbol);
+                controlador.borrarHoja(etiquetaBorrada, arbol);
                 break;
             }
             case 3: // imprimir el arbol
             {
-                imprimirArbol(arbol);
+                controlador.imprimirArbol(arbol);
                 break;
             }
             case 4: // get raiz
@@ -828,44 +332,37 @@ int main()
                 std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
             }
             break;
-
-            case 5: // imprimir
-            {
-                imprimirArbol(arbol);
-            }
-            break;
-
-            case 6: // salir y destruir arbol
+            case 5: // salir y destruir arbol
             {
                 seguir = 0;
                 break;
             }
-            case 7: // hijo izq
+            case 6: // hijo izq
             {
                 std::cout << "Cual valor del padre ?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                hijoMasIzquierdo(valor, arbol);
+                controlador.hijoMasIzquierdo(valor, arbol);
                 break;
             }
 
-            case 8: // hermano derecho
+            case 7: // hermano derecho
             {
                 std::cout << "Cual valor del hermano ?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                hermanoDerecho(valor, arbol);
+                controlador.hermanoDerecho(valor, arbol);
                 break;
             }
-            case 9: // padre
+            case 8: // padre
             {
                 std::cout << "Cual valor del hijo ?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                padre(valor, arbol);
+                controlador.padre(valor, arbol);
                 break;
             }
-            case 10:
+            case 9:
             {
                 std::cout << "Cual valor quiere modificar del arbol ?" << std::endl;
                 int etiquetaModificada;
@@ -873,42 +370,42 @@ int main()
                 std::cout << "Cual es el nuevo valor ?" << std::endl;
                 int etiqueta;
                 std::cin >> etiqueta;
-                modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
+                controlador.modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
                 break;
             }
-            case 11: // num Nodos
+            case 10: // num Nodos
             {
                 std::cout << "Num Nodos :" << arbol.NumNodos() << std::endl;
                 break;
             }
+            case 11:
+            {
+                controlador.listarPorNiveles(arbol);
+            }
+            break;
             case 12:
             {
-                listarPorNiveles(arbol);
+                controlador.listarPorPreorden(arbol, arbol.Raiz());
             }
             break;
             case 13:
             {
-                listarPorPreorden(arbol, arbol.Raiz());
-            }
-            break;
-            case 14:
-            {
                 std::cout << "Que nivel desea conocer?" << std::endl;
                 int nivel;
                 std::cin >> nivel;
-                quantityNodesInLevel(arbol, arbol.Raiz(), nivel - 1);
+                controlador.imprimirNodosEnNivel(arbol, arbol.Raiz(), nivel - 1);
             }
             break;
-            case 15:
+            case 14:
             {
                 std::cout << "A partir de que valor desea borrar?" << std::endl;
                 int valor;
                 std::cin >> valor;
                 Nodo subroot = buscarEtiqueta(valor, arbol);
-                borrarSubArbol(arbol, subroot);
+                controlador.borrarSubArbol(arbol, subroot);
             }
             break;
-            case 16:
+            case 15:
             {
                 int eleccion;
                 std::cout << "Desea general una lista o que esta sea generada automaticamente? \n 1 - Auto \n 2 - Manual " << std::endl;
@@ -931,7 +428,7 @@ int main()
                     {
                         list.insertar(j, j);
                     }
-                    crearArbol(i, k, list, arbol);
+                    controlador.crearArbol(i, k, list, arbol);
                 }
                 else
                 {
@@ -959,16 +456,16 @@ int main()
                         std::cin >> elemento;
                         list.insertar(elemento, j);
                     }
-                    crearArbol(i, k, list, arbol);
+                    controlador.crearArbol(i, k, list, arbol);
                 }
             }
             break;
-            case 17:
+            case 16:
             {
                 int elemento;
                 std::cout << "Inserte un elemento" << std::endl;
                 std::cin >> elemento;
-                Nodo nodoDondeEtiqueta = buscarEtiqueta(elemento, arbol);
+                Nodo nodoDondeEtiqueta = controlador.buscarEtiqueta(elemento, arbol);
 
                 if (nodoDondeEtiqueta == Nodo())
                     std::cout << "Nodo NO existe en el árbol" << std::endl;
@@ -976,10 +473,35 @@ int main()
                     std::cout << "Nodo SÍ existe en el árbol" << std::endl;
             }
             break;
+            case 17:
+            {
+                //averiguarProfundidadNodo
+                
+            }
+            break;
+            case 18:
+            {
+                //averiguarEtiquetasRepetidas
+            }
+            case 19:
+            {
+                //Hermano izquierdo
+            }
+            break;
+            case 20:
+            {
+                //Hermano izquierdo
+            }
+            break;
+            case 21:
+            {
+                //Hermano izquierdo
+            }
+            break;
             default:
                 break;
             }
-        }
+            
     }
 
     return 0;
