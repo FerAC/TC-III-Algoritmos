@@ -66,7 +66,7 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 /**
  * @brief Modifica la etiqueta dada por la nueva etiqueta, la función modifica el arbol
  * @param etiquetaVieja es de tipo entero, es la etiqueta del nodo del cual queremos cambiar la etiqueta
- * @param nuevaEtiqueta es detipo entero, es el nuevo valor de la etiqueta del cual queremos cambiar el valor 
+ * @param nuevaEtiqueta es detipo entero, es el nuevo valor de la etiqueta del cual queremos cambiar el valor
  * @param arbol es de tipo Arbol, debe ser inicializado y no vacio
  * @remark la función requiere que exista un Nodo en el arbol con una etiqueta igual a etiquetaVieja
  */
@@ -100,7 +100,7 @@ void imprimirNodosEnNivel(Arbol &arbol, Nodo subraiz, int nivel)
 
     // Caso base: Nivel 1. La hijos de la sub-raíz. Son los únicos en este nivel (no tienen primos)
     if (nivel == 1)
-    { 
+    {
         while (child != NodoNulo)
         {
             std::cout << arbol.Etiqueta(child) << ", ";
@@ -133,7 +133,7 @@ void borrarSubArbol(Arbol &arbol, Nodo subraiz)
     // La cola se llena con los nodos hijos de los que hemos visitado
     // Finalmente, cuanto todos los nodos han sido visitados, borramos la cola
     Util::Cola<Nodo> cola;
-    
+
     // Vamos a eliminar los nodos usando una lista como si fuera una "pila"
     // Cada vez que visitamos un nodo, lo añadimos a la "pila"
     // La "pila" se llena en orden inverso al que añadimos los nodos
@@ -158,7 +158,7 @@ void borrarSubArbol(Arbol &arbol, Nodo subraiz)
         for (Nodo visitedChildren = arbol.HijoMasIzquierdo(visitedNode); visitedChildren != NodoNulo; visitedChildren = arbol.HermanoDerecho(visitedChildren))
             cola.Encolar(visitedChildren);
 
-        // Todo esta hecho por esta iteracion 
+        // Todo esta hecho por esta iteracion
     }
 
     // Todo el arbol ha sido visitado y sus nodos puestos en la pila
@@ -209,26 +209,26 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
 
             int numNodesTotal = (pow(k, i) - 1) / (k - 1); // La cantidad total de nodos  a agregar en el arbol despues que sea completamente construido
             int numNodesLastLevel = pow(k, i - 1);         // la cantidad de nodos esperados en el ultimo nivel del arbol
-            int numNodesAdded = 1;                         // La cantidad de nodos añadidos hasta ahora, la raiz es un nodo asi que llevamos uno 
+            int numNodesAdded = 1;                         // La cantidad de nodos añadidos hasta ahora, la raiz es un nodo asi que llevamos uno
             std::cout << "Valor de i " << i << std::endl;
             std::cout << "Valor de k " << k << std::endl;
             std::cout << "Valor de Total " << numNodesTotal << std::endl;
             std::cout << "Valor de ultimo nivel " << numNodesLastLevel << std::endl;
 
-            //Vamos a añadir nodos hijos a todos los niveles menos el ultimo. No hay necesidad de añadirselo al ultimo 
+            //Vamos a añadir nodos hijos a todos los niveles menos el ultimo. No hay necesidad de añadirselo al ultimo
             {
-                // El padre al que agregarle un hijo 
-                // La cantidad de hijos po padre ya se conoce. Podemos producirla 
+                // El padre al que agregarle un hijo
+                // La cantidad de hijos po padre ya se conoce. Podemos producirla
                 Nodo padre = parentNodesQueue.Desencolar();
                 for (int numChildAdded = 0; numChildAdded < k; ++numChildAdded)
                 {
-                    // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol 
+                    // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol
                     Nodo newChild = myTree.AgregarHijo(L.recuperar(numNodesAdded), padre);
                     ++numNodesAdded;
 
                     std::cout << "\tNEW CH = " << myTree.Etiqueta(newChild) << std::endl;
                     // Cada vez que poduzcamos un nuevo hijo, se puede considerar como un padre que valdria la pena visitar despues
-                    // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol 
+                    // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol
                     if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
                     {
                         parentNodesQueue.Encolar(newChild);
@@ -250,10 +250,10 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
  */
 int main()
 {
-    //ListaIndexada lista;
+    // ListaIndexada lista;
     Arbol arbol;
-    Controlador controlador; 
-    //Cola<int> cola(10000);
+    Controlador controlador;
+    // Cola<int> cola(10000);
 
     std::cout << "Bienvenid@ ! Inserta [i] para inicializar un arbol vacio, sino inserta [q] para salir del programa" << std::endl;
     char respuestaUsuario;
@@ -265,164 +265,182 @@ int main()
     if (respuestaUsuario == 'i')
     {
         seguir = 1;
-        //std::cout << "Si quiere inicializar una Cola vacia, digita [c] \nSi quiere inicializar una Lista indexada vacia, digita [l] \nSi quiere inicializar un arbol n-ario, digita [a]" << std::endl;
-        //std::cin >> respuestaUsuario;
+        // std::cout << "Si quiere inicializar una Cola vacia, digita [c] \nSi quiere inicializar una Lista indexada vacia, digita [l] \nSi quiere inicializar un arbol n-ario, digita [a]" << std::endl;
+        // std::cin >> respuestaUsuario;
     }
 
     while (seguir)
     {
         std::cout << "\n\n\t ############################# \n"
-                      << std::endl;
-            std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
-            std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
-            std::cout << "1 - agregar hijo" << std::endl;
-            std::cout << "2 - borrar hoja" << std::endl;
-            std::cout << "3 - imprimir el arbol" << std::endl;
-            std::cout << "4 - get raiz" << std::endl;
-            std::cout << "5 - salir y destruir el arbol" << std::endl;
-            std::cout << "6 - HijoMasIzquierdo" << std::endl;
-            std::cout << "7 - HermanoDerecho" << std::endl;
-            std::cout << "8 - padre" << std::endl;
-            std::cout << "9 - modificar etiqueta" << std::endl;
-            std::cout << "10 - numNodos" << std::endl;
-            std::cout << "11 - Listar por niveles" << std::endl;
-            std::cout << "12 - Listar por preorden" << std::endl;
-            std::cout << "13 - Etiquetas en un nivel" << std::endl;
-            std::cout << "14 - Eliminar arbol a partir de un nodo" << std::endl;
-            std::cout << "15 - Crear un arbol en base a una lista" << std::endl;
-            std::cout << "16 - Veriricar si un nodo existe en el árbol" << std::endl;
-            std::cout << "17 - Averiguar profundidad de un nodo " << std::endl;
-            std::cout << "18 - Averiguar etiquetas repetidas" << std::endl;
-            std::cout << "19 - Hermano Izquierdo de un nodo" << std::endl;
-            std::cout << "20 - Cantidad de niveles (preorden)" << std::endl;
-            std::cout << "21 - Cantidad de niveles (por niveles)" << std::endl;
-            
-            std::cin >> choice;
+                  << std::endl;
+        std::cout << "Que desea hacer con el arbol n-ario?" << std::endl;
+        std::cout << "0 - cambiar raiz (vital al inicializar el arbol)" << std::endl;
+        std::cout << "1 - agregar hijo" << std::endl;
+        std::cout << "2 - borrar hoja" << std::endl;
+        std::cout << "3 - imprimir el arbol" << std::endl;
+        std::cout << "4 - get raiz" << std::endl;
+        std::cout << "5 - salir y destruir el arbol" << std::endl;
+        std::cout << "6 - HijoMasIzquierdo" << std::endl;
+        std::cout << "7 - HermanoDerecho" << std::endl;
+        std::cout << "8 - padre" << std::endl;
+        std::cout << "9 - modificar etiqueta" << std::endl;
+        std::cout << "10 - numNodos" << std::endl;
+        std::cout << "11 - Listar por niveles" << std::endl;
+        std::cout << "12 - Listar por preorden" << std::endl;
+        std::cout << "13 - Etiquetas en un nivel" << std::endl;
+        std::cout << "14 - Eliminar arbol a partir de un nodo" << std::endl;
+        std::cout << "15 - Crear un arbol en base a una lista" << std::endl;
+        std::cout << "16 - Veriricar si un nodo existe en el árbol" << std::endl;
+        std::cout << "17 - Averiguar profundidad de un nodo " << std::endl;
+        std::cout << "18 - Averiguar etiquetas repetidas" << std::endl;
+        std::cout << "19 - Hermano Izquierdo de un nodo" << std::endl;
+        std::cout << "20 - Cantidad de niveles (preorden)" << std::endl;
+        std::cout << "21 - Cantidad de niveles (por niveles)" << std::endl;
 
-            switch (choice)
-            {
-            case 0: // cambiar raiz (vital al inicializar el arbol)
-            {
-                std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
-                int valorRaiz;
-                std::cin >> valorRaiz;
-                arbol.PonerRaiz(valorRaiz);
-                break;
-            }
-            case 1: // agregar hijo
-            {
-                std::cout << "Valor del padre" << std::endl;
-                int valorP;
-                std::cin >> valorP;
-                std::cout << "Valor a insertar" << std::endl;
-                int valor;
-                std::cin >> valor;
-                controlador.agregarHijo(valorP, valor, arbol);
-            }
-            break;
+        std::cin >> choice;
 
-            case 2: // borrar hoja
-            {
-                std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
-                int etiquetaBorrada;
-                std::cin >> etiquetaBorrada;
-                controlador.borrarHoja(etiquetaBorrada, arbol);
-                break;
-            }
-            case 3: // imprimir el arbol
-            {
-                controlador.imprimirArbol(arbol);
-                break;
-            }
-            case 4: // get raiz
-            {
-                std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
-            }
+        switch (choice)
+        {
+        case 0: // cambiar raiz (vital al inicializar el arbol)
+        {
+            std::cout << "Cual valor quiere poner a la raiz ?" << std::endl;
+            int valorRaiz;
+            std::cin >> valorRaiz;
+            arbol.PonerRaiz(valorRaiz);
             break;
-            case 5: // salir y destruir arbol
-            {
-                seguir = 0;
-                break;
-            }
-            case 6: // hijo izq
-            {
-                std::cout << "Cual valor del padre ?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                controlador.hijoMasIzquierdo(valor, arbol);
-                break;
-            }
+        }
+        case 1: // agregar hijo
+        {
+            std::cout << "Valor del padre" << std::endl;
+            int valorP;
+            std::cin >> valorP;
+            std::cout << "Valor a insertar" << std::endl;
+            int valor;
+            std::cin >> valor;
+            controlador.agregarHijo(valorP, valor, arbol);
+        }
+        break;
 
-            case 7: // hermano derecho
-            {
-                std::cout << "Cual valor del hermano ?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                controlador.hermanoDerecho(valor, arbol);
-                break;
-            }
-            case 8: // padre
-            {
-                std::cout << "Cual valor del hijo ?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                controlador.padre(valor, arbol);
-                break;
-            }
-            case 9:
-            {
-                std::cout << "Cual valor quiere modificar del arbol ?" << std::endl;
-                int etiquetaModificada;
-                std::cin >> etiquetaModificada;
-                std::cout << "Cual es el nuevo valor ?" << std::endl;
-                int etiqueta;
-                std::cin >> etiqueta;
-                controlador.modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
-                break;
-            }
-            case 10: // num Nodos
-            {
-                std::cout << "Num Nodos :" << arbol.NumNodos() << std::endl;
-                break;
-            }
-            case 11:
-            {
-                controlador.listarPorNiveles(arbol);
-            }
+        case 2: // borrar hoja
+        {
+            std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
+            int etiquetaBorrada;
+            std::cin >> etiquetaBorrada;
+            controlador.borrarHoja(etiquetaBorrada, arbol);
             break;
-            case 12:
-            {
-                controlador.listarPorPreorden(arbol, arbol.Raiz());
-            }
+        }
+        case 3: // imprimir el arbol
+        {
+            controlador.imprimirArbol(arbol);
             break;
-            case 13:
-            {
-                std::cout << "Que nivel desea conocer?" << std::endl;
-                int nivel;
-                std::cin >> nivel;
-                controlador.imprimirNodosEnNivel(arbol, arbol.Raiz(), nivel - 1);
-            }
+        }
+        case 4: // get raiz
+        {
+            std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
+        }
+        break;
+        case 5: // salir y destruir arbol
+        {
+            seguir = 0;
             break;
-            case 14:
-            {
-                std::cout << "A partir de que valor desea borrar?" << std::endl;
-                int valor;
-                std::cin >> valor;
-                Nodo subroot = controlador.buscarEtiqueta(valor, arbol);
-                controlador.borrarSubArbol(arbol, subroot);
-            }
+        }
+        case 6: // hijo izq
+        {
+            std::cout << "Cual valor del padre ?" << std::endl;
+            int valor;
+            std::cin >> valor;
+            controlador.hijoMasIzquierdo(valor, arbol);
             break;
-            case 15:
+        }
+
+        case 7: // hermano derecho
+        {
+            std::cout << "Cual valor del hermano ?" << std::endl;
+            int valor;
+            std::cin >> valor;
+            controlador.hermanoDerecho(valor, arbol);
+            break;
+        }
+        case 8: // padre
+        {
+            std::cout << "Cual valor del hijo ?" << std::endl;
+            int valor;
+            std::cin >> valor;
+            controlador.padre(valor, arbol);
+            break;
+        }
+        case 9:
+        {
+            std::cout << "Cual valor quiere modificar del arbol ?" << std::endl;
+            int etiquetaModificada;
+            std::cin >> etiquetaModificada;
+            std::cout << "Cual es el nuevo valor ?" << std::endl;
+            int etiqueta;
+            std::cin >> etiqueta;
+            controlador.modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
+            break;
+        }
+        case 10: // num Nodos
+        {
+            std::cout << "Num Nodos :" << arbol.NumNodos() << std::endl;
+            break;
+        }
+        case 11:
+        {
+            controlador.listarPorNiveles(arbol);
+        }
+        break;
+        case 12:
+        {
+            controlador.listarPorPreorden(arbol, arbol.Raiz());
+        }
+        break;
+        case 13:
+        {
+            std::cout << "Que nivel desea conocer?" << std::endl;
+            int nivel;
+            std::cin >> nivel;
+            controlador.imprimirNodosEnNivel(arbol, arbol.Raiz(), nivel - 1);
+        }
+        break;
+        case 14:
+        {
+            std::cout << "A partir de que valor desea borrar?" << std::endl;
+            int valor;
+            std::cin >> valor;
+            Nodo subroot = controlador.buscarEtiqueta(valor, arbol);
+            controlador.borrarSubArbol(arbol, subroot);
+        }
+        break;
+        case 15:
+        {
+            int eleccion;
+            std::cout << "Desea general una lista o que esta sea generada automaticamente? \n 1 - Auto \n 2 - Manual " << std::endl;
+            std::cin >> eleccion;
+            ListaIndexada list;
+            int conformidad = 2;
+            int i;
+            int k;
+            int cantidad;
+            if (eleccion == 1)
             {
-                int eleccion;
-                std::cout << "Desea general una lista o que esta sea generada automaticamente? \n 1 - Auto \n 2 - Manual " << std::endl;
-                std::cin >> eleccion;
-                ListaIndexada list;
-                int conformidad = 2;
-                int i;
-                int k;
-                int cantidad;
-                if (eleccion == 1)
+
+                std::cout << "Niveles" << std::endl;
+                std::cin >> i;
+                std::cout << "Hijos por nivel" << std::endl;
+                std::cin >> k;
+                cantidad = (pow(k, i) - 1) / (k - 1);
+
+                for (int j = 0; j < cantidad; j++)
+                {
+                    list.insertar(j, j);
+                }
+                controlador.crearArbol(i, k, list, arbol);
+            }
+            else
+            {
+
+                do
                 {
 
                     std::cout << "Niveles" << std::endl;
@@ -430,85 +448,91 @@ int main()
                     std::cout << "Hijos por nivel" << std::endl;
                     std::cin >> k;
                     cantidad = (pow(k, i) - 1) / (k - 1);
+                    std::cout << "Para un arbol de " << i << " niveles y " << k << " hijos, debera insertar " << cantidad << " elementos manualmente. \n Esta de acuerdo? \n 1 - Si \n 2 - reingresar valores \n 3 salir del metodo" << std::endl;
+                    std::cin >> conformidad;
 
-                    for (int j = 0; j < cantidad; j++)
-                    {
-                        list.insertar(j, j);
-                    }
-                    controlador.crearArbol(i, k, list, arbol);
-                }
-                else
+                } while (conformidad == 2);
+            }
+            if (conformidad == 1)
+            {
+
+                for (int j = 0; j < cantidad; j++)
                 {
-
-                    do
-                    {
-
-                        std::cout << "Niveles" << std::endl;
-                        std::cin >> i;
-                        std::cout << "Hijos por nivel" << std::endl;
-                        std::cin >> k;
-                        cantidad = (pow(k, i) - 1) / (k - 1);
-                        std::cout << "Para un arbol de " << i << " niveles y " << k << " hijos, debera insertar " << cantidad << " elementos manualmente. \n Esta de acuerdo? \n 1 - Si \n 2 - reingresar valores \n 3 salir del metodo" << std::endl;
-                        std::cin >> conformidad;
-
-                    } while (conformidad == 2);
+                    int elemento;
+                    std::cout << "Inserte un elemento" << std::endl;
+                    std::cin >> elemento;
+                    list.insertar(elemento, j);
                 }
-                if (conformidad == 1)
-                {
+                controlador.crearArbol(i, k, list, arbol);
+            }
+        }
+        break;
+        case 16:
+        {
+            int elemento;
+            std::cout << "Inserte un elemento" << std::endl;
+            std::cin >> elemento;
+            Nodo nodoDondeEtiqueta = controlador.buscarEtiqueta(elemento, arbol);
 
-                    for (int j = 0; j < cantidad; j++)
-                    {
-                        int elemento;
-                        std::cout << "Inserte un elemento" << std::endl;
-                        std::cin >> elemento;
-                        list.insertar(elemento, j);
-                    }
-                    controlador.crearArbol(i, k, list, arbol);
-                }
-            }
-            break;
-            case 16:
+            if (nodoDondeEtiqueta == Nodo())
+                std::cout << "Nodo NO existe en el árbol" << std::endl;
+            else
+                std::cout << "Nodo SÍ existe en el árbol" << std::endl;
+        }
+        break;
+        case 17:
+        {
+            // averiguarProfundidadNodo
+            int elemento;
+            std::cout << "Cual es la etiqueta del nodo del cual quiere conocer la profundidad?" << std::endl;
+            std::cin >> elemento;
+            Nodo nodo = controlador.buscarEtiqueta(elemento, arbol);
+            int profundidad = controlador.averiguarProfundidadNodo(arbol, nodo);
+            std::cout << "La profundidad de la etiqueta " << elemento << " es de: " << profundidad << std::endl;
+        }
+        break;
+        case 18:
+        {
+            bool repetidas = controlador.averiguarEtiquetasRepetidas(arbol);
+            if (repetidas != 0)
             {
-                int elemento;
-                std::cout << "Inserte un elemento" << std::endl;
-                std::cin >> elemento;
-                Nodo nodoDondeEtiqueta = controlador.buscarEtiqueta(elemento, arbol);
-
-                if (nodoDondeEtiqueta == Nodo())
-                    std::cout << "Nodo NO existe en el árbol" << std::endl;
-                else
-                    std::cout << "Nodo SÍ existe en el árbol" << std::endl;
+                std::cout << "Hay etiquetas repetidas en el arbol" << std::endl;
             }
-            break;
-            case 17:
+            else
             {
-                //averiguarProfundidadNodo
-                
+                std::cout << "No hay etiquetas repetidas en el arbol" << std::endl;
             }
+        }
+        case 19:
+        {
+            // Hermano izquierdo
+            int elemento;
+            std::cout << "Cual es la etiqueta del nodo del cual quiere conocer el hermano izquierdo?" << std::endl;
+            std::cin >> elemento;
+            Nodo hermanoDerecho = controlador.buscarEtiqueta(elemento, arbol);
+            Nodo nodo = controlador.averiguarHermanoIzquierdo(hermanoDerecho, arbol);
+            Nodo nodoNulo = Nodo();
+            if(nodo != nodoNulo){
+                int etiquetaHermanoIzquierdo = arbol.Etiqueta(nodo);
+                std::cout << "El hermano izquierdo de " << elemento << " es: " << etiquetaHermanoIzquierdo << std::endl;
+            }else{
+                std::cout << "La etiqueta " << elemento << " no tiene hermano izquierdo" << std::endl;
+            }
+        }
+        break;
+        case 20:
+        {
+            //
+        }
+        break;
+        case 21:
+        {
+            //
+        }
+        break;
+        default:
             break;
-            case 18:
-            {
-                //averiguarEtiquetasRepetidas
-            }
-            case 19:
-            {
-                //Hermano izquierdo
-            }
-            break;
-            case 20:
-            {
-                //Hermano izquierdo
-            }
-            break;
-            case 21:
-            {
-                //Hermano izquierdo
-            }
-            break;
-            default:
-                break;
-            }
-            
+        }
     }
 
     return 0;
