@@ -212,7 +212,6 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
                 // El padre al que agregarle un hijo 
                 // La cantidad de hijos po padre ya se conoce. Podemos producirla 
                 Nodo padre = parentNodesQueue.Desencolar();
-                std::cout << "El desencolado es" << myTree.Etiqueta(padre) << std::endl;
                 for (int numChildAdded = 0; numChildAdded < k; ++numChildAdded)
                 {
                     // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol 
@@ -224,7 +223,6 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
                     // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol 
                     if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
                     {
-                        std::cout << "Encole a " << myTree.Etiqueta(newChild) << std::endl;
                         parentNodesQueue.Encolar(newChild);
                     }
                 }
