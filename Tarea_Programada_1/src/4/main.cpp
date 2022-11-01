@@ -6,10 +6,11 @@
  * @param arbol Árbol en el cuál buscar los nodos
  * @remark Tanto el árbol como la etiqueta deben estar inicializados. Debe existir al menos un nodo con la etiqueta en el árbol.
  */
+/*
 void hermanoDerecho(int etiqueta, Arbol &arbol)
 {
     // Solicitamos al nodo con la etiqueta particular
-    Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
+    Nodo nodoPadre = controlador.buscarEtiqueta(etiqueta, arbol);
     Nodo mI = arbol.HermanoDerecho(nodoPadre);
 
     if(mI!= Nodo()){
@@ -17,7 +18,7 @@ void hermanoDerecho(int etiqueta, Arbol &arbol)
     }else{
         std::cout<< "No tiene hermano derecho" << std::endl;
     }
-}
+}*/
 
 /**
  * @brief Muestra al usuario el hijo mas izquierdo de un nodo cual etiqueta es dada, la función no modifica nada
@@ -25,12 +26,13 @@ void hermanoDerecho(int etiqueta, Arbol &arbol)
  * @param arbol es el Arbol en el cual debemos buscar el hijo mas izquierdo de la etiqueta dada
  * @remark la función requiere que ambos parametros existan, y que exista un Nodo en el arbol que tenga como etiqueta "etiqueta"
  */
+/*
 void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
 {
-    Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
+    Nodo nodoPadre = controlador.buscarEtiqueta(etiqueta, arbol);
     Nodo mI = arbol.HijoMasIzquierdo(nodoPadre);
     std::cout << "Hijo mas Izquiedo de " << etiqueta << "es " << arbol.Etiqueta(mI) << std::endl;
-}
+}*/
 
 /**
  * @brief Borra la hoja del arbol que tengo como etiqueta el entero valorBorrado, la funcion modifica el arbol
@@ -38,12 +40,13 @@ void hijoMasIzquierdo(int etiqueta, Arbol &arbol)
  * @param arbol es el Arbol del cual queremos borrar una hoja
  * @remark la función requiere que valorBorrado pertenezca al arbol, y que sea una hoja
  */
+/*
 void borrarHoja(int valorBorrado, Arbol &arbol)
 {
     Nodo borrado = buscarEtiqueta(valorBorrado, arbol);
     arbol.BorrarHoja(borrado);
     imprimirArbol(arbol);
-}
+}*/
 
 /**
  * @brief Agrega un Nodo al arbol con una etiqueta igual a etiquetaHijo y con un padre con la etiqueta "etiqueta", la función modifica el arbol
@@ -52,12 +55,13 @@ void borrarHoja(int valorBorrado, Arbol &arbol)
  * @param arbol es de tipo Arbol, se requiere que sea inicializado, y que tenga por lo menos la raiz puesta
  * @remark la función requiere que el arbol tenga una raiz valida (no nula) y que tengo un Nodo con la etiqueta "etiqueta"
  */
+/*
 void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
 {
-    Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
+    Nodo nodoPadre = controlador.buscarEtiqueta(etiqueta, arbol);
     arbol.AgregarHijo(etiquetaHijo, nodoPadre);
     imprimirArbol(arbol);
-}
+}*/
 
 /**
  * @brief Modifica la etiqueta dada por la nueva etiqueta, la función modifica el arbol
@@ -66,11 +70,12 @@ void agregarHijo(int etiqueta, int etiquetaHijo, Arbol &arbol)
  * @param arbol es de tipo Arbol, debe ser inicializado y no vacio
  * @remark la función requiere que exista un Nodo en el arbol con una etiqueta igual a etiquetaVieja
  */
+/*
 void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol &arbol)
 {
     Nodo modificado = buscarEtiqueta(etiquetaVieja, arbol);
     arbol.ModificaEtiqueta(nuevaEtiqueta, modificado);
-}
+}*/
 
 /**
  * @brief Muestra cuantos nodos existe en un nivel dado del arbol
@@ -80,6 +85,7 @@ void modificaEtiqueta(int etiquetaVieja, int nuevaEtiqueta, Arbol &arbol)
  * @remark la función requiere que el arbol sea inicializado, y que existe el level dado en el arbol
  * Se indizan a partir de 0 (raíz) a n-1 (con n = altura del árbol)
  */
+/*
 void imprimirNodosEnNivel(Arbol &arbol, Nodo subraiz, int nivel)
 {
     // Caso base: Nivel 0. La sub-raiz. Es el único nodo con su propio nivel
@@ -111,7 +117,7 @@ void imprimirNodosEnNivel(Arbol &arbol, Nodo subraiz, int nivel)
             child = arbol.HermanoDerecho(child);
         }
     }
-}
+}*/
 
 /**
  * @brief Borra un subarbol que tiene como raiz el Nodo subraiz dado, la función modifica el arbol
@@ -119,6 +125,7 @@ void imprimirNodosEnNivel(Arbol &arbol, Nodo subraiz, int nivel)
  * @param subraiz es de tipo Nodo, debe existir en el arbol, y ser inicializado
  * @remark la funcion requiere que el Nodo subroot exista en el arbol dado
  */
+/*
 void borrarSubArbol(Arbol &arbol, Nodo subraiz)
 {
     // Vamos a desplazarnos por los nodos de cada nivel usando una cola
@@ -171,7 +178,7 @@ void borrarSubArbol(Arbol &arbol, Nodo subraiz)
         // Vamos a sacarlo de la pila y llevarlo hasta la siguiente hoja en la proxima iteracion
     }
     // Todo esta hecho
-}
+}*/
 
 /**
  * @brief crea un arbol y despues lo imprime
@@ -181,6 +188,7 @@ void borrarSubArbol(Arbol &arbol, Nodo subraiz)
  * @param myTree es de tipo Arbol, debe ser inicializado
  * @remark la funcion requiere que i y k sean valores validos, y que la lista y el arbol sean inicializados y validos
  */
+/*
 void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
 {
 
@@ -232,8 +240,9 @@ void crearArbol(int i, int k, ListaIndexada &L, Arbol &myTree)
     }
 
     // El arbol esta lista, lo podemos imprimir a este punto
-    imprimirArbol(myTree);
+    controlador.imprimirArbol(myTree);
 }
+*/
 
 /**
  * @brief Contiene el menu principal que permite comunicar con el usuario
@@ -399,7 +408,7 @@ int main()
                 std::cout << "A partir de que valor desea borrar?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                Nodo subroot = buscarEtiqueta(valor, arbol);
+                Nodo subroot = controlador.buscarEtiqueta(valor, arbol);
                 controlador.borrarSubArbol(arbol, subroot);
             }
             break;
