@@ -1,6 +1,6 @@
 #ifndef ARBOLLH
 #define ARBOLLH
-#include "Lista.h"
+#include "../2/Lista.h"
 #include "Celda.h"
 #include "NodoConcreto.hpp"
 

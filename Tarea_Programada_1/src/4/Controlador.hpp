@@ -12,8 +12,8 @@
 #include "../2/ListaIndexada.h"
 
 // Include de los Árboles
-#include "../3.1/3.1.hpp"
-// #include "../3.2/3.2.hpp"
+//#include "../3.1/3.1.hpp"
+ #include "../3.2/3.2.hpp"
 // #include "../3.3/3.3.hpp"
 // #include "../3.4/3.4.hpp"
 // #include "../3.5/3.5.hpp"
@@ -324,6 +324,7 @@ public:
         // Si resulta que encontramos al nodo, escaparemos el recorrido mediante un retorno prematuro
         while (!colaNodos.Vacio())
         {
+            
             // Siempre obtendremos el nodo encolado más antigüamente (de primero)
             Nodo nodoActual = colaNodos.Desencolar();
 
@@ -336,7 +337,10 @@ public:
 
             // Ahora encolaremos todos sus hijos
             for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
+            {
+                std::cout<< "Me encicle en 341" << std::endl;
                 colaNodos.Encolar(hijoActual);
+            }
         }
 
         // Si no se encontró un nodo con la etiqueta correspondiente en el árbol, entonces devolveremos nodo nulo
@@ -430,7 +434,7 @@ public:
     {
         Nodo nodoPadre = buscarEtiqueta(etiqueta, arbol);
         arbol.AgregarHijo(etiquetaHijo, nodoPadre);
-        imprimirArbol(arbol);
+        //imprimirArbol(arbol);
     }
 
     /**

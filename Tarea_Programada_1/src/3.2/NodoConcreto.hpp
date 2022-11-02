@@ -37,6 +37,8 @@ NodoConcreto(int et){
 /// @param NodoConcreto*  
 void insertarEnLista(NodoConcreto* nodoNuevo){
 	
+	listaHijos->insertar(nodoNuevo);
+	/*
 	if(listaHijos->getPrimera()!=nullptr){
 		
 		listaHijos->insertar(nodoNuevo);
@@ -46,6 +48,7 @@ void insertarEnLista(NodoConcreto* nodoNuevo){
 		listaHijos->insertarAlPrincipio(nodoNuevo);
 		
 	}
+	*/
 	
 }
 
