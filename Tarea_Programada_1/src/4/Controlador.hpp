@@ -283,7 +283,6 @@ public:
         size_t nodosPendientesNivelSiguiente = 0;
 
         // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
-        // Si resulta que encontramos al padre, escaparemos el recorrido mediante un retorno prematuro
         while (!colaNodos.Vacio())
         {
             // Siempre obtendremos el nodo encolado más antigüamente (de primero)
