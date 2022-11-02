@@ -522,13 +522,14 @@ int main()
         break;
         case 20:
         {
-            size_t nivelesPreorden = controlador.nivelesArbolRPO(arbol, arbol.Raiz());
-            std::cout << "Tras recorrer en preorden, hay " << nivelesPreorden << std::endl;
+            size_t nivelesPPO = controlador.nivelesArbolRPO(arbol, arbol.Raiz());
+            std::cout << "Tras recorrer en preorden, hay " << nivelesPPO << " niveles " << std::endl;
         }
         break;
         case 21:
         {
-            //
+            size_t nivelesRPN = controlador.nivelesArbolRPN(arbol);
+            std::cout << "Tras recorrer en por niveles, hay " << nivelesRPN << " niveles" << std::endl;
         }
         break;
         default:

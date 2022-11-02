@@ -127,7 +127,7 @@ public:
      * @param subraiz Nodo raíz del cual partir el recorrido en preorden
      * @remark Tanto el árbol como el nodo debe estar inicializado. El nodo subraíz debe pertencer al árbol, aunque se permite que sea nulo
      * @return Devuelve la cantidad de niveles que tiene el árbol a partir de ese nodo
-     * La cantidad de niveles va de 1 a n, siendo n la altura total del árbol
+     * La cantidad de niveles va de 0 a n, siendo n la altura total del árbol
      */
     size_t nivelesArbolRPO(Arbol &arbol, Nodo subraiz)
     {
@@ -152,6 +152,71 @@ public:
         // Una vez que ya conocemos la mayor altura entre las de los subárboles inmediatos a la subraíz, entonces es
         // trivial reconocer que la altura a partir de la subraíz considera un nivel adicionaL: el de la subraíz
         return alturaCandidata + 1;
+    }
+    
+    /**
+     * @brief Indica cuántos niveles tiene un árbol realizando un recorrido por niveles. No modifica nada
+     * @param arbol Árbol para el cual averiguar la cantidad de niveles
+     * @remark El árbol debe estar inicializado.
+     * @return Devuelve la cantidad de niveles que tiene el árbol (comienza en 0). Un valor de 0 niveles representa un árbol vacío
+     */
+    size_t nivelesArbolRPN(Arbol &arbol)
+    {
+        const Nodo &NodoNulo = Nodo();
+
+        // Caso 1: El árbol tiene raíz nula (no tiene nodos)
+        if (arbol.Raiz() == NodoNulo)
+            return 0;
+
+        // Caso 2: El árbol tiene nodos
+        // Realizaremos un recorrido por niveles utilizando una cola de nodos
+        Util::Cola<Nodo> colaNodos;
+
+        // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida
+        colaNodos.Encolar(arbol.Raiz());
+
+        // Adicionalmente, llevaremos cuenta de cuántos nodos corresponden al nivel actual y su correspondiente siguiente
+        size_t nodosPendientesNivelActual = 1;
+        size_t nodosPendientesNivelSiguiente = 0;
+
+        // Asimismo, llevaremos cuenta de cuántos niveles hemos recorrido hasta ahora
+        size_t nivelesRecorridos = 0;  // Nos falta recorrer el primer nivel todavía, por eso comenzamos en 0
+
+        // Mientras tengamos nodos en la cola, no hemos terminado el recorrido
+        while (!colaNodos.Vacio())
+        {
+            // Siempre obtendremos el nodo encolado más antigüamente (de primero)
+            Nodo nodoActual = colaNodos.Desencolar();
+
+            // Tras obtener ese nodo, la cantidad de nodos pendientes en el nivel actual disminuye en 1
+            --nodosPendientesNivelActual;
+
+            // Tras obtener un nodo, encolaremos cada hijo
+            for (Nodo hijoActual = arbol.HijoMasIzquierdo(nodoActual); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
+            {
+                colaNodos.Encolar(hijoActual);
+
+                // Tras encolar un hijo, la cantidad de nodos pendientes en el nivel siguiente aumenta
+                ++nodosPendientesNivelSiguiente;
+            }
+
+            // Si ya no hay nodos pendientes en este nivel, entonces hemos cambiado de nivel
+            if (nodosPendientesNivelActual == 0)
+            {
+                // La cantidad de nodos pendientes en este nivel corresponden a la cantidad de nodos pendientes para el siguiente
+                nodosPendientesNivelActual = nodosPendientesNivelSiguiente;
+
+                // Luego, como cambiamos de nivel, la cantidad de nodos pendientes para el siguiente nivel se asume como 0 de nuevo
+                nodosPendientesNivelSiguiente = 0;
+
+                // Como estamos seguros que cambiamos de nivel podemos aumentar el contador de niveles
+                nivelesRecorridos += 1;
+            }
+        }
+
+        // Ya terminamos de recorrer por niveles todo el árbol
+        // La cantidad de niveles recorridos debería corresponder con la altura de éste.
+        return nivelesRecorridos;
     }
 
     /**
