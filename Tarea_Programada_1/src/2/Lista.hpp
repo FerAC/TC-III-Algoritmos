@@ -1,7 +1,7 @@
 #ifndef ListaSimplementeEnlazada
 #define ListaSimplementeEnlazada
 
-#include "Celda.h"
+#include "Celda.hpp"
 #include <stddef.h>
 
 template <typename T>
@@ -100,7 +100,7 @@ class Lista {
 		}
 
 		Celda<T> * buscar( T elemento) {
-			std::cout<< "ESTOY BUSCANDO" << std::endl;
+			
 			int encontrado = 0;
 			size_t i = 0;
 			Celda<T>* temp = primera;
@@ -110,7 +110,6 @@ class Lista {
 			
 			while (i < contador && !encontrado) {
 				if (temp->getEtiqueta() == elemento) {
-					std::cout << "Encontre" << std::endl;
 					encontrado = 1;
 				} else if (i + 1 < contador) {
 					temp = temp->getSiguiente();
