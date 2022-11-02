@@ -2,7 +2,7 @@
 
 /**
  * @brief Contiene el menu principal que permite comunicar con el usuario
- * @return El método devuelve un 0 al final de se ejecución
+ * @return El metodo devuelve un 0 al final de se ejecucion
  */
 int main()
 {
@@ -57,7 +57,7 @@ int main()
         std::cout << "13 - Etiquetas en un nivel" << std::endl;
         std::cout << "14 - Eliminar arbol a partir de un nodo" << std::endl;
         std::cout << "15 - Crear un arbol en base a una lista" << std::endl;
-        std::cout << "16 - Verificar si un nodo existe en el árbol" << std::endl;
+        std::cout << "16 - Verificar si un nodo existe en el arbol" << std::endl;
         std::cout << "17 - Averiguar profundidad de un nodo " << std::endl;
         std::cout << "18 - Averiguar etiquetas repetidas" << std::endl;
         std::cout << "19 - Hermano Izquierdo de un nodo" << std::endl;
@@ -238,9 +238,9 @@ int main()
                 Nodo nodoDondeEtiqueta = controlador.buscarEtiqueta(elemento, arbol);
 
                 if (nodoDondeEtiqueta == Nodo())
-                    std::cout << "Nodo NO existe en el árbol" << std::endl;
+                    std::cout << "Nodo NO existe en el arbol" << std::endl;
                 else
-                    std::cout << "Nodo SÍ existe en el árbol" << std::endl;
+                    std::cout << "Nodo SI existe en el arbol" << std::endl;
             }
         break;
         case 17:

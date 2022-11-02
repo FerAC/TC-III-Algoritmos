@@ -46,7 +46,7 @@ class Lista {
 		void borrar(const T& elemento) {
 			Celda<T>* match = this->buscar(elemento);
 
-			// Caso trivial: No se encontró
+			// Caso trivial: No se encontro
 			if (match == nullptr) 
 				return;
 
@@ -55,13 +55,13 @@ class Lista {
 				Celda<T>* despuesMatch = match->getSiguiente();
 				this->primera = despuesMatch;
 			}
-			// Caso B: Es un elemento después del primero
+			// Caso B: Es un elemento despues del primero
 			else {
 				Celda<T>* antesMatch = this->primera;
 				while (antesMatch->getSiguiente() != match) {
 					antesMatch = antesMatch->getSiguiente();
 				}
-				// Caso 2: Es el último elemento
+				// Caso 2: Es el ultimo elemento
 				if (match == this->ultima) {
 					antesMatch->setSiguiente(nullptr);
 					this->ultima = antesMatch;	

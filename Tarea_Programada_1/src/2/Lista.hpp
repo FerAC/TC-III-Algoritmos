@@ -35,8 +35,6 @@ class Lista {
 			
 		}
 
-		// TODO: INSERTAR DEBERIA SER POR INDICE Y VALOR, NO SOLO POR VALOR
-		// TODO: INSERTAR ES POCO SIGNIFICATIVO (¿DONDE SE INSERTA?). NOMBRE ESTA RESERVADO EN OP. BASICAS
 		void insertar(const T& elemento) {
 			Celda<T>* celdaNueva =  new Celda<T> (elemento);
 			
@@ -55,16 +53,14 @@ class Lista {
 			celdaNueva->setSiguiente(primera); 
 			primera = celdaNueva;
 			ultima = celdaNueva;
-			++contador; 
-			// TODO: FALTA ACTUALIZAR CONTADOR
+			++contador;
 		}
 
-		// TODO: BORRADO DEBERIA SER POR INDICE, NO POR VALOR
 		int borrar(T elemento) {
 			
 			Celda<T>* match = this->buscar(elemento);
 
-			// Caso trivial: No se encontró
+			// Caso trivial: No se encontro
 			if (match == nullptr){
 				return 0;
 				
@@ -75,13 +71,13 @@ class Lista {
 				Celda<T>* despuesMatch = match->getSiguiente();
 				this->primera = despuesMatch;
 			}
-			// Caso B: Es un elemento después del primero
+			// Caso B: Es un elemento despues del primero
 			else {
 				Celda<T>* antesMatch = this->primera;
 				while (antesMatch->getSiguiente() != match) {
 					antesMatch = antesMatch->getSiguiente();
 				}
-				// Caso 2: Es el último elemento
+				// Caso 2: Es el ultimo elemento
 				if (match == this->ultima) {
 					antesMatch->setSiguiente(nullptr);
 					this->ultima = antesMatch;	
@@ -104,7 +100,6 @@ class Lista {
 			int encontrado = 0;
 			size_t i = 0;
 			Celda<T>* temp = primera;
-			// TODO: MAS FACIL MODULARIZAR EN FOR
 			if(primera->getEtiqueta()==elemento)
 				return primera;
 			
@@ -129,8 +124,7 @@ class Lista {
 				iter->imprimir();
 			}
 		}
-		
-		// TODO: INDICE DEBERIA SER SIZE_T,
+
 		void modificarEnlaces(int indice, int etiqueta){
 			Celda<T> * nuevaCelda= new Celda<T>(etiqueta);
 			++contador;
@@ -142,10 +136,8 @@ class Lista {
 			anterior->setSiguiente(nuevaCelda);
 		}
 		
-		// TODO: USAR OPERATOR<< PARA SER MAS VERSATIL
 		Celda<T>* getPrimera(){
 			return primera;
-			
 		}
 
 		Celda<T>* getUltima(){

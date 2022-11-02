@@ -45,7 +45,7 @@ class Celda {
 		T* getEtiqueta(int){
 			return &etiqueta; 
 		}
-		// TODO: UTILIZAR OPERATOR<< PARA SER MAS VERSATIL
+
 		void imprimir() {
 			std::cout << etiqueta << std::endl;
 		}

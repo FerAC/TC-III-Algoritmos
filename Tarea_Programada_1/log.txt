@@ -18,7 +18,7 @@ Que desea hacer con el arbol n-ario?
 13 - Etiquetas en un nivel
 14 - Eliminar arbol a partir de un nodo
 15 - Crear un arbol en base a una lista
-16 - Verificar si un nodo existe en el árbol
+16 - Verificar si un nodo existe en el arbol
 17 - Averiguar profundidad de un nodo 
 18 - Averiguar etiquetas repetidas
 19 - Hermano Izquierdo de un nodo
@@ -43,7 +43,7 @@ Que desea hacer con el arbol n-ario?
 13 - Etiquetas en un nivel
 14 - Eliminar arbol a partir de un nodo
 15 - Crear un arbol en base a una lista
-16 - Verificar si un nodo existe en el árbol
+16 - Verificar si un nodo existe en el arbol
 17 - Averiguar profundidad de un nodo 
 18 - Averiguar etiquetas repetidas
 19 - Hermano Izquierdo de un nodo
@@ -69,7 +69,7 @@ Que desea hacer con el arbol n-ario?
 13 - Etiquetas en un nivel
 14 - Eliminar arbol a partir de un nodo
 15 - Crear un arbol en base a una lista
-16 - Verificar si un nodo existe en el árbol
+16 - Verificar si un nodo existe en el arbol
 17 - Averiguar profundidad de un nodo 
 18 - Averiguar etiquetas repetidas
 19 - Hermano Izquierdo de un nodo
@@ -95,7 +95,7 @@ Que desea hacer con el arbol n-ario?
 13 - Etiquetas en un nivel
 14 - Eliminar arbol a partir de un nodo
 15 - Crear un arbol en base a una lista
-16 - Verificar si un nodo existe en el árbol
+16 - Verificar si un nodo existe en el arbol
 17 - Averiguar profundidad de un nodo 
 18 - Averiguar etiquetas repetidas
 19 - Hermano Izquierdo de un nodo
@@ -124,7 +124,7 @@ Que desea hacer con el arbol n-ario?
 13 - Etiquetas en un nivel
 14 - Eliminar arbol a partir de un nodo
 15 - Crear un arbol en base a una lista
-16 - Verificar si un nodo existe en el árbol
+16 - Verificar si un nodo existe en el arbol
 17 - Averiguar profundidad de un nodo 
 18 - Averiguar etiquetas repetidas
 19 - Hermano Izquierdo de un nodo

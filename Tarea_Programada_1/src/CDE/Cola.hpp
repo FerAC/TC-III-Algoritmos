@@ -2,9 +2,9 @@
 #define COLA_DINAMIC_HPP
 
 #include <exception> // Para las excepciones
-#include <iostream> // Para impresiones en la salida estándar
+#include <iostream> // Para impresiones en la salida estandar
 
-/// @brief Excepción para cuando se intenta desreferenciar un puntero a elemento nulo (a nivel de bloque)
+/// @brief Excepcion para cuando se intenta desreferenciar un puntero a elemento nulo (a nivel de bloque)
 class ElementoInvalidoCola : public std::exception 
 {
     public:
@@ -15,7 +15,7 @@ class ElementoInvalidoCola : public std::exception
         {return "Imposible acceder a elemento. Es nulo";}
 };
 
-/// @brief Excepción para cuando se intenta desreferenciar un puntero a nodo bloque nulo
+/// @brief Excepcion para cuando se intenta desreferenciar un puntero a nodo bloque nulo
 class BloqueInvalido : public std::exception 
 {
     public:
@@ -26,7 +26,7 @@ class BloqueInvalido : public std::exception
         {return "Imposible acceder a bloque en cola. Es nulo";}
 };
 
-/// @brief Excepción para cuando se intenta desencolar a una cola no vacía
+/// @brief Excepcion para cuando se intenta desencolar a una cola no vacia
 class DesencoladoEnVacio : public std::exception 
 {
     public:
@@ -39,33 +39,33 @@ class DesencoladoEnVacio : public std::exception
 
 namespace Util
 {    
-    /// @brief Cola dinámica implementada mediante una lista doblemente enlazada
+    /// @brief Cola dinamica implementada mediante una lista doblemente enlazada
     template <typename Elemento>
     class Cola;
 
     /// @brief Imprime los contenidos de una Cola de forma horizontal a un flujo de salida
-    /// @param salida Flujo de salida para imprimir los contenidos del árbol
-    /// @param Cola Cola dináminca de la cual imprimir los contenidos
+    /// @param salida Flujo de salida para imprimir los contenidos del arbol
+    /// @param Cola Cola dinaminca de la cual imprimir los contenidos
     /// @return Referencia al flujo de salida utilizado (para encadenar impresiones)
     template <typename Elemento>
     std::ostream& operator<<(std::ostream& salida, const Cola<Elemento>& cola);
 
-    /// @brief Cola dinámica implementada mediante una lista doblemente enlazada
+    /// @brief Cola dinamica implementada mediante una lista doblemente enlazada
     template <typename Elemento>
     class Cola
     {
-        // La función de impresión puede ver las entrañas de una Cola
+        // La funcion de impresion puede ver las entrañas de una Cola
         template <typename T>
         friend std::ostream& operator<<(std::ostream&, const Cola<T>&);
 
         protected:
-            /// @brief Bloque (contenedor) poseedor de elemento y poseído por la Cola
+            /// @brief Bloque (contenedor) poseedor de elemento y poseido por la Cola
             class Bloque
             {
                 // Una Cola pueden manipular y ver las entrañas de un Bloque
                 friend class Cola;
 
-                // La función de impresión puede ver las entrañas de un Bloque
+                // La funcion de impresion puede ver las entrañas de un Bloque
                 template <typename T>
                 friend std::ostream& operator<<(std::ostream&, const Cola<T>&);
 
@@ -74,13 +74,13 @@ namespace Util
                 Elemento* elemento = nullptr;
 
                 /// @brief Inicializa a un bloque apuntando a un nuevo elemento creado por copia
-                /// @param valorElemento Elemento el cual será usado como base para construir una copia
-                /// @remark Requiere que el elemento tenga un constructor por copia válido
+                /// @param valorElemento Elemento el cual sera usado como base para construir una copia
+                /// @remark Requiere que el elemento tenga un constructor por copia valido
                 Bloque(const Elemento& valorElemento)
                 {this->elemento = new Elemento(valorElemento);}
 
                 /// @brief Libera la memoria del elemento apuntado, si resultase no ser nulo
-                /// @remark Requiere que el elemento tenga un destructor por defecto válido
+                /// @remark Requiere que el elemento tenga un destructor por defecto valido
                 ~Bloque()
                 {
                     if (this->elemento != nullptr)
@@ -99,8 +99,8 @@ namespace Util
                 }
         
                 /// @brief Destruye el elemento apuntado por este bloque para apuntar a otro nuevo
-                /// @param nuevoValor Elemento el cual será usado como base para construir una copia
-                /// @remark Requiere que el elemento tenga un constructor por copia y destructor por defecto válidos
+                /// @param nuevoValor Elemento el cual sera usado como base para construir una copia
+                /// @remark Requiere que el elemento tenga un constructor por copia y destructor por defecto validos
                 void cambiarElemento(const Elemento& nuevoValor)
                 {
                     delete this->elemento;
@@ -108,9 +108,9 @@ namespace Util
                 }
             };
 
-            /// @brief Primer bloque apuntado (y poseído) por esta Cola
+            /// @brief Primer bloque apuntado (y poseido) por esta Cola
             Bloque* primero = nullptr;
-            /// @brief Último bloque apuntado (y poseído) por esta Cola
+            /// @brief Ultimo bloque apuntado (y poseido) por esta Cola
             Bloque* ultimo = nullptr;
 
         public:
@@ -130,14 +130,14 @@ namespace Util
                 }
             }
 
-            /// @brief Indica si la cola está vacía o no
-            /// @return Verdadero si esta vacía, Falso en caso contrario
+            /// @brief Indica si la cola esta vacia o no
+            /// @return Verdadero si esta vacia, Falso en caso contrario
             inline bool Vacio()
             {return (this->primero == nullptr);}
 
             /// @brief Agrega una copia de un elemento al principio de la Cola
-            /// @param valorEntrante Elemento del cual obtener un clon que será insertado al final de la Cola
-            /// @remark Requiere que el elemento tenga un constructor por copia válido
+            /// @param valorEntrante Elemento del cual obtener un clon que sera insertado al final de la Cola
+            /// @remark Requiere que el elemento tenga un constructor por copia valido
             inline void Encolar(const Elemento& valorEntrante)
             {
                 // Obtengamos al nuevo bloque y al previo primer bloque en la Cola
@@ -151,13 +151,13 @@ namespace Util
                 // Conectemos al comienzo de la Cola y al nuevo bloque
                 this->primero = nuevoBloque;
 
-                // Si antes no habían elementos, entonces el último bloque corresponde a este nuevo
+                // Si antes no habian elementos, entonces el ultimo bloque corresponde a este nuevo
                 if (this->ultimo == nullptr)
                     this->ultimo = nuevoBloque;
             }
 
-            /// @brief Retorna una copia del último elemento en la Cola, y luego elimina al original
-            /// @remark Requiere que el elemento tenga un constructor por copia válido, y que la Cola no esté vacía
+            /// @brief Retorna una copia del ultimo elemento en la Cola, y luego elimina al original
+            /// @remark Requiere que el elemento tenga un constructor por copia valido, y que la Cola no este vacia
             inline Elemento Desencolar()
             {
                 if (this->ultimo == nullptr)
@@ -199,14 +199,14 @@ namespace Util
 
             salida << (*et);
 
-            // Luego, si hay otro bloque tras el actual, dejeremos un espacio de separación entre ambos
+            // Luego, si hay otro bloque tras el actual, dejeremos un espacio de separacion entre ambos
             if (it->siguiente != nullptr)
                 salida << ' ';
         }
 
         salida << "]";
 
-        // Ya terminamos la impresión, Retornemos una referencia al flujo de salida para encadenar impresiones
+        // Ya terminamos la impresion, Retornemos una referencia al flujo de salida para encadenar impresiones
         return salida;
     }
 

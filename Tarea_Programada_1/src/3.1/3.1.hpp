@@ -220,7 +220,7 @@ class ArbolSenalador
 public:
     /**
      * @brief El metodo ArbolSenaladores el metodo constructor de la clase ArbolSenaladores
-     * @param cantidad cantidad es el unico parametro de la función ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
+     * @param cantidad cantidad es el unico parametro de la funcion ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
      * @remark el metodo requiere que cantidad sea un tamaño de array valido
      */
     ArbolSenalador(int const cantidad)
@@ -233,7 +233,7 @@ public:
 
     /**
      * @brief El metodo ArbolSenaladores el metodo constructor de la clase ArbolSenaladores
-     * @param cantidad cantidad es el unico parametro de la función ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
+     * @param cantidad cantidad es el unico parametro de la funcion ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
      * @remark el metodo requiere que cantidad sea un tamaño de array valido
      */
     ArbolSenalador()
@@ -275,7 +275,7 @@ public:
      * @brief AgregarHijo permite agregar un elemento al arbol, y por lo tanto un hijo al NodoArbol dado
      * @param padre padre es de tipo NodoArbol, es el NodoArbol al cual se agrega un hijo
      * @param valorHijo valorHijo es el valor del nuevo NodoArbol agregado al arbol
-     * @return El NodoArbol creado como hijo del Padre. Es nulo si no se logró añadir
+     * @return El NodoArbol creado como hijo del Padre. Es nulo si no se logro añadir
      * @remark El metodo necesita que el arbol sea inicializado, que tengo por lo menos una raiz incializada, y que el NodoArbol padre exista en el arbol
      */
     NodoArbol AgregarHijo(int valorHijo, NodoArbol padre)
@@ -308,7 +308,7 @@ public:
      * @brief AgregarHijoMasDerecho permite agregar un nuevo elemento al Arbol, por medio de un hijo al NodoArbol dado, se agrega el hijo en la posicion mas derecha en comparacion a sus hermanos
      * @param padre padre es de tipo NodoArbol, es el NodoArbol al cual se agrega un hijo
      * @param valorHijo valorHijo es el valor del nuevo NodoArbol agregado al arbol
-     * @return El NodoArbol creado como hijo del Padre. Es nulo si no se logró añadir
+     * @return El NodoArbol creado como hijo del Padre. Es nulo si no se logro añadir
      * @remark El metodo necesita que el arbol sea inicializado, que tenga por lo menos una raiz incializada, y que el NodoArbol padre exista en el arbol
      */
     NodoArbol AgregarHijoMasDerecho(int valorHijo, NodoArbol padre) // agrega al padre un hijo
@@ -322,11 +322,7 @@ public:
      * @remark El metodo requiere que sea incializado, y que tenga una raiz con valores inicializada
      */
     NodoArbol Raiz()
-    {
-        if (arregloArbol[0] == NodoArbol())
-            std::cout << "Raiz desde arbol: NULA" << std::endl;
-        return arregloArbol[0];
-    }
+    {return arregloArbol[0];}
 
     /**
      * @brief El metodo Padre permite encontrar el Padre de un NodoArbol dado que pertenece al arbol
