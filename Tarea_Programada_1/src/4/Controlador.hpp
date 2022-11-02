@@ -64,7 +64,7 @@ public:
     }
 
     /**
-     * @brief Permite verificar si existe varios nodos con la misma etiqueta en el arbol. No modifica nada
+     * @brief Verifica si existe varios nodos con la misma etiqueta en el arbol. No modifica nada
      * @param arbol Árbol donde investigar si existen etiquetas repetidas
      * @remark El árbol debe estar inicializado
      * @return Devuelve true (1) si hay etiquetas repetidas, sino devuelve false (0)
@@ -119,6 +119,39 @@ public:
 
         // Si no se encontró un nodo con la etiqueta correspondiente en el árbol, entonces devolveremos nodo nulo
         return 0;
+    }
+
+    /**
+     * @brief Indica cuántos niveles tiene un árbol a partir de cierta subraíz, realizando un recorrido en pre-orden. No modifica nada
+     * @param arbol Árbol en el cual transladarse para realizar el recorrido en preoden
+     * @param subraiz Nodo raíz del cual partir el recorrido en preorden
+     * @remark Tanto el árbol como el nodo debe estar inicializado. El nodo subraíz debe pertencer al árbol, aunque se permite que sea nulo
+     * @return Devuelve la cantidad de niveles que tiene el árbol a partir de ese nodo
+     * La cantidad de niveles va de 1 a n, siendo n la altura total del árbol
+     */
+    size_t nivelesArbolRPO(Arbol &arbol, Nodo subraiz)
+    {
+        const Nodo& NodoNulo = Nodo();
+
+        // Caso base #1: La subraíz es nula (el subárbol está vacío)
+        if (subraiz == NodoNulo)
+            return 0;
+
+        // Caso recursivo: El nodo sí tiene hijos (no es una hoja)
+        // Se va a recorrer el árbol en preorden (recorrer a los hijos del nodo antes de a él mismo)
+        // Para la altura del árbol en la subraíz, consideraremos a la mayor altura de los subárboles inmediatos a ésta
+        size_t alturaCandidata = 0;  // Asumiremos una altura nula hasta que se pruebe lo contrario
+        for (Nodo hijoActual = arbol.HijoMasIzquierdo(subraiz); hijoActual != NodoNulo; hijoActual = arbol.HermanoDerecho(hijoActual))
+        {
+            size_t alturaSubArbol = nivelesArbolRPO(arbol, hijoActual);
+
+            if (alturaSubArbol > alturaCandidata)
+                alturaCandidata = alturaSubArbol;
+        }
+
+        // Una vez que ya conocemos la mayor altura entre las de los subárboles inmediatos a la subraíz, entonces es
+        // trivial reconocer que la altura a partir de la subraíz considera un nivel adicionaL: el de la subraíz
+        return alturaCandidata + 1;
     }
 
     /**
