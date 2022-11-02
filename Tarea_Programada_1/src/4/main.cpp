@@ -307,8 +307,8 @@ int main()
             int valorRaiz;
             std::cin >> valorRaiz;
             arbol.PonerRaiz(valorRaiz);
-            break;
         }
+        break;
         case 1: // agregar hijo
         {
             std::cout << "Valor del padre" << std::endl;
@@ -320,20 +320,19 @@ int main()
             controlador.agregarHijo(valorP, valor, arbol);
         }
         break;
-
         case 2: // borrar hoja
         {
             std::cout << "Cual valor quiere borrar del arbol ?" << std::endl;
             int etiquetaBorrada;
             std::cin >> etiquetaBorrada;
             controlador.borrarHoja(etiquetaBorrada, arbol);
-            break;
         }
+        break;
         case 3: // imprimir el arbol
         {
             controlador.imprimirArbol(arbol);
-            break;
         }
+        break;
         case 4: // get raiz
         {
             std::cout << arbol.Etiqueta(arbol.Raiz()) << std::endl;
@@ -342,33 +341,32 @@ int main()
         case 5: // salir y destruir arbol
         {
             seguir = 0;
-            break;
         }
+        break;
         case 6: // hijo izq
         {
             std::cout << "Cual valor del padre ?" << std::endl;
             int valor;
             std::cin >> valor;
             controlador.hijoMasIzquierdo(valor, arbol);
-            break;
         }
-
+        break;
         case 7: // hermano derecho
         {
             std::cout << "Cual valor del hermano ?" << std::endl;
             int valor;
             std::cin >> valor;
             controlador.hermanoDerecho(valor, arbol);
-            break;
         }
+        break;
         case 8: // padre
         {
             std::cout << "Cual valor del hijo ?" << std::endl;
             int valor;
             std::cin >> valor;
             controlador.padre(valor, arbol);
-            break;
         }
+        break;
         case 9:
         {
             std::cout << "Cual valor quiere modificar del arbol ?" << std::endl;
@@ -378,13 +376,13 @@ int main()
             int etiqueta;
             std::cin >> etiqueta;
             controlador.modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
-            break;
         }
+        break;
         case 10: // num Nodos
         {
             std::cout << "Num Nodos :" << arbol.NumNodos() << std::endl;
-            break;
         }
+        break;
         case 11:
         {
             controlador.listarPorNiveles(arbol);
@@ -503,6 +501,7 @@ int main()
                 std::cout << "No hay etiquetas repetidas en el arbol" << std::endl;
             }
         }
+        break;
         case 19:
         {
             // Hermano izquierdo
@@ -522,13 +521,14 @@ int main()
         break;
         case 20:
         {
-            size_t nivelesPreorden = controlador.nivelesArbolRPO(arbol, arbol.Raiz());
-            std::cout << "Tras recorrer en preorden, hay " << nivelesPreorden << std::endl;
+            size_t nivelesPPO = controlador.nivelesArbolRPO(arbol, arbol.Raiz());
+            std::cout << "Tras recorrer en preorden, hay " << nivelesPPO << " niveles " << std::endl;
         }
         break;
         case 21:
         {
-            //
+            size_t nivelesRPN = controlador.nivelesArbolRPN(arbol);
+            std::cout << "Tras recorrer en por niveles, hay " << nivelesRPN << " niveles" << std::endl;
         }
         break;
         default:
