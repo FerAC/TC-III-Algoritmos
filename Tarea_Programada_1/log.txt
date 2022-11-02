@@ -1,0 +1,132 @@
+Bienvenid@ ! Inserta [i] para inicializar un arbol vacio, sino inserta [q] para salir del programa
+Abriendo menu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Que desea hacer con el arbol n-ario?
+0 - Cambiar raiz (vital al inicializar el arbol)
+1 - Agregar hijo
+2 - Borrar hoja
+3 - Imprimir el arbol
+4 - Get raiz
+5 - Salir y destruir el arbol
+6 - HijoMasIzquierdo
+7 - HermanoDerecho
+8 - Padre
+9 - Modificar etiqueta
+10 - NumNodos
+11 - Listar por niveles
+12 - Listar por preorden
+13 - Etiquetas en un nivel
+14 - Eliminar arbol a partir de un nodo
+15 - Crear un arbol en base a una lista
+16 - Verificar si un nodo existe en el árbol
+17 - Averiguar profundidad de un nodo 
+18 - Averiguar etiquetas repetidas
+19 - Hermano Izquierdo de un nodo
+20 - Cantidad de niveles (preorden)
+21 - Cantidad de niveles (por niveles)
+Cual valor quiere poner a la raiz?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Que desea hacer con el arbol n-ario?
+0 - Cambiar raiz (vital al inicializar el arbol)
+1 - Agregar hijo
+2 - Borrar hoja
+3 - Imprimir el arbol
+4 - Get raiz
+5 - Salir y destruir el arbol
+6 - HijoMasIzquierdo
+7 - HermanoDerecho
+8 - Padre
+9 - Modificar etiqueta
+10 - NumNodos
+11 - Listar por niveles
+12 - Listar por preorden
+13 - Etiquetas en un nivel
+14 - Eliminar arbol a partir de un nodo
+15 - Crear un arbol en base a una lista
+16 - Verificar si un nodo existe en el árbol
+17 - Averiguar profundidad de un nodo 
+18 - Averiguar etiquetas repetidas
+19 - Hermano Izquierdo de un nodo
+20 - Cantidad de niveles (preorden)
+21 - Cantidad de niveles (por niveles)
+Valor del padre
+Valor a insertar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Que desea hacer con el arbol n-ario?
+0 - Cambiar raiz (vital al inicializar el arbol)
+1 - Agregar hijo
+2 - Borrar hoja
+3 - Imprimir el arbol
+4 - Get raiz
+5 - Salir y destruir el arbol
+6 - HijoMasIzquierdo
+7 - HermanoDerecho
+8 - Padre
+9 - Modificar etiqueta
+10 - NumNodos
+11 - Listar por niveles
+12 - Listar por preorden
+13 - Etiquetas en un nivel
+14 - Eliminar arbol a partir de un nodo
+15 - Crear un arbol en base a una lista
+16 - Verificar si un nodo existe en el árbol
+17 - Averiguar profundidad de un nodo 
+18 - Averiguar etiquetas repetidas
+19 - Hermano Izquierdo de un nodo
+20 - Cantidad de niveles (preorden)
+21 - Cantidad de niveles (por niveles)
+Valor del padre
+Valor a insertar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Que desea hacer con el arbol n-ario?
+0 - Cambiar raiz (vital al inicializar el arbol)
+1 - Agregar hijo
+2 - Borrar hoja
+3 - Imprimir el arbol
+4 - Get raiz
+5 - Salir y destruir el arbol
+6 - HijoMasIzquierdo
+7 - HermanoDerecho
+8 - Padre
+9 - Modificar etiqueta
+10 - NumNodos
+11 - Listar por niveles
+12 - Listar por preorden
+13 - Etiquetas en un nivel
+14 - Eliminar arbol a partir de un nodo
+15 - Crear un arbol en base a una lista
+16 - Verificar si un nodo existe en el árbol
+17 - Averiguar profundidad de un nodo 
+18 - Averiguar etiquetas repetidas
+19 - Hermano Izquierdo de un nodo
+20 - Cantidad de niveles (preorden)
+21 - Cantidad de niveles (por niveles)
+N = 3
+[1]
+[2] 
+[3] 
+[] 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Que desea hacer con el arbol n-ario?
+0 - Cambiar raiz (vital al inicializar el arbol)
+1 - Agregar hijo
+2 - Borrar hoja
+3 - Imprimir el arbol
+4 - Get raiz
+5 - Salir y destruir el arbol
+6 - HijoMasIzquierdo
+7 - HermanoDerecho
+8 - Padre
+9 - Modificar etiqueta
+10 - NumNodos
+11 - Listar por niveles
+12 - Listar por preorden
+13 - Etiquetas en un nivel
+14 - Eliminar arbol a partir de un nodo
+15 - Crear un arbol en base a una lista
+16 - Verificar si un nodo existe en el árbol
+17 - Averiguar profundidad de un nodo 
+18 - Averiguar etiquetas repetidas
+19 - Hermano Izquierdo de un nodo
+20 - Cantidad de niveles (preorden)
+21 - Cantidad de niveles (por niveles)

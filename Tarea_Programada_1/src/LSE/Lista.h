@@ -1,7 +1,7 @@
 #ifndef ListaSimplementeEnlazada
 #define ListaSimplementeEnlazada
 
-#include "Celda.h"
+#include "Celda.hpp"
 #include <stddef.h>
 
 template <typename T>

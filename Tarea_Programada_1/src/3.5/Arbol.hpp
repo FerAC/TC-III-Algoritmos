@@ -232,7 +232,11 @@ namespace Arbol_N_Ario
             /// @brief Elimina los nodos de un árbol
             ~Arbol() noexcept(false)
             {
-                // Utilicemos una cola de nodos para realizar un recorrido por niveles
+                // Si el árbol está vacío, hay nada que hacer
+                if (this->Raiz() == Nodo())
+                    return;
+
+                // Sino, utilicemos una cola de nodos para realizar un recorrido por niveles
                 Util::Cola<Nodo> colaNodos;
 
                 // Encolemos a la raiz para iniciar el recorrido usándola como punto de partida

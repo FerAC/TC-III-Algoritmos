@@ -1,7 +1,6 @@
 #ifndef NodoConcretoLH
 #define NodoConcretoLH
-#include "Lista.h"
-#include "Celda.h"
+#include "../2/Lista.hpp"
 #include "ArbolLH.hpp"
 #include <iostream>
 using namespace std;

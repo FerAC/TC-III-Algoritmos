@@ -210,14 +210,7 @@ public:
      */
     bool operator!=(const NodoArbol &otroNodo) const
     {
-        if (esNulo == 1 && otroNodo.esNulo == 1)
-            return 0;
-
-        if(otroNodo.getIndice() == indice && otroNodo.getIndicePadre()==indicePadre && otroNodo.getValor() == valor){
-            return 0;
-        }else{
-            return 1;
-        }
+        return !(*this == otroNodo);
     }
 };
 
@@ -394,44 +387,32 @@ public:
     NodoArbol HermanoDerecho(NodoArbol hermano)
     {
         int indixePadre = hermano.getIndicePadre();
-        int indice = 0;
-
-        while (indice < maximo && arregloArbol[indice].getValor() != hermano.getValor())
-        {
-            ++indice;
-        }
+        int indice = hermano.getIndice();
 
         if (indice != actual - 1)
         {
             ++indice;
             int encontrado = 0;
 
-            while (indice < maximo && arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre())
-            {
-
-                if (arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
-                {
-                    encontrado = 1;
-                }
-
-                ++indice;
-            }
-
-            if (indice < maximo && arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre())
-            {
+            // caso donde el hermano derecho es el indice justo despues del hermano
+            if(arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre()){
                 encontrado = 1;
             }
 
-            if (encontrado == 1) // caso donde el NodoArbol no es el hermano mas derecho
-            {
+            // pasamos por todos los nodos del arbol hasta encontrar el primero que tenga el mismo padre
+            while(indice < maximo && arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre() && encontrado ==0){
+                ++indice;
+                if(arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre()){
+                encontrado = 1;
+                }
+            }
+
+            if(encontrado){
                 return arregloArbol[indice];
-            }
-            else // caso donde el NodoArbol es el hermano mas derecho
-            {
-                // return nullptr;
+            }else{
                 return nodoVacio;
-                // return 0;
             }
+
         }else{
             return nodoVacio;
         }

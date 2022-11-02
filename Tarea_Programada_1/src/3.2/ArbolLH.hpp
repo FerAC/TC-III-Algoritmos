@@ -1,7 +1,7 @@
 #ifndef ARBOLLH
 #define ARBOLLH
-#include "../2/Lista.h"
-#include "Celda.h"
+#include "../2/Lista.hpp"
+#include "../2/Celda.hpp"
 #include "NodoConcreto.hpp"
 
 class ArbolLH{
@@ -182,7 +182,7 @@ NodoConcreto* HermanoDerecho(NodoConcreto* celdaParam){
 			
 			NodoConcreto* a = (buffer2->getEtiqueta());
 			
-			if( a->getEtiqueta() == celdaParam->getEtiqueta()){
+			if( a == celdaParam){
 				
 				if(buffer2->getSiguiente() != nullptr){
 					NodoConcretoDer = buffer2->getSiguiente()->getEtiqueta();
