@@ -1,16 +1,16 @@
+#include <chrono>
+#include <iomanip>
 #include "Controlador.hpp"
 
 /**
  * @brief Contiene el menu principal que permite comunicar con el usuario
  * @return El metodo devuelve un 0 al final de se ejecucion
  */
-int main()
+int menu()
 {
     // ListaIndexada lista;
     // Cola<int> cola(10000);
     Arbol arbol;
-
-    Controlador controlador;
 
     std::cout << "Bienvenid@ ! Inserta [i] para inicializar un arbol vacio, sino inserta [q] para salir del programa" << std::endl;
     int seguir = 0;
@@ -84,7 +84,7 @@ int main()
                 std::cout << "Valor a insertar" << std::endl;
                 int valor;
                 std::cin >> valor;
-                controlador.agregarHijo(valorP, valor, arbol);
+                Controlador::agregarHijo(valorP, valor, arbol);
             }
         break;
         case 2:
@@ -92,12 +92,12 @@ int main()
                 std::cout << "Cual valor quiere borrar del arbol?" << std::endl;
                 int etiquetaBorrada;
                 std::cin >> etiquetaBorrada;
-                controlador.borrarHoja(etiquetaBorrada, arbol);
+                Controlador::borrarHoja(etiquetaBorrada, arbol);
             }
         break;
         case 3:
             {
-                controlador.imprimirArbol(arbol);
+                Controlador::imprimirArbol(arbol);
             }
         break;
         case 4:
@@ -115,7 +115,7 @@ int main()
                 std::cout << "Cual valor del padre?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                controlador.hijoMasIzquierdo(valor, arbol);
+                Controlador::hijoMasIzquierdo(valor, arbol);
             }
         break;
         case 7:
@@ -123,7 +123,7 @@ int main()
                 std::cout << "Cual valor del hermano?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                controlador.hermanoDerecho(valor, arbol);
+                Controlador::hermanoDerecho(valor, arbol);
             }
         break;
         case 8:
@@ -131,7 +131,7 @@ int main()
                 std::cout << "Cual valor del hijo?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                controlador.padre(valor, arbol);
+                Controlador::padre(valor, arbol);
             }
         break;
         case 9:
@@ -142,7 +142,7 @@ int main()
                 std::cout << "Cual es el nuevo valor?" << std::endl;
                 int etiqueta;
                 std::cin >> etiqueta;
-                controlador.modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
+                Controlador::modificaEtiqueta(etiquetaModificada, etiqueta, arbol);
             }
         break;
         case 10:
@@ -152,12 +152,12 @@ int main()
         break;
         case 11:
             {
-                controlador.listarPorNiveles(arbol);
+                Controlador::listarPorNiveles(arbol);
             }
         break;
         case 12:
             {
-                controlador.listarPorPreorden(arbol, arbol.Raiz());
+                Controlador::listarPorPreorden(arbol, arbol.Raiz());
             }
         break;
         case 13:
@@ -165,7 +165,7 @@ int main()
                 std::cout << "Que nivel desea conocer?" << std::endl;
                 int nivel;
                 std::cin >> nivel;
-                controlador.imprimirNodosEnNivel(arbol, arbol.Raiz(), nivel - 1);
+                Controlador::imprimirNodosEnNivel(arbol, arbol.Raiz(), nivel - 1);
             }
         break;
         case 14:
@@ -173,8 +173,8 @@ int main()
                 std::cout << "A partir de que valor desea borrar?" << std::endl;
                 int valor;
                 std::cin >> valor;
-                Nodo subroot = controlador.buscarEtiqueta(valor, arbol);
-                controlador.borrarSubArbol(arbol, subroot);
+                Nodo subroot = Controlador::buscarEtiqueta(valor, arbol);
+                Controlador::borrarSubArbol(arbol, subroot);
             }
         break;
         case 15:
@@ -197,7 +197,7 @@ int main()
                     for (int j = 0; j < cantidad; j++)
                         list.insertar(j, j);
                     
-                    controlador.crearArbol(i, k, list, arbol);
+                    Controlador::crearArbol(i, k, list, arbol);
                 }
                 else
                 {
@@ -226,7 +226,7 @@ int main()
                         list.insertar(elemento, j);
                     }
 
-                    controlador.crearArbol(i, k, list, arbol);
+                    Controlador::crearArbol(i, k, list, arbol);
                 }
             }
         break;
@@ -235,7 +235,7 @@ int main()
                 int elemento;
                 std::cout << "Inserte un elemento" << std::endl;
                 std::cin >> elemento;
-                Nodo nodoDondeEtiqueta = controlador.buscarEtiqueta(elemento, arbol);
+                Nodo nodoDondeEtiqueta = Controlador::buscarEtiqueta(elemento, arbol);
 
                 if (nodoDondeEtiqueta == Nodo())
                     std::cout << "Nodo NO existe en el arbol" << std::endl;
@@ -248,14 +248,14 @@ int main()
                 int elemento;
                 std::cout << "Cual es la etiqueta del nodo del cual quiere conocer la profundidad?" << std::endl;
                 std::cin >> elemento;
-                Nodo nodo = controlador.buscarEtiqueta(elemento, arbol);
-                int profundidad = controlador.averiguarProfundidadNodo(arbol, nodo);
+                Nodo nodo = Controlador::buscarEtiqueta(elemento, arbol);
+                int profundidad = Controlador::averiguarProfundidadNodo(arbol, nodo);
                 std::cout << "La profundidad de la etiqueta " << elemento << " es de: " << profundidad << std::endl;
             }
         break;
         case 18:
             {
-                bool repetidas = controlador.averiguarEtiquetasRepetidas(arbol);
+                bool repetidas = Controlador::averiguarEtiquetasRepetidas(arbol);
 
                 if (repetidas != 0)
                     std::cout << "Hay etiquetas repetidas en el arbol" << std::endl;
@@ -271,8 +271,8 @@ int main()
                 std::cout << "Cual es la etiqueta del nodo del cual quiere conocer el hermano izquierdo?" << std::endl;
                 std::cin >> elemento;
 
-                Nodo hermanoDerecho = controlador.buscarEtiqueta(elemento, arbol);
-                Nodo nodo = controlador.averiguarHermanoIzquierdo(hermanoDerecho, arbol);
+                Nodo hermanoDerecho = Controlador::buscarEtiqueta(elemento, arbol);
+                Nodo nodo = Controlador::averiguarHermanoIzquierdo(hermanoDerecho, arbol);
 
                 Nodo nodoNulo = Nodo();
                 if(nodo != nodoNulo)
@@ -287,13 +287,13 @@ int main()
         break;
         case 20:
             {
-                size_t nivelesPPO = controlador.nivelesArbolRPO(arbol, arbol.Raiz());
+                size_t nivelesPPO = Controlador::nivelesArbolRPO(arbol, arbol.Raiz());
                 std::cout << "Tras recorrer en preorden, hay " << nivelesPPO << " niveles " << std::endl;
             }
         break;
         case 21:
             {
-                size_t nivelesRPN = controlador.nivelesArbolRPN(arbol);
+                size_t nivelesRPN = Controlador::nivelesArbolRPN(arbol);
                 std::cout << "Tras recorrer en por niveles, hay " << nivelesRPN << " niveles" << std::endl;
             }
         break;
@@ -306,4 +306,20 @@ int main()
     }
 
     return 0;
+}
+
+
+int main()
+{
+    Arbol arbol; size_t altura = 1000000;
+
+    std::chrono::high_resolution_clock clock;
+
+    auto start = clock.now();
+        Controlador::crearArbolAnchuraExtrema(altura, arbol);
+    auto finish = clock.now();
+    // std::chrono::duration<double> time_span = duration_cast<std::chrono::duration<double>>(finish-start);
+    
+    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start);
+    std::cout << "Duracion (nanoseconds):\t" << std::setprecision(10) << duration.count() << std::endl;
 }
