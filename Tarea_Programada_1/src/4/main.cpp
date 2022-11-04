@@ -311,15 +311,30 @@ int menu()
 
 int main()
 {
-    Arbol arbol; size_t altura = 1000000;
+    Arbol * arbol = new Arbol(); 
+    size_t altura = 1000000;
 
     std::chrono::high_resolution_clock clock;
+    ListaIndexada lista;
+    int i = 8;
+    int k = 5;
+    
+    size_t cantidad = (pow(k, i) - 1) / (k - 1);
 
+     for (size_t j = 0; j < cantidad; j++)
+        lista.insertar(j, j);
+    std::cout<< "." <<std::endl;
     auto start = clock.now();
-        Controlador::crearArbolAnchuraExtrema(altura, arbol);
+    Controlador::crearArbol(i, k, lista, *arbol);
+
     auto finish = clock.now();
     // std::chrono::duration<double> time_span = duration_cast<std::chrono::duration<double>>(finish-start);
     
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start);
     std::cout << "Duracion (nanoseconds):\t" << std::setprecision(10) << duration.count() << std::endl;
+
+    //960800 7 8      1398101  4 11             //Orden 1M          -39200      +398101
+    //97656 5 8       111111   10 6            //Orden 100k         -2344       +11111
+    //9841 3 9        1023     2 10           //Orden 10k           -159        +23
+
 }

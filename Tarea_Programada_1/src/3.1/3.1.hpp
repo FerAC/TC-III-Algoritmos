@@ -8,9 +8,9 @@ class NodoArbol
     friend class ArbolSenalador;
 
 private:
-    int indicePadre;
+    size_t indicePadre;
     int valor;
-    int indice;
+    size_t indice;
     int esNulo = 0;
 
     /**
@@ -223,7 +223,7 @@ public:
      * @param cantidad cantidad es el unico parametro de la funcion ArbolSenaladores, representa la cantidad maxima de elementos en el arbol
      * @remark el metodo requiere que cantidad sea un tamaño de array valido
      */
-    ArbolSenalador(int const cantidad)
+    ArbolSenalador(size_t const cantidad)
     {
         arregloArbol = new NodoArbol[cantidad];
         maximo = cantidad;
@@ -280,19 +280,11 @@ public:
      */
     NodoArbol AgregarHijo(int valorHijo, NodoArbol padre)
     {
-        // int indice = 0;
-
-        // while (arregloArbol[indice].getValor() != padre.getValor())
-        //{
-        //   ++indice;
-        //}
-
         NodoArbol hijoRetornado;
 
         if (actual < maximo)
         {
             arregloArbol[actual].setValor(valorHijo);
-            // arregloArbol[actual].setPadre(indice);
             arregloArbol[actual].setPadre(padre.getIndice());
             arregloArbol[actual].setIndice(actual);
             arregloArbol[actual].esNulo = 0;

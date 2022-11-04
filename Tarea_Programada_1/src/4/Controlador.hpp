@@ -619,7 +619,7 @@ public:
      * @remark Tanto k, i. la lista indexada y el arbol deben estar incializados. El arbol debe estar vacio. La lista tener suficientes elementos
      * etiquetas como para poblar todo el arbol con un elemento distinto (no necesariamente una etiqueta unica) cada vez
      */
-    static void crearArbol(int i, int k, ListaIndexada &lista, Arbol &arbol)
+    static void crearArbol(size_t i, size_t k, ListaIndexada &lista, Arbol &arbol)
     {
         // Primera condicion: por lo menos un nivel y un hijo por nivel
         if (i > 0 && k > 0)
@@ -634,9 +634,9 @@ public:
                 Util::Cola<Nodo> parentNodesQueue;
                 parentNodesQueue.Encolar(arbol.Raiz());
 
-                int numNodesTotal = (pow(k, i) - 1) / (k - 1); // La cantidad total de nodos a agregar en el arbol despues que sea completamente construido
-                int numNodesLastLevel = pow(k, i - 1);         // la cantidad de nodos esperados en el ultimo nivel del arbol
-                int numNodesAdded = 1;                         // La cantidad de nodos añadidos hasta ahora, la raiz es un nodo asi que llevamos uno
+                size_t numNodesTotal = (pow(k, i) - 1) / (k - 1); // La cantidad total de nodos a agregar en el arbol despues que sea completamente construido
+                size_t numNodesLastLevel = pow(k, i - 1);         // la cantidad de nodos esperados en el ultimo nivel del arbol
+                size_t numNodesAdded = 1;                         // La cantidad de nodos añadidos hasta ahora, la raiz es un nodo asi que llevamos uno
 
                 // Vamos a añadir nodos hijos a todos los niveles menos el ultimo. No hay necesidad de añadirselo al ultimo
                 while (numNodesAdded < numNodesTotal)
@@ -645,7 +645,7 @@ public:
                     // La cantidad de hijos po padre ya se conoce. Podemos producirla
                     Nodo padre = parentNodesQueue.Desencolar();
 
-                    for (int numChildAdded = 0; numChildAdded < k; ++numChildAdded)
+                    for (size_t numChildAdded = 0; numChildAdded < k; ++numChildAdded)
                     {
                         // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol
                         Nodo newChild = arbol.AgregarHijo(lista.recuperar(numNodesAdded), padre);

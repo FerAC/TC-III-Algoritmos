@@ -170,14 +170,14 @@ void ModificaEtiqueta(int valorNuevo, NodoConcreto* NodoConcretoPadre){
 /// @remarks Requiere que el arbol este inicializado y que el NodoConcreto sea parte del arbol	
 /// @return Devuelve un puntero a NodoConcreto
 NodoConcreto* HermanoDerecho(NodoConcreto* celdaParam){
-	int contador = 0;
+	size_t contador = 0;
 	Celda<NodoConcreto*> hermanoDerecho; 
 	int terminado = 0;
 	NodoConcreto * NodoConcretoDer = nullptr;
-	int i =0;
+	size_t i =0;
 	for(Celda<NodoConcreto> * buffer = listaPrincipal->getPrimera(); buffer!=nullptr; buffer = buffer->getSiguiente()){ //Busca a celdaParam en la lista de hijos
 		
-		int j =0;
+		
 		for(Celda<NodoConcreto*> * buffer2 = buffer->getEtiqueta().getListaHijos()->getPrimera(); buffer2!=nullptr; buffer2 = buffer2->getSiguiente()){
 			
 			NodoConcreto* a = (buffer2->getEtiqueta());
