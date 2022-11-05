@@ -1,0 +1,31 @@
+Crear Normal
+Crear Pequeno
+2
+
+Crear Normal
+Crear Mediano
+4
+
+Crear Normal
+Crear Grande
+8
+
+Crear Normal
+Crear muy grande
+16
+
+Crear Altura Extrema
+Alto pequeno
+2
+
+Crear Altura Extrema
+Alto mediano
+4
+
+Crear Altura Extrema
+Alto grande
+8
+
+Crear Altura Extrema
+Alto muy grande
+16

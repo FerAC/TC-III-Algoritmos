@@ -1,5 +1,6 @@
 #ifndef CONTROLADORTP
 #define CONTROLADORTP
+
 // Incluye utilidades auxiliares
 #include <cstddef>         // Para utilizar contadores en recorrido por niveles
 #include "../CDE/Cola.hpp" // Cola dinamica para realizar recorrido por niveles
@@ -714,47 +715,50 @@ public:
             }
             else
             {
-                arbol.AgregarHijo(contador, arbol.Raiz());
+                arbol.AgregarHijoMasDerecho(contador, arbol.Raiz());
             }
         }
 
         Nodo nodoNulo = Nodo();
         Nodo hermano = arbol.HijoMasIzquierdo(arbol.Raiz());
         bool esLargo = 1;
-        int largoHijos = (cantidadNodos-(2*cantidadHijosRaiz)-1)/cantidadHijosRaiz;
-        int largoUltimoHijo = largoHijos +  (cantidadNodos-(2*cantidadHijosRaiz)-1) - (largoHijos * cantidadHijosRaiz);
+        auto cantidadHijosLargos = (cantidadHijosRaiz / 2 + cantidadHijosRaiz % 2);
+        int largoHijos = (cantidadNodos - (2 * cantidadHijosRaiz) - 1) / cantidadHijosLargos;
+        int largoUltimoHijo = largoHijos + (cantidadNodos - (2 * cantidadHijosRaiz) - 1) - (largoHijos * cantidadHijosLargos);
 
         // recoge todos los hijos de Raiz
         while (hermano != nodoNulo)
         {
             arbol.AgregarHijo(contador, hermano);
             Nodo hijo = arbol.HijoMasIzquierdo(hermano);
+            ++contador;
 
             if (esLargo == 0)
             {
                 esLargo = 1;
             }
-            if (esLargo == 1)
+            else if (esLargo == 1)
             {
+                int contadorLocal = 0;
                 if (arbol.HermanoDerecho(hermano) == nodoNulo || arbol.HermanoDerecho(arbol.HermanoDerecho(hermano)) == nodoNulo)
                 {
-                    int contadorLocal = 0;
                     while (contadorLocal < largoUltimoHijo)
                     {
+                        arbol.AgregarHijo(contador, hijo);
+                        hijo = arbol.HijoMasIzquierdo(hijo);
                         ++contador;
                         ++contadorLocal;
-                        arbol.AgregarHijo(etiqueta, hijo);
-                        hijo = arbol.HijoMasIzquierdo(hijo);
-                    }  
-                } else{
-                    int contadorLocal = 0;
+                    }
+                }
+                else
+                {
                     while (contadorLocal < largoHijos)
                     {
+                        arbol.AgregarHijo(contador, hijo);
+                        hijo = arbol.HijoMasIzquierdo(hijo);
                         ++contador;
                         ++contadorLocal;
-                        arbol.AgregarHijo(etiqueta, hijo);
-                        hijo = arbol.HijoMasIzquierdo(hijo);
-                    }  
+                    }
                 }
                 esLargo = 0;
             }
@@ -763,4 +767,5 @@ public:
         }
     }
 };
+
 #endif
