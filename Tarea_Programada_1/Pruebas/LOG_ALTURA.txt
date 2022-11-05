@@ -1,0 +1,29 @@
+ARBOL_3_1:
+Duracion (nanoseconds):	11280444
+Duracion (nanoseconds):	10914844
+Duracion (nanoseconds):	13053176
+Duracion (nanoseconds):	12828133
+
+ARBOL_3_2:
+Duracion (nanoseconds):	122815487
+Duracion (nanoseconds):	122198722
+Duracion (nanoseconds):	140501130
+Duracion (nanoseconds):	112208645
+
+ARBOL_3_3:
+Duracion (nanoseconds):	67084203
+Duracion (nanoseconds):	71687168
+Duracion (nanoseconds):	73315044
+Duracion (nanoseconds):	70782208
+
+ARBOL_3_4:
+Duracion (nanoseconds):	76289770
+Duracion (nanoseconds):	78529442
+Duracion (nanoseconds):	71556116
+Duracion (nanoseconds):	78303658
+
+ARBOL_3_5:
+Duracion (nanoseconds):	71887968
+Duracion (nanoseconds):	72084038
+Duracion (nanoseconds):	79739661
+Duracion (nanoseconds):	73174576

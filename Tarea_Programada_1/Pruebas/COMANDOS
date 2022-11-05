@@ -1,0 +1,11 @@
+Ideas:
+    Potencial N = 2^32
+    Árboles binarios balanceados
+
+Compilación:
+    g++ *.cpp -DARBOL_3_5 -o Test
+
+Ejecución:
+    ./Test >> log.txt
+
+
