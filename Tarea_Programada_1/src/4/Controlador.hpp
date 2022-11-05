@@ -721,12 +721,14 @@ public:
         Nodo nodoNulo = Nodo();
         Nodo hermano = arbol.HijoMasIzquierdo(arbol.Raiz());
         bool esLargo = 1;
-        int largoHijos = (cantidadNodos-cantidadHijosRaiz-1)/cantidadHijosRaiz;
-        int bufferUltimoHijo = (cantidadNodos-cantidadHijosRaiz-1) - (largoHijos * cantidadHijosRaiz);
+        int largoHijos = (cantidadNodos-(2*cantidadHijosRaiz)-1)/cantidadHijosRaiz;
+        int largoUltimoHijo = largoHijos +  (cantidadNodos-(2*cantidadHijosRaiz)-1) - (largoHijos * cantidadHijosRaiz);
 
         // recoge todos los hijos de Raiz
         while (hermano != nodoNulo)
         {
+            arbol.AgregarHijo(contador, hermano);
+            Nodo hijo = arbol.HijoMasIzquierdo(hermano);
 
             if (esLargo == 0)
             {
@@ -736,11 +738,25 @@ public:
             {
                 if (arbol.HermanoDerecho(hermano) == nodoNulo || arbol.HermanoDerecho(arbol.HermanoDerecho(hermano)) == nodoNulo)
                 {
-                    // add la diff perdida en la divisiom
+                    int contadorLocal = 0;
+                    while (contadorLocal < largoUltimoHijo)
+                    {
+                        ++contador;
+                        ++contadorLocal;
+                        arbol.AgregarHijo(etiqueta, hijo);
+                        hijo = arbol.HijoMasIzquierdo(hijo);
+                    }  
                 } else{
-                    
-                    
+                    int contadorLocal = 0;
+                    while (contadorLocal < largoHijos)
+                    {
+                        ++contador;
+                        ++contadorLocal;
+                        arbol.AgregarHijo(etiqueta, hijo);
+                        hijo = arbol.HijoMasIzquierdo(hijo);
+                    }  
                 }
+                esLargo = 0;
             }
 
             hermano = arbol.HermanoDerecho(hermano);
