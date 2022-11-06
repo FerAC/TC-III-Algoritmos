@@ -679,3 +679,342 @@ void Ensayos::etiquetasRepetidasHijoCortoHijoLargo3(size_t n, PuntoTiempo &punto
     Controlador::averiguarEtiquetasRepetidas(arbol); 
     puntoFinal = clock.now();
 }
+
+Nodo Ensayos::borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol){ //No vale la pena medir el mejor caso
+     // Colocamos raiz
+    arbol.PonerRaiz(0);
+    Nodo padre = arbol.Raiz();
+    Nodo retornado; 
+    // Se insertan el resto de nodos de modo que el padre de la iteracion actual, es el nodo insertado en la iteracion anterior
+    int parada;
+     switch (n)
+    {
+    case 1:
+        n = 9841;
+        break;
+    case 2:
+        n = 97656; 
+        break;
+    case 3:
+        n = 960800; 
+        break; 
+    default:
+        break;
+    }
+
+    if (n%2)
+    {
+        parada = (n-1)/2;
+    } else{
+        parada = n/2; 
+    }
+    
+    for (size_t contador = 1; contador < n; contador++)
+    {
+        if(contador==parada){
+            retornado = padre; 
+        }
+        padre = arbol.AgregarHijo(contador, padre);
+    }
+    return retornado; 
+}
+void Ensayos::borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    std::chrono::high_resolution_clock clock;
+    Arbol arbol; 
+    Nodo subRaiz = Ensayos::borrarSubArbolAlturaSegunPrueba(n, arbol); 
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, subRaiz); 
+    puntoFinal = clock.now();
+}
+void Ensayos::borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    std::chrono::high_resolution_clock clock;
+    Arbol arbol; 
+    Controlador::crearArbolAlturaExtrema(n, arbol); 
+    Nodo subRaiz = arbol.Raiz(); 
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, subRaiz); 
+    puntoFinal = clock.now();
+}
+Nodo Ensayos::borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol){
+    // Coloquemos a la raíz
+    arbol.PonerRaiz(0);
+    Nodo raiz = arbol.Raiz();
+
+    // Asignemosle tantos hijos como especifique la anchura
+
+    // Como ya consideramos a la etiqueta '0', debemos ampliar nuestro límite superior por un campo más para
+    // satisfacer a toda la anchura original
+    ++n;
+    int parada; 
+    switch (n)
+    {
+    case 1:
+        n = 9841;
+        break;
+    case 2:
+        n = 97656; 
+        break;
+    case 3:
+        n = 960800; 
+        break; 
+    default:
+        break;
+    }
+    Nodo retornado; 
+    if(n%2){
+        parada = (n-1) / 2;
+    } else{
+        parada = n/2;
+    }
+    for (size_t etiqueta = 1; etiqueta < n; ++etiqueta){
+        if(etiqueta == parada){
+            retornado = arbol.AgregarHijo(etiqueta, raiz);
+        } else{
+            arbol.AgregarHijo(etiqueta, raiz);
+        }
+    }
+    return retornado; 
+} 
+void Ensayos::borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    std::chrono::high_resolution_clock clock;
+    Arbol arbol; 
+    Nodo subRaiz = Ensayos::borrarSubarbolAnchuraSegunPrueba(n, arbol); 
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, subRaiz); 
+    puntoFinal = clock.now();
+}
+void Ensayos::borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    std::chrono::high_resolution_clock clock;
+    Arbol arbol; 
+    Ensayos::borrarSubarbolAnchuraSegunPrueba(n, arbol); 
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, arbol.Raiz()); 
+    puntoFinal = clock.now();
+}
+Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k){
+    Nodo retornado; 
+    // Primera condicion: por lo menos un nivel y un hijo por nivel
+    if (i > 0 && k > 0)
+    {
+        // Ya que el arbol tiene por lo menos un nivel, por lo menos un hijo por nivel, entonces hay una raiz
+        arbol.PonerRaiz(lista.recuperar(0));
+
+        // Segunda condicion: por lo menos 2 niveles
+        if (i > 1)
+        {
+            // Ademas de la primeras condicion, ya que el arbol tiene por lo menos 2 niveles, debemos considerar si sus hijos son padres tambien
+            Util::Cola<Nodo> parentNodesQueue;
+            parentNodesQueue.Encolar(arbol.Raiz());
+
+            size_t numNodesTotal = (pow(k, i) - 1) / (k - 1); // La cantidad total de nodos a agregar en el arbol despues que sea completamente construido
+            size_t numNodesLastLevel = pow(k, i - 1);         // la cantidad de nodos esperados en el ultimo nivel del arbol
+            size_t numNodesAdded = 1;                         // La cantidad de nodos añadidos hasta ahora, la raiz es un nodo asi que llevamos uno
+
+            // Vamos a añadir nodos hijos a todos los niveles menos el ultimo. No hay necesidad de añadirselo al ultimo
+            int parada;
+            if(numNodesTotal % 2){
+                parada = (n-1) /2 ;
+            } else{
+                parada = n/2; 
+            }
+            while (numNodesAdded < numNodesTotal)
+            {
+                // El padre al que agregarle un hijo
+                // La cantidad de hijos po padre ya se conoce. Podemos producirla
+                Nodo padre = parentNodesQueue.Desencolar();
+                if(numNodesAdded == parada)
+                    retornado = padre;
+                for (size_t numChildAdded = 0; numChildAdded < k; ++numChildAdded)
+                {
+                    // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol
+                    Nodo newChild = arbol.AgregarHijo(lista.recuperar(numNodesAdded), padre);
+                    ++numNodesAdded;
+
+                    // Cada vez que poduzcamos un nuevo hijo, se puede considerar como un padre que valdria la pena visitar despues
+                    // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol
+                    if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
+                        parentNodesQueue.Encolar(newChild);
+                }
+            }
+        }
+    }
+    return retornado; 
+}
+void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    int i, k;
+    std::chrono::high_resolution_clock clock;
+    switch (n)
+    {
+    case 1:
+        k = 7;
+        i = 8;
+        break;
+    case 2:
+        k = 5;
+        i = 8;
+        break;
+    
+    case 3:
+        k = 3;
+        i = 9; 
+        break; 
+
+    default:
+        break;
+    }
+    Arbol arbol;
+    ListaIndexada lista;
+    size_t cantidadNodos = (std::pow(k, i) - 1) / (k - 1);
+    for (size_t i = 0; i < cantidadNodos; i++)
+    {
+        lista.insertar(i,i);
+    }
+    
+    Nodo subRaiz = Ensayos::borrarSubArbolNormalSegunPrueba(cantidadNodos, arbol, lista, i, k ); 
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, subRaiz); 
+    puntoFinal = clock.now(); 
+
+}
+void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    int i, k;
+    std::chrono::high_resolution_clock clock;
+    switch (n)
+    {
+    case 1:
+        k = 7;
+        i = 8;
+        break;
+    case 2:
+        k = 5;
+        i = 8;
+        break;
+    
+    case 3:
+        k = 3;
+        i = 9; 
+        break; 
+
+    default:
+        break;
+    }
+    Arbol arbol;
+    ListaIndexada lista;
+    size_t cantidadNodos = (std::pow(k, i) - 1) / (k - 1);
+    for (size_t i = 0; i < cantidadNodos; i++)
+    {
+        lista.insertar(i,i);
+    }
+    
+    Controlador::crearArbol(i, k, lista, arbol); 
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, arbol.Raiz()); 
+    puntoFinal = clock.now(); 
+}
+
+Nodo Ensayos::borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol){
+    size_t contador = 0;
+    size_t cantidadHijosRaiz = 100; 
+
+     switch (n)
+    {
+    case 1:
+        n = 9841;
+        break;
+    case 2:
+        n = 97656; 
+        break;
+    case 3:
+        n = 960800; 
+        break; 
+    default:
+        break;
+    }
+
+    for (contador = 0; contador <= cantidadHijosRaiz; contador++)
+    {
+        if (contador == 0)
+        {
+            arbol.PonerRaiz(contador);
+        }
+        else
+        {
+            arbol.AgregarHijoMasDerecho(contador, arbol.Raiz());
+        }
+    }
+
+    int parada;
+    if(n%2){
+        parada = (n-1)/2;
+    } else{
+        parada = n/2; 
+    }
+    Nodo nodoNulo = Nodo();
+    Nodo hermano = arbol.HijoMasIzquierdo(arbol.Raiz());
+    bool esLargo = 1;
+    auto cantidadHijosLargos = (cantidadHijosRaiz / 2 + cantidadHijosRaiz % 2);
+    int largoHijos = (n - (2 * cantidadHijosRaiz) - 1) / cantidadHijosLargos;
+    int largoUltimoHijo = largoHijos + (n - (2 * cantidadHijosRaiz) - 1) - (largoHijos * cantidadHijosLargos);
+    Nodo retorno;
+    // recoge todos los hijos de Raiz
+    while (hermano != nodoNulo)
+    {   
+        if(contador == parada){
+            retorno = arbol.AgregarHijo(contador, hermano);
+        } else{
+            arbol.AgregarHijo(contador, hermano);
+        }
+        Nodo hijo = arbol.HijoMasIzquierdo(hermano);
+        ++contador;
+
+        if (esLargo == 0)
+        {
+            esLargo = 1;
+        }
+        else if (esLargo == 1)
+        {
+            int contadorLocal = 0;
+            if (arbol.HermanoDerecho(hermano) == nodoNulo || arbol.HermanoDerecho(arbol.HermanoDerecho(hermano)) == nodoNulo)
+            {
+                while (contadorLocal < largoUltimoHijo)
+                {
+                    arbol.AgregarHijo(contador, hijo);
+                    hijo = arbol.HijoMasIzquierdo(hijo);
+                    ++contador;
+                    ++contadorLocal;
+                }
+            }
+            else
+            {
+                while (contadorLocal < largoHijos)
+                {
+                    arbol.AgregarHijo(contador, hijo);
+                    hijo = arbol.HijoMasIzquierdo(hijo);
+                    ++contador;
+                    ++contadorLocal;
+                }
+                arbol.AgregarHijo(0, hijo); // caso promedio, se repite varias veces en el codigo el 0
+            }
+            esLargo = 0;
+        }
+
+        hermano = arbol.HermanoDerecho(hermano);
+    }
+    return retorno; 
+}
+void Ensayos::borrarSubarbolHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    std::chrono::high_resolution_clock clock;
+    Arbol arbol;
+    Nodo subRaiz = Ensayos::borrarSubarbolHijoCortoHijoLargoSegunPrueba(n, arbol);
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, subRaiz);
+    puntoFinal = clock.now();
+}
+void Ensayos::borrarSubarbolHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
+    std::chrono::high_resolution_clock clock;
+    Arbol arbol;
+    Ensayos::borrarSubarbolHijoCortoHijoLargoSegunPrueba(n, arbol);
+    puntoInicio = clock.now();
+    Controlador::borrarSubArbol(arbol, subRaiz);
+    puntoFinal = clock.now();
+}

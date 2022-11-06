@@ -116,8 +116,26 @@ class Ensayos
         void etiquetasRepetidasAncho3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
         void etiquetasRepetidasHijoCortoHijoLargo1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
         void etiquetasRepetidasHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
         void etiquetasRepetidasHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        Nodo borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol);
+
+        void borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        void Ensayos::borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        Nodo Ensayos::borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol);
+
+        void Ensayos::borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        void Ensayos::borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k);
+        void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 };
 
 #endif
