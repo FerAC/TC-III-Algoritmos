@@ -1,5 +1,12 @@
-#include <chrono>
-#include <iomanip>
+// Macro selectivo para acceder a librerías estándar del OS, y así a la cantidad de núcleos
+#if defined(CONCURRENTE)
+    #if defined(_WIN32)
+        #include <windows.h>
+    #else
+        #include <unistd.h>
+    #endif
+#endif
+
 #include "Controlador.hpp"
 #include "Ensayos.hpp"
 
@@ -373,14 +380,28 @@ int main()
     funciones["Crear Hijo Corto Hijo Largo"] = Ensayos::crearArbolHijoCortoHijoLargo;
     funciones["Crear Altura Extrema"] = Ensayos::crearArbolAlturaExtrema;
     funciones["Crear Anchura Extrema"] = Ensayos::crearArbolAnchuraExtrema;
-   // funciones["Crear Normal"] = Ensayos::crearArbol;
+    funciones["Crear Normal"] = Ensayos::crearArbol;
     funciones["Borrar Sub"] = Ensayos::borrarSubarbol;
 
     // Generar pruebas en el ensayo
     Ensayos miniEnsayo(funciones, std::cin);
 
     // Ejecutar pruebas
-    miniEnsayo.ejecutarPruebas();
+    #if defined(CONCURRENTE)
+        size_t cantidadHilosSistema;
+
+        #if defined(WIN32)
+            SYSTEM_INFO sysinfo;
+            GetSystemInfo(&sysinfo);
+            cantidadHilosSistema = sysinfo.dwNumberOfProcessors;
+        #else
+            cantidadHilosSistema = sysconf(_SC_NPROCESSORS_ONLN);
+        #endif
+        
+        miniEnsayo.ejecutarPruebasConcurrente(cantidadHilosSistema);
+    #else
+        miniEnsayo.ejecutarPruebasSerial();
+    #endif
 
     // Imprimir pruebas
     miniEnsayo.imprimirPruebas();

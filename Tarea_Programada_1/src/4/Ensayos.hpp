@@ -4,23 +4,24 @@
 // Algoritmos y árbol particular
 #include "Controlador.hpp"
 
-// I/O estandar
-#include <iostream>
+// Unidades de prueba
+#include "Prueba.hpp"
 
-// I/O con precisión científica y dígitos acotados
-#include <iomanip>
-
-// Para hileras en nombres de pruebas
-#include <string>
+// Pruebas multihilo
+#if defined(CONCURRENTE)
+    #include "HiloPrueba.hpp"
+    #include <mutex>
+    #include <thread>
+#endif
 
 // LLevar cuenta de las pruebas
 #include <vector>
 
+// Para hileras en nombres de pruebas
+#include <string>
+
 // Llevar cuenta de los métodos de pruebas
 #include <map>
-
-// Llevar cuenta de la duracion
-#include <chrono>
 
 using PuntoTiempo = std::chrono::_V2::system_clock::time_point;
 
@@ -33,326 +34,90 @@ using PuntoTiempo = std::chrono::_V2::system_clock::time_point;
  */
 typedef void (*FuncionPrueba)(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-/// @brief Clase encapsuladora de pruebas para casos particulares del árbol
-class Prueba
-{
-    /// @brief Los ensayos pueden acceder a las entrañas de las pruebas, para efectos de ID y tiempos
-    friend class Ensayos;
-
-private:
-    /// @brief Identificación de este experimento
-    size_t id = 0;
-    /// @brief Nombre de este experimento
-    std::string nombre;
-    /// @brief Tamaño del experimento
-    size_t n;
-    /// @brief Tiempo de inicio del experimento
-    PuntoTiempo principioPrueba;
-    /// @brief Tiempo de finalización del experimento
-    PuntoTiempo finalPrueba;
-    /// @brief Función que esta prueba invocará para medir el tiempo
-    FuncionPrueba funcionPrueba;
-
-public:
-    Prueba(size_t n, FuncionPrueba funcionPrueba, std::string nombre = std::string("Default"))
-        : n(n), funcionPrueba(funcionPrueba), nombre(nombre)
-    {}
-
-    ~Prueba()
-    {};
-
-    /**
-     * @brief Corre la prueba mediante la función especificada para esta prueba en su construcción. Modifica los marcadores de tiempo de principio y final
-     * @param n Tamaño de la prueba
-     * @remark El tamaño debe estar inicializado
-     */
-    void correrPrueba()
-    {funcionPrueba(n, this->principioPrueba, this->finalPrueba);}
-
-    /// @brief Devuelve el tamaño de esta prueba. No modifica nada
-    size_t getN() const
-    {return n;}
-
-    /// @brief Devuelve el ID de esta prueba. No modifica nada.
-    size_t getId() const
-    {return id;}
-
-    /// @brief Retorna el nombre de esta prueba. No modifica nada.
-    std::string getNombre() const
-    {return nombre;}
-
-    /// @brief Retorna la duración de esta prueba. No modifica nada.
-    template <typename TipoDuracion>
-    double getDuracion() const
-    {return std::chrono::duration_cast<TipoDuracion>(this->finalPrueba - this->principioPrueba).count();}
-};
-
-std::ostream &operator<<(std::ostream &salida, const Prueba &prueba)
-{
-    std::cout << "~~~~~~~~~~~~~~PARAMETROS~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "N: " << prueba.getN() << std::endl;
-    std::cout << "ID: " << prueba.getId() << std::endl;
-    std::cout << "Nombre: " << prueba.getNombre() << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-    double duracionNano = prueba.getDuracion<std::chrono::nanoseconds>();
-    double duracionMicro = prueba.getDuracion<std::chrono::microseconds>();
-    double duracionMili = prueba.getDuracion<std::chrono::milliseconds>();
-    double duracionSeg = prueba.getDuracion<std::chrono::seconds>();
-    double duracionMin = prueba.getDuracion<std::chrono::minutes>();
-
-    std::cout << "~~~~~~~~~~~~~~~~DURACION~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "Nanosegundos\t" << std::setprecision(5) << std::scientific << duracionNano << std::endl;
-    std::cout << "Microsegundos\t" << std::setprecision(5) << std::scientific << duracionMicro << std::endl;
-    std::cout << "Milisegundos\t" << std::setprecision(5) << std::scientific << duracionMili << std::endl;
-    std::cout << "Segundos\t" << std::setprecision(5) << std::scientific << duracionSeg << std::endl;
-    std::cout << "Minutos \t" << std::setprecision(5) << std::scientific << duracionMin << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-    return salida;
-}
-
 class Ensayos
 {
-private:
-    std::vector<Prueba> pruebas;
-    size_t pruebasHechas = 0;
-    double progreso = 0;
+    private:
+        /// @brief Pruebas a realizar en conjunto tras un llamado a ejecutar pruebas (serial o concurrente)
+        std::vector<Prueba> pruebas;
+        /// @brief Cantidad de pruebas realizadas al momento
+        size_t pruebasHechas = 0;
+        /// @brief Porcentaje de progreso realizado hasta el momento
+        double progreso = 0;
 
-public:
-    /**
-    *     
-    */
-    Ensayos(std::map<std::string, FuncionPrueba>& funciones, std::istream& entrada)
-    {
-        // LLevaremos cuenta de los parámetros que hemos leídos al momento
-        FuncionPrueba funcionActual = funciones.begin()->second;
-        std::string nombreActual = std::string("Default");
-        size_t nActual = 0;
+        // Adiciones de ejecución concurrente
+        #if defined(CONCURRENTE)
+            /// @brief Marcador de cuál prueba es accesible al siguiente hilo solicitante
+            size_t marcadorPrueba = 0;
+            /// @brief Mutex para evitar condiciones de carrera al acceder al marcador de prueba accesible
+            std::mutex mutexMarcadorPrueba;
+            /// @brief Mutex para evitar condiciones de carrera al acceder la cantidad de pruebas hechas
+            std::mutex mutexPruebasHechas;
+        #endif
 
-        // Y cuenta del id de la prueba
-        size_t idActual = 0;
+    public:
 
-        // Tenemos que llevar cuenta de la línea actual
-        std::string bufferLinea;
+        Ensayos(std::map<std::string, FuncionPrueba>& funciones, std::istream& entrada);
 
-        // Leeremos líneas hasta que se nos acabe
-        for (size_t paramActual = 1; !entrada.eof(); ++paramActual)
-        {
-            // Leer la línea actual
-            std::getline(entrada, bufferLinea);
-            std::cout<< "SOY BUFFER  " << bufferLinea << std::endl;
-            // Parsear selectivamente esa línea de acuerdo al parámetro siendo leído
-            switch (paramActual)
-            {
-                case 1: // Función
-                {
-                    auto cualFunc = funciones.find(bufferLinea);
-                    if (cualFunc != funciones.end())
-                        funcionActual = cualFunc->second;
-                    else
-                        std::cerr << "FUNC " << bufferLinea <<  " NO ENCONTRADA" << std::endl;    
-                    break;
-                }
-                case 2: // Nombre
-                {
-                    nombreActual = bufferLinea;
-                    break;
-                }              
-                case 3: // Tamaño
-                {
-                    nActual = std::atoll(bufferLinea.c_str());
-                    break;
-                }
-                default: // Ignorar línea. 
-                {
-                    // Tras recolectar los parámetros tres, se crea la prueba
-                    Prueba pruebaInsertada(nActual, funcionActual, nombreActual);
-                    pruebaInsertada.id = idActual++;
+        ~Ensayos();
 
-                    pruebas.push_back(pruebaInsertada);
-                    paramActual = 0;
-                    break;
-                }
-            }
-        }
-    }
+        void ejecutarPruebasSerial();
 
-    ~Ensayos(){}
+        void imprimirPruebas();
 
-    void ejecutarPruebas()
-    {
-        // Hay que llevar cuenta de las pruebas totales
-        size_t pruebasTotales = pruebas.size();
+        Prueba& getPrueba(size_t indice);
 
-        // Ejecuta todas las pruebas que se encuentran en el vector de pruebas
-        for(auto it = pruebas.begin(); it != pruebas.end(); ++it)
-        {
-            it->correrPrueba();
+        // Adiciones de ejecución concurrente
+        #if defined(CONCURRENTE)
+            void ejecutarPruebasConcurrente(size_t cantidadHilos);
 
-            // Actualizar la cuenta de pruebas hechas hasta ahora
-            ++pruebasHechas;
+            bool avanzarMarcadorPruebas(size_t& variableDeposito);
 
-            // Actualizar la barra de progreso de pruebas hechas hasta ahora
-            double progresoActual = 100.0 * ((double) pruebasHechas / (double) pruebasTotales);
-            if (progresoActual != progreso) 
-            {
-                progreso = progresoActual;
+            void avanzarBarraProgresoTSafe();
+        #endif
 
-                size_t bloques = size_t(progreso);
-                std::cout << "[";
-                for (size_t i = 0; i < progreso; ++i)
-                {
-                    std::cout << "=";
-                }
-                std::cout << "] %" << progreso << std::endl;
-                std::cout.flush();
-            }
-        }
-            
-    }
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~ METODOS DE PRUEBA ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    void imprimirPruebas()
-    {
-        // Imprime todas las pruebas que se encuentran en el vector de pruebas
-        for(auto it = pruebas.begin(); it != pruebas.end(); ++it)
-            std::cout << *it << std::endl;
-    }
+        static void etiquetasRepetidas(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-    static void etiquetasRepetidas(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal)
-    {
-        Arbol arbol = Arbol();
-        size_t cantidadNiveles = 4;
-        size_t anchoPorNivel = 2;
-        ListaIndexada lista;
-        for (size_t j = 0; j < n; j++)
-            lista.insertar(j, j);
+        static void borrarSubarbol(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        Controlador::crearArbol(cantidadNiveles, anchoPorNivel, lista, arbol);
+        static void crearArbol(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
         
-        std::chrono::high_resolution_clock clock;
-        puntoInicio = clock.now();
-        Controlador::averiguarEtiquetasRepetidas(arbol);
-        puntoFinal = clock.now();
-    }
-
-    static void borrarSubarbol(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal)
-    {
-        Arbol arbol = Arbol();
-        size_t cantidadNiveles = 4;
-        size_t anchoPorNivel = 2;
-        ListaIndexada lista;
-        for (size_t j = 0; j < n; j++)
-            lista.insertar(j, j);
-
-        Controlador::crearArbol(cantidadNiveles, anchoPorNivel, lista, arbol);
-
-        Nodo subraiz = arbol.Raiz();    // hay que cambiar
-        
-        std::chrono::high_resolution_clock clock;
-        puntoInicio = clock.now();
-        Controlador::borrarSubArbol(arbol, subraiz);
-        puntoFinal = clock.now();
-    }
-
-    static void crearArbol(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal)
-    {
-        Arbol arbol = Arbol();
-        std::chrono::high_resolution_clock clock;
-        //N = 1 n mas pequeno, 9841
-        size_t cantidadNiveles;
-        size_t hijosPorNodo;
-        switch (n)
-        {
-        case 1:
-            cantidadNiveles = 9;
-            hijosPorNodo = 3;
-            break;
-        case 2:
-            cantidadNiveles = 8;
-            hijosPorNodo = 5;
-            break;
-        case 3:
-            cantidadNiveles = 8;
-            hijosPorNodo = 7;
-            break;
-        default:
-            std::cerr <<"ERROR, N DISTINTO DE 1, 2, 3 ";
-            break;
-        }
-        size_t cantidadNodos = (pow(hijosPorNodo, cantidadNiveles) - 1) / (hijosPorNodo - 1);
-
-        ListaIndexada lista;
-        for (size_t j = 0; j < cantidadNodos; ++j)
-            lista.insertar(j, j);
-
-        puntoInicio = clock.now();
-        Controlador::crearArbol(cantidadNiveles, hijosPorNodo, lista, arbol);
-        puntoFinal = clock.now();
-    }
+        static void crearArbolAlturaExtrema(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
     
-    static void crearArbolAlturaExtrema(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal)
-    {
-        Arbol arbol = Arbol();
-        std::chrono::high_resolution_clock clock;
-        size_t cantidadNodos;
-        switch (n)
-        {
-        case 1:
-            cantidadNodos = 9841;
-            break;
-        case 2:
-            cantidadNodos = 9756;
-            break;
-        case 3:
-            cantidadNodos = 960800;
-            break;
-        default:
-            break;
-        }
-        puntoInicio = clock.now();
-        Controlador::crearArbolAlturaExtrema(cantidadNodos, arbol);
-        puntoFinal = clock.now();
-    }
- 
-    static void crearArbolAnchuraExtrema(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal)
-    {
-        Arbol arbol = Arbol();
-        std::chrono::high_resolution_clock clock;
-         size_t cantidadNodos;
-        switch (n)
-        {
-        case 1:
-            cantidadNodos = 9841-1;
-            break;
-        case 2:
-            cantidadNodos = 9756-1;
-            break;
-        case 3:
+        static void crearArbolAnchuraExtrema(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-            cantidadNodos = 960800-1;
-            break;
-        default:
-            break;
-        }
-        puntoInicio = clock.now();
-        Controlador::crearArbolAnchuraExtrema(cantidadNodos, arbol);
-        puntoFinal = clock.now();
-    }
-
-    static void crearArbolHijoCortoHijoLargo(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal)
-    {
-        Arbol arbol = Arbol();
-        std::chrono::high_resolution_clock clock;
-       // int cantidadNodos = 100;
-        //size_t cantidadHijosRaiz = 5;                   // para crearArbolHijoCortoHijoLargo
-        size_t cantidadHijosRaiz = 100;   // para crearArbolHijoCortoHijoLargo
+        static void crearArbolHijoCortoHijoLargo(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
         
-        puntoInicio = clock.now();
-        Controlador::crearArbolHijoCortoHijoLargo(n, cantidadHijosRaiz, arbol);
-        puntoFinal = clock.now();
-    }
-    
+        static void poblarNormalSegunPrueba(Arbol& arbol, int n, int caso);
+        
+        static void etiquetasRepetidasNormal1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void etiquetasRepetidasAlto1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void etiquetasRepetidasAlto2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void etiquetasRepetidasAlto3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void etiquetasRepetidasNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void etiquetasRepetidasNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void poblarArbolAlturaExtremaSegunPrueba(Arbol& arbol, int caso, int n);
+
+        static void PoblarArbolAnchuraExtremaSegunPrueba(Arbol& arbol, int caso, int n);
+
+        static void PoblarArbolHijoCortoHijoLargoSegunPrueba(Arbol& arbol, int caso, int n);
+
+        void etiquetasRepetidasAncho1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        void etiquetasRepetidasAncho2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        void etiquetasRepetidasAncho3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        void etiquetasRepetidasHijoCortoHijoLargo1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void etiquetasRepetidasHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void etiquetasRepetidasHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 };
 
 #endif
