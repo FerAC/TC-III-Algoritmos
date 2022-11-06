@@ -141,7 +141,7 @@ public:
         {
             // Leer la línea actual
             std::getline(entrada, bufferLinea);
-
+            std::cout<< "SOY BUFFER  " << bufferLinea << std::endl;
             // Parsear selectivamente esa línea de acuerdo al parámetro siendo leído
             switch (paramActual)
             {
@@ -151,7 +151,7 @@ public:
                     if (cualFunc != funciones.end())
                         funcionActual = cualFunc->second;
                     else
-                        std::cerr << "FUNC " << bufferLinea <<  " NO ENCONTRADA" << std::endl;
+                        std::cerr << "FUNC " << bufferLinea <<  " NO ENCONTRADA" << std::endl;    
                     break;
                 }
                 case 2: // Nombre
@@ -259,9 +259,27 @@ public:
     {
         Arbol arbol = Arbol();
         std::chrono::high_resolution_clock clock;
-
-        size_t cantidadNiveles = n;
-        size_t hijosPorNodo = 2;
+        //N = 1 n mas pequeno, 9841
+        size_t cantidadNiveles;
+        size_t hijosPorNodo;
+        switch (n)
+        {
+        case 1:
+            cantidadNiveles = 9;
+            hijosPorNodo = 3;
+            break;
+        case 2:
+            cantidadNiveles = 8;
+            hijosPorNodo = 5;
+            break;
+        case 3:
+            cantidadNiveles = 8;
+            hijosPorNodo = 7;
+            break;
+        default:
+            std::cerr <<"ERROR, N DISTINTO DE 1, 2, 3 ";
+            break;
+        }
         size_t cantidadNodos = (pow(hijosPorNodo, cantidadNiveles) - 1) / (hijosPorNodo - 1);
 
         ListaIndexada lista;
@@ -277,10 +295,23 @@ public:
     {
         Arbol arbol = Arbol();
         std::chrono::high_resolution_clock clock;
-        //int cantidadNodos = 100;
-        
+        size_t cantidadNodos;
+        switch (n)
+        {
+        case 1:
+            cantidadNodos = 9841;
+            break;
+        case 2:
+            cantidadNodos = 9756;
+            break;
+        case 3:
+            cantidadNodos = 960800;
+            break;
+        default:
+            break;
+        }
         puntoInicio = clock.now();
-        Controlador::crearArbolAlturaExtrema(n, arbol);
+        Controlador::crearArbolAlturaExtrema(cantidadNodos, arbol);
         puntoFinal = clock.now();
     }
  
@@ -288,10 +319,24 @@ public:
     {
         Arbol arbol = Arbol();
         std::chrono::high_resolution_clock clock;
-        //int cantidadNodos = 100;
-        
+         size_t cantidadNodos;
+        switch (n)
+        {
+        case 1:
+            cantidadNodos = 9841-1;
+            break;
+        case 2:
+            cantidadNodos = 9756-1;
+            break;
+        case 3:
+
+            cantidadNodos = 960800-1;
+            break;
+        default:
+            break;
+        }
         puntoInicio = clock.now();
-        Controlador::crearArbolAnchuraExtrema(n, arbol);
+        Controlador::crearArbolAnchuraExtrema(cantidadNodos, arbol);
         puntoFinal = clock.now();
     }
 

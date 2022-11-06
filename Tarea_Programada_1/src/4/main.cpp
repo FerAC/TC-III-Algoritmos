@@ -370,11 +370,11 @@ int main()
 {
     // Asociar funciones con hileras de texto
     std::map<std::string, FuncionPrueba> funciones;
-    // funciones["Crear Hijo Corto Hijo Largo"] = Ensayos::crearArbolHijoCortoHijoLargo;
+    funciones["Crear Hijo Corto Hijo Largo"] = Ensayos::crearArbolHijoCortoHijoLargo;
     funciones["Crear Altura Extrema"] = Ensayos::crearArbolAlturaExtrema;
-    // funciones["Crear Anchura Extrema"] = Ensayos::crearArbolAnchuraExtrema;
-    funciones["Crear Normal"] = Ensayos::crearArbol;
-    // funciones["Borrar Sub"] = Ensayos::borrarSubarbol;
+    funciones["Crear Anchura Extrema"] = Ensayos::crearArbolAnchuraExtrema;
+   // funciones["Crear Normal"] = Ensayos::crearArbol;
+    funciones["Borrar Sub"] = Ensayos::borrarSubarbol;
 
     // Generar pruebas en el ensayo
     Ensayos miniEnsayo(funciones, std::cin);
