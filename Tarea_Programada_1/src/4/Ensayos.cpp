@@ -25,7 +25,6 @@ Ensayos::Ensayos(std::map<std::string, FuncionPrueba> &funciones, std::istream &
     {
         // Leer la línea actual
         std::getline(entrada, bufferLinea);
-        std::cout << "SOY BUFFER  " << bufferLinea << std::endl;
         // Parsear selectivamente esa línea de acuerdo al parámetro siendo leído
         switch (paramActual)
         {
@@ -35,7 +34,7 @@ Ensayos::Ensayos(std::map<std::string, FuncionPrueba> &funciones, std::istream &
             if (cualFunc != funciones.end())
                 funcionActual = cualFunc->second;
             else
-                std::cerr << "FUNC " << bufferLinea << " NO ENCONTRADA" << std::endl;
+                std::cerr << "FUNCION DE PRUEBA " << bufferLinea << " NO ENCONTRADA" << std::endl;
             break;
         }
         case 2: // Nombre
@@ -88,12 +87,12 @@ void Ensayos::ejecutarPruebasSerial()
             progreso = progresoActual;
 
             size_t bloques = size_t(progreso);
-            std::cout << "[";
+            std::cout << "\r[";
             for (size_t i = 0; i < progreso; ++i)
             {
                 std::cout << "=";
             }
-            std::cout << "] %" << progreso << std::endl;
+            std::cout << "] %" << progreso;
             std::cout.flush();
         }
     }
@@ -101,6 +100,9 @@ void Ensayos::ejecutarPruebasSerial()
 
 void Ensayos::imprimirPruebas()
 {
+    // Dejar una línea de separación
+    std::cout << std::endl;
+
     // Imprime todas las pruebas que se encuentran en el vector de pruebas
     for (auto it = pruebas.begin(); it != pruebas.end(); ++it)
         std::cout << *it << std::endl;
@@ -159,12 +161,12 @@ Prueba &Ensayos::getPrueba(size_t indice)
             progreso = progresoActual;
 
             size_t bloques = size_t(progreso);
-            std::cout << "[";
+            std::cout << "\r[";
             for (size_t i = 0; i < progreso; ++i)
             {
                 std::cout << "=";
             }
-            std::cout << "] %" << progreso << std::endl;
+            std::cout << "] %" << progreso;
             std::cout.flush();
         }
         this->mutexPruebasHechas.unlock();
