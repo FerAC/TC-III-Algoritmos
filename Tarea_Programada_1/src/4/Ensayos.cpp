@@ -598,6 +598,7 @@ void Ensayos::etiquetasRepetidasAncho1(size_t n, PuntoTiempo &puntoInicio, Punto
     Controlador::averiguarEtiquetasRepetidas(arbol); 
     puntoFinal = clock.now();
 }
+
 void Ensayos::etiquetasRepetidasAncho2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -606,6 +607,7 @@ void Ensayos::etiquetasRepetidasAncho2(size_t n, PuntoTiempo &puntoInicio, Punto
     Controlador::averiguarEtiquetasRepetidas(arbol); 
     puntoFinal = clock.now();
 }
+
 void Ensayos::etiquetasRepetidasAncho3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -654,7 +656,6 @@ void Ensayos::PoblarArbolHijoCortoHijoLargoSegunPrueba(Arbol& arbol, int caso, i
     }
 }
 
-
 void Ensayos::etiquetasRepetidasHijoCortoHijoLargo1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -663,6 +664,7 @@ void Ensayos::etiquetasRepetidasHijoCortoHijoLargo1(size_t n, PuntoTiempo &punto
     Controlador::averiguarEtiquetasRepetidas(arbol); 
     puntoFinal = clock.now();
 }
+
 void Ensayos::etiquetasRepetidasHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -671,6 +673,7 @@ void Ensayos::etiquetasRepetidasHijoCortoHijoLargo2(size_t n, PuntoTiempo &punto
     Controlador::averiguarEtiquetasRepetidas(arbol); 
     puntoFinal = clock.now();
 }
+
 void Ensayos::etiquetasRepetidasHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -718,6 +721,7 @@ Nodo Ensayos::borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol){ //No vale
     }
     return retornado; 
 }
+
 void Ensayos::borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -726,6 +730,7 @@ void Ensayos::borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     Controlador::borrarSubArbol(arbol, subRaiz); 
     puntoFinal = clock.now();
 }
+
 void Ensayos::borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -776,6 +781,7 @@ Nodo Ensayos::borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol){
     }
     return retornado; 
 } 
+
 void Ensayos::borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -784,6 +790,7 @@ void Ensayos::borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTi
     Controlador::borrarSubArbol(arbol, subRaiz); 
     puntoFinal = clock.now();
 }
+
 void Ensayos::borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol; 
@@ -842,6 +849,7 @@ Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndex
     }
     return retornado; 
 }
+
 void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     int i, k;
     std::chrono::high_resolution_clock clock;
@@ -878,6 +886,7 @@ void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     puntoFinal = clock.now(); 
 
 }
+
 void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     int i, k;
     std::chrono::high_resolution_clock clock;
@@ -1004,6 +1013,7 @@ Nodo Ensayos::borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol
     }
     return retorno; 
 }
+
 void Ensayos::borrarSubarbolHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol;
@@ -1012,6 +1022,7 @@ void Ensayos::borrarSubarbolHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInic
     Controlador::borrarSubArbol(arbol, subRaiz);
     puntoFinal = clock.now();
 }
+
 void Ensayos::borrarSubarbolHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol;
@@ -1020,6 +1031,7 @@ void Ensayos::borrarSubarbolHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInic
     Controlador::borrarSubArbol(arbol, arbol.Raiz());
     puntoFinal = clock.now();
 }
+
 Nodo Ensayos::ultimoNodoAncho(Arbol& arbol, int n){
     arbol.PonerRaiz(0);
     Nodo raiz = arbol.Raiz();
@@ -1054,6 +1066,7 @@ Nodo Ensayos::ultimoNodoAncho(Arbol& arbol, int n){
     }
     return retornado; 
 }
+
 Nodo Ensayos::ultimoNodoAlto(Arbol& arbol, int n){
  // Colocamos raiz
     arbol.PonerRaiz(0);
@@ -1218,6 +1231,7 @@ Nodo Ensayos::ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada 
     }
     return retornado; 
 }
+
 void Ensayos::profundidadAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     Arbol arbol;
     Nodo subRaiz = borrarSubArbolAlturaSegunPrueba(n, arbol);
@@ -1225,6 +1239,7 @@ void Ensayos::profundidadAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     Controlador::averiguarProfundidadNodo(arbol, subRaiz);
     puntoFinal = clock.now();
 }
+
 void Ensayos::profundidadAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol;
@@ -1233,6 +1248,7 @@ void Ensayos::profundidadAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     Controlador::averiguarProfundidadNodo(arbol, ultimo);
     puntoFinal = clock.now();
 }
+
 void Ensayos::profundidadAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     Arbol arbol;
     Nodo subRaiz = borrarSubarbolAnchuraSegunPrueba(n, arbol);
@@ -1240,6 +1256,7 @@ void Ensayos::profundidadAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiemp
     Controlador::averiguarProfundidadNodo(arbol, subRaiz);
     puntoFinal = clock.now();
 }
+
 void Ensayos::profundidadAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){
     std::chrono::high_resolution_clock clock;
     Arbol arbol;
