@@ -125,17 +125,33 @@ class Ensayos
 
         void borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void Ensayos::borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        Nodo Ensayos::borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol);
+        Nodo borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol);
 
-        void Ensayos::borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void Ensayos::borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k);
-        void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        Nodo borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k);
+        void borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+
+        Nodo borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol);
+        void borrarSubarbolHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void borrarSubarbolHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        Nodo ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n);
+        Nodo ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada lista);        
+        Nodo ultimoNodoAlto(Arbol& arbol, int n);
+        Nodo ultimoNodoAncho(Arbol& arbol, int n);
+        void profundidadNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadHijoLargoHijoCorto2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        void profundidadHijoLargoHijoCorto3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 };
 
 #endif
