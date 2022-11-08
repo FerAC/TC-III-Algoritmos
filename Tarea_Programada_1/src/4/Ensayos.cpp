@@ -823,7 +823,7 @@ void Ensayos::borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTi
     puntoFinal = clock.now();
 }
 
-Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k){
+Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada& lista, int i, int k){
     Nodo retornado; 
     // Primera condicion: por lo menos un nivel y un hijo por nivel
     if (i > 0 && k > 0)
@@ -854,13 +854,17 @@ Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndex
                 // El padre al que agregarle un hijo
                 // La cantidad de hijos po padre ya se conoce. Podemos producirla
                 Nodo padre = parentNodesQueue.Desencolar();
-                if(numNodesAdded == parada)
-                    retornado = padre;
                 for (size_t numChildAdded = 0; numChildAdded < k; ++numChildAdded)
                 {
                     // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol
                     Nodo newChild = arbol.AgregarHijo(lista.recuperar(numNodesAdded), padre);
                     ++numNodesAdded;
+
+        
+                    // Si encontramos al nodo que se debe retornar, lo guardaremos
+                    // para retornarlo después
+                    if(numNodesAdded == parada)
+                        retornado = padre;
 
                     // Cada vez que poduzcamos un nuevo hijo, se puede considerar como un padre que valdria la pena visitar despues
                     // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol
@@ -870,6 +874,9 @@ Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndex
             }
         }
     }
+
+    assert(retornado != Nodo());
+
     return retornado; 
 }
 
@@ -879,8 +886,9 @@ void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     switch (n)
     {
     case 1:
-        k = 7;
-        i = 8;
+        k = 3; 
+        i = 9; 
+        
         break;
     case 2:
         k = 5;
@@ -888,8 +896,8 @@ void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTie
         break;
     
     case 3:
-        k = 3;
-        i = 9; 
+       k = 7;
+       i = 8; 
         break; 
 
     default:
@@ -916,8 +924,9 @@ void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     switch (n)
     {
     case 1:
-        k = 7;
-        i = 8;
+        k = 3; 
+        i = 9; 
+        
         break;
     case 2:
         k = 5;
@@ -925,8 +934,8 @@ void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTie
         break;
     
     case 3:
-        k = 3;
-        i = 9; 
+       k = 7;
+       i = 8; 
         break; 
 
     default:
@@ -1214,7 +1223,7 @@ Nodo Ensayos::ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n){
     return retorno; 
 }
 
-Nodo Ensayos::ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada lista){
+Nodo Ensayos::ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada& lista){
     Nodo retornado; 
     // Primera condicion: por lo menos un nivel y un hijo por nivel
     if (i > 0 && k > 0)
@@ -1298,19 +1307,17 @@ void Ensayos::profundidadNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     switch (n)
     {
     case 1:
-        k = 7;
-        i = 8;
-        break;
+        k = 3;
+        i = 9; 
+        break; 
     case 2:
         k = 5;
         i = 8;
         break;
-    
     case 3:
-        k = 3;
-        i = 9; 
-        break; 
-
+        k = 7;
+        i = 8;
+        break;
     default:
         break;
     }
@@ -1322,7 +1329,7 @@ void Ensayos::profundidadNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
         lista.insertar(i,i);
     }
     
-    Nodo subRaiz = Ensayos::borrarSubArbolNormalSegunPrueba(cantidadNodos, arbol, lista, i, k ); 
+    Nodo subRaiz = Ensayos::borrarSubArbolNormalSegunPrueba(cantidadNodos, arbol, lista, i, k );
     puntoInicio = clock.now();
     Controlador::averiguarProfundidadNodo(arbol, subRaiz); 
     puntoFinal = clock.now(); 
@@ -1334,8 +1341,9 @@ void Ensayos::profundidadNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     switch (n)
     {
     case 1:
-        k = 7;
-        i = 8;
+        k = 3; 
+        i = 9; 
+        
         break;
     case 2:
         k = 5;
@@ -1343,8 +1351,8 @@ void Ensayos::profundidadNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
         break;
     
     case 3:
-        k = 3;
-        i = 9; 
+       k = 7;
+       i = 8; 
         break; 
 
     default:

@@ -4,6 +4,8 @@
 #include "../2/Celda.hpp"
 #include "NodoConcreto.hpp"
 
+#include <assert.h>
+
 class ArbolLH{
 	private:
 		Lista<NodoConcreto> * listaPrincipal; 
@@ -112,14 +114,19 @@ NodoConcreto* Raiz()
 NodoConcreto* Padre(NodoConcreto * hijo){
 	NodoConcreto * a;
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
-	
+
 	if(actual->getEtiqueta() == *hijo){ //Caso trivial, raiz
 		return nullptr; 
 	} else{
 		while(actual!=nullptr){
+			assert(actual != nullptr);
+			assert(actual->getEtiqueta().getListaHijos() != nullptr);
+			assert(actual->getEtiqueta().getListaHijos()->getPrimera() != nullptr);
 			Celda<NodoConcreto*> * celdaHijos = actual->getEtiqueta().getListaHijos()->getPrimera();  //Apunta al primer indice de la lista de hijos si es que existe
 			a = (celdaHijos->getEtiqueta());
 			while(a!=nullptr){
+				assert(a != nullptr);
+				assert(hijo != nullptr);
 				if(a->getEtiqueta() == hijo->getEtiqueta()){ //Significa que encontre a mi padre
 					
 					return & actual->getEtiqueta();

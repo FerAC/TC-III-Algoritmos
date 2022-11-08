@@ -159,13 +159,13 @@ class Ensayos
 
         static Nodo borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol);
 
-        static Nodo borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k);
+        static Nodo borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada& lista, int i, int k);
 
         static Nodo borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol);
 
         static Nodo ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n);
 
-        static Nodo ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada lista);
+        static Nodo ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada& lista);
 
         static Nodo ultimoNodoAlto(Arbol& arbol, int n);
 
