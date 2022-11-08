@@ -1,15 +1,19 @@
 Crear Normal
 A
 1
+1
 
 Crear Normal
 B
 2
+1
 
 Crear Normal
 C
+1
 1
 
 Crear Normal
 D
 1
+10

@@ -109,49 +109,67 @@ class Ensayos
 
         static void PoblarArbolHijoCortoHijoLargoSegunPrueba(Arbol& arbol, int caso, int n);
 
-        void etiquetasRepetidasAncho1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void etiquetasRepetidasAncho1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void etiquetasRepetidasAncho2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void etiquetasRepetidasAncho2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void etiquetasRepetidasAncho3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void etiquetasRepetidasAncho3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void etiquetasRepetidasHijoCortoHijoLargo1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void etiquetasRepetidasHijoCortoHijoLargo1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void etiquetasRepetidasHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void etiquetasRepetidasHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void etiquetasRepetidasHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void etiquetasRepetidasHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        Nodo borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol);
+        static void borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void borrarSubarbolAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void borrarSubarbolAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        Nodo borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol);
+        static void borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void borrarSubarbolAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static void borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void borrarSubarbolHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void borrarSubarbolHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadHijoLargoHijoCorto2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        
+        static void profundidadHijoLargoHijoCorto3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
 
-        void borrarSubarbolAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~ METODOS AUXILIARES  ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        Nodo borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k);
-        void borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static Nodo borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol);
 
-        Nodo borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol);
-        void borrarSubarbolHijoCortoHijoLargo2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void borrarSubarbolHijoCortoHijoLargo3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadAltura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadAnchura3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        Nodo ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n);
-        Nodo ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada lista);        
-        Nodo ultimoNodoAlto(Arbol& arbol, int n);
-        Nodo ultimoNodoAncho(Arbol& arbol, int n);
-        void profundidadNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadHijoLargoHijoCorto2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
-        void profundidadHijoLargoHijoCorto3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal);
+        static Nodo borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol);
+
+        static Nodo borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndexada lista, int i, int k);
+
+        static Nodo borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol);
+
+        static Nodo ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n);
+
+        static Nodo ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada lista);
+
+        static Nodo ultimoNodoAlto(Arbol& arbol, int n);
+
+        static Nodo ultimoNodoAncho(Arbol& arbol, int n);
 };
 
 #endif

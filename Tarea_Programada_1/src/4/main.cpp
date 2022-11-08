@@ -375,18 +375,83 @@ int viejo()
 
 int main()
 {
-    // Asociar funciones con hileras de texto
+    #if defined(CONCURRENTE)
+        std::cout << "Ejecucion [CONCURRENTE]" << std::endl;
+    #else
+        std::cout << "Ejecucion [SERIAL]" << std::endl;
+    #endif
+
+    #if defined(DATOS_BONITOS)
+        std::cout << "Impresion [ADORNADA]" << std::endl;
+    #else
+        std::cout << "Impresion [TABULAR]" << std::endl;
+    #endif
+
+    std::cout << "ED ["<< VERSION_ARBOL << "]" << std::endl;
+
+    // Asociemos funciones con hileras de texto
     std::map<std::string, FuncionPrueba> funciones;
+
+    //Crear arbol
     funciones["Crear Hijo Corto Hijo Largo"] = Ensayos::crearArbolHijoCortoHijoLargo;
     funciones["Crear Altura Extrema"] = Ensayos::crearArbolAlturaExtrema;
     funciones["Crear Anchura Extrema"] = Ensayos::crearArbolAnchuraExtrema;
     funciones["Crear Normal"] = Ensayos::crearArbol;
-    funciones["Borrar Sub"] = Ensayos::borrarSubarbol;
+    
+    //Borrar sub arbol 
+    funciones["Borrar Sub HCHL 2"] = Ensayos::borrarSubarbolHijoCortoHijoLargo2;
+    funciones["Borrar Sub HCHL 3"] = Ensayos::borrarSubarbolHijoCortoHijoLargo2;
 
-    // Generar pruebas en el ensayo
+    funciones["Borrar Sub Normal 2"] = Ensayos::borrarSubarbolNormal2;
+    funciones["Borrar Sub Normal 3"] = Ensayos::borrarSubarbolNormal3;
+
+    funciones["Borrar Sub Alto 2"] = Ensayos::borrarSubarbolAltura2;
+    funciones["Borrar Sub Alto 3"] = Ensayos::borrarSubarbolAltura3;
+
+    funciones["Borrar Sub Ancho 2"] = Ensayos::borrarSubarbolAnchura2;
+    funciones["Borrar Sub Ancho 3"] = Ensayos::borrarSubarbolAnchura3;
+
+    //Profundidad 
+    funciones["Profundidad HCHL 2"] = Ensayos::profundidadHijoLargoHijoCorto2;
+    funciones["Profundidad HCHL 3"] = Ensayos::profundidadHijoLargoHijoCorto3;
+    
+    funciones["Profundidad Normal 2"] = Ensayos::profundidadNormal2;
+    funciones["Profundidad Normal 3"] = Ensayos::profundidadNormal3;
+
+    funciones["Profundidad Alto 2"] = Ensayos::profundidadAltura2;
+    funciones["Profundidad Alto 3"] = Ensayos::profundidadAltura3;
+
+    funciones["Profundidad Ancho 2"] = Ensayos::profundidadAnchura2;
+    funciones["Profundidad Ancho 3"] = Ensayos::profundidadAnchura3;
+
+    // Etiquetas repetidas
+    funciones["Etiqueta HCHL 1"] = Ensayos::etiquetasRepetidasHijoCortoHijoLargo1;
+    funciones["Etiqueta HCHL 2"] = Ensayos::etiquetasRepetidasHijoCortoHijoLargo2;
+    funciones["Etiqueta HCHL 3"] = Ensayos::etiquetasRepetidasHijoCortoHijoLargo3;
+    
+    funciones["Etiqueta Normal 1"] = Ensayos::etiquetasRepetidasNormal1;
+    funciones["Etiqueta Normal 2"] = Ensayos::etiquetasRepetidasNormal2;
+    funciones["Etiqueta Normal 3"] = Ensayos::etiquetasRepetidasNormal3;
+
+    funciones["Etiqueta Alto 1"] = Ensayos::etiquetasRepetidasAlto1;
+    funciones["Etiqueta Alto 2"] = Ensayos::etiquetasRepetidasAlto2;
+    funciones["Etiqueta Alto 3"] = Ensayos::etiquetasRepetidasAlto3;
+
+    funciones["Etiqueta Ancho 1"] = Ensayos::etiquetasRepetidasAncho1;
+    funciones["Etiqueta Ancho 2"] = Ensayos::etiquetasRepetidasAncho2;
+    funciones["Etiqueta Ancho 3"] = Ensayos::etiquetasRepetidasAncho3;
+    
+    
+    std::cout << "[PRUEBAS]" << std::endl;
+    for (auto it = funciones.begin(); it != funciones.end(); ++it)
+        std::cout << "- \t" << it->first << std::endl;
+
+    // Generemos pruebas para el ensayo al leer la entrada estándar
+    std::cout << "[PROCESANDO ENTRADA]" << std::endl;
     Ensayos miniEnsayo(funciones, std::cin);
 
-    // Ejecutar pruebas
+    // Ejecutaremos las pruebas concurrentemente si es especificado
+    std::cout << "[PROCESANDO PRUEBAS]" << std::endl;
     #if defined(CONCURRENTE)
         size_t cantidadHilosSistema;
 
@@ -397,13 +462,13 @@ int main()
         #else
             cantidadHilosSistema = sysconf(_SC_NPROCESSORS_ONLN);
         #endif
-        
+        std::cout << "[CONCURRENTE] Utilizando " << cantidadHilosSistema << " CPU's detectados en el sistema" << std::endl;
         miniEnsayo.ejecutarPruebasConcurrente(cantidadHilosSistema);
-    #else
+    #else // Sino, las ejecutaremos serialmente
         miniEnsayo.ejecutarPruebasSerial();
     #endif
 
-    // Imprimir pruebas
+    // Imprimiremos las pruebas
     miniEnsayo.imprimirPruebas();
 
     return 0;

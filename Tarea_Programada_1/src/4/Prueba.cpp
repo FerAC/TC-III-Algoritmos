@@ -25,11 +25,13 @@ double Prueba::getDuracion() const
 
 std::ostream &operator<<(std::ostream &salida, const Prueba &prueba)
 {
-    std::cout << "~~~~~~~~~~~~~~PARAMETROS~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "N: " << prueba.getN() << std::endl;
-    std::cout << "ID: " << prueba.getId() << std::endl;
-    std::cout << "Nombre: " << prueba.getNombre() << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    #if defined(DATOS_BONITOS)
+        std::cout << "~~~~~~~~~~~~~~PARAMETROS~~~~~~~~~~~~~~~~" << std::endl;
+        std::cout << "N: " << prueba.getN() << std::endl;
+        std::cout << "ID: " << prueba.getId() << std::endl;
+        std::cout << "Nombre: " << prueba.getNombre() << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    #endif
 
     double duracionNano = prueba.getDuracion<std::chrono::nanoseconds>();
     double duracionMicro = prueba.getDuracion<std::chrono::microseconds>();
@@ -37,13 +39,18 @@ std::ostream &operator<<(std::ostream &salida, const Prueba &prueba)
     double duracionSeg = prueba.getDuracion<std::chrono::seconds>();
     double duracionMin = prueba.getDuracion<std::chrono::minutes>();
 
-    std::cout << "~~~~~~~~~~~~~~~~DURACION~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "Nanosegundos\t" << std::setprecision(5) << std::scientific << duracionNano << std::endl;
-    std::cout << "Microsegundos\t" << std::setprecision(5) << std::scientific << duracionMicro << std::endl;
-    std::cout << "Milisegundos\t" << std::setprecision(5) << std::scientific << duracionMili << std::endl;
-    std::cout << "Segundos\t" << std::setprecision(5) << std::scientific << duracionSeg << std::endl;
-    std::cout << "Minutos \t" << std::setprecision(5) << std::scientific << duracionMin << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    #if defined(DATOS_BONITOS)
+        std::cout << "~~~~~~~~~~~~~~~~DURACION~~~~~~~~~~~~~~~~" << std::endl;
+        std::cout << "Nanosegundos\t" << std::setprecision(5) << std::scientific << duracionNano << std::endl;
+        std::cout << "Microsegundos\t" << std::setprecision(5) << std::scientific << duracionMicro << std::endl;
+        std::cout << "Milisegundos\t" << std::setprecision(5) << std::scientific << duracionMili << std::endl;
+        std::cout << "Segundos\t" << std::setprecision(5) << std::scientific << duracionSeg << std::endl;
+        std::cout << "Minutos \t" << std::setprecision(5) << std::scientific << duracionMin << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    #else
+        std::cout<< prueba.getN() << '\t' << prueba.getId() << '\t' << prueba.getNombre() << '\t'
+        <<  duracionNano << '\t' << duracionMicro << '\t' << duracionMili << '\t' << duracionSeg << '\t' << duracionMin << std::endl;
+    #endif
 
     return salida;
 }

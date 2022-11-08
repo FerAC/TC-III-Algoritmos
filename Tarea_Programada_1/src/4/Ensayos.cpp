@@ -1,4 +1,4 @@
-
+#include <assert.h>
 #include "Ensayos.hpp"
 
 // I/O estandar
@@ -119,6 +119,12 @@ void Ensayos::imprimirPruebas()
 {
     // Dejar una línea de separación
     std::cout << std::endl;
+
+    // Si no estamos imprimiendo datos bonitos imprimiremos un encabezado
+    #if not defined(DATOS_BONITOS)
+        std::cout << "N\tID\tNombre\tNano\tMicro\tMili\tSeg\tMin" << std::endl;
+    #endif
+    // En caso contrario, cada prueba tendría su propio encabezado bonito ~~
 
     // Imprime todas las pruebas que se encuentran en el vector de pruebas
     for (auto it = pruebas.begin(); it != pruebas.end(); ++it)
@@ -987,11 +993,14 @@ Nodo Ensayos::borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol
     // recoge todos los hijos de Raiz
     while (hermano != nodoNulo)
     {   
-        if(contador == parada){
+        if(contador >= parada){
             retorno = arbol.AgregarHijo(contador, hermano);
         } else{
             arbol.AgregarHijo(contador, hermano);
         }
+        
+
+
         Nodo hijo = arbol.HijoMasIzquierdo(hermano);
         ++contador;
 

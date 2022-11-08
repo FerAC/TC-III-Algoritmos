@@ -445,7 +445,7 @@ void Controlador::borrarHoja(int valorBorrado, Arbol &arbol)
 {
     Nodo borrado = buscarEtiqueta(valorBorrado, arbol);
     arbol.BorrarHoja(borrado);
-    imprimirArbol(arbol);
+    //imprimirArbol(arbol);
 }
 
 /**

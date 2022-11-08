@@ -16,16 +16,22 @@
 // Include de los Arboles
 #if defined(ARBOL_3_1)
 #include "../3.1/3.1.hpp"
+#define VERSION_ARBOL "ARBOL CON ARREGLO DE SENALADOR AL PADRE"
 #elif defined(ARBOL_3_2)
 #include "../3.2/3.2.hpp"
+#define VERSION_ARBOL "ARBOL DE LISTAS DE HIJOS"
 #elif defined(ARBOL_3_3)
 #include "../3.3/3.3.hpp"
+#define VERSION_ARBOL "ARBOL DE HMI-HD CON CONTADOR"
 #elif defined(ARBOL_3_4)
 #include "../3.4/3.4.hpp"
+#define VERSION_ARBOL "ARBOL DE HMI-HD CON PUNTERO AL PADRE Y HMI, SIN CONTADOR"
 #elif defined(ARBOL_3_5)
 #include "../3.5/3.5.hpp"
+#define VERSION_ARBOL "ARBOL DE HMI-HD CON SU ULTIMO HIJO APUNTANDO AL PADRE, SIN CONTADOR"
 #else
 #include "../3.1/3.1.hpp"
+#define VERSION_ARBOL "ARBOL POR DEFECTO: ARREGLO CON SENALADOR AL PADRE"
 #endif
 
 // Include para I/O estandar
