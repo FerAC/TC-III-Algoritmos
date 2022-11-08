@@ -388,39 +388,44 @@ void Ensayos::poblarNormalSegunPrueba(Arbol &arbol, int n, int caso)
         break;
 
     case 2:
-        if (cantidadNodos % 2)
+        if (cantidadNodos % 2 > 0)
         { // No es divisible
             for (size_t j = 0; j < cantidadNodos; ++j)
             {
-                if (j = (cantidadNodos / 2) + 1)
+                if (j == (cantidadNodos - 1) / 2) 
                 {
                     lista.insertar(0, j);
+                } else{
+                    lista.insertar(j, j);
                 }
-                lista.insertar(j, j);
             }
         }
         else
         {
             for (size_t j = 0; j < cantidadNodos; ++j)
             {
-                if (j = cantidadNodos / 2)
-                {
+                if (j == cantidadNodos / 2) {
                     lista.insertar(0, j);
+                } else {
+                    lista.insertar(j, j);    
                 }
-                lista.insertar(j, j);
+                
             }
         }
         break;
     case 3: // Peor caso
         for (size_t j = 0; j < cantidadNodos - 1; ++j)
             lista.insertar(j, j);
-        lista.insertar(0, cantidadNodos);
+        lista.insertar(0, cantidadNodos-1);
         break;
     default:
         break;
     }
+    /*
     for (size_t j = 0; j < cantidadNodos; ++j)
         lista.insertar(j, j);
+    */
+    
 
     Controlador::crearArbol(cantidadNiveles, hijosPorNodo, lista, arbol);
 }
@@ -581,14 +586,14 @@ void Ensayos::PoblarArbolAnchuraExtremaSegunPrueba(Arbol& arbol, int caso, int n
     case 2: //Caso promedio
         if(cantidadNodos % 2){ //No es divisible
             for (size_t etiqueta = 1; etiqueta < cantidadNodos; ++etiqueta)
-                if(etiqueta = (cantidadNodos-1)/2){
+                if(etiqueta == (cantidadNodos-1)/2){
                     arbol.AgregarHijo(0, raiz);
                 } else{
                     arbol.AgregarHijo(etiqueta, raiz);
                 } 
         } else{ // Si es divisible 
              for (size_t etiqueta = 1; etiqueta < cantidadNodos; ++etiqueta)
-                if(etiqueta = cantidadNodos/2){
+                if(etiqueta == cantidadNodos/2){
                     arbol.AgregarHijo(0, raiz);
                 } else{
                     arbol.AgregarHijo(etiqueta, raiz);
@@ -605,11 +610,6 @@ void Ensayos::PoblarArbolAnchuraExtremaSegunPrueba(Arbol& arbol, int caso, int n
         break;
     }
     
-    /*
-    cantidadNodos;
-    for (size_t etiqueta = 1; etiqueta < anchura; ++etiqueta)
-        arbol.AgregarHijo(etiqueta, raiz);
-   */
 }
 
 void Ensayos::etiquetasRepetidasAncho1(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal){

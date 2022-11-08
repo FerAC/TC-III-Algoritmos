@@ -801,7 +801,6 @@ void Controlador::crearArbolHijoCortoHijoLargoPeorCaso(size_t cantidadNodos, siz
 
 void Controlador::crearArbolHijoCortoHijoLargoMejorCaso(size_t cantidadNodos, size_t cantidadHijosRaiz, Arbol &arbol)
 {
-
     size_t contador = 0;
 
     for (contador = 0; contador <= cantidadHijosRaiz; contador++)
@@ -817,7 +816,6 @@ void Controlador::crearArbolHijoCortoHijoLargoMejorCaso(size_t cantidadNodos, si
     }
 
     Nodo mejorCaso = arbol.Raiz();
-    // arbol.ModificaEtiqueta
     arbol.ModificaEtiqueta(0, mejorCaso); // mejor caso
 
     Nodo nodoNulo = Nodo();
