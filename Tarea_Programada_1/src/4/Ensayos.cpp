@@ -13,6 +13,7 @@ Ensayos::Ensayos(std::map<std::string, FuncionPrueba> &funciones, std::istream &
     FuncionPrueba funcionActual = funciones.begin()->second;
     std::string nombreActual = std::string("Default");
     size_t nActual = 0;
+    size_t kActual = 0;
 
     // Y cuenta del id de la prueba
     size_t idActual = 0;
@@ -28,35 +29,51 @@ Ensayos::Ensayos(std::map<std::string, FuncionPrueba> &funciones, std::istream &
         // Parsear selectivamente esa línea de acuerdo al parámetro siendo leído
         switch (paramActual)
         {
-        case 1: // Función
-        {
-            auto cualFunc = funciones.find(bufferLinea);
-            if (cualFunc != funciones.end())
-                funcionActual = cualFunc->second;
-            else
-                std::cerr << "FUNCION DE PRUEBA " << bufferLinea << " NO ENCONTRADA" << std::endl;
-            break;
-        }
-        case 2: // Nombre
-        {
-            nombreActual = bufferLinea;
-            break;
-        }
-        case 3: // Tamaño
-        {
-            nActual = std::atoll(bufferLinea.c_str());
-            break;
-        }
-        default: // Ignorar línea.
-        {
-            // Tras recolectar los parámetros tres, se crea la prueba
-            Prueba pruebaInsertada(nActual, funcionActual, nombreActual);
-            pruebaInsertada.id = idActual++;
+            case 1: // Función
+            {
+                auto cualFunc = funciones.find(bufferLinea);
+                if (cualFunc != funciones.end())
+                    funcionActual = cualFunc->second;
+                else
+                    std::cerr << "FUNCION DE PRUEBA " << bufferLinea << " NO ENCONTRADA" << std::endl;
+                break;
+            }
+            case 2: // Nombre
+            {
+                nombreActual = bufferLinea;
+                break;
+            }
+            case 3: // Tamaño
+            {
+                nActual = std::atoll(bufferLinea.c_str());
+                break;
+            }
+            case 4: // Repeticiones
+            {
+                kActual = std::atoll(bufferLinea.c_str());
+                break;
+            }
+            default: // Ignorar línea.
+            {
+                // Tras recolectar los parámetros tres, se crea la prueba
+                // Se realizará k veces
+                for (size_t i = 0; i < kActual; ++i)
+                {
+                     Prueba pruebaInsertada(nActual, funcionActual, nombreActual);
+                    pruebaInsertada.id = idActual++;
 
-            pruebas.push_back(pruebaInsertada);
-            paramActual = 0;
-            break;
-        }
+                    pruebas.push_back(pruebaInsertada);
+                }
+               
+                // Listo! Tras la inserción, debemos devolver nuestro marcador
+                // de índice de parámetro al principio
+                paramActual = 0;
+
+                // De manera defensiva, reiniciaremos el k para evitar realizar
+                // muchas pruebas de manera accidental
+                kActual = 0;
+                break;
+            }
         }
     }
 }
@@ -1355,4 +1372,3 @@ void Ensayos::profundidadHijoLargoHijoCorto3(size_t n, PuntoTiempo &puntoInicio,
     Controlador::averiguarProfundidadNodo(arbol, ultimo);
     puntoFinal = clock.now();
 }
-
