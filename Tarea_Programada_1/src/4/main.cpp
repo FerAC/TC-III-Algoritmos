@@ -315,64 +315,6 @@ int menu()
     return 0;
 }
 
-int viejo()
-{
-    // Arbol
-    Arbol arbol = Arbol();
-    size_t cantidadNiveles = 4;
-    size_t anchoPorNivel = 2;
-    size_t cantidadNodos = (pow(anchoPorNivel, cantidadNiveles) - 1) / (anchoPorNivel - 1);
-    size_t cantidadHijosRaiz = 5; // para crearArbolHijoCortoHijoLargo
-    size_t cantidadNodosHijoCortoHijoLargo = 100;
-
-    std::cout << "~~~~~~~~~~~~~~PARAMETROS~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "Nodos = " << cantidadNodos << std::endl;
-    std::cout << "Niveles = " << cantidadNiveles << std::endl;
-    std::cout << "Anchura por nivel = " << anchoPorNivel << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-    // Reloj
-    std::chrono::high_resolution_clock clock;
-
-    // Lista de nodos
-    ListaIndexada lista;
-    for (size_t j = 0; j < cantidadNodos; j++)
-        lista.insertar(j, j);
-
-    // Medir duración
-    auto start = clock.now();                                               // Iniciar reloj
-    //Controlador::crearArbolHijoCortoHijoLargo(cantidadNodosHijoCortoHijoLargo, cantidadHijosRaiz, arbol); // Codigo que queremos medir
-    auto finish = clock.now();                                             // Terminar reloj
-
-    // Calcular duración
-    auto duracionNano = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start);
-    auto duracionMicro = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
-    auto duracionMili = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start);
-    auto duracionSeg = std::chrono::duration_cast<std::chrono::seconds>(finish - start);
-    auto duracionMin = std::chrono::duration_cast<std::chrono::minutes>(finish - start);
-
-    //  Anunciar duración
-    std::cout << "~~~~~~~~~~~~~~~~DURACION~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "Duracion (nanosegundos):\t" << std::setprecision(5) << std::scientific << (double) duracionNano.count() << std::endl;
-    std::cout << "Duracion (microsegundos):\t" << std::setprecision(5) << std::scientific << (double) duracionMicro.count() << std::endl;
-    std::cout << "Duracion (milisegundos):\t" << std::setprecision(5) << std::scientific << (double) duracionMili.count() << std::endl;
-    std::cout << "Duracion (segundos):\t" << std::setprecision(5) << std::scientific << (double) duracionSeg.count() << std::endl;
-    std::cout << "Duracion (minutos):\t" << std::setprecision(5) << std::scientific << (double) duracionMin.count() << std::endl;
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-    // Visualizar árbol
-    std::cout << "~~~~~~~~~~~~~~~~~~ARBOL~~~~~~~~~~~~~~~~~~" << std::endl;
-    Controlador::imprimirArbol(arbol);
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-
-    // Ordenes de duración sugeridos por Fer
-    // 960800 7 8      1398101  4 11             //Orden 1M          -39200      +398101
-    // 97656 5 8       111111   10 6            //Orden 100k         -2344       +11111
-    // 9841 3 9                                 //Orden 10k           -159       
-
-    return 0;
-}
-
 int main()
 {
     #if defined(CONCURRENTE)

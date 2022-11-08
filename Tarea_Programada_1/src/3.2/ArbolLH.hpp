@@ -112,6 +112,10 @@ NodoConcreto* Raiz()
 /// @param  un NodoConcreto que sera agregado como hijo  
 /// @remarks Requiere un arbol inicializado y que el NodoConcreto alimentado como parametro pertenezca al arbol 	
 NodoConcreto* Padre(NodoConcreto * hijo){
+	if (hijo == this->Raiz()) {
+		return nullptr;
+	}
+
 	NodoConcreto * a;
 	Celda<NodoConcreto> * actual = listaPrincipal->getPrimera();
 
@@ -119,21 +123,14 @@ NodoConcreto* Padre(NodoConcreto * hijo){
 		return nullptr; 
 	} else{
 		while(actual!=nullptr){
-			assert(actual != nullptr);
-			assert(actual->getEtiqueta().getListaHijos() != nullptr);
-			assert(actual->getEtiqueta().getListaHijos()->getPrimera() != nullptr);
 			Celda<NodoConcreto*> * celdaHijos = actual->getEtiqueta().getListaHijos()->getPrimera();  //Apunta al primer indice de la lista de hijos si es que existe
-			a = (celdaHijos->getEtiqueta());
-			while(a!=nullptr){
-				assert(a != nullptr);
-				assert(hijo != nullptr);
+			while(celdaHijos!=nullptr){
+				a = celdaHijos->getEtiqueta();
 				if(a->getEtiqueta() == hijo->getEtiqueta()){ //Significa que encontre a mi padre
-					
 					return & actual->getEtiqueta();
 				} else{ //Sigo avanzando
 					celdaHijos = celdaHijos->getSiguiente();
 				}
-				a = celdaHijos->getEtiqueta();
 			}
 			actual = actual->getSiguiente(); 	
 		}
