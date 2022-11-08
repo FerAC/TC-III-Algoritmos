@@ -4,8 +4,6 @@
 #include "../2/Celda.hpp"
 #include "NodoConcreto.hpp"
 
-#include <assert.h>
-
 class ArbolLH{
 	private:
 		Lista<NodoConcreto> * listaPrincipal; 

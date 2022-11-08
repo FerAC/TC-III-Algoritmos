@@ -1,4 +1,3 @@
-#include <assert.h>
 #include "Ensayos.hpp"
 
 // I/O estandar
@@ -873,8 +872,6 @@ Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndex
             }
         }
     }
-
-    assert(retornado != Nodo());
 
     return retornado; 
 }
