@@ -476,16 +476,16 @@ void Ensayos::poblarArbolAlturaExtremaSegunPrueba(Arbol &arbol, int caso, int n)
     }
 
     arbol.PonerRaiz(0);
+    Nodo padre = arbol.Raiz();
     if (caso == 1)
     { // Mejor caso
-        Nodo padre = arbol.AgregarHijo(0, arbol.Raiz());
+        Nodo padre = arbol.AgregarHijo(0, padre);
         for (size_t i = 2; i < cantidadNodos; ++i)
             padre = arbol.AgregarHijo(i, padre);
     }
     else if (caso == 2)
     { // Caso medio
-        Nodo padre;
-        arbol.PonerRaiz(0);
+        
         if (cantidadNodos % 2)
         {
             for (size_t i = 1; i < cantidadNodos; ++i)
@@ -517,7 +517,6 @@ void Ensayos::poblarArbolAlturaExtremaSegunPrueba(Arbol &arbol, int caso, int n)
     }
     else
     { // Peor caso
-        Nodo padre;
         for (size_t i = 0; i < cantidadNodos - 1; i++)
             padre = arbol.AgregarHijo(i, padre);
         arbol.AgregarHijo(0, padre);

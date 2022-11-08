@@ -36,7 +36,7 @@ Nodo Controlador::averiguarHermanoIzquierdo(Nodo nodo, Arbol &arbol)
  * @remark El arbol debe estar inicializado
  * @return Devuelve true (1) si hay etiquetas repetidas, sino devuelve false (0)
  */
-bool Controlador::averiguarEtiquetasRepetidas(Arbol &arbol)
+bool Controlador::averiguarEtiquetasRepetidas(Arbol& arbol)
 {
     const Nodo &NodoNulo = Nodo();
 
