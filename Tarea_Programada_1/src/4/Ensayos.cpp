@@ -238,22 +238,22 @@ void Ensayos::crearArbol(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo &puntoF
 {
     Arbol arbol = Arbol();
     std::chrono::high_resolution_clock clock;
-    // N = 1 n mas pequeno, 9841
+    // N = 1 n mas pequeno, 1093
     size_t cantidadNiveles;
     size_t hijosPorNodo;
     switch (n)
     {
     case 1:
-        cantidadNiveles = 9;
-        hijosPorNodo = 3;
+       cantidadNiveles = 7;
+       hijosPorNodo = 3;
         break;
     case 2:
-        cantidadNiveles = 8;
-        hijosPorNodo = 5;
+        cantidadNiveles = 7;
+        hijosPorNodo = 4;
         break;
     case 3:
-        cantidadNiveles = 8;
-        hijosPorNodo = 7;
+        cantidadNiveles = 9;
+        hijosPorNodo = 3;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -278,13 +278,13 @@ void Ensayos::crearArbolAlturaExtrema(size_t n, PuntoTiempo &puntoInicio, PuntoT
     switch (n)
     {
     case 1:
-        cantidadNodos = 9841;
+        cantidadNodos = 1093;
         break;
     case 2:
-        cantidadNodos = 9756;
+        cantidadNodos = 5461;
         break;
     case 3:
-        cantidadNodos = 960800;
+        cantidadNodos = 9841;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -303,13 +303,13 @@ void Ensayos::crearArbolAnchuraExtrema(size_t n, PuntoTiempo &puntoInicio, Punto
     switch (n)
     {
     case 1:
-        cantidadNodos = 9841 - 1;
+        cantidadNodos = 1093 - 1;
         break;
     case 2:
-        cantidadNodos = 9756 - 1;
+        cantidadNodos = 5461 - 1;
         break;
     case 3:
-        cantidadNodos = 960800 - 1;
+        cantidadNodos = 9841 - 1;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -326,13 +326,13 @@ void Ensayos::crearArbolHijoCortoHijoLargo(size_t n, PuntoTiempo &puntoInicio, P
     switch (n)
     {
     case 1:
-        cantidadNodos = 9841;
+        cantidadNodos = 1093;
         break;
     case 2:
-        cantidadNodos = 9756;
+        cantidadNodos = 5461;
         break;
     case 3:
-        cantidadNodos = 960800;
+        cantidadNodos = 9841;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -353,22 +353,22 @@ void Ensayos::crearArbolHijoCortoHijoLargo(size_t n, PuntoTiempo &puntoInicio, P
 
 void Ensayos::poblarNormalSegunPrueba(Arbol &arbol, int n, int caso)
 {
-    // N = 1 n mas pequeno, 9841
+    // N = 1 n mas pequeno, 1093
     size_t cantidadNiveles;
     size_t hijosPorNodo;
     switch (n)
     {
     case 1:
-        cantidadNiveles = 9;
+        cantidadNiveles = 7;
         hijosPorNodo = 3;
         break;
     case 2:
-        cantidadNiveles = 8;
-        hijosPorNodo = 5;
+        cantidadNiveles = 7;
+        hijosPorNodo = 4;
         break;
     case 3:
-        cantidadNiveles = 8;
-        hijosPorNodo = 7;
+        cantidadNiveles = 9;
+        hijosPorNodo = 3;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -466,13 +466,13 @@ void Ensayos::poblarArbolAlturaExtremaSegunPrueba(Arbol &arbol, int caso, int n)
     switch (n)
     {
     case 1:
-        cantidadNodos = 9841;
+        cantidadNodos = 1093;
         break;
     case 2:
-        cantidadNodos = 9756;
+        cantidadNodos = 5461;
         break;
     case 3:
-        cantidadNodos = 960800;
+        cantidadNodos = 9841;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -560,13 +560,13 @@ void Ensayos::PoblarArbolAnchuraExtremaSegunPrueba(Arbol& arbol, int caso, int n
     switch (n)
     {
     case 1:
-        cantidadNodos = 9841 - 1;
+        cantidadNodos = 1093 - 1;
         break;
     case 2:
-        cantidadNodos = 9756 - 1;
+        cantidadNodos = 5461 - 1;
         break;
     case 3:
-        cantidadNodos = 960800 - 1;
+        cantidadNodos = 9841 - 1;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -644,13 +644,13 @@ void Ensayos::PoblarArbolHijoCortoHijoLargoSegunPrueba(Arbol& arbol, int caso, i
     switch (n)
     {
     case 1:
-        cantidadNodos = 9841;
+        cantidadNodos = 1093;
         break;
     case 2:
-        cantidadNodos = 9756;
+        cantidadNodos = 5461;
         break;
     case 3:
-        cantidadNodos = 960800;
+        cantidadNodos = 9841;
         break;
     default:
         std::cerr << "ERROR, N DISTINTO DE 1, 2, 3 ";
@@ -714,13 +714,13 @@ Nodo Ensayos::borrarSubArbolAlturaSegunPrueba(size_t n, Arbol& arbol){ //No vale
      switch (n)
     {
     case 1:
-        n = 9841;
+        n = 1093;
         break;
     case 2:
-        n = 97656; 
+        n = 5461; 
         break;
     case 3:
-        n = 960800; 
+        n = 9841; 
         break; 
     default:
         break;
@@ -776,13 +776,13 @@ Nodo Ensayos::borrarSubarbolAnchuraSegunPrueba(size_t n, Arbol& arbol){
     switch (n)
     {
     case 1:
-        n = 9841;
+        n = 1093;
         break;
     case 2:
-        n = 97656; 
+        n = 5461; 
         break;
     case 3:
-        n = 960800; 
+        n = 9841; 
         break; 
     default:
         break;
@@ -882,18 +882,17 @@ void Ensayos::borrarSubarbolNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     switch (n)
     {
     case 1:
-        k = 3; 
-        i = 9; 
-        
+       k = 3;
+       i = 7;
         break;
     case 2:
-        k = 5;
-        i = 8;
+        k = 4;
+        i = 7;
         break;
     
     case 3:
-       k = 7;
-       i = 8; 
+        k = 3; 
+        i = 9; 
         break; 
 
     default:
@@ -919,19 +918,18 @@ void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     std::chrono::high_resolution_clock clock;
     switch (n)
     {
-    case 1:
-        k = 3; 
-        i = 9; 
-        
+     case 1:
+       k = 3;
+       i = 7;
         break;
     case 2:
-        k = 5;
-        i = 8;
+        k = 4;
+        i = 7;
         break;
     
     case 3:
-       k = 7;
-       i = 8; 
+        k = 3; 
+        i = 9; 
         break; 
 
     default:
@@ -958,13 +956,13 @@ Nodo Ensayos::borrarSubarbolHijoCortoHijoLargoSegunPrueba(size_t n, Arbol& arbol
      switch (n)
     {
     case 1:
-        n = 9841;
+        n = 1093;
         break;
     case 2:
-        n = 97656; 
+        n = 5461; 
         break;
     case 3:
-        n = 960800; 
+        n = 9841; 
         break; 
     default:
         break;
@@ -1076,13 +1074,13 @@ Nodo Ensayos::ultimoNodoAncho(Arbol& arbol, int n){
     switch (n)
     {
     case 1:
-        n = 9841;
+        n = 1093;
         break;
     case 2:
-        n = 97656; 
+        n = 5461; 
         break;
     case 3:
-        n = 960800; 
+        n = 9841; 
         break; 
     default:
         break;
@@ -1108,13 +1106,13 @@ Nodo Ensayos::ultimoNodoAlto(Arbol& arbol, int n){
      switch (n)
     {
     case 1:
-        n = 9841;
+        n = 1093;
         break;
     case 2:
-        n = 97656; 
+        n = 5461; 
         break;
     case 3:
-        n = 960800; 
+        n = 9841; 
         break; 
     default:
         break;
@@ -1144,13 +1142,13 @@ Nodo Ensayos::ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n){
      switch (n)
     {
     case 1:
-        n = 9841;
+        n = 1093;
         break;
     case 2:
-        n = 97656; 
+        n = 5461; 
         break;
     case 3:
-        n = 960800; 
+        n = 9841; 
         break; 
     default:
         break;
@@ -1303,17 +1301,18 @@ void Ensayos::profundidadNormal2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     switch (n)
     {
     case 1:
-        k = 3;
+       k = 3;
+       i = 7;
+        break;
+    case 2:
+        k = 4;
+        i = 7;
+        break;
+    
+    case 3:
+        k = 3; 
         i = 9; 
         break; 
-    case 2:
-        k = 5;
-        i = 8;
-        break;
-    case 3:
-        k = 7;
-        i = 8;
-        break;
     default:
         break;
     }
@@ -1336,19 +1335,18 @@ void Ensayos::profundidadNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     std::chrono::high_resolution_clock clock;
     switch (n)
     {
-    case 1:
-        k = 3; 
-        i = 9; 
-        
+     case 1:
+       k = 3;
+       i = 7;
         break;
     case 2:
-        k = 5;
-        i = 8;
+        k = 4;
+        i = 7;
         break;
     
     case 3:
-       k = 7;
-       i = 8; 
+        k = 3; 
+        i = 9; 
         break; 
 
     default:
