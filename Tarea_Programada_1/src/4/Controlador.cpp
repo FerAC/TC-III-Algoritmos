@@ -527,14 +527,12 @@ void Controlador::borrarSubArbol(Arbol &arbol, Nodo subraiz)
     // Cada vez que visitemos un nodo, añadiremos sus hijos a la cola
     // La cola se llena con los nodos hijos de los que hemos visitado
     // Finalmente, cuanto todos los nodos han sido visitados, borramos la cola
-    Util::Cola<Nodo> cola;
-
+    Util::Cola<Nodo> cola; 
     // Vamos a eliminar los nodos usando una lista como si fuera una "pila"
     // Cada vez que visitamos un nodo, lo añadimos a la "pila"
     // La "pila" se llena en orden inverso al que añadimos los nodos
     // Finalmente, cuando todos los nodos fueron añadidos, los borramos en orden inverso al de agregado
     ListaIndexada pilaBorrado;
-
     // El desplazamiento del arbol empieza en la raiz
     cola.Encolar(subraiz);
 
@@ -560,12 +558,8 @@ void Controlador::borrarSubArbol(Arbol &arbol, Nodo subraiz)
     // Ahora podemos borrar los nodos en el orden que los agregamos
     for (int i = pilaBorrado.numElem(); i > 0; --i)
     {
-        std::cout << "I = " << i << std::endl;
-
         // Esta garantizado que el elemento tope del stack es una hoja
         int valorHojaActual = pilaBorrado.recuperar(0);
-
-        std::cout << "\tH = " << valorHojaActual << std::endl;
 
         pilaBorrado.borrar(0);
         // Esta garantizado que vamos a borrar el ultimo hijo primero, y luego sus hijos
@@ -573,8 +567,6 @@ void Controlador::borrarSubArbol(Arbol &arbol, Nodo subraiz)
         borrarHoja(valorHojaActual, arbol);
 
         // La ultima hoja del arbol en la pila ha sido borrado
-        // Vamos a sacarlo de la pila y llevarlo hasta la siguiente hoja en la proxima iteracion
-        std::cout << "..." << std::endl;
     }
     // Todo esta hecho
 }

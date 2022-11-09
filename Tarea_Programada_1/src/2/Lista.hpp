@@ -19,20 +19,21 @@ class Lista {
 
 		~Lista() {
 			
-			Celda<T> ** temp = &primera;
-			Celda<T> * tempSiguiente;
-			for (size_t i=0; i<contador; ++i) {
-				if ((**temp).getSiguiente()) {
-					tempSiguiente = (**temp).getSiguiente();
-				}
-				
-				delete *temp;
-				if (i+1 < contador) {
+			if(primera!=nullptr){
+				Celda<T> ** temp = &primera;
+				Celda<T> * tempSiguiente;
+				for (size_t i=0; i<contador; ++i) {
+					if ((**temp).getSiguiente()) {
+						tempSiguiente = (**temp).getSiguiente();
+					}
 					
-					*temp = tempSiguiente; 
+					delete *temp;
+					if (i+1 < contador) {
+						
+						*temp = tempSiguiente; 
+					}
 				}
 			}
-			
 		}
 
 		void insertar(const T& elemento) {

@@ -238,8 +238,8 @@ public:
      */
     ArbolSenalador()
     {
-        arregloArbol = new NodoArbol[256];
-        maximo = 256;
+        arregloArbol = new NodoArbol[12000];
+        maximo = 12000;
         actual = 0;
         esVacio = 0;
     }
@@ -389,10 +389,11 @@ public:
 
             // pasamos por todos los nodos del arbol hasta encontrar el primero que tenga el mismo padre
             while(indice < maximo && arregloArbol[indice].getIndicePadre() != hermano.getIndicePadre() && encontrado ==0){
-                ++indice;
+                // ++indice;
                 if(arregloArbol[indice].getIndicePadre() == hermano.getIndicePadre()){
                 encontrado = 1;
                 }
+                ++indice;
             }
 
             if(encontrado){

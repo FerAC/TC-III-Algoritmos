@@ -20,10 +20,11 @@ ArbolLH(){
 /// @brief Elimina al arbol y su lista principal
 /// @remarks Requiere que el arbol este inicializado
 ~ArbolLH(){
-	for (Celda<NodoConcreto> * it = listaPrincipal->getPrimera(); it != nullptr; it = it->getSiguiente()){
-		 delete it->getEtiqueta().getListaHijos();
-	}
-
+	if(listaPrincipal->getPrimera()!=nullptr){
+		for (Celda<NodoConcreto> * it = listaPrincipal->getPrimera(); it != nullptr; it = it->getSiguiente()){
+			delete it->getEtiqueta().getListaHijos();
+		}
+	} 
 	delete listaPrincipal;									//listaPrincipal->										//listaPrincipal
 } 
 
@@ -44,11 +45,13 @@ void ImprimirLP(){
 /// @brief Inserta un NodoConcreto en el arbol como raiz del mismo
 /// @remarks Requiere que el arbol sea vacia  
 void PonerRaiz(int etiqueta){
+	
 	NodoConcreto nuevoNodoConcreto = NodoConcreto(etiqueta); 
 	Lista<NodoConcreto*> * lista = new Lista<NodoConcreto*>();
 
 	nuevoNodoConcreto.listaHijos = lista; 
-	listaPrincipal->insertarAlPrincipio(nuevoNodoConcreto);
+	listaPrincipal->insertar(nuevoNodoConcreto);
+	
 }
 
 /// @brief Agrega un hijo a un NodoConcreto alimentado como parametro 
@@ -81,7 +84,7 @@ NodoConcreto* AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPad
 void BorrarHoja(NodoConcreto* borrado){
 	//Lista<NodoConcreto*> *punteroALista = borrado->listaHijos; 
 	if(listaPrincipal->getContador() == 1){
-		listaPrincipal->borrar(listaPrincipal->getPrimera()->getEtiqueta()); 
+		listaPrincipal->borrar(listaPrincipal->getPrimera()->getEtiqueta());
 	} else{
 
 		for(Celda<NodoConcreto> * buffer1 = listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){

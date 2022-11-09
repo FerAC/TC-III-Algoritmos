@@ -55,8 +55,8 @@ Etiqueta HCHL 3 tamano 2
 
 Etiqueta HCHL 3
 Etiqueta HCHL 3 tamano 3
-3
-30
+1
+2
 
 Etiqueta Alto 1
 Etiqueta Alto 1 tamano 1

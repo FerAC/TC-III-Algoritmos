@@ -939,7 +939,7 @@ void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     {
         lista.insertar(i,i);
     }
-    
+    Controlador::crearArbol(i, k, lista, arbol); 
     puntoInicio = clock.now();
     Controlador::borrarSubArbol(arbol, arbol.Raiz()); 
     puntoFinal = clock.now(); 
