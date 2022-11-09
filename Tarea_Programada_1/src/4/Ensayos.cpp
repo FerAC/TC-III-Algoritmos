@@ -461,7 +461,6 @@ void Ensayos::etiquetasRepetidasNormal3(size_t n, PuntoTiempo &puntoInicio, Punt
 
 void Ensayos::poblarArbolAlturaExtremaSegunPrueba(Arbol &arbol, int caso, int n)
 {
-    std::chrono::high_resolution_clock clock;
     size_t cantidadNodos;
     switch (n)
     {
@@ -1219,6 +1218,7 @@ Nodo Ensayos::ultimoNodoHijoLargoHijoCorto(Arbol& arbol, int n){
 
 Nodo Ensayos::ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada& lista){
     Nodo retornado; 
+
     // Primera condicion: por lo menos un nivel y un hijo por nivel
     if (i > 0 && k > 0)
     {
@@ -1242,14 +1242,14 @@ Nodo Ensayos::ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada&
                 // El padre al que agregarle un hijo
                 // La cantidad de hijos po padre ya se conoce. Podemos producirla
                 Nodo padre = parentNodesQueue.Desencolar();
-                if(numNodesAdded == numNodesTotal-1)
-                    retornado = padre;
+                
                 for (size_t numChildAdded = 0; numChildAdded < k; ++numChildAdded)
                 {
                     // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol
                     Nodo newChild = arbol.AgregarHijo(lista.recuperar(numNodesAdded), padre);
+                    retornado = newChild;
                     ++numNodesAdded;
-
+                   
                     // Cada vez que poduzcamos un nuevo hijo, se puede considerar como un padre que valdria la pena visitar despues
                     // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol
                     if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
@@ -1258,6 +1258,12 @@ Nodo Ensayos::ultimoNodoNormal(Arbol& arbol, int n, int i, int k, ListaIndexada&
             }
         }
     }
+    Nodo NULO;
+    if (retornado == NULO)
+    {
+        std::cout<<"RETORNADO NULO" << std::endl;
+    }
+    
     return retornado; 
 }
 
@@ -1265,6 +1271,7 @@ void Ensayos::profundidadAltura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiempo
     Arbol arbol;
     Nodo subRaiz = borrarSubArbolAlturaSegunPrueba(n, arbol);
     std::chrono::high_resolution_clock clock;
+    puntoInicio = clock.now(); 
     Controlador::averiguarProfundidadNodo(arbol, subRaiz);
     puntoFinal = clock.now();
 }
@@ -1282,6 +1289,7 @@ void Ensayos::profundidadAnchura2(size_t n, PuntoTiempo &puntoInicio, PuntoTiemp
     Arbol arbol;
     Nodo subRaiz = borrarSubarbolAnchuraSegunPrueba(n, arbol);
     std::chrono::high_resolution_clock clock;
+    puntoInicio = clock.now(); 
     Controlador::averiguarProfundidadNodo(arbol, subRaiz);
     puntoFinal = clock.now();
 }

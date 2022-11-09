@@ -58,36 +58,6 @@ Etiqueta HCHL 3 tamano 3
 3
 30
 
-Etiqueta Normal 1
-Etiqueta Normal 1 tamano 1
-1
-30
-
-Etiqueta Normal 2
-Etiqueta Normal 2 tamano 2
-2
-30 
-
-Etiqueta Normal 2
-Etiqueta Normal 2 tamano 3
-3
-30 
-
-Etiqueta Normal 3
-Etiqueta Normal 2 tamano 1
-1
-30 
-
-Etiqueta Normal 3
-Etiqueta Normal 3 tamano 2
-2
-30 
-
-Etiqueta Normal 3
-Etiqueta Normal 3 tamano 3
-3
-30 
-
 Etiqueta Alto 1
 Etiqueta Alto 1 tamano 1
 1
