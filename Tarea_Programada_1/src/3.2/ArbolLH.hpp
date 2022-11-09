@@ -80,14 +80,19 @@ NodoConcreto* AgregarHijoMasDerecho(int etiqueta, NodoConcreto * NodoConcretoPad
 /// @remarks Requiere que el arbol este inicializado y que el NodoConcreto alimentado como paramtero sea una hoja	
 void BorrarHoja(NodoConcreto* borrado){
 	//Lista<NodoConcreto*> *punteroALista = borrado->listaHijos; 
-	for(Celda<NodoConcreto> * buffer1 = listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
-		
-		int validez = buffer1->getEtiqueta().getListaHijos()->borrar(borrado); 
-		
-		if(validez==1){		//Si lo borre de secundarias voy a borrarlo a principal
-			delete borrado->listaHijos;  
-			listaPrincipal->borrar(*borrado); 
-			return; 
+	if(listaPrincipal->getContador() == 1){
+		listaPrincipal->borrar(listaPrincipal->getPrimera()->getEtiqueta()); 
+	} else{
+
+		for(Celda<NodoConcreto> * buffer1 = listaPrincipal->getPrimera(); buffer1!=nullptr; buffer1 = buffer1->getSiguiente()){
+			
+			int validez = buffer1->getEtiqueta().getListaHijos()->borrar(borrado); 
+			
+			if(validez==1){		//Si lo borre de secundarias voy a borrarlo a principal
+				delete borrado->listaHijos;  
+				listaPrincipal->borrar(*borrado); 
+				return; 
+			}
 		}
 	}
 }

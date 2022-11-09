@@ -483,7 +483,7 @@ void Ensayos::poblarArbolAlturaExtremaSegunPrueba(Arbol &arbol, int caso, int n)
     Nodo padre = arbol.Raiz();
     if (caso == 1)
     { // Mejor caso
-        Nodo padre = arbol.AgregarHijo(0, padre);
+        padre = arbol.AgregarHijo(0, padre);
         for (size_t i = 2; i < cantidadNodos; ++i)
             padre = arbol.AgregarHijo(i, padre);
     }
@@ -857,13 +857,10 @@ Nodo Ensayos::borrarSubArbolNormalSegunPrueba(size_t n, Arbol& arbol, ListaIndex
                     // Es una precondicion de esta funcion en el que se nos garantiza un valor en la lista por cada nodo en el arbol
                     Nodo newChild = arbol.AgregarHijo(lista.recuperar(numNodesAdded), padre);
                     ++numNodesAdded;
-
+                    retornado = newChild; 
         
                     // Si encontramos al nodo que se debe retornar, lo guardaremos
                     // para retornarlo después
-                    if(numNodesAdded == parada)
-                        retornado = padre;
-
                     // Cada vez que poduzcamos un nuevo hijo, se puede considerar como un padre que valdria la pena visitar despues
                     // Aunque, esta consideracion solo se puede hacer si no hemos alcanzado el ultimo nivel del arbol
                     if (numNodesTotal - numNodesAdded >= numNodesLastLevel)
@@ -935,6 +932,7 @@ void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTie
     default:
         break;
     }
+
     Arbol arbol;
     ListaIndexada lista;
     size_t cantidadNodos = (std::pow(k, i) - 1) / (k - 1);
@@ -943,7 +941,6 @@ void Ensayos::borrarSubarbolNormal3(size_t n, PuntoTiempo &puntoInicio, PuntoTie
         lista.insertar(i,i);
     }
     
-    Controlador::crearArbol(i, k, lista, arbol); 
     puntoInicio = clock.now();
     Controlador::borrarSubArbol(arbol, arbol.Raiz()); 
     puntoFinal = clock.now(); 

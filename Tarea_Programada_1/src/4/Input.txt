@@ -1,389 +1,389 @@
 Crear Normal
 Normal tamano 1
 1
-30
+2
 
 Crear Normal
 Normal tamano 2
+1
 2
-30
 
 Crear Normal
 Normal tamano 3
-3
-30
+1
+2
 
 Etiqueta HCHL 1
 Etiqueta HCHL 1 tamano 1
 1
-30
+2
 
 Etiqueta HCHL 1
 Etiqueta HCHL 1 tamano 2
+1
 2
-30
 
 Etiqueta HCHL 1
 Etiqueta HCHL 1 tamano 3
-3
-30
+1
+2
 
 Etiqueta HCHL 2
 Etiqueta HCHL 2 tamano 1
 1
-30
+2
 
 Etiqueta HCHL 2
 Etiqueta HCHL 2 tamano 2
+1
 2
-30
 
 Etiqueta HCHL 2
 Etiqueta HCHL 2 tamano 3
-3
-30
+1
+2
 
 Etiqueta HCHL 3
 Etiqueta HCHL 3 tamano 1
 1
-30
+2
 
 Etiqueta HCHL 3
 Etiqueta HCHL 3 tamano 2
+1
 2
-30
 
 Etiqueta HCHL 3
 Etiqueta HCHL 3 tamano 3
-3
-30
+1
+2
 
 Etiqueta Normal 1
 Etiqueta Normal 1 tamano 1
 1
-30
+2
 
 Etiqueta Normal 2
 Etiqueta Normal 2 tamano 2
-2
-30 
+1
+2 
 
 Etiqueta Normal 2
 Etiqueta Normal 2 tamano 3
-3
-30 
+1
+2 
 
 Etiqueta Normal 3
 Etiqueta Normal 2 tamano 1
 1
-30 
+2 
 
 Etiqueta Normal 3
 Etiqueta Normal 3 tamano 2
-2
-30 
+1
+2 
 
 Etiqueta Normal 3
 Etiqueta Normal 3 tamano 3
-3
-30 
+1
+2 
 
 Etiqueta Alto 1
 Etiqueta Alto 1 tamano 1
 1
-30
+2
 
 Etiqueta Alto 1
 Etiqueta Alto 1 tamano 2
+1
 2
-30
 
 Etiqueta Alto 1
 Etiqueta Alto 1 tamano 3
-3
-30
+1
+2
 
 Etiqueta Alto 2
 Etiqueta Alto 2 tamano 1
 1
-30
+2
 
 Etiqueta Alto 2
 Etiqueta Alto 2 tamano 2
+1
 2
-30
 
 Etiqueta Alto 2
 Etiqueta Alto 2 tamano 3
-3
-30
+1
+2
 
 Etiqueta Alto 3
 Etiqueta Alto 3 tamano 1
 1
-30
+2
 
 Etiqueta Alto 3
 Etiqueta Alto 3 tamano 2
+1
 2
-30
 
 Etiqueta Alto 3
 Etiqueta Alto 3 tamano 3
-3
-30
+1
+2
 
 Etiqueta Ancho 1
 Etiqueta Ancho 1 tamano 1
 1
-30
+2
 
 Etiqueta Ancho 1
 Etiqueta Ancho 1 tamano 2
+1
 2
-30
 
 Etiqueta Ancho 1
 Etiqueta Ancho 1 tamano 3
-3
-30
+1
+2
 
 Etiqueta Ancho 2
 Etiqueta Ancho 2 tamano 1
 1
-30
+2
 
 Etiqueta Ancho 2
 Etiqueta Ancho 2 tamano 2
+1
 2
-30
 
 Etiqueta Ancho 2
 Etiqueta Ancho 2 tamano 3
-3
-30
+1
+2
 
 Etiqueta Ancho 3
 Etiqueta Ancho 3 tamano 1
 1
-30
+2
 
 Etiqueta Ancho 3
 Etiqueta Ancho 3 tamano 2
+1
 2
-30
 
 Etiqueta Ancho 3
 Etiqueta Ancho 3 tamano 3
-3
-30
+1
+2
 
 Borrar Sub HCHL 2
 Borrar Sub HCHL 2 tamano 1
 1
-30
+2
 
 Borrar Sub HCHL 2
 Borrar Sub HCHL 2 tamano 2
+1
 2
-30
 
 Borrar Sub HCHL 2
 Borrar Sub HCHL 2 tamano 3
-3
-30
+1
+2
 
 Borrar Sub HCHL 3
 Borrar Sub HCHL 3 tamano 1
 1
-30
+2
 
 Borrar Sub HCHL 3
 Borrar Sub HCHL 3 tamano 2
+1
 2
-30
 
 Borrar Sub HCHL 3
 Borrar Sub HCHL 3 tamano 3
-3
-30
+1
+2
 
 Borrar Sub Normal 2
 Borrar Sub Normal 2 tamano 1
 1
-30
+2
 
 Borrar Sub Normal 2
 Borrar Sub Normal 2 tamano 2
+1
 2
-30
 
 Borrar Sub Normal 2
 Borrar Sub Normal 2 tamano 3
-3
-30
+1
+2
 
 Borrar Sub Normal 3
 Borrar Sub Normal 3 tamano 1
 1
-30
+2
 
 Borrar Sub Normal 3
 Borrar Sub Normal 3 tamano 2
+1
 2
-30
 
 Borrar Sub Normal 3
 Borrar Sub Normal 3 tamano 3
-3
-30
+1
+2
 
 Borrar Sub Alto 2
 Borrar Sub Alto 2 tamano 1
 1
-30
+2
 
 Borrar Sub Alto 2
 Borrar Sub Alto 2 tamano 2
+1
 2
-30
 
 Borrar Sub Alto 2
 Borrar Sub Alto 2 tamano 3
-3
-30
+1
+2
 
 Borrar Sub Alto 3
 Borrar Sub Alto 3 tamano 1
 1
-30
+2
 
 Borrar Sub Alto 3
 Borrar Sub Alto 3 tamano 2
+1
 2
-30
 
 Borrar Sub Alto 3
 Borrar Sub Alto 3 tamano 3
-3
-30
+1
+2
 
 Borrar Sub Ancho 2
 Borrar Sub Ancho 2 tamano 1
 1
-30
+2
 
 Borrar Sub Ancho 2
 Borrar Sub Ancho 2 tamano 2
+1
 2
-30
 
 Borrar Sub Ancho 2
 Borrar Sub Ancho 2 tamano 3
-3
-30
+1
+2
 
 Borrar Sub Ancho 3
 Borrar Sub Ancho 3 tamano 1
 1
-30
+2
 
 Borrar Sub Ancho 3
 Borrar Sub Ancho 3 tamano 2
+1
 2
-30
 
 Borrar Sub Ancho 3
 Borrar Sub Ancho 3 tamano 3
-3
-30
+1
+2
 
 Profundidad HCHL 2
 Profundidad HCHL 2 tamano 1
 1
-30
+2
 
 Profundidad HCHL 2
 Profundidad HCHL 2 tamano 2
+1
 2
-30
 
 Profundidad HCHL 2
 Profundidad HCHL 2 tamano 3
-3
-30
+1
+2
 
 Profundidad HCHL 3
 Profundidad HCHL 3 tamano 1
 1
-30
+2
 
 Profundidad HCHL 3
 Profundidad HCHL 3 tamano 2
+1
 2
-30
 
 Profundidad HCHL 3
 Profundidad HCHL 3 tamano 3
-3
-30
+1
+2
 
 Profundidad Normal 2
 Profundidad Normal 2 tamano 1
 1
-30
+2
 
 Profundidad Normal 2
 Profundidad Normal 2 tamano 2
+1
 2
-30
 
 Profundidad Normal 2
 Profundidad Normal 2 tamano 3
-3
-30
+1
+2
 
 Profundidad Normal 3
 Profundidad Normal 3 tamano 1
 1
-30
+2
 
 Profundidad Normal 3
 Profundidad Normal 3 tamano 2
+1
 2
-30
 
 Profundidad Normal 3
 Profundidad Normal 3 tamano 3
-3
-30
+1
+2
 
 Profundidad Alto 2
 Profundidad Alto 2 tamano 1
 1
-30
+2
 
 Profundidad Alto 2
 Profundidad Alto 2 tamano 2
+1
 2
-30
 
 Profundidad Alto 2
 Profundidad Alto 2 tamano 3
-3
-30
+1
+2
 
 Profundidad Alto 3
 Profundidad Alto 3 tamano 1
 1
-30
+2
 
 Profundidad Alto 3
 Profundidad Alto 3 tamano 2
+1
 2
-30
 
 Profundidad Alto 3
 Profundidad Alto 3 tamano 3
-3
-30
+1
+2

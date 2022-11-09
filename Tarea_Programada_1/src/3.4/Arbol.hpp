@@ -353,6 +353,18 @@ namespace Arbol_N_Ario
                 if (nodoHoja.nodoConcreto == nullptr)
                     throw NodoConcretoInvalido();
 
+                // Caso base: La hoja a borrar es la raiz
+                if (nodoHoja == this->Raiz())
+                {
+                    // Si la raiz no es una hoja, entonces no podemos borrarla
+                    if (this->raiz->hijoMasIzquierdo != nullptr)
+                        throw NodoNoEsHoja();
+                    
+                    // Sino, podemos borrarla, y nuestra raíz pasara a ser nula
+                    delete this->raiz;
+                    this->raiz = nullptr;
+                }
+
                 // Para mantener la integridad del arbol, es requerimiento que el nodo parametro sea una hoja
                 if (nodoHoja.nodoConcreto->hijoMasIzquierdo != nullptr)
                     throw NodoNoEsHoja();

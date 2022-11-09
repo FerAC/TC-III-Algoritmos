@@ -558,11 +558,14 @@ void Controlador::borrarSubArbol(Arbol &arbol, Nodo subraiz)
 
     // Todo el arbol ha sido visitado y sus nodos puestos en la pila
     // Ahora podemos borrar los nodos en el orden que los agregamos
-    int i = 0;
-    while (i++ < pilaBorrado.numElem())
+    for (int i = pilaBorrado.numElem(); i > 0; --i)
     {
+        std::cout << "I = " << i << std::endl;
+
         // Esta garantizado que el elemento tope del stack es una hoja
         int valorHojaActual = pilaBorrado.recuperar(0);
+
+        std::cout << "\tH = " << valorHojaActual << std::endl;
 
         pilaBorrado.borrar(0);
         // Esta garantizado que vamos a borrar el ultimo hijo primero, y luego sus hijos
@@ -571,6 +574,7 @@ void Controlador::borrarSubArbol(Arbol &arbol, Nodo subraiz)
 
         // La ultima hoja del arbol en la pila ha sido borrado
         // Vamos a sacarlo de la pila y llevarlo hasta la siguiente hoja en la proxima iteracion
+        std::cout << "..." << std::endl;
     }
     // Todo esta hecho
 }

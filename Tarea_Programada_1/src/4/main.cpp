@@ -317,6 +317,7 @@ int menu()
 
 int main()
 {
+    return menu();
     #if defined(CONCURRENTE)
         std::cout << "Ejecucion [CONCURRENTE]" << std::endl;
     #else
