@@ -99,7 +99,7 @@ namespace Arbol_N_Ario
     template <typename Elemento>
     std::ostream& operator<<(std::ostream& salida, const Arbol<Elemento>& arbol);
 
-    /// @brief Arbol N-Ario implementado con Hijo-Mas-Izquierdo, Hermano Derecho y contador
+    /// @brief Arbol N-Ario implementado con Hijo-Mas-Izquierdo, Hermano Derecho, tomando como ultimo hermano al Padre
     template <typename Elemento>
     class Arbol
     {
@@ -372,6 +372,8 @@ namespace Arbol_N_Ario
                     // Sino, podemos borrarla, y nuestra raíz pasara a ser nula
                     delete this->raiz;
                     this->raiz = nullptr;
+
+                    return;
                 }
 
                 // Para mantener la integridad del arbol, es requerimiento que el nodo parametro sea una hoja

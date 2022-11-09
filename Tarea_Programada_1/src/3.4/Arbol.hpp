@@ -88,7 +88,7 @@ namespace Arbol_N_Ario
 
     // Declaraciones adelantadas para resolver dependencias circulares en impresion
 
-    /// @brief Arbol N-Ario implementado con Hijo-Mas-Izquierdo, Hermano Derecho y contador
+    /// @brief Arbol N-Ario implementado con Hijo-Mas-Izquierdo, Hermano Derecho, Puntero al Padre, sin contador
     template <typename Elemento>
     class Arbol;
 
@@ -363,6 +363,8 @@ namespace Arbol_N_Ario
                     // Sino, podemos borrarla, y nuestra raíz pasara a ser nula
                     delete this->raiz;
                     this->raiz = nullptr;
+                    
+                    return;
                 }
 
                 // Para mantener la integridad del arbol, es requerimiento que el nodo parametro sea una hoja
