@@ -344,6 +344,9 @@ namespace Arbol_N_Ario
                     delete this->raiz;
                     this->raiz = nullptr;
 
+                    // No se nos puede olvidar disminuir la cantidad de nodos presentes
+                    --this->cantidadNodos;
+
                     return;
                 }
 
