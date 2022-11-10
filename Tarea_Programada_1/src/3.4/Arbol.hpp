@@ -377,7 +377,7 @@ namespace Arbol_N_Ario
                 // Ya que conocemos al padre, podemos borrar al hijo, considerando si ya borramos
                 // a la hoja (para escapar el recorrido)
                 bool hojaBorrada = false;
-                for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr; it = it->hermanoDerecho)
+                for (NodoConcreto* it = padreConcreto->hijoMasIzquierdo; it != nullptr && !hojaBorrada; it = it->hermanoDerecho)
                 {
                     // Si encontramos al hijo, entonces cambiaremos los enlaces entre sus hermanos adyacentes
                     if (it == nodoHoja.nodoConcreto)
@@ -395,12 +395,12 @@ namespace Arbol_N_Ario
                         // el nuevo hijo mas izquierdo del padre sera el hermano derecho del viejo hijo mas izquierdo
                         if (it == padreConcreto->hijoMasIzquierdo) // it->hermanoIzquierdo == nullptr
                             padreConcreto->hijoMasIzquierdo = hermanoDerecho;
-                    }
 
-                    // Tras este punto, ya se cambiaron los enlaces de los nodos, y ahora se puede borrar a este nodo
-                    delete it;
-                    hojaBorrada = true;
-                    break;
+                         // Tras este punto, ya se cambiaron los enlaces de los nodos, y ahora se puede borrar a este nodo
+                        delete it;
+                        hojaBorrada = true;
+                        break;
+                    }
                 }
 
                 // Si la hoja no fue borrada tras aquel recorrido, entonces eso significa que la hoja no esta correctamente
