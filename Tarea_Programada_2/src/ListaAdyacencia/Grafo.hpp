@@ -235,28 +235,40 @@ size_t Peso(Vertice& origen, Vertice& destino){
     return 0;
 }
 Vertice PrimerVertice(){
-    return listaPrincipal->getPrimera()->getEtiqueta();
+    if(listaPrincipal->getPrimera())
+        return listaPrincipal->getPrimera()->getEtiqueta();
+    Vertice nulo;
+    return nulo; 
 }
 Vertice SiguienteVertice(Vertice& original){
     Celda<Vertice> * celda;
-    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original; celda = celda->getSiguiente() ) //Muevo en lista Principal
+    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original && celda!=nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {}  
-    return celda->getSiguiente()->getEtiqueta(); 
+    if (celda->getSiguiente()!=nullptr)
+        return celda->getSiguiente()->getEtiqueta(); 
+    Vertice nulo;
+    return nulo; 
 }
 Vertice PrimerVerticeAdyacente(Vertice& original){
     Celda<Vertice> * celda;
-    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original; celda = celda->getSiguiente() ) //Muevo en lista Principal
+    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original && celda->getSiguiente()!=nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {} 
-    return * celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
+    if(celda->getEtiqueta() == original)
+        return * celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
+    Vertice nulo;
+    return nulo;
 }
 Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior){
     Celda<Vertice> * celda;
     for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {} //Esto me el vertice inicial
     Celda<Vertice::Contenedor> * iterador;
-    for( iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente != &adyAnterior; iterador = iterador->getSiguiente() ){
+    for( iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente != &adyAnterior && iterador->getSiguiente()!=nullptr; iterador = iterador->getSiguiente() ){
     }
-    return * iterador->getSiguiente()->getEtiqueta().VAdyacente; 
+    if(iterador->getEtiqueta().VAdyacente == &adyAnterior)
+        return * iterador->getSiguiente()->getEtiqueta().VAdyacente; 
+    Vertice nulo;
+    return nulo; 
 }
 
 void ImprimirConexiones(Vertice& vertice){
