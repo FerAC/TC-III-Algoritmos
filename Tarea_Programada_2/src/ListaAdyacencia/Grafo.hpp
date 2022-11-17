@@ -35,7 +35,12 @@ class Vertice{
                 return *this == otro;
             }
         };
-		char etiqueta;
+		
+        int esNulo(){
+            return 0;
+        }
+        
+        char etiqueta;
 		Lista<Contenedor> * listaAdyacencia; 
     public:	
 		/// @brief Constructor por omision de la clase nodo

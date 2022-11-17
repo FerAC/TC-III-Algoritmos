@@ -11,16 +11,27 @@ class Vertice
         size_t indice; //Posicion en el arreglo
         char etiqueta;
         int nulo = 0; 
-    
+
+        int esNulo(){
+            if (nulo == 1 && etiqueta == '0')
+            {
+                return 1;
+            }
+            return 0;            
+        }
+
         void setPosicion(int indice){
             this->indice = indice;
         }
+
         size_t getindice(){
             return indice; 
         }
+
         void setEtiqueta(char valor){
             this->etiqueta = valor;
         }
+
         char getEtiqueta(){
             return this->etiqueta;
         }
