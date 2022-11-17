@@ -137,13 +137,14 @@ class Grafo{
         return vertice; 
     }
     Vertice PrimerVerticeAdyacente(Vertice& original){
-        for (size_t i = 0; i < vertices; i++)
-        {
-            if(matriz[original.indice][i]> 0){
-                Vertice vertice (i, vector[i]);
-                return vertice; 
+        for(size_t i = 0; i<vertices; i++){
+            if(matriz[original.indice][i]>0){
+                Vertice  vertice (i, vector[i]);
+                return vertice;
             }
         }
+        Vertice vertice;
+        return vertice; 
     }
     Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyacente){
          for (size_t i = adyacente.indice; i < vertices; i++)
@@ -153,6 +154,8 @@ class Grafo{
                 return vertice; 
             }
         }
+        Vertice vertice;
+        return vertice; 
     }
     void ImprimirGrafo(){
         for (size_t i = 0; i < vertices; i++)
