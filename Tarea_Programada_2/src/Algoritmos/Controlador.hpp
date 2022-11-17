@@ -9,6 +9,7 @@
 #define VERSION_GRAFO "GRAFO REPRESENTADO CON LISTA DE ADYACENCIA"
 #endif
 
+#include "../2/Lista.hpp"
 #include <iostream>
 
 class Controlador
@@ -29,8 +30,16 @@ public:
     {
     }
 
-    static void Dijkstra()
+    static Lista<Vertice>* Dijkstra(Grafo grafo, Vertice &inicio)
     {
+        Lista<Vertice> *camino;
+        int cantidadVertices = grafo.NumVertices();
+        int pesos[cantidadVertices-1]; 
+        
+
+
+
+        return camino;
     }
 
     static void Floyd()
@@ -38,7 +47,12 @@ public:
     }
 
     static void imprimirGrafo(Grafo grafo){
-        return;
+        #if defined(MATRIZ)
+            grafo.ImprimirGrafo();
+        #else
+            grafo.ImprimirVertices();
+            // tambien se deberia imprimir las arristas
+        #endif 
     }
 };
 #endif
