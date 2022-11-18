@@ -20,6 +20,7 @@ class ListaDijkstra{
 
     int cantidadElementos = 0;
     int tamanoMax;
+    bool *visitado;
     int *pesos;
     char *vertices;
     char *verticeAnterior;
@@ -29,12 +30,22 @@ class ListaDijkstra{
         int *pesos = new int[tamano];
         char *vertices = new char[tamano];
         char *verticeAnterior = new char[tamano];
+        bool *visitado = new bool[tamano];
+
+        size_t contador = 0;
+        while (contador<tamano)
+        {
+            visitado[contador] = false;
+            ++contador;
+        }
+        
     }
 
     ~ListaDijkstra(){
         delete []pesos;
         delete []vertices;
         delete []verticeAnterior;
+        delete []visitado;
     }
 
     void agregar(char verticeActual, char elVerticeAnterior, int peso){
@@ -78,6 +89,33 @@ class ListaDijkstra{
             vertice = vertices[contador];
         }
         return pesos[contador];
+    }
+
+    int getPesoPorIndice(size_t indice){
+        return pesos[indice];
+    }
+
+    char getVerticePorIndice(size_t indice){
+        return vertices[indice];
+    }
+
+    bool esVisitadoPorIndice(size_t indice){
+        return visitado[indice];
+    }
+
+    void setVisitadorPorIndice(size_t indice){
+        visitado[indice] = true;
+    }
+
+    void setVisitado(char verticeVisitado){
+        int contador = 0;
+        char vertice = vertices[contador];
+        while (vertice != verticeVisitado)
+        { 
+            ++contador;
+            vertice = vertices[contador];
+        }
+        visitado[contador] = true;
     }
 
 };
@@ -129,9 +167,45 @@ public:
 
         size_t contador = 0;
 
-        while (contador < cantidadVerces-2)
+        while (contador < cantidadVertices-2)
         {
-            
+            size_t counter = 0; // usado para pasar por cada elemento de camino
+            char verticePivote = camino->getVerticePorIndice(counter);
+            int pesoVerticePivote = camino->getPesoPorIndice(counter);
+            int pesoContador = camino->getPesoPorIndice(counter);
+            // este loop permite encontrar el sigueinte vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
+            while (counter<cantidadVertices-1)
+            {
+                if(pesoVerticePivote < pesoContador && (camino->esVisitadoPorIndice(counter) != true) ){
+                    verticePivote = camino->getVerticePorIndice(counter);
+                    pesoVerticePivote = camino->getPesoPorIndice(counter);
+                }
+                ++counter;
+                pesoContador = camino->getVerticePorIndice(counter);
+            }
+            camino->setVisitado(verticePivote); // se guarda el pivote como visitado 
+
+            Vertice verticeOptimal = grafo.PrimerVertice();
+            char verticeOptimalEtiqueta = grafo.Etiqueta(verticeOptimal);
+            // este loop permite encontrar el vertice del grafo que tiene como etiqueta a verticePivote
+            while (verticeOptimalEtiqueta != verticePivote)
+            {
+                verticeOptimal = grafo.SiguienteVertice(verticeOptimal);
+                verticeOptimalEtiqueta = grafo.Etiqueta(verticeOptimal);
+            }
+
+            Vertice verticeAdyacente = grafo.PrimerVerticeAdyacente(verticeOptimal);
+            // este loop permite cambiar en la listaDijkstra camino todos los pesos menores a los ya encontrados
+            while (verticeAdyacente != verticeNulo)
+            {
+                int nuevoPeso = grafo.Peso(verticeOptimal, verticeAdyacente) + camino->getPeso(verticeOptimalEtiqueta);
+
+                if ( nuevoPeso < camino->getPeso(grafo.Etiqueta(verticeAdyacente)))
+                {
+                    camino->setPeso(grafo.Etiqueta(verticeAdyacente), nuevoPeso);
+                }
+                verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeOptimal, verticeAdyacente);
+            }
         }
         
 
