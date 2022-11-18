@@ -24,7 +24,7 @@ int main(){
 
     Vertice inicio;
     inicio = grafo.PrimerVertice();
-    // Controlador::Dijkstra(grafo, inicio);
+    Controlador::Dijkstra(grafo, inicio);
     Controlador::imprimirGrafo(grafo);
 
 
