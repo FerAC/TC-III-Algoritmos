@@ -158,7 +158,7 @@ class Grafo{
         return vertice; 
     }
     Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyacente){
-         for (size_t i = adyacente.indice; i < vertices; i++)
+         for (size_t i = adyacente.indice+1; i < vertices; i++)
         {
             if(matriz[original.indice][i]> 0){
                 Vertice  vertice (i, vector[i]);
