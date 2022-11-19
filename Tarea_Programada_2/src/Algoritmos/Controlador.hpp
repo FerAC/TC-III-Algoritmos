@@ -171,12 +171,13 @@ public:
             camino->setPeso(grafo.Etiqueta(vertice), grafo.Peso(inicio, vertice));
             vertice = grafo.SiguienteVerticeAdyacente(inicio, vertice);
         }
-        std::cout<<"a"<<std::endl;
+        
 
         size_t contador = 0;
 
         while (contador < cantidadVertices-2)
         {
+            std::cout<<"a"<<std::endl;
             size_t counter = 0; // usado para pasar por cada elemento de camino
             char verticePivote = camino->getVerticePorIndice(counter);
             int pesoVerticePivote = camino->getPesoPorIndice(counter);
