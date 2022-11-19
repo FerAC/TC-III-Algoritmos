@@ -155,29 +155,35 @@ public:
             if (grafo.Etiqueta(vertice) != grafo.Etiqueta(inicio))
             {
                camino->agregar(grafo.Etiqueta(vertice), grafo.Etiqueta(inicio),2147483647);
-                // std::cout<<"b"<<std::endl;
+
+                std::cout<< grafo.Etiqueta(vertice) <<std::endl;
             }
             vertice = grafo.SiguienteVertice(vertice);
         }
-        
+        std::cout<<"TERMINO DE GUARDAR LAS ETIQUETAS EN CAMINO"<<std::endl;
 
         vertice = grafo.PrimerVerticeAdyacente(inicio);
-       
+        std::cout<<grafo.Etiqueta(vertice)<<std::endl;
         Vertice verticeNulo;
+        // std::cout<<"a"<<std::endl;
 
         // poner el vertice anterior y el costo de las aristas que salen de inicio 
         while (vertice != verticeNulo)
         {
+            std::cout<<grafo.Peso(inicio, vertice)<<std::endl;
+            std::cout<<grafo.Etiqueta(vertice)<<std::endl;
             camino->setPeso(grafo.Etiqueta(vertice), grafo.Peso(inicio, vertice));
             vertice = grafo.SiguienteVerticeAdyacente(inicio, vertice);
+            
         }
-        
+        std::cout<<"TERMINO DE GUARDAR LOS PESOS DE LOS VERTICES ADYACENTES AL NODO INICIAL"<<std::endl;
 
         size_t contador = 0;
 
         while (contador < cantidadVertices-2)
         {
-            std::cout<<"a"<<std::endl;
+           // std::cout<<"a"<<std::endl;
+
             size_t counter = 0; // usado para pasar por cada elemento de camino
             char verticePivote = camino->getVerticePorIndice(counter);
             int pesoVerticePivote = camino->getPesoPorIndice(counter);
@@ -185,12 +191,15 @@ public:
             // este loop permite encontrar el sigueinte vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
             while (counter<cantidadVertices-1)
             {
+                // std::cout<< pesoContador <<std::endl;
+                pesoContador = camino->getPesoPorIndice(counter);
                 if(pesoVerticePivote < pesoContador && (camino->esVisitadoPorIndice(counter) != true) ){
+                    // std::cout<<"c"<<std::endl;
                     verticePivote = camino->getVerticePorIndice(counter);
                     pesoVerticePivote = camino->getPesoPorIndice(counter);
                 }
                 ++counter;
-                pesoContador = camino->getVerticePorIndice(counter);
+                
             }
             camino->setVisitado(verticePivote); // se guarda el pivote como visitado 
 

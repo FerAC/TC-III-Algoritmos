@@ -53,7 +53,7 @@ class Vertice
             return 0;
         }
         bool operator!=(const Vertice&otro){
-            return *this==otro; 
+            return !(*this==otro); 
         }
 };
 
