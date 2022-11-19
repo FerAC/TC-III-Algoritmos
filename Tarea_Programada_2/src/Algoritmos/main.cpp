@@ -24,7 +24,9 @@ int main(){
 
     Vertice inicio;
     inicio = grafo.PrimerVertice();
+    // std::cout<<grafo.Etiqueta(inicio)<<std::endl;
     Controlador::Dijkstra(grafo, inicio);
+     
     Controlador::imprimirGrafo(grafo);
 
 

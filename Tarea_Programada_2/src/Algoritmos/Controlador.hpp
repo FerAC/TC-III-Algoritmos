@@ -27,9 +27,9 @@ class ListaDijkstra{
 
     ListaDijkstra(size_t tamano){
         tamanoMax = tamano;
-        int *pesos = new int[tamano];
-        char *vertices = new char[tamano];
-        char *verticeAnterior = new char[tamano];
+        pesos = new int[tamano];
+        vertices = new char[tamano];
+        verticeAnterior = new char[tamano];
         bool *visitado = new bool[tamano];
 
         size_t contador = 0;
@@ -50,11 +50,13 @@ class ListaDijkstra{
 
     void agregar(char verticeActual, char elVerticeAnterior, int peso){
 
-        if(cantidadElementos <tamanoMax){
+        if(cantidadElementos < tamanoMax){
+           
             vertices[cantidadElementos] = verticeActual;
             pesos[cantidadElementos] = peso;
-            verticeAnterior[cantidadElementos] = elVerticeAnterior;
-            ++ cantidadElementos;
+            verticeAnterior[cantidadElementos] = elVerticeAnterior; 
+            // std::cout<<"se agrego un elemento"<<std::endl;
+            ++cantidadElementos;
         }
     }
 
@@ -140,6 +142,8 @@ public:
 
     static ListaDijkstra* Dijkstra(Grafo grafo, Vertice &inicio)
     {
+        // std::cout<<"a"<<std::endl;
+
         size_t cantidadVertices = grafo.NumVertices();
         ListaDijkstra* camino = new ListaDijkstra(cantidadVertices-1);
         Vertice vertice = grafo.PrimerVertice();
@@ -147,12 +151,15 @@ public:
         // primero llenamos la lista con la etiqueta de cada elemento y un valor mas cercano al infinito al cual tenemos acceso
         for (size_t i = 0; i < cantidadVertices; ++i)
         {
+            
             if (grafo.Etiqueta(vertice) != grafo.Etiqueta(inicio))
             {
                camino->agregar(grafo.Etiqueta(vertice), grafo.Etiqueta(inicio),2147483647);
+                // std::cout<<"b"<<std::endl;
             }
             vertice = grafo.SiguienteVertice(vertice);
         }
+        
 
         vertice = grafo.PrimerVerticeAdyacente(inicio);
        
@@ -164,6 +171,7 @@ public:
             camino->setPeso(grafo.Etiqueta(vertice), grafo.Peso(inicio, vertice));
             vertice = grafo.SiguienteVerticeAdyacente(inicio, vertice);
         }
+        std::cout<<"a"<<std::endl;
 
         size_t contador = 0;
 
