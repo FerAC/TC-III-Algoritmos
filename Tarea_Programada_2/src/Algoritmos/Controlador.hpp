@@ -16,7 +16,7 @@
 class ListaDijkstra{
     friend class Controlador;
 
-    private:
+    public:
 
     int cantidadElementos = 0;
     int tamanoMax;
@@ -30,7 +30,7 @@ class ListaDijkstra{
         pesos = new int[tamano];
         vertices = new char[tamano];
         verticeAnterior = new char[tamano];
-        bool *visitado = new bool[tamano];
+        visitado = new bool[tamano];
 
         size_t contador = 0;
         while (contador<tamano)
@@ -120,6 +120,40 @@ class ListaDijkstra{
         visitado[contador] = true;
     }
 
+    void imprimirLista(){
+        size_t contador = 0;
+        while (contador < cantidadElementos)
+        {
+             std::cout << vertices[contador] << "\t" << pesos[contador]  << "\t" << verticeAnterior[contador] << std::endl;          
+             ++contador;
+        }
+        // size_t contador = 0;
+        // while (contador < cantidadElementos)
+        // {
+        //     std::cout << vertices[contador] << "\t" ;
+        //     // std::cout << std::endl;
+        //     ++contador;
+        // }
+        // std::cout << std::endl;
+
+        // contador = 0;
+        // while (contador < cantidadElementos)
+        // {
+        //     std::cout << pesos[contador] << "\t" ;
+        //     ++contador;
+        // }
+        // std::cout << std::endl;
+
+        // contador = 0;
+        // while (contador < cantidadElementos)
+        // {
+        //     std::cout << verticeAnterior[contador] << "\t" ;
+        //     ++contador;
+        // }
+        // std::cout << std::endl;
+        
+    }
+
 };
 
 class Controlador
@@ -140,12 +174,12 @@ public:
     {
     }
 
-    static ListaDijkstra* Dijkstra(Grafo grafo, Vertice &inicio)
+    static void Dijkstra(Grafo grafo, Vertice &inicio, ListaDijkstra &camino)
     {
         // std::cout<<"a"<<std::endl;
 
         size_t cantidadVertices = grafo.NumVertices();
-        ListaDijkstra* camino = new ListaDijkstra(cantidadVertices-1);
+        // ListaDijkstra* camino = new ListaDijkstra(cantidadVertices-1);
         Vertice vertice = grafo.PrimerVertice();
 
         // primero llenamos la lista con la etiqueta de cada elemento y un valor mas cercano al infinito al cual tenemos acceso
@@ -154,7 +188,7 @@ public:
             
             if (grafo.Etiqueta(vertice) != grafo.Etiqueta(inicio))
             {
-               camino->agregar(grafo.Etiqueta(vertice), grafo.Etiqueta(inicio),2147483647);
+               camino.agregar(grafo.Etiqueta(vertice), grafo.Etiqueta(inicio),2147483647);
 
                 std::cout<< grafo.Etiqueta(vertice) <<std::endl;
             }
@@ -163,7 +197,7 @@ public:
         std::cout<<"TERMINO DE GUARDAR LAS ETIQUETAS EN CAMINO"<<std::endl;
 
         vertice = grafo.PrimerVerticeAdyacente(inicio);
-        std::cout<<grafo.Etiqueta(vertice)<<std::endl;
+       //  std::cout<<grafo.Etiqueta(vertice)<<std::endl;
         Vertice verticeNulo;
         // std::cout<<"a"<<std::endl;
 
@@ -172,9 +206,8 @@ public:
         {
             std::cout<<grafo.Peso(inicio, vertice)<<std::endl;
             std::cout<<grafo.Etiqueta(vertice)<<std::endl;
-            camino->setPeso(grafo.Etiqueta(vertice), grafo.Peso(inicio, vertice));
+            camino.setPeso(grafo.Etiqueta(vertice), grafo.Peso(inicio, vertice));
             vertice = grafo.SiguienteVerticeAdyacente(inicio, vertice);
-            
         }
         std::cout<<"TERMINO DE GUARDAR LOS PESOS DE LOS VERTICES ADYACENTES AL NODO INICIAL"<<std::endl;
 
@@ -182,26 +215,31 @@ public:
 
         while (contador < cantidadVertices-2)
         {
-           // std::cout<<"a"<<std::endl;
+            std::cout<<"a"<<std::endl;
 
             size_t counter = 0; // usado para pasar por cada elemento de camino
-            char verticePivote = camino->getVerticePorIndice(counter);
-            int pesoVerticePivote = camino->getPesoPorIndice(counter);
-            int pesoContador = camino->getPesoPorIndice(counter);
+            char verticePivote = camino.getVerticePorIndice(counter);
+            int pesoVerticePivote = camino.getPesoPorIndice(counter);
+            // int pesoContador = camino->getPesoPorIndice(counter);
+             int pesoContador;
             // este loop permite encontrar el sigueinte vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
             while (counter<cantidadVertices-1)
             {
+                
                 // std::cout<< pesoContador <<std::endl;
-                pesoContador = camino->getPesoPorIndice(counter);
-                if(pesoVerticePivote < pesoContador && (camino->esVisitadoPorIndice(counter) != true) ){
-                    // std::cout<<"c"<<std::endl;
-                    verticePivote = camino->getVerticePorIndice(counter);
-                    pesoVerticePivote = camino->getPesoPorIndice(counter);
+                pesoContador = camino.getPesoPorIndice(counter);
+                std::cout<<"b"<<std::endl;
+                //  && (camino->esVisitadoPorIndice(counter) != true)
+                bool esVisitado = camino.esVisitadoPorIndice(counter);
+                if(pesoVerticePivote < pesoContador && (camino.esVisitadoPorIndice(counter) != true)){
+                    std::cout<<"c"<<std::endl;
+                    verticePivote = camino.getVerticePorIndice(counter);
+                    pesoVerticePivote = camino.getPesoPorIndice(counter);
                 }
                 ++counter;
                 
             }
-            camino->setVisitado(verticePivote); // se guarda el pivote como visitado 
+            camino.setVisitado(verticePivote); // se guarda el pivote como visitado 
 
             Vertice verticeOptimal = grafo.PrimerVertice();
             char verticeOptimalEtiqueta = grafo.Etiqueta(verticeOptimal);
@@ -216,14 +254,16 @@ public:
             // este loop permite cambiar en la listaDijkstra camino todos los pesos menores a los ya encontrados
             while (verticeAdyacente != verticeNulo)
             {
-                int nuevoPeso = grafo.Peso(verticeOptimal, verticeAdyacente) + camino->getPeso(verticeOptimalEtiqueta);
+                int nuevoPeso = grafo.Peso(verticeOptimal, verticeAdyacente) + camino.getPeso(verticeOptimalEtiqueta);
 
-                if ( nuevoPeso < camino->getPeso(grafo.Etiqueta(verticeAdyacente)))
+                if ( nuevoPeso < camino.getPeso(grafo.Etiqueta(verticeAdyacente)))
                 {
-                    camino->setPeso(grafo.Etiqueta(verticeAdyacente), nuevoPeso);
+                    camino.setPeso(grafo.Etiqueta(verticeAdyacente), nuevoPeso);
                 }
                 verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeOptimal, verticeAdyacente);
             }
+
+            ++contador;
         }
         
 
@@ -233,7 +273,7 @@ public:
 
 
 
-        return camino;
+       // return camino;
     }
 
     static void Floyd()
@@ -248,6 +288,12 @@ public:
             grafo.ImprimirVertices();
             // tambien se deberia imprimir las arristas
         #endif
+    }
+
+
+
+    static void imprimirListaDijkstra(ListaDijkstra &camino){
+        camino.imprimirLista();
     }
 };
 #endif
