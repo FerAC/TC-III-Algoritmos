@@ -19,7 +19,7 @@ int main(){
     // se crean aristas entre los vertices del grafo
     grafo.AgregarArista(a, b, 2);
     grafo.AgregarArista(a, c, 3);
-    grafo.AgregarArista(a, d, 1);
+    grafo.AgregarArista(a, d, 10);
     grafo.AgregarArista(d, e, 5);
     grafo.AgregarArista(c, d, 4);
 
@@ -27,7 +27,7 @@ int main(){
     inicio = grafo.PrimerVertice();
     // std::cout<<grafo.Etiqueta(inicio)<<std::endl;
     size_t cantidadVertices = grafo.NumVertices();
-    ListaDijkstra listaCaminosMasCortos(cantidadVertices-1);
+    ListaDijkstra listaCaminosMasCortos(cantidadVertices);
     Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
      
     Controlador::imprimirGrafo(grafo);
