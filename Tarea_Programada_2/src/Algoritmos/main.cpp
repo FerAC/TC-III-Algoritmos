@@ -30,21 +30,17 @@ int main(){
     ListaDijkstra listaCaminosMasCortos(cantidadVertices);
     Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
     Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+    */
 
     // TEST KRUSKAL
-    std::list<arista> listaKruskal;
-    Controlador::Kruskal(grafo, listaKruskal);
-    
-
-
-
-
-
-
+    Grafo grafoMinimo;
+    Controlador::Kruskal(grafo, grafoMinimo);
     Controlador::imprimirGrafo(grafo);
+    Controlador::imprimirGrafo(grafoMinimo);
 
     std::cout<<"\n"<<std::endl;
-    */
+    
+    
     grafo.AgregarArista(a, d, 4);
     grafo.AgregarArista(b, a, 20);
     grafo.AgregarArista(b, d, 3);

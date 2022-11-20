@@ -11,9 +11,9 @@
 
 #include "../2/Lista.hpp"
 #include <iostream>
-#include <map>  // APO de Kruskal
-#include <set>  // conjunto de conjunto de Kruskal
-#include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
+// #include <map>  // APO de Kruskal
+// #include <set>  // conjunto de conjunto de Kruskal
+// #include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
 
 // arista se usa como el objecto "par" usado en el algoritmo de kruskal
 struct arista
@@ -154,8 +154,19 @@ public:
     {
     }
 
-    static void Kruskal(Grafo grafo, std::list<arista> listaArista)
+    static void Kruskal(Grafo grafo, Grafo grafoMinimo)
     {
+        Vertice vertice = grafo.PrimerVertice();
+        Vertice verticeNulo;
+
+        // primero llenamos la lista con la etiqueta de cada elemento y un valor mas cercano al infinito al cual tenemos acceso
+        while (vertice != verticeNulo)
+        {
+
+            char etiqueta = grafo.Etiqueta(vertice);
+            grafoMinimo.AgregarVertice(etiqueta);
+            vertice = grafo.SiguienteVertice(vertice);
+        }
         
 
 
