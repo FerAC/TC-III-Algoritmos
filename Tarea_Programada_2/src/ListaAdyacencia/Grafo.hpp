@@ -227,9 +227,9 @@ void ModificarPeso(Vertice& origen, Vertice& destino, size_t nuevoPeso){
 size_t Peso(const Vertice& origen, const Vertice& destino){
     for (Celda<Vertice> * celda= listaPrincipal->getPrimera();  celda != nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {
-       if(celda->getEtiqueta().getEtiqueta() == origen.etiqueta() || celda->getEtiqueta() == destino){
+       if(celda->getEtiqueta().etiqueta == origen.etiqueta || celda->getEtiqueta().etiqueta == destino.etiqueta){
             for(Celda<Vertice::Contenedor> * iterador = celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador != nullptr; iterador = iterador->getSiguiente() ){
-                if (iterador->getEtiqueta().VAdyacente == &origen || iterador->getEtiqueta().VAdyacente == &destino)
+                if (iterador->getEtiqueta().VAdyacente->etiqueta == origen.etiqueta || iterador->getEtiqueta().VAdyacente->etiqueta == destino.etiqueta)
                 {
                     return iterador->getEtiqueta().peso; 
                 }
