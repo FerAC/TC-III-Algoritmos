@@ -177,6 +177,7 @@ public:
                         }
                     } else{
                         std::cout<< "SON IGUALES " << std::endl;
+                        matrizCostos[i][j] = 0; 
                     }
                 }
             }
