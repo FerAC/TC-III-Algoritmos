@@ -129,31 +129,43 @@ public:
             size_t i =0;
             size_t iteradorPivotes =0 ;
 
-            for(Vertice vertice = grafo.PrimerVertice(); vertice!=NULO; vertice = grafo.SiguienteVertice(vertice)){
+            Vertice vertice; 
+            for(vertice = grafo.PrimerVertice(); vertice!=NULO; vertice = grafo.SiguienteVertice(vertice)){
                 std::cout << "i, primer paso" << i << std::endl;
                 listaVertices[i] = vertice; 
                 i++; 
             }
+            
+            //Mostrar conexiones
+            /*
+            std::cout<< "Termino lista" << std::endl;
+            for (size_t i = 0; i < grafo.NumVertices(); i++)
+            {   
+                std::cout << i << endl;
+                grafo.ImprimirConexiones(listaVertices[i]); 
+            }
+            */
+            
             //Primer paso de inicializacion, ya tengo la lista de vertices
             std::cout<< "Primer paso se logro" << std::endl;
-            int ** matrizCostos; 
-            matrizCostos[grafo.NumVertices()][grafo.NumVertices()]; 
+            int numVertices = grafo.NumVertices();
             std::cout<< "A" << std::endl;
             std::cout<< "NUM VERTICES " << grafo.NumVertices() << std::endl;
-
-            std::cout<< grafo.ExisteArista(listaVertices[0], listaVertices[1]) << std::endl;;
-
-            for(i =0; i<grafo.NumVertices(); i++){
+            int matrizCostos[numVertices][numVertices]; 
+            for(int i =0; i<grafo.NumVertices(); i++){
                 std::cout << "I " << i << std::endl;
-                for (size_t j = 0; j < grafo.NumVertices(); j++)
+                for (int j = 0; j < grafo.NumVertices(); j++)
                 {
                     std::cout << "J " << j << std::endl;
                     if(i!=j){
                         if(grafo.ExisteArista(listaVertices[i], listaVertices[j])){
                             std::cout << "Voy a acceder " << std::endl;
+                            std::cout<< "Vertice 1 :" << listaVertices[i].getEtiqueta()<< std::endl;
+                            std::cout<< "Vertice 2 :" << listaVertices[j].getEtiqueta()<< std::endl;
+                            std::cout<< "Peso  :" << grafo.Peso(listaVertices[i], listaVertices[j]) << std::endl;
                             matrizCostos[i][j] = grafo.Peso(listaVertices[i], listaVertices[j]); 
                         } else{
-                            matrizCostos[i][j] = -1;
+                            matrizCostos[i][j] = 4;
                         }
                     } else{
                         std::cout<< "SON IGUALES " << std::endl;
@@ -162,6 +174,17 @@ public:
             }
             std::cout<< "Segundo paso se logro" << std::endl;
             //Ya se inicializo la matriz costos 
+            std::cout<< "Voy a imprimir costos" << std::endl; 
+            for (size_t i = 0; i < grafo.NumVertices(); i++)
+            {
+                for (size_t j = 0; j < grafo.NumVertices(); j++)
+                {
+                    std::cout << matrizCostos[i][j] << " ";
+                }
+                std::cout<< "\n";
+        
+            }
+            std::cout << "\n"; 
             Vertice matrizVertices[grafo.NumVertices()][grafo.NumVertices()]; 
             //Matriz de vertices con basura
 
@@ -196,7 +219,22 @@ public:
                     }
                 }
             }
-            return matrizCostos; 
+            std::cout<< "Voy a imprimir costos" << std::endl; 
+            for (size_t i = 0; i < grafo.NumVertices(); i++)
+            {
+                for (size_t j = 0; j < grafo.NumVertices(); j++)
+                {
+                    std::cout << matrizCostos[i][j] << " ";
+                }
+                std::cout<< "\n";
+        
+            }
+            int *p[numVertices];
+            int **q;
+            for (int i=0; i<4;i++)
+		        p[i]=matrizCostos[i];
+            q = p;
+            return  q; 
         }
 
 };

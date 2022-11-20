@@ -61,6 +61,11 @@ class Vertice{
 			etiqueta = et;
 		}
 
+        Vertice(Vertice * otro){
+            this->listaAdyacencia = otro->listaAdyacencia;
+            this->etiqueta = otro->etiqueta; 
+        }
+
 		/// @brief inserta en la lista de hijos de un nodo
 		/// @remarks Requiere que el nodo este inicializado y que tenga una lista de hijos inicializada
 		/// @param Vertice*  

@@ -56,9 +56,8 @@ int main(){
     grafo.ImprimirConexiones(c);
     grafo.ImprimirConexiones(d);
     std::cout<< "Ya se creo" << std::endl;
-    std::cout<< grafo.ExisteArista(a, b); 
-    std::cout<< grafo.ExisteArista(b, a); 
-    /*
+    
+    std::cout << grafo.Peso(a, b);
     int** matriz = Prim::Floyd(grafo);  
 
     for (size_t i = 0; i < grafo.NumVertices(); i++)
@@ -71,7 +70,6 @@ int main(){
         
     }
     
-    */
     return 0;
 
 
