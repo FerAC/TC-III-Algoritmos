@@ -1,7 +1,5 @@
-/**
- * compile:  g++ main.cpp
-*/
 #include "Controlador.hpp"
+
 
 
 
@@ -23,18 +21,28 @@ int main(){
     grafo.AgregarArista(d, e, 5);
     grafo.AgregarArista(c, d, 4);
 
-    Vertice inicio;
-    inicio = grafo.PrimerVertice();
-    // std::cout<<grafo.Etiqueta(inicio)<<std::endl;
+    // TEST DIJKSTRA
+    Vertice inicio = grafo.PrimerVertice();
     size_t cantidadVertices = grafo.NumVertices();
     ListaDijkstra listaCaminosMasCortos(cantidadVertices);
     Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
-     
+    Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+
+    // TEST KRUSKAL
+    std::list<arista> listaKruskal;
+    Controlador::Kruskal(grafo, listaKruskal);
+    
+
+
+
+
+
+
     Controlador::imprimirGrafo(grafo);
 
     std::cout<<"\n"<<std::endl;
 
-    Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+   
 
 
 
