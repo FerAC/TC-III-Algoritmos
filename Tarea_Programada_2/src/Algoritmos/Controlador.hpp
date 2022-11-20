@@ -11,7 +11,16 @@
 
 #include "../2/Lista.hpp"
 #include <iostream>
+#include <map>  // APO de Kruskal
+#include <set>  // conjunto de conjunto de Kruskal
+#include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
 
+// arista se usa como el objecto "par" usado en el algoritmo de kruskal
+struct arista
+{
+    Vertice vertice1;
+    Vertice vertice2;
+};
 
 class ListaDijkstra{
     friend class Controlador;
@@ -135,7 +144,6 @@ class ListaDijkstra{
 class Controlador
 {
 private:
-    // Grafo grafo;
 
 public:
     Controlador() {}
@@ -146,8 +154,12 @@ public:
     {
     }
 
-    static void Kruskal()
+    static void Kruskal(Grafo grafo, std::list<arista> listaArista)
     {
+        
+
+
+
     }
 
     static void Dijkstra(Grafo grafo, Vertice &inicio, ListaDijkstra &camino)
