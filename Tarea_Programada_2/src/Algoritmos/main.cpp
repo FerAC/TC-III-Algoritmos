@@ -1,4 +1,6 @@
-#include "Controlador.hpp"
+//#include "Controlador.hpp"
+#include "Prim.hpp"
+#include <iostream>
 
 
 
@@ -6,12 +8,13 @@
 int main(){
 
     Grafo grafo;
-
     // se llena el grafo de vertices
     Vertice a = grafo.AgregarVertice('a');
     Vertice b = grafo.AgregarVertice('b');
     Vertice c = grafo.AgregarVertice('c');
     Vertice d = grafo.AgregarVertice('d');
+
+    /*
     Vertice e = grafo.AgregarVertice('e'); 
 
     // se crean aristas entre los vertices del grafo
@@ -41,12 +44,34 @@ int main(){
     Controlador::imprimirGrafo(grafo);
 
     std::cout<<"\n"<<std::endl;
+    */
+    grafo.AgregarArista(a, d, 4);
+    grafo.AgregarArista(b, a, 20);
+    grafo.AgregarArista(b, d, 3);
+    grafo.AgregarArista(c, a, 6);
+    grafo.AgregarArista(c, b, 10);
+    grafo.AgregarArista(d, c, 5);
+    grafo.ImprimirConexiones(a);
+    grafo.ImprimirConexiones(b);
+    grafo.ImprimirConexiones(c);
+    grafo.ImprimirConexiones(d);
+    std::cout<< "Ya se creo" << std::endl;
+    std::cout<< grafo.ExisteArista(a, b); 
+    std::cout<< grafo.ExisteArista(b, a); 
+    /*
+    int** matriz = Prim::Floyd(grafo);  
 
-   
-
-
-
-
+    for (size_t i = 0; i < grafo.NumVertices(); i++)
+    {
+        for (size_t j = 0; j < grafo.NumVertices(); j++)
+        {
+            std::cout << matriz[i][j] << " ";
+        }
+        std::cout<< "\n";
+        
+    }
+    
+    */
     return 0;
 
 

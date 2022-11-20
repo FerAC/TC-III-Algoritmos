@@ -258,14 +258,19 @@ Vertice PrimerVerticeAdyacente(Vertice& original){
     Vertice nulo;
     return nulo;
 }
-int ExisteArista(Vertice& inicio,const Vertice& fin){
-    const Vertice NULO;
-    for(Vertice iterador = PrimerVerticeAdyacente(inicio); iterador != NULO; iterador = SiguienteVerticeAdyacente(inicio, iterador)){
-        if(iterador == fin){
-            return 1;
-        }
+int ExisteArista(Vertice& inicio, Vertice& fin){
+    auto a = listaPrincipal->buscar(inicio); 
+    int i = 0; 
+    for (auto b  =a->getEtiqueta().getlistaAdyacencia()->getPrimera() ; i < a->getEtiqueta().getlistaAdyacencia()->getContador(); i++)
+    {
+       if (b->getEtiqueta().VAdyacente->etiqueta == fin.etiqueta )
+       {
+        return 1;
+       }
+       
+       b = b->getSiguiente(); 
     }
-    return 0; 
+    return 0;
 }
 Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior){
     Celda<Vertice> * celda;
