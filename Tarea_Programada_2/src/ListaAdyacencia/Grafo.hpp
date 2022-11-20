@@ -90,7 +90,7 @@ class Vertice{
 			}
 			return 0;
 		}
-
+       
 		/// @brief operador de desigualdad de la clase nodo
 		/// @remarks Requiere que ambos nodos esten inicializados y que posean etiquetas comparables
 		/// @param Vertice 
@@ -157,8 +157,8 @@ void EliminarVertice(Vertice& vertice){
     listaPrincipal->borrar(vertice); 
 }
 
-size_t NumVertices(){
-    return listaPrincipal->getContador();
+const size_t NumVertices(){
+     return listaPrincipal->getContador();
 }
 
 void ModificarEtiqueta(Vertice& vertice, char nueva){
@@ -219,7 +219,7 @@ void ModificarPeso(Vertice& origen, Vertice& destino, size_t nuevoPeso){
        }
     }  
 }
-size_t Peso(Vertice& origen, Vertice& destino){
+size_t Peso(const Vertice& origen, const Vertice& destino){
     for (Celda<Vertice> * celda= listaPrincipal->getPrimera();  celda != nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {
        if(celda->getEtiqueta() == origen || celda->getEtiqueta() == destino){
@@ -257,6 +257,15 @@ Vertice PrimerVerticeAdyacente(Vertice& original){
         return * celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
     Vertice nulo;
     return nulo;
+}
+int ExisteArista(Vertice& inicio,const Vertice& fin){
+    const Vertice NULO;
+    for(Vertice iterador = PrimerVerticeAdyacente(inicio); iterador != NULO; iterador = SiguienteVerticeAdyacente(inicio, iterador)){
+        if(iterador == fin){
+            return 1;
+        }
+    }
+    return 0; 
 }
 Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior){
     Celda<Vertice> * celda;

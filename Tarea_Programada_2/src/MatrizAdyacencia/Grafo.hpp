@@ -115,7 +115,7 @@ class Grafo{
         }
         vertices--;
     }
-    size_t NumVertices(){
+    const size_t NumVertices(){
         return vertices; 
     }
     void ModificarEtiqueta(Vertice& vertice, char etiqueta){
@@ -157,6 +157,15 @@ class Grafo{
         Vertice vertice;
         return vertice; 
     }
+int ExisteArista(Vertice& inicio, Vertice& fin){
+    const Vertice NULO;
+    for(Vertice iterador = PrimerVerticeAdyacente(inicio); iterador != NULO; iterador = SiguienteVerticeAdyacente(inicio, iterador)){
+        if(iterador == fin){
+            return 1;
+        }
+    }
+    return 0; 
+}
     Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyacente){
         if(adyacente.indice+1<=vertices){
             for (size_t i = adyacente.indice+1; i < vertices; i++)
