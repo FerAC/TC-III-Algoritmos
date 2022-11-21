@@ -18,9 +18,9 @@ int main(){
 
     
     Grafo grafo;
-    char lista[] = {'a','b','c','d'}; 
+    char lista[] = {'a','b','c','d','e','f'}; 
     // se llena el grafo de vertices
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 6; i++)
     {
         grafo.AgregarVertice(lista[i]);
     }
@@ -52,14 +52,14 @@ int main(){
 
     std::cout<<"\n"<<std::endl;
     */
-    char listaA[] = {'a','b','b','c','c','d'}; 
-    char listaB[] = {'d','a','d','a','b','c'};
-    int listaP[] = {4, 20, 3, 6, 10, 5};
+    char listaA[] = {'a','a','a','a','a','b','b', 'b','c', 'c', 'e', 'f'}; 
+    char listaB[] = {'b','c','d','e','f','c','d','f','e', 'f', 'f', 'd'};
+    int listaP[] = {2, 8, 6, 7, 3, 3, 9, 5, 1, 6, 4, 9};
     Vertice x = buscarVertice(grafo, listaA[0]);
     Vertice y = buscarVertice(grafo, listaB[0]);
     std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y "<< y.getEtiqueta() << " con peso " << listaP[0] << std::endl;
     grafo.AgregarArista(x, y, listaP[0]); 
-    for (int i = 1; i < 6; i++)
+    for (int i = 1; i < 12; i++)
     {
         x = buscarVertice(grafo, listaA[i]);
         y = buscarVertice(grafo, listaB[i]);
@@ -67,7 +67,10 @@ int main(){
         grafo.AgregarArista(x, y, listaP[i]); 
     }
     std::cout<<"B"<< std::endl;
-    
+    Vertice NULO;
+    for(Vertice v = grafo.PrimerVertice(); v!=NULO; v= grafo.SiguienteVertice(v)){
+        grafo.ImprimirConexiones(v); 
+    }
    
     /*
     grafo.AgregarArista(a, d, 4);
@@ -90,9 +93,9 @@ int main(){
      grafo.ImprimirConexiones(c);
      grafo.ImprimirConexiones(d);
 */
-
+    /*
     std::cout<<"*********************************"<< std::endl;
-    Vertice inicio = grafo.PrimerVertice();\
+    Vertice inicio = grafo.PrimerVertice();
     std::cout<<"*******************AAAA***********"<< std::endl;
     size_t cantidadVertices = grafo.NumVertices();
     std::cout<<"*****************BBB***********"<< std::endl;
@@ -101,6 +104,7 @@ int main(){
     Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
     std::cout<<"*****************DDD***********"<< std::endl;
     Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+    */
 
     
     
@@ -122,7 +126,7 @@ int main(){
     }
     */
    
-   /*
+   
     std::cout<< "VOY A EJECUTAR PRIM" << std::endl;
     Grafo grafoPrim = Prim::primMetodo(grafo); 
     Vertice vertice;
@@ -138,7 +142,7 @@ int main(){
         }
         grafoPrim.ImprimirConexiones(vertice);  
     }
-    */
+    
 
     return 0;
 

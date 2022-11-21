@@ -86,38 +86,27 @@ class Prim{
                     for(size_t j = 0; j<grafo.NumVertices()-1; j++){
                         std::cout<< "J " << j << std::endl;
                         Vertice pivote = encontrarPivote(lista, mapaVerticesPivoteados, grafo);
-                        /*
-                        for (size_t i = 0; i < grafo.NumVertices()-1; i++)
-                        {
-                            if (mapaVerticesPivoteados.count(lista[i].getVertice().getEtiqueta())<=0)
-                            {
-                                //Posicion de lista no pivoteada
-                                Vertice z = lista[i].getVertice();
-                                if(grafo.ExisteArista(pivote, z ) == 1){
-                                    if(lista[i].getPeso()!=0){
-                                        Vertice a = lista[i].getVertice();
-                                        if(grafo.ExisteArista(pivote, a)){
-                                            if(grafo.Peso(lista[i].getVertice(), lista[i].getVerticeAnterior()) < grafo.Peso(lista[i].getVertice(), pivote)){
-                                            lista[i].setVerticeAnterior(pivote); 
-                                            }
-                                        }
-                                    } else{   
-                                        lista[i].setVerticeAnterior(pivote); 
-                                    }
-                                }
-                            }
-                        }
-                        */
+                        std::cout<< "///////////// PIVOTEO CON " << pivote.getEtiqueta() << "///////////" << std::endl;
                        for (size_t i = 0; i < grafo.NumVertices()-1; i++)
                        {
                             if(lista[i].getVertice()!=pivote && mapaVerticesPivoteados.count(lista[i].getVertice().getEtiqueta())<=0){
-                                if (lista[i].getPeso()> grafo.Peso(pivote, lista[i].getVertice()))
-                                {
-                                    lista[i].setPeso(grafo.Peso(pivote, lista[i].getVertice()));
-                                    lista[i].setVerticeAnterior(pivote);
+                                if(grafo.Peso(pivote, lista[i].getVertice())>0){
+                                    if (lista[i].getPeso()> grafo.Peso(pivote, lista[i].getVertice()))
+                                    {
+                                        lista[i].setPeso(grafo.Peso(pivote, lista[i].getVertice()));
+                                        lista[i].setVerticeAnterior(pivote);
+                                    }
                                 }
                             }
                        }
+                       std::cout<<"+++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++" << std::endl;
+                            for (size_t i = 0; i < grafo.NumVertices()-1; i++)
+                            {
+                                std::cout<< "Vertice " << lista[i].getVertice().getEtiqueta() << std::endl;
+                                std::cout<< "Peso " << lista[i].getPeso() << std::endl;
+                                std::cout<< "Vertice Anterior " << lista[i].getVerticeAnterior().getEtiqueta() << std::endl;
+                            }
+                            std::cout<<"+++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++" << std::endl;
                     }
                     std::cout<<"****************************************** " << std::endl;
                     for (size_t i = 0; i < grafo.NumVertices()-1; i++)
@@ -216,6 +205,7 @@ class Prim{
 
                 static Vertice encontrarPivote(Tripleta * lista, std::map<char, Vertice>& mapaVerticesVisitados, Grafo& grafo){
                     std::cout<<"Estoy en metodo buscar pivote " << std::endl;
+                    std::cout<<"Tamano del mapa : " << mapaVerticesVisitados.size() << std::endl;
                     Vertice pivote; 
                     size_t menorPeso = 0; 
                     size_t indiceMenor; 
@@ -241,8 +231,11 @@ class Prim{
                             if (mapaVerticesVisitados.count(lista[i].getVertice().getEtiqueta())>0)
                             {
                                 //Si lo encontro, sigo adelante
+                                std::cout<<"YA SE PIVOTEO CON " << lista[i].getVertice().getEtiqueta() << std::endl; 
 
                             } else{
+                                std::cout<< "No se ha pivoteado con " << lista[i].getVertice().getEtiqueta() << std::endl;
+                                 std::cout<< "Su peso es  " << lista[i].getPeso() << std::endl;
                                 if(menorPeso!=0){
                                     if(lista[i].getPeso() != 0 && lista[i].getPeso()<menorPeso){
                                         indiceMenor = i; 
@@ -252,12 +245,12 @@ class Prim{
                                     if(lista[i].getPeso() != 0){
                                         indiceMenor = i; 
                                         menorPeso = lista[i].getPeso();
-                                    }
+                                    } 
                                 }
                             }    
                         }
                     }
-                     std::cout<<"Encontre pivote " << std::endl;
+                     std::cout<<"Encontre pivote " <<indiceMenor <<  std::endl;
                      std::cout<<"Peso menor " << menorPeso << std::endl;
                     char a = lista[indiceMenor].getVertice().getEtiqueta(); 
                     std::cout<<"Encontre pivote " << a << std::endl;
