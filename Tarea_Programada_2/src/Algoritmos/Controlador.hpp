@@ -14,6 +14,7 @@
 // #include <map>  // APO de Kruskal
 // #include <set>  // conjunto de conjunto de Kruskal
 #include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
+#include <pair>
 
 // arista se usa como el objecto "par" usado en el algoritmo de kruskal
 struct arista
@@ -155,7 +156,20 @@ public:
     }
 
 
-    static bool existeCiclosRecursivo(Grafo &grafo, std::list<bool> &visitados, Vertice &verticeActual){
+    static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual){
+        // set vertice actual in visitado as true
+        bool esVisitado = false;
+        std::lista<pair<bool, char>>::iterator iterador;
+        while (!esVisitado)
+        {
+            if(grafo.Etiqueta(verticeActual) == iterador.second){
+                iterador.first = true;
+                esVisitado = true;
+            }
+            ++iterador;
+        }
+        
+
 
     }
 
@@ -163,7 +177,15 @@ public:
 
         // recorrido por profundidad primero -> si hay un arco de retroceso, entonces hay ciclo
         int cantidadVertices = grafo.NumVertices();
-        std::list<bool> visitados;
+        Vertice vertice = grafo.PrimerVertice();
+
+        std::list<std::pair<bool, char>> visitados;
+        for (size_t i = 0; i < grafo.NumVertices(); ++i)
+        {
+            visitados.push_front(std::make_pair(false, grafo.Etiqueta(vertice)));
+            vertice = grafo.SiguienteVertice(vertice);
+        }
+
         Vertice primerVertice = grafo.PrimerVertice();
         bool esCiclico = existeCiclosRecursivo(grafo, visitados, primerVertice);
         return esCiclico;
