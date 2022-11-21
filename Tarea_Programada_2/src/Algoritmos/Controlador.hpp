@@ -13,7 +13,7 @@
 #include <iostream>
 // #include <map>  // APO de Kruskal
 // #include <set>  // conjunto de conjunto de Kruskal
-// #include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
+#include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
 
 // arista se usa como el objecto "par" usado en el algoritmo de kruskal
 struct arista
@@ -154,7 +154,22 @@ public:
     {
     }
 
-    static void Kruskal(Grafo grafo, Grafo grafoMinimo)
+
+    static bool existeCiclosRecursivo(Grafo &grafo, std::list<bool> &visitados, Vertice &verticeActual){
+
+    }
+
+    static bool existeCiclos(Grafo &grafo){
+
+        // recorrido por profundidad primero -> si hay un arco de retroceso, entonces hay ciclo
+        int cantidadVertices = grafo.NumVertices();
+        std::list<bool> visitados;
+        Vertice primerVertice = grafo.PrimerVertice();
+        bool esCiclico = existeCiclosRecursivo(grafo, visitados, primerVertice);
+        return esCiclico;
+    }
+
+    static void Kruskal(Grafo &grafo, Grafo &grafoMinimo)
     {
         Vertice vertice = grafo.PrimerVertice();
         Vertice verticeNulo;
@@ -162,11 +177,16 @@ public:
         // primero llenamos la lista con la etiqueta de cada elemento y un valor mas cercano al infinito al cual tenemos acceso
         while (vertice != verticeNulo)
         {
-
             char etiqueta = grafo.Etiqueta(vertice);
             grafoMinimo.AgregarVertice(etiqueta);
             vertice = grafo.SiguienteVertice(vertice);
         }
+
+        while (existeCiclos(grafoMinimo) != true)
+        {
+            /* code */
+        }
+        
         
 
 
