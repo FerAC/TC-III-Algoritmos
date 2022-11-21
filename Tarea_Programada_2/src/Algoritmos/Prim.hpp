@@ -236,8 +236,8 @@ public:
                     std::cout << matrizCostos[i][j] << " ";
                 }
                 std::cout<< "\n";
-        
             }
+            std::cout<< "\n"; 
             size_t *p[numVertices];
             size_t **q;
             for (int i=0; i<4;i++)
