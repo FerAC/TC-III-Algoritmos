@@ -263,14 +263,14 @@ public:
 
         size_t contador = 0;
 
-        while (contador < cantidadVertices-2)
+        while (contador < cantidadVertices-1)
         {
             size_t counter = 0; // usado para pasar por cada elemento de camino
             char verticePivote = camino.getVerticePorIndice(counter);
             int pesoVerticePivote = 2147483647;
             int pesoContador;
             
-            while (counter<cantidadVertices-1) // este loop permite encontrar el siguiente vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
+            while (counter<cantidadVertices) // este loop permite encontrar el siguiente vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
             {
                 pesoContador = camino.getPesoPorIndice(counter);
                 std::cout<<"b"<<std::endl;
