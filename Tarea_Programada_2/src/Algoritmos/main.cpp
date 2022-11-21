@@ -2,34 +2,33 @@
 #include "Prim.hpp"
 #include <iostream>
 
-
-Vertice buscarVertice(Grafo &grafo, char etiqueta){
+Vertice buscarVertice(Grafo &grafo, char etiqueta)
+{
     const Vertice NULO;
-        for(Vertice vertice = grafo.PrimerVertice(); vertice!=NULO; vertice=grafo.SiguienteVertice(vertice)){
-            if (vertice.getEtiqueta() == etiqueta)
-            {
-                return vertice;
-            } 
+    for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
+    {
+        if (vertice.getEtiqueta() == etiqueta)
+        {
+            return vertice;
         }
+    }
     return NULO;
 }
 
-int main(){
+int main()
+{
 
-    
     Grafo grafo;
-    char lista[] = {'a','b','c','d'}; 
+    char lista[] = {'a', 'b', 'c', 'd'};
     // se llena el grafo de vertices
     for (int i = 0; i < 4; i++)
     {
         grafo.AgregarVertice(lista[i]);
     }
-    std::cout<< "A" << std::endl;
-   
-
+    std::cout << "A" << std::endl;
 
     /*
-    Vertice e = grafo.AgregarVertice('e'); 
+    Vertice e = grafo.AgregarVertice('e');
 
     // se crean aristas entre los vertices del grafo
     grafo.AgregarArista(a, b, 2);
@@ -40,8 +39,6 @@ int main(){
 
     */
     // TEST DIJKSTRA
-    
-    
 
     // TEST KRUSKAL
     /*
@@ -52,23 +49,43 @@ int main(){
 
     std::cout<<"\n"<<std::endl;
     */
-    char listaA[] = {'a','b','b','c','c','d'}; 
-    char listaB[] = {'d','a','d','a','b','c'};
+    char listaA[] = {'a', 'b', 'b', 'c', 'c', 'd'};
+    char listaB[] = {'d', 'a', 'd', 'a', 'b', 'c'};
     int listaP[] = {4, 20, 3, 6, 10, 5};
     Vertice x = buscarVertice(grafo, listaA[0]);
     Vertice y = buscarVertice(grafo, listaB[0]);
-    std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y "<< y.getEtiqueta() << " con peso " << listaP[0] << std::endl;
-    grafo.AgregarArista(x, y, listaP[0]); 
+    std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y " << y.getEtiqueta() << " con peso " << listaP[0] << std::endl;
+    grafo.AgregarArista(x, y, listaP[0]);
+    
     for (int i = 1; i < 6; i++)
     {
         x = buscarVertice(grafo, listaA[i]);
         y = buscarVertice(grafo, listaB[i]);
-        std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y "<< y.getEtiqueta() << " con peso " << listaP[i] << std::endl;
-        grafo.AgregarArista(x, y, listaP[i]); 
+        std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y " << y.getEtiqueta() << " con peso " << listaP[i] << std::endl;
+        grafo.AgregarArista(x, y, listaP[i]);
     }
-    std::cout<<"B"<< std::endl;
-    
-   
+
+    Vertice a = buscarVertice(grafo, 'a');
+    Vertice b = buscarVertice(grafo, 'b');
+    Vertice c = buscarVertice(grafo, 'c');
+    Vertice d = buscarVertice(grafo, 'd');
+
+
+
+    // TEST KRUSKAL
+    Grafo grafoMinimo;
+    Controlador::Kruskal(grafo, grafoMinimo);
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    Controlador::imprimirGrafo(grafo);
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    Controlador::imprimirGrafo(grafoMinimo);
+
     /*
     grafo.AgregarArista(a, d, 4);
     grafo.AgregarArista(b, a, 20);
@@ -79,37 +96,31 @@ int main(){
     // int miPeso = grafo.Peso(a, d);
     // std::cout<< "Peso  :" << miPeso << std::endl;
     */
-   Vertice a = buscarVertice(grafo, 'a'); 
-   Vertice b = buscarVertice(grafo, 'b');
-   Vertice c = buscarVertice(grafo, 'c');
-   Vertice d = buscarVertice(grafo, 'd');
-   
-   /*
-     grafo.ImprimirConexiones(a);
-     grafo.ImprimirConexiones(b);
-     grafo.ImprimirConexiones(c);
-     grafo.ImprimirConexiones(d);
-*/
 
-    std::cout<<"*********************************"<< std::endl;
-    Vertice inicio = grafo.PrimerVertice();\
-    std::cout<<"*******************AAAA***********"<< std::endl;
-    size_t cantidadVertices = grafo.NumVertices();
-    std::cout<<"*****************BBB***********"<< std::endl;
-    ListaDijkstra listaCaminosMasCortos(cantidadVertices);
-    std::cout<<"*****************CCC***********"<< std::endl;
-    Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
-    std::cout<<"*****************DDD***********"<< std::endl;
-    Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+    /*
+      grafo.ImprimirConexiones(a);
+      grafo.ImprimirConexiones(b);
+      grafo.ImprimirConexiones(c);
+      grafo.ImprimirConexiones(d);
+ */
 
-    
-    
-   //grafo.ImprimirGrafo();
-    std::cout<< "Ya se creo" << std::endl;
-    
+    // std::cout<<"*********************************"<< std::endl;
+    // Vertice inicio = grafo.PrimerVertice();\
+    // std::cout<<"*******************AAAA***********"<< std::endl;
+    // size_t cantidadVertices = grafo.NumVertices();
+    // std::cout<<"*****************BBB***********"<< std::endl;
+    // ListaDijkstra listaCaminosMasCortos(cantidadVertices);
+    // std::cout<<"*****************CCC***********"<< std::endl;
+    // Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
+    // std::cout<<"*****************DDD***********"<< std::endl;
+    // Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+
+    // grafo.ImprimirGrafo();
+    //   std::cout<< "Ya se creo" << std::endl;
+
     // std::cout << grafo.Peso(a, b);
     /*
-    size_t** matriz = Prim::Floyd(grafo);  
+    size_t** matriz = Prim::Floyd(grafo);
 
     for (size_t i = 0; i < grafo.NumVertices(); i++)
     {
@@ -118,29 +129,27 @@ int main(){
             std::cout << matriz[i][j] << " ";
         }
         std::cout<< "\n";
-        
+
     }
     */
-   
-   /*
-    std::cout<< "VOY A EJECUTAR PRIM" << std::endl;
-    Grafo grafoPrim = Prim::primMetodo(grafo); 
-    Vertice vertice;
-    
-    //std::cout<< "Termine Prim" << std::endl;
-    
-    for (size_t i = 0; i < grafoPrim.NumVertices(); i++)
-    {
-        if(i == 0){
-            vertice = grafoPrim.PrimerVertice();
-        } else{
-            vertice = grafoPrim.SiguienteVertice(vertice); 
-        }
-        grafoPrim.ImprimirConexiones(vertice);  
-    }
-    */
+
+    /*
+     std::cout<< "VOY A EJECUTAR PRIM" << std::endl;
+     Grafo grafoPrim = Prim::primMetodo(grafo);
+     Vertice vertice;
+
+     //std::cout<< "Termine Prim" << std::endl;
+
+     for (size_t i = 0; i < grafoPrim.NumVertices(); i++)
+     {
+         if(i == 0){
+             vertice = grafoPrim.PrimerVertice();
+         } else{
+             vertice = grafoPrim.SiguienteVertice(vertice);
+         }
+         grafoPrim.ImprimirConexiones(vertice);
+     }
+     */
 
     return 0;
-
-
 }
