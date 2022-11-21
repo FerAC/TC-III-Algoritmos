@@ -202,7 +202,7 @@ public:
             std::list<std::pair<bool, char>>::iterator i = visitados.begin();
             while (i != visitados.end())
             {
-                std::cout << "123" << std::endl;
+                //std::cout << "123" << std::endl;
                 if ((*i).second == grafo.Etiqueta(verticeAdyacente))
                 {
                     if ((*i).first == true)
@@ -224,7 +224,7 @@ public:
             // return true si se encontro con un elemento ya visitado y que no sea el padre
             if (verticeAdyacente != verticeAnterior && adyacenteVisitado)
             {
-                std::cout << "AAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
+               // std::cout << "AAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
                 return true;
             }
 
@@ -235,10 +235,10 @@ public:
             //while (i != visitados.end())
             while (counter<visitados.size())
             {
-                std::cout << "zz" << std::endl;
+               //std::cout << "zz" << std::endl;
                 if ((*i).first == false)
                 {
-                    std::cout << "oo" << std::endl;
+                   // std::cout << "oo" << std::endl;
                     grafoVisitado = false;
                     i = visitados.end();
                 }
@@ -246,15 +246,14 @@ public:
                 //++i;
             }
 
-            std::cout << "aaasdasdasdasdasd" << std::endl;
 
             if(grafoVisitado){
-                std::cout << "BBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
+                //std::cout << "BBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
                 return false;
             }else
             {
                 // else llamar recursivamente
-                std::cout << "CCCCCCCCCCCCCCCCCCCCCCCCCC" << std::endl;
+                //std::cout << "CCCCCCCCCCCCCCCCCCCCCCCCCC" << std::endl;
                 resultado = existeCiclosRecursivo(grafo, visitados, verticeAdyacente, verticeActual);
             }
 
@@ -277,7 +276,7 @@ public:
         {
             visitados.push_front(std::make_pair(false, grafo.Etiqueta(vertice)));
             vertice = grafo.SiguienteVertice(vertice);
-            std::cout << "hello there" << std::endl;
+           /// std::cout << "hello there" << std::endl;
         }
 
         Vertice primerVertice = grafo.PrimerVertice();
@@ -301,7 +300,7 @@ public:
             grafoMinimo.AgregarVertice(etiqueta);
             vertice = grafo.SiguienteVertice(vertice);
         }
-        std::cout << "Se termino de insertar los vertices en grafo minimo" << std::endl;
+        //std::cout << "Se termino de insertar los vertices en grafo minimo" << std::endl;
 
         // se reitera para agregar todos los caminos minimos para que los vertices esten connectados y que no haya ciclos
         while (cantidadAristas != cantidadVertices - 1)
@@ -336,7 +335,7 @@ public:
                 verticePartida = grafo.SiguienteVertice(verticePartida);
             }
 
-            std::cout << "Se encontro el camino mas corto" << std::endl;
+            //std::cout << "Se encontro el camino mas corto" << std::endl;
 
             // se borra la arista optimal del Grafo grafo
             grafo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
@@ -347,14 +346,14 @@ public:
 
             if (existeCiclos(grafoMinimo)) // si crea un ciclo en grafoMinimo, entonces se borra la arista de grafoMinimo
             {
-                std::cout << "AAAA" << std::endl;
+                //std::cout << "AAAA" << std::endl;
                 grafoMinimo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
             }
             else
             { // sino se incrementa cantidadArista de 1
                 ++cantidadAristas;
             }
-            imprimirGrafo(grafoMinimo);
+            //imprimirGrafo(grafoMinimo);
         }
     }
 
