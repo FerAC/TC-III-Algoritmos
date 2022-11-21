@@ -155,59 +155,8 @@ public:
     {
     }
 
-<<<<<<< Updated upstream
-
-    static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual, Vertice &verticeAnterior){
-        // set vertice actual in visitado as true
-        bool esVisitado = false;
-        std::list<std::pair<bool, char>>::iterator iterador = visitados.begin();
-        // se guarda el vertice actual como visitado
-        while (!esVisitado)
-        {
-            if(grafo.Etiqueta(verticeActual) == (*iterador).second){
-                (*iterador).first = true;
-                esVisitado = true;
-            } 
-            else{
-                ++iterador;
-            }
-        }
-
-        Vertice verticeAdyacente = grafo.PrimerVerticeAdyacente(verticeActual);
-        
-        Vertice verticeNulo;
-        // se reitera para todos los vertices adyacentes del vertice actual
-        while(verticeAdyacente != verticeNulo){
-            // si el adyacente ya es visitado y no es el anterior, entonces return true
-            bool adyacenteVisitado;
-
-            std::list<std::pair<bool, char>>::iterator i = visitados.begin();
-            while(i != visitados.end())
-            {
-                if((*i).second == grafo.Etiqueta(verticeAdyacente)){
-                    if((*i).first == true){
-                        adyacenteVisitado = true;
-                    } else{
-                        adyacenteVisitado = false;
-                    }
-                    i = visitados.end();
-
-                }else{
-                    ++i;
-                }
-            }
-            
-
-            if(verticeAdyacente != verticeAnterior && adyacenteVisitado){
-                return true;
-            }else{
-                    // else llamar recursivamente 
-                return existeCiclosRecursivo(grafo, visitados, verticeAdyacente, verticeActual);
-            }
-=======
     /*
     static bool existeCiclosRecursivo(Grafo &grafo, std::list<bool> &visitados, Vertice &verticeActual){
->>>>>>> Stashed changes
 
             verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeActual, verticeAdyacente);
         }
@@ -232,14 +181,9 @@ public:
         bool esCiclico = existeCiclosRecursivo(grafo, visitados, primerVertice, primerVertice);
         return esCiclico;
     }
-<<<<<<< Updated upstream
-
-    static void Kruskal(Grafo grafo, Grafo &grafoMinimo)
-=======
     */
    /*
     static void Kruskal(Grafo &grafo, Grafo &grafoMinimo)
->>>>>>> Stashed changes
     {
         Vertice vertice = grafo.PrimerVertice();
         Vertice verticeNulo;
@@ -259,40 +203,10 @@ public:
         // se reitera para agregar todos los caminos minimos para que los vertices esten connectados y que no haya ciclos
         while (cantidadAristas != cantidadVertices-1)
         {
-<<<<<<< Updated upstream
-
-            int pesoMinimo =  2147483647;
-            Vertice verticeOptimalPartida = grafo.PrimerVertice();
-            Vertice verticePartida = grafo.PrimerVertice();
-            Vertice verticeLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
-            Vertice verticeOptimalLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
-
-            std::cout<< "a" << std::endl;
-
-            while (verticePartida != verticeNulo)
-            {
-                std::cout<< "b" << std::endl;
-                while (verticeLlegada != verticeNulo)
-                {
-                    std::cout<< "c" << std::endl;
-                    if (grafo.Peso(verticePartida, verticeLlegada) < pesoMinimo)
-                    {
-                        std::cout<< "d" << std::endl;
-                        pesoMinimo = grafo.Peso(verticePartida, verticeLlegada);
-                        verticeOptimalLlegada = verticeLlegada;
-                        verticeOptimalPartida = verticePartida;
-                    }
-                    verticeLlegada = grafo.SiguienteVerticeAdyacente(verticePartida, verticeLlegada);
-                    std::cout<< "e" << std::endl;
-                }               
-                verticePartida = grafo.SiguienteVertice(vertice);
-            }
-=======
             
         }
         
         
->>>>>>> Stashed changes
 
 
             // se borra la arista optimal del Grafo grafo

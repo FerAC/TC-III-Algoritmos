@@ -1,5 +1,5 @@
 #include "Controlador.hpp"
-//#include "Prim.hpp"
+#include "Prim.hpp"
 #include <iostream>
 
 
@@ -16,21 +16,10 @@ Vertice buscarVertice(Grafo &grafo, char etiqueta){
 
 int main(){
 
+    
     Grafo grafo;
     char lista[] = {'a','b','c','d'}; 
     // se llena el grafo de vertices
-<<<<<<< Updated upstream
-    Vertice a = grafo.AgregarVertice('a');
-    Vertice b = grafo.AgregarVertice('b');
-    Vertice c = grafo.AgregarVertice('c');
-    Vertice d = grafo.AgregarVertice('d');
-    grafo.AgregarArista(a, d, 4);
-    grafo.AgregarArista(b, a, 20);
-    grafo.AgregarArista(b, d, 3);
-    grafo.AgregarArista(c, a, 6);
-    grafo.AgregarArista(c, b, 10);
-    grafo.AgregarArista(d, c, 5);
-=======
     for (int i = 0; i < 4; i++)
     {
         grafo.AgregarVertice(lista[i]);
@@ -38,7 +27,6 @@ int main(){
     std::cout<< "A" << std::endl;
    
 
->>>>>>> Stashed changes
 
     /*
     Vertice e = grafo.AgregarVertice('e'); 
@@ -50,33 +38,19 @@ int main(){
     grafo.AgregarArista(d, e, 5);
     grafo.AgregarArista(c, d, 4);
 
+    */
     // TEST DIJKSTRA
-    Vertice inicio = grafo.PrimerVertice();
-    size_t cantidadVertices = grafo.NumVertices();
-    ListaDijkstra listaCaminosMasCortos(cantidadVertices);
-    Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
-    Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
-     */
+    
+    
 
     // TEST KRUSKAL
+    /*
     Grafo grafoMinimo;
     Controlador::Kruskal(grafo, grafoMinimo);
-    std::cout<< "se termino de ejecutar Kruskal" << std::endl;
     Controlador::imprimirGrafo(grafo);
     Controlador::imprimirGrafo(grafoMinimo);
 
     std::cout<<"\n"<<std::endl;
-<<<<<<< Updated upstream
-   
-    
-    // int miPeso = grafo.Peso(a, d);
-    // std::cout<< "Peso  :" << miPeso << std::endl;
-    // grafo.ImprimirConexiones(a);
-    // grafo.ImprimirConexiones(b);
-    // grafo.ImprimirConexiones(c);
-    // grafo.ImprimirConexiones(d);
-    /*
-=======
     */
     char listaA[] = {'a','b','b','c','c','d'}; 
     char listaB[] = {'d','a','d','a','b','c'};
@@ -115,10 +89,22 @@ int main(){
      grafo.ImprimirConexiones(b);
      grafo.ImprimirConexiones(c);
      grafo.ImprimirConexiones(d);
-    */
+*/
+
+    std::cout<<"*********************************"<< std::endl;
+    Vertice inicio = grafo.PrimerVertice();\
+    std::cout<<"*******************AAAA***********"<< std::endl;
+    size_t cantidadVertices = grafo.NumVertices();
+    std::cout<<"*****************BBB***********"<< std::endl;
+    ListaDijkstra listaCaminosMasCortos(cantidadVertices);
+    std::cout<<"*****************CCC***********"<< std::endl;
+    Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
+    std::cout<<"*****************DDD***********"<< std::endl;
+    Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+
     
-   grafo.ImprimirGrafo();
->>>>>>> Stashed changes
+    
+   //grafo.ImprimirGrafo();
     std::cout<< "Ya se creo" << std::endl;
     
     // std::cout << grafo.Peso(a, b);
@@ -135,15 +121,14 @@ int main(){
         
     }
     */
-<<<<<<< Updated upstream
-=======
+   
    /*
     std::cout<< "VOY A EJECUTAR PRIM" << std::endl;
     Grafo grafoPrim = Prim::primMetodo(grafo); 
     Vertice vertice;
-    */
+    
     //std::cout<< "Termine Prim" << std::endl;
-    /*
+    
     for (size_t i = 0; i < grafoPrim.NumVertices(); i++)
     {
         if(i == 0){
@@ -154,8 +139,6 @@ int main(){
         grafoPrim.ImprimirConexiones(vertice);  
     }
     */
-    
->>>>>>> Stashed changes
 
     return 0;
 

@@ -180,18 +180,22 @@ char Etiqueta(Vertice& vertice){
 }
 
 void AgregarArista(Vertice& origen, Vertice& destino, size_t peso){
-    /*
+    Vertice * modificado1;
+    Vertice * modificado2;
     for (auto i = listaPrincipal->getPrimera(); i != nullptr; i = i->getSiguiente())
     {
         if(i->getEtiqueta().etiqueta == origen.etiqueta){
-
+            modificado1 = & i->getEtiqueta();
+        } 
+        if(i->getEtiqueta().etiqueta == destino.etiqueta){
+            modificado2 = & i->getEtiqueta();
         }
     }
-    */
-    Vertice::Contenedor contenedor1= Vertice::Contenedor(destino, peso);
-    origen.listaAdyacencia->insertar(contenedor1);
-    Vertice::Contenedor contenedor2= Vertice::Contenedor(origen, peso);
-    destino.listaAdyacencia->insertar(contenedor2);
+    
+    Vertice::Contenedor contenedor1= Vertice::Contenedor(*modificado1, peso);
+    modificado2->listaAdyacencia->insertar(contenedor1);
+    Vertice::Contenedor contenedor2= Vertice::Contenedor(*modificado2, peso);
+    modificado1->listaAdyacencia->insertar(contenedor2);
 }
 
 void EliminarArista(Vertice& origen, Vertice& destino){
