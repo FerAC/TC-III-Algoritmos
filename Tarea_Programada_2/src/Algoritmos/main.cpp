@@ -1,5 +1,5 @@
-//#include "Controlador.hpp"
-#include "Prim.hpp"
+#include "Controlador.hpp"
+//#include "Prim.hpp"
 #include <iostream>
 
 
@@ -13,6 +13,12 @@ int main(){
     Vertice b = grafo.AgregarVertice('b');
     Vertice c = grafo.AgregarVertice('c');
     Vertice d = grafo.AgregarVertice('d');
+    grafo.AgregarArista(a, d, 4);
+    grafo.AgregarArista(b, a, 20);
+    grafo.AgregarArista(b, d, 3);
+    grafo.AgregarArista(c, a, 6);
+    grafo.AgregarArista(c, b, 10);
+    grafo.AgregarArista(d, c, 5);
 
     /*
     Vertice e = grafo.AgregarVertice('e'); 
@@ -30,29 +36,25 @@ int main(){
     ListaDijkstra listaCaminosMasCortos(cantidadVertices);
     Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
     Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
-    
+     */
 
     // TEST KRUSKAL
     Grafo grafoMinimo;
     Controlador::Kruskal(grafo, grafoMinimo);
+    std::cout<< "se termino de ejecutar Kruskal" << std::endl;
     Controlador::imprimirGrafo(grafo);
     Controlador::imprimirGrafo(grafoMinimo);
 
     std::cout<<"\n"<<std::endl;
-    */
+   
     
-    grafo.AgregarArista(a, d, 4);
-    grafo.AgregarArista(b, a, 20);
-    grafo.AgregarArista(b, d, 3);
-    grafo.AgregarArista(c, a, 6);
-    grafo.AgregarArista(c, b, 10);
-    grafo.AgregarArista(d, c, 5);
     // int miPeso = grafo.Peso(a, d);
     // std::cout<< "Peso  :" << miPeso << std::endl;
     // grafo.ImprimirConexiones(a);
     // grafo.ImprimirConexiones(b);
     // grafo.ImprimirConexiones(c);
     // grafo.ImprimirConexiones(d);
+    /*
     std::cout<< "Ya se creo" << std::endl;
     
     // std::cout << grafo.Peso(a, b);
@@ -67,7 +69,8 @@ int main(){
         std::cout<< "\n";
         
     }
-    
+    */
+
     return 0;
 
 

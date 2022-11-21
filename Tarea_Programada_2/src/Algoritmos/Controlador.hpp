@@ -14,7 +14,7 @@
 // #include <map>  // APO de Kruskal
 // #include <set>  // conjunto de conjunto de Kruskal
 #include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
-#include <pair>
+#include <utility>
 
 // arista se usa como el objecto "par" usado en el algoritmo de kruskal
 struct arista
@@ -156,21 +156,57 @@ public:
     }
 
 
-    static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual){
+    static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual, Vertice &verticeAnterior){
         // set vertice actual in visitado as true
         bool esVisitado = false;
-        std::lista<pair<bool, char>>::iterator iterador;
+        std::list<std::pair<bool, char>>::iterator iterador = visitados.begin();
+        // se guarda el vertice actual como visitado
         while (!esVisitado)
         {
-            if(grafo.Etiqueta(verticeActual) == iterador.second){
-                iterador.first = true;
+            if(grafo.Etiqueta(verticeActual) == (*iterador).second){
+                (*iterador).first = true;
                 esVisitado = true;
+            } 
+            else{
+                ++iterador;
             }
-            ++iterador;
         }
+
+        Vertice verticeAdyacente = grafo.PrimerVerticeAdyacente(verticeActual);
         
+        Vertice verticeNulo;
+        // se reitera para todos los vertices adyacentes del vertice actual
+        while(verticeAdyacente != verticeNulo){
+            // si el adyacente ya es visitado y no es el anterior, entonces return true
+            bool adyacenteVisitado;
 
+            std::list<std::pair<bool, char>>::iterator i = visitados.begin();
+            while(i != visitados.end())
+            {
+                if((*i).second == grafo.Etiqueta(verticeAdyacente)){
+                    if((*i).first == true){
+                        adyacenteVisitado = true;
+                    } else{
+                        adyacenteVisitado = false;
+                    }
+                    i = visitados.end();
 
+                }else{
+                    ++i;
+                }
+            }
+            
+
+            if(verticeAdyacente != verticeAnterior && adyacenteVisitado){
+                return true;
+            }else{
+                    // else llamar recursivamente 
+                return existeCiclosRecursivo(grafo, visitados, verticeAdyacente, verticeActual);
+            }
+
+            verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeActual, verticeAdyacente);
+        }
+        return false;
     }
 
     static bool existeCiclos(Grafo &grafo){
@@ -187,32 +223,74 @@ public:
         }
 
         Vertice primerVertice = grafo.PrimerVertice();
-        bool esCiclico = existeCiclosRecursivo(grafo, visitados, primerVertice);
+        bool esCiclico = existeCiclosRecursivo(grafo, visitados, primerVertice, primerVertice);
         return esCiclico;
     }
 
-    static void Kruskal(Grafo &grafo, Grafo &grafoMinimo)
+    static void Kruskal(Grafo grafo, Grafo &grafoMinimo)
     {
         Vertice vertice = grafo.PrimerVertice();
         Vertice verticeNulo;
+        int cantidadAristas = 0;
+        int cantidadVertices = grafo.NumVertices();
 
         // primero llenamos la lista con la etiqueta de cada elemento y un valor mas cercano al infinito al cual tenemos acceso
         while (vertice != verticeNulo)
         {
+            std::cout<< "a" << std::endl;
             char etiqueta = grafo.Etiqueta(vertice);
             grafoMinimo.AgregarVertice(etiqueta);
             vertice = grafo.SiguienteVertice(vertice);
         }
+        std::cout<< "Se termino de insertar los vertices en grafo minimo" << std::endl;
 
-        while (existeCiclos(grafoMinimo) != true)
+        // se reitera para agregar todos los caminos minimos para que los vertices esten connectados y que no haya ciclos
+        while (cantidadAristas != cantidadVertices-1)
         {
-            /* code */
+
+            int pesoMinimo =  2147483647;
+            Vertice verticeOptimalPartida = grafo.PrimerVertice();
+            Vertice verticePartida = grafo.PrimerVertice();
+            Vertice verticeLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
+            Vertice verticeOptimalLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
+
+            std::cout<< "a" << std::endl;
+
+            while (verticePartida != verticeNulo)
+            {
+                std::cout<< "b" << std::endl;
+                while (verticeLlegada != verticeNulo)
+                {
+                    std::cout<< "c" << std::endl;
+                    if (grafo.Peso(verticePartida, verticeLlegada) < pesoMinimo)
+                    {
+                        std::cout<< "d" << std::endl;
+                        pesoMinimo = grafo.Peso(verticePartida, verticeLlegada);
+                        verticeOptimalLlegada = verticeLlegada;
+                        verticeOptimalPartida = verticePartida;
+                    }
+                    verticeLlegada = grafo.SiguienteVerticeAdyacente(verticePartida, verticeLlegada);
+                    std::cout<< "e" << std::endl;
+                }               
+                verticePartida = grafo.SiguienteVertice(vertice);
+            }
+
+
+            // se borra la arista optimal del Grafo grafo
+            grafo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
+
+            // se agrega a grafoMinimo
+            grafoMinimo.AgregarArista(verticeOptimalPartida, verticeOptimalLlegada, pesoMinimo);
+            
+            
+            if (existeCiclos(grafoMinimo))  // si crea un ciclo en grafoMinimo, entonces se borra la arista de grafoMinimo
+            {
+                grafoMinimo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
+            }
+            else{                           // sino se incrementa cantidadArista de 1
+                ++cantidadAristas;
+            }
         }
-        
-        
-
-
-
     }
 
     static void Dijkstra(Grafo grafo, Vertice &inicio, ListaDijkstra &camino)
