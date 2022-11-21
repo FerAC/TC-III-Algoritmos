@@ -32,7 +32,11 @@ class Vertice{
                 return 0;
             }
             int operator!=(const Contenedor& otro){
-                return *this == otro;
+                if (otro.VAdyacente == this->VAdyacente)
+                {
+                    return 0;
+                }
+                return 1;
             }
         };
 		
@@ -47,6 +51,7 @@ class Vertice{
 		/// @remarks Requiere que el nodo no este inicializado 
 		Vertice(){
 			listaAdyacencia = nullptr;
+            etiqueta = '@'; 
 		}
 
 		/// @brief Destructor por omision de la clase nodo
@@ -60,7 +65,7 @@ class Vertice{
 		Vertice(char et){
 			etiqueta = et;
 		}
-
+        
         Vertice(Vertice * otro){
             this->listaAdyacencia = otro->listaAdyacencia;
             this->etiqueta = otro->etiqueta; 
@@ -90,7 +95,7 @@ class Vertice{
 		/// @param Vertice 
 		/// @return 1 si son iguales, 0 si no
 		int operator==(Vertice nodo2){
-			if(this->listaAdyacencia == nodo2.listaAdyacencia){
+			if(this->etiqueta== nodo2.etiqueta){
 				return 1;
 			}
 			return 0;
@@ -101,7 +106,7 @@ class Vertice{
 		/// @param Vertice 
 		/// @return 0 si son iguales, 1 si no
 		int operator!=(Vertice nodo2){
-			if(this->listaAdyacencia == nodo2.listaAdyacencia){
+			if(this->etiqueta == nodo2.etiqueta){
 				return 0;
 			}
 			return 1;
@@ -175,6 +180,14 @@ char Etiqueta(Vertice& vertice){
 }
 
 void AgregarArista(Vertice& origen, Vertice& destino, size_t peso){
+    /*
+    for (auto i = listaPrincipal->getPrimera(); i != nullptr; i = i->getSiguiente())
+    {
+        if(i->getEtiqueta().etiqueta == origen.etiqueta){
+
+        }
+    }
+    */
     Vertice::Contenedor contenedor1= Vertice::Contenedor(destino, peso);
     origen.listaAdyacencia->insertar(contenedor1);
     Vertice::Contenedor contenedor2= Vertice::Contenedor(origen, peso);

@@ -155,6 +155,7 @@ public:
     {
     }
 
+<<<<<<< Updated upstream
 
     static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual, Vertice &verticeAnterior){
         // set vertice actual in visitado as true
@@ -203,12 +204,17 @@ public:
                     // else llamar recursivamente 
                 return existeCiclosRecursivo(grafo, visitados, verticeAdyacente, verticeActual);
             }
+=======
+    /*
+    static bool existeCiclosRecursivo(Grafo &grafo, std::list<bool> &visitados, Vertice &verticeActual){
+>>>>>>> Stashed changes
 
             verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeActual, verticeAdyacente);
         }
         return false;
     }
-
+    */
+    /*
     static bool existeCiclos(Grafo &grafo){
 
         // recorrido por profundidad primero -> si hay un arco de retroceso, entonces hay ciclo
@@ -226,8 +232,14 @@ public:
         bool esCiclico = existeCiclosRecursivo(grafo, visitados, primerVertice, primerVertice);
         return esCiclico;
     }
+<<<<<<< Updated upstream
 
     static void Kruskal(Grafo grafo, Grafo &grafoMinimo)
+=======
+    */
+   /*
+    static void Kruskal(Grafo &grafo, Grafo &grafoMinimo)
+>>>>>>> Stashed changes
     {
         Vertice vertice = grafo.PrimerVertice();
         Vertice verticeNulo;
@@ -247,6 +259,7 @@ public:
         // se reitera para agregar todos los caminos minimos para que los vertices esten connectados y que no haya ciclos
         while (cantidadAristas != cantidadVertices-1)
         {
+<<<<<<< Updated upstream
 
             int pesoMinimo =  2147483647;
             Vertice verticeOptimalPartida = grafo.PrimerVertice();
@@ -274,6 +287,12 @@ public:
                 }               
                 verticePartida = grafo.SiguienteVertice(vertice);
             }
+=======
+            
+        }
+        
+        
+>>>>>>> Stashed changes
 
 
             // se borra la arista optimal del Grafo grafo
@@ -292,6 +311,7 @@ public:
             }
         }
     }
+    */
 
     static void Dijkstra(Grafo grafo, Vertice &inicio, ListaDijkstra &camino)
     {

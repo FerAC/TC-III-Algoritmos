@@ -32,11 +32,12 @@ class Vertice
             this->etiqueta = valor;
         }
 
+        
+
+    public:
         char getEtiqueta(){
             return this->etiqueta;
         }
-
-    public:
         Vertice(){
             indice = 0;
             etiqueta = '0';
@@ -136,7 +137,7 @@ class Grafo{
     void ModificarArista(Vertice& origen, Vertice& destino, size_t peso){
         AgregarArista(origen, destino, peso);
     }
-    size_t Peso(Vertice& origen, Vertice& destino){
+    size_t Peso(Vertice& origen, Vertice destino){
         return matriz[origen.indice][destino.indice]; 
     }
     Vertice PrimerVertice(){
@@ -144,8 +145,12 @@ class Grafo{
         return vertice; 
     }
     Vertice SiguienteVertice(Vertice& anterior){
-        Vertice vertice(anterior.indice+1, vector[anterior.indice+1]);
-        return vertice; 
+        Vertice NULO;
+        if(anterior.indice+1 < NumVertices()){
+           Vertice vertice(anterior.indice+1, vector[anterior.indice+1]);
+           return vertice;
+        }
+        return NULO; 
     }
     Vertice PrimerVerticeAdyacente(Vertice& original){
         for(size_t i = 0; i<vertices; i++){
@@ -167,7 +172,7 @@ int ExisteArista(Vertice& inicio, Vertice& fin){
     return 0; 
 }
     Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyacente){
-        if(adyacente.indice+1<=vertices){
+        if(adyacente.indice+1<vertices){
             for (size_t i = adyacente.indice+1; i < vertices; i++)
             {
                 if(matriz[original.indice][i]> 0){
@@ -175,6 +180,9 @@ int ExisteArista(Vertice& inicio, Vertice& fin){
                     return vertice; 
                 }
             }
+        } else{
+            Vertice NULO;
+            return NULO;
         }
         Vertice vertice;
         return vertice; 
