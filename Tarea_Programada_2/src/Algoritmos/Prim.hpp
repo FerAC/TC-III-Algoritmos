@@ -394,6 +394,37 @@ class Prim{
                     return NULO;
                 }
 
+                static double calculoCota(Grafo& grafo){
+                    double valorActual;
+                    const Vertice NULO;
+                    for (Vertice * i = & grafo.PrimerVertice(); *i != NULO; i = &grafo.SiguienteVertice(*i))
+                    {
+                        double menor1 = 0;
+                        double menor2 = 0;
+                        bool asignados = false; 
+                        for (Vertice * adyacentes = & grafo.PrimerVerticeAdyacente(*i); *adyacentes != NULO; adyacentes = & grafo.SiguienteVerticeAdyacente(*i, *adyacentes))
+                        {
+                            if(menor1 == 0){
+                                menor1 = grafo.Peso(*i, *adyacentes);
+                            } else
+                            if (menor2 == 0)
+                            {
+                                menor2 = grafo.Peso(*i, *adyacentes);
+                                asignados = true; 
+                            }
+                            if (grafo.Peso(*i, *adyacentes)< menor1 && asignados)
+                            {
+                                double aux = menor1;
+                                menor1 = grafo.Peso(*i, *adyacentes);
+                                menor2 = aux;
+                            }   
+                        }
+                        valorActual = menor1 + menor2; 
+                    }
+                    valorActual = valorActual / 2; 
+                    return valorActual; 
+                } 
+
         };
 
 
