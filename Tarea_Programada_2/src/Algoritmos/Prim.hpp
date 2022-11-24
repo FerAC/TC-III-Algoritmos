@@ -2,6 +2,7 @@
 //#include "../MatrizAdyacencia/Grafo.hpp"
 #include <list>
 #include <map> 
+#include <stack>
 #include <iostream> 
 #ifndef HOLA4
 #define HOLA4
@@ -424,6 +425,50 @@ class Prim{
                     valorActual = valorActual / 2; 
                     return valorActual; 
                 } 
+
+                /*
+                //La lista almacenara pares de vertices y la cota
+                static std::pair<std::list<Vertice> , double> hamiltonBERA(){
+
+                }
+                double gananciaActual = 0 ;
+                std::pair<std::stack<Vertice> , double> solucionActual; 
+
+                static std::pair<std::stack<Vertice> , double> hamiltonBEP(std::pair<std::stack<Vertice> , double> pilaCamino, Grafo & grafo){
+                    const Vertice NULO;
+                    for (Vertice * primerVertice = & grafo.PrimerVertice(); *primerVertice == NULO; primerVertice == grafo.SiguienteVertice(primerVertice))
+                    {
+                        for (Vertice * adyacente= & grafo.PrimerVerticeAdyacente(*adyacente); *adyacente != NULO; adyacente = & grafo.SiguienteVerticeAdyacente(*adyacente))
+                        {
+                            
+                        }
+                        
+                    }
+                    
+                    
+                }
+                static Vertice * iteradorVertices(Vertice vertice, Grafo & grafo){
+                    const Vertice NULO;
+                    Vertice * retornado;
+                    if (vertice == NULO)
+                    {
+                        retornado =  & grafo.PrimerVertice();
+                    } else{
+                        retornado = & grafo.SiguienteVertice(vertice);
+                    }
+                     
+                }
+                static Vertice * iteradorVerticesAdyacentes(Vertice vertice,Vertice adyAnterior, Grafo & grafo){
+                    const Vertice NULO;
+                    Vertice * retornado;
+                    if (adyAnterior == NULO)
+                    {
+                        retornado =  & grafo.PrimerVerticeAdyacente(vertice);
+                    } else{
+                        retornado = & grafo.SiguienteVerticeAdyacente(vertice, adyAnterior);
+                    }
+                }
+                */
 
         };
 
