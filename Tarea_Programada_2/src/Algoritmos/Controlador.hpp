@@ -164,11 +164,26 @@ public:
     {
     }
 
-    static void nVecesDijkstra(Grafo grafo, ListaDijkstra* &camino){
+    static Vertice buscarVertice(Grafo &grafo, char etiqueta)
+    {
+        const Vertice NULO;
+        for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
+        {
+            if (vertice.getEtiqueta() == etiqueta)
+            {
+                return vertice;
+            }
+        }
+        return NULO;
+    }
+
+    static void nVecesDijkstra(Grafo grafo){
         Vertice vertice = grafo.PrimerVertice();
+        ListaDijkstra camino(grafo.NumVertices());
         for (size_t i = 0; i < grafo.NumVertices(); ++i)
         {
-            Dijkstra(grafo, vertice, camino[i]);
+            Dijkstra(grafo, vertice, camino);
+            camino.imprimirLista();
         }
     }
 
@@ -417,7 +432,7 @@ public:
             while (counter < cantidadVertices) // este loop permite encontrar el siguiente vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
             {
                 pesoContador = camino.getPesoPorIndice(counter);
-                std::cout << "b" << std::endl;
+                // std::cout << "b" << std::endl;
                 bool esVisitado = camino.esVisitadoPorIndice(counter); // esVisitado es 0 si el counter elemento
 
                 if (!esVisitado) // estas 2 condiciones permiten saber si el elemento en la posicion counter es un elemento pivote valido o no

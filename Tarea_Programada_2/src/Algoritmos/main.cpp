@@ -1,19 +1,8 @@
 #include "Controlador.hpp"
-#include "Prim.hpp"
+//#include "Prim.hpp"
 #include <iostream>
 
-Vertice buscarVertice(Grafo &grafo, char etiqueta)
-{
-    const Vertice NULO;
-    for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
-    {
-        if (vertice.getEtiqueta() == etiqueta)
-        {
-            return vertice;
-        }
-    }
-    return NULO;
-}
+
 
 int main()
 {
@@ -52,22 +41,26 @@ int main()
     char listaA[] = {'a','a','a','a','a','b','b', 'b','c', 'c', 'e', 'f'}; 
     char listaB[] = {'b','c','d','e','f','c','d','f','e', 'f', 'f', 'd'};
     int listaP[] = {2, 8, 6, 7, 3, 3, 9, 5, 1, 6, 4, 9};
-    Vertice x = buscarVertice(grafo, listaA[0]);
-    Vertice y = buscarVertice(grafo, listaB[0]);
+    Vertice x = Controlador::buscarVertice(grafo, listaA[0]);
+    Vertice y = Controlador::buscarVertice(grafo, listaB[0]);
     std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y "<< y.getEtiqueta() << " con peso " << listaP[0] << std::endl;
     grafo.AgregarArista(x, y, listaP[0]); 
     for (int i = 1; i < 12; i++)
     {
-        x = buscarVertice(grafo, listaA[i]);
-        y = buscarVertice(grafo, listaB[i]);
+        x = Controlador::buscarVertice(grafo, listaA[i]);
+        y = Controlador::buscarVertice(grafo, listaB[i]);
         std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y " << y.getEtiqueta() << " con peso " << listaP[i] << std::endl;
         grafo.AgregarArista(x, y, listaP[i]);
     }
     std::cout<<"B"<< std::endl;
     Vertice NULO;
+
     for(Vertice v = grafo.PrimerVertice(); v!=NULO; v= grafo.SiguienteVertice(v)){
         grafo.ImprimirConexiones(v); 
     }
+
+    // TEST DIJKSTRA N VECES
+    Controlador::nVecesDijkstra(grafo);
    
     /*
     grafo.AgregarArista(a, d, 4);
@@ -79,10 +72,10 @@ int main()
     // int miPeso = grafo.Peso(a, d);
     // std::cout<< "Peso  :" << miPeso << std::endl;
     */
-   Vertice a = buscarVertice(grafo, 'a'); 
-   Vertice b = buscarVertice(grafo, 'b');
-   Vertice c = buscarVertice(grafo, 'c');
-   Vertice d = buscarVertice(grafo, 'd');
+//    Vertice a = buscarVertice(grafo, 'a'); 
+//    Vertice b = buscarVertice(grafo, 'b');
+//    Vertice c = buscarVertice(grafo, 'c');
+//    Vertice d = buscarVertice(grafo, 'd');
    
    /*
      grafo.ImprimirConexiones(a);
@@ -91,21 +84,21 @@ int main()
      grafo.ImprimirConexiones(d);
 */
 
-    std::cout<<"*********************************"<< std::endl;
-    Vertice inicio = grafo.PrimerVertice();\
-    std::cout<<"*******************AAAA***********"<< std::endl;
-    size_t cantidadVertices = grafo.NumVertices();
-    std::cout<<"*****************BBB***********"<< std::endl;
-    ListaDijkstra listaCaminosMasCortos(cantidadVertices);
-    std::cout<<"*****************CCC***********"<< std::endl;
-    Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
-    std::cout<<"*****************DDD***********"<< std::endl;
-    Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
+    // std::cout<<"*********************************"<< std::endl;
+    // Vertice inicio = grafo.PrimerVertice();\
+    // std::cout<<"*******************AAAA***********"<< std::endl;
+    // size_t cantidadVertices = grafo.NumVertices();
+    // std::cout<<"*****************BBB***********"<< std::endl;
+    // ListaDijkstra listaCaminosMasCortos(cantidadVertices);
+    // std::cout<<"*****************CCC***********"<< std::endl;
+    // Controlador::Dijkstra(grafo, inicio, listaCaminosMasCortos);
+    // std::cout<<"*****************DDD***********"<< std::endl;
+    // Controlador::imprimirListaDijkstra(listaCaminosMasCortos);
 
     
     
    //grafo.ImprimirGrafo();
-    std::cout<< "Ya se creo" << std::endl;
+   // std::cout<< "Ya se creo" << std::endl;
     
     // std::cout << grafo.Peso(a, b);
     /*
@@ -139,6 +132,8 @@ int main()
         grafoPrim.ImprimirConexiones(vertice);  
     }
     */
+
+
 
     return 0;
 }
