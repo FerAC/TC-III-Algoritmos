@@ -164,6 +164,18 @@ public:
     {
     }
 
+    static void nVecesDijkstra(Grafo grafo, ListaDijkstra* &camino){
+        Vertice vertice = grafo.PrimerVertice();
+        for (size_t i = 0; i < grafo.NumVertices(); ++i)
+        {
+            Dijkstra(grafo, vertice, camino[i]);
+        }
+    }
+
+    static void colorear(Grafo grafo){
+        
+    }
+
     static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual, Vertice &verticeAnterior)
     {
         bool resultado;
