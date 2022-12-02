@@ -177,18 +177,22 @@ public:
         return NULO;
     }
 
-    static void nVecesDijkstra(Grafo grafo){
+    static void nVecesDijkstra(Grafo grafo)
+    {
         Vertice vertice = grafo.PrimerVertice();
-        ListaDijkstra camino(grafo.NumVertices());
         for (size_t i = 0; i < grafo.NumVertices(); ++i)
         {
+            ListaDijkstra camino(grafo.NumVertices());
+            std::cout << "dijkstra para el vertice: " << grafo.Etiqueta(vertice) << std::endl;
             Dijkstra(grafo, vertice, camino);
+            vertice = grafo.SiguienteVertice(vertice);
             camino.imprimirLista();
+            std::cout << std::endl;
         }
     }
 
-    static void colorear(Grafo grafo){
-        
+    static void colorear(Grafo grafo)
+    {
     }
 
     static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual, Vertice &verticeAnterior)
@@ -202,7 +206,7 @@ public:
         {
             if (grafo.Etiqueta(verticeActual) == (*iterador).second)
             {
-                //std::cout << "123" << std::endl;
+                // std::cout << "123" << std::endl;
                 (*iterador).first = true;
                 esVisitado = true;
             }
@@ -210,10 +214,10 @@ public:
             {
                 ++iterador;
             }
-            //std::cout << (*iterador).second << std::endl;
+            // std::cout << (*iterador).second << std::endl;
         }
 
-        //std::cout << "AAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
+        // std::cout << "AAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
 
         Vertice verticeAdyacente = grafo.PrimerVerticeAdyacente(verticeActual);
 
@@ -221,7 +225,7 @@ public:
         size_t contador = 0;
         // se reitera para todos los vertices adyacentes del vertice actual
         // while (verticeAdyacente != verticeNulo)
-        while (contador < grafo.NumVertices()-1)
+        while (contador < grafo.NumVertices() - 1)
         {
             // si el adyacente ya es visitado y no es el anterior, entonces return true
             bool adyacenteVisitado;
@@ -229,7 +233,7 @@ public:
             std::list<std::pair<bool, char>>::iterator i = visitados.begin();
             while (i != visitados.end())
             {
-                //std::cout << "123" << std::endl;
+                // std::cout << "123" << std::endl;
                 if ((*i).second == grafo.Etiqueta(verticeAdyacente))
                 {
                     if ((*i).first == true)
@@ -247,25 +251,25 @@ public:
                     ++i;
                 }
             }
-            
+
             // return true si se encontro con un elemento ya visitado y que no sea el padre
             if (verticeAdyacente != verticeAnterior && adyacenteVisitado)
             {
-               // std::cout << "AAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
+                // std::cout << "AAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
                 return true;
             }
 
             bool grafoVisitado = true;
-            //i = visitados.begin();
+            // i = visitados.begin();
             size_t counter = 0;
             // ciclo para saber si se visito todo el arbol
-            //while (i != visitados.end())
-            while (counter<visitados.size())
+            // while (i != visitados.end())
+            while (counter < visitados.size())
             {
-               //std::cout << "zz" << std::endl;
+                // std::cout << "zz" << std::endl;
                 if ((*i).first == false)
                 {
-                   // std::cout << "oo" << std::endl;
+                    // std::cout << "oo" << std::endl;
                     grafoVisitado = false;
                     i = visitados.end();
                 }
@@ -273,19 +277,20 @@ public:
                 //++i;
             }
 
-
-            if(grafoVisitado){
-                //std::cout << "BBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
+            if (grafoVisitado)
+            {
+                // std::cout << "BBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
                 return false;
-            }else
+            }
+            else
             {
                 // else llamar recursivamente
-                //std::cout << "CCCCCCCCCCCCCCCCCCCCCCCCCC" << std::endl;
+                // std::cout << "CCCCCCCCCCCCCCCCCCCCCCCCCC" << std::endl;
                 resultado = existeCiclosRecursivo(grafo, visitados, verticeAdyacente, verticeActual);
             }
 
             verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeActual, verticeAdyacente);
-            //std::cout << "BBBBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
+            // std::cout << "BBBBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
             ++contador;
         }
         return resultado;
@@ -303,7 +308,7 @@ public:
         {
             visitados.push_front(std::make_pair(false, grafo.Etiqueta(vertice)));
             vertice = grafo.SiguienteVertice(vertice);
-           /// std::cout << "hello there" << std::endl;
+            /// std::cout << "hello there" << std::endl;
         }
 
         Vertice primerVertice = grafo.PrimerVertice();
@@ -327,7 +332,7 @@ public:
             grafoMinimo.AgregarVertice(etiqueta);
             vertice = grafo.SiguienteVertice(vertice);
         }
-        //std::cout << "Se termino de insertar los vertices en grafo minimo" << std::endl;
+        // std::cout << "Se termino de insertar los vertices en grafo minimo" << std::endl;
 
         // se reitera para agregar todos los caminos minimos para que los vertices esten connectados y que no haya ciclos
         while (cantidadAristas != cantidadVertices - 1)
@@ -339,48 +344,47 @@ public:
             Vertice verticeLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
             Vertice verticeOptimalLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
 
-            //std::cout << "a" << std::endl;
+            // std::cout << "a" << std::endl;
 
             // ciclo para saber cual es el siguiente camino mas corto
             while (verticePartida != verticeNulo)
             {
-                //std::cout << "b" << std::endl;
+                // std::cout << "b" << std::endl;
                 verticeLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
                 while (verticeLlegada != verticeNulo)
                 {
-                    //std::cout << "c" << std::endl;
+                    // std::cout << "c" << std::endl;
                     if (grafo.Peso(verticePartida, verticeLlegada) < pesoMinimo)
                     {
-                        //std::cout << "d" << std::endl;
+                        // std::cout << "d" << std::endl;
                         pesoMinimo = grafo.Peso(verticePartida, verticeLlegada);
                         verticeOptimalLlegada = verticeLlegada;
                         verticeOptimalPartida = verticePartida;
                     }
                     verticeLlegada = grafo.SiguienteVerticeAdyacente(verticePartida, verticeLlegada);
-                    //std::cout << "e" << std::endl;
+                    // std::cout << "e" << std::endl;
                 }
                 verticePartida = grafo.SiguienteVertice(verticePartida);
             }
 
-            //std::cout << "Se encontro el camino mas corto" << std::endl;
+            // std::cout << "Se encontro el camino mas corto" << std::endl;
 
             // se borra la arista optimal del Grafo grafo
             grafo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
-
 
             // se agrega a grafoMinimo
             grafoMinimo.AgregarArista(verticeOptimalPartida, verticeOptimalLlegada, pesoMinimo);
 
             if (existeCiclos(grafoMinimo)) // si crea un ciclo en grafoMinimo, entonces se borra la arista de grafoMinimo
             {
-                //std::cout << "AAAA" << std::endl;
+                // std::cout << "AAAA" << std::endl;
                 grafoMinimo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
             }
             else
             { // sino se incrementa cantidadArista de 1
                 ++cantidadAristas;
             }
-            //imprimirGrafo(grafoMinimo);
+            // imprimirGrafo(grafoMinimo);
         }
     }
 
@@ -395,17 +399,17 @@ public:
             if (grafo.Etiqueta(vertice) != grafo.Etiqueta(inicio)) // si el elemento no es el inicio dado por el usuario
             {
                 camino.agregar(grafo.Etiqueta(vertice), grafo.Etiqueta(inicio), 2147483647);
-                std::cout << grafo.Etiqueta(vertice) << std::endl;
+                // std::cout << grafo.Etiqueta(vertice) << std::endl;
             }
             else
             { // si el elemento es el inicio dado por el usuario
                 camino.agregar(grafo.Etiqueta(vertice), grafo.Etiqueta(inicio), 0);
-                std::cout << grafo.Etiqueta(vertice) << std::endl;
+                // std::cout << grafo.Etiqueta(vertice) << std::endl;
                 camino.setVisitado(grafo.Etiqueta(inicio)); // se guarda el inicio como visitado
             }
             vertice = grafo.SiguienteVertice(vertice);
         }
-        std::cout << "TERMINO DE GUARDAR LAS ETIQUETAS EN CAMINO" << std::endl;
+        // std::cout << "TERMINO DE GUARDAR LAS ETIQUETAS EN CAMINO" << std::endl;
 
         vertice = grafo.PrimerVerticeAdyacente(inicio);
         Vertice verticeNulo;
@@ -413,17 +417,18 @@ public:
         // poner el vertice anterior y el costo de las aristas que salen de inicio
         while (vertice != verticeNulo)
         {
-            std::cout << grafo.Peso(inicio, vertice) << std::endl;
-            std::cout << grafo.Etiqueta(vertice) << std::endl;
+            // std::cout << grafo.Peso(inicio, vertice) << std::endl;
+            // std::cout << grafo.Etiqueta(vertice) << std::endl;
             camino.setPeso(grafo.Etiqueta(vertice), grafo.Peso(inicio, vertice));
             vertice = grafo.SiguienteVerticeAdyacente(inicio, vertice);
         }
-        std::cout << "TERMINO DE GUARDAR LOS PESOS DE LOS VERTICES ADYACENTES AL NODO INICIAL" << std::endl;
+        // std::cout << "TERMINO DE GUARDAR LOS PESOS DE LOS VERTICES ADYACENTES AL NODO INICIAL" << std::endl;
 
         size_t contador = 0;
 
         while (contador < cantidadVertices - 1)
         {
+            // std::cout << "se ejecuto el ciclo principal" << std::endl;
             size_t counter = 0; // usado para pasar por cada elemento de camino
             char verticePivote = camino.getVerticePorIndice(counter);
             int pesoVerticePivote = 2147483647;
@@ -431,6 +436,7 @@ public:
 
             while (counter < cantidadVertices) // este loop permite encontrar el siguiente vertice que tenemos que estudiar, debe ser el menor que aun no fue visitado
             {
+
                 pesoContador = camino.getPesoPorIndice(counter);
                 // std::cout << "b" << std::endl;
                 bool esVisitado = camino.esVisitadoPorIndice(counter); // esVisitado es 0 si el counter elemento
@@ -444,6 +450,7 @@ public:
                     }
                 }
                 ++counter;
+                // std::cout << "a" << std::endl;
             }
             camino.setVisitado(verticePivote); // se guarda el pivote como visitado
 
@@ -452,6 +459,7 @@ public:
             // este loop permite encontrar el vertice del grafo que tiene como etiqueta a verticePivote
             while (verticeOptimalEtiqueta != verticePivote)
             {
+                // std::cout << "b" << std::endl;
                 verticeOptimal = grafo.SiguienteVertice(verticeOptimal);
                 verticeOptimalEtiqueta = grafo.Etiqueta(verticeOptimal);
             }
@@ -460,6 +468,7 @@ public:
             // este loop permite cambiar en la listaDijkstra camino todos los pesos menores a los ya encontrados
             while (verticeAdyacente != verticeNulo)
             {
+
                 int nuevoPeso = grafo.Peso(verticeOptimal, verticeAdyacente) + camino.getPeso(verticeOptimalEtiqueta);
 
                 if (nuevoPeso < camino.getPeso(grafo.Etiqueta(verticeAdyacente)))
@@ -468,10 +477,12 @@ public:
                     camino.setAnterior(grafo.Etiqueta(verticeAdyacente), verticePivote);
                 }
                 verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeOptimal, verticeAdyacente);
+                // std::cout << "c" << std::endl;
             }
 
             ++contador;
         }
+        // std::cout << "se termino el ciclo principal" << std::endl;
     }
 
     static void Floyd()

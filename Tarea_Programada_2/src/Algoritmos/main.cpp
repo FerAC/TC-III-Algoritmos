@@ -2,31 +2,44 @@
 //#include "Prim.hpp"
 #include <iostream>
 
-
-
 int main()
 {
-
     Grafo grafo;
     char lista[] = {'a','b','c','d','e','f'}; 
-    // se llena el grafo de vertices
     for (int i = 0; i < 6; i++)
     {
         grafo.AgregarVertice(lista[i]);
     }
-    std::cout << "A" << std::endl;
 
-    /*
-    Vertice e = grafo.AgregarVertice('e');
+    Vertice a = Controlador::buscarVertice(grafo, 'a'); 
+    Vertice b = Controlador::buscarVertice(grafo, 'b');
+    Vertice c = Controlador::buscarVertice(grafo, 'c');
+    Vertice d = Controlador::buscarVertice(grafo, 'd');
+    Vertice e = Controlador::buscarVertice(grafo, 'e');
+    Vertice f = Controlador::buscarVertice(grafo, 'f');
 
-    // se crean aristas entre los vertices del grafo
     grafo.AgregarArista(a, b, 2);
     grafo.AgregarArista(a, c, 3);
     grafo.AgregarArista(a, d, 10);
-    grafo.AgregarArista(d, e, 5);
-    grafo.AgregarArista(c, d, 4);
+    grafo.AgregarArista(a, e, 5);
+    grafo.AgregarArista(a, f, 5);
+    grafo.AgregarArista(b, c, 4);
+    grafo.AgregarArista(b, d, 1);
+    grafo.AgregarArista(b, e, 3);
+    grafo.AgregarArista(b, f, 8);
+    grafo.AgregarArista(c, d, 10);
+    grafo.AgregarArista(c, e, 7);
+    grafo.AgregarArista(c, f, 8);
+    grafo.AgregarArista(d, e, 2);
+    grafo.AgregarArista(d, f, 2);
+    grafo.AgregarArista(e, f, 9);
 
-    */
+    ListaDijkstra listaDijkstra(grafo.NumVertices());
+    Controlador::Dijkstra(grafo, f, listaDijkstra);
+    listaDijkstra.imprimirLista();
+    std::cout << std::endl;
+    Controlador::nVecesDijkstra(grafo);
+
     // TEST DIJKSTRA
 
     // TEST KRUSKAL
@@ -37,30 +50,30 @@ int main()
     Controlador::imprimirGrafo(grafoMinimo);
 
     std::cout<<"\n"<<std::endl;
-    */
-    char listaA[] = {'a','a','a','a','a','b','b', 'b','c', 'c', 'e', 'f'}; 
-    char listaB[] = {'b','c','d','e','f','c','d','f','e', 'f', 'f', 'd'};
-    int listaP[] = {2, 8, 6, 7, 3, 3, 9, 5, 1, 6, 4, 9};
-    Vertice x = Controlador::buscarVertice(grafo, listaA[0]);
-    Vertice y = Controlador::buscarVertice(grafo, listaB[0]);
-    std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y "<< y.getEtiqueta() << " con peso " << listaP[0] << std::endl;
-    grafo.AgregarArista(x, y, listaP[0]); 
-    for (int i = 1; i < 12; i++)
-    {
-        x = Controlador::buscarVertice(grafo, listaA[i]);
-        y = Controlador::buscarVertice(grafo, listaB[i]);
-        std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y " << y.getEtiqueta() << " con peso " << listaP[i] << std::endl;
-        grafo.AgregarArista(x, y, listaP[i]);
-    }
-    std::cout<<"B"<< std::endl;
-    Vertice NULO;
+    // */
+    // char listaA[] = {'a','a','a','a','a','b','b', 'b','c', 'c', 'e', 'f'}; 
+    // char listaB[] = {'b','c','d','e','f','c','d','f','e', 'f', 'f', 'd'};
+    // int listaP[] = {2, 8, 6, 7, 3, 3, 9, 5, 1, 6, 4, 9};
+    // Vertice x = Controlador::buscarVertice(grafo, listaA[0]);
+    // Vertice y = Controlador::buscarVertice(grafo, listaB[0]);
+    // std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y "<< y.getEtiqueta() << " con peso " << listaP[0] << std::endl;
+    // grafo.AgregarArista(x, y, listaP[0]); 
+    // for (int i = 1; i < 12; i++)
+    // {
+    //     x = Controlador::buscarVertice(grafo, listaA[i]);
+    //     y = Controlador::buscarVertice(grafo, listaB[i]);
+    //     std::cout << "Se va a agregar una arista entre " << x.getEtiqueta() << " y " << y.getEtiqueta() << " con peso " << listaP[i] << std::endl;
+    //     grafo.AgregarArista(x, y, listaP[i]);
+    // }
+    // std::cout<<"B"<< std::endl;
+    // Vertice NULO;
 
-    for(Vertice v = grafo.PrimerVertice(); v!=NULO; v= grafo.SiguienteVertice(v)){
-        grafo.ImprimirConexiones(v); 
-    }
+    // for(Vertice v = grafo.PrimerVertice(); v!=NULO; v= grafo.SiguienteVertice(v)){
+    //     grafo.ImprimirConexiones(v); 
+    // }
 
     // TEST DIJKSTRA N VECES
-    Controlador::nVecesDijkstra(grafo);
+    // Controlador::nVecesDijkstra(grafo);
    
     /*
     grafo.AgregarArista(a, d, 4);
