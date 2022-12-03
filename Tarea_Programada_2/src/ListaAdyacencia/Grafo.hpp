@@ -191,7 +191,7 @@ void AgregarArista(Vertice& origen, Vertice& destino, size_t peso){
             modificado2 = & i->getEtiqueta();
         }
     }
-    
+
     Vertice::Contenedor contenedor1= Vertice::Contenedor(*modificado1, peso);
     modificado2->listaAdyacencia->insertar(contenedor1);
     Vertice::Contenedor contenedor2= Vertice::Contenedor(*modificado2, peso);
@@ -275,8 +275,10 @@ Vertice PrimerVerticeAdyacente(Vertice& original){
     Celda<Vertice> * celda;
     for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original && celda->getSiguiente()!=nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {} 
-    if(celda->getEtiqueta() == original)
+    if(celda->getEtiqueta().etiqueta == original.etiqueta){
+        std::cout<< "Primer adyacente de " << original.etiqueta << " es " <<  celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return * celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
+    }
     Vertice nulo;
     return nulo;
 }
@@ -295,15 +297,23 @@ int ExisteArista(Vertice& inicio, Vertice& fin){
     return 0;
 }
 Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior){
+    std::cout<< "SE ESTA BUSCANDO ADYACENTE SIGUIENTE " << std::endl;
     Celda<Vertice> * celda;
-    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original; celda = celda->getSiguiente() ) //Muevo en lista Principal
+    Vertice nulo;
+    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta().etiqueta != original.etiqueta; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {} //Esto me el vertice inicial
     Celda<Vertice::Contenedor> * iterador;
-    for( iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente != &adyAnterior && iterador->getSiguiente()!=nullptr; iterador = iterador->getSiguiente() ){
+    for( iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente->etiqueta != adyAnterior.etiqueta && iterador->getSiguiente()!=nullptr; iterador = iterador->getSiguiente() ){
     }
-    if(iterador->getEtiqueta().VAdyacente == &adyAnterior)
+    if( iterador == nullptr){
+        std::cout<< "Iterador nulo " << std::endl;
+        return nulo;
+    }
+    if(iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta){
+        std::cout<< "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es " << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return * iterador->getSiguiente()->getEtiqueta().VAdyacente; 
-    Vertice nulo;
+    }
+    
     return nulo; 
 }
 
