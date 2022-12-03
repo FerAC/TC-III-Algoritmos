@@ -167,7 +167,7 @@ public:
     static Vertice buscarVertice(Grafo &grafo, char etiqueta)
     {
         const Vertice NULO;
-        for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
+        for (Vertice  vertice = grafo.PrimerVertice(); vertice != NULO; vertice =   grafo.SiguienteVertice(vertice))
         {
             if (vertice.getEtiqueta() == etiqueta)
             {
@@ -177,7 +177,7 @@ public:
         return NULO;
     }
 
-    static void nVecesDijkstra(Grafo grafo)
+    static void nVecesDijkstra(Grafo& grafo)
     {
         Vertice vertice = grafo.PrimerVertice();
         for (size_t i = 0; i < grafo.NumVertices(); ++i)
@@ -388,7 +388,7 @@ public:
         }
     }
 
-    static void Dijkstra(Grafo grafo, Vertice &inicio, ListaDijkstra &camino)
+    static void Dijkstra(Grafo& grafo, Vertice &inicio, ListaDijkstra &camino)
     {
         size_t cantidadVertices = grafo.NumVertices();
         Vertice vertice = grafo.PrimerVertice();

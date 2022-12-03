@@ -1,10 +1,11 @@
 #include "Controlador.hpp"
-//#include "Prim.hpp"
+#include "Prim.hpp"
 #include <iostream>
 
 int main()
 {
     Grafo grafo;
+    
     char lista[] = {'a','b','c','d','e','f'}; 
     for (int i = 0; i < 6; i++)
     {
@@ -34,11 +35,13 @@ int main()
     grafo.AgregarArista(d, f, 2);
     grafo.AgregarArista(e, f, 9);
 
+
     ListaDijkstra listaDijkstra(grafo.NumVertices());
     Controlador::Dijkstra(grafo, f, listaDijkstra);
     listaDijkstra.imprimirLista();
     std::cout << std::endl;
-    Controlador::nVecesDijkstra(grafo);
+    //Controlador::nVecesDijkstra(grafo);
+    
 
     // TEST DIJKSTRA
 
@@ -144,9 +147,9 @@ int main()
         }
         grafoPrim.ImprimirConexiones(vertice);  
     }
+    
+
     */
-
-
 
     return 0;
 }

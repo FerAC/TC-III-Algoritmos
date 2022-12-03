@@ -87,7 +87,7 @@ class Prim{
                     for(size_t j = 0; j<grafo.NumVertices()-1; j++){
                         std::cout<< "J " << j << std::endl;
                         Vertice pivote = encontrarPivote(lista, mapaVerticesPivoteados, grafo);
-                        std::cout<< "///////////// PIVOTEO CON " << pivote.getEtiqueta() << "///////////" << std::endl;
+                        std::cout<< "///////////// PIVOTEO CON " << grafo.Etiqueta(pivote) << "///////////" << std::endl;
                        for (size_t i = 0; i < grafo.NumVertices()-1; i++)
                        {
                             if(lista[i].getVertice()!=pivote && mapaVerticesPivoteados.count(lista[i].getVertice().getEtiqueta())<=0){
@@ -395,6 +395,7 @@ class Prim{
                     return NULO;
                 }
 
+                /*
                 static double calculoCota(Grafo& grafo){
                     double valorActual;
                     const Vertice NULO;
