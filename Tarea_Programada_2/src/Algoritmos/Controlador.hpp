@@ -153,8 +153,6 @@ public:
     }
 };
 
-
-
 class Controlador
 {
 private:
@@ -170,7 +168,7 @@ public:
     static Vertice buscarVertice(Grafo &grafo, char etiqueta)
     {
         const Vertice NULO;
-        for (Vertice  vertice = grafo.PrimerVertice(); vertice != NULO; vertice =   grafo.SiguienteVertice(vertice))
+        for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
         {
             if (vertice.getEtiqueta() == etiqueta)
             {
@@ -180,7 +178,7 @@ public:
         return NULO;
     }
 
-    static void nVecesDijkstra(Grafo& grafo)
+    static void nVecesDijkstra(Grafo &grafo)
     {
         Vertice vertice = grafo.PrimerVertice();
         for (size_t i = 0; i < grafo.NumVertices(); ++i)
@@ -194,79 +192,118 @@ public:
         }
     }
 
-    static void colorearRec(Grafo &grafo, Vertice vertice, std::list<std::pair<int, Vertice>> &mapeo, &mejorCantidadColor, std::set<int> &colorUsados){
-	std::set<Vertice> verticesAdyacentesV;
-        std::set<Vertice> verticesColorC;	
-	Vertice adyacente = grafo.PrimerAdyacente(vertice);
-	Vertice verticeNulo;
+    static void colorearRec(Grafo &grafo,
+                            Vertice vertice,
+                            std::list<std::pair<int, Vertice>> &mejorMapeo,
+                            std::list<std::pair<int, Vertice>> &mapeo,
+                            int &mejorCantidadColor,
+                            int cantidadColorLocal,
+                            std::set<int> &colorUsados)
+    {
+        std::set<Vertice> verticesAdyacentesV;
+        std::set<Vertice> verticesColorC;
+        Vertice adyacente = grafo.PrimerAdyacente(vertice);
+        Vertice verticeNulo;
+        bool primeraVezUsado = false;
 
-	std::list<std::pair<int, Vertice>> mapeoLocal = mejorMapeo;
-	int cantidadColorLocal = mejorCantidadColor;
-	
-	while(adyacente != verticeNulo){
-		verticesAdyacentesV.insert(adyacente);
-		adyacente = grafo.SiguienteAdyacente(vertice, adyacente);	
-	}
-	
-	// para cada color disponible
-	for(size_t i = 1; i < grafo.NumVertices(); ++ i){
-		verticesColorC.clear();
-		for(std::lista<std::pair<int, Vertice>>::iterator j = mapeo.begin(); j != mapeo.end(); ++j){
-			// if element char is equal to iColor 
-			if(std::get<0>(j) == i){
-				verticesColorC.insert(std::get<1>(j));			
-			}
-		} // empty verticesColorC, and fill it with all the vertices of color i
-		
-		bool conjuntosDisjuntos = false;
+        // std::list<std::pair<int, Vertice>> mapeoLocal = mejorMapeo;
+        // int cantidadColorLocal = mejorCantidadColor;
 
-		// ciclo para saber si existen elementos en comun en ambos conjuntos, permite saber si son disjuntos o no
-		for(std::set<Vertice>::iterator j = verticesAdyacentesV.begin(); j != verticesAdyacentesV.end(); ++j){
-			for(std::set<Vertice>::iterator k = verticesColorC.begin(); k!= verticesColorC.end(); ++k){
-				if(j == k){
-					conjuntosDisjuntos = true;
-				}
-			}
-		}
+        while (adyacente != verticeNulo)
+        {
+            verticesAdyacentesV.insert(adyacente);
+            adyacente = grafo.SiguienteAdyacente(vertice, adyacente);
+        }
 
-		// si el conjunto verticesAdyacnetesC y verticesColorC son 
-		if(!conjuntosDisjuntos){
-			// guarda en mapeo "vertice" del color i 
-			std::pair<int, Vertice> parActual = {i, vertice};
-			mapeo.push_front(parActual);
+        // para cada color disponible
+        for (size_t i = 1; i < grafo.NumVertices(); ++i)
+        {
+            verticesColorC.clear();
+            for (std::lista<std::pair<int, Vertice>>::iterator j = mapeo.begin(); j != mapeo.end(); ++j)
+            {
+                // if element char is equal to iColor
+                if (std::get<0>(j) == i)
+                {
+                    verticesColorC.insert(std::get<1>(j));
+                }
+            }
 
-			if(colorUsados.find(i) == colorUsados.end()){
-				colorUsados.insert(i);
-			}
+            bool conjuntosDisjuntos = false;
 
-			Vertice ultimoVertice = grafo.PrimerVertice();
-			while(grafo.SiguienteVertice(ultimoVertice) != verticeNulo){
-				ultimoVertice = grafo.SiguienteVertice(ultimoVertice);
-			}
+            // ciclo para saber si existen elementos en comun en ambos conjuntos, permite saber si son disjuntos o no
+            for (std::set<Vertice>::iterator j = verticesAdyacentesV.begin(); j != verticesAdyacentesV.end(); ++j)
+            {
+                for (std::set<Vertice>::iterator k = verticesColorC.begin(); k != verticesColorC.end(); ++k)
+                {
+                    if (j == k)
+                    {
+                        conjuntosDisjuntos = true;
+                    }
+                }
+            }
 
-			if(vertice == ultimoVertice){
-				if(cantidadColorLocal < mejorCantidadColor  ){
+            // si el conjunto verticesAdyacnetesC y verticesColorC son
+            if (!conjuntosDisjuntos)
+            {
+                // guarda en mapeo "vertice" del color i
+                std::pair<int, Vertice> parActual = {i, vertice};
+                mapeo.push_front(parActual);
 
-				}
-			}else{
-			
-			}
+                if (colorUsados.find(i) == colorUsados.end())
+                {
+                    primeraVezUsado = true;
+                    colorUsados.insert(i);
+                    ++cantidadColorLocal;
+                }
 
+                Vertice ultimoVertice = grafo.PrimerVertice();
+                while (grafo.SiguienteVertice(ultimoVertice) != verticeNulo)
+                {
+                    ultimoVertice = grafo.SiguienteVertice(ultimoVertice);
+                }
 
-		}
-	}
-    } 
+                if (vertice == ultimoVertice)
+                {
+                    if (mejorCantidadColor < cantidadColorLocal)
+                    {
+                        mejorCantidadColor = cantidadColorLocal;
+                        mejorMapeo = mapeo;
+                    }
+                }
+                else
+                {
+                    colorearRec(grafo,
+                                grafo.SiguienteVertice(vertice),
+                                mejorMapeo,
+                                mapeo,
+                                mejorCantidadColor,
+                                cantidadColorLocal,
+                                colorUsados)
+                }
+
+                if (primeraVezUsado)
+                {
+                    colorUsados.erase(i);
+                }
+                mapeo.pop_front(); // para quitar el vertice que se acaba de agregar
+            }
+        }
+    }
 
     static std::pair<std::list<std::pair<int, Vertice>>, int> colorear(Grafo &grafo)
     {
-	std::list<std::pair<int,Vertice>> mapeoColor;
-	int cantidadColor = 0;
-	Vertice primerVertice = grafo.PrimerVertice();
-	std::set<int> coloresUsados;
-	colorearRecursivo(grafo, primerVertice, mapeoColor, cantidadColor, coloresUsados);
-	
-	std::pair<std::list<std::pair<int, Vertice>>, int> miPar{mapeoColor, cantidadColor};
-	return miPar;
+        std::list<std::pair<int, Vertice>> mapeo;
+        std::list<std::pair<int, Vertice>> mejorMapeo;
+        int cantidadColor = 0;
+        int mejorCantidadColor = grafo.NumVertices();
+        Vertice vertice = grafo.PrimerVertice();
+        std::set<int> coloresUsados;
+
+        colorearRec(grafo, vertice, mejorMapeo, mapeo, mejorCantidadColor, cantidadColor, colorUsados);
+        // colorearRecursivo(grafo, primerVertice, mapeoColor, cantidadColor, coloresUsados);
+
+        std::pair<std::list<std::pair<int, Vertice>>, int> miPar{mejorMapeo, mejorCantidadColor};
+        return miPar;
     }
 
     static bool existeCiclosRecursivo(Grafo &grafo, std::list<std::pair<bool, char>> &visitados, Vertice &verticeActual, Vertice &verticeAnterior)
@@ -460,7 +497,7 @@ public:
         }
     }
 
-    static void Dijkstra(Grafo& grafo, Vertice &inicio, ListaDijkstra &camino)
+    static void Dijkstra(Grafo &grafo, Vertice &inicio, ListaDijkstra &camino)
     {
         size_t cantidadVertices = grafo.NumVertices();
         Vertice vertice = grafo.PrimerVertice();
