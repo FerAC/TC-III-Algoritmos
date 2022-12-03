@@ -6,3 +6,8 @@
 
 # G++ compilation files
 *.o
+
+# Buildable folders
+.vscode/*
+bin/*
+build/*
