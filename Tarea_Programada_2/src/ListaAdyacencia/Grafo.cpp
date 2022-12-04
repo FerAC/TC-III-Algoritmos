@@ -137,7 +137,9 @@ Vertice Grafo::SiguienteVerticeAdyacente(const Vertice& original, const Vertice&
     }
 
     if (iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta) {
-        std::cout << "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es " << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
+        std::cout << "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es "
+        // TODO(us): Linea 142 da SEGFAULT en Lista de Adyacencia pero funciona bien en Matriz de Adyacencia. Hay que hacerle bugfix
+        << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return* iterador->getSiguiente()->getEtiqueta().VAdyacente; 
     }
     

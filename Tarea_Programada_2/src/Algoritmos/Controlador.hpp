@@ -2,11 +2,11 @@
 #define CONTROLADOR_ALGORITMOS_GRAFOS
 
 #if defined(MATRIZ)
-#include "../MatrizAdyacencia/Grafo.hpp"
-#define VERSION_GRAFO "GRAFO REPRESENTADO CON MATRIZ DE ADYACENCIA"
+    #include "../MatrizAdyacencia/Grafo.hpp"
+    #define VERSION_GRAFO "GRAFO REPRESENTADO CON MATRIZ DE ADYACENCIA"
 #else
-#include "../ListaAdyacencia/Grafo.hpp"
-#define VERSION_GRAFO "GRAFO REPRESENTADO CON LISTA DE ADYACENCIA"
+    #include "../ListaAdyacencia/Grafo.hpp"
+    #define VERSION_GRAFO "GRAFO REPRESENTADO CON LISTA DE ADYACENCIA"
 #endif
 
 #include "ListaSimplementeEnlazada/Lista.hpp"
