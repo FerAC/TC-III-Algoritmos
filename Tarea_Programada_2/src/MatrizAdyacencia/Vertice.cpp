@@ -1,3 +1,5 @@
+#ifdef MATRIZ
+
 #include "MatrizAdyacencia/Vertice.hpp"
 
 // CONSTRUCTORES y DESTRUCTORES
@@ -60,3 +62,5 @@ int Vertice::esNulo() {
 
     return 0;            
 }
+
+#endif

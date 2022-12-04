@@ -1,3 +1,5 @@
+#ifndef MATRIZ
+
 #include <iostream>
 
 #include "ListaAdyacencia/Grafo.hpp"
@@ -60,3 +62,5 @@ Lista<Vertice::Contenedor>* Vertice::getlistaAdyacencia() {
 int Vertice::esNulo() {
     return 0;
 }
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef MATRIZ
+
 #include <iostream>
 
 #include "ListaAdyacencia/Grafo.hpp"
@@ -253,3 +255,5 @@ void Grafo::ImprimirConexiones(Vertice& vertice) {
        b = b->getSiguiente(); 
     }
 }
+
+#endif

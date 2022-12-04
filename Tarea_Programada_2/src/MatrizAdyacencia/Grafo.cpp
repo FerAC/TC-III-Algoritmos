@@ -1,3 +1,5 @@
+#ifdef MATRIZ
+
 #include <iostream>
 
 #include "MatrizAdyacencia/Grafo.hpp"
@@ -175,3 +177,5 @@ void Grafo::ImprimirGrafo() const {
     }
     
 }
+
+#endif
