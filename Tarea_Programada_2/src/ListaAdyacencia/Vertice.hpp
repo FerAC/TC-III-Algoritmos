@@ -1,7 +1,7 @@
 #ifndef VERTICE_GRAFO_LISTA_ADYACENCIA
 #define VERTICE_GRAFO_LISTA_ADYACENCIA
 
-#include "../2/Lista.hpp"
+#include "ListaSimplementeEnlazada/Lista.hpp"
 
 // TODO(Us): Documentar
 class Vertice {

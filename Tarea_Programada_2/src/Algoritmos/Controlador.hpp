@@ -9,7 +9,7 @@
 #define VERSION_GRAFO "GRAFO REPRESENTADO CON LISTA DE ADYACENCIA"
 #endif
 
-#include "../2/Lista.hpp"
+#include "ListaSimplementeEnlazada/Lista.hpp"
 #include <iostream>
 // #include <map>  // APO de Kruskal
 #include <set>
