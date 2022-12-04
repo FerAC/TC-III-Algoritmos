@@ -92,7 +92,7 @@ class Vertice {
 		/// @brief Devuelve la etiqueta de un nodo
 		/// @remarks Requiere que el nodo este inicializado
 		/// @return char etiqueta
-		char getEtiqueta();
+		char getEtiqueta() const;
 
 		/// @brief modifica la etiqueta de un nodo
 		/// @remarks Requiere que el nodo este inicializado

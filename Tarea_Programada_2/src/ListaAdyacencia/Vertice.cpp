@@ -45,7 +45,7 @@ int Vertice::operator<(const Vertice& otro) const {
 
 // SETTERS y GETTERS
 
-char Vertice::getEtiqueta() {
+char Vertice::getEtiqueta() const {
     return etiqueta;
 }
 
