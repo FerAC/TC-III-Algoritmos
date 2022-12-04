@@ -5,8 +5,8 @@ CC=gcc
 XC=g++
 JC=javac
 DEFS=
-CSTD=-std=gnu11
-XSTD=-std=gnu++11
+CSTD=-std=gnu20
+XSTD=-std=gnu++20
 FLAG=
 FLAGS=$(strip -Wall -Wextra $(FLAG) $(DEFS))
 FLAGC=$(FLAGS) $(CSTD)
