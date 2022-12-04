@@ -109,14 +109,12 @@ Vertice Grafo::PrimerVerticeAdyacente(const Vertice& original) const {
 }
 
 Vertice Grafo::SiguienteVerticeAdyacente(const Vertice& original, const Vertice& adyAnterior) const {
-    std::cout << "SE ESTA BUSCANDO ADYACENTE SIGUIENTE " << std::endl;
-    Celda<Vertice>* celda;
+    Celda<Vertice> * celda;
     Vertice nulo;
-
-    for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta().etiqueta != original.etiqueta; celda = celda->getSiguiente() ) //Muevo en lista Principal
+    for (celda = listaPrincipal->getPrimera();  celda->getEtiqueta().etiqueta != original.etiqueta; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {} //Esto me el vertice inicial
-    Celda<Vertice::Contenedor>* iterador;
-    for (iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente->etiqueta != adyAnterior.etiqueta && iterador->getSiguiente()!=nullptr; iterador = iterador->getSiguiente() ) {
+    Celda<Vertice::Contenedor> * iterador;
+    for (iterador = celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente->etiqueta != adyAnterior.etiqueta && iterador->getSiguiente()!=nullptr; iterador = iterador->getSiguiente()) {
     }
 
     /* TODO(us): Mejor usar whiles?
@@ -126,21 +124,16 @@ Vertice Grafo::SiguienteVerticeAdyacente(const Vertice& original, const Vertice&
     }
 
     Celda<Vertice::Contenedor>* iterador = iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera();
-    while (celda->getEtiqueta().etiqueta != original.etiqueta) {
-        celda = celda->getSiguiente();
+    while (iterador->getEtiqueta().VAdyacente->etiqueta != adyAnterior.etiqueta && iterador->getSiguiente()!=nullptr) {
+        iterador = iterador->getSiguiente();
     }
     */
 
-    if (iterador == nullptr) {
-        std::cout << "Iterador nulo " << std::endl;
+    if( iterador->getSiguiente() == nullptr){
         return nulo;
     }
-
-    if (iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta) {
-        std::cout << "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es "
-        // TODO(us): Linea 142 da SEGFAULT en Lista de Adyacencia pero funciona bien en Matriz de Adyacencia. Hay que hacerle bugfix
-        << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
-        return* iterador->getSiguiente()->getEtiqueta().VAdyacente; 
+    if(iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta){
+        return * iterador->getSiguiente()->getEtiqueta().VAdyacente; 
     }
     
     return nulo; 
