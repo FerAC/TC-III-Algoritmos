@@ -16,43 +16,43 @@ class Prim{
             int peso;
             Vertice vertice; 
         public:
-            Tripleta(){}
-            Tripleta(Vertice& vertice, int peso, Vertice& verticeAnterior){
+            Tripleta() {}
+            Tripleta(Vertice& vertice, int peso, Vertice& verticeAnterior) {
                 this->vertice = vertice;
                 this->peso = peso;
                 this->verticeAnterior = verticeAnterior; 
             }
-            Tripleta(Tripleta& otra){
+            Tripleta(Tripleta& otra) {
                 this->vertice = otra.vertice;
                 this->peso = otra.peso;
                 this->verticeAnterior = otra.verticeAnterior;
             }
-            ~Tripleta(){}
-            Vertice getVertice(){
+            ~Tripleta() {}
+            Vertice getVertice() {
                 return vertice;
             }
-            Vertice getVerticeAnterior(){
+            Vertice getVerticeAnterior() {
                 return verticeAnterior;
             }
-            int getPeso(){
+            int getPeso() {
                 return peso;
             }
-            void setVertice(Vertice& vertice){
+            void setVertice(Vertice& vertice) {
                 this->vertice = vertice;
             }
-            void setVerticeAnterior(Vertice& vertice){
+            void setVerticeAnterior(Vertice& vertice) {
                 this->verticeAnterior = vertice;
             }
-            void setPeso(int nuevo){
+            void setPeso(int nuevo) {
                 this->peso = nuevo; 
             }
-            void imprimir(){
+            void imprimir() {
                 std::cout<< "Etiqueta: " << vertice.getEtiqueta() << std::endl;
                 std::cout<< "Etiqueta vieja: " << this->verticeAnterior.getEtiqueta() << std::endl;
                 std::cout<< "Peso: "<< this->peso << std::endl;
             }
         };
-                static Grafo primMetodo(Grafo& grafo){
+                static Grafo primMetodo(Grafo& grafo) {
                     //int a = grafo.NumVertices(); 
                     Tripleta lista[grafo.NumVertices()-1];
                     //Inicializacion
@@ -60,11 +60,11 @@ class Prim{
                     const Vertice NULO;
                     size_t i =0;
                     std::cout<< "Voy a for " << std::endl;
-                    for(Vertice iterador = grafo.PrimerVertice(); iterador != NULO; iterador = grafo.SiguienteVertice(iterador)){
+                    for (Vertice iterador = grafo.PrimerVertice(); iterador != NULO; iterador = grafo.SiguienteVertice(iterador)) {
                         int peso = 0; 
-                        if(vInicial!=iterador){
+                        if (vInicial!=iterador) {
                             std::cout<< "No son iguales" << std::endl;
-                            if(grafo.ExisteArista(vInicial, iterador)){
+                            if (grafo.ExisteArista(vInicial, iterador)) {
                                 peso = grafo.Peso(vInicial, iterador);
                             }
                             Tripleta tripleta(iterador, peso,  vInicial);
@@ -84,14 +84,14 @@ class Prim{
                     std::cout << "VOY A PIVOT" << std::endl;
                     //Primer pivote
                     std::map<char, Vertice> mapaVerticesPivoteados; 
-                    for(size_t j = 0; j<grafo.NumVertices()-1; j++){
+                    for (size_t j = 0; j<grafo.NumVertices()-1; j++) {
                         std::cout<< "J " << j << std::endl;
                         Vertice pivote = encontrarPivote(lista, mapaVerticesPivoteados, grafo);
                         std::cout<< "///////////// PIVOTEO CON " << grafo.Etiqueta(pivote) << "///////////" << std::endl;
                        for (size_t i = 0; i < grafo.NumVertices()-1; i++)
                        {
-                            if(lista[i].getVertice()!=pivote && mapaVerticesPivoteados.count(lista[i].getVertice().getEtiqueta())<=0){
-                                if(grafo.Peso(pivote, lista[i].getVertice())>0){
+                            if (lista[i].getVertice()!=pivote && mapaVerticesPivoteados.count(lista[i].getVertice().getEtiqueta())<=0) {
+                                if (grafo.Peso(pivote, lista[i].getVertice())>0) {
                                     if (lista[i].getPeso()> grafo.Peso(pivote, lista[i].getVertice()))
                                     {
                                         lista[i].setPeso(grafo.Peso(pivote, lista[i].getVertice()));
@@ -127,11 +127,11 @@ class Prim{
                     {
                         std::cout<< grafo.Etiqueta(vertice) << std::endl;
                     }
-                    */
+                   */
                    
                     
                     
-                    for(size_t i =0 ; i< grafo.NumVertices()-1; i++){
+                    for (size_t i =0 ; i< grafo.NumVertices()-1; i++) {
                         Vertice llegada;
                         Vertice salida; 
                         /*
@@ -157,10 +157,10 @@ class Prim{
                                 llegada = retornado.SiguienteVertice(llegada); 
                             }
                         }
-                        */
+                       */
                         //Verifico no haber anadido el vertice anteriormente
                         Vertice buscado = buscarVertice(retornado, lista[i].getVertice().getEtiqueta());
-                        if(buscado==NULO){
+                        if (buscado==NULO) {
                             std::cout<< "No se ha agregado a " << lista[i].getVertice().getEtiqueta()<<std::endl; 
                             salida = retornado.AgregarVertice(lista[i].getVertice().getEtiqueta());
                         } else{
@@ -168,7 +168,7 @@ class Prim{
                             salida = buscado;
                         }
                         buscado = buscarVertice(retornado, lista[i].getVerticeAnterior().getEtiqueta());
-                        if(buscado==NULO){
+                        if (buscado==NULO) {
                             std::cout<< "No se ha agregado a " << lista[i].getVerticeAnterior().getEtiqueta()<<std::endl; 
                             llegada = retornado.AgregarVertice(lista[i].getVerticeAnterior().getEtiqueta());
                         } else{
@@ -178,14 +178,14 @@ class Prim{
                         /*
                         llegada = buscarVertice(retornado, lista[i].getVertice().getEtiqueta());
                         salida = buscarVertice(retornado, lista[i].getVerticeAnterior().getEtiqueta()); 
-                        */
+                       */
                         std::cout<< "Se va a agregar una arista de peso " << lista[i].getPeso() << ", entre " << llegada.getEtiqueta() << " y "<< salida.getEtiqueta() <<std::endl;
                         retornado.AgregarArista(llegada, salida, lista[i].getPeso());
                     }
                     Vertice vertice;
                      for (size_t i = 0; i < retornado.NumVertices(); i++)
                     {
-                        if(i == 0){
+                        if (i == 0) {
                             vertice = retornado.PrimerVertice();
                         } else{
                             vertice = retornado.SiguienteVertice(vertice); 
@@ -194,7 +194,7 @@ class Prim{
                     }
                      for (size_t i = 0; i < retornado.NumVertices(); i++)
                     {
-                        if(i == 0){
+                        if (i == 0) {
                             vertice = grafo.PrimerVertice();
                         } else{
                             vertice = grafo.SiguienteVertice(vertice); 
@@ -204,7 +204,7 @@ class Prim{
                     return retornado;
                 }
 
-                static Vertice encontrarPivote(Tripleta * lista, std::map<char, Vertice>& mapaVerticesVisitados, Grafo& grafo){
+                static Vertice encontrarPivote(Tripleta* lista, std::map<char, Vertice>& mapaVerticesVisitados, Grafo& grafo) {
                     std::cout<<"Estoy en metodo buscar pivote " << std::endl;
                     std::cout<<"Tamano del mapa : " << mapaVerticesVisitados.size() << std::endl;
                     Vertice pivote; 
@@ -213,16 +213,16 @@ class Prim{
                     for (size_t i = 0; i < grafo.NumVertices()-1  ; i++)
                     {
                         //Verifico que no haya sido pivoteado antes
-                        if(mapaVerticesVisitados.empty()){ //Caso trivial, esta vacio
+                        if (mapaVerticesVisitados.empty()) { //Caso trivial, esta vacio
                             std::cout<<"Primer pivote " << std::endl;
-                            if(menorPeso != 0){
-                                if(lista[i].getPeso() != 0 && lista[i].getPeso()<menorPeso){
+                            if (menorPeso != 0) {
+                                if (lista[i].getPeso() != 0 && lista[i].getPeso()<menorPeso) {
                                     std::cout<<"Primer pivote " << std::endl;
                                     indiceMenor = i; 
                                     menorPeso = lista[indiceMenor].getPeso();
                                 }
                             } else{
-                                if(lista[i].getPeso() != 0){
+                                if (lista[i].getPeso() != 0) {
                                     std::cout<<"Primer pivote " << std::endl;
                                     indiceMenor = i; 
                                     menorPeso = lista[indiceMenor].getPeso();
@@ -237,13 +237,13 @@ class Prim{
                             } else{
                                 std::cout<< "No se ha pivoteado con " << lista[i].getVertice().getEtiqueta() << std::endl;
                                  std::cout<< "Su peso es  " << lista[i].getPeso() << std::endl;
-                                if(menorPeso!=0){
-                                    if(lista[i].getPeso() != 0 && lista[i].getPeso()<menorPeso){
+                                if (menorPeso!=0) {
+                                    if (lista[i].getPeso() != 0 && lista[i].getPeso()<menorPeso) {
                                         indiceMenor = i; 
                                         menorPeso = lista[i].getPeso();
                                     }
                                 } else{
-                                    if(lista[i].getPeso() != 0){
+                                    if (lista[i].getPeso() != 0) {
                                         indiceMenor = i; 
                                         menorPeso = lista[i].getPeso();
                                     } 
@@ -260,7 +260,7 @@ class Prim{
                     return b;
                 }
 
-                static size_t ** Floyd(Grafo &grafo){
+                static size_t** Floyd(Grafo &grafo) {
                     int numVertices = grafo.NumVertices();
                     std::cout<< "Entre floyd" << std::endl;
                     const Vertice NULO;
@@ -269,7 +269,7 @@ class Prim{
                     size_t iteradorPivotes =0 ;
 
                     Vertice vertice; 
-                    for(vertice = grafo.PrimerVertice(); vertice!=NULO; vertice = grafo.SiguienteVertice(vertice)){
+                    for (vertice = grafo.PrimerVertice(); vertice!=NULO; vertice = grafo.SiguienteVertice(vertice)) {
                         std::cout << "i, primer paso" << i << std::endl;
                         listaVertices[i] = vertice; 
                         i++; 
@@ -283,20 +283,20 @@ class Prim{
                         std::cout << i << endl;
                         grafo.ImprimirConexiones(listaVertices[i]); 
                     }
-                    */
+                   */
                     
                     //Primer paso de inicializacion, ya tengo la lista de vertices
                     std::cout<< "Primer paso se logro" << std::endl;
                     std::cout<< "A" << std::endl;
                     std::cout<< "NUM VERTICES " << numVertices << std::endl;
                     size_t matrizCostos[numVertices][numVertices]; 
-                    for(int i =0; i<numVertices; i++){
+                    for (int i =0; i<numVertices; i++) {
                         std::cout << "I " << i << std::endl;
                         for (int j = 0; j < numVertices; j++)
                         {
                             std::cout << "J " << j << std::endl;
-                            if(i!=j){
-                                if(grafo.ExisteArista(listaVertices[i], listaVertices[j])){
+                            if (i!=j) {
+                                if (grafo.ExisteArista(listaVertices[i], listaVertices[j])) {
                                     std::cout << "Voy a acceder " << std::endl;
                                     std::cout<< "Vertice 1 :" << listaVertices[i].getEtiqueta()<< std::endl;
                                     std::cout<< "Vertice 2 :" << listaVertices[j].getEtiqueta()<< std::endl;
@@ -337,26 +337,26 @@ class Prim{
 
                     //Paso 2
                     
-                    for(iteradorPivotes; iteradorPivotes<numVertices; iteradorPivotes++)
+                    for (iteradorPivotes; iteradorPivotes<numVertices; iteradorPivotes++)
                     { //Pivotea
-                        for(i =0; i<numVertices; i++)
+                        for (i =0; i<numVertices; i++)
                         {
                             for (size_t j = 0; j < numVertices; j++)
                             {
-                            if(i != iteradorPivotes)
+                            if (i != iteradorPivotes)
                                 {
-                                    if(matrizCostos[i][j]!=-1){
-                                        if(matrizCostos[iteradorPivotes][j] != -1){
-                                            if(grafo.ExisteArista(listaVertices[iteradorPivotes], listaVertices[j])){
-                                                if(matrizCostos[i][j] > matrizCostos[iteradorPivotes][j] + grafo.Peso(listaVertices[iteradorPivotes], listaVertices[j])){
+                                    if (matrizCostos[i][j]!=-1) {
+                                        if (matrizCostos[iteradorPivotes][j] != -1) {
+                                            if (grafo.ExisteArista(listaVertices[iteradorPivotes], listaVertices[j])) {
+                                                if (matrizCostos[i][j] > matrizCostos[iteradorPivotes][j] + grafo.Peso(listaVertices[iteradorPivotes], listaVertices[j])) {
                                                     matrizCostos[i][j] = matrizCostos[iteradorPivotes][j] + grafo.Peso(listaVertices[iteradorPivotes], listaVertices[j]);
                                                     matrizVertices[i][j] = listaVertices[iteradorPivotes];
                                                 }
                                             }
                                         }
                                     } else{
-                                        if(matrizCostos[iteradorPivotes][j] != -1){
-                                            if(grafo.ExisteArista(listaVertices[iteradorPivotes], listaVertices[j])){
+                                        if (matrizCostos[iteradorPivotes][j] != -1) {
+                                            if (grafo.ExisteArista(listaVertices[iteradorPivotes], listaVertices[j])) {
                                                 matrizCostos[i][j] = matrizCostos[iteradorPivotes][j] + grafo.Peso(listaVertices[iteradorPivotes], listaVertices[j]);
                                                 matrizVertices[i][j] = listaVertices[iteradorPivotes];
                                             }
@@ -376,17 +376,17 @@ class Prim{
                         std::cout<< "\n";
                     }
                     std::cout<< "\n"; 
-                    size_t *p[numVertices];
-                    size_t **q;
+                    size_t*p[numVertices];
+                    size_t**q;
                     for (int i=0; i<4;i++)
                         p[i]= matrizCostos[i];
                     q = p;
                     return  q; 
                 }
 
-                static Vertice buscarVertice(Grafo &grafo, char etiqueta){
+                static Vertice buscarVertice(Grafo &grafo, char etiqueta) {
                     const Vertice NULO;
-                    for(Vertice vertice = grafo.PrimerVertice(); vertice!=NULO; vertice=grafo.SiguienteVertice(vertice)){
+                    for (Vertice vertice = grafo.PrimerVertice(); vertice!=NULO; vertice=grafo.SiguienteVertice(vertice)) {
                         if (grafo.Etiqueta(vertice) == etiqueta)
                         {
                             return  vertice;
@@ -396,28 +396,28 @@ class Prim{
                 }
 
                 /*
-                static double calculoCota(Grafo& grafo){
+                static double calculoCota(Grafo& grafo) {
                     double valorActual;
                     const Vertice NULO;
-                    for (Vertice * i = & grafo.PrimerVertice(); *i != NULO; i = &grafo.SiguienteVertice(*i))
+                    for (Vertice* i = & grafo.PrimerVertice();*i != NULO; i = &grafo.SiguienteVertice(*i))
                     {
                         double menor1 = 0;
                         double menor2 = 0;
                         bool asignados = false; 
-                        for (Vertice * adyacentes = & grafo.PrimerVerticeAdyacente(*i); *adyacentes != NULO; adyacentes = & grafo.SiguienteVerticeAdyacente(*i, *adyacentes))
+                        for (Vertice* adyacentes = & grafo.PrimerVerticeAdyacente(*i);*adyacentes != NULO; adyacentes = & grafo.SiguienteVerticeAdyacente(*i,*adyacentes))
                         {
-                            if(menor1 == 0){
-                                menor1 = grafo.Peso(*i, *adyacentes);
+                            if (menor1 == 0) {
+                                menor1 = grafo.Peso(*i,*adyacentes);
                             } else
                             if (menor2 == 0)
                             {
-                                menor2 = grafo.Peso(*i, *adyacentes);
+                                menor2 = grafo.Peso(*i,*adyacentes);
                                 asignados = true; 
                             }
-                            if (grafo.Peso(*i, *adyacentes)< menor1 && asignados)
+                            if (grafo.Peso(*i,*adyacentes)< menor1 && asignados)
                             {
                                 double aux = menor1;
-                                menor1 = grafo.Peso(*i, *adyacentes);
+                                menor1 = grafo.Peso(*i,*adyacentes);
                                 menor2 = aux;
                             }   
                         }
@@ -429,17 +429,17 @@ class Prim{
 
                 /*
                 //La lista almacenara pares de vertices y la cota
-                static std::pair<std::list<Vertice> , double> hamiltonBERA(){
+                static std::pair<std::list<Vertice> , double> hamiltonBERA() {
 
                 }
                 double gananciaActual = 0 ;
                 std::pair<std::stack<Vertice> , double> solucionActual; 
 
-                static std::pair<std::stack<Vertice> , double> hamiltonBEP(std::pair<std::stack<Vertice> , double> pilaCamino, Grafo & grafo){
+                static std::pair<std::stack<Vertice> , double> hamiltonBEP(std::pair<std::stack<Vertice> , double> pilaCamino, Grafo & grafo) {
                     const Vertice NULO;
-                    for (Vertice * primerVertice = & grafo.PrimerVertice(); *primerVertice == NULO; primerVertice == grafo.SiguienteVertice(primerVertice))
+                    for (Vertice* primerVertice = & grafo.PrimerVertice();*primerVertice == NULO; primerVertice == grafo.SiguienteVertice(primerVertice))
                     {
-                        for (Vertice * adyacente= & grafo.PrimerVerticeAdyacente(*adyacente); *adyacente != NULO; adyacente = & grafo.SiguienteVerticeAdyacente(*adyacente))
+                        for (Vertice* adyacente= & grafo.PrimerVerticeAdyacente(*adyacente);*adyacente != NULO; adyacente = & grafo.SiguienteVerticeAdyacente(*adyacente))
                         {
                             
                         }
@@ -448,9 +448,9 @@ class Prim{
                     
                     
                 }
-                static Vertice * iteradorVertices(Vertice vertice, Grafo & grafo){
+                static Vertice* iteradorVertices(Vertice vertice, Grafo & grafo) {
                     const Vertice NULO;
-                    Vertice * retornado;
+                    Vertice* retornado;
                     if (vertice == NULO)
                     {
                         retornado =  & grafo.PrimerVertice();
@@ -459,9 +459,9 @@ class Prim{
                     }
                      
                 }
-                static Vertice * iteradorVerticesAdyacentes(Vertice vertice,Vertice adyAnterior, Grafo & grafo){
+                static Vertice* iteradorVerticesAdyacentes(Vertice vertice,Vertice adyAnterior, Grafo & grafo) {
                     const Vertice NULO;
-                    Vertice * retornado;
+                    Vertice* retornado;
                     if (adyAnterior == NULO)
                     {
                         retornado =  & grafo.PrimerVerticeAdyacente(vertice);
@@ -469,7 +469,7 @@ class Prim{
                         retornado = & grafo.SiguienteVerticeAdyacente(vertice, adyAnterior);
                     }
                 }
-                */
+               */
                
 
         };

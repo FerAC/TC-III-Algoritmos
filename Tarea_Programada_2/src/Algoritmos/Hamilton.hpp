@@ -7,12 +7,12 @@ class Hamilton{
         std::map<char, Vertice> diccionario;  
         size_t mejorCosto = 999999999; //TODO: cambiar a infinito o algo asi xd 
         size_t costoActual = 0; 
-        Vertice * solActual;
-        Vertice * mejorSol;
+        Vertice* solActual;
+        Vertice* mejorSol;
         Grafo grafo; 
 
     public:
-        Hamilton(Grafo& grafo){
+        Hamilton(Grafo& grafo) {
             solActual = new Vertice[grafo.NumVertices()]; 
             mejorSol= new Vertice[grafo.NumVertices()];
             solActual[0] = grafo.PrimerVertice();
@@ -20,17 +20,17 @@ class Hamilton{
             this->grafo = grafo; 
         }
 
-        void hamiltonBEP(size_t i){
+        void hamiltonBEP(size_t i) {
             //Itero posibilidades
             Vertice va = grafo.PrimerVerticeAdyacente(solActual[i]);
             const Vertice NULO;
-            while(va!=NULO){
-                if(diccionario.count(va.getEtiqueta())==0){ //Factible
+            while (va!=NULO) {
+                if (diccionario.count(va.getEtiqueta())==0) { //Factible
                     solActual[i+1] = va;
                     costoActual+= grafo.Peso(solActual[i], va);
                     diccionario.insert(std::pair<char, Vertice>(va.getEtiqueta(), va)); 
-                    if(i = grafo.NumVertices()){ //Veo si es solucion
-                        if(grafo.ExisteArista(va, solActual[0])){
+                    if (i = grafo.NumVertices()) { //Veo si es solucion
+                        if (grafo.ExisteArista(va, solActual[0])) {
                             if (costoActual + grafo.Peso(va, solActual[0])<mejorCosto) //Comparo si es mejor solucion
                             {
                                 mejorCosto = costoActual + grafo.Peso(va, solActual[0]);
@@ -47,7 +47,7 @@ class Hamilton{
             }
         }
 
-        Vertice * getSolucion(){
+        Vertice* getSolucion() {
             return this->mejorSol; 
         }
 

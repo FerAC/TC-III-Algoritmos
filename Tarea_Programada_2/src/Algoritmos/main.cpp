@@ -53,7 +53,7 @@ int main()
     Controlador::imprimirGrafo(grafoMinimo);
 
     std::cout<<"\n"<<std::endl;
-    // */
+    //*/
     // char listaA[] = {'a','a','a','a','a','b','b', 'b','c', 'c', 'e', 'f'}; 
     // char listaB[] = {'b','c','d','e','f','c','d','f','e', 'f', 'f', 'd'};
     // int listaP[] = {2, 8, 6, 7, 3, 3, 9, 5, 1, 6, 4, 9};
@@ -71,7 +71,7 @@ int main()
     // std::cout<<"B"<< std::endl;
     // Vertice NULO;
 
-    // for(Vertice v = grafo.PrimerVertice(); v!=NULO; v= grafo.SiguienteVertice(v)){
+    // for (Vertice v = grafo.PrimerVertice(); v!=NULO; v= grafo.SiguienteVertice(v)) {
     //     grafo.ImprimirConexiones(v); 
     // }
 
@@ -87,7 +87,7 @@ int main()
     grafo.AgregarArista(d, c, 5);
     // int miPeso = grafo.Peso(a, d);
     // std::cout<< "Peso  :" << miPeso << std::endl;
-    */
+   */
 //    Vertice a = buscarVertice(grafo, 'a'); 
 //    Vertice b = buscarVertice(grafo, 'b');
 //    Vertice c = buscarVertice(grafo, 'c');
@@ -129,7 +129,7 @@ int main()
         std::cout<< "\n";
 
     }
-    */
+   */
    
    /*
     std::cout<< "VOY A EJECUTAR PRIM" << std::endl;
@@ -140,7 +140,7 @@ int main()
     
     for (size_t i = 0; i < grafoPrim.NumVertices(); i++)
     {
-        if(i == 0){
+        if (i == 0) {
             vertice = grafoPrim.PrimerVertice();
         } else{
             vertice = grafoPrim.SiguienteVertice(vertice); 
@@ -149,7 +149,7 @@ int main()
     }
     
 
-    */
+   */
 
     return 0;
 }

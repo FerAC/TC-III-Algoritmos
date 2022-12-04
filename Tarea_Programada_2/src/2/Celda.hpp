@@ -7,7 +7,7 @@ template <typename T>
 class Celda {
 	private:
 		T etiqueta;
-		Celda * siguiente; 
+		Celda* siguiente; 
 	public:
 		Celda(const T& elemento) {
 			this->etiqueta = elemento;
@@ -18,7 +18,7 @@ class Celda {
 			this->siguiente = nullptr;
 		}
 		
-		void setEtiqueta(T valorNuevo){
+		void setEtiqueta(T valorNuevo) {
 			this->etiqueta = valorNuevo;
 		}
 
@@ -42,7 +42,7 @@ class Celda {
 			siguiente = celdaSiguiente;
 		}
 
-		T* getEtiqueta(int){
+		T* getEtiqueta(int) {
 			return &etiqueta; 
 		}
 

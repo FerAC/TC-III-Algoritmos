@@ -31,10 +31,10 @@ class ListaDijkstra
 public:
     int cantidadElementos = 0;
     int tamanoMax;
-    bool *visitado;
-    int *pesos;
-    char *vertices;
-    char *verticeAnterior;
+    bool*visitado;
+    int*pesos;
+    char*vertices;
+    char*verticeAnterior;
 
     ListaDijkstra(size_t tamano)
     {
@@ -194,7 +194,7 @@ public:
         }
     }
 
-    static void colorearRec(Grafo &grafo, Vertice vertice, std::list<std::pair<char, Vertice>> mapeo, cantidadColor){
+    static void colorearRec(Grafo &grafo, Vertice vertice, std::list<std::pair<char, Vertice>> mapeo, cantidadColor) {
 	
 
 

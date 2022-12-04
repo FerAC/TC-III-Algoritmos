@@ -7,8 +7,8 @@
 template <typename T>
 class Lista {
 	private:
-		Celda<T> * primera;
-		Celda<T> * ultima; 
+		Celda<T>* primera;
+		Celda<T>* ultima; 
 		size_t contador;
 	public:
 		Lista() {
@@ -19,15 +19,15 @@ class Lista {
 
 		~Lista() {
 			
-			if(primera!=nullptr){
-				Celda<T> ** temp = &primera;
-				Celda<T> * tempSiguiente;
+			if (primera!=nullptr) {
+				Celda<T>** temp = &primera;
+				Celda<T>* tempSiguiente;
 				for (size_t i=0; i<contador; ++i) {
 					if ((**temp).getSiguiente()) {
 						tempSiguiente = (**temp).getSiguiente();
 					}
 					
-					delete *temp;
+					delete*temp;
 					if (i+1 < contador) {
 						
 						*temp = tempSiguiente; 
@@ -49,8 +49,8 @@ class Lista {
 			++contador; 
 		}
 		
-		void insertarAlPrincipio(const T& elemento){
-			Celda<T> * celdaNueva = new Celda<T> (elemento);  
+		void insertarAlPrincipio(const T& elemento) {
+			Celda<T>* celdaNueva = new Celda<T> (elemento);  
 			celdaNueva->setSiguiente(primera); 
 			primera = celdaNueva;
 			ultima = celdaNueva;
@@ -62,7 +62,7 @@ class Lista {
 			Celda<T>* match = this->buscar(elemento);
 
 			// Caso trivial: No se encontro
-			if (match == nullptr){
+			if (match == nullptr) {
 				return 0;
 				
 			}
@@ -96,12 +96,12 @@ class Lista {
 			return 1;
 		}
 
-		Celda<T> * buscar( T elemento) {
+		Celda<T>* buscar( T elemento) {
 			
 			int encontrado = 0;
 			size_t i = 0;
 			Celda<T>* temp = primera;
-			if(primera->getEtiqueta()==elemento)
+			if (primera->getEtiqueta()==elemento)
 				return primera;
 			
 			while (i < contador && !encontrado) {
@@ -126,26 +126,26 @@ class Lista {
 			}
 		}
 
-		void modificarEnlaces(int indice, int etiqueta){
-			Celda<T> * nuevaCelda= new Celda<T>(etiqueta);
+		void modificarEnlaces(int indice, int etiqueta) {
+			Celda<T>* nuevaCelda= new Celda<T>(etiqueta);
 			++contador;
-			Celda<T> * anterior = primera;
-			for(int i=0; i<indice-1 ; ++i){  //Lego al indice donde quiero insertar
+			Celda<T>* anterior = primera;
+			for (int i=0; i<indice-1 ; ++i) {  //Lego al indice donde quiero insertar
 				anterior = anterior->getSiguiente();
 			}
 			nuevaCelda->setSiguiente(anterior->getSiguiente());
 			anterior->setSiguiente(nuevaCelda);
 		}
 		
-		Celda<T>* getPrimera(){
+		Celda<T>* getPrimera() {
 			return primera;
 		}
 
-		Celda<T>* getUltima(){
+		Celda<T>* getUltima() {
 			return ultima;
 		}
 
-		int getContador(){
+		int getContador() const {
 			return contador;
 		}
 

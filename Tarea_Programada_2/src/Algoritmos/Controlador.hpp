@@ -30,10 +30,10 @@ class ListaDijkstra
 public:
     int cantidadElementos = 0;
     int tamanoMax;
-    bool *visitado;
-    int *pesos;
-    char *vertices;
-    char *verticeAnterior;
+    bool*visitado;
+    int*pesos;
+    char*vertices;
+    char*verticeAnterior;
 
     ListaDijkstra(size_t tamano)
     {

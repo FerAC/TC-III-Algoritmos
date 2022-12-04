@@ -12,7 +12,7 @@ class Vertice
         char etiqueta;
         int nulo = 0; 
 
-        int esNulo(){
+        int esNulo() {
             if (nulo == 1 && etiqueta == '0')
             {
                 return 1;
@@ -20,40 +20,40 @@ class Vertice
             return 0;            
         }
 
-        void setPosicion(int indice){
+        void setPosicion(int indice) {
             this->indice = indice;
         }
 
-        size_t getindice(){
+        size_t getindice() {
             return indice; 
         }
 
-        void setEtiqueta(char valor){
+        void setEtiqueta(char valor) {
             this->etiqueta = valor;
         }
 
         
 
     public:
-        char getEtiqueta(){
+        char getEtiqueta() {
             return this->etiqueta;
         }
-        Vertice(){
+        Vertice() {
             indice = 0;
             etiqueta = '0';
             nulo = 1;
         }
-        Vertice(size_t indice, char etiqueta){
+        Vertice(size_t indice, char etiqueta) {
             this->indice = indice;
             this->etiqueta = etiqueta;
         }
-        ~Vertice(){}
-        bool operator ==(const Vertice& otro){
-            if(otro.etiqueta == this->etiqueta && otro.indice == this->indice)
+        ~Vertice() {}
+        bool operator ==(const Vertice& otro) {
+            if (otro.etiqueta == this->etiqueta && otro.indice == this->indice)
                 return 1;
             return 0;
         }
-        bool operator!=(const Vertice&otro){
+        bool operator!=(const Vertice&otro) {
             return !(*this==otro); 
         }
 };
@@ -64,37 +64,37 @@ class Grafo{
         int matriz[100][100]; 
         char vector[100]; 
     public:
-    Grafo(){}
-    ~Grafo(){}
-    Vertice AgregarVertice(char elemento){
+    Grafo() {}
+    ~Grafo() {}
+    Vertice AgregarVertice(char elemento) {
         vector[vertices] = elemento;
         Vertice vertice(vertices++, elemento); 
        // matriz[vertices][vertices] = 1; 
        return vertice; 
     }
-    void EliminarVertice(Vertice &borrado){
+    void EliminarVertice(Vertice &borrado) {
         int encontrado = 0; 
         size_t indiceBorrado; 
         //Vertices es uno mayor al ultimo
         for (size_t i = 0; i < vertices; i++)
         {
-            if(encontrado == 0){
-                if(vector[i] == borrado.etiqueta){
+            if (encontrado == 0) {
+                if (vector[i] == borrado.etiqueta) {
                     encontrado = 1;
                     indiceBorrado = i;
                     vector[i] = vector[i+1];
                 }
             } else{
-                if(i< vertices -1){
+                if (i< vertices -1) {
                     vector[i] = vector[i+1];
-                } else if(i == vertices -1 ){
+                } else if (i == vertices -1 ) {
                     vector[i] = '0'; //Borrado logico 
                 }
             }
         } //Ya lo borre del array
         for (size_t i = indiceBorrado; i < vertices; i++)
         { //Corrimiento de filas
-            if(i<vertices-1){
+            if (i<vertices-1) {
                 for (size_t j = 0; j < vertices; j++)
                 {
                     matriz[i][j] =matriz[i+1][j]; 
@@ -105,7 +105,7 @@ class Grafo{
         }
         for (size_t i = indiceBorrado; i < vertices; i++)
         { //Corrimiento de filas
-            if(i<vertices-1){
+            if (i<vertices-1) {
                 for (size_t j = 0; j < vertices; j++)
                 {
                     matriz[j][i] =matriz[j][i+1]; 
@@ -116,45 +116,45 @@ class Grafo{
         }
         vertices--;
     }
-    const size_t NumVertices(){
+    const size_t NumVertices() {
         return vertices; 
     }
-    void ModificarEtiqueta(Vertice& vertice, char etiqueta){
+    void ModificarEtiqueta(Vertice& vertice, char etiqueta) {
         vertice.etiqueta = etiqueta;
         vector[vertice.indice] = etiqueta; 
     }
-    char Etiqueta(Vertice& vertice){
+    char Etiqueta(Vertice& vertice) {
         return vertice.etiqueta; 
     }
-    void AgregarArista(Vertice& origen, Vertice& destino, size_t peso){
+    void AgregarArista(Vertice& origen, Vertice& destino, size_t peso) {
         matriz[origen.indice][destino.indice] = peso;
         matriz[destino.indice][origen.indice] = peso;
     }
-    void EliminarArista(Vertice& origen, Vertice& destino){
+    void EliminarArista(Vertice& origen, Vertice& destino) {
         matriz[origen.indice][destino.indice] = -1;
         matriz[destino.indice][origen.indice] = -1;
     }
-    void ModificarArista(Vertice& origen, Vertice& destino, size_t peso){
+    void ModificarArista(Vertice& origen, Vertice& destino, size_t peso) {
         AgregarArista(origen, destino, peso);
     }
-    size_t Peso(Vertice& origen, Vertice destino){
+    size_t Peso(Vertice& origen, Vertice destino) {
         return matriz[origen.indice][destino.indice]; 
     }
-    Vertice PrimerVertice(){
+    Vertice PrimerVertice() {
         Vertice vertice(0, vector[0]); 
         return vertice; 
     }
-    Vertice SiguienteVertice(Vertice& anterior){
+    Vertice SiguienteVertice(Vertice& anterior) {
         Vertice NULO;
-        if(anterior.indice+1 < NumVertices()){
+        if (anterior.indice+1 < NumVertices()) {
            Vertice vertice(anterior.indice+1, vector[anterior.indice+1]);
            return vertice;
         }
         return NULO; 
     }
-    Vertice PrimerVerticeAdyacente(Vertice& original){
-        for(size_t i = 0; i<vertices; i++){
-            if(matriz[original.indice][i]>0){
+    Vertice PrimerVerticeAdyacente(Vertice& original) {
+        for (size_t i = 0; i<vertices; i++) {
+            if (matriz[original.indice][i]>0) {
                 Vertice  vertice (i, vector[i]);
                 return vertice;
             }
@@ -162,20 +162,20 @@ class Grafo{
         Vertice vertice;
         return vertice; 
     }
-int ExisteArista(Vertice& inicio, Vertice& fin){
+int ExisteArista(Vertice& inicio, Vertice& fin) {
     const Vertice NULO;
-    for(Vertice iterador = PrimerVerticeAdyacente(inicio); iterador != NULO; iterador = SiguienteVerticeAdyacente(inicio, iterador)){
-        if(iterador == fin){
+    for (Vertice iterador = PrimerVerticeAdyacente(inicio); iterador != NULO; iterador = SiguienteVerticeAdyacente(inicio, iterador)) {
+        if (iterador == fin) {
             return 1;
         }
     }
     return 0; 
 }
-    Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyacente){
-        if(adyacente.indice+1<vertices){
+    Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyacente) {
+        if (adyacente.indice+1<vertices) {
             for (size_t i = adyacente.indice+1; i < vertices; i++)
             {
-                if(matriz[original.indice][i]> 0){
+                if (matriz[original.indice][i]> 0) {
                     Vertice  vertice (i, vector[i]);
                     return vertice; 
                 }
@@ -187,7 +187,7 @@ int ExisteArista(Vertice& inicio, Vertice& fin){
         Vertice vertice;
         return vertice; 
     }
-    void ImprimirGrafo(){
+    void ImprimirGrafo() {
         for (size_t i = 0; i < vertices; i++)
         {
            for (size_t j = 0; j < vertices; j++)
@@ -198,7 +198,7 @@ int ExisteArista(Vertice& inicio, Vertice& fin){
         }
         
     }
-    void ImprimirVertices(){
+    void ImprimirVertices() {
         for (size_t i = 0; i < vertices; i++)
         {
             std::cout << vector[i] << " ";
