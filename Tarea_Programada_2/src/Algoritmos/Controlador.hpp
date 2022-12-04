@@ -14,8 +14,7 @@
 // #include <map>  // APO de Kruskal
 #include <set>
 #include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal
-#include <utility>
-#include <pair>
+#include <utility> // Para utilizar pair<T,V>
 
 // arista se usa como el objecto "par" usado en el algoritmo de kruskal
 struct arista
@@ -202,7 +201,7 @@ public:
     {
         std::set<Vertice> verticesAdyacentesV;
         std::set<Vertice> verticesColorC;
-        Vertice adyacente = grafo.PrimerAdyacente(vertice);
+        Vertice adyacente = grafo.PrimerVerticeAdyacente(vertice);
         Vertice verticeNulo;
         bool primeraVezUsado = false;
 
@@ -212,19 +211,19 @@ public:
         while (adyacente != verticeNulo)
         {
             verticesAdyacentesV.insert(adyacente);
-            adyacente = grafo.SiguienteAdyacente(vertice, adyacente);
+            adyacente = grafo.SiguienteVerticeAdyacente(vertice, adyacente);
         }
 
         // para cada color disponible
         for (size_t i = 1; i < grafo.NumVertices(); ++i)
         {
             verticesColorC.clear();
-            for (std::lista<std::pair<int, Vertice>>::iterator j = mapeo.begin(); j != mapeo.end(); ++j)
+            for (std::list<std::pair<int, Vertice>>::iterator j = mapeo.begin(); j != mapeo.end(); ++j)
             {
                 // if element char is equal to iColor
-                if (std::get<0>(j) == i)
+                if (std::get<0>(*j) == i)
                 {
-                    verticesColorC.insert(std::get<1>(j));
+                    verticesColorC.insert(std::get<1>(*j));
                 }
             }
 
@@ -278,7 +277,7 @@ public:
                                 mapeo,
                                 mejorCantidadColor,
                                 cantidadColorLocal,
-                                colorUsados)
+                                colorUsados);
                 }
 
                 if (primeraVezUsado)
@@ -299,7 +298,7 @@ public:
         Vertice vertice = grafo.PrimerVertice();
         std::set<int> coloresUsados;
 
-        colorearRec(grafo, vertice, mejorMapeo, mapeo, mejorCantidadColor, cantidadColor, colorUsados);
+        colorearRec(grafo, vertice, mejorMapeo, mapeo, mejorCantidadColor, cantidadColor, coloresUsados);
         // colorearRecursivo(grafo, primerVertice, mapeoColor, cantidadColor, coloresUsados);
 
         std::pair<std::list<std::pair<int, Vertice>>, int> miPar{mejorMapeo, mejorCantidadColor};

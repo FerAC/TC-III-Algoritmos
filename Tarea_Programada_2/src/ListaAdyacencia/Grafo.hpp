@@ -112,6 +112,10 @@ class Vertice{
 			return 1;
 		}
 
+        int operator<(const Vertice& otro) const {
+            return this->etiqueta < otro.etiqueta;
+        }
+
 		/// @brief Devuelve la etiqueta de un nodo
 		/// @remarks Requiere que el nodo este inicializado
 		/// @return char etiqueta
