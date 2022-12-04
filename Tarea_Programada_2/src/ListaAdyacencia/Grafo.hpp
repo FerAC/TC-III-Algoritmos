@@ -31,19 +31,19 @@ class Grafo {
         char Etiqueta(const Vertice& vertice) const;
 
         // TODO(Us): Documentar
-        Vertice PrimerVertice();
+        Vertice PrimerVertice() const;
 
         // TODO(Us): Documentar
-        Vertice SiguienteVertice(Vertice& original);
+        Vertice SiguienteVertice(const Vertice& original) const;
 
         // TODO(Us): Documentar
-        Vertice PrimerVerticeAdyacente(Vertice& original);
+        Vertice PrimerVerticeAdyacente(const Vertice& original) const;
 
         // TODO(Us): Documentar
-        Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior);
+        Vertice SiguienteVerticeAdyacente(const Vertice& original, const Vertice& adyAnterior) const;
 
         // TODO(Us): Documentar
-        int ExisteArista(Vertice& inicio, Vertice& fin);
+        int ExisteArista(const Vertice& inicio, const Vertice& fin) const;
 
         // TODO(Us): Documentar
         void ModificarEtiqueta(Vertice& vertice, char nueva);
@@ -55,16 +55,16 @@ class Grafo {
         void EliminarArista(Vertice& origen, Vertice& destino);
 
         // TODO(Us): Documentar
-        size_t Peso(const Vertice& origen, const Vertice& destino);
+        size_t Peso(const Vertice& origen, const Vertice& destino) const;
 
         // TODO(Us): Documentar
         void ModificarPeso(Vertice& origen, Vertice& destino, size_t nuevoPeso);
 
         // TODO(Us): Documentar
-        void ImprimirConexiones(Vertice& vertice);
+        void ImprimirConexiones(const Vertice& vertice) const;
 
         // TODO(Us): Documentar
-        void ImprimirVertices();
+        void ImprimirVertices() const;
 };
 
 #endif

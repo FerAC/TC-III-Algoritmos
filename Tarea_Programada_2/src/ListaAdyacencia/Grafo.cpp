@@ -60,7 +60,7 @@ void Grafo::ModificarEtiqueta(Vertice& vertice, char nueva) {
     vertice.etiqueta = nueva;
 }
 
-Vertice Grafo::PrimerVertice() {
+Vertice Grafo::PrimerVertice() const {
     if (listaPrincipal->getPrimera())
         return listaPrincipal->getPrimera()->getEtiqueta();
 
@@ -68,7 +68,7 @@ Vertice Grafo::PrimerVertice() {
     return nulo; 
 }
 
-Vertice Grafo::SiguienteVertice(Vertice& original) {
+Vertice Grafo::SiguienteVertice(const Vertice& original) const {
     Celda<Vertice>* celda;
     for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original && celda!=nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {}
@@ -87,7 +87,7 @@ Vertice Grafo::SiguienteVertice(Vertice& original) {
     return nulo; 
 }
 
-Vertice Grafo::PrimerVerticeAdyacente(Vertice& original) {
+Vertice Grafo::PrimerVerticeAdyacente(const Vertice& original) const {
     Celda<Vertice>* celda;
     for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original && celda->getSiguiente()!=nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {}
@@ -108,7 +108,7 @@ Vertice Grafo::PrimerVerticeAdyacente(Vertice& original) {
     return nulo;
 }
 
-Vertice Grafo::SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior) {
+Vertice Grafo::SiguienteVerticeAdyacente(const Vertice& original, const Vertice& adyAnterior) const {
     std::cout << "SE ESTA BUSCANDO ADYACENTE SIGUIENTE " << std::endl;
     Celda<Vertice>* celda;
     Vertice nulo;
@@ -144,7 +144,7 @@ Vertice Grafo::SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior
     return nulo; 
 }
 
-void Grafo::ImprimirVertices() {
+void Grafo::ImprimirVertices() const {
 	Celda<Vertice>* actual = listaPrincipal->getPrimera();
 
 	while (actual!=nullptr) {
@@ -155,7 +155,7 @@ void Grafo::ImprimirVertices() {
 
 // ARISTAS
 
-int Grafo::ExisteArista(Vertice& inicio, Vertice& fin) {
+int Grafo::ExisteArista(const Vertice& inicio, const Vertice& fin) const {
     auto a = listaPrincipal->buscar(inicio); 
     int i = 0;
 
@@ -211,7 +211,7 @@ void Grafo::EliminarArista(Vertice& origen, Vertice& destino) {
     }
 }
 
-size_t Grafo::Peso(const Vertice& origen, const Vertice& destino) {
+size_t Grafo::Peso(const Vertice& origen, const Vertice& destino) const {
     for (Celda<Vertice>* celda= listaPrincipal->getPrimera();  celda != nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {
        if (celda->getEtiqueta().etiqueta == origen.etiqueta || celda->getEtiqueta().etiqueta == destino.etiqueta) {
@@ -244,7 +244,7 @@ void Grafo::ModificarPeso(Vertice& origen, Vertice& destino, size_t nuevoPeso) {
     }  
 }
 
-void Grafo::ImprimirConexiones(Vertice& vertice) {
+void Grafo::ImprimirConexiones(const Vertice& vertice) const {
     auto a = listaPrincipal->buscar(vertice); 
     std::cout << "Soy Arista " << a->getEtiqueta().etiqueta << "\nMis adyacentes son : " << std::endl; 
     
