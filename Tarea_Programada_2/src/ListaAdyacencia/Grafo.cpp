@@ -1,4 +1,6 @@
-#include "Grafo.hpp"
+#include <iostream>
+
+#include "ListaAdyacencia/Grafo.hpp"
 
 // CONSTRUCTORES Y DESTRUCTORES
 
@@ -48,7 +50,7 @@ size_t Grafo::NumVertices() const {
     return listaPrincipal->getContador();
 }
 
-char Grafo::Etiqueta(Vertice& vertice) {
+char Grafo::Etiqueta(const Vertice& vertice) const {
     return vertice.etiqueta; 
 }
 
@@ -96,7 +98,7 @@ Vertice Grafo::PrimerVerticeAdyacente(Vertice& original) {
     */
 
     if (celda->getEtiqueta().etiqueta == original.etiqueta) {
-        std::cout<< "Primer adyacente de " << original.etiqueta << " es " <<  celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente->etiqueta << std::endl;
+        std::cout << "Primer adyacente de " << original.etiqueta << " es " <<  celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return* celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
     }
 
@@ -105,7 +107,7 @@ Vertice Grafo::PrimerVerticeAdyacente(Vertice& original) {
 }
 
 Vertice Grafo::SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior) {
-    std::cout<< "SE ESTA BUSCANDO ADYACENTE SIGUIENTE " << std::endl;
+    std::cout << "SE ESTA BUSCANDO ADYACENTE SIGUIENTE " << std::endl;
     Celda<Vertice>* celda;
     Vertice nulo;
 
@@ -128,12 +130,12 @@ Vertice Grafo::SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior
     */
 
     if (iterador == nullptr) {
-        std::cout<< "Iterador nulo " << std::endl;
+        std::cout << "Iterador nulo " << std::endl;
         return nulo;
     }
 
     if (iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta) {
-        std::cout<< "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es " << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
+        std::cout << "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es " << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return* iterador->getSiguiente()->getEtiqueta().VAdyacente; 
     }
     
@@ -144,7 +146,7 @@ void Grafo::ImprimirVertices() {
 	Celda<Vertice>* actual = listaPrincipal->getPrimera();
 
 	while (actual!=nullptr) {
-		std::cout<< "ELEMENTO : " << actual->getEtiqueta().getEtiqueta() << std::endl;
+		std::cout << "ELEMENTO : " << actual->getEtiqueta().getEtiqueta() << std::endl;
 		actual = actual->getSiguiente();
 	}
 }
@@ -191,7 +193,7 @@ void Grafo::EliminarArista(Vertice& origen, Vertice& destino) {
     for (Celda<Vertice>* celda= listaPrincipal->getPrimera();  celda != nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {
         if (celda->getEtiqueta() == origen) {
-            std::cout<< "Voy a borrar a "<< celda->getEtiqueta().etiqueta << std::endl;
+            std::cout << "Voy a borrar a "<< celda->getEtiqueta().etiqueta << std::endl;
             Vertice::Contenedor copia = Vertice::Contenedor(destino, this->Peso(origen, destino));
             celda->getEtiqueta().getlistaAdyacencia()->borrar(copia); 
             borrados++;
@@ -242,12 +244,12 @@ void Grafo::ModificarPeso(Vertice& origen, Vertice& destino, size_t nuevoPeso) {
 
 void Grafo::ImprimirConexiones(Vertice& vertice) {
     auto a = listaPrincipal->buscar(vertice); 
-    std::cout<< "Soy Arista " << a->getEtiqueta().etiqueta << "\nMis adyacentes son : " << std::endl; 
+    std::cout << "Soy Arista " << a->getEtiqueta().etiqueta << "\nMis adyacentes son : " << std::endl; 
     
     int i =0;
     for (auto b  =a->getEtiqueta().getlistaAdyacencia()->getPrimera() ; i < a->getEtiqueta().getlistaAdyacencia()->getContador(); i++)
     {
-       std::cout<< b->getEtiqueta().VAdyacente->etiqueta << std::endl;
+       std::cout << b->getEtiqueta().VAdyacente->etiqueta << std::endl;
        b = b->getSiguiente(); 
     }
 }

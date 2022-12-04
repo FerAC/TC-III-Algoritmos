@@ -2,7 +2,6 @@
 #define GRAFO_LISTA_ADYACENCIA
 
 #include "ListaAdyacencia/Vertice.hpp"
-#include <iostream>
 
 // TODO(Us): Documentar
 class Grafo {
@@ -29,7 +28,7 @@ class Grafo {
         size_t NumVertices() const;
 
         // TODO(Us): Documentar
-        char Etiqueta(Vertice& vertice);
+        char Etiqueta(const Vertice& vertice) const;
 
         // TODO(Us): Documentar
         Vertice PrimerVertice();

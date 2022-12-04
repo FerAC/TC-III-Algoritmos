@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "ListaAdyacencia/Grafo.hpp"
 
 // CONSTRUCTORES Y DESTRUCTORES

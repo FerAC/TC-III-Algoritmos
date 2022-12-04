@@ -2,7 +2,6 @@
 #define VERTICE_GRAFO_LISTA_ADYACENCIA
 
 #include "../2/Lista.hpp"
-#include <iostream>
 
 // TODO(Us): Documentar
 class Vertice {
