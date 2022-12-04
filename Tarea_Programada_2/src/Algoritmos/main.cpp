@@ -40,7 +40,7 @@ int main()
     Controlador::Dijkstra(grafo, f, listaDijkstra);
     listaDijkstra.imprimirLista();
     std::cout << std::endl;
-    //Controlador::nVecesDijkstra(grafo);
+    Controlador::nVecesDijkstra(grafo);
     
 
     // TEST DIJKSTRA

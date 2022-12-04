@@ -1,0 +1,320 @@
+\hypertarget{classArbolLH}{}\doxysection{Arbol\+LH Class Reference}
+\label{classArbolLH}\index{ArbolLH@{ArbolLH}}
+
+
+{\ttfamily \#include $<$Arbol\+L\+H.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classArbolLH_a8686d8d8f2901fef643d02fe5badf39b}{Arbol\+LH}} ()
+\begin{DoxyCompactList}\small\item\em Crea un nuevo Arbol e inicializa su lista principal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classArbolLH_ac6b8609b04b581acda6610c4f194685d}{$\sim$\+Arbol\+LH}} ()
+\begin{DoxyCompactList}\small\item\em Elimina al arbol y su lista principal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArbolLH_a4dfcbefbb6615ae7919c6c2c7161cdec}{Imprimir}} ()
+\item 
+void \mbox{\hyperlink{classArbolLH_ac0904c2b7a6ecf66dee78f7aaf7b0dbe}{Imprimir\+LP}} ()
+\item 
+void \mbox{\hyperlink{classArbolLH_a63f6b28696a9469d460cfc4d169e6978}{Poner\+Raiz}} (int etiqueta)
+\begin{DoxyCompactList}\small\item\em Inserta un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} en el arbol como raiz del mismo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ \mbox{\hyperlink{classArbolLH_ae5076be41c7e51f0145cd885c091b0ba}{Agregar\+Hijo}} (int etiqueta, \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$Nodo\+Concreto\+Padre)
+\begin{DoxyCompactList}\small\item\em Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ \mbox{\hyperlink{classArbolLH_ac87e0e586dcaeacf9cfc9489e95e6d89}{Agregar\+Hijo\+Mas\+Derecho}} (int etiqueta, \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$Nodo\+Concreto\+Padre)
+\begin{DoxyCompactList}\small\item\em Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArbolLH_afe2c9293128d909ff612b266542997be}{Borrar\+Hoja}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$borrado)
+\begin{DoxyCompactList}\small\item\em Borra una hoja del arbol ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLista}{Lista}}$<$ \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $>$ $\ast$ \mbox{\hyperlink{classArbolLH_a5dcabeed1f2a212e5cb175326aeba085}{Get\+LP}} ()
+\item 
+\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ \mbox{\hyperlink{classArbolLH_aba02abe3e6b23a27377963e366f8a1fa}{Raiz}} ()
+\begin{DoxyCompactList}\small\item\em Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ \mbox{\hyperlink{classArbolLH_a54d5b8ceb8745fd3c36ea6b381130986}{Padre}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$hijo)
+\begin{DoxyCompactList}\small\item\em Devuelve el padre de un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ \mbox{\hyperlink{classArbolLH_aa6512f92218e197abbf1a92b6dd3b4e4}{Hijo\+Mas\+Izquierdo}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$padre)
+\begin{DoxyCompactList}\small\item\em Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classArbolLH_a58a1a8c2d8057e654a2c1a93ae5025e5}{Etiqueta}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}})
+\begin{DoxyCompactList}\small\item\em Devuelve la etiqueta de un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArbolLH_ac759781ba99c93d6ffca8fb898f1d3b3}{Modifica\+Etiqueta}} (int valor\+Nuevo, \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$Nodo\+Concreto\+Padre)
+\begin{DoxyCompactList}\small\item\em modifica el valor de la etiqueta de un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ \mbox{\hyperlink{classArbolLH_ae086653ced4abe14449dea6a0c39cc36}{Hermano\+Derecho}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$celda\+Param)
+\begin{DoxyCompactList}\small\item\em Devuelve el hermano derecho del \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classArbolLH_af198e1cbaf89bd5b459a97c2ef554714}{Num\+Nodo\+Concretos}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve la cantidad de Nodo\+Concretos del arbol. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classArbolLH_a98a5ba8b17bc33e69c03b59446d115cb}{Num\+Nodos}} ()
+\begin{DoxyCompactList}\small\item\em metood retorna cuantos elementos hay en arbol \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classArbolLH_a8686d8d8f2901fef643d02fe5badf39b}\label{classArbolLH_a8686d8d8f2901fef643d02fe5badf39b}} 
+\index{ArbolLH@{ArbolLH}!ArbolLH@{ArbolLH}}
+\index{ArbolLH@{ArbolLH}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{ArbolLH()}{ArbolLH()}}
+{\footnotesize\ttfamily Arbol\+L\+H\+::\+Arbol\+LH (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Crea un nuevo Arbol e inicializa su lista principal. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol no este inicializado ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_ac6b8609b04b581acda6610c4f194685d}\label{classArbolLH_ac6b8609b04b581acda6610c4f194685d}} 
+\index{ArbolLH@{ArbolLH}!````~ArbolLH@{$\sim$ArbolLH}}
+\index{````~ArbolLH@{$\sim$ArbolLH}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{$\sim$ArbolLH()}{~ArbolLH()}}
+{\footnotesize\ttfamily Arbol\+L\+H\+::$\sim$\+Arbol\+LH (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Elimina al arbol y su lista principal. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado 
+\end{DoxyRemark}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classArbolLH_ae5076be41c7e51f0145cd885c091b0ba}\label{classArbolLH_ae5076be41c7e51f0145cd885c091b0ba}} 
+\index{ArbolLH@{ArbolLH}!AgregarHijo@{AgregarHijo}}
+\index{AgregarHijo@{AgregarHijo}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{AgregarHijo()}{AgregarHijo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$ Arbol\+L\+H\+::\+Agregar\+Hijo (\begin{DoxyParamCaption}\item[{int}]{etiqueta,  }\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{Nodo\+Concreto\+Padre }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} padre y una etiqueta (entero) ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado y padre no nulo 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+El \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} agregado ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArbolLH_ac87e0e586dcaeacf9cfc9489e95e6d89}\label{classArbolLH_ac87e0e586dcaeacf9cfc9489e95e6d89}} 
+\index{ArbolLH@{ArbolLH}!AgregarHijoMasDerecho@{AgregarHijoMasDerecho}}
+\index{AgregarHijoMasDerecho@{AgregarHijoMasDerecho}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{AgregarHijoMasDerecho()}{AgregarHijoMasDerecho()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$ Arbol\+L\+H\+::\+Agregar\+Hijo\+Mas\+Derecho (\begin{DoxyParamCaption}\item[{int}]{etiqueta,  }\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{Nodo\+Concreto\+Padre }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} padre y una etiqueta (entero) ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+El \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} agregado ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArbolLH_afe2c9293128d909ff612b266542997be}\label{classArbolLH_afe2c9293128d909ff612b266542997be}} 
+\index{ArbolLH@{ArbolLH}!BorrarHoja@{BorrarHoja}}
+\index{BorrarHoja@{BorrarHoja}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{BorrarHoja()}{BorrarHoja()}}
+{\footnotesize\ttfamily void Arbol\+L\+H\+::\+Borrar\+Hoja (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{borrado }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Borra una hoja del arbol ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} hoja \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado y que el \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como paramtero sea una hoja ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_a58a1a8c2d8057e654a2c1a93ae5025e5}\label{classArbolLH_a58a1a8c2d8057e654a2c1a93ae5025e5}} 
+\index{ArbolLH@{ArbolLH}!Etiqueta@{Etiqueta}}
+\index{Etiqueta@{Etiqueta}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{Etiqueta()}{Etiqueta()}}
+{\footnotesize\ttfamily int Arbol\+L\+H\+::\+Etiqueta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{Nodo\+Concreto }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve la etiqueta de un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} con la etiqueta ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} tenga una etiqueta ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_a5dcabeed1f2a212e5cb175326aeba085}\label{classArbolLH_a5dcabeed1f2a212e5cb175326aeba085}} 
+\index{ArbolLH@{ArbolLH}!GetLP@{GetLP}}
+\index{GetLP@{GetLP}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{GetLP()}{GetLP()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLista}{Lista}}$<$\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$>$$\ast$ Arbol\+L\+H\+::\+Get\+LP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classArbolLH_ae086653ced4abe14449dea6a0c39cc36}\label{classArbolLH_ae086653ced4abe14449dea6a0c39cc36}} 
+\index{ArbolLH@{ArbolLH}!HermanoDerecho@{HermanoDerecho}}
+\index{HermanoDerecho@{HermanoDerecho}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{HermanoDerecho()}{HermanoDerecho()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$ Arbol\+L\+H\+::\+Hermano\+Derecho (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{celda\+Param }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve el hermano derecho del \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} del cual queremos saber el hermano ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado y que el \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} sea parte del arbol ~\newline
+ 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+Devuelve un puntero a \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArbolLH_aa6512f92218e197abbf1a92b6dd3b4e4}\label{classArbolLH_aa6512f92218e197abbf1a92b6dd3b4e4}} 
+\index{ArbolLH@{ArbolLH}!HijoMasIzquierdo@{HijoMasIzquierdo}}
+\index{HijoMasIzquierdo@{HijoMasIzquierdo}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{HijoMasIzquierdo()}{HijoMasIzquierdo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$ Arbol\+L\+H\+::\+Hijo\+Mas\+Izquierdo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{padre }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} padre y una etiqueta (entero) ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado y padre no nulo ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_a4dfcbefbb6615ae7919c6c2c7161cdec}\label{classArbolLH_a4dfcbefbb6615ae7919c6c2c7161cdec}} 
+\index{ArbolLH@{ArbolLH}!Imprimir@{Imprimir}}
+\index{Imprimir@{Imprimir}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{Imprimir()}{Imprimir()}}
+{\footnotesize\ttfamily void Arbol\+L\+H\+::\+Imprimir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classArbolLH_ac0904c2b7a6ecf66dee78f7aaf7b0dbe}\label{classArbolLH_ac0904c2b7a6ecf66dee78f7aaf7b0dbe}} 
+\index{ArbolLH@{ArbolLH}!ImprimirLP@{ImprimirLP}}
+\index{ImprimirLP@{ImprimirLP}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{ImprimirLP()}{ImprimirLP()}}
+{\footnotesize\ttfamily void Arbol\+L\+H\+::\+Imprimir\+LP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classArbolLH_ac759781ba99c93d6ffca8fb898f1d3b3}\label{classArbolLH_ac759781ba99c93d6ffca8fb898f1d3b3}} 
+\index{ArbolLH@{ArbolLH}!ModificaEtiqueta@{ModificaEtiqueta}}
+\index{ModificaEtiqueta@{ModificaEtiqueta}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{ModificaEtiqueta()}{ModificaEtiqueta()}}
+{\footnotesize\ttfamily void Arbol\+L\+H\+::\+Modifica\+Etiqueta (\begin{DoxyParamCaption}\item[{int}]{valor\+Nuevo,  }\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{Nodo\+Concreto\+Padre }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+modifica el valor de la etiqueta de un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} y un entero que sera etiqueta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} tenga un valor y que el valor nuevo no este en el arbol ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_af198e1cbaf89bd5b459a97c2ef554714}\label{classArbolLH_af198e1cbaf89bd5b459a97c2ef554714}} 
+\index{ArbolLH@{ArbolLH}!NumNodoConcretos@{NumNodoConcretos}}
+\index{NumNodoConcretos@{NumNodoConcretos}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{NumNodoConcretos()}{NumNodoConcretos()}}
+{\footnotesize\ttfamily int Arbol\+L\+H\+::\+Num\+Nodo\+Concretos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve la cantidad de Nodo\+Concretos del arbol. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_a98a5ba8b17bc33e69c03b59446d115cb}\label{classArbolLH_a98a5ba8b17bc33e69c03b59446d115cb}} 
+\index{ArbolLH@{ArbolLH}!NumNodos@{NumNodos}}
+\index{NumNodos@{NumNodos}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{NumNodos()}{NumNodos()}}
+{\footnotesize\ttfamily int Arbol\+L\+H\+::\+Num\+Nodos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+metood retorna cuantos elementos hay en arbol 
+
+\begin{DoxyReturn}{Returns}
+return cantidad de elementos en arbol 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArbolLH_a54d5b8ceb8745fd3c36ea6b381130986}\label{classArbolLH_a54d5b8ceb8745fd3c36ea6b381130986}} 
+\index{ArbolLH@{ArbolLH}!Padre@{Padre}}
+\index{Padre@{Padre}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{Padre()}{Padre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$ Arbol\+L\+H\+::\+Padre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{hijo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve el padre de un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em un} & \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} que sera agregado como hijo ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere un arbol inicializado y que el \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro pertenezca al arbol ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_a63f6b28696a9469d460cfc4d169e6978}\label{classArbolLH_a63f6b28696a9469d460cfc4d169e6978}} 
+\index{ArbolLH@{ArbolLH}!PonerRaiz@{PonerRaiz}}
+\index{PonerRaiz@{PonerRaiz}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{PonerRaiz()}{PonerRaiz()}}
+{\footnotesize\ttfamily void Arbol\+L\+H\+::\+Poner\+Raiz (\begin{DoxyParamCaption}\item[{int}]{etiqueta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserta un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} en el arbol como raiz del mismo. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol sea vacia ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classArbolLH_aba02abe3e6b23a27377963e366f8a1fa}\label{classArbolLH_aba02abe3e6b23a27377963e366f8a1fa}} 
+\index{ArbolLH@{ArbolLH}!Raiz@{Raiz}}
+\index{Raiz@{Raiz}!ArbolLH@{ArbolLH}}
+\doxysubsubsection{\texorpdfstring{Raiz()}{Raiz()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$ Arbol\+L\+H\+::\+Raiz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Agrega un hijo a un \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} alimentado como parametro. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado y padre no nulo ~\newline
+ 
+\end{DoxyRemark}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/3.\+2/\mbox{\hyperlink{ArbolLH_8hpp}{Arbol\+L\+H.\+hpp}}\end{DoxyCompactItemize}

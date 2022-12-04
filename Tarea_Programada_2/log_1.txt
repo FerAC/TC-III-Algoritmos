@@ -1,0 +1,518 @@
+bin/Tarea_Programada_2
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	5	f
+b	3	d
+c	7	b
+d	2	f
+e	4	d
+f	0	f
+
+dijkstra para el vertice: a
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	0	a
+b	2	a
+c	3	a
+d	3	b
+e	5	a
+f	5	a
+
+dijkstra para el vertice: b
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	2	b
+b	0	b
+c	4	b
+d	1	b
+e	3	b
+f	3	d
+
+dijkstra para el vertice: c
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	3	c
+b	4	c
+c	0	c
+d	5	b
+e	7	c
+f	7	d
+
+dijkstra para el vertice: d
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	3	b
+b	1	d
+c	5	b
+d	0	d
+e	2	d
+f	2	d
+
+dijkstra para el vertice: e
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	5	e
+b	3	e
+c	7	e
+d	2	e
+e	0	e
+f	4	d
+
+dijkstra para el vertice: f
+Primer adyacente de f es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  f, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de d es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior c es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  d, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de b es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior a es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  b, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de e es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  e, anterior d es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior b es c
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior c es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  a, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+Primer adyacente de c es a
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior a es b
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior b es d
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior d es e
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Siguiente adyacente de  c, anterior e es f
+SE ESTA BUSCANDO ADYACENTE SIGUIENTE 
+Iterador nulo 
+a	5	f
+b	3	d
+c	7	b
+d	2	f
+e	4	d
+f	0	f
+

@@ -1,0 +1,166 @@
+\hypertarget{classListaIndexada}{}\doxysection{Lista\+Indexada Class Reference}
+\label{classListaIndexada}\index{ListaIndexada@{ListaIndexada}}
+
+
+{\ttfamily \#include $<$Lista\+Indexada.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classListaIndexada_aa294b9bb9657cfd68a538f731da40137}{Lista\+Indexada}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la lista indexada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classListaIndexada_ab38c9e2bc7683e29a065d343cba3b8a6}{recuperar}} (int indice)
+\begin{DoxyCompactList}\small\item\em Devuelve el valor en un indice de la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classListaIndexada_a077e3ed3ff169a5e4acd926a09a623a0}{insertar}} (int etiqueta, int indice)
+\begin{DoxyCompactList}\small\item\em Agrega un valor nuevo a la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classListaIndexada_a0d68b47b01e060204a0c96eb0c52f295}{modificar}} (int valor\+Nuevo, int indice)
+\begin{DoxyCompactList}\small\item\em Cambia la etiqueta en un indice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCelda}{Celda}}$<$ int $>$ $\ast$ \mbox{\hyperlink{classListaIndexada_aa7af8745cd28515ef9975534b6def0f2}{moverse}} (int indice)
+\item 
+int \mbox{\hyperlink{classListaIndexada_ac53fa4a322381e007c36eea4c3553254}{num\+Elem}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve la cantidad de elementos de la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classListaIndexada_a93c1184854c43793ec9083b2b52d410c}{borrar}} (int indice)
+\begin{DoxyCompactList}\small\item\em Borra un elemento de la lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classListaIndexada_a4c308fec473eabba380ab760f346416c}{$\sim$\+Lista\+Indexada}} ()
+\begin{DoxyCompactList}\small\item\em Borra la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classListaIndexada_a2bce9ef56a23e7b742e89d2f25e17072}{imprimir}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classListaIndexada_aa294b9bb9657cfd68a538f731da40137}\label{classListaIndexada_aa294b9bb9657cfd68a538f731da40137}} 
+\index{ListaIndexada@{ListaIndexada}!ListaIndexada@{ListaIndexada}}
+\index{ListaIndexada@{ListaIndexada}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{ListaIndexada()}{ListaIndexada()}}
+{\footnotesize\ttfamily Lista\+Indexada\+::\+Lista\+Indexada (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inicializa la lista indexada. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado y padre no nulo ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classListaIndexada_a4c308fec473eabba380ab760f346416c}\label{classListaIndexada_a4c308fec473eabba380ab760f346416c}} 
+\index{ListaIndexada@{ListaIndexada}!````~ListaIndexada@{$\sim$ListaIndexada}}
+\index{````~ListaIndexada@{$\sim$ListaIndexada}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{$\sim$ListaIndexada()}{~ListaIndexada()}}
+{\footnotesize\ttfamily Lista\+Indexada\+::$\sim$\+Lista\+Indexada (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Borra la lista. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que la lista este inicializada ~\newline
+ 
+\end{DoxyRemark}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classListaIndexada_a93c1184854c43793ec9083b2b52d410c}\label{classListaIndexada_a93c1184854c43793ec9083b2b52d410c}} 
+\index{ListaIndexada@{ListaIndexada}!borrar@{borrar}}
+\index{borrar@{borrar}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{borrar()}{borrar()}}
+{\footnotesize\ttfamily void Lista\+Indexada\+::borrar (\begin{DoxyParamCaption}\item[{int}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Borra un elemento de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em un} & entero asociado a un indice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que la lista este inicializada y que el indice sea valido (entre 0 y el tamano maximo de la lista) ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classListaIndexada_a2bce9ef56a23e7b742e89d2f25e17072}\label{classListaIndexada_a2bce9ef56a23e7b742e89d2f25e17072}} 
+\index{ListaIndexada@{ListaIndexada}!imprimir@{imprimir}}
+\index{imprimir@{imprimir}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{imprimir()}{imprimir()}}
+{\footnotesize\ttfamily void Lista\+Indexada\+::imprimir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaIndexada_a077e3ed3ff169a5e4acd926a09a623a0}\label{classListaIndexada_a077e3ed3ff169a5e4acd926a09a623a0}} 
+\index{ListaIndexada@{ListaIndexada}!insertar@{insertar}}
+\index{insertar@{insertar}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily void Lista\+Indexada\+::insertar (\begin{DoxyParamCaption}\item[{int}]{etiqueta,  }\item[{int}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Agrega un valor nuevo a la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & entero con la etiqueta a insertar y un entero indice donde se insertara el valor nuevo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que la lista este inicializada, que la etiqueta no este en la lista y que el indice sea menor o igual al tamano actual de la lista+1 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classListaIndexada_a0d68b47b01e060204a0c96eb0c52f295}\label{classListaIndexada_a0d68b47b01e060204a0c96eb0c52f295}} 
+\index{ListaIndexada@{ListaIndexada}!modificar@{modificar}}
+\index{modificar@{modificar}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{modificar()}{modificar()}}
+{\footnotesize\ttfamily void Lista\+Indexada\+::modificar (\begin{DoxyParamCaption}\item[{int}]{valor\+Nuevo,  }\item[{int}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cambia la etiqueta en un indice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Un} & entero con el valor nuevo de la etiquet y un entero con el indice a modificar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que la lista este inicializada, que el valor nuevo no pertenezca a la lista y que el indice sea valido (entre 0 y el tamano maximo de la lista) 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classListaIndexada_aa7af8745cd28515ef9975534b6def0f2}\label{classListaIndexada_aa7af8745cd28515ef9975534b6def0f2}} 
+\index{ListaIndexada@{ListaIndexada}!moverse@{moverse}}
+\index{moverse@{moverse}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{moverse()}{moverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCelda}{Celda}}$<$int$>$$\ast$ Lista\+Indexada\+::moverse (\begin{DoxyParamCaption}\item[{int}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaIndexada_ac53fa4a322381e007c36eea4c3553254}\label{classListaIndexada_ac53fa4a322381e007c36eea4c3553254}} 
+\index{ListaIndexada@{ListaIndexada}!numElem@{numElem}}
+\index{numElem@{numElem}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{numElem()}{numElem()}}
+{\footnotesize\ttfamily int Lista\+Indexada\+::num\+Elem (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve la cantidad de elementos de la lista. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que la lista este inicializada ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classListaIndexada_ab38c9e2bc7683e29a065d343cba3b8a6}\label{classListaIndexada_ab38c9e2bc7683e29a065d343cba3b8a6}} 
+\index{ListaIndexada@{ListaIndexada}!recuperar@{recuperar}}
+\index{recuperar@{recuperar}!ListaIndexada@{ListaIndexada}}
+\doxysubsubsection{\texorpdfstring{recuperar()}{recuperar()}}
+{\footnotesize\ttfamily int Lista\+Indexada\+::recuperar (\begin{DoxyParamCaption}\item[{int}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve el valor en un indice de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Una} & lista inicializada y un entero indice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Requiere que el indice sea valido (entre 0 y el valor tamano maximo de la lista) ~\newline
+ 
+\end{DoxyRemark}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/2/\mbox{\hyperlink{ListaIndexada_8hpp}{Lista\+Indexada.\+hpp}}\end{DoxyCompactItemize}

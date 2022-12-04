@@ -1,0 +1,242 @@
+\hypertarget{classNodoConcreto}{}\doxysection{Nodo\+Concreto Class Reference}
+\label{classNodoConcreto}\index{NodoConcreto@{NodoConcreto}}
+
+
+{\ttfamily \#include $<$Nodo\+Concreto.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNodoConcreto_a8e3c3579699b22d65d8e5ffae6d49087}{Nodo\+Concreto}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por omision de la clase nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto_a7dee2713c9a27be8e68d5ed0e9dd5b0b}{$\sim$\+Nodo\+Concreto}} ()
+\begin{DoxyCompactList}\small\item\em Destructor por omision de la clase nodo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNodoConcreto_a24a1d85932fdc8387b448ef7d59bc17f}{Nodo\+Concreto}} (int et)
+\begin{DoxyCompactList}\small\item\em constructor con parametros de clase nodo \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNodoConcreto_a3e6dbdd70113385518805ba12d758976}{insertar\+En\+Lista}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$nodo\+Nuevo)
+\begin{DoxyCompactList}\small\item\em inserta en la lista de hijos de un nodo \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLista}{Lista}}$<$ \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{classNodoConcreto_af6fd56955d5870206ed54d1b83bac342}{get\+Lista\+Hijos}} ()
+\begin{DoxyCompactList}\small\item\em Retorna la lista de hijos de un nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNodoConcreto_ab2d8a6523f755b81ebf8197b725d5e90}{imprimir\+Valor}} ()
+\begin{DoxyCompactList}\small\item\em imprime la etiqueta de un nodo \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNodoConcreto_ac40bdd57d5147cfd7b3ae5082076d075}{operator==}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} nodo2)
+\begin{DoxyCompactList}\small\item\em operador de igualdad de la clase nodo \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNodoConcreto_a5ca99cb89867f0854d83997ce9484f64}{operator!=}} (\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} nodo2)
+\begin{DoxyCompactList}\small\item\em operador de desigualdad de la clase nodo \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNodoConcreto_af1578a4d2b00dcc6f69ff70caf24d7c9}{get\+Etiqueta}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve la etiqueta de un nodo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNodoConcreto_aba189aec3311e5d12a620b4c9fc22206}{set\+Etiqueta}} (int valor\+Nuevo)
+\begin{DoxyCompactList}\small\item\em modifica la etiqueta de un nodo \end{DoxyCompactList}\item 
+ostream \& \mbox{\hyperlink{classNodoConcreto_abc0d5c83fd10f3c779ed1e9f2c81462d}{imprimir}} (ostream \&output)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classNodoConcreto_a5fe0909711c1f25d88f6cfa4f41c3ee5}{Arbol\+LH}}
+\item 
+ostream \& \mbox{\hyperlink{classNodoConcreto_a6ee5eb62749380e484acbb3eadb82b0f}{operator$<$$<$}} (ostream \&salida, \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} p)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNodoConcreto_a8e3c3579699b22d65d8e5ffae6d49087}\label{classNodoConcreto_a8e3c3579699b22d65d8e5ffae6d49087}} 
+\index{NodoConcreto@{NodoConcreto}!NodoConcreto@{NodoConcreto}}
+\index{NodoConcreto@{NodoConcreto}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{NodoConcreto()}{NodoConcreto()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Nodo\+Concreto\+::\+Nodo\+Concreto (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor por omision de la clase nodo. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo no este inicializado ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classNodoConcreto_a7dee2713c9a27be8e68d5ed0e9dd5b0b}\label{classNodoConcreto_a7dee2713c9a27be8e68d5ed0e9dd5b0b}} 
+\index{NodoConcreto@{NodoConcreto}!````~NodoConcreto@{$\sim$NodoConcreto}}
+\index{````~NodoConcreto@{$\sim$NodoConcreto}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{$\sim$NodoConcreto()}{~NodoConcreto()}}
+{\footnotesize\ttfamily Nodo\+Concreto\+::$\sim$\+Nodo\+Concreto (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor por omision de la clase nodo. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo este inicializada 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classNodoConcreto_a24a1d85932fdc8387b448ef7d59bc17f}\label{classNodoConcreto_a24a1d85932fdc8387b448ef7d59bc17f}} 
+\index{NodoConcreto@{NodoConcreto}!NodoConcreto@{NodoConcreto}}
+\index{NodoConcreto@{NodoConcreto}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{NodoConcreto()}{NodoConcreto()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Nodo\+Concreto\+::\+Nodo\+Concreto (\begin{DoxyParamCaption}\item[{int}]{et }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+constructor con parametros de clase nodo 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo no este inicializada 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & et ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNodoConcreto_af1578a4d2b00dcc6f69ff70caf24d7c9}\label{classNodoConcreto_af1578a4d2b00dcc6f69ff70caf24d7c9}} 
+\index{NodoConcreto@{NodoConcreto}!getEtiqueta@{getEtiqueta}}
+\index{getEtiqueta@{getEtiqueta}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{getEtiqueta()}{getEtiqueta()}}
+{\footnotesize\ttfamily int Nodo\+Concreto\+::get\+Etiqueta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Devuelve la etiqueta de un nodo. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo este inicializado 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+int etiqueta 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNodoConcreto_af6fd56955d5870206ed54d1b83bac342}\label{classNodoConcreto_af6fd56955d5870206ed54d1b83bac342}} 
+\index{NodoConcreto@{NodoConcreto}!getListaHijos@{getListaHijos}}
+\index{getListaHijos@{getListaHijos}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{getListaHijos()}{getListaHijos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLista}{Lista}}$<$\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}$\ast$$>$$\ast$ Nodo\+Concreto\+::get\+Lista\+Hijos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna la lista de hijos de un nodo. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo este inicializado y tenga una lista de hijos 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classLista}{Lista$<$\+Nodo\+Concreto$\ast$$>$}} en caso de no encontralo devuelve un nullptr ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNodoConcreto_abc0d5c83fd10f3c779ed1e9f2c81462d}\label{classNodoConcreto_abc0d5c83fd10f3c779ed1e9f2c81462d}} 
+\index{NodoConcreto@{NodoConcreto}!imprimir@{imprimir}}
+\index{imprimir@{imprimir}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{imprimir()}{imprimir()}}
+{\footnotesize\ttfamily ostream\& Nodo\+Concreto\+::imprimir (\begin{DoxyParamCaption}\item[{ostream \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classNodoConcreto_ab2d8a6523f755b81ebf8197b725d5e90}\label{classNodoConcreto_ab2d8a6523f755b81ebf8197b725d5e90}} 
+\index{NodoConcreto@{NodoConcreto}!imprimirValor@{imprimirValor}}
+\index{imprimirValor@{imprimirValor}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{imprimirValor()}{imprimirValor()}}
+{\footnotesize\ttfamily void Nodo\+Concreto\+::imprimir\+Valor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+imprime la etiqueta de un nodo 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo este inicializado 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classNodoConcreto_a3e6dbdd70113385518805ba12d758976}\label{classNodoConcreto_a3e6dbdd70113385518805ba12d758976}} 
+\index{NodoConcreto@{NodoConcreto}!insertarEnLista@{insertarEnLista}}
+\index{insertarEnLista@{insertarEnLista}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{insertarEnLista()}{insertarEnLista()}}
+{\footnotesize\ttfamily void Nodo\+Concreto\+::insertar\+En\+Lista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}} $\ast$}]{nodo\+Nuevo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+inserta en la lista de hijos de un nodo 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo este inicializado y que tenga una lista de hijos inicializada 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em Nodo\+Concreto$\ast$} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNodoConcreto_a5ca99cb89867f0854d83997ce9484f64}\label{classNodoConcreto_a5ca99cb89867f0854d83997ce9484f64}} 
+\index{NodoConcreto@{NodoConcreto}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily int Nodo\+Concreto\+::operator!= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}}]{nodo2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operador de desigualdad de la clase nodo 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que ambos nodos esten inicializados y que posean etiquetas comparables 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 si son iguales, 1 si no 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNodoConcreto_ac40bdd57d5147cfd7b3ae5082076d075}\label{classNodoConcreto_ac40bdd57d5147cfd7b3ae5082076d075}} 
+\index{NodoConcreto@{NodoConcreto}!operator==@{operator==}}
+\index{operator==@{operator==}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily int Nodo\+Concreto\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}}]{nodo2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operador de igualdad de la clase nodo 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que ambos nodos esten inicializados y que posean etiquetas comparables 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 si son iguales, 0 si no 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNodoConcreto_aba189aec3311e5d12a620b4c9fc22206}\label{classNodoConcreto_aba189aec3311e5d12a620b4c9fc22206}} 
+\index{NodoConcreto@{NodoConcreto}!setEtiqueta@{setEtiqueta}}
+\index{setEtiqueta@{setEtiqueta}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{setEtiqueta()}{setEtiqueta()}}
+{\footnotesize\ttfamily void Nodo\+Concreto\+::set\+Etiqueta (\begin{DoxyParamCaption}\item[{int}]{valor\+Nuevo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+modifica la etiqueta de un nodo 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el nodo este inicializado 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classNodoConcreto_a5fe0909711c1f25d88f6cfa4f41c3ee5}\label{classNodoConcreto_a5fe0909711c1f25d88f6cfa4f41c3ee5}} 
+\index{NodoConcreto@{NodoConcreto}!ArbolLH@{ArbolLH}}
+\index{ArbolLH@{ArbolLH}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{ArbolLH}{ArbolLH}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classArbolLH}{Arbol\+LH}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classNodoConcreto_a6ee5eb62749380e484acbb3eadb82b0f}\label{classNodoConcreto_a6ee5eb62749380e484acbb3eadb82b0f}} 
+\index{NodoConcreto@{NodoConcreto}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!NodoConcreto@{NodoConcreto}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{salida,  }\item[{\mbox{\hyperlink{classNodoConcreto}{Nodo\+Concreto}}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/3.\+2/\mbox{\hyperlink{NodoConcreto_8hpp}{Nodo\+Concreto.\+hpp}}\end{DoxyCompactItemize}

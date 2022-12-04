@@ -11,6 +11,7 @@
 
 #include "../2/Lista.hpp"
 #include <iostream>
+#include "Hamilton.hpp"
 // #include <map>  // APO de Kruskal
 // #include <set>  // conjunto de conjunto de Kruskal
 #include <list> // lista de las n-1 aristas del arbol de minimo costa de Kruskal

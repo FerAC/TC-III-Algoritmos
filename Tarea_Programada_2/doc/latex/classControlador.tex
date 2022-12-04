@@ -1,0 +1,127 @@
+\hypertarget{classControlador}{}\doxysection{Controlador Class Reference}
+\label{classControlador}\index{Controlador@{Controlador}}
+
+
+{\ttfamily \#include $<$Controlador.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControlador_a17db08229680461d4d1a2110a92ccf78}{Controlador}} ()
+\item 
+\mbox{\hyperlink{classControlador_a2f1828135645f009d3772de86f12d507}{$\sim$\+Controlador}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classControlador_a035d4cfdfce2d734c580a09d6444af62}{Prim}} ()
+\item 
+static \mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classControlador_a940c825f48eb686a7c7491100f04804b}{buscar\+Vertice}} (\mbox{\hyperlink{classGrafo}{Grafo}} \&grafo, char etiqueta)
+\item 
+static void \mbox{\hyperlink{classControlador_aa6133a608e7d04e931bf9cb654f6f2e5}{n\+Veces\+Dijkstra}} (\mbox{\hyperlink{classGrafo}{Grafo}} \&grafo)
+\item 
+static void \mbox{\hyperlink{classControlador_a47dd5ddeb713419e714aacfb0a1b8406}{colorear}} (\mbox{\hyperlink{classGrafo}{Grafo}} grafo)
+\item 
+static bool \mbox{\hyperlink{classControlador_aaf38bd01e77c37f3cb7737383e9721af}{existe\+Ciclos\+Recursivo}} (\mbox{\hyperlink{classGrafo}{Grafo}} \&grafo, std\+::list$<$ std\+::pair$<$ bool, char $>$$>$ \&visitados, \mbox{\hyperlink{classVertice}{Vertice}} \&vertice\+Actual, \mbox{\hyperlink{classVertice}{Vertice}} \&vertice\+Anterior)
+\item 
+static bool \mbox{\hyperlink{classControlador_a3a8b2bcd2c7861607db4ff808145b3da}{existe\+Ciclos}} (\mbox{\hyperlink{classGrafo}{Grafo}} \&grafo)
+\item 
+static void \mbox{\hyperlink{classControlador_a5226a8a185745a727594d9a23f8c3420}{Kruskal}} (\mbox{\hyperlink{classGrafo}{Grafo}} grafo, \mbox{\hyperlink{classGrafo}{Grafo}} \&grafo\+Minimo)
+\item 
+static void \mbox{\hyperlink{classControlador_a3787d1683128b3d7df4969a66185c14a}{Dijkstra}} (\mbox{\hyperlink{classGrafo}{Grafo}} \&grafo, \mbox{\hyperlink{classVertice}{Vertice}} \&inicio, \mbox{\hyperlink{classListaDijkstra}{Lista\+Dijkstra}} \&camino)
+\item 
+static void \mbox{\hyperlink{classControlador_ac07319516a9efc38ef1cee9f08b5638f}{Floyd}} ()
+\item 
+static void \mbox{\hyperlink{classControlador_a3810df6354c000c8be291992ff1901a6}{imprimir\+Grafo}} (\mbox{\hyperlink{classGrafo}{Grafo}} grafo)
+\item 
+static void \mbox{\hyperlink{classControlador_a092737f81cca3b8cee9c5d779911a977}{imprimir\+Lista\+Dijkstra}} (\mbox{\hyperlink{classListaDijkstra}{Lista\+Dijkstra}} \&camino)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classControlador_a17db08229680461d4d1a2110a92ccf78}\label{classControlador_a17db08229680461d4d1a2110a92ccf78}} 
+\index{Controlador@{Controlador}!Controlador@{Controlador}}
+\index{Controlador@{Controlador}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{Controlador()}{Controlador()}}
+{\footnotesize\ttfamily Controlador\+::\+Controlador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classControlador_a2f1828135645f009d3772de86f12d507}\label{classControlador_a2f1828135645f009d3772de86f12d507}} 
+\index{Controlador@{Controlador}!````~Controlador@{$\sim$Controlador}}
+\index{````~Controlador@{$\sim$Controlador}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{$\sim$Controlador()}{~Controlador()}}
+{\footnotesize\ttfamily Controlador\+::$\sim$\+Controlador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classControlador_a940c825f48eb686a7c7491100f04804b}\label{classControlador_a940c825f48eb686a7c7491100f04804b}} 
+\index{Controlador@{Controlador}!buscarVertice@{buscarVertice}}
+\index{buscarVertice@{buscarVertice}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{buscarVertice()}{buscarVertice()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classVertice}{Vertice}} Controlador\+::buscar\+Vertice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}} \&}]{grafo,  }\item[{char}]{etiqueta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a47dd5ddeb713419e714aacfb0a1b8406}\label{classControlador_a47dd5ddeb713419e714aacfb0a1b8406}} 
+\index{Controlador@{Controlador}!colorear@{colorear}}
+\index{colorear@{colorear}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{colorear()}{colorear()}}
+{\footnotesize\ttfamily static void Controlador\+::colorear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}}}]{grafo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a3787d1683128b3d7df4969a66185c14a}\label{classControlador_a3787d1683128b3d7df4969a66185c14a}} 
+\index{Controlador@{Controlador}!Dijkstra@{Dijkstra}}
+\index{Dijkstra@{Dijkstra}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{Dijkstra()}{Dijkstra()}}
+{\footnotesize\ttfamily static void Controlador\+::\+Dijkstra (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}} \&}]{grafo,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{inicio,  }\item[{\mbox{\hyperlink{classListaDijkstra}{Lista\+Dijkstra}} \&}]{camino }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a3a8b2bcd2c7861607db4ff808145b3da}\label{classControlador_a3a8b2bcd2c7861607db4ff808145b3da}} 
+\index{Controlador@{Controlador}!existeCiclos@{existeCiclos}}
+\index{existeCiclos@{existeCiclos}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{existeCiclos()}{existeCiclos()}}
+{\footnotesize\ttfamily static bool Controlador\+::existe\+Ciclos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}} \&}]{grafo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+std\+::cout $<$$<$ \char`\"{}hello there\char`\"{} $<$$<$ std\+::endl;\mbox{\Hypertarget{classControlador_aaf38bd01e77c37f3cb7737383e9721af}\label{classControlador_aaf38bd01e77c37f3cb7737383e9721af}} 
+\index{Controlador@{Controlador}!existeCiclosRecursivo@{existeCiclosRecursivo}}
+\index{existeCiclosRecursivo@{existeCiclosRecursivo}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{existeCiclosRecursivo()}{existeCiclosRecursivo()}}
+{\footnotesize\ttfamily static bool Controlador\+::existe\+Ciclos\+Recursivo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}} \&}]{grafo,  }\item[{std\+::list$<$ std\+::pair$<$ bool, char $>$$>$ \&}]{visitados,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice\+Actual,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice\+Anterior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_ac07319516a9efc38ef1cee9f08b5638f}\label{classControlador_ac07319516a9efc38ef1cee9f08b5638f}} 
+\index{Controlador@{Controlador}!Floyd@{Floyd}}
+\index{Floyd@{Floyd}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{Floyd()}{Floyd()}}
+{\footnotesize\ttfamily static void Controlador\+::\+Floyd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a3810df6354c000c8be291992ff1901a6}\label{classControlador_a3810df6354c000c8be291992ff1901a6}} 
+\index{Controlador@{Controlador}!imprimirGrafo@{imprimirGrafo}}
+\index{imprimirGrafo@{imprimirGrafo}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{imprimirGrafo()}{imprimirGrafo()}}
+{\footnotesize\ttfamily static void Controlador\+::imprimir\+Grafo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}}}]{grafo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a092737f81cca3b8cee9c5d779911a977}\label{classControlador_a092737f81cca3b8cee9c5d779911a977}} 
+\index{Controlador@{Controlador}!imprimirListaDijkstra@{imprimirListaDijkstra}}
+\index{imprimirListaDijkstra@{imprimirListaDijkstra}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{imprimirListaDijkstra()}{imprimirListaDijkstra()}}
+{\footnotesize\ttfamily static void Controlador\+::imprimir\+Lista\+Dijkstra (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classListaDijkstra}{Lista\+Dijkstra}} \&}]{camino }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a5226a8a185745a727594d9a23f8c3420}\label{classControlador_a5226a8a185745a727594d9a23f8c3420}} 
+\index{Controlador@{Controlador}!Kruskal@{Kruskal}}
+\index{Kruskal@{Kruskal}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{Kruskal()}{Kruskal()}}
+{\footnotesize\ttfamily static void Controlador\+::\+Kruskal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}}}]{grafo,  }\item[{\mbox{\hyperlink{classGrafo}{Grafo}} \&}]{grafo\+Minimo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_aa6133a608e7d04e931bf9cb654f6f2e5}\label{classControlador_aa6133a608e7d04e931bf9cb654f6f2e5}} 
+\index{Controlador@{Controlador}!nVecesDijkstra@{nVecesDijkstra}}
+\index{nVecesDijkstra@{nVecesDijkstra}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{nVecesDijkstra()}{nVecesDijkstra()}}
+{\footnotesize\ttfamily static void Controlador\+::n\+Veces\+Dijkstra (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGrafo}{Grafo}} \&}]{grafo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classControlador_a035d4cfdfce2d734c580a09d6444af62}\label{classControlador_a035d4cfdfce2d734c580a09d6444af62}} 
+\index{Controlador@{Controlador}!Prim@{Prim}}
+\index{Prim@{Prim}!Controlador@{Controlador}}
+\doxysubsubsection{\texorpdfstring{Prim()}{Prim()}}
+{\footnotesize\ttfamily static void Controlador\+::\+Prim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Algoritmos/\mbox{\hyperlink{Controlador_8hpp}{Controlador.\+hpp}}\end{DoxyCompactItemize}

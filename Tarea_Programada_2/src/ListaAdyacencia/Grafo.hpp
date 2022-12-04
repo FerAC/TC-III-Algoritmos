@@ -203,7 +203,7 @@ void EliminarArista(Vertice& origen, Vertice& destino){
     for (Celda<Vertice> * celda= listaPrincipal->getPrimera();  celda != nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {
        if(celda->getEtiqueta() == origen){
-            std::cout<< "Voy a borrar a "<< celda->getEtiqueta().etiqueta << std::endl;
+            
             Vertice::Contenedor copia = Vertice::Contenedor(destino, this->Peso(origen, destino));
             celda->getEtiqueta().getlistaAdyacencia()->borrar(copia); 
             borrados++;
@@ -276,7 +276,6 @@ Vertice PrimerVerticeAdyacente(Vertice& original){
     for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta() != original && celda->getSiguiente()!=nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {} 
     if(celda->getEtiqueta().etiqueta == original.etiqueta){
-        std::cout<< "Primer adyacente de " << original.etiqueta << " es " <<  celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return * celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
     }
     Vertice nulo;
@@ -297,7 +296,6 @@ int ExisteArista(Vertice& inicio, Vertice& fin){
     return 0;
 }
 Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior){
-    std::cout<< "SE ESTA BUSCANDO ADYACENTE SIGUIENTE " << std::endl;
     Celda<Vertice> * celda;
     Vertice nulo;
     for (celda= listaPrincipal->getPrimera();  celda->getEtiqueta().etiqueta != original.etiqueta; celda = celda->getSiguiente() ) //Muevo en lista Principal
@@ -305,12 +303,10 @@ Vertice SiguienteVerticeAdyacente(Vertice& original, Vertice& adyAnterior){
     Celda<Vertice::Contenedor> * iterador;
     for( iterador= celda->getEtiqueta().getlistaAdyacencia()->getPrimera(); iterador->getEtiqueta().VAdyacente->etiqueta != adyAnterior.etiqueta && iterador->getSiguiente()!=nullptr; iterador = iterador->getSiguiente() ){
     }
-    if( iterador == nullptr){
-        std::cout<< "Iterador nulo " << std::endl;
+    if( iterador->getSiguiente() == nullptr){
         return nulo;
     }
     if(iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta){
-        std::cout<< "Siguiente adyacente de  " << original.etiqueta << ", anterior "<< adyAnterior.etiqueta << " es " << iterador->getSiguiente()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return * iterador->getSiguiente()->getEtiqueta().VAdyacente; 
     }
     

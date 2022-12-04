@@ -244,7 +244,7 @@ e
 f
 Soy Arista e
 Mis adyacentes son : 
-d
+d hola
 Soy Arista f
 Mis adyacentes son : 
 d

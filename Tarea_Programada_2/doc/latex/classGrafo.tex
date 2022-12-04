@@ -1,0 +1,323 @@
+\hypertarget{classGrafo}{}\doxysection{Grafo Class Reference}
+\label{classGrafo}\index{Grafo@{Grafo}}
+
+
+{\ttfamily \#include $<$Grafo.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGrafo_ab810bbe26a98e9af6661ccddff66b03b}{Grafo}} ()
+\begin{DoxyCompactList}\small\item\em Crea un nuevo Arbol e inicializa su lista principal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGrafo_a16f3fbba0de2667dfba3b657cb7e95ff}{$\sim$\+Grafo}} ()
+\begin{DoxyCompactList}\small\item\em Elimina al arbol y su lista principal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_a2765e56182e4bab797a1c97b392d508b}{Agregar\+Vertice}} (char etiqueta)
+\item 
+void \mbox{\hyperlink{classGrafo_ada5ad81267ab9bf5e0bcbed260b7492a}{Eliminar\+Vertice}} (\mbox{\hyperlink{classVertice}{Vertice}} \&vertice)
+\item 
+const size\+\_\+t \mbox{\hyperlink{classGrafo_a70ab3a2abda81f2add16524c49c64e91}{Num\+Vertices}} ()
+\item 
+void \mbox{\hyperlink{classGrafo_adcf14b6e9a42905bcb52e941b692a803}{Modificar\+Etiqueta}} (\mbox{\hyperlink{classVertice}{Vertice}} \&vertice, char nueva)
+\item 
+char \mbox{\hyperlink{classGrafo_a7278c0a3beccb3778f892403b0101002}{Etiqueta}} (\mbox{\hyperlink{classVertice}{Vertice}} \&vertice)
+\item 
+void \mbox{\hyperlink{classGrafo_a20e8f3d394b92f5bf1b00379be984182}{Agregar\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} \&destino, size\+\_\+t \mbox{\hyperlink{log2_8txt_acff4184f0451f65f0961d09f3d073553}{peso}})
+\item 
+void \mbox{\hyperlink{classGrafo_a8375d234eef0eacc46d90b5fba56d8e8}{Eliminar\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} \&destino)
+\item 
+void \mbox{\hyperlink{classGrafo_a6c242279688f5df41494409911075303}{Modificar\+Peso}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} \&destino, size\+\_\+t nuevo\+Peso)
+\item 
+size\+\_\+t \mbox{\hyperlink{classGrafo_a28e1808af22657a671598405405ded82}{Peso}} (const \mbox{\hyperlink{classVertice}{Vertice}} \&origen, const \mbox{\hyperlink{classVertice}{Vertice}} \&destino)
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_afe0374614487ea4825d4c1997e2036bc}{Primer\+Vertice}} ()
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_a0705443b0fb345659915e074b62c2e00}{Siguiente\+Vertice}} (\mbox{\hyperlink{classVertice}{Vertice}} \&original)
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_ad039396e144e002028b45e232c5f3eb1}{Primer\+Vertice\+Adyacente}} (\mbox{\hyperlink{classVertice}{Vertice}} \&original)
+\item 
+int \mbox{\hyperlink{classGrafo_a810a28385203a5fd59fbeda423f93da8}{Existe\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&inicio, \mbox{\hyperlink{classVertice}{Vertice}} \&fin)
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_aa883995c2392af87ff1da6e99d5981b7}{Siguiente\+Vertice\+Adyacente}} (\mbox{\hyperlink{classVertice}{Vertice}} \&original, \mbox{\hyperlink{classVertice}{Vertice}} \&ady\+Anterior)
+\item 
+void \mbox{\hyperlink{classGrafo_a863afb44e194aa10bc684fc67c994b14}{Imprimir\+Conexiones}} (\mbox{\hyperlink{classVertice}{Vertice}} \&vertice)
+\item 
+void \mbox{\hyperlink{classGrafo_abf9957b292fd604dcf1ff32b15e6af2e}{Imprimir\+Vertices}} ()
+\item 
+\mbox{\hyperlink{classGrafo_ab810bbe26a98e9af6661ccddff66b03b}{Grafo}} ()
+\item 
+\mbox{\hyperlink{classGrafo_a16f3fbba0de2667dfba3b657cb7e95ff}{$\sim$\+Grafo}} ()
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_a2e24fd6679bf60f60aec53f15a08cd52}{Agregar\+Vertice}} (char elemento)
+\item 
+void \mbox{\hyperlink{classGrafo_a83ea7fb2ebd37fdee2e30f2847025cfb}{Eliminar\+Vertice}} (\mbox{\hyperlink{classVertice}{Vertice}} \&borrado)
+\item 
+const size\+\_\+t \mbox{\hyperlink{classGrafo_a70ab3a2abda81f2add16524c49c64e91}{Num\+Vertices}} ()
+\item 
+void \mbox{\hyperlink{classGrafo_a1a4d674d5ae252db59cacac8c52fc5ae}{Modificar\+Etiqueta}} (\mbox{\hyperlink{classVertice}{Vertice}} \&vertice, char etiqueta)
+\item 
+char \mbox{\hyperlink{classGrafo_a7278c0a3beccb3778f892403b0101002}{Etiqueta}} (\mbox{\hyperlink{classVertice}{Vertice}} \&vertice)
+\item 
+void \mbox{\hyperlink{classGrafo_a20e8f3d394b92f5bf1b00379be984182}{Agregar\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} \&destino, size\+\_\+t \mbox{\hyperlink{log2_8txt_acff4184f0451f65f0961d09f3d073553}{peso}})
+\item 
+void \mbox{\hyperlink{classGrafo_a8375d234eef0eacc46d90b5fba56d8e8}{Eliminar\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} \&destino)
+\item 
+void \mbox{\hyperlink{classGrafo_af039606799738f6d67b67c7e0c08f945}{Modificar\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} \&destino, size\+\_\+t \mbox{\hyperlink{log2_8txt_acff4184f0451f65f0961d09f3d073553}{peso}})
+\item 
+size\+\_\+t \mbox{\hyperlink{classGrafo_a446d0a5ba20d656867719cb913e350e8}{Peso}} (\mbox{\hyperlink{classVertice}{Vertice}} \&origen, \mbox{\hyperlink{classVertice}{Vertice}} destino)
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_afe0374614487ea4825d4c1997e2036bc}{Primer\+Vertice}} ()
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_afcbb0ceed1b52d277d7264934301bf62}{Siguiente\+Vertice}} (\mbox{\hyperlink{classVertice}{Vertice}} \&anterior)
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_ad039396e144e002028b45e232c5f3eb1}{Primer\+Vertice\+Adyacente}} (\mbox{\hyperlink{classVertice}{Vertice}} \&original)
+\item 
+int \mbox{\hyperlink{classGrafo_a810a28385203a5fd59fbeda423f93da8}{Existe\+Arista}} (\mbox{\hyperlink{classVertice}{Vertice}} \&inicio, \mbox{\hyperlink{classVertice}{Vertice}} \&fin)
+\item 
+\mbox{\hyperlink{classVertice}{Vertice}} \mbox{\hyperlink{classGrafo_a8188fb517f79acbe7428a39af649092f}{Siguiente\+Vertice\+Adyacente}} (\mbox{\hyperlink{classVertice}{Vertice}} \&original, \mbox{\hyperlink{classVertice}{Vertice}} \&adyacente)
+\item 
+void \mbox{\hyperlink{classGrafo_a2eb168ee7320a4ecbef16ddf832df1c7}{Imprimir\+Grafo}} ()
+\item 
+void \mbox{\hyperlink{classGrafo_abf9957b292fd604dcf1ff32b15e6af2e}{Imprimir\+Vertices}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGrafo_ab810bbe26a98e9af6661ccddff66b03b}\label{classGrafo_ab810bbe26a98e9af6661ccddff66b03b}} 
+\index{Grafo@{Grafo}!Grafo@{Grafo}}
+\index{Grafo@{Grafo}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{Grafo()}{Grafo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Grafo\+::\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Crea un nuevo Arbol e inicializa su lista principal. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol no este inicializado ~\newline
+ 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classGrafo_a16f3fbba0de2667dfba3b657cb7e95ff}\label{classGrafo_a16f3fbba0de2667dfba3b657cb7e95ff}} 
+\index{Grafo@{Grafo}!````~Grafo@{$\sim$Grafo}}
+\index{````~Grafo@{$\sim$Grafo}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{$\sim$Grafo()}{~Grafo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Grafo\+::$\sim$\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Elimina al arbol y su lista principal. 
+
+\begin{DoxyRemark}{Remarks}
+Requiere que el arbol este inicializado 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classGrafo_ab810bbe26a98e9af6661ccddff66b03b}\label{classGrafo_ab810bbe26a98e9af6661ccddff66b03b}} 
+\index{Grafo@{Grafo}!Grafo@{Grafo}}
+\index{Grafo@{Grafo}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{Grafo()}{Grafo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Grafo\+::\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a16f3fbba0de2667dfba3b657cb7e95ff}\label{classGrafo_a16f3fbba0de2667dfba3b657cb7e95ff}} 
+\index{Grafo@{Grafo}!````~Grafo@{$\sim$Grafo}}
+\index{````~Grafo@{$\sim$Grafo}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{$\sim$Grafo()}{~Grafo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Grafo\+::$\sim$\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGrafo_a20e8f3d394b92f5bf1b00379be984182}\label{classGrafo_a20e8f3d394b92f5bf1b00379be984182}} 
+\index{Grafo@{Grafo}!AgregarArista@{AgregarArista}}
+\index{AgregarArista@{AgregarArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{AgregarArista()}{AgregarArista()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Agregar\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino,  }\item[{size\+\_\+t}]{peso }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a20e8f3d394b92f5bf1b00379be984182}\label{classGrafo_a20e8f3d394b92f5bf1b00379be984182}} 
+\index{Grafo@{Grafo}!AgregarArista@{AgregarArista}}
+\index{AgregarArista@{AgregarArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{AgregarArista()}{AgregarArista()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Agregar\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino,  }\item[{size\+\_\+t}]{peso }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a2e24fd6679bf60f60aec53f15a08cd52}\label{classGrafo_a2e24fd6679bf60f60aec53f15a08cd52}} 
+\index{Grafo@{Grafo}!AgregarVertice@{AgregarVertice}}
+\index{AgregarVertice@{AgregarVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{AgregarVertice()}{AgregarVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Agregar\+Vertice (\begin{DoxyParamCaption}\item[{char}]{elemento }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a2765e56182e4bab797a1c97b392d508b}\label{classGrafo_a2765e56182e4bab797a1c97b392d508b}} 
+\index{Grafo@{Grafo}!AgregarVertice@{AgregarVertice}}
+\index{AgregarVertice@{AgregarVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{AgregarVertice()}{AgregarVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Agregar\+Vertice (\begin{DoxyParamCaption}\item[{char}]{etiqueta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a8375d234eef0eacc46d90b5fba56d8e8}\label{classGrafo_a8375d234eef0eacc46d90b5fba56d8e8}} 
+\index{Grafo@{Grafo}!EliminarArista@{EliminarArista}}
+\index{EliminarArista@{EliminarArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{EliminarArista()}{EliminarArista()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Eliminar\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a8375d234eef0eacc46d90b5fba56d8e8}\label{classGrafo_a8375d234eef0eacc46d90b5fba56d8e8}} 
+\index{Grafo@{Grafo}!EliminarArista@{EliminarArista}}
+\index{EliminarArista@{EliminarArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{EliminarArista()}{EliminarArista()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Eliminar\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a83ea7fb2ebd37fdee2e30f2847025cfb}\label{classGrafo_a83ea7fb2ebd37fdee2e30f2847025cfb}} 
+\index{Grafo@{Grafo}!EliminarVertice@{EliminarVertice}}
+\index{EliminarVertice@{EliminarVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{EliminarVertice()}{EliminarVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Eliminar\+Vertice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{borrado }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_ada5ad81267ab9bf5e0bcbed260b7492a}\label{classGrafo_ada5ad81267ab9bf5e0bcbed260b7492a}} 
+\index{Grafo@{Grafo}!EliminarVertice@{EliminarVertice}}
+\index{EliminarVertice@{EliminarVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{EliminarVertice()}{EliminarVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Eliminar\+Vertice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a7278c0a3beccb3778f892403b0101002}\label{classGrafo_a7278c0a3beccb3778f892403b0101002}} 
+\index{Grafo@{Grafo}!Etiqueta@{Etiqueta}}
+\index{Etiqueta@{Etiqueta}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{Etiqueta()}{Etiqueta()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily char Grafo\+::\+Etiqueta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a7278c0a3beccb3778f892403b0101002}\label{classGrafo_a7278c0a3beccb3778f892403b0101002}} 
+\index{Grafo@{Grafo}!Etiqueta@{Etiqueta}}
+\index{Etiqueta@{Etiqueta}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{Etiqueta()}{Etiqueta()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily char Grafo\+::\+Etiqueta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a810a28385203a5fd59fbeda423f93da8}\label{classGrafo_a810a28385203a5fd59fbeda423f93da8}} 
+\index{Grafo@{Grafo}!ExisteArista@{ExisteArista}}
+\index{ExisteArista@{ExisteArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ExisteArista()}{ExisteArista()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Grafo\+::\+Existe\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{inicio,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{fin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a810a28385203a5fd59fbeda423f93da8}\label{classGrafo_a810a28385203a5fd59fbeda423f93da8}} 
+\index{Grafo@{Grafo}!ExisteArista@{ExisteArista}}
+\index{ExisteArista@{ExisteArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ExisteArista()}{ExisteArista()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Grafo\+::\+Existe\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{inicio,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{fin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a863afb44e194aa10bc684fc67c994b14}\label{classGrafo_a863afb44e194aa10bc684fc67c994b14}} 
+\index{Grafo@{Grafo}!ImprimirConexiones@{ImprimirConexiones}}
+\index{ImprimirConexiones@{ImprimirConexiones}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ImprimirConexiones()}{ImprimirConexiones()}}
+{\footnotesize\ttfamily void Grafo\+::\+Imprimir\+Conexiones (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a2eb168ee7320a4ecbef16ddf832df1c7}\label{classGrafo_a2eb168ee7320a4ecbef16ddf832df1c7}} 
+\index{Grafo@{Grafo}!ImprimirGrafo@{ImprimirGrafo}}
+\index{ImprimirGrafo@{ImprimirGrafo}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ImprimirGrafo()}{ImprimirGrafo()}}
+{\footnotesize\ttfamily void Grafo\+::\+Imprimir\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_abf9957b292fd604dcf1ff32b15e6af2e}\label{classGrafo_abf9957b292fd604dcf1ff32b15e6af2e}} 
+\index{Grafo@{Grafo}!ImprimirVertices@{ImprimirVertices}}
+\index{ImprimirVertices@{ImprimirVertices}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ImprimirVertices()}{ImprimirVertices()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Imprimir\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_abf9957b292fd604dcf1ff32b15e6af2e}\label{classGrafo_abf9957b292fd604dcf1ff32b15e6af2e}} 
+\index{Grafo@{Grafo}!ImprimirVertices@{ImprimirVertices}}
+\index{ImprimirVertices@{ImprimirVertices}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ImprimirVertices()}{ImprimirVertices()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Imprimir\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_af039606799738f6d67b67c7e0c08f945}\label{classGrafo_af039606799738f6d67b67c7e0c08f945}} 
+\index{Grafo@{Grafo}!ModificarArista@{ModificarArista}}
+\index{ModificarArista@{ModificarArista}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ModificarArista()}{ModificarArista()}}
+{\footnotesize\ttfamily void Grafo\+::\+Modificar\+Arista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino,  }\item[{size\+\_\+t}]{peso }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a1a4d674d5ae252db59cacac8c52fc5ae}\label{classGrafo_a1a4d674d5ae252db59cacac8c52fc5ae}} 
+\index{Grafo@{Grafo}!ModificarEtiqueta@{ModificarEtiqueta}}
+\index{ModificarEtiqueta@{ModificarEtiqueta}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ModificarEtiqueta()}{ModificarEtiqueta()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Modificar\+Etiqueta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice,  }\item[{char}]{etiqueta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_adcf14b6e9a42905bcb52e941b692a803}\label{classGrafo_adcf14b6e9a42905bcb52e941b692a803}} 
+\index{Grafo@{Grafo}!ModificarEtiqueta@{ModificarEtiqueta}}
+\index{ModificarEtiqueta@{ModificarEtiqueta}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ModificarEtiqueta()}{ModificarEtiqueta()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grafo\+::\+Modificar\+Etiqueta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{vertice,  }\item[{char}]{nueva }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a6c242279688f5df41494409911075303}\label{classGrafo_a6c242279688f5df41494409911075303}} 
+\index{Grafo@{Grafo}!ModificarPeso@{ModificarPeso}}
+\index{ModificarPeso@{ModificarPeso}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{ModificarPeso()}{ModificarPeso()}}
+{\footnotesize\ttfamily void Grafo\+::\+Modificar\+Peso (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino,  }\item[{size\+\_\+t}]{nuevo\+Peso }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a70ab3a2abda81f2add16524c49c64e91}\label{classGrafo_a70ab3a2abda81f2add16524c49c64e91}} 
+\index{Grafo@{Grafo}!NumVertices@{NumVertices}}
+\index{NumVertices@{NumVertices}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{NumVertices()}{NumVertices()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const size\+\_\+t Grafo\+::\+Num\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a70ab3a2abda81f2add16524c49c64e91}\label{classGrafo_a70ab3a2abda81f2add16524c49c64e91}} 
+\index{Grafo@{Grafo}!NumVertices@{NumVertices}}
+\index{NumVertices@{NumVertices}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{NumVertices()}{NumVertices()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const size\+\_\+t Grafo\+::\+Num\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a28e1808af22657a671598405405ded82}\label{classGrafo_a28e1808af22657a671598405405ded82}} 
+\index{Grafo@{Grafo}!Peso@{Peso}}
+\index{Peso@{Peso}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{Peso()}{Peso()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily size\+\_\+t Grafo\+::\+Peso (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{const \mbox{\hyperlink{classVertice}{Vertice}} \&}]{destino }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a446d0a5ba20d656867719cb913e350e8}\label{classGrafo_a446d0a5ba20d656867719cb913e350e8}} 
+\index{Grafo@{Grafo}!Peso@{Peso}}
+\index{Peso@{Peso}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{Peso()}{Peso()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily size\+\_\+t Grafo\+::\+Peso (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{origen,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}}}]{destino }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_afe0374614487ea4825d4c1997e2036bc}\label{classGrafo_afe0374614487ea4825d4c1997e2036bc}} 
+\index{Grafo@{Grafo}!PrimerVertice@{PrimerVertice}}
+\index{PrimerVertice@{PrimerVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{PrimerVertice()}{PrimerVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Primer\+Vertice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_afe0374614487ea4825d4c1997e2036bc}\label{classGrafo_afe0374614487ea4825d4c1997e2036bc}} 
+\index{Grafo@{Grafo}!PrimerVertice@{PrimerVertice}}
+\index{PrimerVertice@{PrimerVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{PrimerVertice()}{PrimerVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Primer\+Vertice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_ad039396e144e002028b45e232c5f3eb1}\label{classGrafo_ad039396e144e002028b45e232c5f3eb1}} 
+\index{Grafo@{Grafo}!PrimerVerticeAdyacente@{PrimerVerticeAdyacente}}
+\index{PrimerVerticeAdyacente@{PrimerVerticeAdyacente}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{PrimerVerticeAdyacente()}{PrimerVerticeAdyacente()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Primer\+Vertice\+Adyacente (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{original }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_ad039396e144e002028b45e232c5f3eb1}\label{classGrafo_ad039396e144e002028b45e232c5f3eb1}} 
+\index{Grafo@{Grafo}!PrimerVerticeAdyacente@{PrimerVerticeAdyacente}}
+\index{PrimerVerticeAdyacente@{PrimerVerticeAdyacente}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{PrimerVerticeAdyacente()}{PrimerVerticeAdyacente()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Primer\+Vertice\+Adyacente (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{original }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_afcbb0ceed1b52d277d7264934301bf62}\label{classGrafo_afcbb0ceed1b52d277d7264934301bf62}} 
+\index{Grafo@{Grafo}!SiguienteVertice@{SiguienteVertice}}
+\index{SiguienteVertice@{SiguienteVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{SiguienteVertice()}{SiguienteVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Siguiente\+Vertice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{anterior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a0705443b0fb345659915e074b62c2e00}\label{classGrafo_a0705443b0fb345659915e074b62c2e00}} 
+\index{Grafo@{Grafo}!SiguienteVertice@{SiguienteVertice}}
+\index{SiguienteVertice@{SiguienteVertice}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{SiguienteVertice()}{SiguienteVertice()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Siguiente\+Vertice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{original }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_a8188fb517f79acbe7428a39af649092f}\label{classGrafo_a8188fb517f79acbe7428a39af649092f}} 
+\index{Grafo@{Grafo}!SiguienteVerticeAdyacente@{SiguienteVerticeAdyacente}}
+\index{SiguienteVerticeAdyacente@{SiguienteVerticeAdyacente}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{SiguienteVerticeAdyacente()}{SiguienteVerticeAdyacente()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Siguiente\+Vertice\+Adyacente (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{original,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{adyacente }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classGrafo_aa883995c2392af87ff1da6e99d5981b7}\label{classGrafo_aa883995c2392af87ff1da6e99d5981b7}} 
+\index{Grafo@{Grafo}!SiguienteVerticeAdyacente@{SiguienteVerticeAdyacente}}
+\index{SiguienteVerticeAdyacente@{SiguienteVerticeAdyacente}!Grafo@{Grafo}}
+\doxysubsubsection{\texorpdfstring{SiguienteVerticeAdyacente()}{SiguienteVerticeAdyacente()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertice}{Vertice}} Grafo\+::\+Siguiente\+Vertice\+Adyacente (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{original,  }\item[{\mbox{\hyperlink{classVertice}{Vertice}} \&}]{ady\+Anterior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Lista\+Adyacencia/\mbox{\hyperlink{ListaAdyacencia_2Grafo_8hpp}{Grafo.\+hpp}}\end{DoxyCompactItemize}

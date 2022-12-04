@@ -157,7 +157,7 @@ pyout/output%.txt: $(TST_DIR)/input%.txt $(TST_DIR)/output%.txt
 # Documentation
 doc: $(DOCTARG)
 cppdoc: Doxyfile $(INPUTCX)
-	doxygen -q
+	doxygen
 
 javadoc: $(SOURCEJ) | $(DOC_DIR)/java/.
 	javadoc -quiet $(SOURCEJ) -d $(DOC_DIR)/java

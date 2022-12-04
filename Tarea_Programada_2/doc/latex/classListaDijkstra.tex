@@ -1,0 +1,184 @@
+\hypertarget{classListaDijkstra}{}\doxysection{Lista\+Dijkstra Class Reference}
+\label{classListaDijkstra}\index{ListaDijkstra@{ListaDijkstra}}
+
+
+{\ttfamily \#include $<$Controlador.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classListaDijkstra_ae7046182d8508dd3756e9289fab633fe}{Lista\+Dijkstra}} (size\+\_\+t tamano)
+\item 
+\mbox{\hyperlink{classListaDijkstra_a0f8f4df62db27897fb48af00c56c00e1}{$\sim$\+Lista\+Dijkstra}} ()
+\item 
+void \mbox{\hyperlink{classListaDijkstra_a8268245072446eda2cb60571267b4750}{agregar}} (char vertice\+Actual, char el\+Vertice\+Anterior, int \mbox{\hyperlink{log2_8txt_acff4184f0451f65f0961d09f3d073553}{peso}})
+\item 
+void \mbox{\hyperlink{classListaDijkstra_aa365a3938fccaf2b23a8726a9412ffd8}{set\+Peso}} (char vertice\+Actual, int \mbox{\hyperlink{log2_8txt_acff4184f0451f65f0961d09f3d073553}{peso}})
+\item 
+void \mbox{\hyperlink{classListaDijkstra_a4f61cb0b9ff910032c946f044c6da614}{set\+Anterior}} (char vertice\+Actual, char anterior)
+\item 
+int \mbox{\hyperlink{classListaDijkstra_acae3c1aebed8c571007907e3202041c3}{get\+Peso}} (char vertice\+Actual)
+\item 
+int \mbox{\hyperlink{classListaDijkstra_a91de92e9bbb7e1c8c751d9c1ee5de292}{get\+Peso\+Por\+Indice}} (size\+\_\+t indice)
+\item 
+char \mbox{\hyperlink{classListaDijkstra_a9067fbc04abe4d431608c062621915e9}{get\+Vertice\+Por\+Indice}} (size\+\_\+t indice)
+\item 
+bool \mbox{\hyperlink{classListaDijkstra_a20582d136ebf8f218005ff3e36e8ffa3}{es\+Visitado\+Por\+Indice}} (size\+\_\+t indice)
+\item 
+void \mbox{\hyperlink{classListaDijkstra_ac5703f5db012e78acad4b20606b565b4}{set\+Visitador\+Por\+Indice}} (size\+\_\+t indice)
+\item 
+void \mbox{\hyperlink{classListaDijkstra_a67d7ec10d3600b55c9787f8d4acec256}{set\+Visitado}} (char vertice\+Visitado)
+\item 
+void \mbox{\hyperlink{classListaDijkstra_a670d05d8c18f6ac444854f8fa7632cdb}{imprimir\+Lista}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classListaDijkstra_adfbee8db29222a081ac5acef0ee730fb}{cantidad\+Elementos}} = 0
+\item 
+int \mbox{\hyperlink{classListaDijkstra_a54b3350fc97518a690ef9cd077ac9944}{tamano\+Max}}
+\item 
+bool $\ast$ \mbox{\hyperlink{classListaDijkstra_af838d06bf4a464921aa0aebbd5e9166f}{visitado}}
+\item 
+int $\ast$ \mbox{\hyperlink{classListaDijkstra_a43998d245754c0af4a83dd1a5bff4ad7}{pesos}}
+\item 
+char $\ast$ \mbox{\hyperlink{classListaDijkstra_a04deab37948b0ca3e1878cc896b44b48}{vertices}}
+\item 
+char $\ast$ \mbox{\hyperlink{classListaDijkstra_af51e40c1d449f8a8e3e9e35996689df4}{vertice\+Anterior}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classListaDijkstra_af245a382c3b6650f438c25702e2ab793}{Controlador}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classListaDijkstra_ae7046182d8508dd3756e9289fab633fe}\label{classListaDijkstra_ae7046182d8508dd3756e9289fab633fe}} 
+\index{ListaDijkstra@{ListaDijkstra}!ListaDijkstra@{ListaDijkstra}}
+\index{ListaDijkstra@{ListaDijkstra}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{ListaDijkstra()}{ListaDijkstra()}}
+{\footnotesize\ttfamily Lista\+Dijkstra\+::\+Lista\+Dijkstra (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{tamano }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a0f8f4df62db27897fb48af00c56c00e1}\label{classListaDijkstra_a0f8f4df62db27897fb48af00c56c00e1}} 
+\index{ListaDijkstra@{ListaDijkstra}!````~ListaDijkstra@{$\sim$ListaDijkstra}}
+\index{````~ListaDijkstra@{$\sim$ListaDijkstra}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{$\sim$ListaDijkstra()}{~ListaDijkstra()}}
+{\footnotesize\ttfamily Lista\+Dijkstra\+::$\sim$\+Lista\+Dijkstra (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classListaDijkstra_a8268245072446eda2cb60571267b4750}\label{classListaDijkstra_a8268245072446eda2cb60571267b4750}} 
+\index{ListaDijkstra@{ListaDijkstra}!agregar@{agregar}}
+\index{agregar@{agregar}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{agregar()}{agregar()}}
+{\footnotesize\ttfamily void Lista\+Dijkstra\+::agregar (\begin{DoxyParamCaption}\item[{char}]{vertice\+Actual,  }\item[{char}]{el\+Vertice\+Anterior,  }\item[{int}]{peso }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a20582d136ebf8f218005ff3e36e8ffa3}\label{classListaDijkstra_a20582d136ebf8f218005ff3e36e8ffa3}} 
+\index{ListaDijkstra@{ListaDijkstra}!esVisitadoPorIndice@{esVisitadoPorIndice}}
+\index{esVisitadoPorIndice@{esVisitadoPorIndice}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{esVisitadoPorIndice()}{esVisitadoPorIndice()}}
+{\footnotesize\ttfamily bool Lista\+Dijkstra\+::es\+Visitado\+Por\+Indice (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_acae3c1aebed8c571007907e3202041c3}\label{classListaDijkstra_acae3c1aebed8c571007907e3202041c3}} 
+\index{ListaDijkstra@{ListaDijkstra}!getPeso@{getPeso}}
+\index{getPeso@{getPeso}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{getPeso()}{getPeso()}}
+{\footnotesize\ttfamily int Lista\+Dijkstra\+::get\+Peso (\begin{DoxyParamCaption}\item[{char}]{vertice\+Actual }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a91de92e9bbb7e1c8c751d9c1ee5de292}\label{classListaDijkstra_a91de92e9bbb7e1c8c751d9c1ee5de292}} 
+\index{ListaDijkstra@{ListaDijkstra}!getPesoPorIndice@{getPesoPorIndice}}
+\index{getPesoPorIndice@{getPesoPorIndice}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{getPesoPorIndice()}{getPesoPorIndice()}}
+{\footnotesize\ttfamily int Lista\+Dijkstra\+::get\+Peso\+Por\+Indice (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a9067fbc04abe4d431608c062621915e9}\label{classListaDijkstra_a9067fbc04abe4d431608c062621915e9}} 
+\index{ListaDijkstra@{ListaDijkstra}!getVerticePorIndice@{getVerticePorIndice}}
+\index{getVerticePorIndice@{getVerticePorIndice}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{getVerticePorIndice()}{getVerticePorIndice()}}
+{\footnotesize\ttfamily char Lista\+Dijkstra\+::get\+Vertice\+Por\+Indice (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a670d05d8c18f6ac444854f8fa7632cdb}\label{classListaDijkstra_a670d05d8c18f6ac444854f8fa7632cdb}} 
+\index{ListaDijkstra@{ListaDijkstra}!imprimirLista@{imprimirLista}}
+\index{imprimirLista@{imprimirLista}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{imprimirLista()}{imprimirLista()}}
+{\footnotesize\ttfamily void Lista\+Dijkstra\+::imprimir\+Lista (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a4f61cb0b9ff910032c946f044c6da614}\label{classListaDijkstra_a4f61cb0b9ff910032c946f044c6da614}} 
+\index{ListaDijkstra@{ListaDijkstra}!setAnterior@{setAnterior}}
+\index{setAnterior@{setAnterior}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{setAnterior()}{setAnterior()}}
+{\footnotesize\ttfamily void Lista\+Dijkstra\+::set\+Anterior (\begin{DoxyParamCaption}\item[{char}]{vertice\+Actual,  }\item[{char}]{anterior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_aa365a3938fccaf2b23a8726a9412ffd8}\label{classListaDijkstra_aa365a3938fccaf2b23a8726a9412ffd8}} 
+\index{ListaDijkstra@{ListaDijkstra}!setPeso@{setPeso}}
+\index{setPeso@{setPeso}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{setPeso()}{setPeso()}}
+{\footnotesize\ttfamily void Lista\+Dijkstra\+::set\+Peso (\begin{DoxyParamCaption}\item[{char}]{vertice\+Actual,  }\item[{int}]{peso }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_a67d7ec10d3600b55c9787f8d4acec256}\label{classListaDijkstra_a67d7ec10d3600b55c9787f8d4acec256}} 
+\index{ListaDijkstra@{ListaDijkstra}!setVisitado@{setVisitado}}
+\index{setVisitado@{setVisitado}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{setVisitado()}{setVisitado()}}
+{\footnotesize\ttfamily void Lista\+Dijkstra\+::set\+Visitado (\begin{DoxyParamCaption}\item[{char}]{vertice\+Visitado }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classListaDijkstra_ac5703f5db012e78acad4b20606b565b4}\label{classListaDijkstra_ac5703f5db012e78acad4b20606b565b4}} 
+\index{ListaDijkstra@{ListaDijkstra}!setVisitadorPorIndice@{setVisitadorPorIndice}}
+\index{setVisitadorPorIndice@{setVisitadorPorIndice}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{setVisitadorPorIndice()}{setVisitadorPorIndice()}}
+{\footnotesize\ttfamily void Lista\+Dijkstra\+::set\+Visitador\+Por\+Indice (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{indice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classListaDijkstra_af245a382c3b6650f438c25702e2ab793}\label{classListaDijkstra_af245a382c3b6650f438c25702e2ab793}} 
+\index{ListaDijkstra@{ListaDijkstra}!Controlador@{Controlador}}
+\index{Controlador@{Controlador}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{Controlador}{Controlador}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classControlador}{Controlador}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classListaDijkstra_adfbee8db29222a081ac5acef0ee730fb}\label{classListaDijkstra_adfbee8db29222a081ac5acef0ee730fb}} 
+\index{ListaDijkstra@{ListaDijkstra}!cantidadElementos@{cantidadElementos}}
+\index{cantidadElementos@{cantidadElementos}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{cantidadElementos}{cantidadElementos}}
+{\footnotesize\ttfamily int Lista\+Dijkstra\+::cantidad\+Elementos = 0}
+
+\mbox{\Hypertarget{classListaDijkstra_a43998d245754c0af4a83dd1a5bff4ad7}\label{classListaDijkstra_a43998d245754c0af4a83dd1a5bff4ad7}} 
+\index{ListaDijkstra@{ListaDijkstra}!pesos@{pesos}}
+\index{pesos@{pesos}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{pesos}{pesos}}
+{\footnotesize\ttfamily int$\ast$ Lista\+Dijkstra\+::pesos}
+
+\mbox{\Hypertarget{classListaDijkstra_a54b3350fc97518a690ef9cd077ac9944}\label{classListaDijkstra_a54b3350fc97518a690ef9cd077ac9944}} 
+\index{ListaDijkstra@{ListaDijkstra}!tamanoMax@{tamanoMax}}
+\index{tamanoMax@{tamanoMax}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{tamanoMax}{tamanoMax}}
+{\footnotesize\ttfamily int Lista\+Dijkstra\+::tamano\+Max}
+
+\mbox{\Hypertarget{classListaDijkstra_af51e40c1d449f8a8e3e9e35996689df4}\label{classListaDijkstra_af51e40c1d449f8a8e3e9e35996689df4}} 
+\index{ListaDijkstra@{ListaDijkstra}!verticeAnterior@{verticeAnterior}}
+\index{verticeAnterior@{verticeAnterior}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{verticeAnterior}{verticeAnterior}}
+{\footnotesize\ttfamily char$\ast$ Lista\+Dijkstra\+::vertice\+Anterior}
+
+\mbox{\Hypertarget{classListaDijkstra_a04deab37948b0ca3e1878cc896b44b48}\label{classListaDijkstra_a04deab37948b0ca3e1878cc896b44b48}} 
+\index{ListaDijkstra@{ListaDijkstra}!vertices@{vertices}}
+\index{vertices@{vertices}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily char$\ast$ Lista\+Dijkstra\+::vertices}
+
+\mbox{\Hypertarget{classListaDijkstra_af838d06bf4a464921aa0aebbd5e9166f}\label{classListaDijkstra_af838d06bf4a464921aa0aebbd5e9166f}} 
+\index{ListaDijkstra@{ListaDijkstra}!visitado@{visitado}}
+\index{visitado@{visitado}!ListaDijkstra@{ListaDijkstra}}
+\doxysubsubsection{\texorpdfstring{visitado}{visitado}}
+{\footnotesize\ttfamily bool$\ast$ Lista\+Dijkstra\+::visitado}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Algoritmos/\mbox{\hyperlink{Controlador_8hpp}{Controlador.\+hpp}}\end{DoxyCompactItemize}

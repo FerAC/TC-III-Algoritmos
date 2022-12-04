@@ -1,0 +1,56 @@
+bin/Tarea_Programada_2
+a	5	f
+b	3	d
+c	7	b
+d	2	f
+e	4	d
+f	0	f
+
+dijkstra para el vertice: a
+a	0	a
+b	2	a
+c	3	a
+d	3	b
+e	5	a
+f	5	a
+
+dijkstra para el vertice: b
+a	2	b
+b	0	b
+c	4	b
+d	1	b
+e	3	b
+f	3	d
+
+dijkstra para el vertice: c
+a	3	c
+b	4	c
+c	0	c
+d	5	b
+e	7	c
+f	7	d
+
+dijkstra para el vertice: d
+a	3	b
+b	1	d
+c	5	b
+d	0	d
+e	2	d
+f	2	d
+
+dijkstra para el vertice: e
+a	5	e
+b	3	e
+c	7	e
+d	2	e
+e	0	e
+f	4	d
+
+dijkstra para el vertice: f
+a	5	f
+b	3	d
+c	7	b
+d	2	f
+e	4	d
+f	0	f
+

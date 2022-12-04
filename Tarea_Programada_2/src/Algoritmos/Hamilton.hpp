@@ -1,11 +1,12 @@
 #ifndef HAMILTON
 #define HAMILTON
 #include "Prim.hpp"
+#include <limits>
 
 class Hamilton{
     private :
         std::map<char, Vertice> diccionario;  
-        size_t mejorCosto = 999999999; //TODO: cambiar a infinito o algo asi xd 
+        size_t mejorCosto = std::numeric_limits<size_t>::max(); //TODO: cambiar a infinito o algo asi xd 
         size_t costoActual = 0; 
         Vertice * solActual;
         Vertice * mejorSol;
