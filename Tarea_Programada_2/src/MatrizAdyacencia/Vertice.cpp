@@ -41,7 +41,7 @@ void Vertice::setPosicion(size_t indice) {
     this->indice = indice;
 }
 
-size_t Vertice::getindice() {
+size_t Vertice::getindice() const {
     return indice; 
 }
 
@@ -49,7 +49,7 @@ void Vertice::setEtiqueta(char valor) {
     this->etiqueta = valor;
 }
 
-char Vertice::getEtiqueta() {
+char Vertice::getEtiqueta() const {
     return this->etiqueta;
 }
 

@@ -10,7 +10,7 @@
 #endif
 
 namespace HamiltonBERA {
-    static std::vector<Vertice> Hamilton(const Grafo& grafo);
+    std::vector<Vertice> Hamilton(const Grafo& grafo);
 }
 
 #endif

@@ -23,7 +23,7 @@ class Vertice
         void setPosicion(size_t indice);
 
         // TODO(Us): Documentar
-        size_t getindice();
+        size_t getindice() const;
 
         // TODO(Us): Documentar
         void setEtiqueta(char valor);
@@ -40,7 +40,7 @@ class Vertice
         ~Vertice();
 
         // TODO(Us): Documentar
-        char getEtiqueta();
+        char getEtiqueta() const;
 
         // TODO(Us): Documentar
         bool operator ==(const Vertice& otro) const;

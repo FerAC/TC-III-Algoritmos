@@ -1,6 +1,8 @@
 #include "HamiltonBERA.hpp"
 
 #include <cstddef>  // Size_t
+#include <limits>  // Max de size_t
+#include <iostream> // DEBUG
 #include <queue>  // Cola de prioridad
 #include <utility>  // Pareja
 #include <set>  // Arreglos
@@ -18,6 +20,8 @@ class Arista : public std::pair<Vertice, Vertice> {
             this->first = otro.first;
             this->second = otro.second;
             this->pesoAsociado = otro.pesoAsociado;
+
+            return *this;
         }
 
         bool operator<(const Arista& otro) const {
@@ -35,13 +39,30 @@ class Arista : public std::pair<Vertice, Vertice> {
             return false;
         }
 
+        bool operator>(const Arista& otro) const {
+            return otro < *this;
+        }
+
         bool operator!=(const Arista& otro) const {
             return (*this < otro) || (otro < *this);
         }
 };
 
+struct Estado {
+    std::set<Vertice> verticesRecorridos;
+    std::set<Arista> aristasAceptadas;
+    std::set<Arista> aristasDescartadas;
+};
+
+struct Soluciones {
+    std::vector<Vertice> solucionActual;
+    std::vector<Vertice> mejorSolucion;
+    size_t costoSolucionActual = std::numeric_limits<size_t>::max();
+    size_t costoMejorSolucion = std::numeric_limits<size_t>::max();
+};
+
 static size_t MinimoCostoPosible(const Grafo& grafo
-    , const std::set<Arista>& aristasUtilizadas) {
+    , const Estado& estadoActual) {
     // Llevemos cuenta del peso estimado al momento
     size_t costoEstimado = 0;
 
@@ -50,7 +71,7 @@ static size_t MinimoCostoPosible(const Grafo& grafo
 
         // Solo debemos considerar dos aristas por vertice
         char aristasConsideradas = 0;
-        std::priority_queue<Arista> aristasPorConsiderar;
+        std::priority_queue<Arista, std::vector<Arista>, std::greater<Arista>> aristasPorConsiderar;
 
         // Visitemos cada uno de sus vecinos adyacentes
         for (Vertice w = grafo.PrimerVerticeAdyacente(v); w != Vertice() && aristasConsideradas < 2
@@ -60,10 +81,18 @@ static size_t MinimoCostoPosible(const Grafo& grafo
             Arista aristaActual(v, w, grafo.Peso(v, w));
 
             // Si definitivamente ya la consideramos, entonces añadámosla al costo estimado
-            if (aristasUtilizadas.contains(aristaActual)) {
+            if (estadoActual.aristasAceptadas.contains(aristaActual)) {
+
+                /* DEBUG */
+                std::cout << "\tSumando [" << grafo.Etiqueta(v) << ", " << grafo.Etiqueta(w) << "] al estimado" 
+                << std::endl; /**/
+
                 costoEstimado += aristaActual.pesoAsociado;
                 aristasConsideradas += 1;
-            } else {  // Sino, añadamosla a las aristas por considerar
+            
+            } 
+             // Sino, si no la omitimos, añadamosla a las aristas por considerar
+            else if (!estadoActual.aristasDescartadas.contains(aristaActual)) {
                 aristasPorConsiderar.push(aristaActual);
             }
         }
@@ -75,12 +104,24 @@ static size_t MinimoCostoPosible(const Grafo& grafo
                 continue;
             }
 
+            /* DEBUG */
+            std::cout << "\tSumando [" << grafo.Etiqueta(aristasPorConsiderar.top().first) << ", " 
+            << grafo.Etiqueta(aristasPorConsiderar.top().second) << "] al estimado" 
+            << std::endl; /**/
+
             costoEstimado += aristasPorConsiderar.top().pesoAsociado;
             aristasPorConsiderar.pop();
+            aristasConsideradas += 1;
 
-            if (aristasPorConsiderar.empty()) {
+
+            if (aristasPorConsiderar.empty() || aristasConsideradas == 2) {
                 continue;
             }
+
+            /* DEBUG */
+            std::cout << "\tSumando [" << grafo.Etiqueta(aristasPorConsiderar.top().first) << ", " 
+            << grafo.Etiqueta(aristasPorConsiderar.top().second) << "] al estimado" 
+            << std::endl; /**/
 
             costoEstimado += aristasPorConsiderar.top().pesoAsociado;
             aristasPorConsiderar.pop();
@@ -91,156 +132,458 @@ static size_t MinimoCostoPosible(const Grafo& grafo
     return costoEstimado;
 }
 
-static bool EsPosiblementeFactible(const Grafo& grafo
-    , const Vertice& verticeCola
-    , const Vertice& verticeDestino
-    , const std::set<Vertice> verticesVisitados) {
+static size_t CostoRecorrido(const Grafo& grafo
+    , const std::vector<Vertice>& recorrido) {
+    size_t costoTotal = 0;
     
-    // Si el último vértice del recorrido es igual al primero, es posible
-    // que hayamos terminado el recorrido, o fracasado en terminarlo
-    if (verticeCola == verticeDestino)
+    // Recorreremos todas los vértices en el circuito
+    // y consideraremos sus aristas, garantizadas por
+    // la factibilidad
+    for (size_t it = 0; it < recorrido.size(); ++it) {
+        if (it == 0) {
+            // DEBUG
+            std::cout << "Costo recorrido += [" << grafo.Etiqueta(recorrido.back()) 
+            << ", " << grafo.Etiqueta(recorrido[0]) << "]" << std::endl;
+            
+            costoTotal += 
+                grafo.Peso(recorrido.back(), recorrido[0]);
+        } else {
+            // DEBUG
+            std::cout << "Costo recorrido += [" << grafo.Etiqueta(recorrido[it-1]) 
+            << ", " << grafo.Etiqueta(recorrido[it]) << "]" << std::endl;
+
+            costoTotal += 
+                grafo.Peso(recorrido[it-1], recorrido[it]);
+        }
+    }
+
+    // Para ser comparable con los costos mínimos, debemos artificalmente
+    // inflar este costo x2, para representar la doble-vía entre vértices
+    // que sí considera la función de costo mínimo
+    return 2*costoTotal;
+}
+
+static bool EsPosiblementeFactible(const Grafo& grafo
+    , const Estado& estadoActual
+    , const Soluciones& solucionesActuales) {
+
+    // Llevemos cuenta de cuántos vértices se han agregado a la solución actual
+    const size_t verticesAlMomento = solucionesActuales.solucionActual.size();
+
+    // Si no hemos añadido vértices a la solución actual, entonces consideramos
+    // que existe potencial para factibilidad
+    if (verticesAlMomento == 0) {
+        return true;
+    }
+
+    // También llevemos cuenta del último vértice del recorrido
+    const Vertice& verticeFinal = solucionesActuales.solucionActual.back();
+    
+    // Si ya recorrimos todos los vértices, hay que revisar si el último
+    // vertice conecta con el primero
+    if (verticesAlMomento == grafo.NumVertices())
     {
-        // Si ya visitamos más de un vértice, ya completamos el recorrido
-        if (verticesVisitados.size() > 1)
-            return true;
+        const Vertice& verticeInicial = solucionesActuales.solucionActual.front();
+        char puedeCerrarCiclo = 0;
+
+        for (Vertice adyacente = grafo.PrimerVerticeAdyacente(verticeFinal);
+        adyacente != Vertice() && puedeCerrarCiclo == 0; 
+        adyacente = grafo.SiguienteVerticeAdyacente(verticeFinal, adyacente)) {
+            if (adyacente == verticeInicial) {
+                puedeCerrarCiclo = 1;
+            }
+        }
         
-        // Sino, fracasamos en terminarlo
-        return false;
+        // Solo esta solución es factible solo si logramos cerrar el ciclo
+        return puedeCerrarCiclo == 1;
     }
     
-    // Sino, debemos revisar conexiones del vértice de la cola
-    // Si tiene únicamente de adyacentes a vértices distintos del destino,
-    // entonces el recorrido no puede llegar al destino, y no es factible
+    // Sino, debemos revisar conexiones del último vértice en el recorrido
+    // Si es adyacente con algún vértice no visitado al momento, entonces esta
+    // solución tiene potencial de ser factible
     char tieneAdyacenteValido = 0;
-    for (Vertice verticeAdyacente = grafo.PrimerVerticeAdyacente(verticeCola);
+    for (Vertice verticeAdyacente = grafo.PrimerVerticeAdyacente(verticeFinal);
     verticeAdyacente != Vertice() && tieneAdyacenteValido == 0;
-    verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeCola, verticeAdyacente)) {
-        if (!verticesVisitados.contains(verticeAdyacente)
-            || verticeAdyacente == verticeDestino) {
+    verticeAdyacente = grafo.SiguienteVerticeAdyacente(verticeFinal, verticeAdyacente)) {
+        if (!estadoActual.verticesRecorridos.contains(verticeAdyacente)) {
             tieneAdyacenteValido = 1;
         }
     }
 
-    // Si tiene un vértice adyacente válido, entonces es factible}
     if (tieneAdyacenteValido == 1)
         return true;
 
+    // Sino, entonces esta solución de fijo no tiene puede terminar el ciclo hamiltoniano,
+    // por lo que no tiene el potencial de ser factible
     return false;
 }
 
-static bool HamiltonBERARecursivo(const Grafo& grafo, const Vertice& partida
-    , std::set<Vertice>& verticesVisitados
-    , std::set<Arista>& aristasVisitadas
-    , std::set<Arista>& aristasDescartadas
-    , std::vector<Vertice>& mejorSolucion) {
-        
-    // Consideraremos el costo sin la conexión añadida
-    size_t costoSinAdyacente = MinimoCostoPosible(grafo, aristasVisitadas);
+static const Vertice ConsiderarVerticeHamiltonBERA(const Grafo& grafo
+    , const Vertice& verticePorConsiderar
+    , Estado& estadoActual
+    , Soluciones& solucionesActual) {
+    const Vertice& verticeFinal = solucionesActual.solucionActual.back();
+    Arista aristaPorConsiderar(verticeFinal, verticePorConsiderar, grafo.Peso(verticeFinal, verticePorConsiderar));
 
-    // Obtendremos al siguiente vértice adyacente sin conexión descartada
-    Vertice adyacente = grafo.PrimerVerticeAdyacente(partida);
-    Arista conexion(partida, adyacente, grafo.Peso(partida, adyacente));
-    while (aristasDescartadas.contains(conexion)) {
-        adyacente = grafo.SiguienteVerticeAdyacente(partida, adyacente);
+    // Hay que actualizar las E.D acordemente
+    if (!estadoActual.verticesRecorridos.contains(verticePorConsiderar)) {
+        solucionesActual.solucionActual.push_back(verticePorConsiderar);
+        estadoActual.verticesRecorridos.insert(verticePorConsiderar);
+    }
+    estadoActual.aristasAceptadas.insert(aristaPorConsiderar);
+    estadoActual.aristasDescartadas.erase(aristaPorConsiderar);
 
-        // Si se nos acabaron los vértices adyacentes sin conexión descartada
-        // entonces esta iteración no es factible
-        if (adyacente == Vertice()) {
-            return false;
-        }
+    // DEBUG
+    std::cout << "Solucion actual tras considerar:" << std::endl;
+    for (size_t i = 0; i < solucionesActual.solucionActual.size(); ++i) {
+        std::cout << solucionesActual.solucionActual[i].getEtiqueta() << " ";
+    }
+    std::cout << std::endl;
 
-        // Sino, obtengamos de candidato a la siguiente conexión
-        conexion = Arista(partida, adyacente, grafo.Peso(partida, adyacente));
+    // Consideraremos al primer vértice ocioso adyacente del vértice añadido
+    // La condición de factibilidad nos garantiza que debe existir uno
+    Vertice verticeAdyacenteLibre = grafo.PrimerVerticeAdyacente(verticePorConsiderar);
+    while (estadoActual.verticesRecorridos.contains(verticeAdyacenteLibre)
+        || estadoActual.aristasDescartadas.contains(
+        Arista(verticePorConsiderar
+            , verticeAdyacenteLibre
+            , grafo.Peso(verticePorConsiderar
+            , verticeAdyacenteLibre)
+            )
+        )) {
+        verticeAdyacenteLibre = grafo.SiguienteVerticeAdyacente(verticePorConsiderar
+            , verticeAdyacenteLibre);
     }
 
-    // Consideramos el costo con la conexión añadida
-    aristasVisitadas.insert(conexion);
-    size_t costoConAdyacente = MinimoCostoPosible(grafo, aristasVisitadas);
+    // DEBUG
+    if (estadoActual.verticesRecorridos.contains(verticeAdyacenteLibre)
+        || estadoActual.aristasDescartadas.contains(
+        Arista(verticePorConsiderar
+            , verticeAdyacenteLibre
+            , grafo.Peso(verticePorConsiderar
+            , verticeAdyacenteLibre)
+            )
+        ))
+        return Vertice();
 
-    // Si la conexión matiene el costo, entonces podemos profundizar por ahí primero
-    if (costoConAdyacente == costoSinAdyacente) {
-        verticesVisitados.insert(adyacente);
-
-        // Si la solución fue factible, podemos hacer retorno directo
-        if (HamiltonBERARecursivo(grafo, adyacente, verticesVisitados
-            , aristasVisitadas, aristasDescartadas, mejorSolucion)) {
-            mejorSolucion.push_back(adyacente);
-            return true;
-        }
-
-        // Sino, tenemos que probar con otra iteración, y hacer backtracking
-        verticesVisitados.erase(adyacente);
-        aristasVisitadas.erase(conexion); aristasDescartadas.insert(conexion);
-
-        // Si la solución alternativa fue factible, podemos hacer retorno directo
-        if (HamiltonBERARecursivo(grafo, partida, verticesVisitados
-        , aristasVisitadas, aristasDescartadas, mejorSolucion)) {
-            return true;
-        }
-
-        // Sino, ninguna de las dos soluciones es factible, y tenemos que hacer
-        // backtracking todavía más intenso
-        aristasDescartadas.erase(conexion);
-        return false;
-    } else {  // Sino, debemos profundizar por el otro lado (sin arista) primero
-        aristasVisitadas.erase(conexion);
-        aristasDescartadas.insert(conexion);
-    
-        // Si la solución alternativa fue factible, podemos hacer retorno directo
-        if (HamiltonBERARecursivo(grafo, partida, verticesVisitados
-        , aristasVisitadas, aristasDescartadas, mejorSolucion)) {
-            return true;
-        }
-
-        // Sino, tenemos que probar con otra iteración, y hacer backtracking
-        aristasDescartadas.erase(conexion); aristasVisitadas.insert(conexion);
-        verticesVisitados.insert(adyacente);
-
-        // Si la solución fue factible, podemos hacer retorno directo
-        if (HamiltonBERARecursivo(grafo, adyacente, verticesVisitados
-            , aristasVisitadas, aristasDescartadas, mejorSolucion)) {
-            mejorSolucion.push_back(adyacente);
-            return true;
-        }
-
-        // Sino, ninguna de las dos soluciones es factible, y tenemos que hacer
-        // backtracking todavía más intenso
-        verticesVisitados.erase(adyacente);
-        aristasVisitadas.erase(conexion);
-        return false;
-    }
+    return verticeAdyacenteLibre;
 }
 
-namespace HamiltonBERA {
-    static std::vector<Vertice> Hamilton(const Grafo& grafo) {
-
-        // Llevemos cuenta de la cantidad de vertices en el grafo
-        const size_t cantidadVertices = grafo.NumVertices();
-
-        // Si no hay vertices, no necesitamos continuar
-        if (cantidadVertices == 0) {
-            return std::vector<Vertice>();
-        }
-
-        // Para el recorrido con BERA necesitaremos de varias E.D auxiliares:
-            // Un diccionario de aristas visitadas al momento
-            std::set<Arista> aristasVisitadas;
-            // Un diccionario de aristas descartadas al momento
-            std::set<Arista> aristasDescartadas;
-            // Un diccionario de vertices visitados al momento
-            std::set<Vertice> verticesVisitados;
-            // Una lista de vértices para representar el recorrido
-            std::vector<Vertice> recorrido;
-            recorrido.reserve(cantidadVertices);
-            // Y una referencia al primer vértice del grafo
-            const Vertice origenRecorrido = grafo.PrimerVertice();
-        
-        // Ahora podemos comenzar el recorrido recursivo
-        recorrido.push_back(origenRecorrido);
-        
-        HamiltonBERARecursivo(grafo, origenRecorrido, verticesVisitados, aristasVisitadas, aristasDescartadas, recorrido);
-
-        // Tras terminar el recorrido, podemos devolver el vector con la mejor solución
-        return recorrido;
+static const Vertice DescartarVerticeHamiltonBERA(const Grafo& grafo
+    , const Vertice& verticePorDescartar
+    , Estado& estadoActual
+    , Soluciones& solucionesActual) {
+    // Hay que actualizar las E.D acordemente
+    if (estadoActual.verticesRecorridos.contains(verticePorDescartar)) {
+        solucionesActual.solucionActual.pop_back();
+        estadoActual.verticesRecorridos.erase(verticePorDescartar);
     }
+
+    const Vertice& verticeFinal = solucionesActual.solucionActual.back();
+    Arista aristaPorDescartar(verticeFinal, verticePorDescartar, grafo.Peso(verticeFinal, verticePorDescartar));
+    
+    estadoActual.aristasAceptadas.erase(aristaPorDescartar);
+    estadoActual.aristasDescartadas.insert(aristaPorDescartar);
+
+    // DEBUG
+    std::cout << "Solucion actual tras descartar:" << std::endl;
+    for (size_t i = 0; i < solucionesActual.solucionActual.size(); ++i) {
+        std::cout << solucionesActual.solucionActual[i].getEtiqueta() << " ";
+    }
+    std::cout << std::endl;
+
+    // Si se nos acabaron los vértices, devolveremos un vértice nulo
+    if (solucionesActual.solucionActual.size() == 0) {
+        return Vertice();
+    }
+
+    // Consideraremos al primer vértice ocioso adyacente del vértice previo
+    // La condición de factibilidad nos garantiza que debe existir uno
+    Vertice verticeAdyacenteLibre = grafo.PrimerVerticeAdyacente(solucionesActual.solucionActual.back());
+    while (estadoActual.verticesRecorridos.contains(verticeAdyacenteLibre)
+        || estadoActual.aristasDescartadas.contains(
+        Arista(solucionesActual.solucionActual.back()
+            , verticeAdyacenteLibre
+            , grafo.Peso(solucionesActual.solucionActual.back()
+            , verticeAdyacenteLibre)
+            )
+        )) {
+        verticeAdyacenteLibre = grafo.SiguienteVerticeAdyacente(verticePorDescartar
+            , verticeAdyacenteLibre);
+    }
+
+    // DEBUG
+    if (estadoActual.verticesRecorridos.contains(verticeAdyacenteLibre)
+        || estadoActual.aristasDescartadas.contains(
+        Arista(solucionesActual.solucionActual.back()
+            , verticeAdyacenteLibre
+            , grafo.Peso(solucionesActual.solucionActual.back()
+            , verticeAdyacenteLibre)
+            )
+        ))
+        return Vertice();
+
+    return verticeAdyacenteLibre;
+}
+
+static void BacktrackConsideracionHamiltonBERA(const Grafo& grafo
+, const Vertice& verticeConsiderado
+, Estado& estadoActual
+, Soluciones& solucionesActual) {
+    // Quitemos al vértice de los vértices recorridos
+    estadoActual.verticesRecorridos.erase(verticeConsiderado);
+
+    // Quitemos al vértice de la solución actual
+    if (!solucionesActual.solucionActual.empty()) {
+        if (verticeConsiderado == solucionesActual.solucionActual.back()) {
+            solucionesActual.solucionActual.pop_back();
+        }
+    }
+
+    // Quitemos la arista correspondiente de las aceptadas
+    if (!solucionesActual.solucionActual.empty()) {
+
+        estadoActual.aristasAceptadas.erase(
+            Arista(solucionesActual.solucionActual.back()
+            , verticeConsiderado
+            , grafo.Peso(solucionesActual.solucionActual.back(), verticeConsiderado)));
+    }
+
+    // El estado previo a sido restaurado
+    return;
+}
+
+static void BacktrackDescarteHamiltonBERA(const Grafo& grafo
+, const Vertice& verticeConsiderado
+, Estado& estadoActual
+, Soluciones& solucionesActual) {
+    // Quitemos al vértice de los vértices recorridos
+    estadoActual.verticesRecorridos.erase(verticeConsiderado);
+
+    // Quitemos la arista correspondiente de las prohibidas
+    if (!solucionesActual.solucionActual.empty()) {
+
+        estadoActual.aristasDescartadas.erase(
+            Arista(solucionesActual.solucionActual.back()
+            , verticeConsiderado
+            , grafo.Peso(solucionesActual.solucionActual.back(), verticeConsiderado)));
+    }
+
+    // El estado previo a sido restaurado
+    return;
+}
+
+static bool HamiltonBERARecursivo(const Grafo& grafo
+    , const Vertice& verticePorConsiderar
+    , Estado& estadoActual
+    , Soluciones& solucionesActual) {
+    // DEBUG
+    std::cout << "=============================" << std::endl;
+
+    // Si ya completamos el recorrido, quizás tengamos una solución factible
+    if (solucionesActual.solucionActual.size() == grafo.NumVertices()) {
+
+        // Encontramos una solución factible
+        if (EsPosiblementeFactible(grafo, estadoActual, solucionesActual)) {
+            // Si tenemos una solución factible, debemos actualizar su costo
+            solucionesActual.costoSolucionActual 
+                = CostoRecorrido(grafo, solucionesActual.solucionActual);
+
+            // DEBUG
+            std::cout << "Solución factible encontrada, con costo " << solucionesActual.costoSolucionActual << std::endl;
+
+            // Si la solución factible es superior a la mejor, hay que sustituir a la mejor
+            if (solucionesActual.costoSolucionActual < solucionesActual.costoMejorSolucion) {
+                solucionesActual.mejorSolucion = solucionesActual.solucionActual;
+                solucionesActual.costoMejorSolucion = solucionesActual.costoSolucionActual;
+            }
+        }
+        // Si no hay solución factible al final del recorrido, hay que propagar el error
+        else {
+            return false;
+        }
+    }
+
+    // Sino, si el vértice nuevo es nulo, no hay nada que se pueda hacer
+    if (verticePorConsiderar == Vertice()) {
+        // DEBUG
+        std::cout << "Vertice nulo " << std::endl;
+        return false;
+    }
+
+    // DEBUG
+    std::cout << "Vertice considerado: " << verticePorConsiderar.getEtiqueta() << std::endl;
+
+    // DEBUG
+    std::cout << "Solucion actual: " << std::endl;
+    for (size_t i = 0; i < solucionesActual.solucionActual.size(); ++i) {
+        std::cout << solucionesActual.solucionActual[i].getEtiqueta() << " ";
+    }
+    std::cout << std::endl;
+
+    bool potencialFactibilidadCon = !estadoActual.aristasDescartadas.contains(
+        Arista(solucionesActual.solucionActual.back(), verticePorConsiderar
+        , grafo.Peso(solucionesActual.solucionActual.back(), verticePorConsiderar)));
+
+    bool potencialFactibilidadSin = !estadoActual.aristasAceptadas.contains(
+        Arista(solucionesActual.solucionActual.back(), verticePorConsiderar
+        , grafo.Peso(solucionesActual.solucionActual.back(), verticePorConsiderar)));
+
+    // DEBUG
+    std::cout << "Aristas prohibidas:" << std::endl;
+    for (auto it = estadoActual.aristasDescartadas.begin(); it != estadoActual.aristasDescartadas.end(); ++it)
+    {
+        std::cout << "[" << grafo.Etiqueta(it->first) << "," << grafo.Etiqueta(it->second) << "] ";
+    }
+    std::cout << std::endl;
+
+    // DEBUG
+    std::cout << "Aristas obligatorias:" << std::endl;
+    for (auto it = estadoActual.aristasAceptadas.begin(); it != estadoActual.aristasAceptadas.end(); ++it)
+    {
+        std::cout << "[" << grafo.Etiqueta(it->first) << "," << grafo.Etiqueta(it->second) << "] ";
+    }
+    std::cout << std::endl;
+
+    // DEBUG
+    std::cout << "Vertices visitados:" << std::endl;
+    for (auto it = estadoActual.verticesRecorridos.begin(); it != estadoActual.verticesRecorridos.end(); ++it)
+    {
+        std::cout << grafo.Etiqueta(*it) << " ";
+    }
+    std::cout << std::endl;
+
+    // DEBUG
+    std::cout 
+    << "Con implica violar una arista descartada? " << ((!potencialFactibilidadCon)? "si" : "no")
+        << std::endl
+    << "Sin implica violar una arista descartada? " << ((!potencialFactibilidadSin)? "si" : "no")
+        << std::endl;
+
+    // Revisaremos la factibilidad sin considerar al vértice nuevo
+    Vertice previoAConsiderar = DescartarVerticeHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+    if (potencialFactibilidadSin) {
+        // DBEUG
+        std::cout << "Considerando factibilidad sin..." << std::endl;
+    
+        potencialFactibilidadSin = EsPosiblementeFactible(grafo, estadoActual, solucionesActual);
+    }
+
+    // Y el costo respectivo
+    size_t costoSin = MinimoCostoPosible(grafo, estadoActual);
+
+    // Como también revisaremos la factibilidad considerando al vértice nuevo
+    Vertice trasConsiderar = ConsiderarVerticeHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+    if (potencialFactibilidadCon) {
+        // DBEUG
+        std::cout << "Considerando factibilidad con..." << std::endl;
+
+        potencialFactibilidadCon = EsPosiblementeFactible(grafo, estadoActual, solucionesActual);
+    }
+
+    // Y el costo respectivo
+    size_t costoCon = MinimoCostoPosible(grafo, estadoActual);
+
+    // DEBUG
+    std::cout 
+    << "Costo mejor solucion actual " << solucionesActual.costoMejorSolucion
+        << std::endl
+    << "Costo con: " << costoCon 
+        <<  ", potencialmente factible: " << ((potencialFactibilidadCon)? "si" : "no")
+        << std::endl
+        << "\tOptimiza solucion: " << ((costoCon < solucionesActual.costoMejorSolucion)? "si" : "no")
+        << std::endl
+    << "Costo sin: " << costoSin 
+        << ", potencialmente factible: " << ((potencialFactibilidadSin)? "si" : "no")
+        << std::endl
+        << "\tOptimiza solucion: " << ((costoSin < solucionesActual.costoMejorSolucion)? "si" : "no")
+        << std::endl;
+
+    // Visitaremos a las sub-ramas de posibilidad según el orden de costo, solo si son factibles
+    char factibilidadCon = 0;
+    char factibilidadSin = 0;
+    char visitadoConPrimero = 0;
+    if (costoCon < costoSin && potencialFactibilidadCon) {
+        // DEBUG
+        std::cout << "Visitando con primero" << std::endl;
+
+        visitadoConPrimero = 1;
+        // Intentaremos realizar el recorrido recursivo
+        if (HamiltonBERARecursivo(grafo, trasConsiderar, estadoActual, solucionesActual))
+            factibilidadCon = 1;
+    }
+    else if (potencialFactibilidadSin) {
+        // DEBUG
+        std::cout << "Visitando sin primero" << std::endl;
+
+        // Quitaremos al vértice añadido a la solución actual
+        DescartarVerticeHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+
+        // Ahora intentaremos realizar el recorrido recursivo
+        if (HamiltonBERARecursivo(grafo, previoAConsiderar, estadoActual, solucionesActual))
+            factibilidadSin = 1;
+    }
+
+    // Si existe solución del sub-árbol de posibilidades, entonces compararemos su costo
+    // con la siguiente rama
+
+    // Si resulta que existe potencial de optimizar revisando la otra rama, la investigaremos
+    if (visitadoConPrimero == 1
+        && potencialFactibilidadSin
+        && costoSin < solucionesActual.costoMejorSolucion) {
+        // DEBUG
+        std::cout << "Visitando sin segundo" << std::endl;
+
+        previoAConsiderar = DescartarVerticeHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+        factibilidadSin = HamiltonBERARecursivo(grafo, previoAConsiderar, estadoActual, solucionesActual);
+
+        // Y ahora retrocederemos el estado al previo
+        BacktrackDescarteHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+    } 
+    
+    else if (visitadoConPrimero == 0
+        && potencialFactibilidadCon
+        && costoCon < solucionesActual.costoMejorSolucion) {
+        // DEBUG
+        std::cout << "Visitando con segundo" << std::endl;
+
+        trasConsiderar = ConsiderarVerticeHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+        factibilidadCon = HamiltonBERARecursivo(grafo, trasConsiderar, estadoActual, solucionesActual);
+
+        // Y ahora retrocederemos el estado al previo
+        BacktrackConsideracionHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
+    }
+
+    std::cout << "Recorridos terminados" << std::endl;
+
+    // Ya terminamos de explorar el sub-árbol de soluciones de esta iteración.
+    // Podemos propagar la factibilidad de esta rama hacia arriba
+    return factibilidadCon == 1 || factibilidadSin == 1;
+}
+
+std::vector<Vertice> HamiltonBERA::Hamilton(const Grafo& grafo) {
+
+    // Llevemos cuenta de la cantidad de vertices en el grafo
+    const size_t cantidadVertices = grafo.NumVertices();
+
+    // Si no hay mas de dos vértices, no necesitamos continuar
+    if (cantidadVertices <= 1) {
+        return std::vector<Vertice>();
+    }
+
+    // Para el recorrido con BERA necesitaremos de varias E.D auxiliares:
+        // Una referencia al primer vértice del grafo
+        const Vertice origenRecorrido = grafo.PrimerVertice();
+        // Un registro del estado actual del recorrido
+        Estado estado;
+        // Y otro registro donde almacenar las soluciones
+        Soluciones soluciones;
+
+    // Ahora podemos comenzar el recorrido recursivo
+    estado.verticesRecorridos.insert(origenRecorrido);
+    soluciones.solucionActual.push_back(origenRecorrido);
+    HamiltonBERARecursivo(grafo, grafo.PrimerVerticeAdyacente(origenRecorrido), estado, soluciones);
+
+    // Tras terminar el recorrido, podemos devolver el vector con la mejor solución
+    return soluciones.mejorSolucion;
 }

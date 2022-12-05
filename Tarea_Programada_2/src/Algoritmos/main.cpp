@@ -1,5 +1,6 @@
 #include "Controlador.hpp"
 #include "Prim.hpp"
+#include "HamiltonBERA.hpp"
 #include <iostream>
 
 int main()
@@ -42,6 +43,13 @@ int main()
     std::cout << std::endl;
     //Controlador::nVecesDijkstra(grafo);
     
+    /* TEST HAMILTON BERA 
+    */
+
+    std::vector<Vertice> solucionHamiltonBera = HamiltonBERA::Hamilton(grafo);
+    for (size_t it = 0; it < solucionHamiltonBera.size(); ++it) {
+        std::cout << "[" << it << "]\t" << solucionHamiltonBera[it].getEtiqueta() << std:: endl;
+    }
 
     // TEST DIJKSTRA
 
