@@ -1,18 +1,4 @@
 bin/Tarea_Programada_2
-Primer adyacente de f es a
-Primer adyacente de d es a
-Primer adyacente de b es a
-Primer adyacente de e es a
-Primer adyacente de a es b
-Primer adyacente de c es a
-a	5	f
-b	3	d
-c	7	b
-d	2	f
-e	4	d
-f	0	f
-
-Primer adyacente de a es b
 =============================
 Vertice considerado: b
 Solucion actual: 
@@ -27,54 +13,38 @@ Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
 a 
-Primer adyacente de a es b
 Considerando factibilidad sin...
-Primer adyacente de a es b
-Primer adyacente de a es b
-	Sumando [a, c] al estimado
-	Sumando [a, e] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
+	Sumando [a, f] al estimado
+	Sumando [a, d] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
 	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
 Solucion actual tras considerar:
 a b 
-Primer adyacente de b es a
 Considerando factibilidad con...
-Primer adyacente de b es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
+	Sumando [a, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
 	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
 Costo mejor solucion actual 18446744073709551615
-Costo con: 30, potencialmente factible: si
+Costo con: 41, potencialmente factible: si
 	Optimiza solucion: si
-Costo sin: 33, potencialmente factible: si
+Costo sin: 45, potencialmente factible: si
 	Optimiza solucion: si
 Visitando con primero
 =============================
@@ -91,1276 +61,416 @@ Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
 a b 
-Primer adyacente de b es a
 Considerando factibilidad sin...
-Primer adyacente de b es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
+	Sumando [a, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [b, f] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
 	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
 Solucion actual tras considerar:
 a b c 
-Primer adyacente de c es a
 Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
+	Sumando [a, f] al estimado
 	Sumando [b, c] al estimado
-	Sumando [b, d] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
 	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
 Costo mejor solucion actual 18446744073709551615
-Costo con: 32, potencialmente factible: si
+Costo con: 41, potencialmente factible: si
 	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
+Costo sin: 43, potencialmente factible: si
 	Optimiza solucion: si
-Visitando sin primero
+Visitando con primero
+=============================
+Vertice considerado: e
+Solucion actual: 
+a b c 
+Aristas prohibidas:
+
+Aristas obligatorias:
+[a,b] [b,c] 
+Vertices visitados:
+a b c 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b 
-Primer adyacente de b es a
+a b c 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b c e 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 18446744073709551615
+Costo con: 41, potencialmente factible: si
+	Optimiza solucion: si
+Costo sin: 46, potencialmente factible: si
+	Optimiza solucion: si
+Visitando con primero
+=============================
+Vertice considerado: f
+Solucion actual: 
+a b c e 
+Aristas prohibidas:
+
+Aristas obligatorias:
+[c,e] [a,b] [b,c] 
+Vertices visitados:
+a b c e 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a b c e 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b c e f 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, c] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 18446744073709551615
+Costo con: 41, potencialmente factible: si
+	Optimiza solucion: si
+Costo sin: 44, potencialmente factible: si
+	Optimiza solucion: si
+Visitando con primero
 =============================
 Vertice considerado: d
 Solucion actual: 
-a b 
+a b c e f 
 Aristas prohibidas:
-[b,c] 
+
 Aristas obligatorias:
-[a,b] 
+[c,e] [a,b] [b,c] [e,f] 
 Vertices visitados:
-a b 
+a b c e f 
 Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b 
-Primer adyacente de b es a
+a b c e f 
 Considerando factibilidad sin...
-Primer adyacente de b es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
 	Sumando [b, a] al estimado
-	Sumando [b, e] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d 
-Primer adyacente de d es a
-Considerando factibilidad con...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 30, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 32, potencialmente factible: si
-	Optimiza solucion: si
-Visitando con primero
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b d 
-Aristas prohibidas:
-[b,c] 
-Aristas obligatorias:
-[b,d] [a,b] 
-Vertices visitados:
-a b d 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d 
-Primer adyacente de d es a
-Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 38, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d 
-Primer adyacente de d es a
-=============================
-Vertice considerado: e
-Solucion actual: 
-a b d 
-Aristas prohibidas:
-[b,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] 
-Vertices visitados:
-a b d 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d 
-Primer adyacente de d es a
-Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, f] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d e 
-Primer adyacente de e es a
-Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 30, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d 
-Primer adyacente de d es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b d 
-Aristas prohibidas:
-[d,e] [b,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] 
-Vertices visitados:
-a b d 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d 
-Primer adyacente de d es a
-Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
 	Sumando [d, a] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
 	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 30, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 38, potencialmente factible: si
-	Optimiza solucion: si
-Visitando con primero
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b d f 
-Aristas prohibidas:
-[d,e] [b,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,f] 
-Vertices visitados:
-a b d f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d f c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 33, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: e
-Solucion actual: 
-a b d f 
-Aristas prohibidas:
-[d,e] [b,c] [f,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,f] 
-Vertices visitados:
-a b d f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d f e 
-Primer adyacente de e es a
-Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, e] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 34, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d f 
-Primer adyacente de f es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d f e 
-Primer adyacente de e es a
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b d f e 
-Aristas prohibidas:
-[d,e] [b,c] [f,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,f] [f,e] 
-Vertices visitados:
-a b d e f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d f e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, e] al estimado
-	Sumando [f, d] al estimado
-Solucion actual tras considerar:
-a b d f e c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
+	Sumando [e, f] al estimado
 	Sumando [e, c] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
+	Sumando [f, a] al estimado
 	Sumando [f, e] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 18446744073709551615
-Costo con: 38, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 34, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d f e 
-Primer adyacente de e es a
-=============================
-Vertice nulo 
-Visitando con segundo
 Solucion actual tras considerar:
-a b d f e c 
-Primer adyacente de c es a
-=============================
-Primer adyacente de c es a
-Costo recorrido += [c, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, d]
-Costo recorrido += [d, f]
-Costo recorrido += [f, e]
-Costo recorrido += [e, c]
-Solución factible encontrada, con costo 48
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Visitando con segundo
-Solucion actual tras considerar:
-a b d f c 
-Primer adyacente de c es a
-=============================
-Vertice considerado: e
-Solucion actual: 
-a b d f c 
-Aristas prohibidas:
-[d,e] [b,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,f] [f,c] 
-Vertices visitados:
-a b c d f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d f c 
-Primer adyacente de c es a
-Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Solucion actual tras considerar:
-a b d f c e 
-Primer adyacente de e es a
+a b c e f d 
 Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
 	Sumando [c, e] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 48
-Costo con: 36, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 33, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d f c 
-Primer adyacente de c es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d f c e 
-Primer adyacente de e es a
-=============================
-Primer adyacente de e es a
-Costo recorrido += [e, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, d]
-Costo recorrido += [d, f]
-Costo recorrido += [f, c]
-Costo recorrido += [c, e]
-Solución factible encontrada, con costo 50
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Visitando sin segundo
-Solucion actual tras descartar:
-a b d 
-Primer adyacente de d es a
-=============================
-Vertice nulo 
-Recorridos terminados
-Visitando con segundo
-Solucion actual tras considerar:
-a b d e 
-Primer adyacente de e es a
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b d e 
-Aristas prohibidas:
-[b,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,e] 
-Vertices visitados:
-a b d e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d e c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, c] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 34, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d e 
-Primer adyacente de e es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b d e 
-Aristas prohibidas:
-[b,c] [e,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,e] 
-Vertices visitados:
-a b d e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d e f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
 	Sumando [e, f] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 36, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 30, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d e 
-Primer adyacente de e es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d e f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b d e f 
-Aristas prohibidas:
-[b,c] [e,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,e] [e,f] 
-Vertices visitados:
-a b d e f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d e f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d e f c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 48
-Costo con: 39, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 36, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d e f 
-Primer adyacente de f es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d e f c 
-Primer adyacente de c es a
-=============================
-Primer adyacente de c es a
-Costo recorrido += [c, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, d]
-Costo recorrido += [d, e]
-Costo recorrido += [e, f]
-Costo recorrido += [f, c]
-Solución factible encontrada, con costo 50
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Visitando con segundo
-Solucion actual tras considerar:
-a b d e c 
-Primer adyacente de c es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b d e c 
-Aristas prohibidas:
-[b,c] [d,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,e] [e,c] 
-Vertices visitados:
-a b c d e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d e c 
-Primer adyacente de c es a
-Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
 	Sumando [e, c] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
 	Sumando [f, d] al estimado
 	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d e c f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, f] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, c] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 38, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 34, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d e c 
-Primer adyacente de c es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d e c f 
-Primer adyacente de f es a
-=============================
-Primer adyacente de f es a
-Costo recorrido += [f, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, d]
-Costo recorrido += [d, e]
-Costo recorrido += [e, c]
-Costo recorrido += [c, f]
-Solución factible encontrada, con costo 50
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Recorridos terminados
-Visitando con segundo
-Solucion actual tras considerar:
-a b d c 
-Primer adyacente de c es a
-=============================
-Vertice considerado: e
-Solucion actual: 
-a b d c 
-Aristas prohibidas:
-[b,c] 
-Aristas obligatorias:
-[b,d] [a,b] [d,c] 
-Vertices visitados:
-a b c d 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d c 
-Primer adyacente de c es a
-Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d c e 
-Primer adyacente de e es a
-Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, e] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 41, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 38, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d c 
-Primer adyacente de c es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b d c 
-Aristas prohibidas:
-[b,c] [c,e] 
-Aristas obligatorias:
-[b,d] [a,b] [d,c] 
-Vertices visitados:
-a b c d 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d c 
-Primer adyacente de c es a
-Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d c f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, f] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 42, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 38, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d c 
-Primer adyacente de c es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d c f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: e
-Solucion actual: 
-a b d c f 
-Aristas prohibidas:
-[b,c] [c,e] 
-Aristas obligatorias:
-[b,d] [a,b] [c,f] [d,c] 
-Vertices visitados:
-a b c d f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d c f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, f] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d c f e 
-Primer adyacente de e es a
-Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, f] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, e] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 48
+Costo mejor solucion actual 18446744073709551615
 Costo con: 46, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 42, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b d c f 
-Primer adyacente de f es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b d c f e 
-Primer adyacente de e es a
-=============================
-Primer adyacente de e es a
-Costo recorrido += [e, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, d]
-Costo recorrido += [d, c]
-Costo recorrido += [c, f]
-Costo recorrido += [f, e]
-Solución factible encontrada, con costo 70
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Visitando con segundo
-Solucion actual tras considerar:
-a b d c e 
-Primer adyacente de e es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b d c e 
-Aristas prohibidas:
-[b,c] 
-Aristas obligatorias:
-[b,d] [a,b] [c,e] [d,c] 
-Vertices visitados:
-a b c d e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b d c e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, e] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b d c e f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, d] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, e] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 47, potencialmente factible: si
 	Optimiza solucion: si
 Costo sin: 41, potencialmente factible: si
 	Optimiza solucion: si
 Visitando sin primero
 Solucion actual tras descartar:
-a b d c e 
-Primer adyacente de e es a
+a b c e f 
 =============================
 Vertice nulo 
 Visitando con segundo
 Solucion actual tras considerar:
-a b d c e f 
-Primer adyacente de f es a
+a b c e f d 
 =============================
-Primer adyacente de f es a
-Costo recorrido += [f, a]
+Costo recorrido += [d, a]
 Costo recorrido += [a, b]
-Costo recorrido += [b, d]
-Costo recorrido += [d, c]
+Costo recorrido += [b, c]
 Costo recorrido += [c, e]
 Costo recorrido += [e, f]
-Solución factible encontrada, con costo 68
+Costo recorrido += [f, d]
+Solución factible encontrada, con costo 50
+Vertice nulo 
+Recorridos terminados
+Visitando sin segundo
+Solucion actual tras descartar:
+a b c e 
+=============================
+Vertice considerado: d
+Solucion actual: 
+a b c e 
+Aristas prohibidas:
+[e,f] 
+Aristas obligatorias:
+[c,e] [a,b] [b,c] 
+Vertices visitados:
+a b c e 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a b c e 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b c e d 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 44, potencialmente factible: no
+	Optimiza solucion: si
+Costo sin: 44, potencialmente factible: si
+	Optimiza solucion: si
+Visitando sin primero
+Solucion actual tras descartar:
+a b c e 
+=============================
+Vertice nulo 
+Recorridos terminados
+Recorridos terminados
+Visitando sin segundo
+Solucion actual tras descartar:
+a b c 
+=============================
+Vertice considerado: f
+Solucion actual: 
+a b c 
+Aristas prohibidas:
+[e,d] [c,e] 
+Aristas obligatorias:
+[a,b] [b,c] 
+Vertices visitados:
+a b c 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a b c 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, a] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b c f 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, f] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 46, potencialmente factible: si
+	Optimiza solucion: si
+Costo sin: 48, potencialmente factible: si
+	Optimiza solucion: si
+Visitando con primero
+=============================
+Vertice considerado: d
+Solucion actual: 
+a b c f 
+Aristas prohibidas:
+[e,d] [c,e] 
+Aristas obligatorias:
+[a,b] [b,c] [c,f] 
+Vertices visitados:
+a b c f 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a b c f 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, f] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b c f d 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, f] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, d] al estimado
+	Sumando [f, a] al estimado
+Costo mejor solucion actual 50
+Costo con: 51, potencialmente factible: no
+	Optimiza solucion: no
+Costo sin: 46, potencialmente factible: si
+	Optimiza solucion: si
+Visitando sin primero
+Solucion actual tras descartar:
+a b c f 
+=============================
+Vertice nulo 
+Recorridos terminados
+Visitando sin segundo
+Solucion actual tras descartar:
+a b c 
+=============================
+Vertice considerado: d
+Solucion actual: 
+a b c 
+Aristas prohibidas:
+[e,d] [c,e] [c,f] [f,d] 
+Aristas obligatorias:
+[a,b] [b,c] 
+Vertices visitados:
+a b c 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a b c 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, a] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b c d 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, c] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, a] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 48, potencialmente factible: no
+	Optimiza solucion: si
+Costo sin: 48, potencialmente factible: si
+	Optimiza solucion: si
+Visitando sin primero
+Solucion actual tras descartar:
+a b c 
+=============================
 Vertice nulo 
 Recorridos terminados
 Recorridos terminados
@@ -1368,13 +478,12 @@ Recorridos terminados
 Visitando sin segundo
 Solucion actual tras descartar:
 a b 
-Primer adyacente de b es a
 =============================
 Vertice considerado: e
 Solucion actual: 
 a b 
 Aristas prohibidas:
-[b,d] [b,c] 
+[c,d] [e,d] [b,c] [f,d] 
 Aristas obligatorias:
 [a,b] 
 Vertices visitados:
@@ -1383,1233 +492,571 @@ Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
 a b 
-Primer adyacente de b es a
 Considerando factibilidad sin...
-Primer adyacente de b es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
+	Sumando [a, f] al estimado
 	Sumando [b, a] al estimado
 	Sumando [b, f] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e 
-Primer adyacente de e es a
-Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 32, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 37, potencialmente factible: si
-	Optimiza solucion: si
-Visitando con primero
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b e 
-Aristas prohibidas:
-[b,d] [b,c] 
-Aristas obligatorias:
-[a,b] [b,e] 
-Vertices visitados:
-a b e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
 	Sumando [e, c] al estimado
-	Sumando [e, d] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, f] al estimado
 	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 36, potencialmente factible: si
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a b e 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, f] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 43, potencialmente factible: no
 	Optimiza solucion: si
-Costo sin: 32, potencialmente factible: si
+Costo sin: 43, potencialmente factible: si
 	Optimiza solucion: si
 Visitando sin primero
 Solucion actual tras descartar:
-a b e 
-Primer adyacente de e es a
-=============================
-Vertice considerado: d
-Solucion actual: 
-a b e 
-Aristas prohibidas:
-[b,d] [b,c] [e,c] 
-Aristas obligatorias:
-[a,b] [b,e] 
-Vertices visitados:
-a b e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, b] al estimado
-	Sumando [e, a] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e d 
-Primer adyacente de d es a
-Considerando factibilidad con...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 32, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 35, potencialmente factible: si
-	Optimiza solucion: si
-Visitando con primero
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b e d 
-Aristas prohibidas:
-[b,d] [b,c] [e,c] 
-Aristas obligatorias:
-[a,b] [e,d] [b,e] 
-Vertices visitados:
-a b d e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e d 
-Primer adyacente de d es a
-Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e d c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 40, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 32, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b e d 
-Primer adyacente de d es a
+a b 
 =============================
 Vertice considerado: f
 Solucion actual: 
-a b e d 
+a b 
 Aristas prohibidas:
-[b,d] [b,c] [e,c] [d,c] 
+[b,e] [c,d] [e,d] [b,c] [f,d] 
 Aristas obligatorias:
-[a,b] [e,d] [b,e] 
-Vertices visitados:
-a b d e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e d 
-Primer adyacente de d es a
-Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e d f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 48
-Costo con: 32, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 32, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b e d 
-Primer adyacente de d es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b e d f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b e d f 
-Aristas prohibidas:
-[b,d] [b,c] [e,c] [d,c] 
-Aristas obligatorias:
-[a,b] [d,f] [e,d] [b,e] 
-Vertices visitados:
-a b d e f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e d f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e d f c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, d] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 48
-Costo con: 35, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 32, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b e d f 
-Primer adyacente de f es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b e d f c 
-Primer adyacente de c es a
-=============================
-Primer adyacente de c es a
-Costo recorrido += [c, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, e]
-Costo recorrido += [e, d]
-Costo recorrido += [d, f]
-Costo recorrido += [f, c]
-Solución factible encontrada, con costo 40
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Recorridos terminados
-Visitando sin segundo
-Solucion actual tras descartar:
-a b e 
-Primer adyacente de e es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b e 
-Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [d,c] 
-Aristas obligatorias:
-[a,b] [b,e] 
-Vertices visitados:
-a b e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e 
-Primer adyacente de e es a
-Considerando factibilidad sin...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, b] al estimado
-	Sumando [e, a] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 39, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 35, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b e 
-Primer adyacente de e es a
-=============================
-Vertice nulo 
-Visitando con segundo
-Solucion actual tras considerar:
-a b e f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: c
-Solucion actual: 
-a b e f 
-Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [d,c] 
-Aristas obligatorias:
-[a,b] [b,e] [e,f] 
-Vertices visitados:
-a b e f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e f c 
-Primer adyacente de c es a
-Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 40
-Costo con: 42, potencialmente factible: si
-	Optimiza solucion: no
-Costo sin: 39, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b e f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: d
-Solucion actual: 
-a b e f 
-Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [f,c] [d,c] 
-Aristas obligatorias:
-[a,b] [b,e] [e,f] 
-Vertices visitados:
-a b e f 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e f 
-Primer adyacente de f es a
-Considerando factibilidad sin...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, a] al estimado
-	Sumando [f, b] al estimado
-Solucion actual tras considerar:
-a b e f d 
-Primer adyacente de d es a
-Considerando factibilidad con...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 39, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 45, potencialmente factible: si
-	Optimiza solucion: no
-Visitando con primero
-=============================
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Recorridos terminados
-Recorridos terminados
-Visitando con segundo
-Solucion actual tras considerar:
-a b e f d c 
-Primer adyacente de c es a
-=============================
-Primer adyacente de c es a
-Costo recorrido += [c, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, e]
-Costo recorrido += [e, f]
-Costo recorrido += [f, d]
-Costo recorrido += [d, c]
-Solución factible encontrada, con costo 58
-Vertice considerado: d
-Solucion actual: 
-a b e f d c 
-Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [f,c] 
-Aristas obligatorias:
-[a,b] [f,d] [b,e] [e,f] [d,c] 
-Vertices visitados:
-a b c e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e f d c 
-Primer adyacente de c es a
-Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e f d c d 
-Primer adyacente de d es a
-Considerando factibilidad con...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, d] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 53, potencialmente factible: si
-	Optimiza solucion: no
-Costo sin: 47, potencialmente factible: si
-	Optimiza solucion: no
-Visitando sin primero
-Solucion actual tras descartar:
-a b e f d c 
-Primer adyacente de c es a
-=============================
-Primer adyacente de c es a
-Costo recorrido += [c, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, e]
-Costo recorrido += [e, f]
-Costo recorrido += [f, d]
-Costo recorrido += [d, c]
-Solución factible encontrada, con costo 58
-Vertice considerado: f
-Solucion actual: 
-a b e f d c 
-Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [f,c] [c,d] 
-Aristas obligatorias:
-[a,b] [f,d] [b,e] [e,f] [d,c] 
-Vertices visitados:
-a b c e 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e f d c 
-Primer adyacente de c es a
-Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e f d c f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, f] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 51, potencialmente factible: si
-	Optimiza solucion: no
-Costo sin: 47, potencialmente factible: si
-	Optimiza solucion: no
-Visitando sin primero
-Solucion actual tras descartar:
-a b e f d c 
-Primer adyacente de c es a
-=============================
-Primer adyacente de c es a
-Costo recorrido += [c, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, e]
-Costo recorrido += [e, f]
-Costo recorrido += [f, d]
-Costo recorrido += [d, c]
-Solución factible encontrada, con costo 58
-Vertice nulo 
-Recorridos terminados
-Recorridos terminados
-Recorridos terminados
-Visitando sin segundo
-Solucion actual tras descartar:
-a b e f 
-Primer adyacente de f es a
-=============================
-Vertice considerado: d
-Solucion actual: 
-a b e f 
-Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [c,f] [f,c] [f,e] [c,d] 
-Aristas obligatorias:
-[a,b] [f,d] [b,e] [e,f] 
+[a,b] 
 Vertices visitados:
 a b 
 Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? si
+Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b e f 
-Primer adyacente de f es a
-Primer adyacente de a es b
+a b 
+Considerando factibilidad sin...
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [b, d] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
+	Sumando [e, c] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
 	Sumando [f, a] al estimado
-	Sumando [f, b] al estimado
+	Sumando [f, e] al estimado
 Solucion actual tras considerar:
-a b e f d 
-Primer adyacente de d es a
+a b f 
 Considerando factibilidad con...
-Primer adyacente de d es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
+	Sumando [e, c] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
 	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 39, potencialmente factible: si
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 43, potencialmente factible: si
 	Optimiza solucion: si
-Costo sin: 45, potencialmente factible: no
-	Optimiza solucion: no
+Costo sin: 47, potencialmente factible: si
+	Optimiza solucion: si
 Visitando con primero
 =============================
 Vertice considerado: c
 Solucion actual: 
-a b e f d 
+a b f 
 Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [c,f] [f,c] [f,e] [c,d] 
+[b,e] [c,d] [e,d] [b,c] [f,d] 
 Aristas obligatorias:
-[a,b] [f,d] [b,e] [e,f] 
+[a,b] [b,f] 
 Vertices visitados:
-a b d 
+a b f 
 Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
+a b f 
 Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-	Sumando [d, e] al estimado
-Primer adyacente de e es a
+	Sumando [e, c] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
 	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
 Solucion actual tras considerar:
-a b e f d c 
-Primer adyacente de c es a
+a b f c 
 Considerando factibilidad con...
-Primer adyacente de c es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, c] al estimado
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-Primer adyacente de e es a
+	Sumando [e, c] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [f, c] al estimado
 	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 47, potencialmente factible: si
-	Optimiza solucion: no
-Costo sin: 39, potencialmente factible: si
+Costo mejor solucion actual 50
+Costo con: 45, potencialmente factible: si
+	Optimiza solucion: si
+Costo sin: 43, potencialmente factible: si
 	Optimiza solucion: si
 Visitando sin primero
 Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
+a b f 
 =============================
 Vertice considerado: e
 Solucion actual: 
-a b e f d 
+a b f 
 Aristas prohibidas:
-[b,d] [e,d] [b,c] [e,c] [c,f] [f,c] [f,e] [c,d] [d,c] 
+[b,e] [c,d] [e,d] [b,c] [f,c] [f,d] 
 Aristas obligatorias:
-[a,b] [f,d] [b,e] [e,f] 
+[a,b] [b,f] 
 Vertices visitados:
-a b d 
+a b f 
 Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
+a b f 
 Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
+	Sumando [c, e] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
-	Sumando [d, f] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e f d e 
-Primer adyacente de e es a
-Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, e] al estimado
-	Sumando [d, b] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 39, potencialmente factible: si
-	Optimiza solucion: si
-Costo sin: 39, potencialmente factible: si
-	Optimiza solucion: si
-Visitando sin primero
-Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
-=============================
-Vertice considerado: f
-Solucion actual: 
-a b e f d 
-Aristas prohibidas:
-[b,d] [d,e] [e,d] [b,c] [e,c] [c,f] [f,c] [f,e] [c,d] [d,c] 
-Aristas obligatorias:
-[a,b] [f,d] [b,e] [e,f] 
-Vertices visitados:
-a b d 
-Con implica violar una arista descartada? no
-Sin implica violar una arista descartada? no
-Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
-Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, b] al estimado
 	Sumando [d, a] al estimado
-Primer adyacente de e es a
-	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
-	Sumando [f, a] al estimado
-Solucion actual tras considerar:
-a b e f d f 
-Primer adyacente de f es a
-Considerando factibilidad con...
-Primer adyacente de f es a
-Primer adyacente de a es b
-	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
-	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
-	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
 	Sumando [d, b] al estimado
-Primer adyacente de e es a
+	Sumando [e, c] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
 	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 39, potencialmente factible: si
+	Sumando [f, b] al estimado
+Solucion actual tras considerar:
+a b f e 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, e] al estimado
+	Sumando [f, a] al estimado
+Costo mejor solucion actual 50
+Costo con: 43, potencialmente factible: si
 	Optimiza solucion: si
-Costo sin: 47, potencialmente factible: si
-	Optimiza solucion: no
+Costo sin: 44, potencialmente factible: si
+	Optimiza solucion: si
 Visitando con primero
 =============================
-Primer adyacente de f es a
-Costo recorrido += [f, a]
-Costo recorrido += [a, b]
-Costo recorrido += [b, e]
-Costo recorrido += [e, f]
-Costo recorrido += [f, d]
-Costo recorrido += [d, f]
-Solución factible encontrada, con costo 46
-Vertice nulo 
-Recorridos terminados
-Visitando con segundo
+Vertice considerado: c
+Solucion actual: 
+a b f e 
+Aristas prohibidas:
+[b,e] [c,d] [e,d] [b,c] [f,c] [f,d] 
+Aristas obligatorias:
+[a,b] [f,e] [b,f] 
+Vertices visitados:
+a b e f 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a b f e 
+Considerando factibilidad sin...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, e] al estimado
+	Sumando [f, a] al estimado
 Solucion actual tras considerar:
-a b e f d f e 
-Primer adyacente de e es a
+a b f e c 
+Considerando factibilidad con...
+	Sumando [a, b] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
+	Sumando [b, a] al estimado
+	Sumando [c, e] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, c] al estimado
+	Sumando [e, f] al estimado
+	Sumando [f, e] al estimado
+	Sumando [f, a] al estimado
+Costo mejor solucion actual 50
+Costo con: 43, potencialmente factible: no
+	Optimiza solucion: si
+Costo sin: 49, potencialmente factible: si
+	Optimiza solucion: si
+Visitando sin primero
+Solucion actual tras descartar:
+a b f e 
 =============================
 Vertice nulo 
 Recorridos terminados
-Recorridos terminados
-Recorridos terminados
-Recorridos terminados
+Visitando sin segundo
+Solucion actual tras descartar:
+a b f 
+=============================
+Vertice nulo 
 Recorridos terminados
 Visitando con segundo
 Solucion actual tras considerar:
-a b e f d f c 
-Primer adyacente de c es a
+a b f c 
 =============================
 Vertice considerado: e
 Solucion actual: 
-a b e f d f c 
+a b f c 
 Aristas prohibidas:
-[b,d] [d,e] [e,d] [b,c] [e,c] [c,f] [c,d] [d,c] 
+[b,e] [c,d] [e,d] [e,c] [b,c] [f,d] 
 Aristas obligatorias:
-[a,b] [d,f] [f,d] [b,e] [f,c] [e,f] 
+[a,b] [b,f] [f,c] 
 Vertices visitados:
 a b c f 
 Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b e f d f c 
-Primer adyacente de c es a
+a b f c 
 Considerando factibilidad sin...
-Primer adyacente de c es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-Primer adyacente de e es a
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
+	Sumando [e, a] al estimado
 	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
+	Sumando [f, a] al estimado
 Solucion actual tras considerar:
-a b e f d f c e 
-Primer adyacente de e es a
+a b f c e 
 Considerando factibilidad con...
-Primer adyacente de e es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
 	Sumando [c, e] al estimado
-	Sumando [c, a] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
+	Sumando [c, b] al estimado
+	Sumando [d, a] al estimado
 	Sumando [d, b] al estimado
-Primer adyacente de e es a
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
+	Sumando [e, a] al estimado
 	Sumando [f, c] al estimado
-	Sumando [f, d] al estimado
-Costo mejor solucion actual 40
-Costo con: 45, potencialmente factible: si
+	Sumando [f, a] al estimado
+Costo mejor solucion actual 50
+Costo con: 51, potencialmente factible: no
 	Optimiza solucion: no
-Costo sin: 42, potencialmente factible: si
+Costo sin: 56, potencialmente factible: si
 	Optimiza solucion: no
 Visitando sin primero
 Solucion actual tras descartar:
-a b e f d f c 
-Primer adyacente de c es a
+a b f c 
 =============================
 Vertice nulo 
 Recorridos terminados
 Recorridos terminados
 Visitando sin segundo
 Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
+a b 
 =============================
 Vertice considerado: d
 Solucion actual: 
-a b e f d 
+a b 
 Aristas prohibidas:
-[b,d] [d,b] [d,e] [e,d] [b,c] [c,e] [e,c] [c,f] [c,d] [d,c] 
+[b,e] [c,d] [e,d] [c,e] [e,c] [b,c] [b,f] [f,d] 
 Aristas obligatorias:
-[a,b] [d,f] [f,d] [b,e] [e,f] 
+[a,b] 
 Vertices visitados:
-a f 
+a b 
 Con implica violar una arista descartada? no
 Sin implica violar una arista descartada? no
 Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
+a b 
 Considerando factibilidad sin...
-Primer adyacente de d es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
+	Sumando [c, f] al estimado
 	Sumando [d, a] al estimado
-Primer adyacente de e es a
+	Sumando [d, b] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, a] al estimado
 	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
 Solucion actual tras considerar:
-a b e f d d 
-Primer adyacente de d es a
+a b d 
 Considerando factibilidad con...
-Primer adyacente de d es a
-Primer adyacente de a es b
 	Sumando [a, b] al estimado
-	Sumando [a, c] al estimado
-Primer adyacente de b es a
-	Sumando [b, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, d] al estimado
 	Sumando [b, a] al estimado
-Primer adyacente de c es a
-	Sumando [c, a] al estimado
 	Sumando [c, b] al estimado
-Primer adyacente de d es a
-	Sumando [d, f] al estimado
+	Sumando [c, f] al estimado
 	Sumando [d, a] al estimado
-Primer adyacente de e es a
+	Sumando [d, b] al estimado
 	Sumando [e, f] al estimado
-	Sumando [e, b] al estimado
-Primer adyacente de f es a
-	Sumando [f, d] al estimado
+	Sumando [e, a] al estimado
 	Sumando [f, a] al estimado
-Costo mejor solucion actual 40
-Costo con: 48, potencialmente factible: si
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 58, potencialmente factible: si
 	Optimiza solucion: no
-Costo sin: 48, potencialmente factible: si
-	Optimiza solucion: no
+Costo sin: 49, potencialmente factible: si
+	Optimiza solucion: si
 Visitando sin primero
 Solucion actual tras descartar:
-a b e f d 
-Primer adyacente de d es a
+a b 
 =============================
 Vertice nulo 
 Recorridos terminados
 Recorridos terminados
+Recorridos terminados
+Recorridos terminados
+Visitando sin segundo
+Solucion actual tras descartar:
+a 
+=============================
+Vertice considerado: c
+Solucion actual: 
+a 
+Aristas prohibidas:
+[b,e] [c,d] [e,d] [c,e] [e,c] [a,b] [b,d] [f,d] 
+Aristas obligatorias:
+
+Vertices visitados:
+a 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a 
+Considerando factibilidad sin...
+	Sumando [a, f] al estimado
+	Sumando [a, d] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a c 
+Considerando factibilidad con...
+	Sumando [a, c] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 58, potencialmente factible: si
+	Optimiza solucion: no
+Costo sin: 56, potencialmente factible: si
+	Optimiza solucion: no
+Visitando sin primero
+Solucion actual tras descartar:
+a 
+=============================
+Vertice considerado: e
+Solucion actual: 
+a 
+Aristas prohibidas:
+[b,e] [c,d] [e,d] [c,e] [e,c] [a,b] [a,c] [b,d] [f,d] 
+Aristas obligatorias:
+
+Vertices visitados:
+a 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a 
+Considerando factibilidad sin...
+	Sumando [a, f] al estimado
+	Sumando [a, d] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a e 
+Considerando factibilidad con...
+	Sumando [a, e] al estimado
+	Sumando [a, f] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 57, potencialmente factible: si
+	Optimiza solucion: no
+Costo sin: 56, potencialmente factible: si
+	Optimiza solucion: no
+Visitando sin primero
+Solucion actual tras descartar:
+a 
+=============================
+Vertice considerado: f
+Solucion actual: 
+a 
+Aristas prohibidas:
+[b,e] [c,d] [e,d] [c,e] [e,c] [a,b] [a,e] [a,c] [b,d] [f,d] 
+Aristas obligatorias:
+
+Vertices visitados:
+a 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a 
+Considerando factibilidad sin...
+	Sumando [a, d] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a f 
+Considerando factibilidad con...
+	Sumando [a, f] al estimado
+	Sumando [a, d] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 56, potencialmente factible: si
+	Optimiza solucion: no
+Costo sin: 53, potencialmente factible: si
+	Optimiza solucion: no
+Visitando sin primero
+Solucion actual tras descartar:
+a 
+=============================
+Vertice considerado: d
+Solucion actual: 
+a 
+Aristas prohibidas:
+[b,e] [c,d] [e,d] [c,e] [e,c] [a,b] [a,f] [a,e] [a,c] [b,d] [f,d] 
+Aristas obligatorias:
+
+Vertices visitados:
+a 
+Con implica violar una arista descartada? no
+Sin implica violar una arista descartada? no
+Solucion actual tras descartar:
+a 
+Considerando factibilidad sin...
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Solucion actual tras considerar:
+a d 
+Considerando factibilidad con...
+	Sumando [a, d] al estimado
+	Sumando [b, a] al estimado
+	Sumando [b, c] al estimado
+	Sumando [c, b] al estimado
+	Sumando [c, f] al estimado
+	Sumando [d, a] al estimado
+	Sumando [d, b] al estimado
+	Sumando [e, f] al estimado
+	Sumando [e, a] al estimado
+	Sumando [f, a] al estimado
+	Sumando [f, e] al estimado
+Costo mejor solucion actual 50
+Costo con: 53, potencialmente factible: si
+	Optimiza solucion: no
+Costo sin: 47, potencialmente factible: si
+	Optimiza solucion: si
+Visitando sin primero
+Solucion actual tras descartar:
+a 
+=============================
+Vertice nulo 
+Recorridos terminados
+Recorridos terminados
+Recorridos terminados
+Recorridos terminados
+Recorridos terminados
 [0]	a
 [1]	b
-[2]	e
-[3]	d
+[2]	c
+[3]	e
 [4]	f
-[5]	c
+[5]	d

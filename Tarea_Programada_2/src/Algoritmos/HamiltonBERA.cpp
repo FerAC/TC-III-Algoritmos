@@ -170,10 +170,23 @@ static bool EsPosiblementeFactible(const Grafo& grafo
     // Llevemos cuenta de cuántos vértices se han agregado a la solución actual
     const size_t verticesAlMomento = solucionesActuales.solucionActual.size();
 
-    // Si no hemos añadido vértices a la solución actual, entonces consideramos
+    // Si no hemos añadido al menos dos vértices a la solución actual, entonces consideramos
     // que existe potencial para factibilidad
-    if (verticesAlMomento == 0) {
+    if (verticesAlMomento < 2) {
         return true;
+    }
+
+    // Revisaremos si el último vértice conecta con su anterior
+    char ultimosDosConexos = 0;
+    for (Vertice v = grafo.PrimerVerticeAdyacente(solucionesActuales.solucionActual[verticesAlMomento - 2])
+        ; v != Vertice() && ultimosDosConexos == 0
+        ; v = grafo.SiguienteVerticeAdyacente(solucionesActuales.solucionActual[verticesAlMomento - 2], v)) {
+        if (solucionesActuales.solucionActual.back() == v) {
+            ultimosDosConexos = 1;
+        }
+    }
+    if (ultimosDosConexos == 0) {
+        return false;
     }
 
     // También llevemos cuenta del último vértice del recorrido

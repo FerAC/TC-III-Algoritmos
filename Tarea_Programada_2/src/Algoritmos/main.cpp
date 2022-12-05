@@ -20,6 +20,32 @@ int main()
     Vertice e = Controlador::buscarVertice(grafo, 'e');
     Vertice f = Controlador::buscarVertice(grafo, 'f');
 
+    /* TEST HAMILTON BERA 
+    */
+
+    grafo.AgregarArista(a, b, 2);
+    grafo.AgregarArista(a, c, 8);
+    grafo.AgregarArista(a, d, 6);
+    grafo.AgregarArista(a, e, 7);
+    grafo.AgregarArista(a, f, 3);
+    grafo.AgregarArista(b, c, 3);
+    grafo.AgregarArista(b, d, 9);
+    grafo.AgregarArista(b, f, 5);
+    grafo.AgregarArista(c, e, 1);
+    grafo.AgregarArista(c, f, 6);
+    grafo.AgregarArista(d, f, 9);
+    grafo.AgregarArista(e, f, 4);
+
+    std::vector<Vertice> solucionHamiltonBera = HamiltonBERA::Hamilton(grafo);
+    for (size_t it = 0; it < solucionHamiltonBera.size(); ++it) {
+        std::cout << "[" << it << "]\t" << solucionHamiltonBera[it].getEtiqueta() << std:: endl;
+    }
+
+    return 0;
+
+    /* TEST DIJKSTRA
+    */
+
     grafo.AgregarArista(a, b, 2);
     grafo.AgregarArista(a, c, 3);
     grafo.AgregarArista(a, d, 10);
@@ -42,16 +68,7 @@ int main()
     listaDijkstra.imprimirLista();
     std::cout << std::endl;
     //Controlador::nVecesDijkstra(grafo);
-    
-    /* TEST HAMILTON BERA 
-    */
 
-    std::vector<Vertice> solucionHamiltonBera = HamiltonBERA::Hamilton(grafo);
-    for (size_t it = 0; it < solucionHamiltonBera.size(); ++it) {
-        std::cout << "[" << it << "]\t" << solucionHamiltonBera[it].getEtiqueta() << std:: endl;
-    }
-
-    // TEST DIJKSTRA
 
     // TEST KRUSKAL
     /*
