@@ -483,7 +483,8 @@ static bool HamiltonBERARecursivo(const Grafo& grafo
     }
 
     // Y el costo respectivo
-    size_t costoSin = MinimoCostoPosible(grafo, estadoActual);
+    size_t costoSin = ((potencialFactibilidadSin)? 
+        MinimoCostoPosible(grafo, estadoActual) : std::numeric_limits<size_t>::max());
 
     // Como también revisaremos la factibilidad considerando al vértice nuevo
     Vertice trasConsiderar = ConsiderarVerticeHamiltonBERA(grafo, verticePorConsiderar, estadoActual, solucionesActual);
@@ -495,7 +496,8 @@ static bool HamiltonBERARecursivo(const Grafo& grafo
     }
 
     // Y el costo respectivo
-    size_t costoCon = MinimoCostoPosible(grafo, estadoActual);
+    size_t costoCon = ((potencialFactibilidadCon)? 
+        MinimoCostoPosible(grafo, estadoActual) : std::numeric_limits<size_t>::max());
 
     // DEBUG
     std::cout 
