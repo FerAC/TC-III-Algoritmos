@@ -1,202 +1,34 @@
-#ifndef CONTROLADOR
-#define CONTROLADOR
+#ifndef PRUEBAS
+#define PRUEBAS
 
-#include <iostream>
+#include <iostream>  // DEBUG
 
 #include "Algoritmos.hpp"
 
-namespace Controlador {
+// TODO(us): Cambiar invocaciones para que compile
+namespace Pruebas {
 
-    void iniciar() {
-        Grafo grafo;
-        bool continuar;
-
-        do
-        {
-            std::cout<< "Cual operador basico deseea utilizar?" << std::endl;
-            std::cout<< "1- Agregar vertice" << std::endl;
-            std::cout<< "2- Eliminar vertice" << std::endl;
-            std::cout<< "3- Modificar etiqueta" << std::endl;
-            std::cout<< "4- Agregar arista" << std::endl;
-            std::cout<< "5- Eliminar arista"<< std::endl;
-            std::cout<< "6- Modificar peso" << std::endl;
-            std::cout<< "7- Peso" << std::endl;
-            std::cout<< "8- Primer vertice" << std::endl;
-            std::cout<< "9- Siguiente vertice" << std::endl;
-            std::cout<< "10- Primer vertice adyacente" << std::endl;
-            std::cout<< "11- Siguiente vertice adyacente" << std::endl;
-            std::cout<< "12- Num vertices" << std::endl;
-            std::cout<< "13- Destruir Grafo" << std::endl;
-
-            int decision;
-            std::cin >> decision;
-
-            switch (decision)
-            {
-            case 1:
-                {
-                    std::cout<< "Digite la etiqueta del vertice" << std::endl;
-                    char etiqueta;
-                    std::cin>> etiqueta;
-                    grafo.AgregarVertice(etiqueta);   
-                }
-                break;
-            case 2:
-                {
-                    std::cout<< "Digite la etiqueta del vertice" << std::endl;
-                    char etiqueta;
-                    std::cin>> etiqueta;
-                    Vertice vertice = Algoritmos::buscarVertice(etiqueta, grafo);
-                    grafo.EliminarVertice(vertice); 
-                }
-                break;
-            case 3:
-                {
-                    std::cout<<"Etiqueta actual" << std::endl;
-                    char etiquetaVieja;
-                    std::cin>> etiquetaVieja;
-                    std::cout<<"Nueva etiqueta" << std::endl;
-                    char etiqueta;
-                    std::cin>> etiqueta;
-                    Vertice vertice =  Algoritmos::buscarVertice(etiquetaVieja, grafo);
-                    grafo.ModificarEtiqueta(vertice, etiqueta);
-                }
-                
-                break;
-            case 4:
-                {
-                    std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
-                    char etiqueta1;
-                    std::cin>> etiqueta1;
-                    std::cout<< "Digite la etiqueta del vertice2" << std::endl;
-                    char etiqueta2;
-                    std::cin>> etiqueta2;
-                    std::cout<< "Digite el peso de la arista" << std:: endl;
-                    size_t peso;
-                    std::cin>>peso;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice2 = Algoritmos::buscarVertice(etiqueta2, grafo);
-                    grafo.AgregarArista(vertice1, vertice2, peso);
-                }
-                break;
-            case 5:
-                {
-                    std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
-                    char etiqueta1;
-                    std::cin>> etiqueta1;
-                    std::cout<< "Digite la etiqueta del vertice2" << std::endl;
-                    char etiqueta2;
-                    std::cin>> etiqueta2;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice2 = Algoritmos::buscarVertice(etiqueta2, grafo);
-                    grafo.EliminarArista(vertice1, vertice2);
-                }
-                break;
-            case 6:
-                {
-                    std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
-                    char etiqueta1;
-                    std::cin>> etiqueta1;
-                    std::cout<< "Digite la etiqueta del vertice2" << std::endl;
-                    char etiqueta2;
-                    std::cin>> etiqueta2;
-                    std::cout<< "Digite el peso de la arista" << std:: endl;
-                    size_t peso;
-                    std::cin>>peso;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice2 = Algoritmos::buscarVertice(etiqueta2, grafo);
-                    grafo.ModificarPeso(vertice1, vertice2, peso);
-                }
-                break; 
-            case 7:
-                {
-                    std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
-                    char etiqueta1;
-                    std::cin>> etiqueta1;
-                    std::cout<< "Digite la etiqueta del vertice 2" << std::endl;
-                    char etiqueta2;
-                    std::cin>> etiqueta2;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice2 = Algoritmos::buscarVertice(etiqueta2, grafo);
-                    int peso = grafo.Peso(vertice1, vertice2);
-                    std::cout<< "El peso entre " << etiqueta1 << " y " << etiqueta2 << " es " << peso << std::endl;
-                }
-                break;
-            case 8:
-                {
-                    Vertice vertice = grafo.PrimerVertice();
-                    std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice);
-                }
-                break;
-            case 9:
-                    {
-                    std::cout<< "Digite la etiqueta del vertice anteroir" << std::endl;
-                    char etiqueta1;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice = grafo.SiguienteVertice(vertice1); 
-                    std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice);
-                    }
-                    break;
-            case 10:
-                    {
-                    std::cout<< "Digite la etiqueta del vertice" << std::endl;
-                    char etiqueta1;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice = grafo.PrimerVerticeAdyacente(vertice1); 
-                    std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice);
-                    }
-                    break; 
-            case 11:
-                {
-                    std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
-                    char etiqueta1;
-                    std::cin>> etiqueta1;
-                    std::cout<< "Digite la etiqueta del anterior adyacente vertice" << std::endl;
-                    char etiqueta2;
-                    std::cin>> etiqueta2;
-                    Vertice vertice1 = Algoritmos::buscarVertice(etiqueta1, grafo);
-                    Vertice vertice2 = Algoritmos::buscarVertice(etiqueta2, grafo);
-                    Vertice vertice = grafo.SiguienteVerticeAdyacente(vertice1, vertice2); 
-                    std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice);
-                }
-            case 12:
-                {
-                    std::cout<<"La cantidad de vertices del grafo es : " <<grafo.NumVertices() <<  std::endl;
-                }
-                break;
-            default:
-                std::cout<< "Opcion invalida" << std::endl;
-                break;
-            }
-
-            std::cout<< "Desea continuar?"<< std::endl;
-            std::cin>>continuar;
-
-        } while (continuar);
-    }
+    // ALGORITMOS
 
     void static pruebaDijkstra(Grafo &grafo){
-        ListaDijkstra camino(grafo.NumVertices());
         Vertice vertice = grafo.PrimerVertice();
-        Algoritmos::Dijkstra(grafo, vertice, camino);
-        // pregunta a dijkstra para un vertice random 
-                    
+        Algoritmos::Dijkstra(grafo, vertice);
     }
 
-    void static pruebaDijkstraN(Grafo &grafo){
+    void static pruebaDijkstraN(Grafo &grafo) {
         ListaDijkstra camino(grafo.NumVertices());
         Vertice vertice = grafo.PrimerVertice();
         Vertice verticeNulo;
+        Algoritmos::nVecesDijkstra(grafo);
         
-        while(vertice != verticeNulo){
-            Algoritmos::Dijkstra(grafo, vertice, camino);
-            vertice = grafo.SiguienteVertice(vertice);
-        }              
+    // while(vertice != verticeNulo){
+        //   Algoritmos::Dijkstra(grafo, vertice, camino);
+        // vertice = grafo.SiguienteVertice(vertice);
+        //}              
     }
 
     void static pruebaKruskal(Grafo &grafo){
-        Grafo grafoMinimo;
-        Algoritmos::Kruskal(grafo, grafoMinimo);            
+        Algoritmos::Kruskal(grafo);
     }
 
     void static pruebaFloyd(Grafo &grafo){
@@ -204,13 +36,16 @@ namespace Controlador {
     }
 
     void static pruebaPrim(Grafo &grafo){
-        Algoritmos::primMetodo(grafo);
+        Algoritmos::Prim(grafo);
     }
 
     void static pruebaColorear(Grafo &grafo){
         Algoritmos::colorear(grafo);
     }
 
+    // CREAR GRAFOS
+
+    // TODO(us): Devuelven una copia, pero no tenemos un constructor por copia, ni asignamiento, de grafo
     Grafo static crearGrafoArana(size_t limite){
         //Las etiquetas van de 33 a limite 
         //Todos se conectan al vertice con la etiqueta 33 (ascii)
@@ -286,7 +121,7 @@ namespace Controlador {
         for (size_t i = 33; i < limite; i++)
         {
             char etiqueta = i;
-            
+            // TODO(us): Aqui se agregan las etiquetas?
         }
         for (size_t i = 33; i < limite; i++)
         {

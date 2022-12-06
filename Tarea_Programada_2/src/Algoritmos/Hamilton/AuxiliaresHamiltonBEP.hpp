@@ -5,7 +5,7 @@
 #include <map>  // Relaciones
 #include <vector>  // Arreglos
 
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 struct Datos {
     std::vector<Vertice> solActual;

@@ -1,5 +1,7 @@
 #include "Tripleta.hpp"
 
+#include <iostream>  // DEBUG
+
 // CONSTRUCTORES y DESTRUCTORES
 
 Tripleta::Tripleta() {

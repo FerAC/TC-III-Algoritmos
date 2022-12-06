@@ -1,7 +1,7 @@
 #ifndef TRIPLETA_FLOYD
 #define TRIPLETA_FLOYD
 
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 class Tripleta
 {

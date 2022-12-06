@@ -1,4 +1,4 @@
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 namespace Algoritmos {
 

@@ -11,7 +11,7 @@
 
 // Decidido en tiempo de compilación gracias al -I de todas las carpetas
 // y los header guards que identifican la definición del símbolo MATRIZ
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 #include <list>  // Listas indexadas
 #include <set>  // Conjuntos

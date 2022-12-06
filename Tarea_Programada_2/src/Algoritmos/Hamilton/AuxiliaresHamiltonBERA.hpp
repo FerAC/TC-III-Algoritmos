@@ -7,7 +7,7 @@
 #include <vector>  // Arreglos
 #include <set>  // Conjuntos
 
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 class Arista : public std::pair<Vertice, Vertice> {
     public:

@@ -2,7 +2,7 @@
 #include <utility> // Para parejas
 #include <set> // Para conjuntos
 
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 static void colorearRec(const Grafo& grafo,
     Vertice vertice,

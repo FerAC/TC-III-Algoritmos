@@ -2,7 +2,7 @@
 #include <iostream> // DEBUG
 #include <vector>  // Arreglos
 
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 
 namespace Algoritmos {
 

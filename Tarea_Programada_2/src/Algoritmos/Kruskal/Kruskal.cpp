@@ -2,7 +2,7 @@
 #include <queue>  // Cola de prioridad
 #include <set>  // Conjunto
 
-#include "Grafo.hpp"
+#include "GrafoImplementado.hpp"
 #include "AuxiliaresHamiltonBERA.hpp"
 
 bool existeCiclos(const Grafo& grafo);

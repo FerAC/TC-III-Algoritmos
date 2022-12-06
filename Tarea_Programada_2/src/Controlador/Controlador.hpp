@@ -1,5 +1,5 @@
-#ifndef PRUEBAS
-#define PRUEBAS
+#ifndef CONTROLADOR
+#define CONTROLADOR
 
 namespace Controlador {
 
