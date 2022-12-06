@@ -125,11 +125,11 @@ namespace Algoritmos {
             size_t ejeY = 0;
             size_t indicePesos = 0;
 
-            while(ejeY < grafo.NumVertices()){
+            while (ejeY < grafo.NumVertices()) {
                     
                 size_t buffer = camino.getPesoPorIndice(indicePesos);
 
-                if(ejeX == ejeY){
+                if (ejeX == ejeY) {
                     matrizCostos[ejeX][ejeY] = 0;
                 } else {
                     matrizCostos[ejeX][ejeY] = buffer;

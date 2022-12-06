@@ -36,9 +36,9 @@ namespace Algoritmos {
     void Kruskal(const Grafo& grafo, Grafo& grafoMinimo);
     */
 
-    Grafo Kruskal(const Grafo& grafo);
+    void Kruskal(const Grafo& grafo, Grafo& grafoRecipiente);
 
-    Grafo Prim(const Grafo& grafo);
+    void Prim(const Grafo& grafo, Grafo& grafoRecipiente);
 
     std::vector<std::vector<size_t>>
     Floyd(const Grafo& grafo);

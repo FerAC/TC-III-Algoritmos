@@ -82,15 +82,13 @@ namespace Algoritmos {
     */
 
     /// @brief Obtiene el árbol minimal de un grafo fuertemente conexo
-    /// @param grafo Grafo fuertemente conexo
+    /// @param grafo Grafo fuertemente conexo tomado como para el cual sacar el arbol minimal
+    /// @param grafo Grafo vacío donde colocar la respuesta del árbol minimal
     /// @return Arbol minimal del grafo de entrada
-    Grafo Kruskal(const Grafo& grafo) {
-        // Llevemos cuenta del árbol minimal
-        Grafo arbolMinimal;
+    void Kruskal(const Grafo& grafo, Grafo& grafoRecipiente) {
 
         // Si el árbol está vacío, no hay nada que se pueda hacer
         if (grafo.NumVertices() == 0) {
-            return arbolMinimal;
         }
 
         // También llevemos cuenta de una cola de prioridad de aristas, 
@@ -109,11 +107,15 @@ namespace Algoritmos {
 
         // Si no hay aristas que se puedan sacar, no hay nada que se pueda hacer
         if (aristasPorSacar.empty()) {
-            return arbolMinimal;
+            return;
         }
 
-        // Llevemos cuenta de los vértices visitados también
+        // Llevemos cuenta de los vértices visitados
         std::set<Vertice> verticesVisitados;
+
+        // Y de las aristas que colocaremos en el grafo de ser exitosos
+        std::vector<Arista> aristasPorMeter;
+        aristasPorMeter.reserve(grafo.NumVertices());
 
         // Saquemos aristas hasta que se nos acaben, o hayamos llegado 
         // a utilizar n-1 de ellas
@@ -131,31 +133,52 @@ namespace Algoritmos {
                 // Añadamos ambos vértices, si no han sido añadidos previamente
                 // al árbol minimal. Además, marquemoslos como visitados
                 if (!verticesVisitados.contains(aristaMenorCosto.first)) {
-                    arbolMinimal.AgregarVertice(grafo.Etiqueta(aristaMenorCosto.first));
                     verticesVisitados.insert(aristaMenorCosto.first);
                 }
 
                 if (!verticesVisitados.contains(aristaMenorCosto.second)) {
-                    arbolMinimal.AgregarVertice(grafo.Etiqueta(aristaMenorCosto.second));
                     verticesVisitados.insert(aristaMenorCosto.second);
                 }
 
-                // Añadamos esta arista al árbol minimal
-                arbolMinimal.AgregarArista(aristaMenorCosto.first
-                    , aristaMenorCosto.second
-                    , aristaMenorCosto.pesoAsociado);
+                // Añadamos esta arista a la lista de aristas por meter al árbol minimal
+                aristasPorMeter.push_back(aristaMenorCosto);
 
-                // Y aumentemos el contador de aristas añadidas
+                // Y aumentemos el contador de aristas sacadas
                 aristasSacadas += 1;
             }
         }
 
         // Si sacamos menos de n-1 aristas, entonces no existe arbol minimal
         if (aristasSacadas < n-1) {
-            return Grafo();
+            return;
         }
 
         // Como sacamos n-1 aristas, en teoría hemos sacado el árbol minimal
-        return arbolMinimal;
+        // Poblemos la respuesta
+
+        // Volveremos a visitar los vértices para añadirlos únicamente si no se
+        // han añadido antes
+        verticesVisitados.clear();
+        for (size_t i = 0; i < n-1; ++i) {
+            // Añadamos ambos vértices, si no han sido añadidos previamente
+            // al árbol minimal. Además, marquemoslos como visitados
+            if (!verticesVisitados.contains(aristasPorMeter[i].first)) {
+                grafoRecipiente.AgregarVertice(grafo.Etiqueta(aristasPorMeter[i].first));
+                verticesVisitados.insert(aristasPorMeter[i].first);
+            }
+
+            if (!verticesVisitados.contains(aristasPorMeter[i].second)) {
+                grafoRecipiente.AgregarVertice(grafo.Etiqueta(aristasPorMeter[i].second));
+                verticesVisitados.insert(aristasPorMeter[i].second);
+            }
+
+            grafoRecipiente.AgregarArista(aristasPorMeter[i].first
+                , aristasPorMeter[i].second
+                , aristasPorMeter[i].pesoAsociado);
+        }
+
+        // Ya terminamos el algoritmo
+        return;
     }
+
 }

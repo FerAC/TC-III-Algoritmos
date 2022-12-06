@@ -79,7 +79,7 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
 
 namespace Algoritmos {
 
-    Grafo Prim(const Grafo &grafo) {
+    void Prim(const Grafo &grafo, Grafo& grafoRecipiente) {
         // int a = grafo.NumVertices();
         Tripleta lista[grafo.NumVertices() - 1];
         // Inicializacion
@@ -149,7 +149,7 @@ namespace Algoritmos {
             std::cout << "Vertice Anterior " << lista[i].getVerticeAnterior().getEtiqueta() << std::endl;
         }
         std::cout << "****************************************** " << std::endl;
-        Grafo retornado;
+
         /*
         for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
         {
@@ -190,22 +190,22 @@ namespace Algoritmos {
             }
            */
             // Verifico no haber anadido el vertice anteriormente
-            Vertice buscado = buscarVertice(retornado, lista[i].getVertice().getEtiqueta());
+            Vertice buscado = buscarVertice(grafoRecipiente, lista[i].getVertice().getEtiqueta());
             if (buscado == NULO)
             {
                 std::cout << "No se ha agregado a " << lista[i].getVertice().getEtiqueta() << std::endl;
-                salida = retornado.AgregarVertice(lista[i].getVertice().getEtiqueta());
+                salida = grafoRecipiente.AgregarVertice(lista[i].getVertice().getEtiqueta());
             }
             else
             {
                 std::cout << "Si se ha agregado a " << lista[i].getVertice().getEtiqueta() << std::endl;
                 salida = buscado;
             }
-            buscado = buscarVertice(retornado, lista[i].getVerticeAnterior().getEtiqueta());
+            buscado = buscarVertice(grafoRecipiente, lista[i].getVerticeAnterior().getEtiqueta());
             if (buscado == NULO)
             {
                 std::cout << "No se ha agregado a " << lista[i].getVerticeAnterior().getEtiqueta() << std::endl;
-                llegada = retornado.AgregarVertice(lista[i].getVerticeAnterior().getEtiqueta());
+                llegada = grafoRecipiente.AgregarVertice(lista[i].getVerticeAnterior().getEtiqueta());
             }
             else
             {
@@ -217,34 +217,34 @@ namespace Algoritmos {
             salida = buscarVertice(retornado, lista[i].getVerticeAnterior().getEtiqueta());
            */
             std::cout << "Se va a agregar una arista de peso " << lista[i].getPeso() << ", entre " << llegada.getEtiqueta() << " y " << salida.getEtiqueta() << std::endl;
-            retornado.AgregarArista(llegada, salida, lista[i].getPeso());
+            grafoRecipiente.AgregarArista(llegada, salida, lista[i].getPeso());
         }
+
         Vertice vertice;
-        for (size_t i = 0; i < retornado.NumVertices(); i++)
+        for (size_t i = 0; i < grafoRecipiente.NumVertices(); i++)
         {
-            if (i == 0)
-            {
-                vertice = retornado.PrimerVertice();
+            if (i == 0) {
+                vertice = grafoRecipiente.PrimerVertice();
             }
-            else
-            {
-                vertice = retornado.SiguienteVertice(vertice);
+            else {
+                vertice = grafoRecipiente.SiguienteVertice(vertice);
             }
             // retornado.ImprimirConexiones(vertice);
         }
-        for (size_t i = 0; i < retornado.NumVertices(); i++)
+
+        for (size_t i = 0; i < grafoRecipiente.NumVertices(); i++)
         {
-            if (i == 0)
-            {
+            if (i == 0) {
                 vertice = grafo.PrimerVertice();
             }
-            else
-            {
+            else {
                 vertice = grafo.SiguienteVertice(vertice);
             }
             //  grafo.ImprimirConexiones(vertice);
         }
-        return retornado;
+
+        // Ya terminamos el algoritmo
+        return;
     }
 
 }

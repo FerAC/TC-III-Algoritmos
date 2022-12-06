@@ -129,10 +129,10 @@ Vertice Grafo::SiguienteVerticeAdyacente(const Vertice& original, const Vertice&
     }
     */
 
-    if( iterador->getSiguiente() == nullptr){
+    if ( iterador->getSiguiente() == nullptr) {
         return nulo;
     }
-    if(iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta){
+    if (iterador->getEtiqueta().VAdyacente->etiqueta == adyAnterior.etiqueta) {
         return * iterador->getSiguiente()->getEtiqueta().VAdyacente; 
     }
     
@@ -166,7 +166,8 @@ int Grafo::ExisteArista(const Vertice& inicio, const Vertice& fin) const {
     return 0;
 }
 
-void Grafo::AgregarArista(Vertice& origen, Vertice& destino, size_t peso) {
+// TODO(us): Revisar, parece que inserta el peso en vez de la etiqueta
+void Grafo::AgregarArista(const Vertice& origen, const Vertice& destino, size_t peso) {
     Vertice* modificado1;
     Vertice* modificado2;
     for (auto i = listaPrincipal->getPrimera(); i != nullptr; i = i->getSiguiente())

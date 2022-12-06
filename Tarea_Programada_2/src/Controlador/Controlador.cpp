@@ -14,7 +14,7 @@ static void imprimirGrafo(const Grafo& grafo) {
     #endif
 }
 
-static void imprimirGrafoCSAcademy(const Grafo& grafo){
+static void imprimirGrafoCSAcademy(const Grafo& grafo) {
     Vertice NULO;
     for(Vertice vertice = grafo.PrimerVertice();
         vertice!=NULO;
@@ -24,10 +24,10 @@ static void imprimirGrafoCSAcademy(const Grafo& grafo){
 
     for(Vertice vertice = grafo.PrimerVertice();
         vertice!=NULO;
-        vertice = grafo.SiguienteVertice(vertice)){
+        vertice = grafo.SiguienteVertice(vertice)) {
         for(Vertice verticeAdy = grafo.PrimerVerticeAdyacente(vertice);
             verticeAdy!=NULO;
-            vertice = grafo.SiguienteVerticeAdyacente(vertice, verticeAdy)){
+            vertice = grafo.SiguienteVerticeAdyacente(vertice, verticeAdy)) {
             std::cout
             << grafo.Etiqueta(vertice) << " " 
             << grafo.Etiqueta(verticeAdy) << " " 

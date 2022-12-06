@@ -21,7 +21,7 @@ class Grafo {
         // TODO(Us): Documentar
         Vertice AgregarVertice(char etiqueta);
 
-        // TODO(Us): Documentar
+        // TODO(Us): Documentar. Revisar si admite const ref
         void EliminarVertice(Vertice& vertice);
 
         // TODO(Us): Documentar
@@ -49,15 +49,15 @@ class Grafo {
         void ModificarEtiqueta(Vertice& vertice, char nueva);
 
         // TODO(Us): Documentar
-        void AgregarArista(Vertice& origen, Vertice& destino, size_t peso);
+        void AgregarArista(const Vertice& origen, const Vertice& destino, size_t peso);
 
-        // TODO(Us): Documentar
+        // TODO(Us): Documentar. Revisar si admite const ref
         void EliminarArista(Vertice& origen, Vertice& destino);
 
         // TODO(Us): Documentar
         size_t Peso(const Vertice& origen, const Vertice& destino) const;
 
-        // TODO(Us): Documentar
+        // TODO(Us): Documentar. Revisar si admite const ref
         void ModificarPeso(Vertice& origen, Vertice& destino, size_t nuevoPeso);
 
         // TODO(Us): Documentar
