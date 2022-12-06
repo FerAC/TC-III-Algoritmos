@@ -1,7 +1,7 @@
 #ifndef Grafo_Matriz_Adyacencia
 #define Grafo_Matriz_Adyacencia
 
-#include "MatrizAdyacencia/Vertice.hpp"
+#include "Vertice.hpp"
 
 // TODO(Us): Documentar
 class Grafo {

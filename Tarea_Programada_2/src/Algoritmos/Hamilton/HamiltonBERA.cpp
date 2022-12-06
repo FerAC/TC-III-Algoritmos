@@ -1,65 +1,8 @@
-#include "HamiltonBERA.hpp"
+#include "AuxiliaresHamiltonBERA.hpp"
 
-#include <cstddef>  // Size_t
-#include <limits>  // Max de size_t
 #include <iostream> // DEBUG
 #include <queue>  // Cola de prioridad
-#include <utility>  // Pareja
-#include <set>  // Arreglos
-
-class Arista : public std::pair<Vertice, Vertice> {
-    public:
-        size_t pesoAsociado;
-
-        Arista(const Vertice& origen, const Vertice& destino, size_t peso)
-        : std::pair<Vertice, Vertice>(origen, destino)
-        , pesoAsociado(peso) {
-        }
-
-        Arista& operator=(const Arista& otro) {
-            this->first = otro.first;
-            this->second = otro.second;
-            this->pesoAsociado = otro.pesoAsociado;
-
-            return *this;
-        }
-
-        bool operator<(const Arista& otro) const {
-            if (this->pesoAsociado < otro.pesoAsociado) {
-                return true;
-            } else if (otro.pesoAsociado == this->pesoAsociado) {
-                if (this->first < otro.first) {
-                    return true;
-                } else if (this->first == otro.first) {
-                    if (this->second < otro.second)
-                        return true;
-                }
-            }
-
-            return false;
-        }
-
-        bool operator>(const Arista& otro) const {
-            return otro < *this;
-        }
-
-        bool operator!=(const Arista& otro) const {
-            return (*this < otro) || (otro < *this);
-        }
-};
-
-struct Estado {
-    std::set<Vertice> verticesRecorridos;
-    std::set<Arista> aristasAceptadas;
-    std::set<Arista> aristasDescartadas;
-};
-
-struct Soluciones {
-    std::vector<Vertice> solucionActual;
-    std::vector<Vertice> mejorSolucion;
-    size_t costoSolucionActual = std::numeric_limits<size_t>::max();
-    size_t costoMejorSolucion = std::numeric_limits<size_t>::max();
-};
+#include <set>  // Diccionarios
 
 static size_t MinimoCostoPosible(const Grafo& grafo
     , const Estado& estadoActual) {
@@ -177,17 +120,9 @@ static bool EsPosiblementeFactible(const Grafo& grafo
     }
 
     // Revisaremos si el último vértice conecta con su anterior
-    char ultimosDosConexos = 0;
-    for (Vertice v = grafo.PrimerVerticeAdyacente(solucionesActuales.solucionActual[verticesAlMomento - 2])
-        ; v != Vertice() && ultimosDosConexos == 0
-        ; v = grafo.SiguienteVerticeAdyacente(solucionesActuales.solucionActual[verticesAlMomento - 2], v)) {
-        if (solucionesActuales.solucionActual.back() == v) {
-            ultimosDosConexos = 1;
-        }
-    }
-    if (ultimosDosConexos == 0) {
+    if (!grafo.ExisteArista(solucionesActuales.solucionActual[verticesAlMomento - 2]
+        , solucionesActuales.solucionActual.back()))
         return false;
-    }
 
     // También llevemos cuenta del último vértice del recorrido
     const Vertice& verticeFinal = solucionesActuales.solucionActual.back();
@@ -576,29 +511,32 @@ static bool HamiltonBERARecursivo(const Grafo& grafo
     return factibilidadCon == 1 || factibilidadSin == 1;
 }
 
-std::vector<Vertice> HamiltonBERA::Hamilton(const Grafo& grafo) {
+namespace Algoritmos {
 
-    // Llevemos cuenta de la cantidad de vertices en el grafo
-    const size_t cantidadVertices = grafo.NumVertices();
+    std::vector<Vertice> HamiltonBERA(const Grafo& grafo) {
 
-    // Si no hay mas de dos vértices, no necesitamos continuar
-    if (cantidadVertices <= 1) {
-        return std::vector<Vertice>();
+        // Llevemos cuenta de la cantidad de vertices en el grafo
+        const size_t cantidadVertices = grafo.NumVertices();
+
+        // Si no hay mas de dos vértices, no necesitamos continuar
+        if (cantidadVertices <= 1) {
+            return std::vector<Vertice>();
+        }
+
+        // Para el recorrido con BERA necesitaremos de varias E.D auxiliares:
+            // Una referencia al primer vértice del grafo
+            const Vertice origenRecorrido = grafo.PrimerVertice();
+            // Un registro del estado actual del recorrido
+            Estado estado;
+            // Y otro registro donde almacenar las soluciones
+            Soluciones soluciones;
+
+        // Ahora podemos comenzar el recorrido recursivo
+        estado.verticesRecorridos.insert(origenRecorrido);
+        soluciones.solucionActual.push_back(origenRecorrido);
+        HamiltonBERARecursivo(grafo, grafo.PrimerVerticeAdyacente(origenRecorrido), estado, soluciones);
+
+        // Tras terminar el recorrido, podemos devolver el vector con la mejor solución
+        return soluciones.mejorSolucion;
     }
-
-    // Para el recorrido con BERA necesitaremos de varias E.D auxiliares:
-        // Una referencia al primer vértice del grafo
-        const Vertice origenRecorrido = grafo.PrimerVertice();
-        // Un registro del estado actual del recorrido
-        Estado estado;
-        // Y otro registro donde almacenar las soluciones
-        Soluciones soluciones;
-
-    // Ahora podemos comenzar el recorrido recursivo
-    estado.verticesRecorridos.insert(origenRecorrido);
-    soluciones.solucionActual.push_back(origenRecorrido);
-    HamiltonBERARecursivo(grafo, grafo.PrimerVerticeAdyacente(origenRecorrido), estado, soluciones);
-
-    // Tras terminar el recorrido, podemos devolver el vector con la mejor solución
-    return soluciones.mejorSolucion;
 }
