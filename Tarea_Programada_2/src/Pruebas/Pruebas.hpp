@@ -10,44 +10,35 @@ namespace Pruebas {
 
     // ALGORITMOS
 
-    void static pruebaDijkstra(Grafo &grafo) {
+    void static pruebaDijkstra(const Grafo &grafo) {
         Vertice vertice = grafo.PrimerVertice();
         Algoritmos::Dijkstra(grafo, vertice);
     }
 
-    void static pruebaDijkstraN(Grafo &grafo) {
-        ListaDijkstra camino(grafo.NumVertices());
-        Vertice vertice = grafo.PrimerVertice();
-        Vertice verticeNulo;
-        Algoritmos::nVecesDijkstra(grafo);
-        
-    // while (vertice != verticeNulo) {
-        //   Algoritmos::Dijkstra(grafo, vertice, camino);
-        // vertice = grafo.SiguienteVertice(vertice);
-        //}              
+    void static pruebaDijkstraN(const Grafo &grafo) {
+        Algoritmos::nVecesDijkstra(grafo);       
     }
 
-    void static pruebaFloyd(Grafo &grafo) {
+    void static pruebaFloyd(const Grafo &grafo) {
         Algoritmos::Floyd(grafo);
     }
 
-    void static pruebaKruskal(Grafo &grafo) {
+    void static pruebaKruskal(const Grafo &grafo) {
         Grafo recipiente;
         Algoritmos::Kruskal(grafo, recipiente);
     }
 
-    void static pruebaPrim(Grafo &grafo) {
+    void static pruebaPrim(const Grafo &grafo) {
         Grafo recipiente;
         Algoritmos::Prim(grafo, recipiente);
     }
 
-    void static pruebaColorear(Grafo &grafo) {
+    void static pruebaColorear(const Grafo &grafo) {
         Algoritmos::colorear(grafo);
     }
 
     // CREAR GRAFOS
 
-    // TODO(us): Devuelven una copia, pero no tenemos un constructor por copia, ni asignamiento, de grafo
     void static crearGrafoArana(size_t limite, Grafo& grafo) {
         //Las etiquetas van de 33 a limite 
         //Todos se conectan al vertice con la etiqueta 33 (ascii)
