@@ -30,17 +30,20 @@ int main()
     grafoEntrada.AgregarArista(e, f, 4);
     */
 
-    Pruebas::crearGrafoArana(60, grafoEntrada); 
+    Pruebas::crearGrafoCircular(60, grafoEntrada); 
     // Render
     Controlador::imprimirGrafoCSAcademy(grafoEntrada);
 
     // Algoritmo
     Grafo respuesta;
-    //Algoritmos::Prim(grafoEntrada, respuesta);
-    auto listaD = Algoritmos::Dijkstra(grafoEntrada, grafoEntrada.PrimerVertice()); 
-    listaD.imprimirLista(); 
+    Algoritmos::Kruskal(grafoEntrada, respuesta);
+    //auto listaD = Algoritmos::Dijkstra(grafoEntrada, grafoEntrada.PrimerVertice()); 
+    //listaD.imprimirLista(); 
     // Render
-    //Controlador::imprimirGrafoCSAcademy(respuesta);
+    std::cout<< "NC = " << grafoEntrada.NumVertices() << std::endl;
+    std::cout<< "N = " << respuesta.NumVertices() << std::endl;
+    std::cout<< "=============================RESPUESTA===================================" <<std::endl;
+    Controlador::imprimirGrafoCSAcademy(respuesta);
 
     return 0;
 }

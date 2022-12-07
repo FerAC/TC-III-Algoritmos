@@ -69,7 +69,7 @@ namespace Pruebas {
                     size_t peso = 1 + rand() % 1000;
                     std::cout<< "NUM " << num << std::endl; 
                     int noHaceNada;
-                    std::cin>>noHaceNada;
+                    
                     char numAsChar = num; 
                     Vertice v = Algoritmos::BuscarVertice(grafo, numAsChar);
                     if ((!grafo.ExisteArista(i, v)) && i != v) {
