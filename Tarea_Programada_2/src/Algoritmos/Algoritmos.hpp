@@ -30,7 +30,7 @@ namespace Algoritmos {
 
     // CLÁSICOS
 
-    ListaDijkstra Dijkstra(const Grafo& grafo, Vertice &inicio);
+    ListaDijkstra Dijkstra(const Grafo& grafo, const Vertice &inicio);
 
     /* TODO(us): Escoger uno de los dos
     void Kruskal(const Grafo& grafo, Grafo& grafoMinimo);

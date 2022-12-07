@@ -29,15 +29,18 @@ int main()
     grafoEntrada.AgregarArista(d, f, 9);
     grafoEntrada.AgregarArista(e, f, 4);
     */
-    Pruebas::crearGrafoCircular(60, grafoEntrada); 
+
+    Pruebas::crearGrafoArana(60, grafoEntrada); 
     // Render
     Controlador::imprimirGrafoCSAcademy(grafoEntrada);
 
     // Algoritmo
-    Grafo respuesta = Algoritmos::primMetodo(grafoEntrada);
-
+    Grafo respuesta;
+    //Algoritmos::Prim(grafoEntrada, respuesta);
+    auto listaD = Algoritmos::Dijkstra(grafoEntrada, grafoEntrada.PrimerVertice()); 
+    listaD.imprimirLista(); 
     // Render
-    Controlador::imprimirGrafoCSAcademy(respuesta);
+    //Controlador::imprimirGrafoCSAcademy(respuesta);
 
     return 0;
 }

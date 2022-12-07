@@ -8,7 +8,7 @@
 
 namespace Algoritmos {
 
-    ListaDijkstra Dijkstra(const Grafo& grafo, Vertice &inicio)
+    ListaDijkstra Dijkstra(const Grafo& grafo, const Vertice &inicio)
     {
         ListaDijkstra camino(grafo.NumVertices());
 

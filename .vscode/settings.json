@@ -26,6 +26,16 @@
         "type_traits": "cpp",
         "tuple": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "chrono": "cpp",
+        "cmath": "cpp",
+        "cstddef": "cpp",
+        "ctime": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "iostream": "cpp",
+        "ratio": "cpp",
+        "string_view": "cpp"
     }
 }
