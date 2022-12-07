@@ -1,3 +1,4 @@
+#include <algorithm>  // Unión de conjuntos
 #include <limits>  // Max de size_t
 #include <queue>  // Cola de prioridad
 #include <set>  // Conjunto
@@ -127,24 +128,130 @@ namespace Algoritmos {
             Arista aristaMenorCosto = aristasPorSacar.top();
             aristasPorSacar.pop();
 
-            // Si al menos uno de los dos vértices de la arista no ha sido
-            // visitado todavía, entonces no genera un ciclo
-            if (!verticesVisitados.contains(aristaMenorCosto.first)
-                || !verticesVisitados.contains(aristaMenorCosto.second)) {
-                // Añadamos ambos vértices, si no han sido añadidos previamente
-                // al árbol minimal. Además, marquemoslos como visitados
-                if (!verticesVisitados.contains(aristaMenorCosto.first)) {
-                    verticesVisitados.insert(aristaMenorCosto.first);
-                }
+            // Si no existe ningún árbol, creamos uno
+            if (arboles.empty()) {
 
-                if (!verticesVisitados.contains(aristaMenorCosto.second)) {
-                    verticesVisitados.insert(aristaMenorCosto.second);
-                }
+                // A este primer árbol le ingresarán ambos vértices
+                std::set<Vertice> primerArbol;
+                primerArbol.insert(aristaMenorCosto.first);
+                primerArbol.insert(aristaMenorCosto.second);
 
-                // Añadamos esta arista a la lista de aristas por meter al árbol minimal
+                arboles.insert(primerArbol);
+            
+                // Ya que consideramos una arista, debemos añadirla a
+                // la lista de aristas, y aumentar el contador de las sacadas
                 aristasPorMeter.push_back(aristaMenorCosto);
+                aristasSacadas += 1;
+            } 
 
-                // Y aumentemos el contador de aristas sacadas
+            // Sino, revisemos si ya existen árboles con estos vértices
+            else 
+            {
+                // Busquemos el árbol del vértice de partida...
+                bool encontradoArbolPartida = false;
+                std::set<Vertice> arbolVerticePartida;
+                
+                for (auto it = arboles.cbegin(); it != arboles.end() 
+                    && !encontradoArbolPartida; ++it) {
+                    if (it->contains(aristaMenorCosto.first)) {
+                        arbolVerticePartida = *it;
+                        encontradoArbolPartida = true;
+                    }
+                }
+
+                // Y el de salida...
+                bool encontradoArbolSalida = false;
+                std::set<Vertice> arbolVerticeSalida;
+
+                for (auto it = arboles.cbegin(); it != arboles.end() 
+                    && !encontradoArbolSalida; ++it) {
+                    if (it->contains(aristaMenorCosto.second)) {
+                        arbolVerticeSalida = *it;
+                        encontradoArbolSalida = true;
+                    }
+                }
+
+                // Si se encontraron árboles para ambos, quizás haya que unirlos
+                // en un solo árbol
+                if (encontradoArbolPartida && encontradoArbolSalida) {
+
+                    // Si ambos árboles son iguales, entonces no se deberían
+                    // de fusionar, ni tomar en cuenta la arista, ya que
+                    // generaría un ciclo en el árbol final
+                    if (arbolVerticePartida == arbolVerticeSalida) {
+                        // Nos saltaremos esta iteración
+                        continue;
+                    }
+
+                    // Sino, deberíamos fusionar ambos árboles
+
+                    // Sacamos ambos árboles del conjunto de árboles
+                    arboles.erase(arbolVerticePartida);
+                    arboles.erase(arbolVerticeSalida);
+
+                    // Fusionamos ambos árboles en uno solo
+                    arbolVerticePartida.merge(arbolVerticeSalida);
+
+                    // Reingramos la fusión de esos árboles en el conjunto
+                    // de árboles
+                    arboles.insert(arbolVerticePartida);
+
+                }
+
+                // Sino, si se encontró un árbol para uno solo, hay que adoptar
+                // el vértice sin árbol para que sea parte del árbol del otro
+
+                // Si encontramos un árbol para el vértice de partida, adoptamos
+                // el vértice de salida
+                else if (encontradoArbolPartida) {
+                
+                    // Borraremos al viejo árbol del vértice de partida
+                    // del conjunto de árboles
+                    arboles.erase(arbolVerticePartida);
+
+                    // Le insertaremos el vértice de salida al árbol
+                    // del vértice de partida
+                    arbolVerticePartida.insert(aristaMenorCosto.second);
+
+                    // Reinsertamos el árbol del vértice de partida
+                    // al conjunto de árboles
+                    arboles.insert(arbolVerticePartida);
+
+                } 
+                
+                // Sino, si encontramos un árbol para el vértice de salida,
+                // adoptamos al vértice de partida
+                else if (encontradoArbolSalida) {
+
+                    // Borraremos al viejo árbol del vértice de salida
+                    // del conjunto de árboles
+                    arboles.erase(arbolVerticeSalida);
+
+                    // Le insertaremos el vértice de partida al árbol
+                    // del vértice de salida
+                    arbolVerticeSalida.insert(aristaMenorCosto.first);
+
+                    // Reinsertamos el árbol del vértice de salida
+                    // al conjunto de árboles
+                    arboles.insert(arbolVerticeSalida);
+
+                } 
+                
+                // Si ninguno de los dos vértices tiene árbol, hay que indicar
+                // el descubrimiento de un nuevo árbol, y meter ambos vértices en él
+                else {
+
+                    // El árbol nuevo incluye a ambos vértices en él
+                    std::set<Vertice> arbolNuevo;
+                    arbolNuevo.insert(aristaMenorCosto.first);
+                    arbolNuevo.insert(aristaMenorCosto.second);
+
+                    arboles.insert(arbolNuevo);
+                }
+
+                // Llegados a este punto, ya consideramos a una arista
+                // por lo que debemos añadirla a la lista
+                aristasPorMeter.push_back(aristaMenorCosto);
                 aristasSacadas += 1;
             }
         }
@@ -155,24 +262,23 @@ namespace Algoritmos {
         }
 
         // Como sacamos n-1 aristas, en teoría hemos sacado el árbol minimal
-        // Poblemos la respuesta
+        // Poblemos la respuesta, añadiendo vértices que no hayamos añadido antes
+        std::set<Vertice> verticesConsiderados;
 
-        // Volveremos a visitar los vértices para añadirlos únicamente si no se
-        // han añadido antes
-        verticesVisitados.clear();
         for (size_t i = 0; i < n-1; ++i) {
             // Añadamos ambos vértices, si no han sido añadidos previamente
             // al árbol minimal. Además, marquemoslos como visitados
-            if (!verticesVisitados.contains(aristasPorMeter[i].first)) {
+            if (!verticesConsiderados.contains(aristasPorMeter[i].first)) {
                 grafoRecipiente.AgregarVertice(grafo.Etiqueta(aristasPorMeter[i].first));
-                verticesVisitados.insert(aristasPorMeter[i].first);
+                verticesConsiderados.insert(aristasPorMeter[i].first);
             }
 
-            if (!verticesVisitados.contains(aristasPorMeter[i].second)) {
+            if (!verticesConsiderados.contains(aristasPorMeter[i].second)) {
                 grafoRecipiente.AgregarVertice(grafo.Etiqueta(aristasPorMeter[i].second));
-                verticesVisitados.insert(aristasPorMeter[i].second);
+                verticesConsiderados.insert(aristasPorMeter[i].second);
             }
 
+            // Añadamos la arista obtenida
             grafoRecipiente.AgregarArista(aristasPorMeter[i].first
                 , aristasPorMeter[i].second
                 , aristasPorMeter[i].pesoAsociado);

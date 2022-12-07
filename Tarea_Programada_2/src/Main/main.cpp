@@ -30,7 +30,7 @@ int main()
     grafoEntrada.AgregarArista(e, f, 4);
     */
 
-    Pruebas::crearGrafoCircular(60, grafoEntrada); 
+    Pruebas::crearGrafoMalla(60, grafoEntrada); 
     // Render
     Controlador::imprimirGrafoCSAcademy(grafoEntrada);
 

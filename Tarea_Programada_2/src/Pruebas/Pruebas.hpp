@@ -128,31 +128,61 @@ namespace Pruebas {
             char etiqueta = i;
             grafo.AgregarVertice(etiqueta);
         }
+        Vertice salida = grafo.PrimerVertice();
         for (size_t i = 33; i < limite; i++)
         {
             char buscado = i;
-            Vertice salida = Algoritmos::BuscarVertice(grafo, buscado);
+           
             //Cuatro casos posibles +1, -1, +4, -4
             if (i-1 >=33)
             {
                 buscado = i-1;
-                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                
+                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                    {
+                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                    
+                    }
+                
+                
             }
-            if (i+1 <=limite)
+            if (i+1 <limite)
             {
                 buscado = i+1;
-                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                    {
+                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                    
+                    }
+               
             }
-                if (i-4 >=33)
+            if (i-4 >=33)
             {
                 buscado = i-4;
-                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                    {
+                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                    
+                    }
+               
+                
+                 
             }
-            if (i+4 <=limite)
+            if (i+4 <limite)
             {
                 buscado = i+4;
-                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+               
+                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                    {
+                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                    
+                    }
+                
             }
+            salida = grafo.SiguienteVertice(salida);
         } 
 
         // Ya terminamos de crear el grafo malla
