@@ -1,0 +1,35 @@
+g++ -c -Wall -Wextra -std=c++20 -Isrc -Isrc/Algoritmos -Isrc/Algoritmos/BuscarVertice -Isrc/Algoritmos/Ciclos -Isrc/Algoritmos/Coloreo -Isrc/Algoritmos/Djikstra -Isrc/Algoritmos/Floyd -Isrc/Algoritmos/Hamilton -Isrc/Algoritmos/Kruskal -Isrc/Algoritmos/Prim -Isrc/Controlador -Isrc/Grafos -Isrc/Grafos/ListaAdyacencia -Isrc/Grafos/ListaSimplementeEnlazada -Isrc/Grafos/MatrizAdyacencia -Isrc/Main -Isrc/Pruebas -MMD src/Algoritmos/Floyd/Floyd.cpp -o build/Algoritmos/Floyd/Floyd.o
+g++ -Wall -Wextra -Isrc -Isrc/Algoritmos -Isrc/Algoritmos/BuscarVertice -Isrc/Algoritmos/Ciclos -Isrc/Algoritmos/Coloreo -Isrc/Algoritmos/Djikstra -Isrc/Algoritmos/Floyd -Isrc/Algoritmos/Hamilton -Isrc/Algoritmos/Kruskal -Isrc/Algoritmos/Prim -Isrc/Controlador -Isrc/Grafos -Isrc/Grafos/ListaAdyacencia -Isrc/Grafos/ListaSimplementeEnlazada -Isrc/Grafos/MatrizAdyacencia -Isrc/Main -Isrc/Pruebas build/Algoritmos/BuscarVertice/BuscarVertice.o build/Algoritmos/Ciclos/Ciclos.o build/Algoritmos/Coloreo/Coloreo.o build/Algoritmos/Djikstra/Djikstra.o build/Algoritmos/Djikstra/ListaDijkstra.o build/Algoritmos/Floyd/Floyd.o build/Algoritmos/Hamilton/HamiltonBEP.o build/Algoritmos/Hamilton/HamiltonBERA.o build/Algoritmos/Kruskal/Kruskal.o build/Algoritmos/Prim/Prim.o build/Algoritmos/Prim/Tripleta.o build/Controlador/Controlador.o build/Grafos/ListaAdyacencia/Contenedor.o build/Grafos/ListaAdyacencia/Grafo.o build/Grafos/ListaAdyacencia/Vertice.o build/Grafos/MatrizAdyacencia/Grafo.o build/Grafos/MatrizAdyacencia/Vertice.o build/Main/main.o -o bin/Tarea_Programada_2 
+bin/Tarea_Programada_2
+!
+"
+#
+$
+%
+&
+'
+! " 384
+! % 887
+" ! 384
+" # 778
+" & 916
+# " 778
+# $ 794
+# ' 336
+$ # 794
+$ % 387
+% ! 887
+% $ 387
+% & 493
+& " 916
+& % 493
+& ' 650
+' # 336
+' & 650
+[0	384	672	774	774	986	672	]
+[384	0	672	774	774	916	672	]
+[768	768	0	774	774	986	336	]
+[768	768	672	0	387	986	672	]
+[768	768	672	387	0	493	672	]
+[768	768	672	774	493	0	650	]
+[768	768	336	774	774	650	0	]

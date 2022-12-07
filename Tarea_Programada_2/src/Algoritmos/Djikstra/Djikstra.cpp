@@ -111,31 +111,20 @@ namespace Algoritmos {
 
     std::vector<std::vector<size_t>> nVecesDijkstra(const Grafo &grafo)
     {
-        size_t numVertices = grafo.NumVertices();
+        const size_t numVertices = grafo.NumVertices();
         Vertice vertice = grafo.PrimerVertice();
 
-        std::vector<std::vector<size_t>> matrizCostos(grafo.NumVertices()
-            , std::vector<size_t>(grafo.NumVertices()));
+        std::vector<std::vector<size_t>> matrizCostos(numVertices
+            , std::vector<size_t>(numVertices));
 
-        for (size_t  ejeX = 0;  ejeX < grafo.NumVertices(); ++ ejeX)
+        for (size_t  ejeX = 0;  ejeX < numVertices; ++ ejeX)
         {
             ListaDijkstra camino = Dijkstra(grafo, vertice);
             vertice = grafo.SiguienteVertice(vertice);
 
-            size_t ejeY = 0;
-            size_t indicePesos = 0;
-
-            while (ejeY < grafo.NumVertices()) {
-                    
-                size_t buffer = camino.getPesoPorIndice(indicePesos);
-
-                if (ejeX == ejeY) {
-                    matrizCostos[ejeX][ejeY] = 0;
-                } else {
-                    matrizCostos[ejeX][ejeY] = buffer;
-                    ++indicePesos;
-                }
-                ++ejeY;
+            for (size_t ejeY = 0; ejeY < numVertices; ++ejeY) {
+                matrizCostos[ejeX][ejeY]
+                    = camino.getPesoPorIndice(ejeY);
             }
         }
 

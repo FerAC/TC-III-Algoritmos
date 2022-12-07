@@ -36,6 +36,11 @@
         "exception": "cpp",
         "iostream": "cpp",
         "ratio": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "condition_variable": "cpp",
+        "iomanip": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "thread": "cpp"
     }
 }
