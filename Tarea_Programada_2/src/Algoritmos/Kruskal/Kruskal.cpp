@@ -112,7 +112,7 @@ namespace Algoritmos {
         }
 
         // Llevemos cuenta de los vértices visitados
-        std::set<Vertice> verticesVisitados;
+        std::set<std::set<Vertice>> arboles;
 
         // Y de las aristas que colocaremos en el grafo de ser exitosos
         std::vector<Arista> aristasPorMeter;
