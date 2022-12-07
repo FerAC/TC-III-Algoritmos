@@ -7,23 +7,31 @@
 Tripleta::Tripleta() {
 }
 
-Tripleta::Tripleta(Vertice &vertice, size_t peso, Vertice &verticeAnterior)
+Tripleta::Tripleta(Vertice vertice, size_t peso, Vertice &verticeAnterior)
 {
     this->vertice = vertice;
     this->peso = peso;
     this->verticeAnterior = verticeAnterior;
 }
 
-Tripleta::Tripleta(const Tripleta& otra) {
-    this->vertice = otra.vertice;
-    this->peso = otra.peso;
-    this->verticeAnterior = otra.verticeAnterior;
+Tripleta::Tripleta(const Tripleta& otra) 
+: verticeAnterior(otra.verticeAnterior)
+, vertice(otra.vertice)
+, peso(otra.peso)  {
 }
 
 Tripleta::~Tripleta() {
 }
 
 // SETTERS y GETTERS
+
+Tripleta& Tripleta::operator=(const Tripleta& otra) {
+    this->vertice = otra.vertice;
+    this->verticeAnterior = otra.verticeAnterior;
+    this->peso = otra.peso;
+
+    return *this;
+}
 
 void Tripleta::setPeso(size_t nuevo) {
     this->peso = nuevo;

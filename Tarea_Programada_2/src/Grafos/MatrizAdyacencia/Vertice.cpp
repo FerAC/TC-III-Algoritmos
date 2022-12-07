@@ -10,17 +10,31 @@ Vertice::Vertice() {
     nulo = 1;
 }
 
+Vertice::Vertice(const Vertice& otro) 
+: indice(otro.indice)
+, etiqueta(otro.etiqueta)
+, nulo (otro.nulo) {
+}
+
 Vertice::Vertice(size_t indice, char etiqueta) {
     this->indice = indice;
     this->etiqueta = etiqueta;
 }
+
+Vertice& Vertice::operator=(const Vertice& otro){
+    this->indice = otro.indice;
+    this->etiqueta = otro.etiqueta;
+
+    return *this;
+} 
+
 
 Vertice::~Vertice() {
 }
 
 // COMPARADORES
 
-bool Vertice::operator ==(const Vertice& otro) const {
+bool Vertice::operator==(const Vertice& otro) const {
     if (otro.etiqueta == this->etiqueta && otro.indice == this->indice)
         return 1;
 

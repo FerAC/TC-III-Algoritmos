@@ -18,6 +18,13 @@ class Arista : public std::pair<Vertice, Vertice> {
         , pesoAsociado(peso) {
         }
 
+        Arista(const Arista& otro)
+        : std::pair<Vertice, Vertice>(otro)
+        , pesoAsociado(otro.pesoAsociado) {
+            this->first = otro.first;
+            this->second = otro.second;
+        }
+
         Arista& operator=(const Arista& otro) {
             this->first = otro.first;
             this->second = otro.second;

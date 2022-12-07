@@ -79,7 +79,7 @@ Vertice Grafo::SiguienteVertice(const Vertice& original) const {
         celda = celda->getSiguiente()
     }
     */
-
+   // if (celda != nullptr && celda->getSiguiente() != nullptr)
     if (celda->getSiguiente()!=nullptr)
         return celda->getSiguiente()->getEtiqueta();
 
@@ -100,7 +100,6 @@ Vertice Grafo::PrimerVerticeAdyacente(const Vertice& original) const {
     */
 
     if (celda->getEtiqueta().etiqueta == original.etiqueta) {
-        std::cout << "Primer adyacente de " << original.etiqueta << " es " <<  celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente->etiqueta << std::endl;
         return* celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
     }
 
@@ -247,8 +246,15 @@ void Grafo::ImprimirConexiones(const Vertice& vertice) const {
     int i =0;
     for (auto b  =a->getEtiqueta().getlistaAdyacencia()->getPrimera() ; i < a->getEtiqueta().getlistaAdyacencia()->getContador(); i++)
     {
-       std::cout << b->getEtiqueta().VAdyacente->etiqueta << std::endl;
+       std::cout << b->getEtiqueta().VAdyacente->etiqueta << ", con un peso de: "<<b->getEtiqueta().peso << std::endl;
        b = b->getSiguiente(); 
+    }
+}
+
+void Grafo::Imprimir() const {
+    Vertice NULO;
+    for(Vertice i = this->PrimerVertice(); i !=NULO; i = SiguienteVertice(i)){
+        ImprimirConexiones(i);
     }
 }
 

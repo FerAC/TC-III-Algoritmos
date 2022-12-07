@@ -18,6 +18,18 @@ Vertice::Contenedor::Contenedor(Vertice& vertice, size_t pesoN) {
 Vertice::Contenedor::~Contenedor() {
 }
 
+// SETTERS y GETTER
+
+Vertice::Contenedor& Vertice::Contenedor::operator=(const Contenedor& otro) {
+    this->peso = otro.peso;
+
+    // Es responsabilidad del caller que olvidarse del VAdyacente previo
+    // sea correcto
+    this->VAdyacente = otro.VAdyacente;
+
+    return *this;
+}
+
 // COMPARADORES
 
 int Vertice::Contenedor::operator==(const Contenedor& otro) {

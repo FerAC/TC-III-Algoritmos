@@ -18,15 +18,15 @@
 #include <vector>  // Arreglos
 
 #include "Djikstra/ListaDijkstra.hpp"
+#include "Coloreo/PairColoreo.hpp"
 
 namespace Algoritmos {
 
     // PEQUEÑOS
 
-    Vertice buscarVertice(const Grafo& grafo, char etiqueta);
+    Vertice BuscarVertice(const Grafo& grafo, char etiqueta);
 
-    std::pair<std::list<std::pair<size_t, Vertice>>, size_t> 
-    colorear(const Grafo& grafo);
+    PairColoreo Colorear(const Grafo& grafo);
 
     // CLÁSICOS
 
@@ -39,6 +39,8 @@ namespace Algoritmos {
     void Kruskal(const Grafo& grafo, Grafo& grafoRecipiente);
 
     void Prim(const Grafo& grafo, Grafo& grafoRecipiente);
+
+    Grafo primMetodo(Grafo& grafo);
 
     std::vector<std::vector<size_t>>
     Floyd(const Grafo& grafo);

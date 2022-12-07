@@ -2,7 +2,7 @@
 
 namespace Algoritmos {
 
-    Vertice buscarVertice(const Grafo &grafo, char etiqueta)
+    Vertice BuscarVertice(const Grafo &grafo, char etiqueta)
     {
         const Vertice NULO;
         for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))

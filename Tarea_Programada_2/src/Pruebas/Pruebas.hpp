@@ -2,6 +2,7 @@
 #define PRUEBAS
 
 #include <iostream>  // DEBUG
+#include <cassert>
 
 #include "Algoritmos.hpp"
 
@@ -34,7 +35,7 @@ namespace Pruebas {
     }
 
     void static pruebaColorear(const Grafo &grafo) {
-        Algoritmos::colorear(grafo);
+        Algoritmos::Colorear(grafo);
     }
 
     // CREAR GRAFOS
@@ -42,7 +43,6 @@ namespace Pruebas {
     void static crearGrafoArana(size_t limite, Grafo& grafo) {
         //Las etiquetas van de 33 a limite 
         //Todos se conectan al vertice con la etiqueta 33 (ascii)
-
         Vertice verticeEnComun = grafo.AgregarVertice('!'); 
         srand(time(NULL));
         
@@ -57,58 +57,66 @@ namespace Pruebas {
         size_t j = 34;
         for (Vertice i = grafo.PrimerVertice(); i!=NULO; i = grafo.SiguienteVertice(i))
         {
-            if (j++%2) { //min conecto con dos de forma aleatoria
-                for (size_t t = 0; i < 2; t++)
+            if (j%2) { //min conecto con dos de forma aleatoria
+                for (size_t t = 0; t < 2; t++)
                 {
                     bool iguales = true; 
-                    size_t num; 
-                    while (iguales)
+                    size_t num = 34 + (double(rand()) / RAND_MAX) * (limite - 34); 
+                    while (num==j)
                     {
-                        num = 1 + rand() % limite;
-                        if (num!=j)
-                        {
-                            iguales = false; 
-                        }
-                        
+                        num = 34 + (double(rand()) / RAND_MAX) * (limite - 34); 
                     }
                     size_t peso = 1 + rand() % 1000;
-                    Vertice a = Algoritmos::buscarVertice(grafo, num);
-                    if (!grafo.ExisteArista(i, a)) {
-                        grafo.AgregarArista(i, a, peso);
+                    std::cout<< "NUM " << num << std::endl; 
+                    int noHaceNada;
+                    std::cin>>noHaceNada;
+                    char numAsChar = num; 
+                    Vertice v = Algoritmos::BuscarVertice(grafo, numAsChar);
+                    if ((!grafo.ExisteArista(i, v)) && i != v) {
+                        grafo.AgregarArista(i, v, peso);
                     }
                 }
             } else{ //max
-                for (size_t t = 34; i < limite-1; t++)
+                for (size_t t = 34; t < limite-1; t++)
                 {
                     if (t != j)
                     {
-                        bool iguales = true; 
                         size_t peso = 1 + rand() % 1000;
-                        Vertice a = Algoritmos::buscarVertice(grafo, t);
-                        if (!grafo.ExisteArista(i, a)) {
-                            grafo.AgregarArista(i, a, peso);
+                        char numAsChar = t; 
+                        Vertice c = Algoritmos::BuscarVertice(grafo, numAsChar);
+
+                        if ((!grafo.ExisteArista(i, c)) && (i != c)) {
+                            grafo.AgregarArista(i, c, peso);
                         }
                     }
                 } 
             }
 
-            // Ya terminamos de crear el grafo araña
-            return;
+            j++;
         }
+        
+        // Ya terminamos de crear el grafo araña
+        return;
     }
 
     void static crearGrafoCircular(size_t limite, Grafo& grafo) {
         char etiqueta = 33;
         Vertice anterior = grafo.AgregarVertice(etiqueta); 
-        for (size_t i = 34; i < limite; i++)
+        Vertice primero = anterior; 
+        for (size_t i = 34; i <= limite; i++)
         {   
             etiqueta = i;
             Vertice actual = grafo.AgregarVertice(etiqueta);
             size_t peso = 1 + rand() % 1000;
-            grafo.AgregarArista(anterior, actual, peso);
+            if(i==limite){
+                grafo.AgregarArista(anterior, actual, peso);
+                grafo.AgregarArista(primero, actual, peso);
+            } else{
+                grafo.AgregarArista(anterior, actual, peso);
+            }
             anterior = actual; 
         }
-
+        
         // Ya terminamos de crear el grafo circular
         return;
     }
@@ -118,32 +126,32 @@ namespace Pruebas {
         for (size_t i = 33; i < limite; i++)
         {
             char etiqueta = i;
-            // TODO(us): Aqui se agregan las etiquetas?
+            grafo.AgregarVertice(etiqueta);
         }
         for (size_t i = 33; i < limite; i++)
         {
             char buscado = i;
-            Vertice salida = Algoritmos::buscarVertice(grafo, i);
+            Vertice salida = Algoritmos::BuscarVertice(grafo, buscado);
             //Cuatro casos posibles +1, -1, +4, -4
             if (i-1 >=33)
             {
                 buscado = i-1;
-                grafo.AgregarArista(Algoritmos::buscarVertice(grafo, buscado-1),salida, 1 + rand() % 1000) ;
+                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
             }
             if (i+1 <=limite)
             {
                 buscado = i+1;
-                grafo.AgregarArista(Algoritmos::buscarVertice(grafo, buscado-1),salida, 1 + rand() % 1000) ;
+                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
             }
                 if (i-4 >=33)
             {
                 buscado = i-4;
-                grafo.AgregarArista(Algoritmos::buscarVertice(grafo, buscado-1),salida, 1 + rand() % 1000) ;
+                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
             }
             if (i+4 <=limite)
             {
                 buscado = i+4;
-                grafo.AgregarArista(Algoritmos::buscarVertice(grafo, buscado-1),salida, 1 + rand() % 1000) ;
+                grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
             }
         } 
 

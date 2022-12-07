@@ -13,7 +13,6 @@ namespace Algoritmos {
         const Vertice NULO;
         Vertice listaVertices[numVertices];
         size_t i = 0;
-        size_t iteradorPivotes = 0;
 
         Vertice vertice;
         for (vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
@@ -93,7 +92,7 @@ namespace Algoritmos {
 
         // Paso 2
 
-        for (iteradorPivotes; iteradorPivotes < numVertices; iteradorPivotes++)
+        for (size_t iteradorPivotes = 0; iteradorPivotes < numVertices; iteradorPivotes++)
         { // Pivotea
             for (i = 0; i < numVertices; i++)
             {

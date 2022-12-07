@@ -33,6 +33,9 @@ class Vertice
         Vertice();
 
         // TODO(Us): Documentar
+        Vertice(const Vertice& otro);
+
+        // TODO(Us): Documentar
         Vertice(size_t indice, char etiqueta);
         // TODO(Us): Documentar
 
@@ -50,6 +53,8 @@ class Vertice
 
         // TODO(Us): Documentar
         bool operator<(const Vertice& otro) const;
+
+        Vertice& operator=(const Vertice& otro); 
 };
 
 #endif

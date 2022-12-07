@@ -89,6 +89,7 @@ namespace Algoritmos {
 
         // Si el árbol está vacío, no hay nada que se pueda hacer
         if (grafo.NumVertices() == 0) {
+            return;
         }
 
         // También llevemos cuenta de una cola de prioridad de aristas, 

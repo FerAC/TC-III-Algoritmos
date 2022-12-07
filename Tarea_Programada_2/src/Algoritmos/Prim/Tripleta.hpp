@@ -12,10 +12,12 @@ class Tripleta
 
     public:
         Tripleta();
-        Tripleta(const Tripleta &otra);
-        Tripleta(Vertice &vertice, size_t peso, Vertice &verticeAnterior);
+        Tripleta(const Tripleta& otra);
+        Tripleta(Vertice vertice, size_t peso, Vertice &verticeAnterior);
 
         ~Tripleta();
+
+        Tripleta& operator=(const Tripleta& otra);
 
         void setVertice(Vertice &vertice);
         Vertice getVertice() const;

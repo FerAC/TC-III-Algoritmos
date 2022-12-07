@@ -65,6 +65,8 @@ class Grafo {
 
         // TODO(Us): Documentar
         void ImprimirVertices() const;
+
+        void Imprimir() const;
 };
 
 #endif

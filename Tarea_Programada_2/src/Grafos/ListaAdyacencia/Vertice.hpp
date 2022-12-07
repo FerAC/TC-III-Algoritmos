@@ -31,6 +31,7 @@ class Vertice {
 				// TODO(Us): Documentar
                 int operator==(const Contenedor& otro);
                 int operator!=(const Contenedor& otro);
+				Contenedor& operator=(const Contenedor& otro); 
         };
 
 		// TODO(Us): Documentar
@@ -60,6 +61,11 @@ class Vertice {
 		/// @param Vertice* otro
         Vertice(Vertice* otro);
 
+		/// @brief inserta en la lista de hijos de un nodo
+		/// @remarks Requiere que el nodo este inicializado y que tenga una lista de hijos inicializada
+		/// @param const &Vertice otro
+        Vertice(const Vertice &otro);
+
 		/// @brief Retorna la lista de hijos de un nodo
 		/// @remarks Requiere que el nodo este inicializado y tenga una lista de hijos
 		/// @return Lista<Vertice*> en caso de no encontralo devuelve un nullptr 
@@ -88,6 +94,9 @@ class Vertice {
 
         // TODO(Us): Documentar
         int operator<(const Vertice& otro) const;
+
+		// TODO(Us): Documentar
+		Vertice& operator=(const Vertice& otro);
 
 		/// @brief Devuelve la etiqueta de un nodo
 		/// @remarks Requiere que el nodo este inicializado

@@ -10,11 +10,53 @@ static void imprimirGrafo(const Grafo& grafo) {
         grafo.ImprimirGrafo();
     #else
         // Tambien se deberia imprimir las aristas
-        grafo.ImprimirVertices();
+        grafo.Imprimir();
     #endif
 }
 
-static void imprimirGrafoCSAcademy(const Grafo& grafo) {
+// CONTROLADOR
+
+namespace Controlador {
+  
+    // dot -Tsvg < entrada.txt > salida.svg
+    // dot -Tpng < entrada.txt > salida.png
+
+    void imprimirGrafoGraphviz(const Grafo& grafo) {
+    std::cout 
+        << "digraph{" << std::endl
+        << "layout=\"circo\";" << std::endl
+        << "edge [color=blue]" << std::endl;
+
+        std::set<std::pair<Vertice, Vertice>> paralelasDibujadas;
+        for (Vertice v = grafo.PrimerVertice(); v != Vertice(); v = grafo.SiguienteVertice(v)) {
+            std::cout << grafo.Etiqueta(v) << std::endl;
+        
+            for (Vertice w = grafo.PrimerVerticeAdyacente(v); 
+                w != Vertice(); 
+                w = grafo.SiguienteVerticeAdyacente(v, w)) {
+
+                size_t pesoActual = grafo.Peso(v,w);
+                std::pair<Vertice, Vertice> aristaActual = std::make_pair(v,w);
+
+                if (grafo.ExisteArista(w,v) && pesoActual == grafo.Peso(w,v)) {
+                    if (!paralelasDibujadas.contains(aristaActual)
+                    && !paralelasDibujadas.contains(std::make_pair(w,v))
+                    ) {
+                        paralelasDibujadas.insert(aristaActual);
+
+                        std::cout << grafo.Etiqueta(v) << " -> " << grafo.Etiqueta(w) 
+                        << " [label=" << pesoActual << ", dir=none]" << std::endl;
+                    }
+                } else {
+                    std::cout << grafo.Etiqueta(v) << " -> " << grafo.Etiqueta(w) 
+                    << " [label=" << pesoActual << "]" << std::endl;
+                }
+            }
+        }
+        std::cout << "}" << std::endl;
+    }
+
+    void imprimirGrafoCSAcademy(const Grafo& grafo) {
     Vertice NULO;
     for(Vertice vertice = grafo.PrimerVertice();
         vertice!=NULO;
@@ -27,7 +69,7 @@ static void imprimirGrafoCSAcademy(const Grafo& grafo) {
         vertice = grafo.SiguienteVertice(vertice)) {
         for(Vertice verticeAdy = grafo.PrimerVerticeAdyacente(vertice);
             verticeAdy!=NULO;
-            vertice = grafo.SiguienteVerticeAdyacente(vertice, verticeAdy)) {
+            verticeAdy = grafo.SiguienteVerticeAdyacente(vertice, verticeAdy)) {
             std::cout
             << grafo.Etiqueta(vertice) << " " 
             << grafo.Etiqueta(verticeAdy) << " " 
@@ -37,51 +79,9 @@ static void imprimirGrafoCSAcademy(const Grafo& grafo) {
     }
 }
 
-// dot -Tsvg < entrada.txt > salida.svg
-// dot -Tpng < entrada.txt > salida.svg
-
-static void imprimirGrafoGraphviz(const Grafo& grafo) {
-   std::cout 
-    << "digraph{" << std::endl
-    << "layout=\"circo\";" << std::endl
-    << "edge [color=blue]" << std::endl;
-
-    std::set<std::pair<Vertice, Vertice>> paralelasDibujadas;
-    for (Vertice v = grafo.PrimerVertice(); v != Vertice(); v = grafo.SiguienteVertice(v)) {
-        std::cout << grafo.Etiqueta(v) << std::endl;
-    
-        for (Vertice w = grafo.PrimerVerticeAdyacente(v); 
-            w != Vertice(); 
-            w = grafo.SiguienteVerticeAdyacente(v, w)) {
-
-            size_t pesoActual = grafo.Peso(v,w);
-            std::pair<Vertice, Vertice> aristaActual = std::make_pair(v,w);
-
-            if (grafo.ExisteArista(w,v) && pesoActual == grafo.Peso(w,v)) {
-                if (!paralelasDibujadas.contains(aristaActual)
-                && !paralelasDibujadas.contains(std::make_pair(w,v))
-                ) {
-                    paralelasDibujadas.insert(aristaActual);
-
-                    std::cout << grafo.Etiqueta(v) << " -> " << grafo.Etiqueta(w) 
-                    << " [label=" << pesoActual << ", dir=none]" << std::endl;
-                }
-            } else {
-                std::cout << grafo.Etiqueta(v) << " -> " << grafo.Etiqueta(w) 
-                << " [label=" << pesoActual << "]" << std::endl;
-            }
-        }
-    }
-    std::cout << "}" << std::endl;
-}
-
-// CONTROLADOR
-
-namespace Controlador {
-
     void iniciar() {
 
-        Grafo grafo;
+        Grafo* grafo = new Grafo();
         bool continuar;
 
         do
@@ -112,7 +112,7 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice" << std::endl;
                         char etiqueta;
                         std::cin>> etiqueta;
-                        grafo.AgregarVertice(etiqueta);   
+                        grafo->AgregarVertice(etiqueta);   
                     }
                 break;
                 case 2:
@@ -120,8 +120,8 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice" << std::endl;
                         char etiqueta;
                         std::cin>> etiqueta;
-                        Vertice vertice = Algoritmos::buscarVertice(grafo, etiqueta);
-                        grafo.EliminarVertice(vertice); 
+                        Vertice vertice = Algoritmos::BuscarVertice(*grafo, etiqueta);
+                        grafo->EliminarVertice(vertice); 
                     }
                 break;
                 case 3:
@@ -132,8 +132,8 @@ namespace Controlador {
                         std::cout<<"Nueva etiqueta" << std::endl;
                         char etiqueta;
                         std::cin>> etiqueta;
-                        Vertice vertice =  Algoritmos::buscarVertice(grafo,etiquetaVieja);
-                        grafo.ModificarEtiqueta(vertice, etiqueta);
+                        Vertice vertice =  Algoritmos::BuscarVertice(*grafo,etiquetaVieja);
+                        grafo->ModificarEtiqueta(vertice, etiqueta);
                     }
                 break;
                 case 4:
@@ -141,15 +141,15 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
                         char etiqueta1;
                         std::cin>> etiqueta1;
-                        std::cout<< "Digite la etiqueta del vertice2" << std::endl;
+                        std::cout<< "Digite la etiqueta del vertice 2" << std::endl;
                         char etiqueta2;
                         std::cin>> etiqueta2;
                         std::cout<< "Digite el peso de la arista" << std:: endl;
                         size_t peso;
                         std::cin>>peso;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo,etiqueta1);
-                        Vertice vertice2 = Algoritmos::buscarVertice(grafo, etiqueta2);
-                        grafo.AgregarArista(vertice1, vertice2, peso);
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo, etiqueta2);
+                        grafo->AgregarArista(vertice1, vertice2, peso);
                     }
                 break;
                 case 5:
@@ -160,9 +160,9 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice2" << std::endl;
                         char etiqueta2;
                         std::cin>> etiqueta2;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo, etiqueta1);
-                        Vertice vertice2 = Algoritmos::buscarVertice(grafo, etiqueta2);
-                        grafo.EliminarArista(vertice1, vertice2);
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo, etiqueta1);
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo, etiqueta2);
+                        grafo->EliminarArista(vertice1, vertice2);
                     }
                 break;
                 case 6:
@@ -176,9 +176,9 @@ namespace Controlador {
                         std::cout<< "Digite el peso de la arista" << std:: endl;
                         size_t peso;
                         std::cin>>peso;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo,etiqueta1);
-                        Vertice vertice2 = Algoritmos::buscarVertice(grafo,etiqueta2);;
-                        grafo.ModificarPeso(vertice1, vertice2, peso);
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);;
+                        grafo->ModificarPeso(vertice1, vertice2, peso);
                     }
                 break; 
                 case 7:
@@ -189,34 +189,34 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice 2" << std::endl;
                         char etiqueta2;
                         std::cin>> etiqueta2;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo,etiqueta1);
-                        Vertice vertice2 = Algoritmos::buscarVertice(grafo,etiqueta2);;
-                        int peso = grafo.Peso(vertice1, vertice2);
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);;
+                        int peso = grafo->Peso(vertice1, vertice2);
                         std::cout<< "El peso entre " << etiqueta1 << " y " << etiqueta2 << " es " << peso << std::endl;
                     }
                 break;
                 case 8:
                     {
-                        Vertice vertice = grafo.PrimerVertice();
-                        std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice) << std::endl;
+                        Vertice vertice = grafo->PrimerVertice();
+                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
                     }
                 break;
                 case 9:
                     {
                         std::cout<< "Digite la etiqueta del vertice anterior" << std::endl;
-                        char etiqueta1;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo,etiqueta1);
-                        Vertice vertice = grafo.SiguienteVertice(vertice1); 
-                        std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice) << std::endl;
+                        char etiqueta1; std::cin >> etiqueta1;
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
+                        Vertice vertice = grafo->SiguienteVertice(vertice1); 
+                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
                     }
                 break;
                 case 10:
                     {
                         std::cout<< "Digite la etiqueta del vertice" << std::endl;
-                        char etiqueta1;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo,etiqueta1);
-                        Vertice vertice = grafo.PrimerVerticeAdyacente(vertice1); 
-                        std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice);
+                        char etiqueta1; std::cin >> etiqueta1;
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
+                        Vertice vertice = grafo->PrimerVerticeAdyacente(vertice1); 
+                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice);
                     }
                 break; 
                 case 11:
@@ -227,22 +227,27 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del anterior adyacente vertice" << std::endl;
                         char etiqueta2;
                         std::cin>> etiqueta2;
-                        Vertice vertice1 = Algoritmos::buscarVertice(grafo,etiqueta1);
-                        Vertice vertice2 = Algoritmos::buscarVertice(grafo,etiqueta2);;
-                        Vertice vertice = grafo.SiguienteVerticeAdyacente(vertice1, vertice2); 
-                        std::cout<< "La etiqueta del vertice es " << grafo.Etiqueta(vertice) << std::endl;
+                        Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);;
+                        Vertice vertice = grafo->SiguienteVerticeAdyacente(vertice1, vertice2); 
+                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
                     }
                 break;
                 case 12:
                     {
-                        std::cout<<"La cantidad de vertices del grafo es : " <<grafo.NumVertices() <<  std::endl;
+                        std::cout<<"La cantidad de vertices del grafo es : " <<grafo->NumVertices() <<  std::endl;
                     }
                 break;
-                // TODO(us): Case 13, Destruir grafo
+                case 13:
+                    {
+                        delete grafo;
+                        grafo = new Grafo();
+                    }
+                break;
                 case 14:
                     {
                         std::cout<< "Este es el grafo: " << std::endl;
-                        imprimirGrafo(grafo); std::cout << std::endl;
+                        imprimirGrafo(*grafo); std::cout << std::endl;
                     }
                 break;
                 default:
@@ -256,6 +261,8 @@ namespace Controlador {
             std::cin>>continuar;
         } 
         while (continuar);
+
+        delete grafo;
     }
 
 };

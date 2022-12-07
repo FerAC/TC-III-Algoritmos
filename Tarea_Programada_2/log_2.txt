@@ -1,0 +1,857 @@
+bin/Tarea_Programada_2
+!
+"
+#
+$
+%
+&
+'
+(
+)
+*
++
+,
+-
+.
+/
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+:
+;
+<
+! " 384
+! < 863
+" ! 384
+" # 887
+# " 887
+# $ 778
+$ # 778
+$ % 916
+% $ 916
+% & 794
+& % 794
+& ' 336
+' & 336
+' ( 387
+( ' 387
+( ) 493
+) ( 493
+) * 650
+* ) 650
+* + 422
++ * 422
++ , 363
+, + 363
+, - 28
+- , 28
+- . 691
+. - 691
+. / 60
+/ . 60
+/ 0 764
+0 / 764
+0 1 927
+1 0 927
+1 2 541
+2 1 541
+2 3 427
+3 2 427
+3 4 173
+4 3 173
+4 5 737
+5 4 737
+5 6 212
+6 5 212
+6 7 369
+7 6 369
+7 8 568
+8 7 568
+8 9 430
+9 8 430
+9 : 783
+: 9 783
+: ; 531
+; : 531
+; < 863
+< ; 863
+< ! 863
+Voy a for 
+No son iguales
+Etiqueta: "
+Etiqueta vieja: !
+Peso: 384
+No son iguales
+Etiqueta: #
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: $
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: %
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: &
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: '
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: (
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: )
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: *
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: +
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: ,
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: -
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: .
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: /
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 0
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 1
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 2
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 3
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 4
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 5
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 6
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 7
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 8
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: 9
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: :
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: ;
+Etiqueta vieja: !
+Peso: 0
+No son iguales
+Etiqueta: <
+Etiqueta vieja: !
+Peso: 863
+
+Sali de inicializacion 
+Etiqueta: "
+Etiqueta vieja: !
+Peso: 384
+Etiqueta: #
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: $
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: %
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: &
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: '
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: (
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: )
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: *
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: +
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ,
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: -
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: .
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: /
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 0
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 1
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 2
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 3
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 4
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 5
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 6
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 7
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 8
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 9
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: :
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ;
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: <
+Etiqueta vieja: !
+Peso: 863
+VOY A PIVOT
+J 0
+Etiqueta: "
+Etiqueta vieja: !
+Peso: 384
+Etiqueta: #
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: $
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: %
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: &
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: '
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: (
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: )
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: *
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: +
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ,
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: -
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: .
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: /
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 0
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 1
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 2
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 3
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 4
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 5
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 6
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 7
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 8
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 9
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: :
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ;
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: <
+Etiqueta vieja: !
+Peso: 863
+PESO ACTUAL 384
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 0
+Primer pivote
+PESO ACTUAL 863
+Primer pivote
+IndiceMenor = 0
+///////////// PIVOTEO CON "///////////
++++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++
+Vertice "
+Peso 384
+Vertice Anterior !
+Vertice #
+Peso 0
+Vertice Anterior !
+Vertice $
+Peso 0
+Vertice Anterior !
+Vertice %
+Peso 0
+Vertice Anterior !
+Vertice &
+Peso 0
+Vertice Anterior !
+Vertice '
+Peso 0
+Vertice Anterior !
+Vertice (
+Peso 0
+Vertice Anterior !
+Vertice )
+Peso 0
+Vertice Anterior !
+Vertice *
+Peso 0
+Vertice Anterior !
+Vertice +
+Peso 0
+Vertice Anterior !
+Vertice ,
+Peso 0
+Vertice Anterior !
+Vertice -
+Peso 0
+Vertice Anterior !
+Vertice .
+Peso 0
+Vertice Anterior !
+Vertice /
+Peso 0
+Vertice Anterior !
+Vertice 0
+Peso 0
+Vertice Anterior !
+Vertice 1
+Peso 0
+Vertice Anterior !
+Vertice 2
+Peso 0
+Vertice Anterior !
+Vertice 3
+Peso 0
+Vertice Anterior !
+Vertice 4
+Peso 0
+Vertice Anterior !
+Vertice 5
+Peso 0
+Vertice Anterior !
+Vertice 6
+Peso 0
+Vertice Anterior !
+Vertice 7
+Peso 0
+Vertice Anterior !
+Vertice 8
+Peso 0
+Vertice Anterior !
+Vertice 9
+Peso 0
+Vertice Anterior !
+Vertice :
+Peso 0
+Vertice Anterior !
+Vertice ;
+Peso 0
+Vertice Anterior !
+Vertice <
+Peso 863
+Vertice Anterior !
++++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++
+J 1
+Etiqueta: "
+Etiqueta vieja: !
+Peso: 384
+Etiqueta: #
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: $
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: %
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: &
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: '
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: (
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: )
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: *
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: +
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ,
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: -
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: .
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: /
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 0
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 1
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 2
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 3
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 4
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 5
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 6
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 7
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 8
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 9
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: :
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ;
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: <
+Etiqueta vieja: !
+Peso: 863
+PESO ACTUAL 384
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 863
+ NO ES Primer pivote
+IndiceMenor = 26
+///////////// PIVOTEO CON <///////////
++++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++
+Vertice "
+Peso 384
+Vertice Anterior !
+Vertice #
+Peso 0
+Vertice Anterior !
+Vertice $
+Peso 0
+Vertice Anterior !
+Vertice %
+Peso 0
+Vertice Anterior !
+Vertice &
+Peso 0
+Vertice Anterior !
+Vertice '
+Peso 0
+Vertice Anterior !
+Vertice (
+Peso 0
+Vertice Anterior !
+Vertice )
+Peso 0
+Vertice Anterior !
+Vertice *
+Peso 0
+Vertice Anterior !
+Vertice +
+Peso 0
+Vertice Anterior !
+Vertice ,
+Peso 0
+Vertice Anterior !
+Vertice -
+Peso 0
+Vertice Anterior !
+Vertice .
+Peso 0
+Vertice Anterior !
+Vertice /
+Peso 0
+Vertice Anterior !
+Vertice 0
+Peso 0
+Vertice Anterior !
+Vertice 1
+Peso 0
+Vertice Anterior !
+Vertice 2
+Peso 0
+Vertice Anterior !
+Vertice 3
+Peso 0
+Vertice Anterior !
+Vertice 4
+Peso 0
+Vertice Anterior !
+Vertice 5
+Peso 0
+Vertice Anterior !
+Vertice 6
+Peso 0
+Vertice Anterior !
+Vertice 7
+Peso 0
+Vertice Anterior !
+Vertice 8
+Peso 0
+Vertice Anterior !
+Vertice 9
+Peso 0
+Vertice Anterior !
+Vertice :
+Peso 0
+Vertice Anterior !
+Vertice ;
+Peso 0
+Vertice Anterior !
+Vertice <
+Peso 863
+Vertice Anterior !
++++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++
+J 2
+Etiqueta: "
+Etiqueta vieja: !
+Peso: 384
+Etiqueta: #
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: $
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: %
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: &
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: '
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: (
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: )
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: *
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: +
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ,
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: -
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: .
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: /
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 0
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 1
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 2
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 3
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 4
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 5
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 6
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 7
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 8
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: 9
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: :
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: ;
+Etiqueta vieja: !
+Peso: 0
+Etiqueta: <
+Etiqueta vieja: !
+Peso: 863
+PESO ACTUAL 384
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 0
+ NO ES Primer pivote
+PESO ACTUAL 863
+ NO ES Primer pivote
+IndiceMenor = 18446744073709551615

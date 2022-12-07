@@ -2,6 +2,8 @@
 #include <utility> // Para parejas
 #include <set> // Para conjuntos
 
+#include "PairColoreo.hpp"
+
 #include "GrafoImplementado.hpp"
 
 static void colorearRec(const Grafo& grafo,
@@ -103,8 +105,7 @@ static void colorearRec(const Grafo& grafo,
 
 namespace Algoritmos {
 
-    std::pair<std::list<std::pair<size_t, Vertice>>, size_t>
-    colorear(const Grafo& grafo)
+    PairColoreo Colorear(const Grafo& grafo)
     {
         std::list<std::pair<size_t, Vertice>> mapeo;
         std::list<std::pair<size_t, Vertice>> mejorMapeo;
@@ -115,8 +116,11 @@ namespace Algoritmos {
 
         colorearRec(grafo, vertice, mejorMapeo, mapeo, mejorCantidadColor, cantidadColor, coloresUsados);
         // colorearRecursivo(grafo, primerVertice, mapeoColor, cantidadColor, coloresUsados);
-
-        std::pair<std::list<std::pair<size_t, Vertice>>, size_t> miPar{mejorMapeo, mejorCantidadColor};
-        return miPar;
+        PairColoreo par;
+        par.listaColoreada = mejorMapeo;
+        par.cantidadColores = mejorCantidadColor;
+        //std::pair<std::list<std::pair<size_t, Vertice>>, size_t> miPar{mejorMapeo, mejorCantidadColor};
+        //return miPar;
+        return par;
     }
 }

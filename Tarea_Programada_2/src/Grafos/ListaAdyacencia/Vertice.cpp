@@ -15,9 +15,14 @@ Vertice::Vertice(char et) {
     etiqueta = et;
 }
 
-Vertice::Vertice(Vertice* otro) {
-    this->listaAdyacencia = otro->listaAdyacencia;
-    this->etiqueta = otro->etiqueta; 
+Vertice::Vertice(const Vertice &otro)
+: etiqueta(otro.etiqueta) 
+, listaAdyacencia(otro.listaAdyacencia) {
+}
+
+Vertice::Vertice(Vertice* otro)
+: etiqueta(otro->etiqueta) 
+, listaAdyacencia(otro->listaAdyacencia) {
 }
 
 Vertice::~Vertice() {
@@ -44,6 +49,13 @@ int Vertice::operator<(const Vertice& otro) const {
 }
 
 // SETTERS y GETTERS
+
+Vertice& Vertice::operator=(const Vertice& otro) {
+    this->etiqueta = otro.etiqueta,
+    this->listaAdyacencia = otro.listaAdyacencia;
+
+    return *this;
+}
 
 char Vertice::getEtiqueta() const {
     return etiqueta;
