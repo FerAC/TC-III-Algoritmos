@@ -36,7 +36,6 @@ static void crearGrafoArana(size_t limite, Grafo& grafo) {
                         num =  (double(rand()) / RAND_MAX) * (254); 
                     }
                     size_t peso = 1 + rand() % 1000;
-                    std::cout<< "NUM " << num << std::endl; 
             
                     char numAsChar = num; 
                     Vertice v = Algoritmos::BuscarVertice(grafo, numAsChar);
