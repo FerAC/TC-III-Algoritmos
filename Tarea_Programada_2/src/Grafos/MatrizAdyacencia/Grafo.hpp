@@ -9,9 +9,9 @@ class Grafo {
         // TODO(Us): Documentar
         size_t vertices = 0;
         // TODO(Us): Documentar
-        int matriz[100][100];
+        int matriz[255][255];
         // TODO(Us): Documentar
-        char vector[100];
+        char vector[255];
 
     public:
         /// @brief Crea un nuevo Arbol e inicializa su lista principal
