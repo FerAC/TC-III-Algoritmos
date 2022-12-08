@@ -7,6 +7,9 @@
 // Pruebas multihilo
 #if defined(CONCURRENTE)
     #include <omp.h>
+    #define VERSION_ENSAYOS "CONCURRENTE"
+#else
+    #define VERSION_ENSAYOS "SERIAL"
 #endif
 
 // LLevar cuenta de las pruebas
@@ -17,6 +20,14 @@
 
 // Llevar cuenta de los métodos de pruebas
 #include <map>
+
+/**
+ * @brief Función que rellena la tupla de datos de las unidades de prueba en la construcción de un ensayo
+ * @param tuple Parametros de la prueba
+ * @param entrada Flujo de entrada de datos del cual agarrar información
+ */
+template <typename ...Parametros>
+using FuncionLectura = void (*)(std::tuple<Parametros...>& tuple, std::istream& entrada);
 
 template <class ...ArgumentosEnsayos>
 class Ensayos
@@ -32,9 +43,11 @@ class Ensayos
     public:
 
         Ensayos(std::map<std::string, FuncionPrueba<ArgumentosEnsayos...>>& funciones
-            , std::istream& entrada) {
-            // Llevaremos cuenta de la función actual
-            FuncionPrueba funcionActual = funciones.begin()->second;
+            , std::istream& entrada
+            , FuncionLectura<ArgumentosEnsayos...> leerDatos
+            , FuncionEscritura<ArgumentosEnsayos...> escribirParametros) {
+            // Llevaremos cuenta de la función de prueba actual
+            FuncionPrueba<ArgumentosEnsayos...> funcionActual = funciones.begin()->second;
 
             // El nombre de la prueba...
             std::string nombreActual = std::string("Default");
@@ -67,33 +80,46 @@ class Ensayos
                             funcionActual = cualFunc->second;
                         else
                             std::cerr << "Funcion de prueba " << bufferLinea << " desconocida" << std::endl;
-                        break;
                     }
+                    break;
                     case 2: // Nombre
                     {
                         std::string bufferLinea;
                         std::getline(entrada, bufferLinea);
 
                         nombreActual = bufferLinea;
-                        break;
                     }
+                    break;
                     case 3: // Repeticiones
                     {
                         std::string bufferLinea;
                         std::getline(entrada, bufferLinea);
 
                         kActual = std::atoll(bufferLinea.c_str());
-                        break;
                     }
-                    case std::tuple_size_v<ArgumentosEnsayos...> + 1: // Ignorar línea
+                    break;
+                    case 4: // Recolectar un parámetro
+                    {
+                        try 
+                        {leerDatos(argumentos, entrada);}
+                        catch(const std::exception& e)
+                        {
+                            std::cerr << "No se pudieron leer los parametros de la unidad de prueba #" 
+                            << idActual << std::endl;
+                            std::cerr << e.what() << '\n';
+                        }
+                    }
+                    break;
+                    default: // Ignorar línea
                     {
                         // Tras recolectar los parámetros, se crea la prueba
                         // Se realizará k veces
                         for (size_t i = 0; i < kActual; ++i)
                         {
-                            UnidadPrueba pruebaInsertada(nombreActual, funcionActual, parametros);
+                            UnidadPrueba<ArgumentosEnsayos...> 
+                            pruebaInsertada(nombreActual, funcionActual, argumentos, escribirParametros);
+                            
                             pruebaInsertada.id = idActual++;
-
                             pruebas.push_back(pruebaInsertada);
                         }
                     
@@ -104,19 +130,12 @@ class Ensayos
                         // De manera defensiva, reiniciaremos el k para evitar realizar
                         // muchas pruebas de manera accidental
                         kActual = 0;
-                        break;
+
+                        // Y nos comeremos la siguiente línea
+                        std::string buffer;
+                        std::getline(entrada, buffer);
                     }
-                    default: // Recolectar un parámetro
-                    {
-                        try 
-                        {std::cin >> std::get<paramActual-4>(argumentos);}
-                        catch(const std::exception& e)
-                        {
-                            std::cerr << "No se puedo leer el parametro " 
-                            << paramActual-3 << "de la unidad de prueba" << std::endl;
-                            std::cerr << e.what() << '\n';
-                        }
-                    }
+                    break;
                 }
             }
         }
@@ -140,14 +159,14 @@ class Ensayos
                 ++pruebasHechas;
 
                 // Actualizar la barra de progreso de pruebas hechas hasta ahora
-                double progresoActual = 100.0 * ((double)pruebasHechas / (double)pruebasTotales);
+                const double progresoActual = 100.0 * ((double)pruebasHechas / (double)pruebasTotales);
                 if (progresoActual != progreso)
                 {
                     progreso = progresoActual;
 
-                    size_t bloques = size_t(progreso);
+                    const size_t bloques = size_t(progreso);
                     std::cout << "\r[";
-                    for (size_t i = 0; i < progreso; ++i)
+                    for (size_t i = 0; i < bloques; ++i)
                     {
                         std::cout << "=";
                     }
@@ -163,9 +182,12 @@ class Ensayos
 
             // Si no estamos imprimiendo datos bonitos imprimiremos un encabezado
             #if not defined(DATOS_BONITOS)
-                std::cout << "ID\tNombre" << std::endl 
-                << "[Parametros...] (" std::tuple_size_v<ArgumentosEnsayos...> << ')' << std::endl
-                << "Nano\tMicro\tMili\tSeg\tMin" << std::endl;
+                std::cout << "[ID]\t[Nombre]" << std::endl 
+                << "[Parametros...] (" 
+                << std::tuple_size<std::tuple<ArgumentosEnsayos...>>::value 
+                << ')' << std::endl
+                << "[Nano]\t[Micro]\t[Mili]\t[Seg]\t[Min]" << std::endl
+                << "~~~~ <3" << std::endl << std::endl;
             #endif
             // En caso contrario, cada prueba tendría su propio encabezado bonito ~~
 
@@ -179,7 +201,7 @@ class Ensayos
 
         // Adiciones de ejecución concurrente
         #if defined(CONCURRENTE)
-            void Ensayos::ejecutarPruebasConcurrente(size_t cantidadHilos)
+            void ejecutarPruebasConcurrente(size_t cantidadHilos)
             {
                 // Hay que llevar cuenta de las pruebas totales
                 const size_t pruebasTotales = pruebas.size();
@@ -190,9 +212,11 @@ class Ensayos
                 // Comenzaremos a ejecutar los hilos
                 #pragma omp parallel for \
                 num_threads(cantidadHilos) \
-                default(none) shared(this->pruebas, this->progreso, pruebasHechas, pruebasTotales)
-                for (size_t i = 0; i < cantidadHilos; ++i) {
-                    this->pruebas[i].correrPrueba();
+                schedule(dynamic) \
+                default(none) \
+                shared(pruebas, progreso, pruebasHechas, pruebasTotales, std::cout)
+                for (size_t i = 0; i < pruebasTotales; ++i) {
+                    pruebas[i].correrPrueba();
 
                     #pragma omp critical
                     {
@@ -200,14 +224,14 @@ class Ensayos
                         ++pruebasHechas;
 
                         // Actualizar la barra de progreso de pruebas hechas hasta ahora
-                        double progresoActual = 100.0 * ((double)pruebasHechas / (double)pruebasTotales);
+                        const double progresoActual = 100.0 * ((double)pruebasHechas / (double)pruebasTotales);
                         if (progresoActual != progreso)
                         {
                             progreso = progresoActual;
 
-                            size_t bloques = size_t(progreso);
+                            const size_t bloques = size_t(progreso);
                             std::cout << "\r[";
-                            for (size_t i = 0; i < progreso; ++i)
+                            for (size_t i = 0; i < bloques; ++i)
                             {
                                 std::cout << "=";
                             }

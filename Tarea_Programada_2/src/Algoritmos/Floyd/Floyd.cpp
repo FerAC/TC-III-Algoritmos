@@ -95,14 +95,14 @@ namespace Algoritmos
         // Matriz de vertices con basura
 
         // Paso 2
-        std::map<size_t, size_t> div; 
+         
         for (size_t iteradorPivotes = 0; iteradorPivotes < numVertices; iteradorPivotes++)
         { // Pivotea
             for (i = 0; i < numVertices; i++)
             {
                 for (size_t j = 0; j < numVertices; j++)
                 {   
-                    if(div.count())
+                    
                     if (matrizCostos[i][iteradorPivotes] != std::numeric_limits<size_t>::max())
                     { // Hay camino del actual al pivote
                         if (matrizCostos[i][j] > matrizCostos[i][iteradorPivotes] + matrizCostos[iteradorPivotes][j])

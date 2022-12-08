@@ -16,6 +16,7 @@
 #include <list>  // Listas indexadas
 #include <set>  // Conjuntos
 #include <vector>  // Arreglos
+#include <map>
 
 #include "Djikstra/ListaDijkstra.hpp"
 #include "Coloreo/PairColoreo.hpp"
@@ -26,7 +27,7 @@ namespace Algoritmos {
 
     Vertice BuscarVertice(const Grafo& grafo, char etiqueta);
 
-    PairColoreo Colorear(const Grafo& grafo);
+    std::map<size_t, std::set<Vertice>> * Colorear(Grafo& grafo);
 
     // CLÁSICOS
 

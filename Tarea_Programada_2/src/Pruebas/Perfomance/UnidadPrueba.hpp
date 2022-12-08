@@ -16,28 +16,40 @@
 // Para múltiples parámetros de plantilla
 #include <tuple>
 
+// Para denotar métricas
 using PuntoTiempo = std::chrono::_V2::system_clock::time_point;
 
+// Declaración adelantada para unidad de prueba
+template <typename ...Args> class Ensayos;
+
 /**
- * @brief Función que agún objeto prueba invocará para luego informar acerca de resultados. Modifica el tiempo de inicio y final alimentados
+ * @brief Función que algún objeto prueba invocará para luego informar acerca de resultados. Modifica el tiempo de inicio y final alimentados
  * @param parametros Parametros de la prueba
  * @param puntoInicio Punto de inicio (en el tiempo) que será modificado por la función, para indicar el principio del experimento
  * @param puntoFinal Punto de finalización (en el tiempo) que será modificado por la función, para indicar el final del experimento
- * @remark El tamaño n debe estar inicializado. Los puntos de inicio y de final serán modificados
+ * @remark Los puntos de inicio y de final serán modificados
  */
 template <typename ...Parametros>
 using FuncionPrueba = void (*)(PuntoTiempo &puntoInicio, PuntoTiempo &puntoFinal, std::tuple<Parametros...> parametros);
+
+/**
+ * @brief Función que algún objeto prueba invocará para imprimir sus parámetros
+ * @param parametros Parametros de la prueba
+ * @param salida Flujo de entrada de datos donde depositar información
+ */
+template <typename ...Parametros>
+using FuncionEscritura = void (*)(const std::tuple<Parametros...>& parametros, std::ostream& salida);
 
 /// @brief Clase encapsuladora de pruebas para casos particulares del árbol
 template <class ...Argumentos>
 class UnidadPrueba
 {
     /// @brief Los ensayos pueden acceder a las entrañas de las pruebas, para efectos de ID y tiempos
-    friend class Ensayos;
+    friend class Ensayos<Argumentos...>;
 
     /// @brief Las impresiones también pueden acceder a la entrañas
     template <typename ...ArgumentosImprimibles>
-    friend std::ostream &operator<<(std::ostream &salida, const UnidadPrueba<Argumentos...>& prueba);
+    friend std::ostream& operator<<(std::ostream &salida, const UnidadPrueba<ArgumentosImprimibles...>& prueba);
 
     private:
         /// @brief Identificación de este experimento
@@ -52,6 +64,8 @@ class UnidadPrueba
         std::tuple<Argumentos...> parametros;
         /// @brief Función que esta prueba invocará para medir el tiempo
         FuncionPrueba<Argumentos...> funcionPrueba;
+        /// @brief Función que esta prueba invocará para describir sus parámetros
+        FuncionEscritura<Argumentos...> funcionEscritura;
 
     public:
         /**
@@ -61,10 +75,12 @@ class UnidadPrueba
          * @param parametros Parámetros de la prueba
          * @remark Tanto el tamaño como el nombre deben estar inicializados. La función de prueba debe coincidir en firma con una FuncionPrueba
          */
-        UnidadPrueba(std::string nombre, FuncionPrueba<Argumentos...> funcionPrueba, const Argumentos& ... parametros)
+        UnidadPrueba(std::string nombre, FuncionPrueba<Argumentos...> funcionPrueba, const Argumentos& ... parametros
+            , FuncionEscritura<Argumentos...> funcionEscritura)
         : nombre(nombre)
+        , parametros(parametros...)
         , funcionPrueba(funcionPrueba)
-        , parametros(parametros) {
+        , funcionEscritura(funcionEscritura) {
         }
 
         /**
@@ -74,10 +90,12 @@ class UnidadPrueba
          * @param parametros Parámetros de la prueba
          * @remark Tanto el tamaño como el nombre deben estar inicializados. La función de prueba debe coincidir en firma con una FuncionPrueba
          */
-        UnidadPrueba(std::string nombre, FuncionPrueba<Argumentos...> funcionPrueba, const std::tuple<Argumentos...>& ... parametros)
+        UnidadPrueba(std::string nombre, FuncionPrueba<Argumentos...> funcionPrueba, const std::tuple<Argumentos...>& parametros
+            , FuncionEscritura<Argumentos...> funcionEscritura)
         : nombre(nombre)
+        , parametros(parametros)
         , funcionPrueba(funcionPrueba)
-        , parametros(parametros) {
+        , funcionEscritura(funcionEscritura) {
         }
 
         ~UnidadPrueba() {
@@ -93,11 +111,11 @@ class UnidadPrueba
 
         /// @brief Retorna el nombre de esta prueba. No modifica nada.
         std::string getNombre() const
-        {return this->nombre}
+        {return this->nombre;}
 
         /// @brief Devuelve una copia de los parámetros de esta prueba. No modifica nada
         std::tuple<Argumentos...> getParametros() const 
-        {return this->parametros}
+        {return this->parametros;}
 
         /// @brief Retorna la duración de esta prueba. No modifica nada.
         template <typename TipoDuracion>
@@ -115,34 +133,44 @@ class UnidadPrueba
  * @remark La prueba debe estar inicializada
  */
 template <typename ...ArgumentosImprimibles>
-std::ostream &operator<<(std::ostream &salida, const UnidadPrueba<ArgumentosImprimibles...>& prueba) {
+std::ostream& operator<<(std::ostream &salida, const UnidadPrueba<ArgumentosImprimibles...>& prueba) {
     #if defined(DATOS_BONITOS)
-        std::cout << "~~~~~~~~~~~~~~PARAMETROS~~~~~~~~~~~~~~~~" << std::endl;
-        std::cout << "ID: " << prueba.getId() << std::endl;
-        std::cout << "Nombre: " << prueba.getNombre() << std::endl;
-        for (size_t paramI = 0; paramI < std::tuple_size_v<ArgumentosImprimibles...>; ++paramI)
-            std::cout << '[' << paramI << ']' << std::endl
-            <<  std::get<paramI>(prueba.parametros) << std::endl;
-        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+        salida << "~~~~~~~~~~~~~~PARAMETROS~~~~~~~~~~~~~~~~" << std::endl;
+        salida << "ID: " << prueba.getId() << std::endl;
+        salida << "Nombre: " << prueba.getNombre() << std::endl;
+        prueba.funcionEscritura(prueba.parametros, salida); salida << std::endl;
+        salida << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     #endif
 
-    double duracionNano = prueba.getDuracion<std::chrono::nanoseconds>();
-    double duracionMicro = prueba.getDuracion<std::chrono::microseconds>();
-    double duracionMili = prueba.getDuracion<std::chrono::milliseconds>();
-    double duracionSeg = prueba.getDuracion<std::chrono::seconds>();
-    double duracionMin = prueba.getDuracion<std::chrono::minutes>();
+    double duracionNano = prueba.template getDuracion<std::chrono::nanoseconds>();
+    double duracionMicro = prueba.template getDuracion<std::chrono::microseconds>();
+    double duracionMili = prueba.template getDuracion<std::chrono::milliseconds>();
+    double duracionSeg = prueba.template getDuracion<std::chrono::seconds>();
+    double duracionMin = prueba.template getDuracion<std::chrono::minutes>();
 
     #if defined(DATOS_BONITOS)
-        std::cout << "~~~~~~~~~~~~~~~~DURACION~~~~~~~~~~~~~~~~" << std::endl;
-        std::cout << "Nanosegundos\t" << std::setprecision(5) << std::scientific << duracionNano << std::endl;
-        std::cout << "Microsegundos\t" << std::setprecision(5) << std::scientific << duracionMicro << std::endl;
-        std::cout << "Milisegundos\t" << std::setprecision(5) << std::scientific << duracionMili << std::endl;
-        std::cout << "Segundos\t" << std::setprecision(5) << std::scientific << duracionSeg << std::endl;
-        std::cout << "Minutos \t" << std::setprecision(5) << std::scientific << duracionMin << std::endl;
-        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+        salida << "~~~~~~~~~~~~~~~~DURACION~~~~~~~~~~~~~~~~" << std::endl;
+        salida << "Nanosegundos\t" << std::setprecision(5) << std::scientific << duracionNano << std::endl;
+        salida << "Microsegundos\t" << std::setprecision(5) << std::scientific << duracionMicro << std::endl;
+        salida << "Milisegundos\t" << std::setprecision(5) << std::scientific << duracionMili << std::endl;
+        salida << "Segundos\t" << std::setprecision(5) << std::scientific << duracionSeg << std::endl;
+        salida << "Minutos \t" << std::setprecision(5) << std::scientific << duracionMin << std::endl;
+        salida << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     #else
-        std::cout << prueba.getId() << ":\t" << prueba.getNombre() << std::endl
-        << duracionNano << '\t' << duracionMicro << '\t' << duracionMili << '\t' << duracionSeg << '\t' << duracionMin << std::endl;
+        // Imprimamos el ID y nombre de la prueba
+        salida << '[' << prueba.getId() << "]:\t[" << prueba.getNombre() << ']' << std::endl;
+
+        // Imprimamos sus parámetros
+        prueba.funcionEscritura(prueba.parametros, salida);
+        salida << std::endl
+
+        // Imprimamos los tiempos resultados
+        << '[' << duracionNano << "]\t[" 
+        << duracionMicro << "]\t[" 
+        << duracionMili << "]\t[" 
+        << duracionSeg << "]\t[" 
+        << duracionMin << ']' 
+        << std::endl;
     #endif
 
     return salida;

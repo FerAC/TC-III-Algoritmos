@@ -34,7 +34,7 @@ namespace Pruebas {
         Algoritmos::Prim(grafo, recipiente);
     }
 
-    void static pruebaColorear(const Grafo &grafo) {
+    void static pruebaColorear(Grafo &grafo) {
         Algoritmos::Colorear(grafo);
     }
 
