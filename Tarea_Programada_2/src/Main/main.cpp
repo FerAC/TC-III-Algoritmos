@@ -56,7 +56,7 @@
     // EJECUTAR PRUEBAS
 
     #ifdef CONCURRENTE
-      ensayos.ejecutarPruebasConcurrente(std::thread::hardware_concurrency(), std::cout)
+      ensayos.ejecutarPruebasConcurrente(std::thread::hardware_concurrency(), std::cout);
     #else
       ensayos.ejecutarPruebasSerial(std::cout);
     #endif

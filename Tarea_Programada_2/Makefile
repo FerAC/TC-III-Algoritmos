@@ -7,7 +7,7 @@ JC=javac
 DEFS=
 CSTD=-std=c20
 XSTD=-std=c++20
-FLAG=
+FLAG=-fopenmp
 FLAGS=$(strip -Wall -Wextra $(FLAG) $(DEFS))
 FLAGC=$(FLAGS) $(CSTD)
 FLAGX=$(FLAGS) $(XSTD)

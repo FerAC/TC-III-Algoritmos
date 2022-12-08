@@ -1,0 +1,124 @@
+// =========== Comandos ==============================
+
+- Limpiar compilación
+make clean 
+
+- Compilación de controlador
+make -j asan DEFS"-DCONTROLADOR"
+make -j asan DEFS="-DCONTROLADOR -DMATRIZ"
+
+- Compilación de pruebas
+make -j release
+make -j release DEFS="-DMATRIZ"
+make -j release DEFS="-DCONCURRENTE"
+make -j release DEFS="-DCONCURRENTE -DMATRIZ"
+
+- Ejecución de pruebas
+make run
+make run < entrada.txt
+make run 1> log_ejecucion.txt 2> log_errores.txt
+make run < entrada.txt 1> log_ejecucion.txt 2> log_errores.txt
+
+// =========== Parametros ==============================
+
+K - Número de repeticiones
+N - Número de vértices (creo?)
+APODO - Apodo de la prueba
+TIPO_GRAFO - Tipo de grafo, puede ser Arana, Malla o Circular
+
+// =========== Coloreo ==================================
+
+Coloreo
+APODO
+K
+Coloreo TIPO_GRAFO N
+
+// =========== Arbol Minimal =============================
+
+Arbol Minimal
+APODO
+K
+Kruskal TIPO_GRAFO N
+
+Arbol Minimal
+APODO
+K
+Prim TIPO_GRAFO N
+
+// =========== Circuito Hamilton ==========================
+
+Circuito Hamilton
+APODO
+K
+BERA TIPO_GRAFO N
+
+Circuito Hamilton
+APODO
+K
+BEP TIPO_GRAFO N
+
+// =========== Distancia de un vertice al resto ===========
+
+Distancia de un vertice
+APODO
+K
+Djikstra TIPO_GRAFO N
+
+// =========== Distancia de todo vertice a todo vertice ====
+
+Distancia entre todo vertice
+APODO
+K
+N_Djikstra TIPO_GRAFO N
+
+Distancia entre todo vertice
+APODO
+K
+Floyd TIPO_GRAFO N
+
+// =========== Ejemplo de entrada ============================
+
+Coloreo
+prueba_coloreo
+10
+Coloreo Arana 5
+
+Arbol Minimal
+prueba_arbol_minimal_kruskal
+10
+Kruskal Malla 20
+
+Arbol Minimal
+prueba_arbol_minimal_prim
+10
+Prim Malla 20
+
+Circuito Hamilton
+prueba_hamilton_bera
+10
+BERA Circular 25
+
+Circuito Hamilton
+prueba_hamilton_bep
+10
+BEP Circular 25
+
+Distancia de un vertice
+prueba_djikstra
+10
+Djikstra Arana 25
+
+Distancia entre todo vertice
+prueba_n_veces_djikstra
+10
+N_Djikstra Malla 25
+
+Distancia entre todo vertice
+prueba_floyd
+10
+Floyd Malla 25
+
+// =========== Ejemplo de compilación y Ejecución ============
+
+make clean && make -j release DEFS="-DCONCURRENTE -DMATRIZ"
+make run 1> log_ejecucion.txt 2> log_errores.txt < entrada.txt
