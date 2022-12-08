@@ -1,0 +1,44 @@
+Distancia de un vertice
+djikstra_arana_1
+10
+Djikstra Arana 100
+
+Distancia de un vertice
+djikstra_malla_1
+10
+Djikstra Malla 100
+
+Distancia de un vertice
+djikstra_circular_1
+10
+Djikstra Circular 100
+
+Distancia de un vertice
+djikstra_arana_2
+10
+Djikstra Arana 175
+
+Distancia de un vertice
+djikstra_malla_2
+10
+Djikstra Malla 175
+
+Distancia de un vertice
+djikstra_circular_2
+10
+Djikstra Circular 175
+
+Distancia de un vertice
+djikstra_arana_3
+10
+Djikstra Arana 254
+
+Distancia de un vertice
+djikstra_malla_3
+10
+Djikstra Malla 254
+
+Distancia de un vertice
+djikstra_circular_3
+10
+Djikstra Circular 254

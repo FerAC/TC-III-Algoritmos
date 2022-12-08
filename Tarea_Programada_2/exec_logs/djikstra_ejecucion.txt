@@ -1,0 +1,561 @@
+bin/Tarea_Programada_2
+VERSION: SERIAL
+TIPO DE GRAFO: MATRIZ DE ADYACENCIA
+
+PRUEBAS DISPONIBLES:
+Arbol Minimal
+Circuito Hamilton
+Coloreo
+Distancia de un vertice
+Distancia entre todo vertice
+
+[NOMBRE PRUEBA]
+[APODO PRUEBA]
+[NUM REPETICIONES PRUEBA]
+[PARAMETROS...]
+[=] %1.11111[==] %2.22222[===] %3.33333[====] %4.44444[=====] %5.55556[======] %6.66667[=======] %7.77778[========] %8.88889[==========] %10[===========] %11.1111[============] %12.2222[=============] %13.3333[==============] %14.4444[===============] %15.5556[================] %16.6667[=================] %17.7778[==================] %18.8889[====================] %20[=====================] %21.1111[======================] %22.2222[=======================] %23.3333[========================] %24.4444[=========================] %25.5556[==========================] %26.6667[===========================] %27.7778[============================] %28.8889[==============================] %30[===============================] %31.1111[================================] %32.2222[=================================] %33.3333[==================================] %34.4444[===================================] %35.5556[====================================] %36.6667[=====================================] %37.7778[======================================] %38.8889[========================================] %40[=========================================] %41.1111[==========================================] %42.2222[===========================================] %43.3333[============================================] %44.4444[=============================================] %45.5556[==============================================] %46.6667[===============================================] %47.7778[================================================] %48.8889[==================================================] %50[===================================================] %51.1111[====================================================] %52.2222[=====================================================] %53.3333[======================================================] %54.4444[=======================================================] %55.5556[========================================================] %56.6667[=========================================================] %57.7778[==========================================================] %58.8889[============================================================] %60[=============================================================] %61.1111[==============================================================] %62.2222[===============================================================] %63.3333[================================================================] %64.4444[=================================================================] %65.5556[==================================================================] %66.6667[===================================================================] %67.7778[====================================================================] %68.8889[======================================================================] %70[=======================================================================] %71.1111[========================================================================] %72.2222[=========================================================================] %73.3333[==========================================================================] %74.4444[===========================================================================] %75.5556[============================================================================] %76.6667[=============================================================================] %77.7778[==============================================================================] %78.8889[================================================================================] %80[=================================================================================] %81.1111[==================================================================================] %82.2222[===================================================================================] %83.3333[====================================================================================] %84.4444[=====================================================================================] %85.5556[======================================================================================] %86.6667[=======================================================================================] %87.7778[========================================================================================] %88.8889[==========================================================================================] %90[===========================================================================================] %91.1111[============================================================================================] %92.2222[=============================================================================================] %93.3333[==============================================================================================] %94.4444[===============================================================================================] %95.5556[================================================================================================] %96.6667[=================================================================================================] %97.7778[==================================================================================================] %98.8889[====================================================================================================] %100
+[ID]	[Nombre]
+[Parametros...] (3)
+[Nano]	[Micro]	[Mili]	[Seg]	[Min]
+~~~~ <3
+
+[0]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.54257e+06]	[2542]	[2]	[0]	[0]
+
+[1]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.40938e+06]	[2409]	[2]	[0]	[0]
+
+[2]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.44948e+06]	[2449]	[2]	[0]	[0]
+
+[3]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.41781e+06]	[2417]	[2]	[0]	[0]
+
+[4]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.43895e+06]	[2438]	[2]	[0]	[0]
+
+[5]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.43421e+06]	[2434]	[2]	[0]	[0]
+
+[6]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.4156e+06]	[2415]	[2]	[0]	[0]
+
+[7]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.41155e+06]	[2411]	[2]	[0]	[0]
+
+[8]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.41133e+06]	[2411]	[2]	[0]	[0]
+
+[9]:	[djikstra_arana_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 100
+[2.67289e+06]	[2672]	[2]	[0]	[0]
+
+[10]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.47001e+06]	[2470]	[2]	[0]	[0]
+
+[11]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.58987e+06]	[2589]	[2]	[0]	[0]
+
+[12]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.42902e+06]	[2429]	[2]	[0]	[0]
+
+[13]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[3.38092e+06]	[3380]	[3]	[0]	[0]
+
+[14]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[3.144e+06]	[3144]	[3]	[0]	[0]
+
+[15]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.95398e+06]	[2953]	[2]	[0]	[0]
+
+[16]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.46515e+06]	[2465]	[2]	[0]	[0]
+
+[17]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.83468e+06]	[2834]	[2]	[0]	[0]
+
+[18]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.4342e+06]	[2434]	[2]	[0]	[0]
+
+[19]:	[djikstra_malla_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 100
+[2.52654e+06]	[2526]	[2]	[0]	[0]
+
+[20]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.64458e+06]	[2644]	[2]	[0]	[0]
+
+[21]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.54761e+06]	[2547]	[2]	[0]	[0]
+
+[22]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.51582e+06]	[2515]	[2]	[0]	[0]
+
+[23]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.48297e+06]	[2482]	[2]	[0]	[0]
+
+[24]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.8517e+06]	[2851]	[2]	[0]	[0]
+
+[25]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.68759e+06]	[2687]	[2]	[0]	[0]
+
+[26]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.56916e+06]	[2569]	[2]	[0]	[0]
+
+[27]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.50484e+06]	[2504]	[2]	[0]	[0]
+
+[28]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.51785e+06]	[2517]	[2]	[0]	[0]
+
+[29]:	[djikstra_circular_1]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 100
+[2.53519e+06]	[2535]	[2]	[0]	[0]
+
+[30]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.17446e+07]	[11744]	[11]	[0]	[0]
+
+[31]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.1413e+07]	[11413]	[11]	[0]	[0]
+
+[32]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.15962e+07]	[11596]	[11]	[0]	[0]
+
+[33]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.32518e+07]	[13251]	[13]	[0]	[0]
+
+[34]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.28561e+07]	[12856]	[12]	[0]	[0]
+
+[35]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.23209e+07]	[12320]	[12]	[0]	[0]
+
+[36]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.31563e+07]	[13156]	[13]	[0]	[0]
+
+[37]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.21153e+07]	[12115]	[12]	[0]	[0]
+
+[38]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.26814e+07]	[12681]	[12]	[0]	[0]
+
+[39]:	[djikstra_arana_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 175
+[1.43993e+07]	[14399]	[14]	[0]	[0]
+
+[40]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.6602e+07]	[16602]	[16]	[0]	[0]
+
+[41]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.5319e+07]	[15319]	[15]	[0]	[0]
+
+[42]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.3773e+07]	[13772]	[13]	[0]	[0]
+
+[43]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.42049e+07]	[14204]	[14]	[0]	[0]
+
+[44]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.4208e+07]	[14207]	[14]	[0]	[0]
+
+[45]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.402e+07]	[14019]	[14]	[0]	[0]
+
+[46]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.41967e+07]	[14196]	[14]	[0]	[0]
+
+[47]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.29717e+07]	[12971]	[12]	[0]	[0]
+
+[48]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.41819e+07]	[14181]	[14]	[0]	[0]
+
+[49]:	[djikstra_malla_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 175
+[1.3006e+07]	[13005]	[13]	[0]	[0]
+
+[50]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.26622e+07]	[12662]	[12]	[0]	[0]
+
+[51]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.26845e+07]	[12684]	[12]	[0]	[0]
+
+[52]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.31607e+07]	[13160]	[13]	[0]	[0]
+
+[53]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.33305e+07]	[13330]	[13]	[0]	[0]
+
+[54]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.23558e+07]	[12355]	[12]	[0]	[0]
+
+[55]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.2706e+07]	[12705]	[12]	[0]	[0]
+
+[56]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.22975e+07]	[12297]	[12]	[0]	[0]
+
+[57]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.21487e+07]	[12148]	[12]	[0]	[0]
+
+[58]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.29658e+07]	[12965]	[12]	[0]	[0]
+
+[59]:	[djikstra_circular_2]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 175
+[1.2848e+07]	[12848]	[12]	[0]	[0]
+
+[60]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[4.27592e+07]	[42759]	[42]	[0]	[0]
+
+[61]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.62174e+07]	[36217]	[36]	[0]	[0]
+
+[62]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.56527e+07]	[35652]	[35]	[0]	[0]
+
+[63]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[4.24988e+07]	[42498]	[42]	[0]	[0]
+
+[64]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.98722e+07]	[39872]	[39]	[0]	[0]
+
+[65]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.53209e+07]	[35320]	[35]	[0]	[0]
+
+[66]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.36918e+07]	[33691]	[33]	[0]	[0]
+
+[67]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.56431e+07]	[35643]	[35]	[0]	[0]
+
+[68]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.71641e+07]	[37164]	[37]	[0]	[0]
+
+[69]:	[djikstra_arana_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Arana
+N = 254
+[3.53905e+07]	[35390]	[35]	[0]	[0]
+
+[70]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.56943e+07]	[35694]	[35]	[0]	[0]
+
+[71]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.94064e+07]	[39406]	[39]	[0]	[0]
+
+[72]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.70973e+07]	[37097]	[37]	[0]	[0]
+
+[73]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.67192e+07]	[36719]	[36]	[0]	[0]
+
+[74]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.64186e+07]	[36418]	[36]	[0]	[0]
+
+[75]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.70597e+07]	[37059]	[37]	[0]	[0]
+
+[76]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.91045e+07]	[39104]	[39]	[0]	[0]
+
+[77]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.53108e+07]	[35310]	[35]	[0]	[0]
+
+[78]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.35174e+07]	[33517]	[33]	[0]	[0]
+
+[79]:	[djikstra_malla_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Malla
+N = 254
+[3.50398e+07]	[35039]	[35]	[0]	[0]
+
+[80]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.3619e+07]	[33619]	[33]	[0]	[0]
+
+[81]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.55174e+07]	[35517]	[35]	[0]	[0]
+
+[82]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.46917e+07]	[34691]	[34]	[0]	[0]
+
+[83]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.70774e+07]	[37077]	[37]	[0]	[0]
+
+[84]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.57852e+07]	[35785]	[35]	[0]	[0]
+
+[85]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.88311e+07]	[38831]	[38]	[0]	[0]
+
+[86]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.65967e+07]	[36596]	[36]	[0]	[0]
+
+[87]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.64076e+07]	[36407]	[36]	[0]	[0]
+
+[88]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.64475e+07]	[36447]	[36]	[0]	[0]
+
+[89]:	[djikstra_circular_3]
+Nombre de Algoritmo: Djikstra
+Tipo de Grafo: Circular
+N = 254
+[3.75917e+07]	[37591]	[37]	[0]	[0]
+

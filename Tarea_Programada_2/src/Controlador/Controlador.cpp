@@ -1,4 +1,5 @@
-#include <iostream>  // DEBUG
+#include <iostream>
+#include <cassert>  // DEBUG
 
 #include "Algoritmos.hpp"
 
@@ -176,9 +177,17 @@ namespace Controlador {
                         std::cout<< "Digite el peso de la arista" << std:: endl;
                         size_t peso;
                         std::cin>>peso;
+
                         Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
                         Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);;
-                        grafo->ModificarPeso(vertice1, vertice2, peso);
+
+                        if (vertice1 == Vertice()) {
+                            std::cout << "El primer vertice no existe" << std::endl;
+                        } else if (vertice2 == Vertice()) {
+                            std::cout << "El segundo vertice no existe" << std::endl;
+                        } else {
+                            grafo->ModificarPeso(vertice1, vertice2, peso);
+                        }
                     }
                 break; 
                 case 7:
@@ -190,15 +199,30 @@ namespace Controlador {
                         char etiqueta2;
                         std::cin>> etiqueta2;
                         Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
-                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);;
-                        int peso = grafo->Peso(vertice1, vertice2);
-                        std::cout<< "El peso entre " << etiqueta1 << " y " << etiqueta2 << " es " << peso << std::endl;
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);
+
+                        if (vertice1 == Vertice()) {
+                            std::cout << "El primer vertice no existe" << std::endl;
+                        } else if (vertice2 == Vertice()) {
+                            std::cout << "El segundo vertice no existe" << std::endl;
+                        } else if (!grafo->ExisteArista(vertice1, vertice2)) {
+                            std::cout << "No existe arista entre ambos vertices" << std::endl;
+                        } else {
+                            size_t peso = grafo->Peso(vertice1, vertice2);
+                            std::cout<< "El peso entre " << etiqueta1 << " y " << etiqueta2 << " es " << peso << std::endl;
+                        }
+
                     }
                 break;
                 case 8:
                     {
                         Vertice vertice = grafo->PrimerVertice();
-                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
+
+                        if (vertice != Vertice()) {
+                            std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
+                        } else {
+                            std::cout << "No hay primer vertice " << std::endl;
+                        }
                     }
                 break;
                 case 9:
@@ -206,8 +230,19 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice anterior" << std::endl;
                         char etiqueta1; std::cin >> etiqueta1;
                         Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
-                        Vertice vertice = grafo->SiguienteVertice(vertice1); 
-                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
+
+                        if (vertice1 != Vertice()) {
+                            Vertice vertice = grafo->SiguienteVertice(vertice1); 
+
+                            if (vertice != Vertice()) {
+                                std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
+                            } else  {
+                                std::cout << "No hay siguiente vertice" << std::endl;
+                            }
+                        } else {
+                            std::cout << "El vertice ingresado no existe" << std::endl;
+                        }
+
                     }
                 break;
                 case 10:
@@ -215,8 +250,19 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice" << std::endl;
                         char etiqueta1; std::cin >> etiqueta1;
                         Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
-                        Vertice vertice = grafo->PrimerVerticeAdyacente(vertice1); 
-                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice);
+
+                        if (vertice1 != Vertice()) {
+
+                            Vertice vertice = grafo->PrimerVerticeAdyacente(vertice1); 
+
+                            if (vertice != Vertice()) {
+                                std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice);
+                            } else  {
+                                std::cout << "No hay vertice adyacente" << std::endl;
+                            }
+                        } else {
+                            std::cout << "El vertice ingresado no existe" << std::endl;
+                        }                        
                     }
                 break; 
                 case 11:
@@ -224,13 +270,27 @@ namespace Controlador {
                         std::cout<< "Digite la etiqueta del vertice 1" << std::endl;
                         char etiqueta1;
                         std::cin>> etiqueta1;
-                        std::cout<< "Digite la etiqueta del anterior adyacente vertice" << std::endl;
+                        std::cout<< "Digite la etiqueta del anterior vertice adyacente" << std::endl;
                         char etiqueta2;
                         std::cin>> etiqueta2;
+
                         Vertice vertice1 = Algoritmos::BuscarVertice(*grafo,etiqueta1);
-                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);;
-                        Vertice vertice = grafo->SiguienteVerticeAdyacente(vertice1, vertice2); 
-                        std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
+                        Vertice vertice2 = Algoritmos::BuscarVertice(*grafo,etiqueta2);
+
+                        if (vertice1 == Vertice()) {
+                            std::cout<< "No existe el vertice 1" << std::endl;
+                        } else if (vertice2 == Vertice()) {
+                            std::cout<< "No existe el anterior vertice adyacente" << std::endl;
+                        } else {
+                            Vertice vertice = grafo->SiguienteVerticeAdyacente(vertice1, vertice2); 
+
+                            if (vertice == Vertice()) {
+                                std::cout << "No existe el siguiente vertice adyacente" << std::endl;
+                            } else {
+                                std::cout<< "La etiqueta del vertice es " << grafo->Etiqueta(vertice) << std::endl;
+                            }
+                        }
+
                     }
                 break;
                 case 12:

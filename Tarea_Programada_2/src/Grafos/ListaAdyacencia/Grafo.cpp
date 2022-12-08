@@ -100,7 +100,20 @@ Vertice Grafo::PrimerVerticeAdyacente(const Vertice& original) const {
     */
 
     if (celda->getEtiqueta().etiqueta == original.etiqueta) {
-        return* celda->getEtiqueta().getlistaAdyacencia()->getPrimera()->getEtiqueta().VAdyacente; 
+
+        Celda<Vertice::Contenedor>* listaAdyacencia = celda->getEtiqueta()
+            .getlistaAdyacencia()
+                ->getPrimera();
+
+        if (listaAdyacencia == nullptr) {
+            return Vertice();
+        }
+
+        return* celda->getEtiqueta()
+            .getlistaAdyacencia()
+                ->getPrimera()
+                    ->getEtiqueta()
+                        .VAdyacente; 
     }
 
     Vertice nulo;
