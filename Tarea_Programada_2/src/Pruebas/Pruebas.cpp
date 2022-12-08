@@ -46,9 +46,11 @@ namespace Pruebas {
         Grafo entrada;
         funcionCreadora.f(tamano, entrada);
 
-        if ()
-        Algoritmos::Prim();
-        Algoritmos::Kruskal();
+        if (cualAlgoritmo == 0) {
+            Algoritmos::Kruskal();
+        } else {
+            Algoritmos::Prim();
+        }
     }
 
     // CAMINOS DE MENOR COSTO
