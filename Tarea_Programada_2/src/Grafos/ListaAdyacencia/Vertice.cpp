@@ -8,7 +8,7 @@
 
 Vertice::Vertice() {
     listaAdyacencia = nullptr;
-    etiqueta = '@'; 
+    etiqueta = 255; 
 }
 
 Vertice::Vertice(char et) {

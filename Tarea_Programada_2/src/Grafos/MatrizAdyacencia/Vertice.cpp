@@ -6,7 +6,7 @@
 
 Vertice::Vertice() {
     indice = 0;
-    etiqueta = '0';
+    etiqueta = 255;
     nulo = 1;
 }
 

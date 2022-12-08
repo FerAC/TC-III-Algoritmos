@@ -9,26 +9,23 @@
 
 static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVerticesVisitados, const Grafo &grafo)
 {   
-    std::cout << "Estoy en una iteracion" << std::endl;
-    std::cout<< "-----------------------------" << std::endl;
+   
 
        
     for(size_t i =0; i<grafo.NumVertices()-1; i++){
         lista[i].imprimir();
     }
-    int dasdad;
-    // //std::cin>> dasdad; >> dasdad; 
     
     Vertice pivote;
     size_t menorPeso = 0;
     size_t indiceMenor = std::numeric_limits<size_t>::max();
     for (size_t i = 0; i < grafo.NumVertices() - 1; i++)
     {
-        std::cout<< "PESO ACTUAL " << lista[i].getPeso() << std::endl;
+       
         // Verifico que no haya sido pivoteado antes
         if (mapaVerticesVisitados.empty())
         { // Caso trivial, esta vacio
-           std::cout<< "Primer pivote" << std::endl;
+         
             if (menorPeso != 0)
             {
                 if (lista[i].getPeso() != 0 && lista[i].getPeso() <= menorPeso)
@@ -41,8 +38,6 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
             {
                 if (lista[i].getPeso() != 0)
                 {
-                    int nsu;
-                     //std::cin>> dasdad; >>nsu; 
                     indiceMenor = i;
                     menorPeso = lista[indiceMenor].getPeso();
                 }
@@ -50,12 +45,10 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
         }
         else
         {
-            std::cout<< " NO ES Primer pivote" << std::endl;
+           
             if (mapaVerticesVisitados.count(lista[i].getVertice().getEtiqueta()) > 0)
             {
-               std::cout<< "Ya itere sobre " <<lista[i].getVertice().getEtiqueta() << std::endl;
-                int nsu;
-                 //std::cin>> dasdad; >>nsu;
+              
             }
             else
             {
@@ -64,8 +57,6 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
                 {
                     if (lista[i].getPeso() != 0 && lista[i].getPeso() <= menorPeso)
                     {
-                        int nsu;
-                         //std::cin>> dasdad; >>nsu;
                         indiceMenor = i;
                         menorPeso = lista[i].getPeso();
                     }
@@ -74,9 +65,6 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
                 {
                     if (lista[i].getPeso() != 0)
                     {
-                        std::cout<< "Linea 70" <<std::endl;
-                        int nsu;
-                         //std::cin>> dasdad; >>nsu; 
                         indiceMenor = i;
                         menorPeso = lista[i].getPeso();
                     }
@@ -85,11 +73,7 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
         }
     }
    
-   std::cout << "IndiceMenor = " << indiceMenor << std::endl;
-   std::cout <<"Pivote escogido = " << lista[indiceMenor].getVertice().getEtiqueta() << std::endl;
-    int nsu;
-     //std::cin>> dasdad; >>nsu; 
-   std::cout << "Peso menos = " << lista[indiceMenor].getPeso() << std::endl;
+  
     char a = lista[indiceMenor].getVertice().getEtiqueta();
    
     Vertice b = lista[indiceMenor].getVertice();
@@ -207,11 +191,11 @@ namespace Algoritmos {
         Vertice vInicial = grafo.PrimerVertice();
         const Vertice NULO;
         size_t i =0;
-        std::cout<< "Voy a for " << std::endl;
+        
         for(Vertice iterador = grafo.PrimerVertice(); iterador != NULO; iterador = grafo.SiguienteVertice(iterador)){
             int peso = 0; 
             if(vInicial!=iterador){
-                std::cout<< "No son iguales" << std::endl;
+               
                 if(grafo.ExisteArista(vInicial, iterador)){
                     peso = grafo.Peso(vInicial, iterador);
                 }
@@ -221,21 +205,20 @@ namespace Algoritmos {
                     i++;
             } 
         }
-        std::cout<< std::endl;
-        std::cout<< "Sali de inicializacion " << std::endl;
+        
         for (size_t i = 0; i < grafo.NumVertices()-1; i++)
         {
             lista[i].imprimir();
         }
         
         
-        std::cout << "VOY A PIVOT" << std::endl;
+       
         //Primer pivote
         std::map<char, Vertice> mapaVerticesPivoteados; 
         for(size_t j = 0; j<grafo.NumVertices()-1; j++){
-            std::cout<< "J " << j << std::endl;
+          
             Vertice pivote = encontrarPivote(lista, mapaVerticesPivoteados, grafo);
-            std::cout<< "///////////// PIVOTEO CON " << grafo.Etiqueta(pivote) << "///////////" << std::endl;
+           
             for (size_t i = 0; i < grafo.NumVertices()-1; i++)
             {
                 if(lista[i].getVertice()!=pivote && mapaVerticesPivoteados.count(lista[i].getVertice().getEtiqueta())<=0){
@@ -248,23 +231,9 @@ namespace Algoritmos {
                     }
                 }
             }
-            std::cout<<"+++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++" << std::endl;
-                for (size_t i = 0; i < grafo.NumVertices()-1; i++)
-                {
-                    std::cout<< "Vertice " << lista[i].getVertice().getEtiqueta() << std::endl;
-                    std::cout<< "Peso " << lista[i].getPeso() << std::endl;
-                    std::cout<< "Vertice Anterior " << lista[i].getVerticeAnterior().getEtiqueta() << std::endl;
-                }
-                std::cout<<"+++++++++++++++++++BUCLE EXTERNO ++++++++++++++++++++++" << std::endl;
+           
         }
-        std::cout<<"****************************************** " << std::endl;
-        for (size_t i = 0; i < grafo.NumVertices()-1; i++)
-        {
-            std::cout<<"Vertice " << lista[i].getVertice().getEtiqueta() << std::endl;
-            std::cout<<"Peso " << lista[i].getPeso() << std::endl;
-            std::cout<<"Vertice Anterior " << lista[i].getVerticeAnterior().getEtiqueta() << std::endl;
-        }
-        std::cout<<"****************************************** " << std::endl;
+        
         Grafo retornado;
         /*
         for (Vertice vertice = grafo.PrimerVertice(); vertice != NULO; vertice = grafo.SiguienteVertice(vertice))
@@ -309,25 +278,24 @@ namespace Algoritmos {
             //Verifico no haber anadido el vertice anteriormente
             Vertice buscado = BuscarVertice(retornado, lista[i].getVertice().getEtiqueta());
             if(buscado==NULO){
-                std::cout<< "No se ha agregado a " << lista[i].getVertice().getEtiqueta()<<std::endl; 
+              
                 salida = retornado.AgregarVertice(lista[i].getVertice().getEtiqueta());
             } else{
-                std::cout<< "Si se ha agregado a " << lista[i].getVertice().getEtiqueta()<<std::endl; 
+               
                 salida = buscado;
             }
             buscado = BuscarVertice(retornado, lista[i].getVerticeAnterior().getEtiqueta());
             if(buscado==NULO){
-                std::cout<< "No se ha agregado a " << lista[i].getVerticeAnterior().getEtiqueta()<<std::endl; 
+               
                 llegada = retornado.AgregarVertice(lista[i].getVerticeAnterior().getEtiqueta());
             } else{
-                std::cout<< "Si se ha agregado a " << lista[i].getVerticeAnterior().getEtiqueta()<<std::endl; 
-                llegada = buscado;
+                 llegada = buscado;
             }
             /*
             llegada = buscarVertice(retornado, lista[i].getVertice().getEtiqueta());
             salida = buscarVertice(retornado, lista[i].getVerticeAnterior().getEtiqueta()); 
             */
-            std::cout<< "Se va a agregar una arista de peso " << lista[i].getPeso() << ", entre " << llegada.getEtiqueta() << " y "<< salida.getEtiqueta() <<std::endl;
+          
             retornado.AgregarArista(llegada, salida, lista[i].getPeso());
         }
         Vertice vertice;

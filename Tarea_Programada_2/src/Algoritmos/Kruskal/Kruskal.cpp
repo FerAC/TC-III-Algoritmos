@@ -21,12 +21,11 @@ namespace Algoritmos {
         // primero llenamos la lista con la etiqueta de cada elemento y un valor mas cercano al infinito al cual tenemos acceso
         while (vertice != verticeNulo)
         {
-            std::cout << "a" << std::endl;
             char etiqueta = grafo.Etiqueta(vertice);
             grafoMinimo.AgregarVertice(etiqueta);
             vertice = grafo.SiguienteVertice(vertice);
         }
-        // std::cout << "Se termino de insertar los vertices en grafo minimo" << std::endl;
+       
 
         // se reitera para agregar todos los caminos minimos para que los vertices esten connectados y que no haya ciclos
         while (cantidadAristas != cantidadVertices - 1)
@@ -37,31 +36,30 @@ namespace Algoritmos {
             Vertice verticeLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
             Vertice verticeOptimalLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
 
-            // std::cout << "a" << std::endl;
+            
 
             // ciclo para saber cual es el siguiente camino mas corto
             while (verticePartida != verticeNulo)
             {
-                // std::cout << "b" << std::endl;
+               
                 verticeLlegada = grafo.PrimerVerticeAdyacente(verticePartida);
                 while (verticeLlegada != verticeNulo)
                 {
-                    // std::cout << "c" << std::endl;
+                  
                     if (grafo.Peso(verticePartida, verticeLlegada) < pesoMinimo)
                     {
-                        // std::cout << "d" << std::endl;
+                    
                         pesoMinimo = grafo.Peso(verticePartida, verticeLlegada);
                         verticeOptimalLlegada = verticeLlegada;
                         verticeOptimalPartida = verticePartida;
                     }
                     verticeLlegada = grafo.SiguienteVerticeAdyacente(verticePartida, verticeLlegada);
-                    // std::cout << "e" << std::endl;
+                   
                 }
                 verticePartida = grafo.SiguienteVertice(verticePartida);
             }
 
-            // std::cout << "Se encontro el camino mas corto" << std::endl;
-
+         
             // se borra la arista optimal del Grafo grafo
             grafo.EliminarArista(verticeOptimalPartida, verticeOptimalLlegada);
 

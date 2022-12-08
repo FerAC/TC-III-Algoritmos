@@ -190,7 +190,6 @@ void Grafo::EliminarArista(Vertice& origen, Vertice& destino) {
     for (Celda<Vertice>* celda= listaPrincipal->getPrimera();  celda != nullptr; celda = celda->getSiguiente() ) //Muevo en lista Principal
     {
         if (celda->getEtiqueta() == origen) {
-            std::cout << "Voy a borrar a "<< celda->getEtiqueta().etiqueta << std::endl;
             Vertice::Contenedor copia = Vertice::Contenedor(destino, this->Peso(origen, destino));
             celda->getEtiqueta().getlistaAdyacencia()->borrar(copia); 
             borrados++;

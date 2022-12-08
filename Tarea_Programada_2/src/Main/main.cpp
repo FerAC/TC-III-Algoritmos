@@ -25,6 +25,7 @@
   {
     // INFO DE EJECUTABLE
     std::cout << "VERSION: " << VERSION_ENSAYOS << std::endl;
+    std::cout << "TIPO DE GRAFO: " << TIPO_GRAFO << std::endl;
 
     // SETUP PRUEBAS
   
@@ -69,3 +70,91 @@
   }
 
 #endif
+
+/* DEBUG
+#include <iostream>
+#include "Pruebas.hpp"
+#include "Algoritmos.hpp"
+
+static void crearGrafoMalla(size_t limite, Grafo& grafo) {
+
+    for (size_t i = 0; i < limite; i++)
+    {
+        char etiqueta = i;
+        grafo.AgregarVertice(etiqueta);
+    }
+    Vertice salida = grafo.PrimerVertice();
+    for (size_t i = 0; i < limite; i++)
+    {
+        char buscado = i;
+        
+        //Cuatro casos posibles +1, -1, +4, -4
+        if (i >= 1)
+        {
+            buscado = i-1;
+            
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+            
+        }
+        if (i+1 < limite)
+        {
+            buscado = i+1;
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+        }
+        if (i >=4)
+        {
+            buscado = i-4;
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+            
+                
+        }
+        if (i+4 <limite)
+        {
+            buscado = i+4;
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+        }
+        salida = grafo.SiguienteVertice(salida);
+    } 
+
+    // Ya terminamos de crear el grafo malla
+    return;
+}
+
+int main() {
+  Grafo* grafo = new Grafo(); crearGrafoMalla(9, *grafo);
+  auto* ptr = Algoritmos::Colorear(*grafo);
+
+  std::cout << "N = " << grafo->NumVertices() << std::endl;
+  std::cout << "C = " << ptr->size() << std::endl;
+
+  delete ptr;
+  delete grafo;
+
+  return 0;
+}
+
+*/

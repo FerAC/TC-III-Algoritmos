@@ -9,16 +9,15 @@ typedef struct {
     void (*f) (size_t, Grafo&);
 } FuncionCreacionGrafo;
 
-
 // CREAR ÁRBOL
 
 static void crearGrafoArana(size_t limite, Grafo& grafo) {
         //Las etiquetas van de 33 a limite 
         //Todos se conectan al vertice con la etiqueta 33 (ascii)
-        Vertice verticeEnComun = grafo.AgregarVertice('!'); 
+        Vertice verticeEnComun = grafo.AgregarVertice(0); 
         srand(time(NULL));
         
-        for (size_t i = 34; i < limite; i++)
+        for (size_t i = 1 ; i < limite; i++)
         {
             size_t num = 1 + rand() % 1000;
             char etiqueta = i;
@@ -26,22 +25,19 @@ static void crearGrafoArana(size_t limite, Grafo& grafo) {
             grafo.AgregarArista(a,verticeEnComun, num); 
         }
         const Vertice NULO;
-        size_t j = 34;
+        size_t j = 0;
         for (Vertice i = grafo.PrimerVertice(); i!=NULO; i = grafo.SiguienteVertice(i))
         {
             if (j%2) { //min conecto con dos de forma aleatoria
                 for (size_t t = 0; t < 2; t++)
                 {
-                    bool iguales = true; 
-                    size_t num = 34 + (double(rand()) / RAND_MAX) * (limite - 34); 
-                    while (num==j)
-                    {
-                        num = 34 + (double(rand()) / RAND_MAX) * (limite - 34); 
+                    size_t num = (double(rand()) / RAND_MAX) * (254);
+                    while (num==j) {
+                        num =  (double(rand()) / RAND_MAX) * (254); 
                     }
                     size_t peso = 1 + rand() % 1000;
                     std::cout<< "NUM " << num << std::endl; 
-                    int noHaceNada;
-                    
+            
                     char numAsChar = num; 
                     Vertice v = Algoritmos::BuscarVertice(grafo, numAsChar);
                     if ((!grafo.ExisteArista(i, v)) && i != v) {
@@ -49,7 +45,7 @@ static void crearGrafoArana(size_t limite, Grafo& grafo) {
                     }
                 }
             } else{ //max
-                for (size_t t = 34; t < limite-1; t++)
+                for (size_t t = 1; t < limite-1; t++)
                 {
                     if (t != j)
                     {
@@ -72,10 +68,10 @@ static void crearGrafoArana(size_t limite, Grafo& grafo) {
     }
 
 static void crearGrafoCircular(size_t limite, Grafo& grafo) {
-        char etiqueta = 33;
+        char etiqueta = 0;
         Vertice anterior = grafo.AgregarVertice(etiqueta); 
         Vertice primero = anterior; 
-        for (size_t i = 34; i <= limite; i++)
+        for (size_t i = 1; i <= limite; i++)
         {   
             etiqueta = i;
             Vertice actual = grafo.AgregarVertice(etiqueta);
@@ -95,71 +91,71 @@ static void crearGrafoCircular(size_t limite, Grafo& grafo) {
 
 static void crearGrafoMalla(size_t limite, Grafo& grafo) {
 
-        for (size_t i = 33; i < limite; i++)
-        {
-            char etiqueta = i;
-            grafo.AgregarVertice(etiqueta);
-        }
-        Vertice salida = grafo.PrimerVertice();
-        for (size_t i = 33; i < limite; i++)
-        {
-            char buscado = i;
-           
-            //Cuatro casos posibles +1, -1, +4, -4
-            if (i-1 >=33)
-            {
-                buscado = i-1;
-                
-                
-                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
-                    {
-                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
-                    
-                    }
-                
-                
-            }
-            if (i+1 <limite)
-            {
-                buscado = i+1;
-                
-                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
-                    {
-                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
-                    
-                    }
-               
-            }
-            if (i-4 >=33)
-            {
-                buscado = i-4;
-                
-                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
-                    {
-                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
-                    
-                    }
-               
-                
-                 
-            }
-            if (i+4 <limite)
-            {
-                buscado = i+4;
-               
-                    if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
-                    {
-                        grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
-                    
-                    }
-                
-            }
-            salida = grafo.SiguienteVertice(salida);
-        } 
-
-        // Ya terminamos de crear el grafo malla
-        return;
+    for (size_t i = 0; i < limite; i++)
+    {
+        char etiqueta = i;
+        grafo.AgregarVertice(etiqueta);
     }
+    Vertice salida = grafo.PrimerVertice();
+    for (size_t i = 0; i < limite; i++)
+    {
+        char buscado = i;
+        
+        //Cuatro casos posibles +1, -1, +4, -4
+        if (i >= 1)
+        {
+            buscado = i-1;
+            
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+            
+        }
+        if (i+1 < limite)
+        {
+            buscado = i+1;
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+        }
+        if (i >=4)
+        {
+            buscado = i-4;
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+            
+                
+        }
+        if (i+4 <limite)
+        {
+            buscado = i+4;
+            
+                if (!grafo.ExisteArista(salida, Algoritmos::BuscarVertice(grafo, buscado)))
+                {
+                    grafo.AgregarArista(Algoritmos::BuscarVertice(grafo, buscado),salida, 1 + rand() % 1000) ;
+                
+                }
+            
+        }
+        salida = grafo.SiguienteVertice(salida);
+    } 
+
+    // Ya terminamos de crear el grafo malla
+    return;
+}
 
 static FuncionCreacionGrafo comoCrearGrafo (const std::string& nombre) {
 

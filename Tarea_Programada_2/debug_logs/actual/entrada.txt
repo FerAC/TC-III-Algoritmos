@@ -1,0 +1,19 @@
+Coloreo
+coloreo_chiqui
+1
+Coloreo Malla 7
+
+Coloreo
+coloreo_grande
+1
+Coloreo Malla 8
+
+Coloreo
+coloreo_muy_grande
+1
+Coloreo Malla 9
+
+Coloreo
+coloreo_supremo
+1
+Coloreo Malla 10
