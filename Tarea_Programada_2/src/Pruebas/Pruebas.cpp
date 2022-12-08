@@ -5,18 +5,21 @@
 #include "Pruebas.hpp"
 #include "Algoritmos.hpp"
 
+typedef struct {
+    void (*f) (size_t, Grafo&);
+} FuncionCreacionGrafo;
+
 // TODO(us): Cambiar invocaciones para que compile
 namespace Pruebas {
 
-/*
     // ARBOLES MINIMALES
 
     void arbolMinimal(PuntoTiempo& inicio, PuntoTiempo& fin
         , std::tuple<std::string, std::string, size_t> parametros) {
 
         const std::string& nombreAlgoritmo = std::get<0>(parametros);
-        char cualAlgoritmo = 0;
 
+        char cualAlgoritmo = 0;
         if (nombreAlgoritmo == std::string("Prim")) {
             cualAlgoritmo = 1;
         } else if (nombreAlgoritmo != std::string("Kruskal")) {
@@ -27,11 +30,23 @@ namespace Pruebas {
             throw std::invalid_argument("Algoritmo no reconocido");
         }
 
-        const std::string& tipoArbol = std::get<1>(parametros);
-        char cualArbol = 0;
+        const std::string& tipoGrafo = std::get<1>(parametros);
+        FuncionCreacionGrafo funcionCreadora = comoCrearGrafo(tipoGrafo);
+
+        if (funcionCreadora.f == nullptr) {
+            std::cerr 
+            << "[ArbolMinimal] : Tipo de arbol " 
+            << tipoGrafo << " es invalido" << std::endl;
+
+            throw std::invalid_argument("Arbol no reconocido");
+        }
+
+        const size_t tamano = std::get<2>(parametros);
+
+        Grafo entrada;
+        funcionCreadora.f(tamano, entrada);
 
         if ()
-
         Algoritmos::Prim();
         Algoritmos::Kruskal();
     }
@@ -49,9 +64,6 @@ namespace Pruebas {
     // COLOREO
 
     void coloreo(PuntoTiempo& inicio, PuntoTiempo& fin, std::tuple<std::string, std::string, size_t>);
-
-    
-*/
 
     void crearGrafoArana(size_t limite, Grafo& grafo) {
         //Las etiquetas van de 33 a limite 
@@ -204,13 +216,17 @@ namespace Pruebas {
 
 };
 
-/*
+static FuncionCreacionGrafo comoCrearGrafo (const std::string& nombre) {
 
-static void (*) (size_t, Grafo&) (const std::string& nombre) {
+    FuncionCreacionGrafo resultado = {nullptr};
+
     if (nombre == "arana") {
-
+        resultado = {Pruebas::crearGrafoArana};
+    } else if (nombre == "circular") {
+        resultado = {Pruebas::crearGrafoCircular};
+    } else if (nombre == "malla") {
+        resultado = {Pruebas::crearGrafoMalla};
     }
-
+    
+    return resultado;
 }
-
-*/
