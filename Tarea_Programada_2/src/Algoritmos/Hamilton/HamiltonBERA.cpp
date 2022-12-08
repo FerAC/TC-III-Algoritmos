@@ -235,9 +235,7 @@ static const Vertice DescartarVerticeHamiltonBERA(const Grafo& grafo
 
     // DEBUG
     //std::cout << "Solucion actual tras descartar:" << std::endl;
-    for (size_t i = 0; i < solucionesActual.solucionActual.size(); ++i) {
-        std::cout << solucionesActual.solucionActual[i].getEtiqueta() << " ";
-    }
+    
     //std::cout << std::endl;
 
     // Si se nos acabaron los vértices, devolveremos un vértice nulo
@@ -364,9 +362,7 @@ static bool HamiltonBERARecursivo(const Grafo& grafo
 
     // DEBUG
     //std::cout << "Solucion actual: " << std::endl;
-    for (size_t i = 0; i < solucionesActual.solucionActual.size(); ++i) {
-        std::cout << solucionesActual.solucionActual[i].getEtiqueta() << " ";
-    }
+    
     //std::cout << std::endl;
 
     bool potencialFactibilidadCon = !estadoActual.aristasDescartadas.contains(

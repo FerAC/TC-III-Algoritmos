@@ -12,9 +12,7 @@ static Vertice encontrarPivote(Tripleta *lista, std::map<char, Vertice> &mapaVer
    
 
        
-    for(size_t i =0; i<grafo.NumVertices()-1; i++){
-        lista[i].imprimir();
-    }
+   
     
     Vertice pivote;
     size_t menorPeso = 0;
@@ -201,15 +199,12 @@ namespace Algoritmos {
                 }
                 Tripleta tripleta(iterador, peso,  vInicial);
                 lista[i] = tripleta; 
-                lista[i].imprimir();
+               
                     i++;
             } 
         }
         
-        for (size_t i = 0; i < grafo.NumVertices()-1; i++)
-        {
-            lista[i].imprimir();
-        }
+       
         
         
        
