@@ -2,34 +2,39 @@
 #define PRUEBAS
 
 #include "GrafoImplementado.hpp"
-#include "Pruebas/Perfomance/UnidadPrueba.hpp"
+#include "UnidadPrueba.hpp"
 
 // TODO(us): Cambiar invocaciones para que compile
 namespace Pruebas {
 
-    // // ARBOLES MINIMALES
+    // ARBOLES MINIMALES
 
-    // void arbolMinimal(PuntoTiempo& inicio, PuntoTiempo& fin, std::tuple<std::string, std::string, size_t>);
+    void arbolMinimal(PuntoTiempo& inicio, PuntoTiempo& fin
+        , std::tuple<std::string, std::string, size_t> parametros);
 
-    // // CAMINOS DE MENOR COSTO
+    // CAMINOS DE MENOR COSTO
 
-    // void distanciaCortaUno(PuntoTiempo& inicio, PuntoTiempo& fin, std::tuple<std::string, std::string, size_t>);
+    void distanciaCortaUno(PuntoTiempo& inicio, PuntoTiempo& fin
+        , std::tuple<std::string, std::string, size_t> parametros);
 
-    // void distanciaCortaTodos(PuntoTiempo& inicio, PuntoTiempo& fin, std::tuple<std::string, std::string, size_t>);
+    void distanciaCortaTodos(PuntoTiempo& inicio, PuntoTiempo& fin
+        , std::tuple<std::string, std::string, size_t> parametros);
 
-    // // CIRCUITO HAMILTONIANO
+    // CIRCUITO HAMILTONIANO
 
-    // void circuitoHamiltoniano(PuntoTiempo& inicio, PuntoTiempo& fin, std::tuple<std::string, std::string, size_t>);
+    void circuitoHamiltoniano(PuntoTiempo& inicio, PuntoTiempo& fin
+        , std::tuple<std::string, std::string, size_t> parametros);
 
-    // // COLOREO
+    // COLOREO
 
-    // void coloreo(PuntoTiempo& inicio, PuntoTiempo& fin, std::tuple<std::string, std::string, size_t>);
+    void coloreo(PuntoTiempo& inicio, PuntoTiempo& fin
+        , std::tuple<std::string, std::string, size_t> parametros);
 
-    void crearGrafoArana(size_t limite, Grafo& grafo);
+    void leerParametros(std::tuple<std::string, std::string, size_t>& parametros
+        , std::istream& entrada);
 
-    void crearGrafoCircular(size_t limite, Grafo& grafo);
-
-    void crearGrafoMalla(size_t limite, Grafo& grafo);
+    void imprimirParametros(const std::tuple<std::string, std::string, size_t>& parametros
+        , std::ostream& salida);
 };
 
 #endif

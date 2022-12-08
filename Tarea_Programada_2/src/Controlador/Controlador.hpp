@@ -1,5 +1,5 @@
-#ifndef CONTROLADOR
-#define CONTROLADOR
+#ifndef CONTROLADOR_HPP
+#define CONTROLADOR_HPP
 
 #include "GrafoImplementado.hpp"
 

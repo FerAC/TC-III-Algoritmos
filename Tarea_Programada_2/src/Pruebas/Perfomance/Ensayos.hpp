@@ -42,7 +42,7 @@ class Ensayos
 
     public:
 
-        Ensayos(std::map<std::string, FuncionPrueba<ArgumentosEnsayos...>>& funciones
+        Ensayos(const std::map<std::string, FuncionPrueba<ArgumentosEnsayos...>>& funciones
             , std::istream& entrada
             , FuncionLectura<ArgumentosEnsayos...> leerDatos
             , FuncionEscritura<ArgumentosEnsayos...> escribirParametros) {
@@ -132,7 +132,8 @@ class Ensayos
                         kActual = 0;
 
                         // Y nos comeremos la siguiente línea
-                        std::string buffer;
+                        std::string buffer = "";
+                        std::getline(entrada, buffer);
                         std::getline(entrada, buffer);
                     }
                     break;
@@ -143,7 +144,7 @@ class Ensayos
         ~Ensayos() {
         }
 
-        void ejecutarPruebasSerial() {
+        void ejecutarPruebasSerial(std::ostream& salida) {
             // Hay que llevar cuenta de las pruebas totales
             size_t pruebasTotales = pruebas.size();
 
@@ -165,24 +166,23 @@ class Ensayos
                     progreso = progresoActual;
 
                     const size_t bloques = size_t(progreso);
-                    std::cout << "\r[";
-                    for (size_t i = 0; i < bloques; ++i)
-                    {
-                        std::cout << "=";
+                    salida << "\r[";
+                    for (size_t i = 0; i < bloques; ++i) {
+                        salida << "=";
                     }
-                    std::cout << "] %" << progreso;
-                    std::cout.flush();
+                    salida << "] %" << progreso;
+                    salida.flush();
                 }
             }
         }
 
-        void imprimirPruebas() {
+        void imprimirPruebas(std::ostream& salida) {
             // Dejar una línea de separación
-            std::cout << std::endl;
+            salida << std::endl;
 
             // Si no estamos imprimiendo datos bonitos imprimiremos un encabezado
             #if not defined(DATOS_BONITOS)
-                std::cout << "[ID]\t[Nombre]" << std::endl 
+                salida << "[ID]\t[Nombre]" << std::endl 
                 << "[Parametros...] (" 
                 << std::tuple_size<std::tuple<ArgumentosEnsayos...>>::value 
                 << ')' << std::endl
@@ -193,7 +193,7 @@ class Ensayos
 
             // Imprime todas las pruebas que se encuentran en el vector de pruebas
             for (auto it = pruebas.begin(); it != pruebas.end(); ++it)
-                std::cout << *it << std::endl;
+                salida << *it << std::endl;
         }
 
         UnidadPrueba<ArgumentosEnsayos...>& getPrueba(size_t indice)
@@ -201,7 +201,7 @@ class Ensayos
 
         // Adiciones de ejecución concurrente
         #if defined(CONCURRENTE)
-            void ejecutarPruebasConcurrente(size_t cantidadHilos)
+            void ejecutarPruebasConcurrente(size_t cantidadHilos, std::ostream& salida)
             {
                 // Hay que llevar cuenta de las pruebas totales
                 const size_t pruebasTotales = pruebas.size();
@@ -214,7 +214,7 @@ class Ensayos
                 num_threads(cantidadHilos) \
                 schedule(dynamic) \
                 default(none) \
-                shared(pruebas, progreso, pruebasHechas, pruebasTotales, std::cout)
+                shared(pruebas, progreso, pruebasHechas, pruebasTotales, salida)
                 for (size_t i = 0; i < pruebasTotales; ++i) {
                     pruebas[i].correrPrueba();
 
@@ -230,13 +230,13 @@ class Ensayos
                             progreso = progresoActual;
 
                             const size_t bloques = size_t(progreso);
-                            std::cout << "\r[";
+                            salida << "\r[";
                             for (size_t i = 0; i < bloques; ++i)
                             {
-                                std::cout << "=";
+                                salida << "=";
                             }
-                            std::cout << "] %" << progreso;
-                            std::cout.flush();
+                            salida << "] %" << progreso;
+                            salida.flush();
                         }
                     }
                 }
