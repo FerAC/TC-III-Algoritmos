@@ -3,6 +3,9 @@
 #include "Controlador.hpp"
 #include "Pruebas.hpp"
 #include "GrafoImplementado.hpp"
+#include "Algoritmos.hpp"
+#include <set>
+#include <map>
 
 int main()
 {
